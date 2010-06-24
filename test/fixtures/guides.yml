@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: guides
+#
+#  id              :integer         not null, primary key
+#  name            :string(255)     
+#  author          :string(255)     
+#  description     :text            
+#  species_count   :integer         default(0)
+#  downloads_count :integer         default(0)
+#  session_key     :string(255)     
+#  loving          :integer         default(0)
+#  created_at      :datetime        
+#  updated_at      :datetime        
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  author: MyString
+  description: MyText
+  species_count: 1
+  downloads_count: 1
+  session_key: MyString
+  loving: 
+
+two:
+  name: MyString
+  author: MyString
+  description: MyText
+  species_count: 1
+  downloads_count: 1
+  session_key: MyString
+  loving: 
