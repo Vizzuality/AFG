@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20100624141849) do
     t.text     "description"
     t.integer  "species_count",   :default => 0
     t.integer  "downloads_count", :default => 0
-    t.string   "session_key"
+    t.string   "session_id"
     t.integer  "loving",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -8,7 +8,7 @@
 #  description     :text            
 #  species_count   :integer         default(0)
 #  downloads_count :integer         default(0)
-#  session_key     :string(255)     
+#  session_id      :string(255)     
 #  loving          :integer         default(0)
 #  created_at      :datetime        
 #  updated_at      :datetime        
