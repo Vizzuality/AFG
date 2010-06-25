@@ -1,4 +1,6 @@
 AFG::Application.routes.draw do |map|
+  resources :species
+
 
   root :to => "site#home"  
   match 'about' => 'site#about', :as => 'about'

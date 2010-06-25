@@ -7,11 +7,15 @@ class GuidesController < ApplicationController
   
   def index
     guides = Guide.published.not_highlighted
+    
+    # sort_by filter
     guides = if params[:sort_by].nil? || params[:sort_by] == 'popularity'
       guides.sort_by_popularity
     else
       guides.sort_by_most_recent
     end
+    
+    # range of dates filter
     guides = case params[:date]
       when nil, 'week'
         guides.where(["created_at > ?", 1.week.ago])
@@ -22,6 +26,7 @@ class GuidesController < ApplicationController
       when 'year'
         guides.where(["created_at > ?", 1.year.ago])
     end
+    
     respond_with(@guides = guides.paginate(:per_page => 9, :page => params[:page]))
   end
 

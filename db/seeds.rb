@@ -7,8 +7,13 @@ Guide.create :name => 'View jellyfishes', :session_id => nil, :author => 'Fernan
                          :highlighted => true, :downloads_count => 30,  :species_count => 50, :popularity => 30
 
 # Non highlighted guides
-
 1.upto(20) do
   Guide.create :name => 'View ' + String.random(20), :session_id => nil, :author => String.random(20), 
                            :highlighted => false, :downloads_count => rand(100), :species_count => rand(100), :popularity => rand(100)
 end
+
+# Species
+Species.create :name => 'Penguin'
+Species.create :name => 'Whale'
+Species.create :name => 'Squid'
+Species.create :name => 'Jellyfish'

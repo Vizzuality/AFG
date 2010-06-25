@@ -16,6 +16,9 @@
 #
 
 class Guide < ActiveRecord::Base
+
+  has_many :choices
+  has_many :species, :through => :choices
   
   scope :published,       where("session_id is null")
   scope :highlighted,     published.where("highlighted = ?", true)

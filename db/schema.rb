@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624141849) do
+ActiveRecord::Schema.define(:version => 20100625151245) do
+
+  create_table "choices", :force => true do |t|
+    t.integer  "guide_id"
+    t.integer  "species_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "guides", :force => true do |t|
     t.string   "name"
@@ -29,5 +37,13 @@ ActiveRecord::Schema.define(:version => 20100624141849) do
   add_index "guides", ["name"], :name => "index_guides_on_name"
   add_index "guides", ["popularity"], :name => "index_guides_on_popularity"
   add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
+
+  create_table "species", :force => true do |t|
+    t.string   "name"
+    t.integer  "guides_count", :default => 0
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
