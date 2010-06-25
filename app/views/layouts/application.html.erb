@@ -25,7 +25,7 @@
         <ul> 
           <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
           <li><%= link_to('EXPLORE', '#', :class => (current_page?('#') ? 'current' : nil)) %></li>
-          <li><%= link_to('GUIDES', guides_path, :class => (current_page?(guides_path) ? 'current' : nil)) %></li>
+          <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
           <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
         </ul> 
       </div> 

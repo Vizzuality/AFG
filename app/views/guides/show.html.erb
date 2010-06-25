@@ -1,2 +1,53 @@
-<h1>Guides#show</h1>
-<p>Find me in app/views/guides/show.html.erb</p>
+<div class="wide_container"> 
+  
+  <div class="header_guide"> 
+    <img class="arrow" src="images/common/arrow_menu.png" alt=""/> 
+    <div class="content"> 
+      <div class="content_left"> 
+        <p class="title"><%= @guide.name %></p> 
+        <p class="by">by <%= @guide.author %></p> 
+        <div class="data_info"> 
+          <p class="downloads_data"><span><%= @guide.downloads_count %></span></p> 
+        </div> 
+        <%= simple_format(@guide.description, :class => 'info_guide') %>
+        
+        <a class="download_guide" href="#"> 
+          <p class="title">download this guide</p> 
+          <p class="size">(32 pages, 2,3MB)</p> ¿? 
+        </a> 
+        <p class="template">or <a href="#">use it as template</a> for yours</p> 
+                  
+      </div> <!-- content_left --> 
+      <div class="content_right"> 
+        
+        <div class="amount_info"> 
+          <p class="species_guide_rank second_rank white right"><%= pluralize(@guide.species_count, 'SPECIES') %></p> 
+        </div> 
+        <div class="bkg_map"> 
+          <div class="map"></div> 
+        </div> 
+      </div> 
+    </div> 
+  </div> <!-- header_guide --> 
+  
+  <div class="taxonomy_browser_body"> 
+    <div class="content"> 
+      <div class="content_left"> 
+        <p class="species_included">Species included</p> 
+        <p class="number_species"><b><%= pluralize(@guide.species_count, 'SPECIES') %></b> in this guide</p>        
+      </div> 
+      <div class="content_right"> 
+        <a class="view_advanced_browser" href="#">view the <span>advanced taxon browser</span></a> 
+      </div> 
+      <div class="taxonomy_browser"> <!-- FAKE --> 
+      </div> 
+    </div> 
+  </div> <!-- taxonomy_browser_body --> 
+          
+  <div class="info_species_list"> 
+    <p>more than 1,663 species in our <a href="species.php">species list</a></p> 
+  </div> 
+  
+  <%= render 'guides/your_guide' %>
+
+</div>
