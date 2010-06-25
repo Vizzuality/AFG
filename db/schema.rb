@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(:version => 20100624141849) do
     t.integer  "species_count",   :default => 0
     t.integer  "downloads_count", :default => 0
     t.string   "session_id"
-    t.integer  "loving",          :default => 0
+    t.integer  "popularity",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "guides", ["author"], :name => "index_guides_on_author"
   add_index "guides", ["created_at"], :name => "index_guides_on_created_at"
-  add_index "guides", ["loving"], :name => "index_guides_on_loving"
   add_index "guides", ["name"], :name => "index_guides_on_name"
+  add_index "guides", ["popularity"], :name => "index_guides_on_popularity"
+  add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
 
 end

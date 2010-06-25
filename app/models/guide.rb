@@ -9,7 +9,7 @@
 #  species_count   :integer         default(0)
 #  downloads_count :integer         default(0)
 #  session_id      :string(255)     
-#  loving          :integer         default(0)
+#  popularity      :integer         default(0)
 #  created_at      :datetime        
 #  updated_at      :datetime        
 #

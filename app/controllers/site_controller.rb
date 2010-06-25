@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   
-  def home  
+  def home
   end
   
   def about
