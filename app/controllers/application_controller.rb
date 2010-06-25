@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
   
     def set_current_guide
-      @current_guide = Guide.find_by_session_id(session['session_id']) || Guide.create(:session_id => session['session_id'])
+      @current_guide = Guide.find_or_create_by_session_id(session['session_id'])
     end
   
 end
