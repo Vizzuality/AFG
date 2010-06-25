@@ -10,6 +10,7 @@
 #  downloads_count :integer         default(0)
 #  session_id      :string(255)     
 #  popularity      :integer         default(0)
+#  highlighted     :boolean         
 #  created_at      :datetime        
 #  updated_at      :datetime        
 #

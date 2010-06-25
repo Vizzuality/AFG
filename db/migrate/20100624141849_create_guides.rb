@@ -8,6 +8,7 @@ class CreateGuides < ActiveRecord::Migration
       t.integer :downloads_count, :default => 0
       t.string  :session_id
       t.integer :popularity,      :default => 0
+      t.boolean :highlighted,     :default => false
 
       t.timestamps
     end
