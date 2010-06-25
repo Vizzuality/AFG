@@ -12,5 +12,5 @@ module GuidesHelper
       end
     "#{left} #{connector} #{right}"
   end
-  
+      
 end

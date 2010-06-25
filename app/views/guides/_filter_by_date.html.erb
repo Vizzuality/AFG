@@ -1,0 +1,21 @@
+<a class="sorted_box_deactivated" href="<%= url_for(params.merge(:date => @current_date_filter.to_s)) %>"> 
+  <div class="deactivated_box"> 
+    <p><%= date_filters[@current_date_filter] %></p> 
+  </div> 
+</a>    
+
+<div class="activated_box"> 
+  <a class="sorted_box_activated" href="<%= url_for(params.merge(:date => @current_date_filter.to_s)) %>"> 
+    <span class="head"> 
+      <p><%= date_filters[@current_date_filter] %></p> 
+    </span> 
+  </a> 
+  <ul class="kind_sort"> 
+    <% date_filters.each do |key, value| %>
+    <% next if key == @current_date_filter %>
+    <li class="<%= cycle('', '', 'last') %>"> 
+      <a href="<%= url_for(params.merge(:date => key.to_s)) %>"><%= value %></a> 
+    </li> 
+    <% end -%>
+  </ul> 
+</div> 

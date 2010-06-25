@@ -7,9 +7,7 @@
         <p class="by">choose one of this guides if you don't want to create yours from scratch</p> 
         <ul>
           <% Guide.highlighted.limit(4).each do |guide| %>
-          <li> 
-            <%= render guide %>
-          </li>
+          <li><%= render guide %></li>
           <% end %>
         </ul> 
     </div> 
@@ -23,34 +21,13 @@
       <div class="sorted_by"> 
         <p class="title">Order by:</p>
         <p class="kind_sorted">
-          <%= link_to('Most popular', guides_path(:sort_by => 'popularity'), :class => (params[:sort_by].blank? || params[:sort_by] == 'popularity' ? '' : 'activated')) %>
+          <%= link_to('Most popular', params.merge(:page => 1, :sort_by => 'popularity'), :class => (params[:sort_by].blank? || params[:sort_by] == 'popularity' ? '' : 'activated')) %>
           <span class="vertical_line"></span>
-          <%= link_to('Most recent', guides_path(:sort_by => 'date'), :class => (params[:sort_by] == 'date' ? '' : 'activated')) %>
+          <%= link_to('Most recent', params.merge(:page => 1, :sort_by => 'date'), :class => (params[:sort_by] == 'date' ? '' : 'activated')) %>
         </p> 
-        <a class="sorted_box_deactivated" href="#"> 
-          <div class="deactivated_box"> 
-            <p>From last week</p> 
-          </div> 
-        </a>    
+                
+        <%= render 'guides/filter_by_date' %>
         
-        <div class="activated_box"> 
-          <a class="sorted_box_activated" href="#"> 
-            <span class="head"> 
-              <p>From last week</p> 
-            </span> 
-          </a> 
-          <ul class="kind_sort"> 
-            <li> 
-              <a href="#">From last Month</a> 
-            </li> 
-            <li> 
-              <a href="#">From last 3 Months</a> 
-            </li> 
-            <li class="last"> 
-              <a href="#">From last year</a> 
-            </li> 
-          </ul> 
-        </div> 
       </div> <!-- Sorted_box --> 
     
       <ul class="published_afg">
@@ -64,8 +41,8 @@
       <% if @guides.total_pages > 1 %>
       <div class="pagination"> 
         <p>viewing from <b><%= guides_shown(@guides) %> of <%= @guides.total_entries %></b></p>
-        <%= link_to_unless(@guides.current_page == 1, '', url_for(params.merge(:page => @guides.previous_page)), :class => 'left') %>
-        <%= link_to_unless(@guides.current_page == @guides.total_pages, '', url_for(params.merge(:page => @guides.next_page)), :class => 'right') %>
+        <%= link_to_unless(@guides.current_page == 1, '', params.merge(:page => @guides.previous_page), :class => 'left') %>
+        <%= link_to_unless(@guides.current_page == @guides.total_pages, '', params.merge(:page => @guides.next_page), :class => 'right') %>
       </div> 
       <% end -%>
     </div><!-- information -->     
@@ -89,26 +66,6 @@
     </div> 
   </div> <!-- .right -->
   
-  <div class="long"> 
-    <div class="long_in"> 
-      <h3>Your Atlantic Field Guide</h3> 
-      <p class="subtitle">Here is were your species and landscapes will be added</p> 
-      <ul id="sortable"> 
-        <li id ="draggable" class="single"><p class="title">Your AFG</p></li> 
-        <li id ="draggable" class="single"><p class="title">Your AFG</p></li> 
-        <li id ="draggable" class="amount"><p class="title">Your AFG</p></li> 
-        <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
-      </ul> 
-    </div> 
-    <div class="bottom"> 
-      <div class="left_side"> 
-        <a href="#" class="left"></a> 
-        <a href="#" class="right"></a> 
-      </div> 
-      <div class="right_side"> 
-        <a href="#"></a> 
-      </div> 
-    </div> 
-  </div><!-- .long -->
+  <%= render 'guides/your_guide' %>
   
 </div><!-- .wide_container -->
