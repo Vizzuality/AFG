@@ -1,8 +1,9 @@
 AFG::Application.routes.draw do |map|
+
+  root :to => "site#home"  
+  match 'about' => 'site#about', :as => 'about'
   
-  root :to => "site#home"
-  
-  match 'about' => 'site#about'
+  resources :guides
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

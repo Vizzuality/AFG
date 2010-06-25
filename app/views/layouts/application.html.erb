@@ -25,14 +25,14 @@
         <ul> 
           <li class="first"> 
 
-            <a class="current" href="index.php">HOME</a></li> 
+            <a class="current" href="/">HOME</a></li> 
             <li> 
               <a href="explore.php">EXPLORE</a> 
             </li> 
             <li> 
-              <a href="guides.php">GUIDES</a> 
+              <a href="<%= guides_path %>">GUIDES</a> 
             </li> 
-            <li><a href="#">ABOUT</a></li> 
+            <li><a href="<%= about_path %>">ABOUT</a></li> 
           </ul> 
         </div> 
       </div> 
@@ -45,12 +45,12 @@
       <div class="footer"> 
         <div class="in"> 
           <div class="logo"> 
-            <a href="index.php" class="logo"></a> 
+            <a href="/" class="logo"></a> 
             <span class="menu"> 
               <ul> 
                 <li><a href="explore.php">Explore</a></li> 
                 <li><a href="species.php">Species</a></li> 
-                <li><a href="guides.php">Guides</a></li> 
+                <li><a href="<%= guides_path %>">Guides</a></li> 
                 <li class="last"><a href="landscape.php">Landscapes</a></li> 
               </ul> 
             </span> 

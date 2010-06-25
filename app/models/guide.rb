@@ -18,7 +18,8 @@
 class Guide < ActiveRecord::Base
   
   scope :published, where("session_id is null")
-  scope :highlighted, where("highlighted = ?", true)
+  scope :highlighted, published.where("highlighted = ?", true)
+  scope :not_highlighted, published.where("highlighted = ?", false)
   
   scope :sort_by_most_recent, order("created_at DESC")
   scope :sort_by_popularity, order("popularity DESC")
@@ -26,5 +27,7 @@ class Guide < ActiveRecord::Base
   def published?
     session_id.nil?
   end
+  
+  def self.per_page; 9 end
   
 end
