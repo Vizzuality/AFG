@@ -1,0 +1,27 @@
+<div class="sorted_by"> 
+  <p class="title">Order by:</p>
+  <p class="kind_sorted">
+    <%= link_to('Most popular', params.merge(:page => 1, :sort_by => 'popularity'), :class => 'ajax ' + (params[:sort_by].blank? || params[:sort_by] == 'popularity' ? '' : 'activated')) %>
+    <span class="vertical_line"></span>
+    <%= link_to('Most recent', params.merge(:page => 1, :sort_by => 'date'), :class => 'ajax ' + (params[:sort_by] == 'date' ? '' : 'activated')) %>
+  </p> 
+          
+  <%= render 'guides/filter_by_date' %>
+  
+</div> <!-- Sorted_box -->
+
+<ul class="published_afg">
+  <% @guides.each do |guide| %>
+  <li class="<%= cycle('multiple', 'multiple', 'multiple_last') %>"> 
+    <%= render guide %>
+  </li>
+  <% end -%>
+</ul>  <!-- afg_published --> 
+
+<% if @guides.total_pages > 1 %>
+<div class="pagination"> 
+  <p>viewing from <b><%= guides_shown(@guides) %> of <%= @guides.total_entries %></b></p>
+  <%= link_to_unless(@guides.current_page == 1, '', params.merge(:page => @guides.previous_page), :class => 'left ajax') %>
+  <%= link_to_unless(@guides.current_page == @guides.total_pages, '', params.merge(:page => @guides.next_page), :class => 'right ajax') %>
+</div> 
+<% end -%>
