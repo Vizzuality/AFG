@@ -2,13 +2,14 @@
   <div class="long_in"> 
     <h3>Your Atlantic Field Guide</h3> 
     <p class="subtitle">Here is were your species and landscapes will be added</p> 
-    <ul id="sortable"> 
-      <li id ="draggable" class="single"><p class="title">Your AFG</p></li> 
-      <li id ="draggable" class="single"><p class="title">Your AFG</p></li> 
-      <li id ="draggable" class="amount"><p class="title">Your AFG</p></li> 
+    <ul id="sortable">
+      <% @current_guide.choices.each do |choice| %>
+      <li id ="draggable" class="<%= choice_css_class(choice) %>"><p class="title"><%= choice.name %></p></li> 
+      <% end -%>
       <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
     </ul> 
   </div> 
+  <% if @current_guide.choices.count > 5 %>
   <div class="bottom"> 
     <div class="left_side"> 
       <a href="#" class="left"></a> 
@@ -17,5 +18,6 @@
     <div class="right_side"> 
       <a href="#"></a> 
     </div> 
-  </div> 
+  </div>
+  <% end -%>
 </div><!-- .long -->

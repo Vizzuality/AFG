@@ -20,6 +20,10 @@ class Choice < ActiveRecord::Base
   belongs_to :species, :counter_cache => :species_count
 
   validate :validate_associated_to_guide_or_species
+  
+  def name
+    guide.try(:name) || species.try(:name)
+  end
 
   private
   

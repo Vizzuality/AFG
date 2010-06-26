@@ -7,14 +7,14 @@
     <img src="images/home/pulpito.jpg" alt="Pulpito" title="Pulpitus" /> 
   </div><!-- #slider -->
   
-  <h2>Meet incredible <a href="species.php">species</a>, find amazing <a href="landscapes.php">landscapes</a>,<br/> 
+  <h2>Meet incredible <%= link_to('species', :controller => 'species', :action => 'index') %>, find amazing <a href="landscapes.php">landscapes</a>,<br/> 
     and create your <a href="#">antartic field guide</a>.</h2> 
 </div><!-- .images_gallery -->
 
 <div class="left"> 
   <div class="information"> 
     <h3>Species that you can find in the antartic</h3> 
-    <p class="subtitle">you can find more than <a href="species.php">1.312 species</a></p> 
+    <p class="subtitle">you can find more than <%= link_to("#{Species.count} species", :controller => 'species', :action => 'index') %></p> 
     <div class="species_list"> 
       <ul class="published_afg"> 
         <li> 
@@ -69,50 +69,21 @@
     </div> 
   </div> 
   <div class="bottom"> 
-    <p>more than 1,663 species in our <a href="#">species list</a></p> 
+    <p>more than <%= number_with_delimiter(Species.count, :separator => ",")  %> species in our <%= link_to('species list', :controller => 'species', :action => 'index') %></p> 
   </div> 
   <div class="create"> 
     <h3>Some of the already created Antartic Field Guides</h3> 
     <p class="subtitle">create your AFG with species and landscapes, and enjoy your trip</p> 
     <ul class="published_afg"> 
-      <li> 
-        <div class="information_title"> 
-          <h4><a href="guide.php">This is gonna be great. Antartic trip...</a></h4> 
-          <p class="by">by Brunno Dannis</p> 
-          <p class="heart"><span><img src="images/home/pink_heart.png" alt="heart"/>11</span></p> 
-        </div> 
-        <div class="stats"> 
-          <p class="species_rank second_rank left">20 SPECIES</p> 
-          <p class="landscapes_rank second_rank left">18 LANDSCAPES</p> 
-        </div> 
-
+      <% Guide.highlighted.limit(3).each do |guide| %>
+      <li class="<%= cycle('', '', 'last') %>"> 
+        <%= render guide %>
       </li> 
-      <li> 
-        <div class="information_title"> 
-          <h4><a href="guide.php">This is gonna be great. Antartic trip...</a></h4> 
-          <p class="by">by Brunno Dannis</p> 
-          <p class="heart"><span><img src="images/home/pink_heart.png" alt="heart"/>11</span></p> 
-        </div> 
-        <div class="stats"> 
-          <p class="species_rank second_rank left">20 SPECIES</p> 
-          <p class="landscapes_rank second_rank left">18 LANDSCAPES</p> 
-        </div>            
-      </li> 
-      <li class="last"> 
-        <div class="information_title"> 
-          <h4><a href="guide.php">This is gonna be great. Antartic trip...</a></h4> 
-          <p class="by">by Brunno Dannis</p> 
-          <p class="heart zero"><span><img src="images/home/gray_heart.png" alt="heart"/>0</span></p> 
-        </div> 
-        <div class="stats"> 
-          <p class="species_rank second_rank left">20 SPECIES</p> 
-          <p class="landscapes_rank second_rank left">18 LANDSCAPES</p> 
-        </div> 
-      </li> 
+      <% end %>
     </ul> 
   </div> 
   <div class="bottom noborder"> 
-    <p>browse our <a href="guides.php">guide catalog</a> created by the users</p> 
+    <p>browse our <a href="<%= guides_path %>">guide catalog</a> created by the users</p> 
   </div> 
 </div> 
 
@@ -207,7 +178,7 @@
     <img src="images/home/blue_arrow.png" alt="Blue Arrow" class="arrow"/> 
     <h4>Create your guide</h4> 
     <p class="subtitle">create your AFG when you want, it's free!</p> 
-    <ul> 
+    <ul>
       <li> 
         <div class="image"> 
           <img src="images/home/browse.png" alt="Browse"/> 
