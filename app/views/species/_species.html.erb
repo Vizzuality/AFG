@@ -1,5 +1,5 @@
 <div class="specie"> 
-  <a href="#"><img src="images/home/penguin.png" alt="Gentoo Penguin" /></a> 
+  <a href="<%= species_path(species.id) %>"><img src="images/home/penguin.png" alt="<%= species.name %>" /></a> 
   <h4><%= link_to(species.name, species_path(species.id)) %></h4>
   <p class="heart"><span><img src="images/home/pink_heart.png" alt="heart"/><%= species.guides_count %></span></p> 
   <p class="taxa">Pygoscelis papua</p> 
