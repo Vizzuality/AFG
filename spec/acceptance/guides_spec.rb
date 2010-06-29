@@ -64,9 +64,23 @@ feature "Guides of species" do
     
     page.should have_css("p.title", :text => penguins.name)
     page.should have_css("p.by", :text => "by #{penguins.author}")
-    page.should have_css("p.downloads_data", :text => "#{penguins.downloads_count}")
+    page.should have_css("p.downloads_data", :text => "#{penguins.popularity}")
     page.should have_css("p.info_guide", :text => penguins.description)
     page.should have_css("p.species_guide_rank", :text => "#{penguins.species_count} SPECIES")
+  end
+  
+  scenario "Save a guide" do
+    penguins  = create_guide :name => 'View penguins',    :session_id => nil, :author => 'Fernando Blat', 
+                             :highlighted => true, :downloads_count => 100, :species_count => 33, :popularity => 20,
+                             :description => "This is a wadus guide"
+    
+    visit "/guides/#{penguins.id}"
+    page.should have_css("p.downloads_data", :text => "#{penguins.popularity}")
+    
+    click "use it as template"
+    page.should have_css("p.downloads_data", :text => "#{penguins.popularity + 1}")
+    page.should have_css("div.long ul#sortable li.amount p.title", :text => penguins.name)
+    page.should_not have_css("p.template", :text => 'use it as template')
   end
   
 end

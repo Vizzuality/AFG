@@ -4,7 +4,7 @@
     <p class="subtitle">Here is were your species and landscapes will be added</p> 
     <ul id="sortable">
       <% @current_guide.choices.each do |choice| %>
-      <li id ="draggable" class="<%= choice_css_class(choice) %>"><p class="title"><%= choice.name %></p></li> 
+      <li id="draggable" class="<%= choice_css_class(choice) %>"><p class="title"><%= choice.name %></p></li> 
       <% end -%>
       <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
     </ul> 

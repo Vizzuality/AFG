@@ -7,7 +7,7 @@
         <p class="title"><%= @guide.name %></p> 
         <p class="by">by <%= @guide.author %></p> 
         <div class="data_info"> 
-          <p class="downloads_data"><span><%= @guide.downloads_count %></span></p> 
+          <p class="downloads_data"><span><%= @guide.popularity %></span></p> 
         </div> 
         <%= simple_format(@guide.description, :class => 'info_guide') %>
         
