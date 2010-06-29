@@ -15,8 +15,8 @@ class Choice < ActiveRecord::Base
 
   belongs_to :species, :counter_cache => :guides_count
   
-  belongs_to :guide, :counter_cache => :downloads_count
-  belongs_to :included_guide, :class_name => 'Guide', :foreign_key => 'included_guide_id'
+  belongs_to :guide
+  belongs_to :included_guide, :class_name => 'Guide', :foreign_key => 'included_guide_id', :counter_cache => :popularity
   
   validate :validate_associated_to_guide_or_species
   
