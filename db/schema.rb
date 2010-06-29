@@ -14,14 +14,14 @@ ActiveRecord::Schema.define(:version => 20100625151245) do
   create_table "choices", :force => true do |t|
     t.integer  "guide_id"
     t.integer  "species_id"
-    t.integer  "parent_guide_id"
+    t.integer  "included_guide_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "choices", ["guide_id"], :name => "index_choices_on_guide_id"
-  add_index "choices", ["parent_guide_id"], :name => "index_choices_on_parent_guide_id"
+  add_index "choices", ["included_guide_id"], :name => "index_choices_on_included_guide_id"
   add_index "choices", ["position"], :name => "index_choices_on_position"
   add_index "choices", ["species_id"], :name => "index_choices_on_species_id"
 

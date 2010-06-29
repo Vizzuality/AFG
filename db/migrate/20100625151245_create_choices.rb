@@ -3,12 +3,12 @@ class CreateChoices < ActiveRecord::Migration
     create_table :choices do |t|
       t.integer :guide_id
       t.integer :species_id
-      t.integer :parent_guide_id
+      t.integer :included_guide_id
       t.integer :position
       t.timestamps
     end
     
-    add_index :choices, :parent_guide_id
+    add_index :choices, :included_guide_id
     add_index :choices, :species_id
     add_index :choices, :guide_id
     add_index :choices, :position

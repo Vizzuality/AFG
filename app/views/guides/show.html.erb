@@ -15,7 +15,11 @@
           <p class="title">download this guide</p> 
           <p class="size">(32 pages, 2,3MB)</p> ¿? 
         </a> 
-        <p class="template">or <a href="#">use it as template</a> for yours</p> 
+        <% unless @current_guide.included_guides.include?(@guide) %>
+        <p class="template">or 
+          <%= link_to('use it as template', choices_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours
+        </p>
+        <% end %>
                   
       </div> <!-- content_left --> 
       <div class="content_right"> 

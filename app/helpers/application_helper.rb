@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def choice_css_class(choice)
-    species ? "single" : "amount"
+    choice.species_id ? "single" : "amount"
   end
   
 end

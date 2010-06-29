@@ -2,34 +2,33 @@
 #
 # Table name: choices
 #
-#  id              :integer         not null, primary key
-#  guide_id        :integer         
-#  species_id      :integer         
-#  parent_guide_id :integer         
-#  position        :integer         
-#  created_at      :datetime        
-#  updated_at      :datetime        
+#  id                :integer         not null, primary key
+#  guide_id          :integer         
+#  species_id        :integer         
+#  included_guide_id :integer         
+#  position          :integer         
+#  created_at        :datetime        
+#  updated_at        :datetime        
 #
 
 class Choice < ActiveRecord::Base
-  
-  # parent_guide is the guide where all species and guides are included
-  belongs_to :parent_guide, :counter_cache => :guides_count, :class_name => 'Guide'
-  
-  belongs_to :guide
-  belongs_to :species, :counter_cache => :species_count
 
+  belongs_to :species, :counter_cache => :guides_count
+  
+  belongs_to :guide, :counter_cache => :downloads_count
+  belongs_to :included_guide, :class_name => 'Guide', :foreign_key => 'included_guide_id'
+  
   validate :validate_associated_to_guide_or_species
   
   def name
-    guide.try(:name) || species.try(:name)
+    included_guide.try(:name) || species.try(:name)
   end
 
   private
   
     # A choice as one guide_id or one species_id, but not both at the same time  
     def validate_associated_to_guide_or_species
-      unless guide_id || species_id
+      unless included_guide_id || species_id
         errors.add(:base, "A choice has to be related with a species or with a guide")
       end
     end
