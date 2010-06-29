@@ -1,10 +1,10 @@
 # Highlighted guides
-Guide.create :name => 'View penguins',    :session_id => nil, :author => 'Fernando Blat', 
-                         :highlighted => true, :downloads_count => 100, :species_count => 33, :popularity => 20
+penguins = Guide.create :name => 'View penguins',    :session_id => nil, :author => 'Fernando Blat', 
+                         :highlighted => true, :downloads_count => 100, :species_count => 0, :popularity => 20
 Guide.create :name => 'View whales',      :session_id => nil, :author => 'Fernando Blat', 
-                         :highlighted => true, :downloads_count => 50,  :species_count => 16, :popularity => 10
+                         :highlighted => true, :downloads_count => 50,  :species_count => 0, :popularity => 10
 Guide.create :name => 'View jellyfishes', :session_id => nil, :author => 'Fernando Blat', 
-                         :highlighted => true, :downloads_count => 30,  :species_count => 50, :popularity => 30
+                         :highlighted => true, :downloads_count => 30,  :species_count => 0, :popularity => 30
 
 # Non highlighted guides
 1.upto(20) do
@@ -13,7 +13,10 @@ Guide.create :name => 'View jellyfishes', :session_id => nil, :author => 'Fernan
 end
 
 # Species
-Species.create :name => 'Penguin'
-Species.create :name => 'Whale'
-Species.create :name => 'Squid'
-Species.create :name => 'Jellyfish'
+penguin = Species.create :name => 'Penguin'
+whale = Species.create :name => 'Whale'
+squid = Species.create :name => 'Squid'
+jellyfish = Species.create :name => 'Jellyfish'
+
+# Some relations
+penguins.species << penguin

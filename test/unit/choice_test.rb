@@ -48,4 +48,18 @@ class ChoiceTest < ActiveSupport::TestCase
     assert_equal included_guide.name, guide.choices.first.name
   end
   
+  test "Saving a guide should add the species included in the guide" do
+    penguin = create_species :name => 'Penguin'
+    whale = create_species :name => 'Whale'
+    guide = create_guide :name => 'Parent guide'
+    included_guide = create_guide :name => 'Guide'
+    included_guide.species << penguin
+    included_guide.species << whale
+    
+    guide.included_guides << included_guide
+    assert guide.species.include?(penguin)
+    assert guide.species.include?(whale)
+    assert_equal 2, guide.species.count
+  end
+  
 end
