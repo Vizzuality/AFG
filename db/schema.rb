@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100625151245) do
+ActiveRecord::Schema.define(:version => 20100630100442) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["action"], :name => "index_activities_on_action"
+  add_index "activities", ["created_at"], :name => "index_activities_on_created_at"
+  add_index "activities", ["item_type", "item_id"], :name => "index_activities_on_item_type_and_item_id"
+  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
 
   create_table "choices", :force => true do |t|
     t.integer  "guide_id"

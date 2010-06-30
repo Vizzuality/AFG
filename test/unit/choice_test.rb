@@ -62,4 +62,31 @@ class ChoiceTest < ActiveSupport::TestCase
     assert_equal 2, guide.species.count
   end
   
+  test "Save a guide and a species creates different activities" do
+    species = create_species :name => 'Penguin'
+    guide = create_guide :name => 'Parent guide'
+    included_guide = create_guide :name => 'Guide'
+    
+    assert guide.species.empty?
+    guide.species << species
+    guide.reload
+    species.reload
+    assert guide.species.include?(species)
+    assert species.guides.include?(guide)
+    assert_equal 1, species.guides_count
+    
+    assert_equal 1, Activity.count
+    assert_equal 'species', Activity.last.action
+    
+    assert guide.included_guides.empty?
+    guide.included_guides << included_guide
+    guide.reload
+    included_guide.reload
+    assert guide.included_guides.include?(included_guide)
+    assert_equal 1, included_guide.popularity
+
+    assert_equal 2, Activity.count
+    assert_equal 'included_guide', Activity.last.action
+  end
+  
 end

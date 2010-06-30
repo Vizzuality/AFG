@@ -20,10 +20,15 @@ class Choice < ActiveRecord::Base
   
   validate :validate_associated_to_guide_or_species
 
-  after_create :add_species, :if => Proc.new{ |choice| choice.included_guide_id }
+  after_create :add_species, :if => Proc.new{ |choice| choice.type_of_choice == :included_guide }
+  after_create :register_activity
   
   def name
     included_guide.try(:name) || species.try(:name)
+  end
+  
+  def type_of_choice
+    included_guide ? :included_guide : :species
   end
   
   private
@@ -39,6 +44,10 @@ class Choice < ActiveRecord::Base
       included_guide.species.each do |species|
         guide.species << species
       end
+    end
+    
+    def register_activity
+      Activity.report(0, type_of_choice, type_of_choice == :included_guide ? included_guide : species)
     end
   
 end

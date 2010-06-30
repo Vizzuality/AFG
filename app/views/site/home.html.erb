@@ -48,84 +48,14 @@
   <div class="latest_"> 
     <h3>Latest activity</h3> 
     <p class="subtitle">species, guides and landscapes added...</p> 
-    <ul> 
+    <ul>
+      <% Activity.limit(10).order('created_at DESC').each_with_index do |activity, i| %>
       <li> 
-        <div class="latest first"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
+        <div class="latest <%= 'first' if i == 0 %>"> 
+          <%= render :partial => "activities/#{activity.action}", :locals => { :activity => activity } %>
         </div> 
       </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
-      <li> 
-        <div class="latest"> 
-          <div class="image"> 
-            <img src="images/home/mini_avatar.png" alt="Gentoo Penguin" /> 
-          </div> 
-          <div class="data"> 
-            <p>Someone has added the <a href="#">this amazing landscape</a> to a guide</p> 
-            <p class="ago">2 hours before</p> 
-          </div> 
-        </div> 
-      </li> 
+      <% end -%>
     </ul> 
   </div> 
   <div class="bottom"> 
