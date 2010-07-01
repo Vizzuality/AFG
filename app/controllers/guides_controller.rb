@@ -2,9 +2,6 @@ class GuidesController < ApplicationController
   
   before_filter :set_current_date_filter, :only => [:index]
   
-  respond_to :html
-  respond_to :js, :only => [:index]
-  
   def index
     guides = Guide.published.not_highlighted
     
@@ -27,7 +24,12 @@ class GuidesController < ApplicationController
         guides.where(["created_at > ?", 1.year.ago])
     end
     
-    respond_with(@guides = guides.paginate(:per_page => 9, :page => params[:page]))
+    @guides = guides.paginate(:per_page => 9, :page => params[:page])
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
