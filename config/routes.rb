@@ -6,6 +6,9 @@ AFG::Application.routes.draw do |map|
   resources :guides
   resources :species
   resources :choices, :only => [:create, :destroy]
+
+  match 'authorizations/create_or_update' => 'authorizations#create_or_update', :as => 'authorizations_create_or_update'
+  match 'authorizations' => 'authorizations#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,23 @@
+<div class="wide_container"> 
+
+  <div class="content"> 
+
+    <h2>Authentication</h2>
+
+    <% if @admin_password.errors.any? %>
+    <ul>
+    <% @admin_password.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+    </ul>
+    <% end %>
+    
+    <%= form_for(@admin_password, :url => authorizations_create_or_update_path) do |f| %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.submit 'Submit' %>
+    <% end -%>
+    
+  </div>
+
+</div>

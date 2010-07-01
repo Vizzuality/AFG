@@ -20,3 +20,6 @@ jellyfish = Species.create :name => 'Jellyfish'
 
 # Some relations
 penguins.species << penguin
+
+# Adminpassword
+# AdminPassword.create :password => 'afg'
