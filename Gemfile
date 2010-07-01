@@ -5,11 +5,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'ruby-debug'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 
-gem 'steak', :git => 'git://github.com/cavalle/steak.git'
-gem 'rspec', '2.0.0.beta.13'
-gem "rspec-rails", ">= 2.0.0.beta.8"
-
 group :test do
+	gem 'steak', :git => 'git://github.com/cavalle/steak.git'
+	gem 'rspec', '2.0.0.beta.13'
+	gem "rspec-rails", ">= 2.0.0.beta.8"
   gem 'launchy'
   gem 'capybara'
   gem 'webrat'
