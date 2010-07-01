@@ -17,9 +17,9 @@
 
 class Guide < ActiveRecord::Base
 
-  has_many :choices, :order => 'created_at DESC'
-  has_many :species, :through => :choices
-  has_many :included_guides, :through => :choices, :source => :included_guide
+  has_many :entries, :order => 'created_at DESC'
+  has_many :species, :through => :entries
+  has_many :included_guides, :through => :entries, :source => :included_guide
   
   scope :published,       where("session_id is null")
   scope :highlighted,     published.where("highlighted = ?", true)

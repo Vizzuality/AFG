@@ -3,13 +3,13 @@
     <h3>Your Atlantic Field Guide</h3> 
     <p class="subtitle">Here is were your species and landscapes will be added</p> 
     <ul id="sortable">
-      <% @current_guide.choices.each do |choice| %>
-      <li id="draggable" class="<%= choice_css_class(choice) %>"><p class="title"><%= choice.name %></p></li> 
+      <% @current_guide.entries.each do |entry| %>
+      <li id="draggable" class="<%= entry_css_class(entry) %>"><p class="title"><%= entry.name %></p></li> 
       <% end -%>
       <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
     </ul> 
   </div> 
-  <% if @current_guide.choices.count > 5 %>
+  <% if @current_guide.entries.count > 5 %>
   <div class="bottom"> 
     <div class="left_side"> 
       <a href="#" class="left"></a> 

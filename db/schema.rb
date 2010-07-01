@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
     t.string "password"
   end
 
-  create_table "choices", :force => true do |t|
+  create_table "entries", :force => true do |t|
     t.integer  "guide_id"
     t.integer  "species_id"
     t.integer  "included_guide_id"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
     t.datetime "updated_at"
   end
 
-  add_index "choices", ["guide_id"], :name => "index_choices_on_guide_id"
-  add_index "choices", ["included_guide_id"], :name => "index_choices_on_included_guide_id"
-  add_index "choices", ["position"], :name => "index_choices_on_position"
-  add_index "choices", ["species_id"], :name => "index_choices_on_species_id"
+  add_index "entries", ["guide_id"], :name => "index_entries_on_guide_id"
+  add_index "entries", ["included_guide_id"], :name => "index_entries_on_included_guide_id"
+  add_index "entries", ["position"], :name => "index_entries_on_position"
+  add_index "entries", ["species_id"], :name => "index_entries_on_species_id"
 
   create_table "guides", :force => true do |t|
     t.string   "name"

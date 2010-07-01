@@ -12,8 +12,8 @@
 
 class Species < ActiveRecord::Base
   
-  has_many :choices
-  has_many :guides, :through => :choices
+  has_many :entries
+  has_many :guides, :through => :entries
   
   validates_presence_of :name
   

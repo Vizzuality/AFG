@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: choices
+# Table name: entries
 #
 #  id                :integer         not null, primary key
 #  guide_id          :integer         
@@ -11,7 +11,7 @@
 #  updated_at        :datetime        
 #
 
-class Choice < ActiveRecord::Base
+class Entry < ActiveRecord::Base
 
   belongs_to :species, :counter_cache => :guides_count
   
@@ -20,23 +20,23 @@ class Choice < ActiveRecord::Base
   
   validate :validate_associated_to_guide_or_species
 
-  after_create :add_species, :if => Proc.new{ |choice| choice.type_of_choice == :included_guide }
+  after_create :add_species, :if => Proc.new{ |entry| entry.type_of_entry == :included_guide }
   after_create :register_activity
   
   def name
     included_guide.try(:name) || species.try(:name)
   end
   
-  def type_of_choice
+  def type_of_entry
     included_guide ? :included_guide : :species
   end
   
   private
   
-    # A choice as one guide_id or one species_id, but not both at the same time  
+    # An entry as one guide_id or one species_id, but not both at the same time  
     def validate_associated_to_guide_or_species
       unless included_guide_id || species_id
-        errors.add(:base, "A choice has to be related with a species or with a guide")
+        errors.add(:base, "An entry has to be related with a species or with a guide")
       end
     end
     
@@ -47,7 +47,7 @@ class Choice < ActiveRecord::Base
     end
     
     def register_activity
-      Activity.report(0, type_of_choice, type_of_choice == :included_guide ? included_guide : species)
+      Activity.report(0, type_of_entry, type_of_entry == :included_guide ? included_guide : species)
     end
   
 end

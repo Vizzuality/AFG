@@ -1,22 +1,22 @@
 require 'test_helper'
 
-class ChoiceTest < ActiveSupport::TestCase
+class EntryTest < ActiveSupport::TestCase
 
-  test "A choice must have a species_id or a guide_id" do
+  test "A entry must have a species_id or a guide_id" do
     species = create_species :name => 'Penguin'
     guide = create_guide :name => 'Parent guide'
     included_guide = create_guide :name => 'Guide'
     
-    choice = Choice.new :guide => guide
-    assert !choice.valid?
-    choice.species = species
-    assert choice.valid?
-    choice.species = nil
-    choice.included_guide = included_guide
-    assert choice.valid?
+    entry = Entry.new :guide => guide
+    assert !entry.valid?
+    entry.species = species
+    assert entry.valid?
+    entry.species = nil
+    entry.included_guide = included_guide
+    assert entry.valid?
   end
   
-  test "Relations between guides, species, choices and cache_counters" do
+  test "Relations between guides, species, entries and cache_counters" do
     species = create_species :name => 'Penguin'
     guide = create_guide :name => 'Parent guide'
     included_guide = create_guide :name => 'Guide'
@@ -43,9 +43,9 @@ class ChoiceTest < ActiveSupport::TestCase
     included_guide = create_guide :name => 'Guide'
     
     guide.species << species
-    assert_equal species.name, guide.choices.first.name
+    assert_equal species.name, guide.entries.first.name
     guide.included_guides << included_guide
-    assert_equal included_guide.name, guide.choices.first.name
+    assert_equal included_guide.name, guide.entries.first.name
   end
   
   test "Saving a guide should add the species included in the guide" do

@@ -7,8 +7,8 @@ module ApplicationHelper
     page_title.join(' - ')
   end
   
-  def choice_css_class(choice)
-    choice.species_id ? "single" : "amount"
+  def entry_css_class(entry)
+    entry.species_id ? "single" : "amount"
   end
   
 end

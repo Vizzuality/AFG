@@ -1,4 +1,4 @@
-class ChoicesController < ApplicationController
+class EntriesController < ApplicationController
   
   def create
     if params[:type] == 'Guide' and guide = Guide.find(params[:id])
@@ -27,10 +27,10 @@ class ChoicesController < ApplicationController
   end
 
   def destroy
-    @current_guide.choices.find(params[:id]).destroy
-    flash[:notice] = 'Choice removed successfully'
+    @current_guide.entries.find(params[:id]).destroy
+    flash[:notice] = 'Entry removed successfully'
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'The choice you are trying to remove does not exist'
+    flash[:error] = 'The entry you are trying to remove does not exist'
   ensure
     respond_to do |format|
       format.html do

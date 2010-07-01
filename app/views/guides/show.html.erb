@@ -17,7 +17,7 @@
         </a> 
         <% unless @current_guide.included_guides.include?(@guide) %>
         <p class="template">or 
-          <%= link_to('use it as template', choices_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours
+          <%= link_to('use it as template', entries_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours
         </p>
         <% end %>
                   
