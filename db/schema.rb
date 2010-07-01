@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
     t.string   "session_id"
     t.integer  "popularity",      :default => 0
     t.boolean  "highlighted",     :default => false
+    t.boolean  "published",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

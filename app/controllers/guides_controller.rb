@@ -36,6 +36,22 @@ class GuidesController < ApplicationController
     @guide = Guide.find(params[:id])
   end
   
+  def edit
+    @guide = @current_guide
+    @guide.publish!
+  end
+  
+  def update
+    @guide = @current_guide
+    if @guide.update_attributes(params[:guide])
+      flash[:notice] = 'Guide published'
+      # TODO: habria que redirigir a download PDF
+      redirect_to guide_path(@guide.id)
+    else
+      render :action => 'edit'
+    end
+  end
+  
   protected
   
     def set_current_date_filter

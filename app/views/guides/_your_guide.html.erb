@@ -9,15 +9,15 @@
       <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
     </ul> 
   </div> 
-  <% if @current_guide.entries.count > 5 %>
   <div class="bottom"> 
+    <% if @current_guide.entries.count > 5 %>
     <div class="left_side"> 
       <a href="#" class="left"></a> 
       <a href="#" class="right"></a> 
     </div> 
+    <% end -%>
     <div class="right_side"> 
-      <a href="#"></a> 
+      <a href="<%= edit_guide_path %>" id="publish_and_download"></a> 
     </div> 
   </div>
-  <% end -%>
 </div><!-- .long -->

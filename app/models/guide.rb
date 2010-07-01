@@ -11,25 +11,30 @@
 #  session_id      :string(255)     
 #  popularity      :integer         default(0)
 #  highlighted     :boolean         
+#  published       :boolean         
 #  created_at      :datetime        
 #  updated_at      :datetime        
 #
 
 class Guide < ActiveRecord::Base
+  
+  validates_presence_of :author, :if => Proc.new{ |guide| guide.published? }
+  validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
 
   has_many :entries, :order => 'created_at DESC'
   has_many :species, :through => :entries
   has_many :included_guides, :through => :entries, :source => :included_guide
   
-  scope :published,       where("session_id is null")
+  scope :published,       where("published = ?", true)
   scope :highlighted,     published.where("highlighted = ?", true)
   scope :not_highlighted, published.where("highlighted = ?", false)
   
   scope :sort_by_most_recent, order("created_at DESC")
   scope :sort_by_popularity,  order("popularity DESC")
   
-  def published?
-    session_id.nil?
+  def publish!
+    return true if published?
+    update_attribute(:published, true)
   end
   
   def self.per_page; 9 end

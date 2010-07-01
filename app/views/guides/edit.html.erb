@@ -1,0 +1,21 @@
+<% if @guide.errors.any? %>
+<div class="errors">
+  <ul>
+  <% @guide.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+<%= form_for(@guide) do |f| %>
+  <%= f.label :name, 'Name' %><br />
+  <%= f.text_field :name %><br />
+  <%= f.label :author, 'Author' %><br />
+  <%= f.text_field :author %><br />
+  <%= f.label :description, 'Description' %><br />
+  <%= f.text_area :description %><br />
+  <%= f.submit 'Publish and download' %>
+<% end %>
+</div>

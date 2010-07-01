@@ -83,4 +83,33 @@ feature "Guides of species" do
     page.should_not have_css("p.template", :text => 'use it as template')
   end
   
+  scenario "A user creates a guide and publishes it" do
+    penguin = create_species :name => 'Penguin'
+    
+    visit '/'
+    
+    page.find(:css, "div.species_list h4 a", :text => 'Penguin').click
+    
+    page.should have_css("h2", :text => penguin.name)
+    
+    click "Add your guide"
+    
+    page.find(:css, "a#publish_and_download").click
+
+    fill_in('Author', :with => 'Fernando Blat')
+    fill_in('Description', :with => "In this guide I have planned my trip to the Antartic")
+    click("Publish and download")
+    
+    page.should have_css("li", :text => "Name can't be blank")
+    
+    fill_in('Name', :with => 'Macanudo penguins')
+    fill_in('Author', :with => 'Fernando Blat')
+    fill_in('Description', :with => "In this guide I have planned my trip to the Antartic")
+    click("Publish and download")
+    
+    assert_equal 1, Guide.count
+    guide = Guide.first
+    assert guide.published?
+  end
+  
 end

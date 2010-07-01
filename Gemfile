@@ -10,6 +10,7 @@ gem 'rspec', '2.0.0.beta.13'
 gem "rspec-rails", ">= 2.0.0.beta.8"
 
 group :test do
+  gem 'launchy'
   gem 'capybara'
   gem 'webrat'
   gem 'bmabey-database_cleaner'
