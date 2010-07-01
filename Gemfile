@@ -13,5 +13,5 @@ group :test do
   gem 'launchy'
   gem 'capybara'
   gem 'webrat'
-  gem 'bmabey-database_cleaner'
+  gem 'database_cleaner', :git => "http://github.com/bmabey/database_cleaner.git"
 end
