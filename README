@@ -17,10 +17,14 @@ And finally, migrate the databases:
 If you are in development mode and want some data:
 
     rake db:seed
+    
+Or you can import real data:
+
+    rake db:import_data
 
 === Setting an admin password
 
-By default, if you don't set a password for the administration, the default are:
+By default, if you don't set a password for the administration, the defaults are:
 
     User: afg
     Password: afg
