@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100701093527) do
+ActiveRecord::Schema.define(:version => 20100705134101) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
   add_index "guides", ["name"], :name => "index_guides_on_name"
   add_index "guides", ["popularity"], :name => "index_guides_on_popularity"
   add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "species_id"
+    t.string   "filename"
+    t.string   "title"
+    t.string   "caption"
+    t.string   "photographer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "species", :force => true do |t|
     t.string   "permalink"
