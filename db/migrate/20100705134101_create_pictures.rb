@@ -6,6 +6,7 @@ class CreatePictures < ActiveRecord::Migration
       t.string :title
       t.string :caption
       t.string :photographer
+      t.string :locality
 
       t.timestamps
     end

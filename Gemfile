@@ -4,6 +4,7 @@ gem 'rails', '3.0.0.beta4'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'ruby-debug'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
+gem 'fastercsv'
 
 group :test do
 	gem 'steak', :git => 'git://github.com/cavalle/steak.git'

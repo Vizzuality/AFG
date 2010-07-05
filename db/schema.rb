@@ -70,15 +70,26 @@ ActiveRecord::Schema.define(:version => 20100705134101) do
     t.string   "title"
     t.string   "caption"
     t.string   "photographer"
+    t.string   "locality"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "species", :force => true do |t|
+    t.integer  "uid"
     t.string   "permalink"
     t.string   "name"
-    t.integer  "guides_count", :default => 0
+    t.integer  "guides_count",   :default => 0
+    t.string   "genus"
+    t.string   "family"
+    t.string   "common_name"
     t.text     "description"
+    t.string   "identification"
+    t.text     "distribution"
+    t.text     "ecology"
+    t.text     "size"
+    t.text     "depth"
+    t.text     "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

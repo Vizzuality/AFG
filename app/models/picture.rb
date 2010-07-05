@@ -8,6 +8,7 @@
 #  title        :string(255)     
 #  caption      :string(255)     
 #  photographer :string(255)     
+#  locality     :string(255)     
 #  created_at   :datetime        
 #  updated_at   :datetime        
 #
@@ -17,7 +18,7 @@ class Picture < ActiveRecord::Base
   belongs_to :species
   
   def self.pictures_directory(family)
-    "#{Rails.root}/public/images/data/#{family}"
+    "/images/data/#{family}"
   end
   
   def public_filename
