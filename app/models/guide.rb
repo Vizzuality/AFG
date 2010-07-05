@@ -3,6 +3,7 @@
 # Table name: guides
 #
 #  id              :integer         not null, primary key
+#  permalink       :string(255)     
 #  name            :string(255)     
 #  author          :string(255)     
 #  description     :text            
@@ -17,6 +18,8 @@
 #
 
 class Guide < ActiveRecord::Base
+  
+  has_permalink :name
   
   validates_presence_of :author, :if => Proc.new{ |guide| guide.published? }
   validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
@@ -38,5 +41,9 @@ class Guide < ActiveRecord::Base
   end
   
   def self.per_page; 9 end
+  
+  def to_param
+    "#{id}-#{permalink}"
+  end
   
 end

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
   add_index "entries", ["species_id"], :name => "index_entries_on_species_id"
 
   create_table "guides", :force => true do |t|
+    t.string   "permalink"
     t.string   "name"
     t.string   "author"
     t.text     "description"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20100701093527) do
   add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
 
   create_table "species", :force => true do |t|
+    t.string   "permalink"
     t.string   "name"
     t.integer  "guides_count", :default => 0
     t.text     "description"

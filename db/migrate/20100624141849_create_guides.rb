@@ -1,6 +1,7 @@
 class CreateGuides < ActiveRecord::Migration
   def self.up
     create_table :guides do |t|
+      t.string  :permalink
       t.string  :name
       t.string  :author
       t.text    :description
