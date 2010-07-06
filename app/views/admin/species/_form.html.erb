@@ -1,0 +1,69 @@
+<%= form_for(@species, :url => admin_species_index_path) do |f| %>
+  <% if @species.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@species.errors.count, "error") %> prohibited this species from being saved:</h2>
+
+      <ul>
+      <% @species.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uid %><br />
+    <%= f.text_field :uid, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :permalink %><br />
+    <%= f.text_field :permalink, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :genus %><br />
+    <%= f.text_field :genus, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :family %><br />
+    <%= f.text_field :family, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :common_name %><br />
+    <%= f.text_field :common_name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :identification %><br />
+    <%= f.text_field :identification, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :distribution %><br />
+    <%= f.text_area :distribution, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :ecology %><br />
+    <%= f.text_area :ecology, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_area :size, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :depth %><br />
+    <%= f.text_area :depth, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :reference %><br />
+    <%= f.text_area :reference, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

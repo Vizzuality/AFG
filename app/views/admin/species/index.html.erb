@@ -1,0 +1,35 @@
+<h1>Listing species from <%= params[:family] %> family</h1>
+
+<ul class="families">
+  <% Species.families.each do |family| %>
+  <li><%= link_to_unless_current family, admin_species_index_path(:family => family) %>
+  <% end %>
+</ul>
+
+<table>
+  <tr>
+    <th>Uid</th>
+    <th>Name</th>
+    <th>Family</th>
+    <th class="long">Description</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @species.each do |species| %>
+  <tr class="<%= cycle('', 'even') %>">
+    <td><%= link_to species.uid || species.id, admin_species_path(species) %></td>
+    <td><%= link_to species.name, admin_species_path(species) %></td>
+    <td><%= link_to species.family, admin_species_index_path(:family => species.family) %></td>
+    <td class="long"><%= truncate(species.description, :length => 100) %></td>
+    <td><%= link_to 'Edit', edit_admin_species_path(species) %></td>
+    <td><%= link_to 'Destroy', admin_species_path(species), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate(@species) %>
+
+<br />
+
+<%= link_to 'New Species', new_admin_species_path %>

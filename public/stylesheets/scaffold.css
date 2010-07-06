@@ -1,0 +1,131 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+h1 {
+	margin: 20px 0;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.pagination {
+  border-bottom: 1px solid #F5F5F5;
+  border-top: 1px solid #F5F5F5;
+  margin: 1.5em auto 0em auto;
+  padding: 1em;
+  text-align: center;
+}
+
+.pagination a {
+  color: #333;
+  margin: 2px;
+  padding: 2px 3px;
+  text-decoration: none;
+}
+
+.pagination a:hover,
+.pagination a:active {
+  background: #000;
+  color: #FFF;
+}
+
+.pagination span.current {
+  background-color: #408BB6;
+  color: #FFF;
+  font-weight: bold;
+  margin: 2px;
+  padding: 2px 3px;
+}
+
+.pagination span.disabled {
+  color: #DDD;
+  margin: 2px;
+  padding: 2px 3px;
+}
+
+ul.families {
+	margin: 0;
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+ul.families li {
+	padding: 0.2em;
+  line-height: 1.6em;
+  display: inline;
+	font-weight: bold;
+}
+
+ul.families li a {
+	font-weight: normal;
+}
+
+table tr td,
+table tr th {
+	width: 130px;
+	text-align: center;
+	height: 30px;
+}
+table tr th {
+	background: black;
+	color: white;
+}
+
+table tr td.long,
+table tr th.long {
+	width: 260px;
+}
+table tr.even {
+	background: #eee;
+}
