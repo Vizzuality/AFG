@@ -31,7 +31,7 @@ class Species < ActiveRecord::Base
   
   validates_presence_of :name
   
-  scope :of_familiy, Proc.new{ |family| where(:family => family) }
+  scope :from_family, Proc.new{ |family| where(:family => family) }
 
   def to_param
     "#{id}-#{permalink}"

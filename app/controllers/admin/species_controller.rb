@@ -10,19 +10,10 @@ class Admin::SpeciesController < ApplicationController
       redirect_to admin_species_index_path(:family => Species.families.first) and return
     end
     
-    @species = Species.where("family = ?", params[:family]).paginate(:per_page => 20, :page => params[:page])
+    @species = Species.from_family(params[:family]).paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
-    end
-  end
-
-  # GET /admin_species/1
-  def show
-    @species = Species.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
     end
   end
 
@@ -46,7 +37,7 @@ class Admin::SpeciesController < ApplicationController
 
     respond_to do |format|
       if @species.save
-        format.html { redirect_to(@species, :notice => 'Species was successfully created.') }
+        format.html { redirect_to(edit_admin_species_path(@species.id), :notice => 'Species was successfully created.') }
       else
         format.html { render :action => "new" }
       end
@@ -59,7 +50,7 @@ class Admin::SpeciesController < ApplicationController
 
     respond_to do |format|
       if @species.update_attributes(params[:species])
-        format.html { redirect_to(@species, :notice => 'Species was successfully updated.') }
+        format.html { redirect_to(edit_admin_species_path(@species.id), :notice => 'Species was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end

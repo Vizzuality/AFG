@@ -2,7 +2,7 @@
 
 <ul class="families">
   <% Species.families.each do |family| %>
-  <li><%= link_to_unless_current "#{family} (#{Species.of_familiy(family).count})", admin_species_index_path(:family => family) %>
+  <li><%= link_to_unless_current "#{family} (#{Species.from_family(family).count})", admin_species_index_path(:family => family) %>
   <% end %>
 </ul>
 
@@ -19,12 +19,12 @@
 
 <% @species.each do |species| %>
   <tr class="<%= cycle('', 'even') %>">
-    <td><%= link_to species.uid || species.id, admin_species_path(species) %></td>
-    <td><%= link_to species.name, admin_species_path(species) %></td>
+    <td><%= link_to species.uid || species.id, edit_admin_species_path(species.id) %></td>
+    <td><%= link_to species.name, edit_admin_species_path(species.id) %></td>
     <td><%= link_to species.family, admin_species_index_path(:family => species.family) %></td>
     <td class="long"><%= truncate(species.description, :length => 100) %></td>
     <td><%= species.pictures.count %></td>
-    <td><%= link_to 'Edit', edit_admin_species_path(species) %></td>
+    <td><%= link_to 'Edit', edit_admin_species_path(species.id) %></td>
     <td><%= link_to 'Destroy', admin_species_path(species), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

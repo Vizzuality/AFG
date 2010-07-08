@@ -1,4 +1,4 @@
-<%= form_for(@species, :url => admin_species_index_path) do |f| %>
+<%= form_for(@species, :url => (@species.new_record? ? admin_species_index_path : admin_species_path(@species.id))) do |f| %>
   <% if @species.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@species.errors.count, "error") %> prohibited this species from being saved:</h2>

@@ -88,6 +88,11 @@ div.field, div.actions {
   padding: 2px 3px;
 }
 
+.pagination em {
+	background-color: #ccc;
+	padding: 2px 2px;
+}
+
 .pagination span.disabled {
   color: #DDD;
   margin: 2px;
