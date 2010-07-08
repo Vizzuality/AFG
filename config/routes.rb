@@ -10,7 +10,9 @@ AFG::Application.routes.draw do |map|
   resources :entries, :only => [:create, :destroy]
   
   namespace :admin do
-    resources :species
+    resources :species do
+      resources :pictures, :except => [:index, :show]
+    end
   end
 
   match 'authorizations/create_or_update' => 'authorizations#create_or_update', :as => 'authorizations_create_or_update'

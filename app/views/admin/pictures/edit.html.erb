@@ -1,0 +1,13 @@
+<h1>Editing picture <%= @picture.title %></h1>
+
+<div class="wide_container"> 
+
+  <div class="left"> 
+
+    <%= render 'form' %>
+
+  </div>
+  
+</div>
+
+<%= link_to 'Back to species',edit_admin_species_path(@species) %>

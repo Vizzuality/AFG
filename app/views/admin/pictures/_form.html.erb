@@ -1,0 +1,37 @@
+<%= form_for(@picture, :url => admin_species_pictures_path(@species)) do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %><br />
+    <%= f.text_field :caption, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :photographer %><br />
+    <%= f.text_field :photographer, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :locality %><br />
+    <%= f.text_field :locality, :size => 50 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -12,6 +12,7 @@
     <th>Name</th>
     <th>Family</th>
     <th class="long">Description</th>
+    <th>Pictures</th>
     <th></th>
     <th></th>
   </tr>
@@ -22,6 +23,7 @@
     <td><%= link_to species.name, admin_species_path(species) %></td>
     <td><%= link_to species.family, admin_species_index_path(:family => species.family) %></td>
     <td class="long"><%= truncate(species.description, :length => 100) %></td>
+    <td><%= species.pictures.count %></td>
     <td><%= link_to 'Edit', edit_admin_species_path(species) %></td>
     <td><%= link_to 'Destroy', admin_species_path(species), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

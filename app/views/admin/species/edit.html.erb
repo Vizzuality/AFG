@@ -1,9 +1,24 @@
 <%= link_to 'Show', admin_species_path(@species) %> |
-<%= link_to 'Back to list', admin_species_path(:family => @species.family) %>
+<%= link_to 'Back to list', admin_species_index_path(:family => @species.family) %>
 
 <h1>Editing species <%= @species.name %></h1>
 
-<%= render 'form' %>
+<div class="wide_container"> 
+
+  <div class="left"> 
+
+    <%= render 'form' %>
+
+  </div>
+  
+  <div class="right">
+    
+    <%= render 'pictures' %>
+    
+  </div>
+  
+</div>
+
 
 <%= link_to 'Show', admin_species_path(@species) %> |
-<%= link_to 'Back to list', admin_species_path(:family => @species.family) %>
+<%= link_to 'Back to list', admin_species_index_path(:family => @species.family) %>

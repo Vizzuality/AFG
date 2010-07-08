@@ -1,0 +1,24 @@
+<h2>Pictures</h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Photographer</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @species.pictures.each do |picture| %>
+  <tr>
+    <td><img src="<%= picture.public_filename %>" height="32" width="32" /></td>
+    <td><%= picture.title %></td>
+    <td><%= picture.photographer %></td>
+    <td><%= link_to('Edit', edit_admin_species_picture_path(@species, picture)) %></td>
+    <td><%= link_to 'Destroy', admin_species_picture_path(@species, picture), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td colspan="2"><%= link_to('+ New picture', new_admin_species_picture_path(:species_id => @species)) %></td>
+    <td colspan="3"></td>
+  </tr>
+</table>
