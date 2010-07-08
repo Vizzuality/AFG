@@ -23,10 +23,6 @@
 
 class Species < ActiveRecord::Base
   
-  FAMILIES = %W{
-    Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
-  }
-
   has_permalink :name
   
   has_many :entries
@@ -34,6 +30,8 @@ class Species < ActiveRecord::Base
   has_many :pictures
   
   validates_presence_of :name
+  
+  scope :of_familiy, Proc.new{ |family| where(:family => family) }
 
   def to_param
     "#{id}-#{permalink}"
@@ -43,6 +41,8 @@ class Species < ActiveRecord::Base
     pictures.try(:first)
   end
   
-  def self.families; FAMILIES end
+  def self.families
+    @families ||= Species.select("family").map(&:family).uniq.sort
+  end
   
 end

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <base href="http://localhost:3000/" />
+  <%= stylesheet_link_tag :all %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
+  <%= javascript_include_tag 'jquery.nivo.slider', 'jquery.ui', 'jquery.ui.widget', 'jquery.ui.mouse', 'jquery.ui.sortable', 'rails', 'application' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <div class="outer_layout"> 
+    <div class="header"> 
+      <div class="logo"> 
+        <a href="/"></a> 
+        <span class="search"> 
+          <form> 
+            <input type="text" value="Search species, guides, ..." /> 
+            <input type="submit" value="" /> 
+          </form> 
+        </span> 
+      </div> 
+    </div> <!-- .header -->
+  </div><!-- .outer_layout -->
+
+  <div class="outer_layout"> 
+    <div class="long border"> 
+    
+      <%= yield %>
+    
+      <div class="footer"> 
+        <div class="in"> 
+          <div class="logo"> 
+            <a href="/" class="logo"></a> 
+          </div> 
+          <p>Project implemented by the <a href="#">Belgian Biodiversity platform</a> - <a href="#">Contact</a></p> 
+        </div> 
+      </div><!-- .footer -->
+      
+    </div>
+    
+  </div><!-- .outer_layout -->
+  
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 <ul class="families">
   <% Species.families.each do |family| %>
-  <li><%= link_to_unless_current family, admin_species_index_path(:family => family) %>
+  <li><%= link_to_unless_current "#{family} (#{Species.of_familiy(family).count})", admin_species_index_path(:family => family) %>
   <% end %>
 </ul>
 
@@ -32,4 +32,4 @@
 
 <br />
 
-<%= link_to 'New Species', new_admin_species_path %>
+<%= link_to '+ New Species', new_admin_species_path %>

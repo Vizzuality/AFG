@@ -1,5 +1,7 @@
 class Admin::SpeciesController < ApplicationController
   
+  layout 'admin'
+  
   before_filter :admin_authenticated
   
   # GET /admin_species

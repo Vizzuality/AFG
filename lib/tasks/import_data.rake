@@ -9,8 +9,12 @@ namespace :afg do
   task :import_data => :environment do
     species_errors = []
     pictures_errors = []
-    Species.families.each do |family|
+    # Families in the data files
+    %W{
+      Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
+    }.each do |family|
       # Species
+      puts
       puts
       puts "Importing species from #{family}"
       data_directory = "#{Rails.root}/doc/data"
@@ -21,6 +25,7 @@ namespace :afg do
         
         if line[1].blank? && line[2].blank? && line[3].blank?
           family = line[0].humanize
+          puts
           puts
           puts "Importing species from #{family}"
           next
@@ -45,7 +50,7 @@ namespace :afg do
           species.reference    = from_file(data_directory + '/' + family + '/' + line[offset_in_line+15]) unless line[offset_in_line+15] == '*' || line[offset_in_line+15].blank?
         
           if species.save
-            putc 's'
+            putc '.'
           else
             putc 'e'
             species_errors << {:line => line, :errors => species.errors.full_messages}
@@ -67,7 +72,7 @@ namespace :afg do
         picture.locality = line[offset_in_line+7]
         picture.species = species
         if picture.save
-          putc 'p'
+          putc '.'
         else
           putc 'e'
           pictures_errors << {:line => line, :errors => picture.errors.full_messages}
@@ -76,8 +81,8 @@ namespace :afg do
     end
     
     puts
-    puts '====================================='
     puts
+    puts '====================================='
     puts "Species import finished"
     puts "#{species_errors.size} errors"
     puts "#{Species.count} species imported"
