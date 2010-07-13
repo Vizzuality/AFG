@@ -46,4 +46,9 @@ class Guide < ActiveRecord::Base
     "#{id}-#{permalink}"
   end
   
+  def self.find_by_term(q)
+    escaped_q = sanitize_sql(q)
+    published.where("name like '%#{escaped_q}%' OR author like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
+  end
+  
 end

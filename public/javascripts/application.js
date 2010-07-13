@@ -6,6 +6,8 @@ AFG = {
 }
 
 $(document).ready(function() {
+
+	$('#search_term').example('Search species, guides,...');
 	
 	// dragg elements >> ALL PAGES
 	$(function() {

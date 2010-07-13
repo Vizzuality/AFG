@@ -1,0 +1,28 @@
+<h1>Results for <%= params[:q] %></h1>
+
+<div class="left">
+  <% unless @guides.empty? %>
+    <h2>Guides</h2>
+    <p>Found <%= pluralize(@guides.total_entries, 'guide', 'guides') %></p>
+    <ul>
+      <% @guides.each do |guide| %>
+      <li><%= render guide %></li>
+      <% end -%>
+    </ul>
+    <%= will_paginate(@guides) %>
+  <% end -%>
+</div>
+
+<div class="right">
+  <% unless @species.empty? %>
+  <h2>Species</h2>
+  <p>Found <%= @species.total_entries %> species</p>
+  <ul>
+    <% @species.each do |specie| %>
+    <li><%= render specie %></li>
+    <% end -%>
+  </ul>
+
+  <%= will_paginate(@species) %>
+  <% end -%>
+</div>

@@ -14,6 +14,8 @@ AFG::Application.routes.draw do |map|
       resources :pictures, :except => [:index, :show]
     end
   end
+  
+  get "search/index", :as => 'search'
 
   match 'authorizations/create_or_update' => 'authorizations#create_or_update', :as => 'authorizations_create_or_update'
   match 'authorizations' => 'authorizations#index'
