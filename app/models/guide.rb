@@ -19,8 +19,6 @@
 
 class Guide < ActiveRecord::Base
   
-  has_permalink :name
-  
   validates_presence_of :author, :if => Proc.new{ |guide| guide.published? }
   validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
 
@@ -34,6 +32,8 @@ class Guide < ActiveRecord::Base
   
   scope :sort_by_most_recent, order("created_at DESC")
   scope :sort_by_popularity,  order("popularity DESC")
+  
+  before_validation :set_permalink
   
   def publish!
     return true if published?
@@ -54,5 +54,22 @@ class Guide < ActiveRecord::Base
   def pdf_name
     "#{to_param}.pdf"
   end
+  
+  private
+  
+    def set_permalink
+      return unless self.permalink.blank?
+      self.permalink = name.sanitize
+      temporal_permalink = permalink
+      if self.class.exists?(:permalink => temporal_permalink)
+        i = 2
+        temporal_permalink = permalink + "-#{i}"
+        while(self.class.exists?(:permalink => temporal_permalink)) do
+          i+=1
+          temporal_permalink = permalink + "-#{i}"
+        end
+        self.permalink = temporal_permalink
+      end
+    end
   
 end
