@@ -1,5 +1,7 @@
 class GuidesController < ApplicationController
   
+  include PdfHelper
+  
   before_filter :set_current_date_filter, :only => [:index]
   
   def index
@@ -34,6 +36,12 @@ class GuidesController < ApplicationController
 
   def show
     @guide = Guide.find(params[:id])
+  end
+  
+  def pdf
+    @guide = Guide.find(params[:id])
+    make_and_send_pdf('guides/show', @guide.pdf_name)
+    render :text => ''
   end
   
   def edit

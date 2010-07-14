@@ -22,7 +22,9 @@
     </div>
     <div class="map_landscape">
       <div class="map">
+        <% if @species.picture %>
         <img src="<%= @species.picture.public_filename %>" height="190" width="261" />
+        <% end -%>
       </div>
     </div> 
   </div><!-- .right -->
@@ -47,8 +49,8 @@
     <ul>
       <% @species.pictures.each do |picture| %>
       <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
-      <% end -%>
     </ul> 
+    <% end -%>
   </div> 
 </div> <!-- .long border -->
 

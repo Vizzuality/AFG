@@ -51,4 +51,8 @@ class Guide < ActiveRecord::Base
     published.where("name like '%#{escaped_q}%' OR author like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
   end
   
+  def pdf_name
+    "#{to_param}.pdf"
+  end
+  
 end
