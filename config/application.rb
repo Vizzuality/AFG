@@ -44,3 +44,6 @@ module AFG
     config.filter_parameters += [:password]
   end
 end
+
+
+require 'prince'
