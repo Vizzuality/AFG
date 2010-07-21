@@ -1,10 +1,6 @@
 <div class="long top_species"> 
   <ul class="breadcrumb"> 
-    <li class="first">Animalia</li> 
-    <li>Mollusca</li> 
-    <li>Mollusca</li> 
-    <li>Mollusca</li> 
-    <li>Mollusca</li> 
+    <li class="first"><%= @species.family %></li> 
   </ul> 
   <div class="left"> 
     <h2><%= @species.full_name %></h2> 
@@ -24,6 +20,8 @@
       <div class="map">
         <% if @species.picture %>
         <img src="<%= @species.picture.public_filename %>" height="190" width="261" />
+        <% else %>
+        <img src="<%= @species.default_picture %>" height="190" width="261" />
         <% end -%>
       </div>
     </div> 

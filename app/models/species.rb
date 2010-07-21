@@ -41,6 +41,10 @@ class Species < ActiveRecord::Base
     pictures.try(:first)
   end
   
+  def default_picture
+    "/images/default_big.png"
+  end
+  
   def self.families
     Species.select("family").map(&:family).uniq.sort
   end
