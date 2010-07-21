@@ -20,7 +20,7 @@ If you are in development mode and want some data:
     
 Or you can import real data:
 
-    rake db:import_data
+    rake afg:import_data
 
 === Setting an admin password
 
