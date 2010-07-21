@@ -42,7 +42,7 @@ class Species < ActiveRecord::Base
   end
   
   def self.families
-    @families ||= Species.select("family").map(&:family).uniq.sort
+    Species.select("family").map(&:family).uniq.sort
   end
   
   def self.find_by_term(q)
