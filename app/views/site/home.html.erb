@@ -1,14 +1,13 @@
 <div class="images_gallery"> 
   
   <div id="slider"> 
-    <img src="images/home/whale.jpg" alt="Whale" title="Orcus rupus"/> 
-    <img src="images/home/antartic.png" alt="Antartic" title="Bonicus pruttus" /> 
-    <img src="images/home/medusa.jpg" alt="Medusa" title="Miedutis tus pus" /> 
-    <img src="images/home/pulpito.jpg" alt="Pulpito" title="Pulpitus" /> 
+    <% @pictures.each do |picture| %>
+    <img src="<%= picture.public_filename %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.full_name %>"/> 
+    <% end -%>
   </div><!-- #slider -->
   
-  <h2>Meet incredible <%= link_to('species', :controller => 'species', :action => 'index') %>, find amazing <a href="landscapes.php">landscapes</a>,<br/> 
-    and create your <a href="#">antartic field guide</a>.</h2> 
+  <h2>Meet incredible <%= link_to('species', :controller => 'species', :action => 'index') %>,<br/> 
+    and create your <a href="<%= guides_path %>">antartic field guide</a>.</h2> 
 </div><!-- .images_gallery -->
 
 <div class="left"> 
@@ -59,7 +58,7 @@
     </ul> 
   </div> 
   <div class="bottom"> 
-    <p>why this matters? <a href="#">create your guide</a></p> 
+    <p>why this matters? <a href="<%= guides_path %>">create your guide</a></p> 
   </div> 
   <div class="blue"> 
     <img src="images/home/blue_arrow.png" alt="Blue Arrow" class="arrow"/> 
@@ -71,7 +70,7 @@
           <img src="images/home/browse.png" alt="Browse"/> 
         </div> 
         <div class="data"> 
-          <h5><a href="explore.php">Browse our site</a></h5> 
+          <h5><a href="<%= explore_path %>">Browse our site</a></h5> 
           <p>Explore our database of species, and landscapes</p> 
         </div> 
       </li> 
