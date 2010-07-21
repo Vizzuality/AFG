@@ -38,7 +38,8 @@ namespace :afg do
         begin
           species = Species.new
           species.family = family
-          species.name = line[0]
+          species.genus = line[0]
+          species.name = line[1]
           species.common_name = line[offset_in_line+6] if line[offset_in_line+6] != 'None' && line[offset_in_line+6] != '*'
           species.identification = line[offset_in_line+9]
         

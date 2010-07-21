@@ -7,7 +7,7 @@
     <li>Mollusca</li> 
   </ul> 
   <div class="left"> 
-    <h2><%= @species.name %></h2> 
+    <h2><%= @species.full_name %></h2> 
     <label>Description</label> 
     <%= simple_format(@species.description) %>
 
@@ -48,7 +48,7 @@
     <h3>Photos & Videos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
-      <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
     </ul> 
     <% end -%>
   </div> 

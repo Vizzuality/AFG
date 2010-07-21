@@ -14,10 +14,10 @@ Guide.create :name => 'View jellyfishes', :session_id => nil, :author => 'Fernan
 end
 
 # Species
-penguin = Species.create :name => 'Penguin', :family => 'Arthropods'
-whale = Species.create :name => 'Whale', :family => 'Arthropods'
-squid = Species.create :name => 'Squid', :family => 'Arthropods'
-jellyfish = Species.create :name => 'Jellyfish', :family => 'Arthropods'
+penguin = Species.create   :genus => 'Penguin',   :family => 'Arthropods', :name => 'Artantic'
+whale = Species.create     :genus => 'Whale',     :family => 'Arthropods', :name => 'Common'
+squid = Species.create     :genus => 'Squid',     :family => 'Arthropods', :name => 'Artantic'
+jellyfish = Species.create :genus => 'Jellyfish', :family => 'Arthropods', :name => 'Common'
 
 # Some relations
 penguins.species << penguin

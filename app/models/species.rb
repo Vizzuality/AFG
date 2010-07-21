@@ -45,6 +45,10 @@ class Species < ActiveRecord::Base
     Species.select("family").map(&:family).uniq.sort
   end
   
+  def full_name
+    "#{self.genus} #{self.name}"
+  end
+  
   def self.find_by_term(q)
     escaped_q = sanitize_sql(q)
     where("name like '%#{escaped_q}%' OR genus like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")

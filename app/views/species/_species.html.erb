@@ -1,8 +1,8 @@
 <div class="specie"> 
   <% if species.picture %>
-  <a href="<%= species_path(species) %>"><img src="<%= species.picture.public_filename %>" alt="<%= species.name %>" /></a>
+  <a href="<%= species_path(species) %>"><img src="<%= species.picture.public_filename %>" alt="<%= species.full_name %>" /></a>
   <% end -%>
-  <h4><%= link_to(species.name, species_path(species)) %></h4>
+  <h4><%= link_to(species.full_name, species_path(species)) %></h4>
   <p class="heart"><span><img src="images/home/pink_heart.png" alt="heart"/><%= species.guides_count %></span></p> 
   <p class="taxa">Pygoscelis papua</p> 
 </div> 

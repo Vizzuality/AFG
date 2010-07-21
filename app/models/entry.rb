@@ -23,6 +23,10 @@ class Entry < ActiveRecord::Base
   after_create :add_species, :if => Proc.new{ |entry| entry.type_of_entry == :included_guide }
   after_create :register_activity
   
+  def full_name
+    included_guide.try(:name) || species.try(:full_name)
+  end
+  
   def name
     included_guide.try(:name) || species.try(:name)
   end
