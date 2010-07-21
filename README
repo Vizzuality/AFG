@@ -36,6 +36,6 @@ By default, if you don't set a password for the administration, the defaults are
     
 If you want to set a new password (the User can't be changed), visit:
 
-   http://<your.host>/authorizations
+   http://your.host/authorizations
    
 And then, set the new password.
