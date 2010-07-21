@@ -12,7 +12,6 @@ namespace :db do
     File.delete("#{Rails.root}/db/development.sqlite3")
     Rake::Task["db:migrate"].invoke
     Rake::Task["annotate_models"].invoke
-    Rake::Task["db:test:prepare"].invoke
     Rake::Task["db:seed"].invoke
   end
 end
