@@ -10,6 +10,8 @@ AFG::Application.routes.draw do |map|
     
   resources :species
   resources :entries, :only => [:create, :destroy]
+
+  get "explore" => 'explore#index', :as => 'explore'
   
   namespace :admin do
     resources :species, :except => [:show] do

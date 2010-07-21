@@ -24,7 +24,7 @@
       <div class="header_menu"> 
         <ul> 
           <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
-          <li><%= link_to('EXPLORE', '#', :class => (current_page?('#') ? 'current' : nil)) %></li>
+          <li><%= link_to('EXPLORE', explore_path, :class => (current_page?('#') ? 'current' : nil)) %></li>
           <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
           <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
         </ul> 
@@ -42,7 +42,7 @@
           <a href="/" class="logo"></a> 
           <span class="menu"> 
             <ul> 
-              <li><a href="explore.php">Explore</a></li> 
+              <li><a href="<%= explore_path %>">Explore</a></li> 
               <li><a href="species.php">Species</a></li> 
               <li><a href="<%= guides_path %>">Guides</a></li> 
               <li class="last"><a href="landscape.php">Landscapes</a></li> 
