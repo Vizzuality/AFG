@@ -58,6 +58,7 @@ class Guide < ActiveRecord::Base
   private
   
     def set_permalink
+      return if self.name.blank?
       return unless self.permalink.blank?
       self.permalink = name.sanitize
       temporal_permalink = permalink
