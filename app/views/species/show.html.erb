@@ -16,14 +16,16 @@
     <div class="share_this"> 
       <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
     </div>
-    <div class="map_landscape">
-      <div class="map">
-        <% if @species.picture %>
-        <img src="<%= @species.picture.public_filename %>" height="190" width="261" />
-        <% else %>
-        <img src="<%= @species.default_picture %>" height="190" width="261" />
-        <% end -%>
-      </div>
+    <div class="img_specie">
+		
+		<!-- TO TEST IT -->
+		<!-- <img src="images/species/fake_distribution_map.png" /> -->
+		
+		<% if @species.picture %>
+			<img src="<%= @species.picture.public_filename %>"/>
+		<% else %>
+			<img src="<%= @species.default_picture %>"/>
+		<% end -%>		
     </div> 
   </div><!-- .right -->
 </div> <!-- .long top_species -->

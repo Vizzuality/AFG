@@ -226,9 +226,13 @@ div.top_species div.right div.share_this a {margin:7px 0 0 0;}
 div.top_species div.right div.share_this a.share_twitter {float:left; background:url(../images/landscape/bttn_share_twitter.png) no-repeat 0 0; width:15px; height:15px; margin-right:5px;}
 div.top_species div.right div.share_this a.share_facebook {float:left; background:url(../images/landscape/bttn_share_facebook.png) no-repeat 0 0; width:15px; height:15px;}
 div.top_species div.right div.share_this a:hover {background-position:0 -15px;}
-div.top_species div.right div.map_landscape {float:right; background:url(../images/species/bkg_header_map.png) no-repeat 0 0; width:280px; height:210px; margin:18px 0px 0 0;}
-div.top_species div.right div.map_landscape div.map {float:left; background:url(../images/species/fake_species_big.png) no-repeat 0px 0px; width:260px; height:190px; margin:6px 5px 5px 10px;}
 
+div.top_species div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;;}
+div.top_species div.right div.img_specie img {width:260px; height:190px;}
+
+/*div.top_species div.right div.map_landscape {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:280px; height:210px; margin:18px 0px 0 0;}
+div.top_species div.right div.map_landscape div.map {float:left; width:260px; height:190px; margin:6px 5px 5px 10px;}
+*/
 div.long.border {border-bottom:1px solid #CCCCCC;}
 div.long.species {background:#F7F7F7;}
 div.left.species { background:white; width:576px; padding:24px;}
