@@ -82,8 +82,7 @@ class Prince
     
     system(path)
     
-    output = fd.read
     fd.close
-    return output
+    return pdf_path
   end
 end
