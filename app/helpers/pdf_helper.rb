@@ -8,12 +8,11 @@ module PdfHelper
   private
     # Makes a pdf, returns it as data...
     def make_pdf(template_path, pdf_name, landscape=false)
-      prince = Prince.new()
+      prince = Prince.new
       # Sets style sheets on PDF renderer.
       prince.add_style_sheets(
         "#{RAILS_ROOT}/public/stylesheets/layout.css"
       )
-      prince.add_style_sheets("#{RAILS_ROOT}/public/stylesheets/prince_landscape.css") if landscape
       # Render the estimate to a big html string.
       # Set RAILS_ASSET_ID to blank string or rails appends some time after
       # to prevent file caching, fucking up local - disk requests.

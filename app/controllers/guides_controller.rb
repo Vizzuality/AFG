@@ -40,7 +40,7 @@ class GuidesController < ApplicationController
   
   def pdf
     @guide = Guide.find(params[:id])
-    make_and_send_pdf('guides/show', @guide.pdf_name)
+    make_and_send_pdf('guides/show_pdf', @guide.pdf_name)
     render :text => ''
   end
   

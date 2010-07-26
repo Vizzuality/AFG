@@ -53,23 +53,37 @@ class Prince
   # it down the pipe using Rails.
   #
   def pdf_from_string(string)
+    base_name = "pdf-#{Time.now.to_i}"
+    fd = Tempfile.new("#{base_name}.html")
+    fd.write(string)
+    html_path = fd.path
+    fd.close
+    
+    fd = Tempfile.new("#{base_name}.pdf")    
+    pdf_path = fd.path
+    
     path = self.exe_path()
     # Don't spew errors to the standard out...and set up to take IO 
     # as input and output
     # path << ' --silent - -o -'
-    path << ' - -o -'
+    path << " --silent #{html_path} -o #{pdf_path}"
+    # path << ' - -o -'
     # Show the command used...
-    #logger.info "\n\nPRINCE XML PDF COMMAND"
-    #logger.info path
-    #logger.info ''
+    puts "\n\nPRINCE XML PDF COMMAND"
+    puts path
+    puts
     
     # Actually call the prince command, and pass the entire data stream back.
-    pdf = IO.popen(path, "w+")
-    pdf.puts(string)
-    pdf.close_write
-    debugger
-    output = pdf.gets(nil)
-    pdf.close_read
+    # pdf = IO.popen(path, "w+")
+    # pdf.puts(string)
+    # pdf.close_write
+    # output = pdf.gets(nil)
+    # pdf.close_read
+    
+    system(path)
+    
+    output = fd.read
+    fd.close
     return output
   end
 end
