@@ -21,12 +21,17 @@ class Picture < ActiveRecord::Base
     "/images/data/#{family}"
   end
   
-  def public_filename
+  def public_filename(size=:big)
     file_path = self.class.pictures_directory(species.family) + '/' + filename
     if File.file?(file_path)
       file_path
     else
-      "/images/default_big.png"
+      case size
+        when :big
+          "/images/default_big.png"
+        when :small
+          "/images/default_small.png"
+        end
     end
   end
   

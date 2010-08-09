@@ -1,5 +1,7 @@
 AFG::Application.routes.draw do |map|
 
+  get "landscapes/index"
+
   root :to => "site#home"  
   match 'about' => 'site#about', :as => 'about'
   
