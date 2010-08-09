@@ -1,5 +1,9 @@
 AFG::Application.routes.draw do |map|
 
+
+  get "maps" => 'maps#index', :as => 'maps'
+  match 'maps/tiles' => 'maps#tiles', :as => 'tiles'
+
   get "landscapes/index"
 
   root :to => "site#home"  

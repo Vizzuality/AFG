@@ -262,6 +262,11 @@ div.explore_map div.map {float:left; margin:25px 0 0 0; width:880px; height:368p
 div.explore_map div.map div#map {width:100%; height:100%; background:url(../images/explore/fake_map.png) no-repeat 0 0;}
 
 
+/*MAP DEMO*/
+div.demo_map {position:relative; float:left; width:912px; padding:27px 12px; background: #FFFFFF;}
+div.demo_map div.map div#map {width:100%; height:100%; }
+
+
 
 div.most_popular_explore {float:left; width:936px; background:white; border-top:1px solid #CCCCCC; height:313px; margin:0; padding:0; position:relative;}
 div.most_popular_explore div.content {margin:26px 0px 26px 26px;}
