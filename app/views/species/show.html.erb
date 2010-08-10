@@ -1,6 +1,6 @@
-<div class="long top_species"> 
+<div class="long top_species" id="species-<%= @species.uid %>"> 
   <ul class="breadcrumb"> 
-    <li class="first"><%= @species.family %></li> 
+    <li class="first"><%= @species.taxon %></li> 
   </ul> 
   <div class="left"> 
     <h2><%= @species.full_name %></h2> 
@@ -16,7 +16,7 @@
   </div> 
   <div class="right"> 
     <div class="share_this"> 
-      <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
+      <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
     </div>
     <% if @species.picture %>
     <div class="img_specie">
