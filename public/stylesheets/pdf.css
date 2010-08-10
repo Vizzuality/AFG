@@ -1,0 +1,505 @@
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,form,fieldset,p{margin:0; padding:0; font-weight:normal}
+img,fieldset{border:none; padding:0; margin:0;}
+body{font:12px  Arial, Helvetica, sans-serif; color:#666666; background:#CCCCCC}
+span.clear{clear:both;}
+a:focus{outline:none}
+input:focus{outline:none;}
+ul {list-style:none;}
+div.left {float:left; width:524px;}
+div.right {float:right; width:212px;}
+div.outer_layout{margin:0 auto; width:836px;}
+div.wide_container{float:left; background-color:#FFFFFF; width:100%; height:auto;} 
+
+
+
+/* COMMON */
+p.landscapes_rank {width:76px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px;}
+p.species_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
+p.species_guide_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
+
+p.left {float:left;}
+p.right {float:right;}
+
+p.white {color:#FFFFFF;}
+
+p.landscapes_rank.first_rank {background:url(../images/common/rank_landscapes_20.png) no-repeat 0 bottom;}
+p.landscapes_rank.second_rank {background:url(../images/common/rank_landscapes_40.png) no-repeat 0 bottom;}
+p.landscapes_rank.third_rank {background:url(../images/common/rank_landscapes_60.png) no-repeat 0 bottom;}
+p.landscapes_rank.fourth_rank {background:url(../images/common/rank_landscapes_80.png) no-repeat 0 bottom;}
+p.landscapes_rank.fifth_rank {background:url(../images/common/rank_landscapes_100.png) no-repeat 0 bottom;}
+
+p.species_guide_rank.first_rank {background:url(../images/common/rank_landscapes_20.png) no-repeat 0 bottom;}
+p.species_guide_rank.second_rank {background:url(../images/common/rank_landscapes_40.png) no-repeat 0 bottom;}
+p.species_guide_rank.third_rank {background:url(../images/common/rank_landscapes_60.png) no-repeat 0 bottom;}
+p.species_guide_rank.fourth_rank {background:url(../images/common/rank_landscapes_80.png) no-repeat 0 bottom;}
+p.species_guide_rank.fifth_rank {background:url(../images/common/rank_landscapes_100.png) no-repeat 0 bottom;}
+
+
+p.species_rank.first_rank {background:url(../images/common/rank_species_20.png) no-repeat 0 bottom;}
+p.species_rank.second_rank {background:url(../images/common/rank_species_40.png) no-repeat 0 bottom;}
+p.species_rank.third_rank {background:url(../images/common/rank_species_60.png) no-repeat 0 bottom;}
+p.species_rank.fourth_rank {background:url(../images/common/rank_species_80.png) no-repeat 0 bottom;}
+p.species_rank.fifth_rank {background:url(../images/common/rank_species_100.png) no-repeat 0 bottom;}
+
+
+
+/*HEADER*/
+div.header {float:left; width:796px; margin:23px 0 0 0; padding:23px 20px 0 20px; background:white;}
+div.header div.logo {float:left; width:794px; }
+div.header div.logo a {float:left; width:91px; height:38px; background:url(../images/home/logo.png) no-repeat 0 0;}
+div.header div.logo span.search {float:right; width:auto;}
+div.header div.logo span.search form {float:left; margin:0; padding:0;}
+div.header div.logo span.search form input[type="text"] {float:left; border:1px solid #cccccc; background:white; margin:0; padding:0; font:normal 13px Arial; color:#cccccc; line-height:13px; padding:4px; width:181px;}
+div.header div.logo span.search form input[type="submit"] {float:left; border:1px solid #cccccc; border-left:none; background:url(../images/home/len.png) no-repeat 0 0; height:25px; width:24px; margin:0; padding:0;}
+div.header div.header_menu {float:left; width:auto; padding:27px 0 17px 0;}
+div.header div.header_menu ul {float:left; width:794px; margin:0;}
+div.header div.header_menu ul li {float:left; width:auto; padding:0 15px;}
+div.header div.header_menu ul li.first {padding:0 15px 0 0;}
+div.header div.header_menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999;}
+div.header div.header_menu ul li a.current {color:#0099CC;}
+div.header div.header_menu ul li a:hover {color:#0099CC;}
+
+
+
+/*HOME*/
+/*gallery*/
+div.images_gallery {position:relative; float:left; width:896px; padding:0 20px; background:url(../images/home/home_top_bkg.png) repeat-x 0 0;}
+div.images_gallery h2 {float:left; width:896px; text-align:center; font:bold 36px Arial; color:#CCCCCC; letter-spacing:-2px; padding:27px 0 23px; line-height:36px;}
+div.images_gallery h2 a {text-decoration:none; color:#0099CC;}
+div.images_gallery h2 a:hover {border-bottom:2px dotted #0099CC;}
+div.images_gallery div#slider {float:left; position:relative; width:896px;}
+div.images_gallery .nivoSlider {position:relative;}
+div.images_gallery .nivoSlider img {position:absolute; top:0px; left:0px;}
+div.images_gallery .nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:60; display:none;}
+div.images_gallery .nivo-slice { display:block; position:absolute; z-index:50; height:100%;}
+div.images_gallery .nivo-caption { position:absolute; left:315px; bottom:130px; height:90px; width:266px; background:url(../images/home/caption_bkg.png) no-repeat 0 0; color:#fff; z-index:89;}
+div.images_gallery .nivo-caption h2 {float:left; margin:20px 0 0 100px; padding:0; width:155px; font:bold 28px Arial; color:white; padding:0; text-align:left; line-height:28px;}
+div.images_gallery .nivo-caption p {float:left; margin:0 0 0 100px; width:155px; font:normal 16px Arial; font-style:italic; padding:0;}
+div.images_gallery .nivo-directionNav a { position:absolute; bottom:10px; width:35px; height:35px; z-index:99;cursor:pointer;}
+div.images_gallery .nivo-prevNav {left:10px; background:url(../images/home/left_gallery.png) no-repeat 0 0;}
+div.images_gallery .nivo-nextNav {right:10px; background:url(../images/home/right_gallery.png) no-repeat 0 0;}
+div.images_gallery .nivo-directionNav a:hover {background-position:0 -35px;}
+div.images_gallery .nivo-controlNav a {display:none;}
+div.images_gallery .nivo-controlNav a.active {font-weight:bold;}
+
+/*left top*/
+div.left div.information {float:left; padding:21px; width:582px; background:white; margin:0;}
+div.left div.information h3 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
+div.left div.information p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; letter-spacing:-1.0px; line-height:13px;}
+div.left div.information p.subtitle a {text-decoration:none; font:bold 13px "Lucida Grande"; color:#0099CC; letter-spacing:-1px;}
+div.left div.information p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
+div.left div.information ul {float:left; width:582px; padding:5px 0; margin:0;}
+div.left div.information ul li {position:relative; float:left; margin:8px 15px 0 0;}
+div.left div.information ul li.last {margin:8px 0 0 0;}
+div.left div.information ul li div.specie {position:relative; float:left; padding:8px; width:168px; height:155px; background:url(../images/home/specie_bkg.png) no-repeat -4px -4px;}
+div.left div.information ul li div.specie h4 {float:left; width:135px; padding:4px 0 0 0;}
+div.left div.information ul li div.specie h4 a {font:bold 15px "Lucida Grande"; color:#0099CC; text-decoration:none;}
+div.left div.information ul li div.specie h4 a:hover {border-bottom:1px dotted #0099CC;}
+div.left div.information ul li div.specie p.taxa {float:left; font:normal 11px "Lucida Grande"; color:#999999; padding:1px 0 0 0;}
+div.left div.information ul li div.specie p.heart {float:right; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/home/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
+div.left div.information ul li div.specie p.heart span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/home/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div.left div.information ul li div.specie p.heart.zero span {color:#999999;}
+div.left div.information ul li div.specie p.heart span img {position:absolute; top:3px; left:0; z-index:40;}
+
+div.left div.bottom {float:left; border-top:1px solid #E8E8E8; border-bottom:1px solid #CCCCCC; background:#F7F7F7; padding:15px 21px; width:582px;}
+div.left div.bottom.noborder {border-bottom:none;}
+div.left div.bottom p {font:normal 13px "Lucida Grande"; color:#666666; text-align:right;}
+div.left div.bottom p a {text-decoration:none; font:bold 13px "Lucida Grande"; color:#0099CC; letter-spacing:-1px;}
+div.left div.bottom p a:hover {border-bottom:1px dotted #0099CC;}
+
+/*right top*/
+div.right div.latest_ {float:left; padding:21px; width:269px; background:white; border-left:1px solid #cccccc; height:409px;}
+div.right div.latest_ h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px;}
+div.right div.latest_ p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px;}
+div.right div.latest_ p.subtitle a {text-decoration:none; font-weight:bold; color:#0099CC; letter-spacing:-1px;}
+div.right div.latest_ p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
+
+div.right div.latest_ ul {position:relative; float:left; width:269px; padding:13px 0 13px 0; height:340px; overflow:hidden;}
+div.right div.latest_ ul li {position:relative; float:left; margin:3px 15px 0 0;}
+div.right div.latest_ ul li div.latest {float:left; padding:8px; width:251px; height:51px; background:url(../images/home/latest_bkg.png) no-repeat 0 0;}
+div.right div.latest_ ul li div.latest.first {background-position:0 -72px;}
+div.right div.latest_ ul li div.latest div.image {float:left; width:54px;}
+div.right div.latest_ ul li div.latest div.image img {width:48px; height:48px;}
+div.right div.latest_ ul li div.latest div.data {float:left; width:195px;}
+div.right div.latest_ ul li div.latest div.data p {font:normal 13px "Lucida Grande"; color:#666666;}
+div.right div.latest_ ul li div.latest div.data p a {color:#0099CC; text-decoration:none;}
+div.right div.latest_ ul li div.latest div.data p a:hover {border-bottom:1px dotted #0099CC;}
+div.right div.latest_ ul li div.latest div.data p.ago {font:normal 11px "Lucida Grande"; color:#999999; padding:3px 0 0 0;}
+
+div.right div.bottom {float:left; border-top:1px solid #E8E8E8; border-right:none; border-left:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; background:#F7F7F7; padding:15px 21px; width:269px;}
+div.right div.bottom p {font:normal 13px "Lucida Grande"; color:#666666; text-align:right;}
+div.right div.bottom p a {text-decoration:none; font:bold 13px "Lucida Grande"; color:#0099CC; letter-spacing:-1px; line-height:13px;}
+div.right div.bottom p a:hover {border-bottom:1px dotted #0099CC;}
+
+/*left bottom*/
+div.left div.create {float:left; padding:21px; width:582px; background:white;}
+div.left div.create h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px;}
+div.left div.create p.subtitle {font:normal 13px "Lucida Grande"; color:#666666;}
+div.left div.create ul.published_afg {float:left; width:582px; margin:15px 0 0 0;}
+div.left div.create ul.published_afg li {float:left; width:163px; height:141px; padding:22px 18px 10px 9px; background:url(../images/home/created_bkg_list.png) no-repeat 0 0; margin:0 6px 0 0;}
+div.left div.create ul.published_afg li.multiple {margin:10px 6px 0px 0;}
+div.left div.create ul.published_afg li.multiple_last {margin:10px 0px 0px 0;}
+
+div.left div.create ul.published_afg li.last {margin:0;}
+
+div.left div.create ul.published_afg li div.information_title {float:left; height:80px; border-bottom:1px solid #E0E0E0;}
+div.left div.create ul.published_afg li div.information_title h4 {float:left; width:163px;}
+div.left div.create ul.published_afg li div.information_title h4 a {font:bold 15px "Lucida Grande"; text-decoration:none; color:#0099CC;}
+div.left div.create ul.published_afg li div.information_title h4 a:hover {border-bottom:1px dotted #0099CC;}
+div.left div.create ul.published_afg li div.information_title p.by {float:left; width:163px; font:normal 11px "Lucida Grande"; color:#999999; margin:2px 0 0 0;}
+div.left div.create ul.published_afg li div.information_title p.heart {position:relative; float:left;  margin:5px 0 0 0; padding:0 0 0 3px; background:url(../images/home/heart_bkg_mini.png) no-repeat 0 0;}
+div.left div.create ul.published_afg li div.information_title p.heart span {float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/home/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div.left div.create ul.published_afg li div.information_title p.heart.zero span {color:#999999;}
+div.left div.create ul.published_afg li div.information_title p.heart span img {position:absolute; top:3px; left:3px;}
+
+/*right bottom*/
+div.right div.blue {position:relative; float:left; padding:24px; width:264px; background:url(../images/home/blue_bkg.png) repeat-x 0 0 #0099C9; margin:0;}
+div.right div.blue img.arrow {position:absolute; top:26px; left:0;}
+div.right div.blue h4 {float:left; font:bold 25px Helvetica; color:white; line-height:25px;}
+div.right div.blue p.subtitle {float:left; width:264px; font:normal 13px "Lucida Grande"; color:white; line-height:13px;}
+div.right div.blue ul {float:left; width:264px; margin:10px 0 0 0; padding:0 0 13px;}
+div.right div.blue ul li {float:left; width:264px; padding:10px 0; height:50px;}
+div.right div.blue ul li div.image {float:left; width:56px; padding:0;}
+div.right div.blue ul li div.image img {width:48px; height:48px;}
+div.right div.blue ul li div.data {float:left; width:206px; padding:0; margin:0;}
+div.right div.blue ul li div.data h5 {float:left; width:206px; padding:0; margin:0; line-height:15px;}
+div.right div.blue ul li div.data h5 a {text-decoration:none; font:bold 17px "Lucida Grande"; color:#FFFFFF; letter-spacing:-1px; line-height:17px;}
+div.right div.blue ul li div.data h5 a:hover {border-bottom:1px dotted white;}
+div.right div.blue ul li div.data p {float:left; width:206px; font:normal 13px "Lucida Grande"; color:#004C66; padding:3px 0 0 0; line-height:14px;}
+
+/*long bottom*/
+div.long {position:relative; float:left; width:936px; margin:0; padding:0;}
+
+
+div.long div.tooltip_add_this {position:absolute; top:-17px; right:23px; background:url(../images/common/bkg_tooltip_addthis.png) no-repeat 0 0; width:116px; height:65px;}
+div.long div.tooltip_add_this a {float:left; font:bold 11px "Lucida Grande"; color:#FFFFFF; text-transform:uppercase; width:100px; margin:12px 0 0 8px; text-decoration:none; text-align:center;}
+div.long div.tooltip_add_this a:hover {color:#333333;}
+
+
+div.long img.arrow_blue {position:absolute; top:0; right:257px; z-index:20;}
+div.long div.long_in {float:left; background:#333333; padding:28px 28px 28px 24px; width:884px;}
+div.long div.long_in h3 {font:bold 25px Helvetica; color:white; letter-spacing:-1px;}
+div.long div.long_in p.subtitle {font:normal 13px "Lucida Grande"; color:white;}
+div.long div.long_in ul {float:left; width:100%; margin:20px 0 0 0;}
+div.long div.long_in ul li {margin:0 15px 0 0;}
+div.long div.long_in li.single {float:left; width:127px; height:137px; background:url(../images/common/bkg_afg_draggable.png) no-repeat 0 0;}
+div.long div.long_in li.amount {float:left; width:127px; height:137px; background:url(../images/common/bkg_afg_draggable_amount.png) no-repeat 0 0;}
+div.long div.long_in li.dragg_here {float:left; width:127px; height:137px; background:url(../images/common/bkg_afg_draggable_here.png) no-repeat 0 0;}
+div.long div.long_in .place_draggable {float:left; width:127px; height:137px; background:url(../images/common/bkg_place_draggable.png) no-repeat 0 0;}
+
+div.long div.long_in li p.title {float:left; margin:15px 0 0 12px; font:bold 13px "Lucida Grande"; color:#0099CC;}
+
+div.long div.long_in li.dragg_here p {float:left; margin:85px 0 0 15px; font:bold 9px "Lucida Grande"; color:#CCCCCC; text-transform:uppercase; text-align:center; width:96px;}
+
+
+div.long div.bottom {float:left; background:url(../images/home/paginate_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0;}
+div.long div.bottom div.left_side {float:left; padding:18px 0 0 22px;}
+div.long div.bottom div.left_side a.left.disabled {float:left; background:url(../images/guide/left_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
+div.long div.bottom div.left_side a.right.disabled {float:left; background:url(../images/guide/right_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px;}
+div.long div.bottom div.left_side a.left {float:left; background:url(../images/guide/left_content_dashboard_enabled.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
+div.long div.bottom div.left_side a.right {float:left; background:url(../images/guide/right_content_dashboard_enabled.png) no-repeat 0 0; width:30px; height:30px;}
+div.long div.bottom div.left_side a:hover {background-position:0 -30px;}
+
+div.long div.bottom div.right_side {float:right;}
+div.long div.bottom div.right_side a{float:right; background:url(../images/guide/bttn_publish_download.png) no-repeat 0 0; width:182px; height:33px; margin:18px 19px 16px 0; }
+div.long div.bottom div.right_side a:hover {background-position:0 -33px;}
+
+
+
+/*SPECIES*/
+div.top_species {position:relative; float:left; width:888px; padding:27px 24px; background:url(../images/explore/top_bkg.png) repeat-x 0 0 #008CB9;}
+div.top_species ul {float:left; width:888px;}
+div.top_species ul li {float:left; width:auto; background:url(../images/species/breadcrumb_arrow.png) no-repeat 0 5px; padding:0 0 0 11px; margin:0 7px 0 0; font:normal 13px "Lucida Grande"; color:#A6E1F3; line-height:13px;}
+div.top_species ul li.first {background:none; padding:0;}
+img.arrow {position:absolute; top:0; left:107px; z-index:10;}
+div.top_species h2 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0 0 15px 0;}
+div.top_species label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0;}
+div.top_species p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
+div.top_species div.left {padding:5px 0 0 0; width:576px; display:inline;}
+div.top_species div.left a.add_guide {float:left; background:url(../images/landscape/bkg_add_guide_bttn.png) no-repeat 0 0; width:122px; height:31px; font:bold 15px Arial; color:#0099CC; text-decoration:none; line-height:15px; margin:20px 0 0 0; padding:11px 7px 0 47px;}
+div.top_species div.left a.add_guide:hover {background-position:0 -42px; color:#006D91;} 
+div.top_species div.left p.times_added {float:left; background:url(../images/landscape/heart_white.png) no-repeat 0 4px; height:13px; padding:0 0 0 14px; font:normal 13px "Lucida Grande"; color:#FFFFFF; width:100%; margin:0px 0 0 37px; letter-spacing:-1.0px;}
+div.top_species div.right {padding:5px 0 0 0; width:264px;}
+div.top_species div.right div.share_this {float:right; background:url(../images/landscape/bkg_share_bttns.png) no-repeat 0 0; width:137px; height:30px; margin:0 10px 0 0;}
+div.top_species div.right div.share_this p.share {float:left; font:bold 13px "Lucida Grande"; color:#5DB3D0; width:82px; margin:6px 2px 0 9px; letter-spacing:-1.0px;}
+div.top_species div.right div.share_this a {margin:7px 0 0 0;}
+div.top_species div.right div.share_this a.share_twitter {float:left; background:url(../images/landscape/bttn_share_twitter.png) no-repeat 0 0; width:15px; height:15px; margin-right:5px;}
+div.top_species div.right div.share_this a.share_facebook {float:left; background:url(../images/landscape/bttn_share_facebook.png) no-repeat 0 0; width:15px; height:15px;}
+div.top_species div.right div.share_this a:hover {background-position:0 -15px;}
+
+div.top_species div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;;}
+div.top_species div.right div.img_specie img {width:260px; height:190px;}
+
+/*div.top_species div.right div.map_landscape {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:280px; height:210px; margin:18px 0px 0 0;}
+div.top_species div.right div.map_landscape div.map {float:left; width:260px; height:190px; margin:6px 5px 5px 10px;}
+*/
+div.long.border {border-bottom:1px solid #CCCCCC;}
+div.long.species {background:#F7F7F7;}
+div.left.species { background:white; width:576px; padding:24px;}
+div.right.species {position:relative; background:#F7F7F7; padding:24px; width:264px;}
+div.right.species img.arrow {position:absolute; left:-15px; top:22px;}
+div.right.species ul {float:left; width:264px; margin:24px 0 0 0; padding:0 0 6px 0;}
+div.right.species ul li {float:left; padding:3px; background:white; border:1px solid #CCCCCC; width:76px; height:64px; margin:5px 4px 0 0;}
+div.right.species ul li:hover {border:1px solid #BCBCBC;}
+div.right.species ul li img {height:64px; width:76px;}
+div.right.species div.map {position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; border-top:none; padding:6px; width:250px; height:190px; background:white;}
+div.right.species div.map span.shadow {position:absolute; bottom:-7px; left:0; width:264px; height:8px; background:url(../images/species/map_shadow.png) no-repeat 0 0;}
+div.right.species div.map div#map {float:left; width:250px; height:190px; background:url(../images/species/fake_distribution_map.png) no-repeat 0 0;}
+div.species h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.species p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
+div.species label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
+div.species label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:20px 0 4px 0;}
+div.species p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
+
+
+
+/*EXPLORE*/
+div.explore_map {position:relative; float:left; width:912px; padding:27px 12px; background:url(../images/explore/top_bkg.png) repeat-x 0 0 #008CB9;}
+div.explore_map img.arrow {position:absolute; top:0; left:107px;}
+div.explore_map h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px;}
+div.explore_map p.subtitle {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
+div.explore_map div.map {float:left; margin:25px 0 0 0; width:880px; height:368px; padding:17px 15px 15px; background:url(../images/explore/map_bkg.png) no-repeat 0 0;}
+div.explore_map div.map div#map {width:100%; height:100%; background:url(../images/explore/fake_map.png) no-repeat 0 0;}
+
+
+/*MAP DEMO*/
+div.demo_map {position:relative; float:left; width:912px; padding:27px 12px; background: #FFFFFF;}
+div.demo_map div.map div#map {width:100%; height:100%; }
+
+
+
+div.most_popular_explore {float:left; width:936px; background:white; border-top:1px solid #CCCCCC; height:313px; margin:0; padding:0; position:relative;}
+div.most_popular_explore div.content {margin:26px 0px 26px 26px;}
+div.most_popular_explore div.content {float:left; width:100%; height:100%;}
+div.most_popular_explore div.content div.content_left {float:left; width:560px;}
+div.most_popular_explore div.content div.content_right {float:right; width:320px;} 
+div.most_popular_explore div.content p.info_guide {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande";color:#FFFFFF; width:100%; margin:13px 0 5px 0; letter-spacing:-1.0px; margin:20px 0 0 0;}
+
+div.most_popular_explore div.content p.title {float:left; font:bold 25px Helvetica; color:#FFFFFF; width:100%;}
+div.most_popular_explore div.content p.by {float:left; font:normal 15px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%;}
+div.most_popular_explore div.content p.by a {text-decoration:underline; color:#FFFFFF; }
+div.most_popular_explore div.content p.by a:hover {text-decoration:none;}
+
+div.most_popular_explore div.content ul {float:left; width:100%; margin:35px 0 0 0;}
+div.most_popular_explore div.content ul li {float:left; width:181px; height:145px; padding:22px 18px 10px 9px; background:url(../images/explore/created_bkg_list.png) no-repeat 0px -2px; margin:0 20px 0 0;}
+div.most_popular_explore div.content ul li.last {margin:0;}
+
+/*div.header_guides.explore {background:white; border-top:1px solid #CCCCCC;}*/
+div.most_popular_explore h3 {font:bold 25px Helvetica; line-height:25px; color:#666666; letter-spacing:-1px;}
+div.most_popular_explore p.subtitle {font:normal 13px 'Lucida Grande'; color:#666666; line-height:13px;}
+div.most_popular_explore div.content ul li div.information_title {float:left; height:85px; border-bottom:1px solid #E0E0E0;}
+div.most_popular_explore div.content ul li div.information_title h4 {float:left; width:163px;}
+div.most_popular_explore div.content ul li div.information_title h4 a {font:bold 15px "Lucida Grande"; text-decoration:none; color:#0099CC;}
+div.most_popular_explore div.content ul li div.information_title h4 a:hover {border-bottom:1px dotted #0099CC;}
+div.most_popular_explore div.content ul li div.information_title p.by {float:left; width:163px; font:normal 11px "Lucida Grande"; color:#999999; margin:2px 0 0 0;}
+div.most_popular_explore div.content ul li div.information_title p.heart {position:relative; float:left;  margin:5px 0 0 0; padding:0 0 0 3px; background:url(../images/home/heart_bkg_mini.png) no-repeat 0 0;}
+div.most_popular_explore div.content ul li div.information_title p.heart span {float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/home/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div.most_popular_explore div.content ul li div.information_title p.heart.zero span {color:#999999;}
+div.most_popular_explore div.content ul li div.information_title p.heart span img {position:absolute; top:3px; left:3px;}
+div.most_popular_explore div.content ul li div.stats {float:left; width:100%; margin:7px 0 0 0;}
+
+
+
+/*LANDSCAPE*/
+
+div.header_landscape {float:left; width:936px; background:url(../images/guide/bkg_head_repeatx.png) repeat-x 0 0; height:313px; margin:0; padding:0;}
+div.header_landscape div.content {margin:26px 0px 26px 26px;}
+div.header_landscape div.content {float:left; width:910px; height:100%;}
+div.header_landscape div.content div.content_left {float:left; width:560px;}
+
+div.header_landscape div.content p.title {float:left; font:bold 25px Helvetica; color:#FFFFFF; width:100%;}
+div.header_landscape div.content p.by {float:left; font:normal 15px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%;}
+div.header_landscape div.content p.by a {text-decoration:underline; color:#FFFFFF; }
+div.header_landscape div.content p.by a:hover {}
+
+
+div.header_landscape div.content p.info_guide {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande";color:#FFFFFF; width:100%; margin:13px 0 5px 0; margin:15px 0 0 0;}
+div.header_landscape div.content a.add_guide {float:left; background:url(../images/landscape/bkg_add_guide_bttn.png) no-repeat 0 0; width:122px; height:31px; font:bold 15px Arial; color:#0099CC; text-decoration:none; line-height:15px; margin:20px 0 0 0; padding:11px 7px 0 47px;}
+div.header_landscape div.content a.add_guide:hover {background-position:0 -42px; color:#006D91;} 
+
+div.header_landscape div.content p.times_added {float:left; background:url(../images/landscape/heart_white.png) no-repeat 0 4px; height:13px; padding:0 0 0 14px; font:normal 13px "Lucida Grande"; color:#FFFFFF; width:100%; margin:0px 0 0 37px; letter-spacing:-1.0px;}
+
+div.header_landscape div.content div.content_right {float:right; width:300px; margin:0px 30px 0 0;} 
+div.header_landscape div.content div.content_right div.share_this {float:right; background:url(../images/landscape/bkg_share_bttns.png) no-repeat 0 0; width:137px; height:30px; margin:0 6px 0 0;}
+div.header_landscape div.content div.content_right div.share_this p.share {float:left; font:bold 13px "Lucida Grande"; color:#5DB3D0; width:82px; margin:6px 2px 0 9px; letter-spacing:-1.0px;}
+div.header_landscape div.content div.content_right div.share_this a {margin:7px 0 0 0;}
+div.header_landscape div.content div.content_right div.share_this a.share_twitter {float:left; background:url(../images/landscape/bttn_share_twitter.png) no-repeat 0 0; width:15px; height:15px; margin-right:5px;}
+div.header_landscape div.content div.content_right div.share_this a.share_facebook {float:left; background:url(../images/landscape/bttn_share_facebook.png) no-repeat 0 0; width:15px; height:15px;}
+div.header_landscape div.content div.content_right div.share_this a:hover {background-position:0 -15px;}
+
+
+div.header_landscape div.content div.content_right div.map_landscape {float:right; background:url(../images/landscape/bkg_header_map.png) no-repeat 0 0; width:274px; height:210px; margin:18px 0px 0 0;}
+div.header_landscape div.content div.content_right div.map_landscape div.map {float:left; background:url(../images/landscape/fake_header_map.png) no-repeat 0 0; width:257px; height:192px; margin:5px 5px 5px 8px;}
+
+div.pictures_additional_info {float:left; width:936px; padding-bottom:30px; border-bottom:1px solid #CCCCCC;}
+
+div.pictures_additional_info div.content {margin:26px 23px 0 26px;}
+div.pictures_additional_info div.content div.content_left {float:left; width:600px;}
+div.pictures_additional_info div.content p.title{float:left; font:bold 25px Helvetica; color:#666666; width:100%; letter-spacing:-1.0px;}
+div.pictures_additional_info div.content p.subtitle{float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande"; color:#666666; width:100%; margin:0px 0 0 0;}
+div.pictures_additional_info div.content div.content_left ul.pictures {width:100%; margin:18px 0 0 0;}
+div.pictures_additional_info div.content div.content_left ul.pictures li {float:left; background-color:#FFFFFF; width:184px; height:140px; border:1px solid #E1E1E1; margin:0 19px 0 0;}
+div.pictures_additional_info div.content div.content_left ul.pictures li:hover {border:1px solid #999999;}
+div.pictures_additional_info div.content div.content_left ul.pictures li.last {margin:0px;}
+div.pictures_additional_info div.content div.content_left ul.pictures li a img {float:left; margin:4px;}
+div.pictures_additional_info div.content div.content_right {float:right; width:270px; margin:10px 0 0 0;}
+
+div.pictures_additional_info div.content div.content_right p.title_link {float:left; font:normal 13px "Lucida Grande"; color:#999999; width:100%; margin:10px 0 0 0;}
+div.pictures_additional_info div.content div.content_right ul {margin:2px 0 0 0;}
+div.pictures_additional_info div.content div.content_right ul li{float:left; width:100%;}
+div.pictures_additional_info div.content div.content_right a.link {float:left; font:bold 13px "Lucida Grande"; color:#0099CC; margin:2px 0 0 0; text-decoration:none; border-bottom:1px solid #FFFFFF;}
+div.pictures_additional_info div.content div.content_right a.link:hover {border-bottom:1px dotted;}
+
+
+/*GUIDES*/
+
+div.header_guides {float:left; width:936px; background:url(../images/guide/bkg_head_repeatx.png) repeat-x 0 0; height:313px; margin:0; padding:0; position:relative;}
+div.header_guides img.arrow {position:absolute; top:0; left:192px; z-index:10;}
+div.header_guides div.content {margin:26px 0px 26px 26px;}
+div.header_guides div.content {float:left; width:100%; height:100%;}
+div.header_guides div.content div.content_left {float:left; width:560px;}
+div.header_guides div.content div.content_right {float:right; width:320px;} 
+div.header_guides div.content p.info_guide {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande";color:#FFFFFF; width:100%; margin:13px 0 5px 0; letter-spacing:-1.0px; margin:20px 0 0 0;}
+
+div.header_guides div.content p.title {float:left; font:bold 25px Helvetica; color:#FFFFFF; width:100%;}
+div.header_guides div.content p.by {float:left; font:normal 15px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%;}
+div.header_guides div.content p.by a {text-decoration:underline; color:#FFFFFF; }
+div.header_guides div.content p.by a:hover {text-decoration:none;}
+
+div.header_guides div.content ul {float:left; width:100%; margin:35px 0 0 0;}
+div.header_guides div.content ul li {float:left; width:181px; height:145px; padding:22px 18px 10px 9px; background:url(../images/guides/created_bkg_list.png) no-repeat 0px -2px; margin:0 20px 0 0;}
+div.header_guides div.content ul li.last {margin:0;}
+div.header_guides div.content ul li div.information_title {float:left; height:85px; border-bottom:1px solid #E0E0E0;}
+div.header_guides div.content ul li div.information_title h4 {float:left; width:163px;}
+div.header_guides div.content ul li div.information_title h4 a {font:bold 15px "Lucida Grande"; text-decoration:none; color:#0099CC;}
+div.header_guides div.content ul li div.information_title h4 a:hover {border-bottom:1px dotted #0099CC;}
+div.header_guides div.content ul li div.information_title p.by {float:left; width:163px; font:normal 11px "Lucida Grande"; color:#999999; margin:2px 0 0 0;}
+div.header_guides div.content ul li div.information_title p.heart {position:relative; float:left;  margin:5px 0 0 0; padding:0 0 0 3px; background:url(../images/home/heart_bkg_mini.png) no-repeat 0 0;}
+div.header_guides div.content ul li div.information_title p.heart span {float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/home/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div.header_guides div.content ul li div.information_title p.heart.zero span {color:#999999;}
+div.header_guides div.content ul li div.information_title p.heart span img {position:absolute; top:3px; left:3px;}
+div.header_guides div.content ul li div.stats {float:left; width:100%; margin:7px 0 0 0;}
+
+
+div.left div.create div.sorted_by {float:left; background:url(../images/guides/bkg_sorted_by.png) no-repeat 0 0; width:580px; height:43px; margin:20px 0 0px 0; position:relative;}
+div.left div.create div.sorted_by p {font:normal 13px "Lucida Grande"; color:#666666; line-height:17px;}
+div.left div.create div.sorted_by p.title {float:left; width:60px; margin:13px 7px 0 12px;}
+div.left div.create div.sorted_by p.kind_sorted  {float:left; width:300px; margin:13px 0 0 0;}
+
+div.left div.create div.sorted_by p.kind_sorted a {float:left; font-weight:bold; text-decoration:none; color:#666666; margin:0 12px;}
+div.left div.create div.sorted_by p.kind_sorted a:hover {border-bottom:1px dotted #666666;}
+div.left div.create div.sorted_by p.kind_sorted span.vertical_line {float:left; width:1px; height:19px; background-color:#CCCCCC;}
+div.left div.create div.sorted_by p.kind_sorted a.activated {color:#0099CC; }
+div.left div.create div.sorted_by p.kind_sorted a.activated:hover {border-bottom:1px dotted #0099CC;}
+
+div.left div.create div.sorted_by a {text-decoration:none;}
+div.left div.create div.sorted_by a:visited {text-decoration:none;}
+
+div.left div.create div.sorted_by div.deactivated_box {float:right; background:url(../images/guides/bkg_sort_box_deactivated.png) no-repeat 0 0; width:154px; height:27px; margin:8px 8px 0 0;}
+div.left div.create div.sorted_by div.deactivated_box p {float:left; font:normal 13px "Lucida Grande"; color:#666666; margin:5px 0 0 12px; width:123px;}
+
+div.left div.create div.sorted_by div.activated_box {position:absolute; top:8px; right:1px; height:161px; height:auto; display:none;}
+div.left div.create div.sorted_by div.activated_box span.head {float:left; background:url(../images/guides/bkg_sort_box_activated.png) no-repeat 0 0; width:161px; height:30px;}
+div.left div.create div.sorted_by div.activated_box span.head p {float:left; font:normal 13px "Lucida Grande"; color:#CFCFCF; margin:5px 0 0 12px; width:123px;}
+div.left div.create div.sorted_by div.activated_box ul.kind_sort {position:absolute; top:30px; right:0px; width:161px; padding:0;}
+div.left div.create div.sorted_by div.activated_box ul.kind_sort li {float:right; width:161px; height:23px; background:url(../images/guides/bkg_sort_box_activated_li.png) no-repeat 0 0; margin:0; padding:6px 0 0 0;}
+
+div.left div.create div.sorted_by div.activated_box ul.kind_sort li a {font:bold 13px "Lucida Grande"; color:#666666; margin:5px 0 0 12px; line-height:13px; text-decoration:none;}
+div.left div.create div.sorted_by div.activated_box ul.kind_sort li a:hover {border-bottom:1px dotted #666666;}
+div.left div.create div.sorted_by div.activated_box ul.kind_sort li.last {float:right; width:161px; height:35px; background:url(../images/guides/bkg_sort_box_activated_li_last.png) no-repeat 0 0;}
+
+div.left div.create div.pagination {float:right; margin:10px 5px 0 0;}
+div.left div.create div.pagination p {float:left; font:normal 13px "Lucida Grande"; color:#666666; margin:8px 10px 0 0; line-height:13px;}
+div.left div.create div.pagination a.left {float:left; background:url(../images/guides/bttn_nav_left.png) no-repeat 0 0; width:30px; height:30px; margin:0 5px;}
+div.left div.create div.pagination a.right {float:left; background:url(../images/guides/bttn_nav_right.png) no-repeat 0 0; width:30px; height:30px;}
+div.left div.create div.pagination a:hover{background-position:0 -30px;}
+
+
+div.right div.about_afg {float:left; padding:21px 23px 0 21px; width:267px; background:#F7F7F7; border-left:1px solid #cccccc;}
+div.right div.about_afg h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px;}
+div.right div.about_afg p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; letter-spacing:-1.0px; margin:0 0 30px 0;}
+div.right div.about_afg p.subtitle a {text-decoration:none; font:bold 13px "Lucida Grande"; color:#0099CC; letter-spacing:-1px;}
+div.right div.about_afg p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
+div.right div.about_afg h2 {font:bold 17px "Lucida Grande"; color:#666666; letter-spacing:-1px; margin:0px 0 5px 0;}
+div.right div.about_afg p.about {font:normal 13px "Lucida Grande"; color:#666666; letter-spacing:-1px; margin:0 0 20px 0;}
+
+/*GUIDE*/
+
+div.header_guide {float:left; width:936px; background:url(../images/guide/bkg_head_repeatx.png) repeat-x 0 0; height:313px; margin:0; padding:0; position:relative;}
+div.header_guide img.arrow {position:absolute; top:0; left:192px; z-index:10;}
+div.header_guide div.content {margin:26px 0px 26px 26px;}
+div.header_guide div.content div.content_left {float:left; width:560px; height:100%;}
+div.header_guide div.content div.content_left p.title {float:left; font:bold 25px Helvetica; color:#FFFFFF; width:100%;}
+div.header_guide div.content div.content_left p.by {float:left; font:normal 15px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%;}
+
+div.header_guide div.content div.content_left div.data_info {float:left; margin:10px 0 0 0; width:386px;}
+div.header_guide div.content div.content_left div.data_info p{font:bold 11px Arial; margin:0; text-transform:uppercase; }
+div.header_guide div.content div.content_left div.data_info p.downloads_data {float:left; color:#FF0099; background:url(../images/guide/bkg_info_dwnloads_left.png) no-repeat left 0; height:21px; }
+div.header_guide div.content div.content_left div.data_info p.downloads_data span{float:left; background:url(../images/guide/bkg_info_dwnloads_right.png) no-repeat right 0; height:21px; margin:0 5px 0 19px; padding:3px 7px 0 4px; line-height:16px;}
+
+
+
+div.header_guide div.content div.content_left p.info_guide {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande";color:#FFFFFF; width:100%; margin:13px 0 5px 0; letter-spacing:-1.0px;}
+
+div.header_guide div.content div.content_left a.download_guide {float:left; background:url(../images/guide/bkg_download_button.png) no-repeat 0 0; width:265px; height:59px; text-decoration:none; margin:20px 0 0 0;}
+div.header_guide div.content div.content_left a.download_guide p.title {float:left; font:bold 19px Arial; color:#0099CC; margin:9px 0 0 65px;}
+div.header_guide div.content div.content_left a.download_guide p.size {float:left; font:normal 13px Arial; color:#0099CC; margin:0px 0 0 100px;}
+
+div.header_guide div.content div.content_left p.template {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%; margin:0px 0 0 57px; letter-spacing:-1.0px;}
+div.header_guide div.content div.content_left p.template a{text-decoration:underline; color:#FFFFFF;}
+div.header_guide div.content div.content_left p.template a:hover{}
+
+div.header_guide div.content div.content_right {float:right; width:320px; height:100%; margin:0 22px 0 0;}
+
+div.header_guide div.content div.content_right div.amount_info {float:right; width:100%; margin:0px 0px 0px 0;}
+
+div.header_guide div.content div.content_right div.bkg_map {float:right; background:url(../images/guide/bkg_header_map.png) no-repeat 0 0; width:280px; height:210px; margin:17px 0 0 0;}
+div.header_guide div.content div.content_right div.bkg_map div.map {float:left; background:url(../images/guide/header_map.png) no-repeat 0 0; width:261px; height:190px; margin:6px 0 0 10px;}
+
+div.taxonomy_browser_body {float:right; width:936px; background-color:#FFFFFF; padding-bottom:40px;}
+div.taxonomy_browser_body div.content {margin:26px 23px 0 26px;}
+div.taxonomy_browser_body div.content div.content_left {float:left; width:590px;}
+div.taxonomy_browser_body div.content div.content_left p.species_included{float:left; font:bold 25px Helvetica; color:#666666; width:100%; letter-spacing:-1.0px;}
+div.taxonomy_browser_body div.content div.content_left p.number_species{float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande"; color:#666666; width:100%; margin:0px 0 0 0;}
+
+div.taxonomy_browser_body div.content div.taxonomy_browser{float:left; background:url(../images/guide/fake_taxonomy_browser.png) no-repeat 0 0; width:885px; height:302px; margin:30px 0 0 0;}
+
+div.taxonomy_browser_body div.content div.content_right {float:right; width:285px;}
+div.taxonomy_browser_body div.content div.content_right a.view_advanced_browser {float:right; background:url(../images/guide/bkg_view_advanced_browser.png) no-repeat 0 0; text-align:center; width:231px; height:24px; font-size:13px; font-weight:normal; 
+	font-family:"Lucida Grande"; color:#666666; text-decoration:none; padding:6px 0 0 0px; letter-spacing:-1.0px;}
+div.taxonomy_browser_body div.content div.content_right a.view_advanced_browser span{font-weight:bold; color:#0099CC;}
+div.taxonomy_browser_body div.content div.content_right a.view_advanced_browser:hover span{border-bottom:1px dotted #0099CC;}
+
+div.info_species_list {float:right; width:936px; background-color:#F7F7F7; height:44px; border-top:1px solid #E8E8E8; border-bottom:1px solid #CCCCCC;}
+div.info_species_list p{float:right; font-family:"Lucida Grande"; font-size:13px; font-weight:normal; letter-spacing:-1.0px; margin:12px 23px 0 0;}
+div.info_species_list p a{color:#0099CC; font-weight:bold; text-decoration:none;}
+div.info_species_list p a:hover{border-bottom:1px dotted #0099CC;}
+
+div.landscapes_body {float:right; width:936px; background-color:#FFFFFF; padding-bottom:15px;}
+div.landscapes_body div.content {margin:26px 23px 0 26px;}
+div.landscapes_body div.content div.content_left {float:left; width:590px;}
+div.landscapes_body div.content p.landscapes_included{float:left; font:bold 25px Helvetica; color:#666666; width:100%; letter-spacing:-1.0px;}
+div.landscapes_body div.content p.number_landscapes{float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande"; color:#666666; width:100%; margin:0px 0 0 0;}
+div.landscapes_body div.content div.landscape_map {float:left; width:883px; height:360px; background-color:#F7F7F7; margin:20px 0; border:1px solid #F0F0F0;}
+div.landscapes_body div.content div.landscape_map div.map {float:left; border:1px solid #CCCCCC; background:url(../images/guide/fake_landscape_map.png) no-repeat; width:861px; height:338px; margin:9px;}
+
+div.info_landscapes_list {float:right; width:936px; background-color:#F7F7F7; height:44px; border-top:1px solid #E8E8E8; border-bottom:1px solid #CCCCCC;}
+div.info_landscapes_list p{float:right; font-family:"Lucida Grande"; font-size:13px; font-weight:normal; letter-spacing:-1.0px; margin:12px 23px 0 0;}
+div.info_landscapes_list p a{color:#0099CC; font-weight:bold; text-decoration:none;}
+div.info_landscapes_list p a:hover{border-bottom:1px dotted #0099CC;}
+
+
+/*FOOTER*/
+div.footer {margin:0 auto; width:936px;}
+div.footer div.in {float:left; width:896px; padding:24px 20px 20px 20px; background:white;}
+div.footer div.in div.logo {float:left; width:894px; }
+div.footer div.in div.logo a.logo {float:left; width:123px; height:26px; background:url(../images/home/logo_footer.png) no-repeat 0 0;}
+div.footer div.in div.logo span.menu {float:right; width:auto;}
+div.footer div.in div.logo span.menu ul li {float:left; width:auto; padding:0 15px;}
+div.footer div.in div.logo span.menu ul li.last {padding:0 0 0 15px;}
+div.footer div.in div.logo span.menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999;}
+div.footer div.in div.logo span.menu ul li a.current {color:#0099CC;}
+div.footer div.in div.logo span.menu ul li a:hover {color:#0099CC;}
+div.footer div.in p {float:left; padding:40px 0 0 0; font:normal 12px Arial; color:#999999;}
+div.footer div.in p a {font-weight:bold; text-decoration:none; color:#999999;}
+div.footer div.in p a:hover {color:#666666;}

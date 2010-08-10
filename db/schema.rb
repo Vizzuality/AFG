@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100705134101) do
+ActiveRecord::Schema.define(:version => 20100810113913) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20100705134101) do
     t.string   "permalink"
     t.string   "name"
     t.integer  "guides_count",   :default => 0
+    t.boolean  "highlighted",    :default => false
     t.string   "genus"
     t.string   "family"
     t.string   "common_name"
@@ -93,6 +94,10 @@ ActiveRecord::Schema.define(:version => 20100705134101) do
     t.text     "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "kingdom"
+    t.string   "phylum"
+    t.string   "t_class"
+    t.string   "t_order"
   end
 
 end

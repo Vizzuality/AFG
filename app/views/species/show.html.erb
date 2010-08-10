@@ -1,6 +1,6 @@
-<div class="long top_species"> 
+<div class="long top_species" id="species-<%= @species.uid %>"> 
   <ul class="breadcrumb"> 
-    <li class="first"><%= @species.family %></li> 
+    <li class="first"><%= @species.taxon %></li> 
   </ul> 
   <div class="left"> 
     <h2><%= @species.full_name %></h2> 
@@ -10,23 +10,19 @@
     <% unless @current_guide.species.include?(@species) %>
       <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species), :method => :post, :class => 'add_guide') %>
     <% end %>
+    <% if @species.guides_count > 0 %>
     <p class="times_added"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
+    <% end -%>
   </div> 
   <div class="right"> 
     <div class="share_this"> 
-      <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
+      <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
     </div>
+    <% if @species.picture %>
     <div class="img_specie">
-		
-		<!-- TO TEST IT -->
-		<!-- <img src="images/species/fake_distribution_map.png" /> -->
-		
-		<% if @species.picture %>
-			<img src="<%= @species.picture.public_filename %>"/>
-		<% else %>
-			<img src="<%= @species.default_picture %>"/>
-		<% end -%>		
+      <img src="<%= @species.picture.public_filename %>"/>
     </div> 
+    <% end -%>    
   </div><!-- .right -->
 </div> <!-- .long top_species -->
   
@@ -43,15 +39,21 @@
       <p><%= @species.reference %></p>
     <% end %>
   </div> 
+  <% unless @species.pictures.empty? %>
   <div class="right species"> 
     <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
     <h3>Photos & Videos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
       <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <% end -%>
     </ul> 
-    <% end -%>
-  </div> 
+  </div>
+  <% else %>
+  <div class="right species">
+    No photos, no fun
+  </div>
+  <% end -%>
 </div> <!-- .long border -->
 
 <div class="long species"> 

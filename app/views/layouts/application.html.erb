@@ -25,8 +25,8 @@
       <div class="header_menu"> 
         <ul> 
           <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
-					<li><%= link_to('LANDSCAPES', 'landscapes/index', :class => (current_page?('#') ? 'current' : nil)) %></li>
-          <li><%= link_to('EXPLORE', explore_path, :class => (current_page?('#') ? 'current' : nil)) %></li>
+          <li><%= link_to('LANDSCAPES', landscapes_path, :class => (controller_name == 'landscapes' ? 'current' : nil)) %></li>
+          <li><%= link_to('SPECIES', species_index_path, :class => (controller_name == 'species' ? 'current' : nil)) %></li>
           <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
           <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
         </ul> 
@@ -44,10 +44,9 @@
           <a href="/" class="logo"></a> 
           <span class="menu"> 
             <ul> 
-              <li><%= link_to('Explore', :controller => 'explore', :action => 'index') %></li> 
-              <li><%= link_to('Species', :controller => 'species', :action => 'index') %></li> 
-              <li><%= link_to('Guides', :controller => 'guides', :action => 'index') %></li> 
-              <li class="last"><%= link_to('landscapes', :controller => 'landscapes', :action => 'index') %></li> 
+              <li><%= link_to('Species', species_index_path) %></li>
+              <li><%= link_to('Guides', guides_path) %></li>
+              <li><%= link_to('Landscapes', landscapes_path, :class => 'last') %></li>
             </ul> 
           </span> 
         </div> 

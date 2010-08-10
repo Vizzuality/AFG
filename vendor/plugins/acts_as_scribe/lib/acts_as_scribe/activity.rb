@@ -36,16 +36,16 @@ class Activity < ActiveRecord::Base
   end
   
   def self.report(user, action, object=nil)
-    returning Activity.new do |a|
-      a.item = object if object
-      a.action = action.to_s
-      if defined?(User)
-        a.user = user
-      else
-        a.user_id = 0
-      end
-      a.save!
+    a = Activity.new
+    a.item = object if object
+    a.action = action.to_s
+    if defined?(User)
+      a.user = user
+    else
+      a.user_id = 0
     end
+    a.save!
+    a
   end
 
 end

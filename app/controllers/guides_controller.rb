@@ -40,13 +40,8 @@ class GuidesController < ApplicationController
   
   def pdf
     @guide = Guide.find(params[:id])
-    send_file(
-      make_pdf('guides/show_pdf', @guide.pdf_name),
-      :filename => @guide.pdf_name,
-      :disposition => 'inline',
-      :type => 'application/pdf'
-    ) 
-    
+    @species = Species.limit(20)
+    render :template => 'guides/show_pdf'
   end
   
   def edit
@@ -81,25 +76,5 @@ class GuidesController < ApplicationController
       @date_filters
     end
     helper_method :date_filters
-    
-  private
-  
-    def make_pdf(template_path, pdf_name, landscape=false)
-      prince = Prince.new
-      # Sets style sheets on PDF renderer.
-      prince.add_style_sheets(
-        "#{RAILS_ROOT}/public/stylesheets/layout.css"
-      )
-      # Render the estimate to a big html string.
-      # Set RAILS_ASSET_ID to blank string or rails appends some time after
-      # to prevent file caching, fucking up local - disk requests.
-      ENV["RAILS_ASSET_ID"] = ''
-      html_string = render_to_string(:template => template_path, :layout => 'application')
-      # Make all paths relative, on disk paths...
-      html_string.gsub!("src=\"", "src=\"#{RAILS_ROOT}/public")
-      # Send the generated PDF file from our html string.
-      return prince.pdf_from_string(html_string)
-    end
-  
-    
+        
 end

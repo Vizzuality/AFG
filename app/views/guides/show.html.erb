@@ -11,9 +11,9 @@
         </div> 
         <%= simple_format(@guide.description, :class => 'info_guide') %>
         
-        <a class="download_guide" href="#"> 
+        <a class="download_guide" href="<%= pdf_guide_path(@guide) + '.pdf' %>"> 
           <p class="title">download this guide</p> 
-          <p class="size">(32 pages, 2,3MB)</p> ¿? 
+          <p class="size">(32 pages, 2,3MB)</p>
         </a> 
         <% if !@current_guide.included_guides.include?(@guide) && @current_guide != @guide %>
         <p class="template">or 
@@ -49,7 +49,7 @@
   </div> <!-- taxonomy_browser_body --> 
           
   <div class="info_species_list"> 
-    <p>more than 1,663 species in our <a href="species.php">species list</a></p> 
+    <p>more than <%= Species.count %> species in our <a href="<%= species_index_path %>">species list</a></p> 
   </div> 
   
   <%= render 'guides/your_guide' %>

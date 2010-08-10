@@ -1,56 +1,85 @@
-<div class="wide_container"> 
-  
-  <div class="header_guide"> 
-    <div class="content"> 
-      <div class="content_left"> 
-        <p class="title"><%= @guide.name %></p> 
-        <p class="by">by <%= @guide.author %></p> 
-        <div class="data_info"> 
-          <p class="downloads_data"><span><%= @guide.popularity %></span></p> 
-        </div> 
-        <%= simple_format(@guide.description, :class => 'info_guide') %>
-        
-        <a class="download_guide" href="#"> 
-          <p class="title">download this guide</p> 
-          <p class="size">(32 pages, 2,3MB)</p> ¿? 
-        </a> 
-        <% if !@current_guide.included_guides.include?(@guide) && @current_guide != @guide %>
-        <p class="template">or 
-          <%= link_to('use it as template', entries_path(:type => 'Guide', :id => @guide), :method => :post) %> for yours
-        </p>
-        <% end %>
-                  
-      </div> <!-- content_left --> 
-      <div class="content_right"> 
-        
-        <div class="amount_info"> 
-          <p class="species_guide_rank second_rank white right"><%= pluralize(@guide.species_count, 'SPECIES') %></p> 
-        </div> 
-        <div class="bkg_map"> 
-          <div class="map"></div> 
-        </div> 
-      </div> 
-    </div> 
-  </div> <!-- header_guide --> 
-  
-  <div class="taxonomy_browser_body"> 
-    <div class="content"> 
-      <div class="content_left"> 
-        <p class="species_included">Species included</p> 
-        <p class="number_species"><b><%= pluralize(@guide.species_count, 'SPECIES') %></b> in this guide</p>        
-      </div> 
-      <div class="content_right"> 
-        <a class="view_advanced_browser" href="#">view the <span>advanced taxon browser</span></a> 
-      </div> 
-      <div class="taxonomy_browser"> <!-- FAKE --> 
-      </div> 
-    </div> 
-  </div> <!-- taxonomy_browser_body --> 
-          
-  <div class="info_species_list"> 
-    <p>more than 1,663 species in our <a href="species.php">species list</a></p> 
-  </div> 
-  
-  <%= render 'guides/your_guide' %>
+<% @species.each do |species| %>
+<div class="long top_species"> 
+  <ul class="breadcrumb"> 
+    <li class="first"><%= species.family %></li> 
+  </ul> 
+  <div class="left"> 
+    <h2><%= species.full_name %></h2> 
+    <label>Description</label> 
+    <%= simple_format(species.description) %>
 
-</div>
+    <% unless @current_guide.species.include?(species) %>
+      <%= link_to('Add your guide', entries_path(:type => 'Species', :id => species), :method => :post, :class => 'add_guide') %>
+    <% end %>
+    <% if species.guides_count > 0 %>
+    <p class="times_added"><%= pluralize(species.guides_count, 'time', 'times') %> added</p> 
+    <% end -%>
+  </div> 
+  <div class="right"> 
+    <div class="share_this"> 
+      <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
+    </div>
+    <% if species.picture %>
+    <div class="img_specie">
+      <img src="<%= species.picture.public_filename %>"/>
+    </div> 
+    <% end -%>    
+  </div><!-- .right -->
+</div> <!-- .long top_species -->
+  
+<div class="long border"> 
+  <div class="left species"> 
+    <h3>Species information</h3> 
+    <p class="subtitle">More information that maybe could be useful for you</p> 
+    <% unless species.size.blank? %>
+      <label>Size</label> 
+      <p><%= species.size %></p> 
+    <% end %>
+    <% unless species.reference.blank? %>
+      <label>Reference</label> 
+      <p><%= species.reference %></p>
+    <% end %>
+  </div> 
+  <% unless species.pictures.empty? %>
+  <div class="right species"> 
+    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
+    <h3>Photos & Videos</h3> 
+    <ul>
+      <% species.pictures.each do |picture| %>
+      <li><img src="<%= picture.public_filename %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <% end -%>
+    </ul> 
+  </div>
+  <% else %>
+  <div class="right species">
+    No photos, no fun
+  </div>
+  <% end -%>
+</div> <!-- .long border -->
+
+<div class="long species"> 
+  <div class="left species"> 
+    <h3>Species distribution</h3> 
+    <% unless species.distribution.blank? %>
+      <label>Distribution info</label> 
+      <p><%= species.distribution %></p>
+    <% end %>
+    <% unless species.ecology.blank? %>
+      <label>Ecology</label> 
+      <%= simple_format(species.ecology) %>
+    <% end %>
+  </div> 
+  <div class="right species"> 
+    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
+    <h3>Distribution map</h3> 
+    <div class="map"> 
+      <div id="map"></div> 
+      <span class="shadow"></span> 
+    </div> 
+    <label class="right">Depth of the distribution</label> 
+    <p><%= species.depth %></p> 
+  </div> 
+</div><!-- .long species -->
+
+<hr style="height:1px; page-break-after:always">
+<% end -%>

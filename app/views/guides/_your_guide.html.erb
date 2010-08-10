@@ -4,7 +4,7 @@
     <p class="subtitle">Here is were your species and landscapes will be added</p> 
     <ul id="sortable">
       <% @current_guide.entries.each do |entry| %>
-      <li id="draggable" class="<%= entry_css_class(entry) %>"><p class="title"><%= entry.full_name %></p></li> 
+      <li id="draggable" class="<%= entry_css_class(entry) %>"><p class="title" title="<%= entry.full_name %>"><%= entry.full_name.truncate(15) %></p></li> 
       <% end -%>
       <li class="dragg_here"><p>DRAGG SOMETHING HERE TO ADD IT</p></li>          
     </ul> 
