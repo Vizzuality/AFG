@@ -7,6 +7,7 @@ gem 'ruby-debug'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 gem 'fastercsv'
+gem 'pdfkit'
 
 group :test do
 	gem 'steak', :git => 'git://github.com/cavalle/steak.git'
