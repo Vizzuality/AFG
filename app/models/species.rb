@@ -55,6 +55,11 @@ class Species < ActiveRecord::Base
     "#{id}-#{permalink}"
   end
   
+  def taxon
+    return nil if self.kingdom.blank?
+    "#{self.kingdom} > #{self.phylum} > #{self.t_class} > #{self.t_order} > #{self.family}"
+  end
+  
   def picture
     pictures.try(:first)
   end

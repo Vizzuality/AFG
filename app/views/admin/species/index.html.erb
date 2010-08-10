@@ -8,6 +8,7 @@
 
 <table>
   <tr>
+    <th>UID</th>
     <th>Species</th>
     <th class="long">Description</th>
     <th>Pictures</th>
@@ -17,6 +18,7 @@
 
 <% @species.each do |species| %>
   <tr class="<%= cycle('', 'even') %>">
+    <td><%= species.uid || "n/a" %></td>
     <td><%= link_to "#{species.genus} #{species.name}", edit_admin_species_path(species.id) %></td>
     <td class="long"><%= truncate(species.description, :length => 100) %></td>
     <td><%= species.pictures.count %></td>
