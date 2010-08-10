@@ -7,6 +7,7 @@
 #  permalink      :string(255)     
 #  name           :string(255)     
 #  guides_count   :integer         default(0)
+#  highlighted    :boolean         default(false)
 #  genus          :string(255)     
 #  family         :string(255)     
 #  common_name    :string(255)     
@@ -32,6 +33,7 @@ class Species < ActiveRecord::Base
   before_validation :set_permalink
   
   scope :from_family, Proc.new{ |family| where(:family => family) }
+  scope :highlighted, where(:highlighted => true)
 
   def to_param
     "#{id}-#{permalink}"

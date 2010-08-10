@@ -6,7 +6,7 @@ class Admin::SpeciesController < ApplicationController
   
   # GET /admin_species
   def index
-    if params[:family].blank? || !Species.families.include?(params[:family])
+    if Species.count > 0 && (params[:family].blank? || !Species.families.include?(params[:family]))
       redirect_to admin_species_index_path(:family => Species.families.first) and return
     end
     

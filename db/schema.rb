@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20100705134101) do
     t.string   "permalink"
     t.string   "name"
     t.integer  "guides_count",   :default => 0
+    t.boolean  "highlighted",    :default => false
     t.string   "genus"
     t.string   "family"
     t.string   "common_name"
