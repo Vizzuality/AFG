@@ -1,2 +1,18 @@
-<h1>Landscapes#index</h1>
-<p>Find me in app/views/landscapes/index.html.erb</p>
+
+	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+	<%= javascript_include_tag "landscapes/landscapes.js" %>
+	
+
+
+	<div class="outer_layout"> 
+	  <div class="explore_map"> 
+	    <img class="arrow" src="images/common/arrow_menu.png" alt=""/> 
+	    <h2>Explore the Antarctic and create your field guide</h2> 
+	    <p class="subtitle"><strong><%= Species.count %> species</strong> in our database</p> 
+	    <div class="map"> 
+				<a href="javascript: void zoomIn()" class="zoomIn">+</a>
+				<a href="javascript: void zoomOut()" class="zoomOut">-</a>
+				<div id="map"></div>
+	    </div> 
+	  </div>
+	</div>

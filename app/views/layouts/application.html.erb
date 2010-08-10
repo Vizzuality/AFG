@@ -25,13 +25,14 @@
       <div class="header_menu"> 
         <ul> 
           <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
+					<li><%= link_to('LANDSCAPES', 'landscapes/index', :class => (current_page?('#') ? 'current' : nil)) %></li>
           <li><%= link_to('EXPLORE', explore_path, :class => (current_page?('#') ? 'current' : nil)) %></li>
           <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
           <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
         </ul> 
       </div> 
-    </div> <!-- .header -->
-  </div><!-- .outer_layout -->
+    </div>
+  </div>
 
   <div class="outer_layout"> 
     
@@ -43,18 +44,16 @@
           <a href="/" class="logo"></a> 
           <span class="menu"> 
             <ul> 
-              <li><a href="<%= explore_path %>">Explore</a></li> 
-              <li><a href="species.php">Species</a></li> 
-              <li><a href="<%= guides_path %>">Guides</a></li> 
-              <li class="last"><a href="landscape.php">Landscapes</a></li> 
+              <li><%= link_to('Explore', :controller => 'explore', :action => 'index') %></li> 
+              <li><%= link_to('Species', :controller => 'species', :action => 'index') %></li> 
+              <li><%= link_to('Guides', :controller => 'guides', :action => 'index') %></li> 
+              <li class="last"><%= link_to('landscapes', :controller => 'landscapes', :action => 'index') %></li> 
             </ul> 
           </span> 
         </div> 
         <p>Project implemented by the <a href="http://www.biodiversity.be/">Belgian Biodiversity platform</a> - <a href="http://www.biodiversity.be/454">Contact</a></p> 
       </div> 
-    </div><!-- .footer -->
-    
-  </div><!-- .outer_layout -->
-  
+    </div>
+  </div>
 </body>
 </html>
