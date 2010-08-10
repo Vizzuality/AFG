@@ -7,7 +7,7 @@
 #  permalink      :string(255)     
 #  name           :string(255)     
 #  guides_count   :integer         default(0)
-#  highlighted    :boolean         default(false)
+#  highlighted    :boolean         
 #  genus          :string(255)     
 #  family         :string(255)     
 #  common_name    :string(255)     
@@ -20,7 +20,21 @@
 #  reference      :text            
 #  created_at     :datetime        
 #  updated_at     :datetime        
+#  kingdom        :string(255)     
+#  phylum         :string(255)     
+#  t_class        :string(255)     
+#  t_order        :string(255)     
 #
+
+# Taxonomy sample:
+#   Kingdom: Animalia
+#   Phylum: Chordata
+#   Class: Mammalia
+#   Order: Carnivora
+#   Family:Felidae
+#   Genus: Puma
+#   Species: Puma concolor
+
 
 class Species < ActiveRecord::Base
     
