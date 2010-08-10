@@ -8,6 +8,7 @@ gem 'ruby-debug'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 gem 'fastercsv'
 gem 'pdfkit'
+gem 'nokogiri'
 
 group :test do
 	gem 'steak', :git => 'git://github.com/cavalle/steak.git'

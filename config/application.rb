@@ -49,3 +49,5 @@ module AFG
     config.middleware.use PDFKit::Middleware
   end
 end
+
+require 'open-uri'

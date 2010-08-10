@@ -139,6 +139,7 @@ DEPENDENCIES
   database_cleaner!
   fastercsv
   launchy
+  nokogiri
   pdfkit
   rails (= 3.0.0.rc)
   rspec (>= 2.0.0.beta.13)
