@@ -88,7 +88,7 @@ class GuidesController < ApplicationController
       prince = Prince.new
       # Sets style sheets on PDF renderer.
       prince.add_style_sheets(
-        "#{RAILS_ROOT}/public/stylesheets/layout.css"
+        "public/stylesheets/pdf.css"
       )
       # Render the estimate to a big html string.
       # Set RAILS_ASSET_ID to blank string or rails appends some time after
@@ -96,7 +96,7 @@ class GuidesController < ApplicationController
       ENV["RAILS_ASSET_ID"] = ''
       html_string = render_to_string(:template => template_path, :layout => 'application')
       # Make all paths relative, on disk paths...
-      html_string.gsub!("src=\"", "src=\"#{RAILS_ROOT}/public")
+      html_string.gsub!("src=\"", "src=\"public")
       # Send the generated PDF file from our html string.
       return prince.pdf_from_string(html_string)
     end

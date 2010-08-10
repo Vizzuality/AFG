@@ -18,17 +18,11 @@
     <div class="share_this"> 
       <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
     </div>
+    <% if @species.picture %>
     <div class="img_specie">
-		
-		<!-- TO TEST IT -->
-		<!-- <img src="images/species/fake_distribution_map.png" /> -->
-		
-		<% if @species.picture %>
 			<img src="<%= @species.picture.public_filename %>"/>
-		<% else %>
-			<img src="<%= @species.default_picture %>"/>
+		</div> 
 		<% end -%>		
-    </div> 
   </div><!-- .right -->
 </div> <!-- .long top_species -->
   
@@ -45,15 +39,21 @@
       <p><%= @species.reference %></p>
     <% end %>
   </div> 
+  <% unless @species.pictures.empty? %>
   <div class="right species"> 
     <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
     <h3>Photos & Videos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
       <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <% end -%>
     </ul> 
-    <% end -%>
-  </div> 
+  </div>
+  <% else %>
+  <div class="right species">
+    No photos, no fun
+  </div>
+  <% end -%>
 </div> <!-- .long border -->
 
 <div class="long species"> 

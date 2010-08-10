@@ -25,7 +25,7 @@ class Prince
     # Finds where the application lives, so we can call it.
     @exe_path = `which prince`.chomp
   	@style_sheets = ''
-  	@log_file = "#{RAILS_ROOT}/log/prince.log"
+  	@log_file = "log/prince.log"
   end
   
   # Sets stylesheets...

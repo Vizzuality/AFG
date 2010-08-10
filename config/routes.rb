@@ -1,9 +1,10 @@
 AFG::Application.routes.draw do |map|
 
+  root :to => "site#home"  
+
   get "maps" => 'maps#index', :as => 'maps'
   match 'maps/tiles' => 'maps#tiles', :as => 'tiles'
 
-  root :to => "site#home"  
   match 'about' => 'site#about', :as => 'about'
   
   resources :guides, :only => [:index, :show, :update] do
