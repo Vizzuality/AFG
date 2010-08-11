@@ -24,6 +24,7 @@
 #  phylum         :string(255)     
 #  t_class        :string(255)     
 #  t_order        :string(255)     
+#  featured       :boolean         
 #
 
 # Taxonomy sample:
@@ -48,6 +49,7 @@ class Species < ActiveRecord::Base
   
   scope :from_family, Proc.new{ |family| where(:family => family) }
   scope :highlighted, where(:highlighted => true)
+  scope :featured, where(:featured => true)
   
   before_create :set_uid, :get_taxon
 

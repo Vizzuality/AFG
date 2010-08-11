@@ -13,7 +13,7 @@
 
 development:
   adapter: postgresql
-  template: template1
+  template: template_postgis
   encoding: unicode
   database: afg_development
   username: postgres
