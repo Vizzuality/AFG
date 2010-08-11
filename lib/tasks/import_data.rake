@@ -12,22 +12,22 @@ namespace :afg do
     # Families in the data files
     %W{
       Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
-    }.each do |family|
+    }.each do |importing_file|
       # Species
       puts
       puts
-      puts "Importing species from #{family}"
+      puts "Importing species from #{importing_file}"
       data_directory = "#{Rails.root}/doc/data"
-      filename = "#{family}.csv"
+      filename = "#{importing_file}.csv"
       FasterCSV.foreach(data_directory + '/' + filename) do |line|
         next if line[0] == 'Genus'
         next if line[0].blank? && line[1].blank?
         
         if line[1].blank? && line[2].blank? && line[3].blank?
-          family = line[0].humanize
+          importing_file = line[0].humanize
           puts
           puts
-          puts "Importing species from #{family}"
+          puts "Importing species from #{importing_file}"
           next
         end
         
@@ -37,18 +37,18 @@ namespace :afg do
         
         begin
           species = Species.new
-          species.family = family
+          species.imported_file = importing_file
           species.genus = line[0]
           species.name = line[1]
           species.common_name = line[offset_in_line+6] if line[offset_in_line+6] != 'None' && line[offset_in_line+6] != '*'
           species.identification = line[offset_in_line+9]
         
-          species.description  = from_file(data_directory + '/' + family + '/' + line[offset_in_line+10]) unless line[offset_in_line+10] == '*' || line[offset_in_line+10].blank?
-          species.distribution = from_file(data_directory + '/' + family + '/' + line[offset_in_line+11]) unless line[offset_in_line+11] == '*' || line[offset_in_line+11].blank?
-          species.ecology      = from_file(data_directory + '/' + family + '/' + line[offset_in_line+12]) unless line[offset_in_line+12] == '*' || line[offset_in_line+12].blank?
-          species.size         = from_file(data_directory + '/' + family + '/' + line[offset_in_line+13]) unless line[offset_in_line+13] == '*' || line[offset_in_line+13].blank?
-          species.depth        = from_file(data_directory + '/' + family + '/' + line[offset_in_line+14]) unless line[offset_in_line+14] == '*' || line[offset_in_line+14].blank?
-          species.reference    = from_file(data_directory + '/' + family + '/' + line[offset_in_line+15]) unless line[offset_in_line+15] == '*' || line[offset_in_line+15].blank?
+          species.description  = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+10]) unless line[offset_in_line+10] == '*' || line[offset_in_line+10].blank?
+          species.distribution = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+11]) unless line[offset_in_line+11] == '*' || line[offset_in_line+11].blank?
+          species.ecology      = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+12]) unless line[offset_in_line+12] == '*' || line[offset_in_line+12].blank?
+          species.size         = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+13]) unless line[offset_in_line+13] == '*' || line[offset_in_line+13].blank?
+          species.depth        = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+14]) unless line[offset_in_line+14] == '*' || line[offset_in_line+14].blank?
+          species.reference    = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+15]) unless line[offset_in_line+15] == '*' || line[offset_in_line+15].blank?
         
           if species.save
             putc '.'

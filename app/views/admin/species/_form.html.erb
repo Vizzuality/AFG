@@ -16,12 +16,9 @@
     <%= f.text_field :uid, :size => 50 %>
   </div>
   <div class="field">
-    <%= f.label :genus %><br />
-    <%= f.text_field :genus, :size => 50 %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, :size => 50 %>
+    <p><em>Imported name from data files</em></p>
   </div>
   <div class="field">
     <%= f.label :highlighted %>
@@ -32,10 +29,6 @@
     <%= f.label :featured %>
     <%= f.check_box :featured  %>
     <p><em>If a species is featured it can appear in the home of species</em></p>
-  </div>
-  <div class="field">
-    <%= f.label :family %><br />
-    <%= f.text_field :family, :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :common_name %><br />
@@ -69,6 +62,38 @@
     <%= f.label :reference %><br />
     <%= f.text_area :reference, :rows => 8, :cols => 50 %>
   </div>
+  
+  <h2>Taxonomy</h2>
+  
+  <div class="field">
+    <%= f.label :kingdom %><br />
+    <%= f.text_field :kingdom, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :phylum %><br />
+    <%= f.text_field :phylum, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :t_class, 'class' %><br />
+    <%= f.text_field :t_class, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :t_order, 'order' %><br />
+    <%= f.text_field :t_order, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :family %><br />
+    <%= f.text_field :family, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :genus %><br />
+    <%= f.text_field :genus, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :species %><br />
+    <%= f.text_field :species, :size => 50 %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

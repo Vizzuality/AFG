@@ -25,6 +25,8 @@
 #  t_class        :string(255)     
 #  t_order        :string(255)     
 #  featured       :boolean         
+#  imported_file  :string(255)     
+#  species        :string(255)     
 #
 
 # Taxonomy sample:
@@ -47,7 +49,6 @@ class Species < ActiveRecord::Base
   
   before_validation :set_permalink
   
-  scope :from_family, Proc.new{ |family| where(:family => family) }
   scope :highlighted, where(:highlighted => true)
   scope :featured, where(:featured => true)
   
@@ -70,17 +71,17 @@ class Species < ActiveRecord::Base
     "/images/default_big.png"
   end
   
-  def self.families
-    Species.select("family").map(&:family).uniq.sort
+  def name
+    species.blank? ? read_attribute(:name) : species
   end
   
   def full_name
-    "#{self.genus} #{self.name}"
+    species.blank? ? "#{self.genus} #{name}" : species
   end
   
   def self.find_by_term(q)
     escaped_q = sanitize_sql(q)
-    where("name like '%#{escaped_q}%' OR genus like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
+    where("species like '%#{escaped_q}%' OR name like '%#{escaped_q}%' OR genus like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
   end
   
   def self.get_taxon(uid)
@@ -104,11 +105,11 @@ class Species < ActiveRecord::Base
         if concept.xpath("tc:hasRelationship//tc:relationshipCategory").size > 0 && concept.xpath("tc:hasRelationship//tc:relationshipCategory")[0].attr('resource') == "http://rs.tdwg.org/ontology/voc/TaxonConcept#IsChildTaxonOf"
           case concept.xpath("tc:hasName//tn:rankString")[0].inner_text
             when 'species'
-              result[:name] = concept.xpath("tc:hasName//tn:nameComplete").inner_text
+              result[:species] = concept.xpath("tc:hasName//tn:nameComplete").inner_text
             when 'genus'
               result[:genus] = concept.xpath("tc:hasName//tn:nameComplete").inner_text
             when 'family'
-              # nothing
+              result[:family] = concept.xpath("tc:hasName//tn:nameComplete").inner_text
             when 'order'
               result[:t_order] = concept.xpath("tc:hasName//tn:nameComplete").inner_text
             when 'class'
@@ -133,8 +134,10 @@ class Species < ActiveRecord::Base
       self.kingdom = atts[:kingdom]
       self.t_order = atts[:t_order]
       self.t_class = atts[:t_class]
-      self.genus = atts[:genus]
-      self.phylum = atts[:phylum]
+      self.genus   = atts[:genus]
+      self.phylum  = atts[:phylum]
+      self.family  = atts[:family]
+      self.species = atts[:species]
     end
   end
   

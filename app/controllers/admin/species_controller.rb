@@ -6,11 +6,7 @@ class Admin::SpeciesController < ApplicationController
   
   # GET /admin_species
   def index
-    if Species.count > 0 && (params[:family].blank? || !Species.families.include?(params[:family]))
-      redirect_to admin_species_index_path(:family => Species.families.first) and return
-    end
-    
-    @species = Species.from_family(params[:family]).paginate(:per_page => 20, :page => params[:page])
+    @species = Species.paginate(:per_page => 20, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

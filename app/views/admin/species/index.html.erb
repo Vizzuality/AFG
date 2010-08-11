@@ -1,9 +1,6 @@
-<h1>Listing species from <%= params[:family] %> family</h1>
+<h1>Listing species</h1>
 
 <ul class="families">
-  <% Species.families.each do |family| %>
-  <li><%= link_to_unless_current "#{family} (#{Species.from_family(family).count})", admin_species_index_path(:family => family) %>
-  <% end %>
 </ul>
 
 <table>

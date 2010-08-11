@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811145741) do
+ActiveRecord::Schema.define(:version => 20100811153300) do
 
   create_table "activities", :force => true do |t|
     t.column "user_id", :integer
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20100811145741) do
     t.column "t_class", :string
     t.column "t_order", :string
     t.column "featured", :boolean, :default => false
+    t.column "imported_file", :string
+    t.column "species", :string
   end
 
 end
