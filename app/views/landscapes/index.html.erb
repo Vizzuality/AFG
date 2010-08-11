@@ -5,10 +5,10 @@
 
 
 	<div class="outer_layout"> 
-	  <div class="explore_map"> 
+	  <div class="landscapes_map"> 
 	    <img class="arrow" src="images/common/arrow_menu.png" alt=""/> 
-	    <h2>Explore the Antarctic and create your field guide</h2> 
-	    <p class="subtitle"><strong><%= Species.count %> species</strong> in our database</p> 
+	    <h2>We have 63 Antarctic landscapes for your Guide</h2> 
+	    <p class="subtitle">Do you have any recommendation? <%= link_to('Send it to us', '#') %></p> 
 	    <div class="map"> 
 				<a href="javascript: void zoomIn()" class="zoomIn">+</a>
 				<a href="javascript: void zoomOut()" class="zoomOut">-</a>
@@ -16,3 +16,77 @@
 	    </div> 
 	  </div>
 	</div>
+	
+	
+	<div class="main landscapes">
+		<div class="left"> 
+		  <div class="landscapes"> 
+		    <h3>Most popular landscapes</h3> 
+		    <p class="subtitle">Also you can <%= link_to('search landscapes', search_path) %> by name</p> 
+		    <div class="species_list"> 
+		      <ul class="published_afg">
+		        <li> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+						<li> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+						<li class="last"> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+						<li> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+						<li> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+						<li class="last"> 
+							<div class="specie"> 
+							  <a href="#"><img src="#" alt="#" /></a>
+							  <h4><a href="#">Name area (no truncate)</a></h4>
+							  <p class="heart zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
+							</div>
+						</li>
+		      </ul> 
+		    </div> 
+		  </div> 
+		</div> 
+
+		<div class="right"> 
+		  <div class="feature"> 
+		    <p class="subtitle">Featured landscape</p> 
+		    <h3>Roosevelt Island</h3>
+				<p class="heart"><span><img src="images/common/pink_star.png" alt="heart"/>3</span></p>
+				<div class="image">
+					<img src="#" alt="#" title="#" />
+					<span class="shadow"></span>
+				</div>
+				<p class="info">Last year, the historical and epic big big discovery discovery of 13 new  species of bacterias by dr. Xeniakis’ greatest expedition put Roosevelt Island on the international scientific life virtual map.
+				Roosevelt President Island on the international scientific map. <br/><br/>
+
+				Most of this coastal territory is still unexplored... <%= link_to('Learn more', '#') %></p>
+		  </div> 
+		</div>
+	</div>
+	
+	<%= render 'guides/your_guide' %>
