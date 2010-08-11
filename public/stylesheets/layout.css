@@ -154,8 +154,8 @@ div.left div.create ul.published_afg li div.information_title p.heart.zero span 
 div.left div.create ul.published_afg li div.information_title p.heart span img {position:absolute; top:3px; left:3px;}
 
 /*right bottom*/
-div.right div.blue {position:relative; float:left; padding:24px; width:264px; background:url(../images/home/blue_bkg.png) repeat-x 0 0 #0099C9; margin:0;}
-div.right div.blue img.arrow {position:absolute; top:26px; left:0;}
+div.right div.blue {position:relative; float:left; padding:21px 24px 27px; width:264px; background:url(../images/home/blue_bkg.png) repeat-x 0 0 #0099C9; margin:0;}
+div.right div.blue img.arrow {position:absolute; top:23px; left:0;}
 div.right div.blue h4 {float:left; font:bold 25px Helvetica; color:white; line-height:25px;}
 div.right div.blue p.subtitle {float:left; width:264px; font:normal 13px "Lucida Grande"; color:white; line-height:13px;}
 div.right div.blue ul {float:left; width:264px; margin:10px 0 0 0; padding:0 0 13px;}
@@ -163,7 +163,7 @@ div.right div.blue ul li {float:left; width:264px; padding:10px 0; height:50px;}
 div.right div.blue ul li div.image {float:left; width:56px; padding:0;}
 div.right div.blue ul li div.image img {width:48px; height:48px;}
 div.right div.blue ul li div.data {float:left; width:206px; padding:0; margin:0;}
-div.right div.blue ul li div.data h5 {float:left; width:206px; padding:0; margin:0; line-height:15px;}
+div.right div.blue ul li div.data h5 {float:left; width:auto; padding:0; margin:0; text-decoration:none; font:bold 17px "Lucida Grande"; color:#FFFFFF; letter-spacing:-1px; line-height:17px;}
 div.right div.blue ul li div.data h5 a {text-decoration:none; font:bold 17px "Lucida Grande"; color:#FFFFFF; letter-spacing:-1px; line-height:17px;}
 div.right div.blue ul li div.data h5 a:hover {border-bottom:1px dotted white;}
 div.right div.blue ul li div.data p {float:left; width:206px; font:normal 13px "Lucida Grande"; color:#004C66; padding:3px 0 0 0; line-height:14px;}
@@ -301,7 +301,6 @@ div.most_popular_explore div.content ul li div.stats {float:left; width:100%; ma
 
 
 
-
 /*LANDSCAPES*/
 div.map div#map {z-index:1;}
 div.map a.zoomIn {position:absolute; top:20px; left:20px; height:30px; width:30px; background:blue; color:white; z-index:1000;}
@@ -310,17 +309,7 @@ div.map a.zoomOut {position:absolute; top:20px; left:60px; height:30px; width:30
 
 
 
-
-
-
-
-
-
-
-
-
 /*LANDSCAPE*/
-
 div.header_landscape {float:left; width:936px; background:url(../images/guide/bkg_head_repeatx.png) repeat-x 0 0; height:313px; margin:0; padding:0;}
 div.header_landscape div.content {margin:26px 0px 26px 26px;}
 div.header_landscape div.content {float:left; width:910px; height:100%;}
