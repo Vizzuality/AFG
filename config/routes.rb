@@ -21,6 +21,8 @@ AFG::Application.routes.draw do |map|
     end
   end
   
+  get "taxonomy" => "taxonomy#index", :as => 'taxonomy', :format => :json
+  
   get "search/index", :as => 'search'
 
   match 'authorizations/create_or_update' => 'authorizations#create_or_update', :as => 'authorizations_create_or_update'
