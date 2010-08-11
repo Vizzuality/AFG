@@ -60,7 +60,7 @@ class Species < ActiveRecord::Base
   
   def taxon
     return nil if self.kingdom.blank?
-    "#{self.kingdom} > #{self.phylum} > #{self.t_class} > #{self.t_order} > #{self.family}"
+    "#{self.kingdom} > #{self.phylum} > #{self.t_class} > #{self.t_order} > #{self.family} > #{self.genus}"
   end
   
   def picture
