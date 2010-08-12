@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100812100611) do
+ActiveRecord::Schema.define(:version => 20100812132828) do
 
   create_table "activities", :force => true do |t|
     t.column "user_id", :integer
@@ -67,6 +67,21 @@ ActiveRecord::Schema.define(:version => 20100812100611) do
   add_index "guides", ["name"], :name => "index_guides_on_name"
   add_index "guides", ["popularity"], :name => "index_guides_on_popularity"
   add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
+
+  create_table "landscapes", :force => true do |t|
+    t.column "name", :string
+    t.column "permalink", :string
+    t.column "source", :string
+    t.column "description", :text
+    t.column "related_url", :string
+    t.column "image1_url", :string
+    t.column "image2_url", :string
+    t.column "image3_url", :string
+    t.column "image4_url", :string
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+    t.column "the_geom", :multi_polygon, :srid => 4326, :null => false
+  end
 
   create_table "pictures", :force => true do |t|
     t.column "species_id", :integer

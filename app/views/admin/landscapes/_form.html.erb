@@ -1,0 +1,46 @@
+<%= form_for(@landscape, :url => (@landscape.new_record? ? admin_landscapes_path : admin_landscape_path(@landscape.id))) do |f| %>
+  <% if @landscape.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@landscape.errors.count, "error") %> prohibited this landscape from being saved:</h2>
+
+      <ul>
+      <% @landscape.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :image1_url %><br />
+    <%= f.text_field :image1_url, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :image2_url %><br />
+    <%= f.text_field :image2_url, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :image3_url %><br />
+    <%= f.text_field :image3_url, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :image4_url %><br />
+    <%= f.text_field :image4_url, :size => 50 %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

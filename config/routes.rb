@@ -16,6 +16,7 @@ AFG::Application.routes.draw do |map|
   resources :entries, :only => [:create, :destroy]
 
   namespace :admin do
+    resources :landscapes
     resources :species, :except => [:show] do
       resources :pictures, :except => [:index, :show]
     end

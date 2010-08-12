@@ -50,7 +50,7 @@ class Admin::PicturesController < ApplicationController
     @picture.destroy
 
     respond_to do |format|
-      format.html { redirect_to(edit_admin_species_path(@species), :notice => 'Picture successfully deleted') }
+      format.html { redirect_to(admin_species_index_path, :notice => 'Picture successfully deleted') }
     end
   end
   

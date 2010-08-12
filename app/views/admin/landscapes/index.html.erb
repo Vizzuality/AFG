@@ -1,0 +1,41 @@
+<% unless params[:q] %>
+<h1>Listing landscapes</h1>
+<% else %>
+<h1>Listing landscapes related to '<%= params[:q] %>'</h1>
+<p>Found <%= pluralize(@landscapes.size, 'result', 'results') %></p>
+<% end -%>
+
+<ul class="families">
+  <% if params[:q] %>
+  <li><%= link_to('Back to index', admin_landscapes_path) %></li>
+  <% end -%>
+</ul>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th class="long">Description</th>
+    <th>Pictures</th>
+    <th class="long"></th>
+  </tr>
+
+<% @landscapes.each do |landscape| %>
+  <tr class="<%= cycle('', 'even') %>">
+    <td><%= landscape.id %></td>
+    <td><%= link_to "#{landscape.name}", edit_admin_landscape_path(landscape.id) %></td>
+    <td class="long"><%= truncate(landscape.description, :length => 100) %></td>
+    <td>223</td>
+    <td>
+    <%= link_to 'Show', landscape_path(landscape) %> · 
+    <%= link_to 'Edit', edit_admin_landscape_path(landscape.id) %> · 
+    <%= link_to 'Destroy', admin_landscape_path(landscape), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate(@landscapes) %>
+
+<br />
+
+<%= link_to '+ New Landscape', new_admin_landscape_path %>

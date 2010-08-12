@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: landscapes
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)     
+#  permalink   :string(255)     
+#  source      :string(255)     
+#  description :text            
+#  related_url :string(255)     
+#  image1_url  :string(255)     
+#  image2_url  :string(255)     
+#  image3_url  :string(255)     
+#  image4_url  :string(255)     
+#  created_at  :datetime        
+#  updated_at  :datetime        
+#  the_geom    :geometry        not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

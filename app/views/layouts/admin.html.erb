@@ -40,6 +40,11 @@
   <div class="outer_layout"> 
     <div class="long border"> 
       
+      <ul class="families">
+        <li><%= link_to_unless(controller_name == 'species', 'Species', admin_species_index_path) %></li>
+        <li><%= link_to_unless(controller_name == 'landscapes', 'Landscapes', admin_landscapes_path) %></li>
+      </ul>
+      
       <div class="message">
         <%= flush_the_flash %>
       </div>

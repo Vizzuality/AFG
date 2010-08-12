@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LandscapesControllerTest < ActionController::TestCase
+class LandscapeTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
