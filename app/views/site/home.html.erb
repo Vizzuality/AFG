@@ -45,10 +45,11 @@
 
 <div class="right"> 
   <div class="latest_"> 
+    <% unless @activities.empty? %>
     <h3>Latest activity</h3> 
     <p class="subtitle">species, guides and landscapes added...</p> 
     <ul>
-      <% Activity.limit(10).order('created_at DESC').each_with_index do |activity, i| %>
+      <% @activities.each_with_index do |activity, i| %>
       <li> 
         <div class="latest <%= 'first' if i == 0 %>"> 
           <%= render :partial => "activities/#{activity.action}", :locals => { :activity => activity } %>
@@ -56,6 +57,7 @@
       </li> 
       <% end -%>
     </ul> 
+    <% end -%>
   </div> 
   <div class="bottom"> 
     <p>why this matters? <a href="<%= guides_path %>">create your guide</a></p> 

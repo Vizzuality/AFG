@@ -6,6 +6,7 @@ class SiteController < ApplicationController
     else
       Picture.limit(5)
     end
+    @activities = Activity.limit(10).order('created_at DESC')
   end
   
   def about
