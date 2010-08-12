@@ -80,7 +80,7 @@ namespace :afg do
           putc '.'
         else
           putc 'e'
-          pictures_errors << {:line => line, :errors => picture.errors.full_messages}
+          pictures_errors << {:line => line, :errors => picture.errors.full_messages + " -- " + $!}
         end
       end
     end
@@ -91,6 +91,7 @@ namespace :afg do
     puts "Species import finished"
     puts "#{species_errors.size} errors"
     puts "#{Species.count} species imported"
+    puts "#{Species.complete.count} species imported and complete"
     if species_errors.size > 0
       puts 
       puts "Errors:"
