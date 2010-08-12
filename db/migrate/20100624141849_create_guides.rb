@@ -5,12 +5,13 @@ class CreateGuides < ActiveRecord::Migration
       t.string  :name
       t.string  :author
       t.text    :description
-      t.integer :species_count,   :default => 0
-      t.integer :downloads_count, :default => 0
+      t.integer :species_count,    :default => 0
+      t.integer :landscapes_count, :default => 0
+      t.integer :downloads_count,  :default => 0
       t.string  :session_id
-      t.integer :popularity,      :default => 0
-      t.boolean :highlighted,     :default => false
-      t.boolean :published,       :default => false
+      t.integer :popularity,       :default => 0
+      t.boolean :highlighted,      :default => false
+      t.boolean :published,        :default => false
 
       t.timestamps
     end
