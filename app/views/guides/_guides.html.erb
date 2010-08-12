@@ -18,9 +18,9 @@
 </ul>  <!-- afg_published --> 
 
 <% if @guides.total_pages > 1 %>
-<div class="pagination"> 
-  <p>viewing from <b><%= guides_shown(@guides) %> of <%= @guides.total_entries %></b></p>
-  <%= link_to_unless(@guides.current_page == 1, '', params.merge(:page => @guides.previous_page), :class => 'left ajax') %>
-  <%= link_to_unless(@guides.current_page == @guides.total_pages, '', params.merge(:page => @guides.next_page), :class => 'right ajax') %>
-</div> 
+	<div class="pagination"> 
+	  <p>viewing from <b><%= guides_shown(@guides) %> of <%= @guides.total_entries %></b></p>
+	  <%= link_to_unless(@guides.current_page == 1, '', params.merge(:page => @guides.previous_page), :class => 'left ajax') %>
+	  <%= link_to_unless(@guides.current_page == @guides.total_pages, '', params.merge(:page => @guides.next_page), :class => 'right ajax') %>
+	</div> 
 <% end -%>

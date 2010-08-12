@@ -44,10 +44,12 @@
           <a href="/" class="logo"></a> 
           <span class="menu"> 
             <ul> 
+              <li><%= link_to('Home', root_path) %></li>
               <li><%= link_to('Species', species_index_path) %></li>
+              <li><%= link_to('Landscapes', landscapes_path) %></li>
               <li><%= link_to('Guides', guides_path) %></li>
-              <li><%= link_to('Landscapes', landscapes_path, :class => 'last') %></li>
-            </ul> 
+              <li class="last"><%= link_to('About', about_path) %></li>
+						</ul> 
           </span> 
         </div> 
         <p>Project implemented by the <a href="http://www.biodiversity.be/">Belgian Biodiversity platform</a> - <a href="http://www.biodiversity.be/454">Contact</a></p> 

@@ -1,1 +1,45 @@
-Species # index
+<div class="outer_layout"> 
+  <div class="species_explore"> 
+    <img class="arrow" src="images/common/arrow_menu.png" alt=""/> 
+    <h2>Browse species</h2> 
+    <p class="subtitle">Explore 1432 species with the taxonomic browser. You can also <%= link_to('search for species', search_path) %> by name</p> 
+    
+  </div>
+</div>
+
+
+<div class="main species">
+	<div class="left"> 
+	  <div class="landscapes"> 
+	    <h3>Most popular species</h3> 
+	    <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p> 
+	    <div class="species_list"> 
+	      <ul class="published_afg">
+					<% Species.limit(6).each do |species| %>
+	        <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
+	          <%= render species %>
+	        </li> 
+	        <% end %>
+	      </ul> 
+	    </div> 
+	  </div> 
+	</div> 
+
+	<div class="right"> 
+	  <div class="feature"> 
+	    <p class="subtitle">Featured landscape</p> 
+	    <h3>Bowhead whale</h3>
+			<p class="star"><span><img src="images/common/pink_star.png" alt="heart"/>3</span></p>
+			<div class="image">
+				<img src="#" alt="#" title="#" />
+				<span class="shadow"></span>
+			</div>
+			<p class="info">Last year, the historical and epic big big discovery discovery of 13 new  species of bacterias by dr. Xeniakis’ greatest expedition put Roosevelt Island on the international scientific life virtual map.
+			Roosevelt President Island on the international scientific map. <br/><br/>
+
+			Most of this coastal territory is still unexplored... <%= link_to('Learn more', '#') %></p>
+	  </div> 
+	</div>
+</div>
+
+<%= render 'guides/your_guide' %>
