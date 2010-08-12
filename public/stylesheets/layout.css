@@ -22,27 +22,9 @@ p.species_guide_rank {width:40px; font:normal 11px "Lucida Grande"; text-transfo
 
 p.left {float:left;}
 p.right {float:right;}
-
 p.white {color:#FFFFFF;}
 
-p.landscapes_rank.first_rank {background:url(../images/common/rank_landscapes_20.png) no-repeat 0 bottom;}
-p.landscapes_rank.second_rank {background:url(../images/common/rank_landscapes_40.png) no-repeat 0 bottom;}
-p.landscapes_rank.third_rank {background:url(../images/common/rank_landscapes_60.png) no-repeat 0 bottom;}
-p.landscapes_rank.fourth_rank {background:url(../images/common/rank_landscapes_80.png) no-repeat 0 bottom;}
-p.landscapes_rank.fifth_rank {background:url(../images/common/rank_landscapes_100.png) no-repeat 0 bottom;}
 
-p.species_guide_rank.first_rank {background:url(../images/common/rank_landscapes_20.png) no-repeat 0 bottom;}
-p.species_guide_rank.second_rank {background:url(../images/common/rank_landscapes_40.png) no-repeat 0 bottom;}
-p.species_guide_rank.third_rank {background:url(../images/common/rank_landscapes_60.png) no-repeat 0 bottom;}
-p.species_guide_rank.fourth_rank {background:url(../images/common/rank_landscapes_80.png) no-repeat 0 bottom;}
-p.species_guide_rank.fifth_rank {background:url(../images/common/rank_landscapes_100.png) no-repeat 0 bottom;}
-
-
-p.species_rank.first_rank {background:url(../images/common/rank_species_20.png) no-repeat 0 bottom;}
-p.species_rank.second_rank {background:url(../images/common/rank_species_40.png) no-repeat 0 bottom;}
-p.species_rank.third_rank {background:url(../images/common/rank_species_60.png) no-repeat 0 bottom;}
-p.species_rank.fourth_rank {background:url(../images/common/rank_species_80.png) no-repeat 0 bottom;}
-p.species_rank.fifth_rank {background:url(../images/common/rank_species_100.png) no-repeat 0 bottom;}
 
 
 
