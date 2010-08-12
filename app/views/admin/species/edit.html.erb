@@ -2,6 +2,12 @@
 
 <h1>Editing species <%= @species.name %></h1>
 
+<% unless @species.complete? %>
+<div class="message">
+  <div class="error">This species is still incomplete. Check its Uid or its taxonomy</div>
+</div>
+<% end -%>
+
 <div class="wide_container"> 
 
   <div class="left"> 
@@ -11,6 +17,13 @@
   </div>
   
   <div class="right">
+    
+    <h2>Update gbifKey and Taxonomy</h2>
+    
+    <p><%= link_to('update gbifKey', admin_species_path(@species, :set_uid => true), :method => :put) %></p>
+    <p><%= link_to('update taxonomy', admin_species_path(@species, :set_taxonomy => true), :method => :put) %></p>
+    
+    <br /><br />
     
     <%= render 'pictures' %>
     

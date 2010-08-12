@@ -19,4 +19,21 @@ module ApplicationHelper
     "http://twitter.com/?status=#{CGI.escape("#{species.full_name} - #{species_url(species)}")}"
   end
   
+  def flush_the_flash
+    if flash[:alert]
+      notice_div(flash[:alert], 'error')
+    elsif flash[:notice]
+      notice_div(flash[:notice], 'success')
+    end
+  end
+  
+  def notice_div(text, extra_class = nil)
+    content_tag(:div, :class => 'flashes') do
+      content_tag(:div, :class => [ 'message', extra_class ].join(' ')) do
+        content_tag(:p, text)
+      end
+    end
+  end
+  
+  
 end

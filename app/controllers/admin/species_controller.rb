@@ -44,8 +44,32 @@ class Admin::SpeciesController < ApplicationController
   def update
     @species = Species.find(params[:id])
 
+    if params[:set_uid]
+      @species.set_uid
+      if @species.uid_changed?
+        @species.save
+        redirect_to(edit_admin_species_path(@species.id), :notice => 'Species uid') and return
+      else
+        if @species.uid.blank?
+          redirect_to(edit_admin_species_path(@species.id), :alert => 'Species uid wasn\'t updated') and return
+        else
+          redirect_to(edit_admin_species_path(@species.id), :notice => 'Species uid hasn\'t been updated because it seems to be fine') and return          
+        end
+      end
+    end
+    if params[:set_taxonomy]
+      @species.get_taxon
+      @species.save
+      if @species.complete?
+        redirect_to(edit_admin_species_path(@species.id), :notice => 'Species taxonomy updated successfully') and return
+      else
+        redirect_to(edit_admin_species_path(@species.id), :alert => 'Species taxonomy is incomplete') and return
+      end
+    end
+
     respond_to do |format|
-      if @species.update_attributes(params[:species])
+      @species.attributes = (params[:species])
+      if @species.save
         format.html { redirect_to(edit_admin_species_path(@species.id), :notice => 'Species was successfully updated.') }
       else
         format.html { render :action => "edit" }
@@ -62,4 +86,5 @@ class Admin::SpeciesController < ApplicationController
       format.html { redirect_to(admin_species_url) }
     end
   end
+  
 end

@@ -27,6 +27,7 @@
 #  featured       :boolean         
 #  imported_file  :string(255)     
 #  species        :string(255)     
+#  complete       :boolean         
 #
 
 # Taxonomy sample:
@@ -47,12 +48,17 @@ class Species < ActiveRecord::Base
   
   validates_presence_of :name
   
+  validates_uniqueness_of :uid, :allow_nil => true, :allow_blank => true
+  
   before_validation :set_permalink
   
   scope :highlighted, where(:highlighted => true)
   scope :featured, where(:featured => true)
+  scope :complete, where(:complete => true)
   
-  before_create :set_uid, :get_taxon
+  before_create :set_uid, :get_taxon, :set_complete
+  
+  before_save :set_complete
 
   def to_param
     "#{id}-#{permalink}"
@@ -91,17 +97,22 @@ class Species < ActiveRecord::Base
     return nil if doc.xpath("//tc:TaxonConcept").size == 0
     result = {}
     doc.xpath("//tc:TaxonConcept").each do |concept|
+      next if concept.attr('status') != 'accepted'
       # If is included in other species
       if concept.xpath("tc:hasRelationship//tc:relationshipCategory").size > 0 && concept.xpath("tc:hasRelationship//tc:relationshipCategory").map{|r| r.attr('resource')}.include?("http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn")
         concept.xpath("tc:hasRelationship//tc:Relationship").each do |relationship|
           if relationship.xpath("tc:relationshipCategory")[0].attr('resource') == 'http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn'
             if included_uid = relationship.xpath("tc:toTaxon")[0].attr('resource').split('/').last
-              return self.get_taxon(included_uid)
+              if included_uid != uid
+                # debug
+                # puts "get_taxon: #{uid} > #{included_uid}"
+                return self.get_taxon(included_uid)
+              end
             end
           end
         end
       else
-        # Get Taxon attributes
+      # Get Taxon attributes
         if concept.xpath("tc:hasRelationship//tc:relationshipCategory").size > 0 && concept.xpath("tc:hasRelationship//tc:relationshipCategory")[0].attr('resource') == "http://rs.tdwg.org/ontology/voc/TaxonConcept#IsChildTaxonOf"
           case concept.xpath("tc:hasName//tn:rankString")[0].inner_text
             when 'species'
@@ -122,6 +133,10 @@ class Species < ActiveRecord::Base
         end
       end
     end
+    # debug
+    # if result.keys.size < 7
+    #   puts "Resultado incompleto: #{uid}"
+    # end
     result
   rescue
     {}
@@ -141,20 +156,26 @@ class Species < ActiveRecord::Base
     end
   end
   
-  private
-  
-    def set_uid
-      response = open("http://es.mirror.gbif.org/ws/rest/taxon/list?rank=species&scientificname="+URI.escape(self.full_name)).read
-      doc = Nokogiri::XML(response)
-      if doc.xpath("//tc:TaxonConcept").size > 0
-        self.uid = doc.xpath("//tc:TaxonConcept")[0].attr('gbifKey').to_i
+  def set_uid
+    response = open("http://es.mirror.gbif.org/ws/rest/taxon/list?rank=species&scientificname="+URI.escape(self.full_name)).read
+    doc = Nokogiri::XML(response)
+    if doc.xpath("//gbif:dataProvider").size > 0
+      doc.xpath("//gbif:dataProvider").each do |data_provider|
+        if data_provider.attr('gbifKey').to_i == 1
+          if data_provider.xpath("gbif:dataResources//tc:TaxonConcept").size > 0
+            self.uid = data_provider.xpath("gbif:dataResources//tc:TaxonConcept")[0].attr('gbifKey').to_i
+          end
+        end
       end
-    rescue
     end
+  rescue
+  end
+  
+  private
   
     def set_permalink
       return unless self.permalink.blank?
-      self.permalink = name.sanitize
+      self.permalink = name.sanitize unless name.blank?
       temporal_permalink = permalink
       if self.class.exists?(:permalink => temporal_permalink)
         i = 2
@@ -165,6 +186,11 @@ class Species < ActiveRecord::Base
         end
         self.permalink = temporal_permalink
       end
+    end
+    
+    def set_complete
+      self.complete = (!self.uid.blank? && !self.kingdom.blank? && !self.t_order.blank? && !self.t_class.blank? && !self.genus.blank? && !self.phylum.blank? && !self.family.blank? && !self.species.blank?)
+      return true
     end
   
 end

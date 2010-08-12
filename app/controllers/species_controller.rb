@@ -5,7 +5,7 @@ class SpeciesController < ApplicationController
   end
   
   def show
-    @species = Species.find(params[:id])
+    @species = Species.complete.find(params[:id])
   end
   
 end

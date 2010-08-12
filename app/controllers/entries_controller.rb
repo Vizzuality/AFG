@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
     if params[:type] == 'Guide' and guide = Guide.find(params[:id])
       @current_guide.included_guides << guide
       flash[:notice] = 'Guide added successfully'
-    elsif params[:type] == 'Species' and species = Species.find(params[:id])
+    elsif params[:type] == 'Species' and species = Species.complete.find(params[:id])
       @current_guide.species << species
       flash[:notice] = 'Species added successfully'
     else
