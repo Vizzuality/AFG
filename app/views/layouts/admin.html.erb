@@ -28,8 +28,8 @@
       <div class="logo"> 
         <a href="/"></a> 
         <span class="search"> 
-          <form> 
-            <input type="text" value="Search species, guides, ..." /> 
+          <form method="get" action="<%= admin_species_index_path %>"> 
+            <input id="search_term" type="text" name="q" />
             <input type="submit" value="" /> 
           </form> 
         </span> 

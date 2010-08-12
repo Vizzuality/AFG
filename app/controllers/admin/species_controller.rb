@@ -5,9 +5,16 @@ class Admin::SpeciesController < ApplicationController
   before_filter :admin_authenticated
   
   # GET /admin_species
-  def index
-    @species = Species.paginate(:per_page => 20, :page => params[:page])
-
+  def index    
+    @species = if params[:complete] && params[:complete] == 'true'
+      Species.complete
+    else
+      Species
+    end
+    if params[:q]
+      @species = @species.find_by_term(params[:q])
+    end
+    @species = @species.paginate(:per_page => 20, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
     end
