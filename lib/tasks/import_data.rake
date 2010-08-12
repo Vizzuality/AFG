@@ -36,26 +36,30 @@ namespace :afg do
         offset_in_line += 2 if line.size == 18
         
         begin
-          species = Species.new
-          species.imported_file = importing_file
-          species.genus = line[0]
-          species.name = line[1]
-          species.common_name = line[offset_in_line+6] if line[offset_in_line+6] != 'None' && line[offset_in_line+6] != '*'
-          species.identification = line[offset_in_line+9]
+          unless species = Species.find_by_name_and_genus(line[1], line[0])
+            species = Species.new
+            species.imported_file = importing_file
+            species.genus = line[0]
+            species.name = line[1]
+            species.common_name = line[offset_in_line+6] if line[offset_in_line+6] != 'None' && line[offset_in_line+6] != '*'
+            species.identification = line[offset_in_line+9]
         
-          species.description  = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+10]) unless line[offset_in_line+10] == '*' || line[offset_in_line+10].blank?
-          species.distribution = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+11]) unless line[offset_in_line+11] == '*' || line[offset_in_line+11].blank?
-          species.ecology      = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+12]) unless line[offset_in_line+12] == '*' || line[offset_in_line+12].blank?
-          species.size         = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+13]) unless line[offset_in_line+13] == '*' || line[offset_in_line+13].blank?
-          species.depth        = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+14]) unless line[offset_in_line+14] == '*' || line[offset_in_line+14].blank?
-          species.reference    = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+15]) unless line[offset_in_line+15] == '*' || line[offset_in_line+15].blank?
+            species.description  = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+10]) unless line[offset_in_line+10] == '*' || line[offset_in_line+10].blank?
+            species.distribution = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+11]) unless line[offset_in_line+11] == '*' || line[offset_in_line+11].blank?
+            species.ecology      = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+12]) unless line[offset_in_line+12] == '*' || line[offset_in_line+12].blank?
+            species.size         = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+13]) unless line[offset_in_line+13] == '*' || line[offset_in_line+13].blank?
+            species.depth        = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+14]) unless line[offset_in_line+14] == '*' || line[offset_in_line+14].blank?
+            species.reference    = from_file(data_directory + '/' + importing_file + '/' + line[offset_in_line+15]) unless line[offset_in_line+15] == '*' || line[offset_in_line+15].blank?
         
-          if species.save
-            putc '.'
+            if species.save
+              putc '.'
+            else
+              putc 'e'
+              species_errors << {:line => line, :errors => species.errors.full_messages}
+              next
+            end
           else
-            putc 'e'
-            species_errors << {:line => line, :errors => species.errors.full_messages}
-            next
+            putc '.'
           end
         rescue
           putc 'e'
