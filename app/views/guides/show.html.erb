@@ -1,57 +1,275 @@
-<div class="wide_container"> 
-  
-  <div class="header_guide"> 
-    <img class="arrow" src="images/common/arrow_menu.png" alt=""/> 
-    <div class="content"> 
-      <div class="content_left"> 
-        <p class="title"><%= @guide.name %></p> 
-        <p class="by">by <%= @guide.author %></p> 
-        <div class="data_info"> 
-          <p class="downloads_data"><span><%= @guide.popularity %></span></p> 
-        </div> 
-        <%= simple_format(@guide.description, :class => 'info_guide') %>
+<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+<%= javascript_include_tag "landscapes/landscapes.js" %>
+	  
+	
+	<div class="outer_layout"> 
+	  <div class="guide_header"> 
+			<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+	      <div class="left"> 
+					<ul class="breadcrumb">
+						<li><a href="#">Guides</a></li>
+					</ul>
+					<h1><%= @guide.name %></h1> 
+	        <p class="by">created by <strong><%= @guide.author %></strong> on December 13th, 2010</p>
+				
+					<div class="map_container">
+						<div id="map"></div>
+					</div>
+				</div>  
+
+	      <div class="right"> 
+	        <div class="data_info"> 
+	          <p class="downloads_data"><span><%= @guide.popularity %> DOWNLOADS</span></p>
+						<p class="download"><a href="#">or download it</a></p>
+	        </div> 
+	        <div class="amount_info"> 
+	          <p class="species_guide_rank second_rank white left"><%= pluralize(@guide.species_count, 'SPECIES') %></p> 
+	        </div>
+	        <%= simple_format(@guide.description, :class => 'info_guide') %>
         
-        <a class="download_guide" href="<%= pdf_guide_path(@guide) + '.pdf' %>"> 
-          <p class="title">download this guide</p> 
-          <p class="size">(32 pages, 2,3MB)</p>
-        </a> 
-        <% if !@current_guide.included_guides.include?(@guide) && @current_guide != @guide %>
-        <p class="template">or 
-          <%= link_to('use it as template', entries_path(:type => 'Guide', :id => @guide), :method => :post) %> for yours
-        </p>
-        <% end %>
-                  
-      </div> <!-- content_left --> 
-      <div class="content_right"> 
-        
-        <div class="amount_info"> 
-          <p class="species_guide_rank second_rank white right"><%= pluralize(@guide.species_count, 'SPECIES') %></p> 
-        </div> 
-        <div class="bkg_map"> 
-          <div class="map"></div> 
-        </div> 
-      </div> 
-    </div> 
-  </div> <!-- header_guide --> 
+	        <a class="download_guide" href="<%= pdf_guide_path(@guide) + '.pdf' %>"> 
+	          <p class="title">download this guide</p> 
+	          <p class="size">(32 pages, 2,3MB)</p>
+	        </a> 
+	        <% if !@current_guide.included_guides.include?(@guide) && @current_guide != @guide %>
+	        	<p class="template">or <%= link_to('use it as template', entries_path(:type => 'Guide', :id => @guide), :method => :post) %> for yours </p>
+	        <% end %>
+	      </div>
+
+	  </div>
+	</div>
+	
+	
+	
+	<div class="main guide">
+		<div class="top">
+			<div class="left">
+				<h2><%= Species.count %> species included in this guide</h2>
+	    	<p class="subtitle">you can also browse <%= link_to('all species', species_path) %></p> 
+			</div>
+			<div class="right">
+				<ul>
+					<li class="last"><a href="#"><span>12 Plantae</span></a></li>
+					<li><a href="#"><span>5 Fungi</span></a></li>
+					<li><a href="#"><span>3 Animalia</span></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="family">
+			<h3>3 ANIMALIA</h3>
+			<ul>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="family">
+			<h3>3 FUNGI</h3>
+			<ul>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>			
+			</ul>
+		</div>
+		
+		<div class="family">
+			<h3>12 PLANTAE</h3>
+			<ul>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_row">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>	
+				<li class="last_row last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</div>
   
-  <div class="taxonomy_browser_body"> 
-    <div class="content"> 
-      <div class="content_left"> 
-        <p class="species_included">Species included</p> 
-        <p class="number_species"><b><%= pluralize(@guide.species_count, 'SPECIES') %></b> in this guide</p>        
-      </div> 
-      <div class="content_right"> 
-        <a class="view_advanced_browser" href="#">view the <span>advanced taxon browser</span></a> 
-      </div> 
-      <div class="taxonomy_browser"> <!-- FAKE --> 
-      </div> 
-    </div> 
-  </div> <!-- taxonomy_browser_body --> 
+
           
-  <div class="info_species_list"> 
+  <!-- <div class="info_species_list"> 
     <p>more than <%= Species.count %> species in our <a href="<%= species_index_path %>">species list</a></p> 
-  </div> 
+  </div>  -->
   
   <%= render 'guides/your_guide' %>
 
-</div>
