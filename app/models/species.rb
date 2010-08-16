@@ -64,6 +64,14 @@ class Species < ActiveRecord::Base
     "#{id}-#{permalink}"
   end
   
+  def self.default_picture(style)
+    "/images/defaults/#{style}_specie.jpg"
+  end
+  
+  def default_picture(style)
+    self.class.default_picture(style)
+  end
+  
   def taxon
     return nil if self.kingdom.blank?
     "#{self.kingdom} > #{self.phylum} > #{self.t_class} > #{self.t_order} > #{self.family} > #{self.genus}"
@@ -71,10 +79,6 @@ class Species < ActiveRecord::Base
   
   def picture
     pictures.try(:first)
-  end
-  
-  def default_picture
-    "/images/default_big.png"
   end
   
   def name

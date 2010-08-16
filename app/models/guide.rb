@@ -83,6 +83,10 @@ class Guide < ActiveRecord::Base
     entry
   end
   
+  def default_picture(style)
+    "/images/defaults/#{style}_specie.jpg"
+  end
+  
   def undo_last_action
     return if last_action.blank?
     element_type, element_id = last_action.split('#')

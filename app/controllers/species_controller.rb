@@ -1,7 +1,7 @@
 class SpeciesController < ApplicationController
   
   def index
-    
+    @featured_species = Species.featured.first
   end
   
   def show

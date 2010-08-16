@@ -24,9 +24,31 @@ class Entry < ActiveRecord::Base
   def self.per_page; 5 end
   
   def element
-    element_type.constantize.find(element_id)
+    case element_type
+    when 'Species'
+      Species.find(element_id)
+    when 'Landscape'
+      Landscape.find(element_id)
+    when 'Guide'
+      Guide.find(element_id)
+    else
+      Species.send("find_by_#{element_type.downcase}".to_sym, element_id)
+    end
   rescue
     nil
+  end
+  
+  def activity_type
+    case element_type
+    when 'Species'
+      'species'
+    when 'Landscape'
+      'landscape'
+    when 'Guide'
+      'guide'
+    else
+      'taxonomy'
+    end
   end
   
   def full_name

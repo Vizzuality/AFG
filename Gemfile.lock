@@ -13,6 +13,14 @@ GIT
     will_paginate (3.0.pre2)
 
 GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 32b9a28
+  specs:
+    paperclip (2.3.3)
+      activerecord
+      activesupport
+
+GIT
   remote: http://github.com/bmabey/database_cleaner.git
   revision: 7ea99d7
   specs:
@@ -142,6 +150,7 @@ DEPENDENCIES
   launchy
   nofxx-georuby
   nokogiri
+  paperclip!
   pdfkit
   pg (= 0.9.0)
   rails (= 3.0.0.rc)

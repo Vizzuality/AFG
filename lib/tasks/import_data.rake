@@ -10,8 +10,11 @@ namespace :afg do
     species_errors = []
     pictures_errors = []
     # Families in the data files
+    # %W{
+    #   Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
+    # }.each do |importing_file|
     %W{
-      Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
+      Arthropods
     }.each do |importing_file|
       # Species
       puts
@@ -69,18 +72,22 @@ namespace :afg do
         
         # Pictures
         next if line[offset_in_line+2] == '*'
-        picture = Picture.new
-        picture.filename = line[offset_in_line+2]
-        picture.title = line[offset_in_line+3]
-        picture.caption = line[offset_in_line+4]
-        picture.photographer = line[offset_in_line+5]
-        picture.locality = line[offset_in_line+7]
-        picture.species = species
-        if picture.save
-          putc '.'
-        else
-          putc 'e'
-          pictures_errors << {:line => line, :errors => picture.errors.full_messages + " -- " + $!}
+        file = "#{Rails.root}/public/images/data/#{importing_file}/#{line[offset_in_line+2]}"
+        if File.file?(file)
+          picture = Picture.new
+          picture.filename = line[offset_in_line+2]
+          picture.image = File.open(file, 'rb')
+          picture.title = line[offset_in_line+3]
+          picture.caption = line[offset_in_line+4]
+          picture.photographer = line[offset_in_line+5]
+          picture.locality = line[offset_in_line+7]
+          picture.species = species
+          if picture.save
+            putc '.'
+          else
+            putc 'e'
+            pictures_errors << {:line => line, :errors => picture.errors.full_messages + " -- " + $!}
+          end
         end
       end
     end

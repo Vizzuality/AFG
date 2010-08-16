@@ -14,7 +14,7 @@ gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branc
 gem 'fastercsv'
 gem 'pdfkit'
 gem 'nokogiri'
-
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'
