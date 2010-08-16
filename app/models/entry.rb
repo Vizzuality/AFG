@@ -18,7 +18,8 @@ class Entry < ActiveRecord::Base
 
   validates_uniqueness_of :element_id, :scope => [:guide_id, :element_type]
   
-  after_create :update_counter_caches
+  after_create :increment_counter_caches
+  before_destroy :decrement_counter_caches
   
   def element
     element_type.constantize.find(element_id)
@@ -41,7 +42,7 @@ class Entry < ActiveRecord::Base
   
   private
 
-    def update_counter_caches
+    def increment_counter_caches
       case element_type
         when 'Species'
           Species.increment_counter(:guides_count, element_id.to_i)
@@ -97,6 +98,59 @@ class Entry < ActiveRecord::Base
             s.save
           end
           update_attribute(:elements_count, species.size)
+      end
+    end
+    
+    def decrement_counter_caches
+      case element_type
+        when 'Species'
+          Species.decrement_counter(:guides_count, element_id.to_i)
+          Guide.decrement_counter(:species_count, guide_id)
+        when 'Landscape'
+          Landscape.decrement_counter(:guides_count, element_id.to_i)
+          Guide.decrement_counter(:landscapes_count, guide_id)
+        when 'Kingdom'
+          species = Species.find_all_by_kingdom(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
+        when 'Phylum'
+          species = Species.find_all_by_phylum(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
+        when 'Class'
+          species = Species.find_all_by_t_class(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
+        when 'Order'
+          species = Species.find_all_by_t_order(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
+        when 'Family'
+          species = Species.find_all_by_family(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
+        when 'Genus'
+          species = Species.find_all_by_genus(element_id)
+          guide.update_attribute(:species_count, guide.species_count - species.size)
+          species.each do |s|
+            s.decrement(:guides_count)
+            s.save
+          end
       end
     end
   

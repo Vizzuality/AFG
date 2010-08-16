@@ -82,6 +82,22 @@ class Guide < ActiveRecord::Base
     update_attribute(:last_action, "#{element_type}##{element_id}")
   end
   
+  def undo_last_action
+    return if last_action.blank?
+    element_type, element_id = last_action.split('#')
+    case element_type
+      when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
+        entry = entries.find_by_element_type_and_element_id(element_type, element_id)
+        entry.destroy
+      when 'Guide'
+        guide = Guide.find(element_id)
+        guide.entries.each do |entry|
+          entry = entries.find_by_element_type_and_element_id(entry.element_type, entry.element_id)
+          entry.destroy
+        end
+    end
+  end
+  
   private
   
     def set_permalink
