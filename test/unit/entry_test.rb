@@ -1,92 +1,239 @@
 require 'test_helper'
 
 class EntryTest < ActiveSupport::TestCase
-
-  test "A entry must have a species_id or a guide_id" do
-    species = create_species :name => 'Penguin'
-    guide = create_guide :name => 'Parent guide'
-    included_guide = create_guide :name => 'Guide'
-    
-    entry = Entry.new :guide => guide
-    assert !entry.valid?
-    entry.species = species
-    assert entry.valid?
-    entry.species = nil
-    entry.included_guide = included_guide
-    assert entry.valid?
-  end
   
-  test "Relations between guides, species, entries and cache_counters" do
+  test "An species should be added to a guide" do
     species = create_species :name => 'Penguin'
     guide = create_guide :name => 'Parent guide'
-    included_guide = create_guide :name => 'Guide'
     
-    assert guide.species.empty?
-    guide.species << species
+    assert_difference 'Entry.count' do
+      guide.add_entry('Species', species.id.to_s)
+    end
+    
     guide.reload
     species.reload
-    assert guide.species.include?(species)
-    assert species.guides.include?(guide)
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Species', entry.element_type
+    assert_equal species.id.to_s, entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 1, guide.species_count
+    assert_equal 0, guide.landscapes_count
     assert_equal 1, species.guides_count
-    
-    assert guide.included_guides.empty?
-    guide.included_guides << included_guide
-    guide.reload
-    included_guide.reload
-    assert guide.included_guides.include?(included_guide)
-    assert_equal 1, included_guide.popularity
   end
-  
-  test ":name method" do
-    species = create_species :name => 'Penguin'
-    guide = create_guide :name => 'Parent guide'
-    included_guide = create_guide :name => 'Guide'
-    
-    guide.species << species
-    assert_equal species.name, guide.entries.first.name
-    guide.included_guides << included_guide
-    assert_equal included_guide.name, guide.entries.first.name
-  end
-  
-  test "Saving a guide should add the species included in the guide" do
-    penguin = create_species :name => 'Penguin'
-    whale = create_species :name => 'Whale'
-    guide = create_guide :name => 'Parent guide'
-    included_guide = create_guide :name => 'Guide'
-    included_guide.species << penguin
-    included_guide.species << whale
-    
-    guide.included_guides << included_guide
-    assert guide.species.include?(penguin)
-    assert guide.species.include?(whale)
-    assert_equal 2, guide.species.count
-  end
-  
-  test "Save a guide and a species creates different activities" do
-    species = create_species :name => 'Penguin'
-    guide = create_guide :name => 'Parent guide'
-    included_guide = create_guide :name => 'Guide'
-    
-    assert guide.species.empty?
-    guide.species << species
-    guide.reload
-    species.reload
-    assert guide.species.include?(species)
-    assert species.guides.include?(guide)
-    assert_equal 1, species.guides_count
-    
-    assert_equal 1, Activity.count
-    assert_equal 'species', Activity.last.action
-    
-    assert guide.included_guides.empty?
-    guide.included_guides << included_guide
-    guide.reload
-    included_guide.reload
-    assert guide.included_guides.include?(included_guide)
-    assert_equal 1, included_guide.popularity
 
-    assert_equal 2, Activity.count
-    assert_equal 'included_guide', Activity.last.action
+  test "A landscape should be added to a guide" do
+    landscape = create_landscape :name => 'South Pole'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Landscape', landscape.id.to_s)
+    end
+    
+    guide.reload
+    landscape.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Landscape', entry.element_type
+    assert_equal landscape.id.to_s, entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 0, guide.species_count
+    assert_equal 1, guide.landscapes_count
+    assert_equal 1, landscape.guides_count
   end
   
+  test "A kingdom should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :kingdom => 'Animals'
+    species2 = create_species :name => 'Whale', :kingdom => 'Animals'
+    species3 = create_species :name => 'Squid', :kingdom => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Kingdom', 'Animals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Kingdom', entry.element_type
+    assert_equal 'Animals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A phylum should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :phylum => 'PAnimals'
+    species2 = create_species :name => 'Whale',   :phylum => 'PAnimals'
+    species3 = create_species :name => 'Squid',   :phylum => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Phylum', 'PAnimals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Phylum', entry.element_type
+    assert_equal 'PAnimals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A class should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :t_class => 'CAnimals'
+    species2 = create_species :name => 'Whale',   :t_class => 'CAnimals'
+    species3 = create_species :name => 'Squid',   :t_class => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Class', 'CAnimals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Class', entry.element_type
+    assert_equal 'CAnimals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A order should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :t_order => 'OAnimals'
+    species2 = create_species :name => 'Whale',   :t_order => 'OAnimals'
+    species3 = create_species :name => 'Squid',   :t_order => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Order', 'OAnimals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Order', entry.element_type
+    assert_equal 'OAnimals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A family should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :family => 'FAnimals'
+    species2 = create_species :name => 'Whale',   :family => 'FAnimals'
+    species3 = create_species :name => 'Squid',   :family => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Family', 'FAnimals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Family', entry.element_type
+    assert_equal 'FAnimals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A genus should be added to a guide" do
+    species1 = create_species :name => 'Penguin', :genus => 'GAnimals'
+    species2 = create_species :name => 'Whale',   :genus => 'GAnimals'
+    species3 = create_species :name => 'Squid',   :genus => 'Vegetals'
+    guide = create_guide :name => 'Parent guide'
+    
+    assert_difference 'Entry.count' do
+      guide.add_entry('Genus', 'GAnimals')
+    end
+    
+    guide.reload
+    species1.reload
+    species2.reload
+    species3.reload
+    
+    assert_equal 1, Entry.count
+    entry = Entry.first
+    assert_equal guide.id, entry.guide_id
+    assert_equal 'Genus', entry.element_type
+    assert_equal 'GAnimals', entry.element_id
+    assert_equal [entry], guide.entries
+    assert_equal 2, guide.species_count
+    assert_equal 1, species1.guides_count
+    assert_equal 1, species2.guides_count
+    assert_equal 0, species3.guides_count
+  end
+  
+  test "A guide should be used as template of a guide" do
+    landscape = create_landscape :name => 'South Pole'
+    template_guide = create_guide :name => 'Parent guide'
+    species = create_species :name => 'Penguin'
+    guide = create_guide :name => 'View penguins'
+    
+    template_guide.add_entry('Landscape', landscape.id.to_s)
+    template_guide.add_entry('Species', species.id.to_s)
+    
+    assert_difference 'Entry.count', 2 do
+      guide.add_entry('Guide', template_guide.id.to_s)
+    end
+    
+    guide.reload
+    template_guide.reload
+    species.reload
+    landscape.reload
+    
+    assert_equal 4, Entry.count
+    assert_equal 2, species.guides_count
+    assert_equal 2, landscape.guides_count
+    assert_equal 1, guide.species_count
+    assert_equal 1, guide.landscapes_count
+    
+    assert_not_nil Entry.find_by_guide_id_and_element_type_and_element_id(guide.id, 'Landscape', landscape.id.to_s)
+    assert_not_nil Entry.find_by_guide_id_and_element_type_and_element_id(guide.id, 'Species', species.id.to_s)
+  end
+
 end

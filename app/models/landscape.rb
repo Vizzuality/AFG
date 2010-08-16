@@ -2,19 +2,19 @@
 #
 # Table name: landscapes
 #
-#  id          :integer         not null, primary key
-#  name        :string(255)     
-#  permalink   :string(255)     
-#  source      :string(255)     
-#  description :text            
-#  related_url :string(255)     
-#  image1_url  :string(255)     
-#  image2_url  :string(255)     
-#  image3_url  :string(255)     
-#  image4_url  :string(255)     
-#  created_at  :datetime        
-#  updated_at  :datetime        
-#  the_geom    :geometry        not null
+#  id           :integer         not null, primary key
+#  name         :string(255)     
+#  permalink    :string(255)     
+#  source       :string(255)     
+#  description  :text            
+#  related_url  :string(255)     
+#  image1_url   :string(255)     
+#  image2_url   :string(255)     
+#  image3_url   :string(255)     
+#  image4_url   :string(255)     
+#  guides_count :integer         default(0)
+#  created_at   :datetime        
+#  updated_at   :datetime        
 #
 
 class Landscape < ActiveRecord::Base

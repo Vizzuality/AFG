@@ -2,19 +2,20 @@
 #
 # Table name: guides
 #
-#  id              :integer         not null, primary key
-#  permalink       :string(255)     
-#  name            :string(255)     
-#  author          :string(255)     
-#  description     :text            
-#  species_count   :integer         default(0)
-#  downloads_count :integer         default(0)
-#  session_id      :string(255)     
-#  popularity      :integer         default(0)
-#  highlighted     :boolean         
-#  published       :boolean         
-#  created_at      :datetime        
-#  updated_at      :datetime        
+#  id               :integer         not null, primary key
+#  permalink        :string(255)     
+#  name             :string(255)     
+#  author           :string(255)     
+#  description      :text            
+#  species_count    :integer         default(0)
+#  landscapes_count :integer         default(0)
+#  downloads_count  :integer         default(0)
+#  session_id       :string(255)     
+#  popularity       :integer         default(0)
+#  highlighted      :boolean         
+#  published        :boolean         
+#  created_at       :datetime        
+#  updated_at       :datetime        
 #
 
 class Guide < ActiveRecord::Base
@@ -23,8 +24,6 @@ class Guide < ActiveRecord::Base
   validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
 
   has_many :entries, :order => 'created_at DESC'
-  has_many :species, :through => :entries
-  has_many :included_guides, :through => :entries, :source => :included_guide
   
   scope :published,       where("published = ?", true)
   scope :highlighted,     published.where("highlighted = ?", true)
@@ -53,6 +52,18 @@ class Guide < ActiveRecord::Base
   
   def pdf_name
     "#{to_param}.pdf"
+  end
+  
+  def add_entry(element_type, element_id)
+    case element_type
+      when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
+        entries.create(:element_type => element_type, :element_id => element_id.to_s)
+      when 'Guide'
+        guide = Guide.find(element_id)
+        guide.entries.each do |entry|
+          entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
+        end
+    end
   end
   
   private

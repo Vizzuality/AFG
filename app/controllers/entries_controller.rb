@@ -1,15 +1,20 @@
 class EntriesController < ApplicationController
   
   def create
-    if params[:type] == 'Guide' and guide = Guide.find(params[:id])
-      @current_guide.included_guides << guide
+    element = if params[:type] == 'Guide' and guide = Guide.find(params[:id])
       flash[:notice] = 'Guide added successfully'
+      Entry.create :guide => @current_guide, :element_type => 'Guide', :element_id => guide.id
     elsif params[:type] == 'Species' and species = Species.complete.find(params[:id])
-      @current_guide.species << species
       flash[:notice] = 'Species added successfully'
     else
-      flash[:alert] = 'Bad parameters'
+      nil
     end
+    if element.nil?
+      flash[:alert] = 'Bad parameters'
+    else
+      @current_guide.elements << element
+    end
+    
   rescue ActiveRecord::RecordNotFound
     message = if params[:type] == 'Guide'
       "The guide doesn't exist"

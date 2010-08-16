@@ -6,11 +6,12 @@ class CreateLandscapes < ActiveRecord::Migration
       t.string :source
       t.text :description
       t.string :related_url
-      t.multi_polygon :the_geom, :srid => 4326, :null => false
+      # t.multi_polygon :the_geom, :srid => 4326, :null => false
       t.string :image1_url
       t.string :image2_url
       t.string :image3_url
       t.string :image4_url
+      t.integer :guides_count, :default => 0
       t.timestamps
     end
   end
