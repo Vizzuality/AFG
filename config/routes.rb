@@ -11,7 +11,7 @@ AFG::Application.routes.draw do |map|
   match 'guides/pdf/:id' => 'guides#pdf', :as => 'pdf_guide'
   match 'guides/edit/current' => 'guides#edit', :as => 'edit_guide'
 
-  resources :landscapes, :only => [:index]
+  resources :landscapes, :only => [:index, :show]
   resources :species
   resources :entries, :only => [:create, :destroy, :index]
 

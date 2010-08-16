@@ -20,3 +20,8 @@ s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animali
                 :identification => 'Myriam Schuller', :uid => '13783975', :family => 'Aphroditidae', :genus => 'Laetmonice',
                 :species => 'Laetmonice producta', :featured => true
 s.save
+
+
+l = Landscape.new :name => 'South Pole'
+l.description = "El polo sur"
+l.save
