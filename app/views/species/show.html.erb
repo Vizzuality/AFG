@@ -34,7 +34,7 @@
 		    </div>
 		    <% if @species.picture %>
 		    <div class="img_specie">
-		      <img src="<%= @species.picture.public_filename %>"/>
+		      <img src="<%= @species.picture.image.url(:medium) %>"/>
 		    </div> 
 		    <% end -%>    
 		  </div>
