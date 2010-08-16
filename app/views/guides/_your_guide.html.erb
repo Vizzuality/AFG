@@ -1,7 +1,9 @@
 <div class="long"> 
-  <div class="long_in"> 
-    <h3>Your Atlantic Field Guide</h3> 
-    <p class="subtitle"><%= @current_guide.entries.count > 1 ? @current_guide.entries.count : 'Here is were your species and landscapes will be added' %></p> 
+  <div class="long_in">
+		<div class="title">
+    	<h3>Your Atlantic Field Guide</h3> 
+    	<p class="subtitle"><%= @current_guide.entries.count > 1 ? @current_guide.entries.count : 'Here is were your species and landscapes will be added' %></p> 
+		</div>
     <ul id="sortable">
       <% @current_guide.entries.each do |entry| %>
       	<li id="draggable" class="<%= entry_css_class(entry) %>"><p class="title" title="<%= entry.full_name %>"><%= entry.full_name.truncate(15) %></p></li> 

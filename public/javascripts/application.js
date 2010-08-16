@@ -52,24 +52,12 @@ $(document).ready(function() {
 
 	// click sorted box  >> GUIDES
 	$('div.activated_box a.sorted_box_activated').click(function(ev){
-
 		ev.stopPropagation();
 		ev.preventDefault();
-
 		$(this).parent().fadeOut();
-
 	});
 	
 	
-	// Who has the higher height? >> GUIDES
-	var left_guides = $('div.left div#guides_left').height();
-       var right_guides = $('div.right div.about_afg').height();
-
-       if (left_guides>right_guides) {
-                       $('div.about_afg').height(left_guides+20);
-       } else {
-                       $('div#guides_left').height(right_guides+20);
-       }
        
 	//hover created list effect >> EXPLORE
 	$('div.most_popular_explore div.content ul li').hover(function(ev){
@@ -79,8 +67,7 @@ $(document).ready(function() {
 		$(this).css('background-position','0 -2px');
 	});
 	
-	AFG.behaviour();
-			
+	AFG.behaviour();	
  });
 
 
