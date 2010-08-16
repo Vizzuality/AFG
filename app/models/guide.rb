@@ -61,7 +61,7 @@ class Guide < ActiveRecord::Base
     entries.exists?(:element_type => 'Phylum', :element_id => species.phylum) || 
     entries.exists?(:element_type => 'Class', :element_id => species.t_class) || 
     entries.exists?(:element_type => 'Order', :element_id => species.t_order) || 
-    entries.exists?(:element_type => 'Family', :element_id => species.familiy) || 
+    entries.exists?(:element_type => 'Family', :element_id => species.family) || 
     entries.exists?(:element_type => 'Genus', :element_id => species.genus)
   end
   
