@@ -10,7 +10,7 @@
   </tr>
   <% @species.pictures.each do |picture| %>
   <tr>
-    <td><img src="<%= picture.public_filename %>" height="32" width="32" /></td>
+    <td><img src="<%= picture.image.url(:small) %>" height="48" width="48" /></td>
     <td><%= picture.title %></td>
     <td><%= picture.photographer %></td>
     <td><%= link_to('Edit', edit_admin_species_picture_path(@species, picture)) %></td>

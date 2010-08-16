@@ -1,4 +1,4 @@
-<%= form_for(@picture, :url => url_for(:action => (@picture.new_record? ? 'create' : 'update'), :controller => 'admin/pictures', :species_id => @species.id)) do |f| %>
+<%= form_for(@picture, :url => url_for(:action => (@picture.new_record? ? 'create' : 'update'), :controller => 'admin/pictures', :species_id => @species.id), :html => {:multipart => true}) do |f| %>
   <% if @picture.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
@@ -14,6 +14,10 @@
   <div class="field">
     <%= f.label :filename %><br />
     <%= f.text_field :filename, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
