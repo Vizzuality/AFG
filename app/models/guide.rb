@@ -16,6 +16,7 @@
 #  published        :boolean         
 #  created_at       :datetime        
 #  updated_at       :datetime        
+#  last_action      :string(255)     
 #
 
 class Guide < ActiveRecord::Base
@@ -54,6 +55,20 @@ class Guide < ActiveRecord::Base
     "#{to_param}.pdf"
   end
   
+  def include_species?(species)
+    entries.exists?(:element_type => species.class.to_s, :element_id => species.id.to_s) ||
+    entries.exists?(:element_type => 'Kingdom', :element_id => species.kingdom) || 
+    entries.exists?(:element_type => 'Phylum', :element_id => species.phylum) || 
+    entries.exists?(:element_type => 'Class', :element_id => species.t_class) || 
+    entries.exists?(:element_type => 'Order', :element_id => species.t_order) || 
+    entries.exists?(:element_type => 'Family', :element_id => species.familiy) || 
+    entries.exists?(:element_type => 'Genus', :element_id => species.genus)
+  end
+  
+  def include_landscape?(landscape)
+    entries.exists?(:element_type => landscape.class.to_s, :element_id => landscape.id.to_s)
+  end
+  
   def add_entry(element_type, element_id)
     case element_type
       when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
@@ -62,6 +77,23 @@ class Guide < ActiveRecord::Base
         guide = Guide.find(element_id)
         guide.entries.each do |entry|
           entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
+        end
+    end
+    update_attribute(:last_action, "#{element_type}##{element_id}")
+  end
+  
+  def undo_last_action
+    return if last_action.blank?
+    element_type, element_id = last_action.split('#')
+    case element_type
+      when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
+        entry = entries.find_by_element_type_and_element_id(element_type, element_id)
+        entry.destroy
+      when 'Guide'
+        guide = Guide.find(element_id)
+        guide.entries.each do |entry|
+          entry = entries.find_by_element_type_and_element_id(entry.element_type, entry.element_id)
+          entry.destroy
         end
     end
   end

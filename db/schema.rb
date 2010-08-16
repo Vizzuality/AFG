@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100812132828) do
+ActiveRecord::Schema.define(:version => 20100816120620) do
 
   create_table "activities", :force => true do |t|
     t.column "user_id", :integer
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20100812132828) do
     t.column "species_id", :integer
     t.column "included_guide_id", :integer
     t.column "position", :integer
+    t.column "elements_count", :integer, :default => 0
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
   end
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20100812132828) do
     t.column "published", :boolean, :default => false
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
+    t.column "last_action", :string
   end
 
   add_index "guides", ["author"], :name => "index_guides_on_author"
