@@ -23,6 +23,7 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal 0, guide.landscapes_count
     assert_equal 1, species.guides_count
     assert_equal 0, entry.elements_count
+    assert_equal "Species##{species.id}", guide.last_action
   end
 
   test "A landscape should be added to a guide" do
@@ -46,6 +47,7 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal 1, guide.landscapes_count
     assert_equal 1, landscape.guides_count
     assert_equal 0, entry.elements_count
+    assert_equal "Landscape##{landscape.id}", guide.last_action
   end
   
   test "A kingdom should be added to a guide" do
@@ -214,6 +216,7 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal 1, species2.guides_count
     assert_equal 0, species3.guides_count
     assert_equal 2, entry.elements_count
+    assert_equal 'Genus#GAnimals', guide.last_action
   end
   
   test "A guide should be used as template of a guide" do
@@ -242,7 +245,8 @@ class EntryTest < ActiveSupport::TestCase
     
     assert_not_nil Entry.find_by_guide_id_and_element_type_and_element_id(guide.id, 'Landscape', landscape.id.to_s)
     assert_not_nil Entry.find_by_guide_id_and_element_type_and_element_id(guide.id, 'Species', species.id.to_s)
-    
+
+    assert_equal "Guide##{template_guide.id}", guide.last_action
   end
 
 end

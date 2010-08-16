@@ -16,6 +16,7 @@
 #  published        :boolean         
 #  created_at       :datetime        
 #  updated_at       :datetime        
+#  last_action      :string(255)     
 #
 
 class Guide < ActiveRecord::Base
@@ -78,6 +79,7 @@ class Guide < ActiveRecord::Base
           entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
         end
     end
+    update_attribute(:last_action, "#{element_type}##{element_id}")
   end
   
   private
