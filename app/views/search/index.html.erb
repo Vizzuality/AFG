@@ -1,28 +1,112 @@
-<h1>Results for <%= params[:q] %></h1>
 
-<div class="left">
-  <% unless @guides.empty? %>
-    <h2>Guides</h2>
-    <p>Found <%= pluralize(@guides.total_entries, 'guide', 'guides') %></p>
-    <ul>
-      <% @guides.each do |guide| %>
-      <li><%= render guide %></li>
-      <% end -%>
-    </ul>
-    <%= will_paginate(@guides) %>
-  <% end -%>
-</div>
+	<div class="outer_layout"> 
+	  <div class="search_container">
+			<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+	    <h2>Search for species, landscapes, guides...</h2> 
+	    <form action="#">
+				<input type="text" value="" />
+				<input type="submit" value="Search" />
+				<p>or view the <%= link_to('species browser', species_index_path) %></p>
+			</form>
+	    
+	  </div>
+	</div>
+	
 
-<div class="right">
-  <% unless @species.empty? %>
-  <h2>Species</h2>
-  <p>Found <%= @species.total_entries %> species</p>
-  <ul>
-    <% @species.each do |specie| %>
-    <li><%= render specie %></li>
-    <% end -%>
-  </ul>
 
-  <%= will_paginate(@species) %>
-  <% end -%>
-</div>
+	<div class="main results">
+		<div class="left"> 
+		  <div class="results"> 
+		    <h1>136 results found for "<%= params[:q] %>"</h1>
+		    <ul>
+					<!-- SPECIE ITEM -->
+					<li class="specie">
+						<p class="star"><span><%= image_tag ('common/pink_star.png', :alt=>"star") %>3</span></p>
+						<div class="image">
+							<img src="" alt="" title=""/>
+						</div>
+						<div class="information">
+							<h2><%=link_to("Gentoo Penguin","#")%></h2>
+							<p class="subtitle">Scientific name - Animalia</p>
+							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automated  are kept... <a href="#">View more</a></p>
+						</div>
+					</li>
+					
+					<!-- GUIDE ITEM -->
+					<li class="guide">
+						<p class="star"><span><%= image_tag ('common/pink_star.png', :alt=>"star") %>13</span></p>
+						<div class="image">
+						</div>
+						<div class="information">
+							<h2><%=link_to("The Definitive Anctartic Field Guide","#")%></h2>
+							<p class="subtitle">by Bruno Dannis, 16th March 2010</p>
+							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automateds... <a href="#">View more</a></p>
+						</div>
+					</li>
+					
+					<!-- LANDSCAPE ITEM -->
+					<li class="landscape">
+						<p class="star zero"><span><%= image_tag ('common/gray_star.png', :alt=>"star") %>0</span></p>
+						<div class="image">
+							<img src="" alt="" title=""/>
+						</div>
+						<div class="information">
+							<h2><%=link_to("The great Coral Barrier","#")%></h2>
+							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automated  are kept running all year long. Like the other Spanish Antarctic facilities... <a href="#">View more</a></p>
+						</div>
+					</li>
+				</ul>
+				<div class="pagination">
+			    <a href="#" class="right"></a> 
+			    <a href="#" class="left disabled"></a> 
+					<p>viewing from <strong>1 to 8 of 32</strong></p>
+				</div>
+		  </div> 
+		</div> 
+
+		<div class="right">
+			<div class="results"> 
+				<h4>FILTER YOUR RESULTS</h4>
+			  <ul>
+					<li><a href="#"><span>20 Species</span></a></li>
+					<li><a href="#"><span>12 Landscapes</span></a></li>
+					<li><a href="#"><span>14 Guides</span></a></li>
+					<li><a href="#" class="all">All results</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<%= render 'guides/your_guide' %>
+
+
+	
+
+		<!-- <h1>Results for <%= params[:q] %></h1>
+
+		<div class="left">
+		  <% unless @guides.empty? %>
+		    <h2>Guides</h2>
+		    <p>Found <%= pluralize(@guides.total_entries, 'guide', 'guides') %></p>
+		    <ul>
+		      <% @guides.each do |guide| %>
+		      <li><%= render guide %></li>
+		      <% end -%>
+		    </ul>
+		    <%= will_paginate(@guides) %>
+		  <% end -%>
+		</div>
+
+		<div class="right">
+		  <% unless @species.empty? %>
+		  <h2>Species</h2>
+		  <p>Found <%= @species.total_entries %> species</p>
+		  <ul>
+		    <% @species.each do |specie| %>
+		    <li><%= render specie %></li>
+		    <% end -%>
+		  </ul>
+
+		  <%= will_paginate(@species) %>
+		  <% end -%>
+		</div> -->

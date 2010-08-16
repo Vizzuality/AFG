@@ -1,8 +1,9 @@
 	<div class="information_title"> 
 	  <h4><a href="<%= guide_path(guide) %>"><%= guide.name %></a></h4> 
 	  <p class="by">by <%= guide.author %></p> 
-	  <p class="heart"><span><img src="images/home/pink_heart.png" alt="heart"/><%= guide.popularity %></span></p> 
+	  <p class="star"><span><img src="images/common/pink_star.png" alt="heart"/><%= guide.popularity %></span></p> 
 	</div> 
-	<div class="stats"> 
-	  <p class="species_rank second_rank left"><%= pluralize(guide.species_count, 'SPECIES') %></p> 
+	<div class="stats">
+		<div class="<%= guide.species_count %>"></div>
+	  <p class="species_rank second_rank left"><%= pluralize(guide.species_count, 'SPECIE') %></p> 
 	</div>              
