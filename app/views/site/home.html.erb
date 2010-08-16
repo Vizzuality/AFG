@@ -45,8 +45,8 @@
 
 <div class="right"> 
   <div class="latest_"> 
+		<h3>Latest activity</h3> 
     <% unless @activities.empty? %>
-    <h3>Latest activity</h3> 
     <p class="subtitle">species, guides and landscapes added...</p> 
     <ul>
       <% @activities.each_with_index do |activity, i| %>
@@ -99,5 +99,5 @@
 </div> 
 
 <div id="your_guide">
-<%= render 'guides/your_guide' %>
+	<%= render 'guides/your_guide' %>
 </div>

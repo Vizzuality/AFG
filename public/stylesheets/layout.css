@@ -154,7 +154,6 @@ div.right div.blue ul li div.data h5 a:hover {border-bottom:1px dotted white;}
 div.right div.blue ul li div.data p {float:left; width:206px; font:normal 13px "Lucida Grande"; color:#004C66; padding:3px 0 0 0; line-height:14px;}
 
 
-
 /*YOUR GUIDE*/
 
 div.long {position:relative; float:left; width:936px; margin:0; padding:0; background:url(../images/common/your_guide_bkg.jpg) repeat 0 0;}
@@ -187,7 +186,7 @@ div.long div.long_in ul li.dragg_here {float:left; width:136px; height:137px; ba
 div.long div.long_in ul .place_draggable {float:left; width:127px; height:137px; background:url(../images/common/bkg_place_draggable.png) no-repeat 0 0;}
 div.long div.long_in ul li.dragg_here p {float:left; margin:51px 0 0 35px; font:bold 11px "Lucida Grande"; color:#006789; text-transform:uppercase; text-align:center; width:96px;}
 
-div.long div.bottom {float:left; background:url(../images/home/paginate_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0; opacity:0.9;}
+div.long div.bottom {float:left; background:url(../images/common/your_guide_bottom_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0;}
 div.long div.bottom div.left_side {float:left; padding:18px 0 0 22px;}
 div.long div.bottom div.left_side a.left.disabled {float:left; background:url(../images/guide/left_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
 div.long div.bottom div.left_side a.right.disabled {float:left; background:url(../images/guide/right_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px;}
