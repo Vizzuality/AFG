@@ -11,7 +11,7 @@
           <% if entry.element_type == 'Landscape' %>
           <img src="#" alt="landscape" title="landscape" />
           <% elsif entry.element_type == 'Species' %>
-          <img src="#" alt="specie" title="specie" />
+          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
           <% elsif entry.element_type == 'Guide' %>
           <p class="by">by <%= entry.element.author %></p>
           <% else %>

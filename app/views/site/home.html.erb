@@ -1,19 +1,21 @@
 <div class="images_gallery"> 
   
+  <% if @pictures %>
   <div id="slider"> 
     <% @pictures.each do |picture| %>
-    <img src="<%= picture.public_filename %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.full_name %>"/> 
+    <img src="<%= picture.image.url(:huge) %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.full_name %>"/> 
     <% end -%>
   </div><!-- #slider -->
+  <% end -%>
   
-  <h2>Meet incredible <%= link_to('species', :controller => 'species', :action => 'index') %>, find amazing <%= link_to('landscapes', :controller => 'landscapes', :action => 'index') %><br/> 
+  <h2>Meet incredible <%= link_to('species', species_index_path) %>, find amazing <%= link_to('landscapes', landscapes_path) %><br/> 
     and create your <a href="<%= guides_path %>">antartic field guide</a>.</h2> 
 </div><!-- .images_gallery -->
 
 <div class="left"> 
   <div class="information"> 
     <h3>Species that you can find in the antartic</h3> 
-    <p class="subtitle">you can find more than <%= link_to("#{Species.count} species", :controller => 'species', :action => 'index') %></p> 
+    <p class="subtitle">you can find more than <%= link_to("#{Species.complete.count} species", species_index_path) %></p> 
     <div class="species_list"> 
       <ul class="published_afg">
         <% Species.limit(6).each do |species| %>
@@ -25,7 +27,7 @@
     </div> 
   </div> 
   <div class="bottom"> 
-    <p>more than <%= number_with_delimiter(Species.count, :separator => ",")  %> species in our <%= link_to('species list', :controller => 'species', :action => 'index') %></p> 
+    <p>more than <%= number_with_delimiter(Species.complete.count, :separator => ",")  %> species in our <%= link_to('species list', species_index_path) %></p> 
   </div> 
   <div class="create"> 
     <h3>Some of the already created Antartic Field Guides</h3> 
@@ -49,10 +51,10 @@
     <h3>Latest activity</h3> 
     <p class="subtitle">species, guides and landscapes added...</p> 
     <ul>
-      <% @activities.each_with_index do |activity, i| %>
+      <% @activities.each_with_index do |entry, i| %>
       <li> 
         <div class="latest <%= 'first' if i == 0 %>"> 
-          <%= render :partial => "activities/#{activity.action}", :locals => { :activity => activity } %>
+          <%= render :partial => "activities/#{entry.activity_type}", :locals => { :entry => entry } %>
         </div> 
       </li> 
       <% end -%>

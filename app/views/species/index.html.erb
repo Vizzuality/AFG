@@ -1,44 +1,44 @@
 <div class="outer_layout"> 
   <div class="species_explore"> 
-		<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
     <h2>Browse species</h2> 
-    <p class="subtitle">Explore 1432 species with the taxonomic browser. You can also <%= link_to('search for species', search_path) %> by name</p> 
+    <p class="subtitle">Explore <%= Species.complete.count %> species with the taxonomic browser. You can also <%= link_to('search for species', search_path) %> by name</p> 
   </div>
 </div>
 
-
 <div class="main species">
-	<div class="left"> 
-	  <div class="landscapes"> 
-	    <h3>Most popular species</h3> 
-	    <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p> 
-	    <div class="species_list"> 
-	      <ul class="published_afg">
-					<% Species.limit(6).each do |species| %>
-	        <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
-	          <%= render species %>
-	        </li> 
-	        <% end %>
-	      </ul> 
-	    </div> 
-	  </div> 
-	</div> 
+  <div class="left"> 
+    <div class="landscapes"> 
+      <h3>Most popular species</h3> 
+      <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p> 
+      <div class="species_list"> 
+        <ul class="published_afg">
+          <% Species.limit(6).each do |species| %>
+          <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
+            <%= render species %>
+          </li> 
+          <% end %>
+        </ul> 
+      </div> 
+    </div> 
+  </div><!-- .left -->
 
-	<div class="right"> 
-	  <div class="feature"> 
-	    <p class="subtitle">Featured landscape</p> 
-	    <h3>Bowhead whale</h3>
-			<p class="star"><span><img src="images/common/pink_star.png" alt="heart"/>3</span></p>
-			<div class="image">
-				<img src="#" alt="#" title="#" />
-				<span class="shadow"></span>
-			</div>
-			<p class="info">Last year, the historical and epic big big discovery discovery of 13 new  species of bacterias by dr. Xeniakis’ greatest expedition put Roosevelt Island on the international scientific life virtual map.
-			Roosevelt President Island on the international scientific map. <br/><br/>
-
-			Most of this coastal territory is still unexplored... <%= link_to('Learn more', '#') %></p>
-	  </div> 
-	</div>
+  <div class="right"> 
+    <% if @featured_species %>
+    <div class="feature"> 
+      <p class="subtitle">Featured species</p> 
+      <h3><%= link_to(@featured_species.name, species_path(@featured_species)) %></h3>
+      <p class="star <%= @featured_species.guides_count==0 ? 'zero' : '' %>"><span><img src="<%= @featured_species.guides_count==0 ? 'images/common/gray_star.png' : 'images/common/pink_star.png' %>" alt="heart"/><%= @featured_species.guides_count %></span></p>      
+      <div class="image">
+        <img src="<%= @featured_species.picture ? @featured_species.picture.image.url(:large) : @featured_species.default_picture(:medium) %>" alt="<%= @featured_species.name %>" title="<%= @featured_species.name %>" />
+        <span class="shadow"></span>
+      </div>
+      <p class="info">
+        <%= truncate(@featured_species.description, :length => 200, :omission => "...#{link_to('Learn more', species_path(@featured_species))}") %>
+      </p>
+    </div> <!-- .feature -->
+    <% end -%>
+  </div><!-- .right -->
 </div>
 
 <div id="your_guide">

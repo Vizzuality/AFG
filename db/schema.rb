@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100816120620) do
+ActiveRecord::Schema.define(:version => 20100816142729) do
 
   create_table "activities", :force => true do |t|
     t.column "user_id", :integer
@@ -90,6 +90,10 @@ ActiveRecord::Schema.define(:version => 20100816120620) do
     t.column "locality", :string
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
+    t.column "image_file_name", :string
+    t.column "image_content_type", :string
+    t.column "image_file_size", :integer
+    t.column "image_updated_at", :datetime
   end
 
   create_table "species", :force => true do |t|

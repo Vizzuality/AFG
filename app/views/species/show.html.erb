@@ -18,11 +18,9 @@
     <div class="share_this"> 
       <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
     </div>
-    <% if @species.picture %>
     <div class="img_specie">
-      <img src="<%= @species.picture.public_filename %>"/>
+      <img src="<%= @species.picture ? @species.picture.image.url(:large) : @species.default_picture(:large) %>"/>
     </div> 
-    <% end -%>    
   </div><!-- .right -->
 </div> <!-- .long top_species -->
   
@@ -41,11 +39,11 @@
   </div> 
   <% unless @species.pictures.empty? %>
   <div class="right species"> 
-    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
+    <img class="arrow" src="/images/species/gray_arrow.png" alt="" /> 
     <h3>Photos & Videos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
-      <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
       <% end -%>
     </ul> 
   </div>
@@ -69,7 +67,7 @@
     <% end %>
   </div> 
   <div class="right species"> 
-    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
+    <img class="arrow" src="/images/species/gray_arrow.png" alt="" /> 
     <h3>Distribution map</h3> 
     <div class="map"> 
       <div id="map"></div> 
