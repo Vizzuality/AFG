@@ -8,9 +8,6 @@
     <label>Description</label> 
     <%= simple_format(species.description) %>
 
-    <% unless @current_guide.species.include?(species) %>
-      <%= link_to('Add your guide', entries_path(:type => 'Species', :id => species), :method => :post, :class => 'add_guide') %>
-    <% end %>
     <% if species.guides_count > 0 %>
     <p class="times_added"><%= pluralize(species.guides_count, 'time', 'times') %> added</p> 
     <% end -%>

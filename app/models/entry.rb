@@ -21,6 +21,8 @@ class Entry < ActiveRecord::Base
   after_create :increment_counter_caches
   before_destroy :decrement_counter_caches
   
+  def self.per_page; 5 end
+  
   def element
     element_type.constantize.find(element_id)
   rescue

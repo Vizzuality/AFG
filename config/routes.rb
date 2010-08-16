@@ -13,7 +13,7 @@ AFG::Application.routes.draw do |map|
 
   resources :landscapes, :only => [:index]
   resources :species
-  resources :entries, :only => [:create, :destroy]
+  resources :entries, :only => [:create, :destroy, :index]
 
   namespace :admin do
     resources :landscapes

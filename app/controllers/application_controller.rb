@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   
     def set_current_guide
       @current_guide = Guide.find_or_create_by_session_id(session['session_id'])
+      @entries = @current_guide.entries.paginate :page => params[:entry_page]
     end
     
     # Name: afg

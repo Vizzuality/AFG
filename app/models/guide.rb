@@ -70,7 +70,7 @@ class Guide < ActiveRecord::Base
   end
   
   def add_entry(element_type, element_id)
-    case element_type
+    entry = case element_type
       when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
         entries.create(:element_type => element_type, :element_id => element_id.to_s)
       when 'Guide'
@@ -80,6 +80,7 @@ class Guide < ActiveRecord::Base
         end
     end
     update_attribute(:last_action, "#{element_type}##{element_id}")
+    entry
   end
   
   def undo_last_action
