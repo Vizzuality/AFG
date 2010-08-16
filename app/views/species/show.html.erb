@@ -1,82 +1,226 @@
-<div class="long top_species" id="species-<%= @species.uid %>"> 
-  <ul class="breadcrumb"> 
-    <li class="first"><%= @species.taxon %></li> 
-  </ul> 
-  <div class="left"> 
-    <h2><%= @species.full_name %></h2> 
-    <label>Description</label> 
-    <%= simple_format(@species.description) %>
+	
+	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+	<%= javascript_include_tag "landscapes/landscapes.js" %>
 
-    <% unless @current_guide.include_species?(@species) %>
-      <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
-    <% end %>
-    <% if @species.guides_count > 0 %>
-    <p class="times_added"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
-    <% end -%>
-  </div> 
-  <div class="right"> 
-    <div class="share_this"> 
-      <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
-    </div>
-    <div class="img_specie">
-      <img src="<%= @species.picture ? @species.picture.image.url(:large) : @species.default_picture(:large) %>"/>
-    </div> 
-  </div><!-- .right -->
-</div> <!-- .long top_species -->
-  
-<div class="long border"> 
-  <div class="left species"> 
-    <h3>Species information</h3> 
-    <p class="subtitle">More information that maybe could be useful for you</p> 
-    <% unless @species.size.blank? %>
-      <label>Size</label> 
-      <p><%= @species.size %></p> 
-    <% end %>
-    <% unless @species.reference.blank? %>
-      <label>Reference</label> 
-      <p><%= @species.reference %></p>
-    <% end %>
-  </div> 
-  <% unless @species.pictures.empty? %>
-  <div class="right species"> 
-    <img class="arrow" src="/images/species/gray_arrow.png" alt="" /> 
-    <h3>Photos & Videos</h3> 
-    <ul>
-      <% @species.pictures.each do |picture| %>
-      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
-      <% end -%>
-    </ul> 
-  </div>
-  <% else %>
-  <div class="right species">
-    No photos, no fun
-  </div>
-  <% end -%>
-</div> <!-- .long border -->
 
-<div class="long species"> 
-  <div class="left species"> 
-    <h3>Species distribution</h3> 
-    <% unless @species.distribution.blank? %>
-      <label>Distribution info</label> 
-      <p><%= @species.distribution %></p>
-    <% end %>
-    <% unless @species.ecology.blank? %>
-      <label>Ecology</label> 
-      <%= simple_format(@species.ecology) %>
-    <% end %>
-  </div> 
-  <div class="right species"> 
-    <img class="arrow" src="/images/species/gray_arrow.png" alt="" /> 
-    <h3>Distribution map</h3> 
-    <div class="map"> 
-      <div id="map"></div> 
-      <span class="shadow"></span> 
-    </div> 
-    <label class="right">Depth of the distribution</label> 
-    <p><%= @species.depth %></p> 
-  </div> 
-</div><!-- .long species -->
+
+	<div class="outer_layout"> 
+	  <div class="specie_header" id="species-<%= @species.uid %>"> 
+			<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+			<!-- <ul class="breadcrumb"> 
+				<li class="first"><a href="#"><%= @species.taxon %></a></li>
+			</ul> -->
+			<ul class="breadcrumb"> 
+		    <li class="first"><a href="#">Animalia</a></li>
+		    <li><a href="#">Animalia</a></li>
+		    <li><a href="#">Animalia</a></li>
+		    <li class="last"><a href="#">Animalia</a></li>
+		  </ul> 
+		  <div class="left"> 
+		    <h1><%= @species.full_name %></h1> 
+		    <h3>Description</h3> 
+		    <%= simple_format(@species.description) %>
+
+		    <% unless @current_guide.include_species?(@species) %>
+		      <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
+		    <% end %>
+		    <% if @species.guides_count > 0 %>
+		    <p class="times_added"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
+		    <% end -%>
+		  </div> 
+		  <div class="right"> 
+		    <div class="share_this"> 
+		      <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
+		    </div>
+		    <% if @species.picture %>
+		    <div class="img_specie">
+		      <img src="<%= @species.picture.public_filename %>"/>
+		    </div> 
+		    <% end -%>    
+		  </div>
+	  </div>
+	</div>
+	
+
+  <% if !@species.description.blank? %>
+		<div class="main specie"> 
+		  <div class="left"> 
+				<%= image_tag ('specie/arrow_long.png', :class=> 'arrow') %>		
+		    <h3>Species information</h3> 
+		    <p class="subtitle">More information that maybe could be useful for you</p> 
+		    <% unless @species.size.blank? %>
+		      <label>Size</label> 
+		      <p><%= @species.size %></p> 
+		    <% end %>
+		    <% unless @species.reference.blank? %>
+		      <label>Reference</label> 
+		      <p><%= @species.reference %></p>
+		    <% end %>
+		  </div> 
+		  <% unless @species.pictures.empty? %>
+		  <div class="right"> 
+		    <h3>Photos & Videos</h3> 
+		    <ul>
+		      <% @species.pictures.each do |picture| %>
+		      <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+		      <% end -%>
+		    </ul> 
+		  </div>
+		  <% else %>
+		  <div class="right">
+				<h3>Photos & Videos</h3> 
+		    <p>No photos, no fun</p>
+		  </div>
+		  <% end -%>
+		</div>
+
+		<div class="main specie"> 
+		  <div class="left"> 
+				<%= image_tag ('specie/arrow_long.png', :class=> 'arrow') %>		
+		    <h3>Species distribution</h3> 
+		    <p class="subtitle">bla bla bla bla</p> 
+		    <% unless @species.distribution.blank? %>
+		      <label>Distribution info</label> 
+		      <p><%= @species.distribution %></p>
+		    <% end %>
+		    <% unless @species.ecology.blank? %>
+		      <label>Ecology</label> 
+		      <%= simple_format(@species.ecology) %>
+		    <% end %>
+		    <label>Habitat</label> 
+		    <p>Habitat adsfkjñasdjfk añjdsfk añsdfj alsñdfjñaslkfj asdfj ñ</p>
+		  </div> 
+		  <div class="right"> 
+		    <h3>Distribution map</h3> 
+		    <div class="map"> 
+		      <div id="map"></div> 
+		      <span class="shadow"></span> 
+		    </div> 
+		    <label class="right">Depth of the distribution</label> 
+				<%= image_tag ('specie/depth_specie.jpg') %>		
+		  </div> 
+		</div>
+	<% else %>
+		<div class="main species_no_info">
+	  	<h3>Descendant species</h3> 
+	  	<p class="subtitle">112 total species belonging to the <%=@species.name%> family</p>
+			<ul>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+				<li>
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>	
+				<li class="last_item">
+					<div class="image">
+						<%= image_tag ('defaults/small_specie.jpg') %>
+					</div>
+					<div class="info">
+						<h4><a href="#">Penguinus</a></h4>
+						<p class="common_name">Cacatus</p>
+					</div>
+				</li>
+			</ul>
+			<div class="pagination">
+		    <a href="#" class="right"></a> 
+		    <a href="#" class="left disabled"></a> 
+				<p>viewing from <strong>1 to 8 of 32</strong></p>
+			</div>
+		</div>
+	<% end %>
 
 <div id="your_guide">
 <%= render 'guides/your_guide' %>
