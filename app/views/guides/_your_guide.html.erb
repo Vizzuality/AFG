@@ -2,10 +2,10 @@
   <div class="long_in">
 		<div class="title">
     	<h3>Your Atlantic Field Guide</h3> 
-    	<p class="subtitle"><%= @current_guide.entries.count > 1 ? @current_guide.entries.count : 'Here is were your species and landscapes will be added' %></p> 
+    	<p class="subtitle"><%= @entries.total_pages > 1 ? "#{@entries.total_pages} pages": '' %></p> 
 		</div>
-    <ul id="sortable">
-      <% @current_guide.entries.each do |entry| %>
+    <ul id="your_guide">
+      <% @entries.each do |entry| %>
         <li class="<%= entry_css_class(entry) %>">
           <p class="title" title="<%= entry.full_name %>"><%= truncate(entry.full_name, :length => 15) %></p>
           <% if entry.element_type == 'Landscape' %>
@@ -24,14 +24,18 @@
     </ul> 
   </div> 
   <div class="bottom"> 
-    <% if @current_guide.entries.count > 5 %>
+    <% if @entries.total_pages > 1 %>
       <div class="left_side"> 
-        <a href="#" class="left"></a> 
-        <a href="#" class="right"></a> 
+        <% unless @entries.current_page == @entries.total_pages %>
+        <a href="<%= entries_path(:entry_page => @entries.current_page + 1) %>" class="left ajax"></a> 
+        <% end -%>
+        <% unless @entries.current_page == 1 %>
+        <a href="<%= entries_path(:entry_page => @entries.current_page - 1) %>" class="right ajax"></a> 
+        <% end -%>
       </div> 
     <% end -%>
     <div class="right_side">
-      <p><a class="preview" href="#">Preview</a> or </p>
+      <p><a class="preview" href="<%= pdf_guide_path(@current_guide) %>">Preview</a> or </p>
       <a href="<%= edit_guide_path %>" class="publish" id="publish_and_download"></a>
     </div> 
   </div>

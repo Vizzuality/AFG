@@ -1,7 +1,20 @@
 class EntriesController < ApplicationController
   
+  def index
+    @entries = @current_guide.entries.paginate :page => params[:entry_page]
+    respond_to do |format|
+      format.html
+      format.js do
+        render :update do |page|
+          page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
+          page << "AFG.behaviour();"
+        end
+      end
+    end
+  end
+  
   def create
-    @current_guide.add_entry(params[:type], params[:id])
+    @entry = @current_guide.add_entry(params[:type], params[:id])
   ensure
     respond_to do |format|
       format.html do
