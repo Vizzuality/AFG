@@ -32,18 +32,13 @@ ActiveRecord::Schema.define(:version => 20100816120620) do
 
   create_table "entries", :force => true do |t|
     t.column "guide_id", :integer
-    t.column "species_id", :integer
-    t.column "included_guide_id", :integer
+    t.column "element_id", :string
+    t.column "element_type", :string
     t.column "position", :integer
     t.column "elements_count", :integer, :default => 0
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
   end
-
-  add_index "entries", ["guide_id"], :name => "index_entries_on_guide_id"
-  add_index "entries", ["included_guide_id"], :name => "index_entries_on_included_guide_id"
-  add_index "entries", ["position"], :name => "index_entries_on_position"
-  add_index "entries", ["species_id"], :name => "index_entries_on_species_id"
 
   create_table "guides", :force => true do |t|
     t.column "permalink", :string
@@ -51,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20100816120620) do
     t.column "author", :string
     t.column "description", :text
     t.column "species_count", :integer, :default => 0
+    t.column "landscapes_count", :integer, :default => 0
     t.column "downloads_count", :integer, :default => 0
     t.column "session_id", :string
     t.column "popularity", :integer, :default => 0
