@@ -8,7 +8,16 @@ module ApplicationHelper
   end
   
   def entry_css_class(entry)
-    entry.species_id ? "single" : "amount"
+    case entry.element_type
+    when 'Guide'
+      'single'
+    when 'Species'
+      'specie'
+    when 'Landscapes'
+      'landscape'
+    else
+      'single'
+    end
   end
   
   def share_in_facebook(species)

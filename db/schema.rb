@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20100812132828) do
     t.column "element_id", :string
     t.column "element_type", :string
     t.column "position", :integer
+    t.column "elements_count", :integer, :default => 0
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
   end

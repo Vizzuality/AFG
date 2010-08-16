@@ -54,6 +54,20 @@ class Guide < ActiveRecord::Base
     "#{to_param}.pdf"
   end
   
+  def include_species?(species)
+    entries.exists?(:element_type => species.class.to_s, :element_id => species.id.to_s) ||
+    entries.exists?(:element_type => 'Kingdom', :element_id => species.kingdom) || 
+    entries.exists?(:element_type => 'Phylum', :element_id => species.phylum) || 
+    entries.exists?(:element_type => 'Class', :element_id => species.t_class) || 
+    entries.exists?(:element_type => 'Order', :element_id => species.t_order) || 
+    entries.exists?(:element_type => 'Family', :element_id => species.familiy) || 
+    entries.exists?(:element_type => 'Genus', :element_id => species.genus)
+  end
+  
+  def include_landscape?(landscape)
+    entries.exists?(:element_type => landscape.class.to_s, :element_id => landscape.id.to_s)
+  end
+  
   def add_entry(element_type, element_id)
     case element_type
       when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'

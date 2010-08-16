@@ -5,6 +5,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string  :element_id
       t.string  :element_type
       t.integer :position
+      t.integer :elements_count, :default => 0
       t.timestamps
     end
   end
