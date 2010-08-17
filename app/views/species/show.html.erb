@@ -17,7 +17,7 @@
       <h3>Description</h3> 
       <%= simple_format(@species.description) %>
       <h3>Distinguishing Characters</h3> 
-      <%= simple_format(@species.description) %>
+      <%= simple_format(@species.distinguishing_characters) %>
 
       <% if !@current_guide.include_species?(@species) %>
         <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
@@ -84,8 +84,10 @@
       <label>Ecology</label> 
       <%= simple_format(@species.ecology) %>
     <% end %>
-    <label>Habitat</label> 
-    <p>Habitat adsfkjñasdjfk añjdsfk añsdfj alsñdfjñaslkfj asdfj ñ</p>
+    <% unless @species.habitat.blank? %>
+      <label>Habitat</label> 
+      <%= simple_format(@species.habitat) %>
+    <% end -%>
   </div> 
   <div class="right"> 
     <h3>Distribution map</h3> 
