@@ -27,3 +27,5 @@ l.description = "El polo sur"
 l.save
 
 1.upto(10){ |i| Guide.create :name => "Guia #{i}", :description => "Una guia #{i}", :author => "Fernando Blat", :published => true }
+
+Guide.limit(3).each{ |g| g.update_attribute(:highlighted, true) }
