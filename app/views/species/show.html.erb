@@ -1,103 +1,104 @@
-<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-<%= javascript_include_tag "landscapes/landscapes.js" %>
-
-<div class="outer_layout"> 
-  <div class="specie_header" id="species-<%= @species.uid %>"> 
-    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-    <ul class="breadcrumb"> 
-      <li class="first"><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
-      <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
-      <li><%= link_to(@species.t_class, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class)) %></li>
-      <li><%= link_to(@species.t_order, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order)) %></li>
-      <li><%= link_to(@species.family, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family)) %></li>
-      <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
-    </ul>
-    <div class="left"> 
-      <h1><%= @species.full_name %></h1> 
-      <h3>Description</h3> 
-      <%= simple_format(@species.description) %>
-      <h3>Distinguishing Characters</h3> 
-      <%= simple_format(@species.description) %>
-
-      <% if !@current_guide.include_species?(@species) %>
-        <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
-      <% else %>
-        <span class="included"></span>
-      <% end %>
-      <% if @species.guides_count > 0 %>
-        <p class="times_added <%= @current_guide.include_species?(@species) ? 'included' : ''%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
-      <% end -%>
-    </div> 
-    <div class="right"> 
-      <div class="share_this"> 
-        <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
-      </div>
-      <% if @species.picture %>
-      <div class="img_specie">
-        <img src="<%= @species.picture.image.url(:medium) %>"/>
-      </div> 
-      <% end -%>    
-    </div>
-  </div>
-</div>
 	
-<div class="main specie"> 
-  <div class="left"> 
-		<%= image_tag ('species/arrow_long.png', :class=> 'arrow') %>		
-    <h3>Species information</h3> 
-    <p class="subtitle">More information that maybe could be useful for you</p> 
-    <% unless @species.size.blank? %>
-      <label>Size</label> 
-      <p><%= @species.size %></p> 
-    <% end %>
-    <% unless @species.reference.blank? %>
-      <label>Reference</label> 
-      <p><%= @species.reference %></p>
-    <% end %>
-  </div> 
-  <% unless @species.pictures.empty? %>
-  <div class="right"> 
-    <h3>Photos & Videos</h3> 
-    <ul>
-      <% @species.pictures.each do |picture| %>
-      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
-      <% end -%>
-    </ul> 
-  </div>
-  <% else %>
-  <div class="right">
-    <h3>Photos & Videos</h3> 
-  </div>
-  <% end -%>
-</div>
+	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+	<%= javascript_include_tag "landscapes/landscapes.js" %>
 
-<div class="main specie"> 
-  <div class="left"> 
-    <%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
-    <h3>Species distribution</h3> 
-    <p class="subtitle">bla bla bla bla</p> 
-    <% unless @species.distribution.blank? %>
-      <label>Distribution info</label> 
-      <p><%= @species.distribution %></p>
-    <% end %>
-    <% unless @species.ecology.blank? %>
-      <label>Ecology</label> 
-      <%= simple_format(@species.ecology) %>
-    <% end %>
-    <label>Habitat</label> 
-    <p>Habitat adsfkjñasdjfk añjdsfk añsdfj alsñdfjñaslkfj asdfj ñ</p>
-  </div> 
-  <div class="right"> 
-    <h3>Distribution map</h3> 
-    <div class="map"> 
-      <div id="map"></div> 
-      <span class="shadow"></span> 
-    </div> 
-    <label class="right">Depth of the distribution</label> 
-		<%= image_tag ('species/depth_specie.jpg') %>		
-  </div> 
-</div>
+	<div class="outer_layout"> 
+	  <div class="specie_header" id="species-<%= @species.uid %>"> 
+	    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+	    <ul class="breadcrumb"> 
+	      <li class="first"><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
+	      <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
+	      <li><%= link_to(@species.t_class, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class)) %></li>
+	      <li><%= link_to(@species.t_order, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order)) %></li>
+	      <li><%= link_to(@species.family, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family)) %></li>
+	      <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
+	    </ul>
+	    <div class="left"> 
+	      <h1><%= @species.full_name %></h1> 
+	      <h3>Description</h3> 
+	      <%= simple_format(@species.description) %>
+	      <h3>Distinguishing Characters</h3> 
+	      <%= simple_format(@species.description) %>
 
-<div id="your_guide">
-  <%= render 'guides/your_guide' %>
-</div>
+	      <% if !@current_guide.include_species?(@species) %>
+	        <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
+	      <% else %>
+	        <span class="included"></span>
+	      <% end %>
+	      <% if @species.guides_count > 0 %>
+	        <p class="times_added <%= @current_guide.include_species?(@species) ? 'included' : ''%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
+	      <% end -%>
+	    </div> 
+	    <div class="right"> 
+	      <div class="share_this"> 
+	        <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
+	      </div>
+	      <% if @species.picture %>
+	      <div class="img_specie">
+	        <img src="<%= @species.picture.image.url(:medium) %>"/>
+	      </div> 
+	      <% end -%>    
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="main specie"> 
+	  <div class="left"> 
+			<%= image_tag ('species/arrow_long.png', :class=> 'arrow') %>		
+	    <h3>Species information</h3> 
+	    <p class="subtitle">More information that maybe could be useful for you</p> 
+	    <% unless @species.size.blank? %>
+	      <label>Size</label> 
+	      <p><%= @species.size %></p> 
+	    <% end %>
+	    <% unless @species.reference.blank? %>
+	      <label>Reference</label> 
+	      <p><%= @species.reference %></p>
+	    <% end %>
+	  </div> 
+	  <% unless @species.pictures.empty? %>
+	  <div class="right"> 
+	    <h3>Photos & Videos</h3> 
+	    <ul>
+	      <% @species.pictures.each do |picture| %>
+	      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+	      <% end -%>
+	    </ul> 
+	  </div>
+	  <% else %>
+	  <div class="right">
+	    <h3>Photos & Videos</h3> 
+	  </div>
+	  <% end -%>
+	</div>
+
+	<div class="main specie"> 
+	  <div class="left"> 
+	    <%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
+	    <h3>Species distribution</h3> 
+	    <p class="subtitle">bla bla bla bla</p> 
+	    <% unless @species.distribution.blank? %>
+	      <label>Distribution info</label> 
+	      <p><%= @species.distribution %></p>
+	    <% end %>
+	    <% unless @species.ecology.blank? %>
+	      <label>Ecology</label> 
+	      <%= simple_format(@species.ecology) %>
+	    <% end %>
+	    <label>Habitat</label> 
+	    <p>Habitat adsfkjñasdjfk añjdsfk añsdfj alsñdfjñaslkfj asdfj ñ</p>
+	  </div> 
+	  <div class="right"> 
+	    <h3>Distribution map</h3> 
+	    <div class="map"> 
+	      <div id="map"></div> 
+	      <span class="shadow"></span> 
+	    </div> 
+	    <label class="right">Depth of the distribution</label> 
+			<%= image_tag ('species/depth_specie.jpg') %>		
+	  </div> 
+	</div>
+
+	<div id="your_guide">
+	  <%= render 'guides/your_guide' %>
+	</div>
