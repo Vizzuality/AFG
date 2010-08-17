@@ -18,7 +18,6 @@
     </div>
     <% if species.picture %>
     <div class="img_specie">
-      <img src="<%= species.picture.public_filename %>"/>
     </div> 
     <% end -%>    
   </div><!-- .right -->
@@ -43,7 +42,7 @@
     <h3>Photos & Videos</h3> 
     <ul>
       <% species.pictures.each do |picture| %>
-      <li><img src="<%= picture.public_filename %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      
       <% end -%>
     </ul> 
   </div>
