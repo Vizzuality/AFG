@@ -26,8 +26,6 @@ p.white {color:#FFFFFF;}
 
 
 
-
-
 /*HEADER*/
 div.header {float:left; width:896px; margin:23px 0 0 0; padding:23px 20px 0 20px; background:white;}
 div.header div.logo {float:left; width:894px; }
@@ -58,8 +56,10 @@ div.images_gallery .nivoSlider img {position:absolute; top:0px; left:0px;}
 div.images_gallery .nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:60; display:none;}
 div.images_gallery .nivo-slice { display:block; position:absolute; z-index:50; height:100%;}
 div.images_gallery .nivo-caption { position:absolute; left:315px; bottom:130px; height:90px; width:266px; background:url(../images/home/caption_bkg.png) no-repeat 0 0; color:#fff; z-index:89;}
-div.images_gallery .nivo-caption h2 {float:left; margin:20px 0 0 100px; padding:0; width:155px; font:bold 28px Arial; color:white; padding:0; text-align:left; line-height:28px;}
-div.images_gallery .nivo-caption p {float:left; margin:0 0 0 100px; width:155px; font:normal 16px Arial; font-style:italic; padding:0;}
+div.images_gallery .nivo-caption h2 {float:left; margin:8px 0 0 95px; padding:0; width:165px; font:bold 21px Arial; color:white; padding:0; text-align:left; line-height:28px;}
+div.images_gallery .nivo-caption p.common_name {float:left; margin:0 0 0 95px; width:165px; font:normal 13px Arial; color:#B6B6B5; padding:0; line-height:8px;}
+div.images_gallery .nivo-caption p.downloads {float:left; margin:12px 0 0 95px; width:auto; padding:0 0 0 17px; background:url(../images/common/downloads_left.png) no-repeat 0 0; height:15px;}
+div.images_gallery .nivo-caption p.downloads span {float:left; height:15px; width:auto; background:url(../images/common/downloads_right.png) no-repeat right 0; font:bold 9px Arial; color:#FF0066; padding:3px 8px 3px 0;}
 div.images_gallery .nivo-directionNav a { position:absolute; bottom:10px; width:35px; height:35px; z-index:99;cursor:pointer;}
 div.images_gallery .nivo-prevNav {left:10px; background:url(../images/home/left_gallery.png) no-repeat 0 0;}
 div.images_gallery .nivo-nextNav {right:10px; background:url(../images/home/right_gallery.png) no-repeat 0 0;}
@@ -154,7 +154,6 @@ div.right div.blue ul li div.data h5 a:hover {border-bottom:1px dotted white;}
 div.right div.blue ul li div.data p {float:left; width:206px; font:normal 13px "Lucida Grande"; color:#004C66; padding:3px 0 0 0; line-height:14px;}
 
 
-
 /*YOUR GUIDE*/
 
 div.long {position:relative; float:left; width:936px; margin:0; padding:0; background:url(../images/common/your_guide_bkg.jpg) repeat 0 0;}
@@ -162,13 +161,18 @@ div.long div.tooltip_add_this {position:absolute; top:-17px; right:23px; backgro
 div.long div.tooltip_add_this a {float:left; font:bold 11px "Lucida Grande"; color:#FFFFFF; text-transform:uppercase; width:100px; margin:12px 0 0 8px; text-decoration:none; text-align:center;}
 div.long div.tooltip_add_this a:hover {color:#333333;}
 
-div.long img.arrow_blue {position:absolute; top:0; right:257px; z-index:20;}
+div.long img.arrow {position:absolute; top:0; right:257px; z-index:20;}
 div.long div.long_in {float:left; padding:28px 28px 28px 24px; width:884px;}
 div.long div.long_in div.title {float:left; padding:0 0 0 45px; background:url(../images/common/blog_notes.png) no-repeat 0 3px;}
 div.long div.long_in div.title h3 {font:bold 25px Helvetica; color:white; letter-spacing:-1px;}
 div.long div.long_in div.title p.subtitle {font:normal 13px "Lucida Grande"; color:white;}
 div.long div.long_in ul {float:left; width:100%; margin:20px 0 0 0;}
 div.long div.long_in ul li {position:relative; margin:4px 15px 0 0;}
+div.long div.long_in ul li div.over_state {position:absolute; display:none; z-index:100; width:91px; height:42px; left:16px; top:45px;}
+div.long div.long_in ul li:hover div.over_state {display:block;}
+div.long div.long_in ul li div.over_state a.view {float:left; width:46px; height:42px; background:url(../images/common/view_over.png) no-repeat 0 0; padding:0; margin:0;}
+div.long div.long_in ul li div.over_state a.delete {float:left; width:45px; height:42px; background:url(../images/common/delete_over.png) no-repeat 0 0; padding:0; margin:0;}
+div.long div.long_in ul li div.over_state a:hover {background-position:0 -42px;}
 div.long div.long_in ul li p.page_title {position:absolute; bottom:15px; left:12px; font:bold 9px "Lucida Grande"; color:#CCCCCC;}
 div.long div.long_in ul li.amount p.page_title {position:absolute; bottom:19px; left:12px;}
 div.long div.long_in ul li.single {float:left; width:127px; height:129px; background:url(../images/common/single_bkg.png) no-repeat 0 0;}
@@ -187,7 +191,7 @@ div.long div.long_in ul li.dragg_here {float:left; width:136px; height:137px; ba
 div.long div.long_in ul .place_draggable {float:left; width:127px; height:137px; background:url(../images/common/bkg_place_draggable.png) no-repeat 0 0;}
 div.long div.long_in ul li.dragg_here p {float:left; margin:51px 0 0 35px; font:bold 11px "Lucida Grande"; color:#006789; text-transform:uppercase; text-align:center; width:96px;}
 
-div.long div.bottom {float:left; background:url(../images/home/paginate_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0; opacity:0.9;}
+div.long div.bottom {float:left; background:url(../images/common/your_guide_bottom_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0;}
 div.long div.bottom div.left_side {float:left; padding:18px 0 0 22px;}
 div.long div.bottom div.left_side a.left.disabled {float:left; background:url(../images/guide/left_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
 div.long div.bottom div.left_side a.right.disabled {float:left; background:url(../images/guide/right_content_dashboard_disabled.png) no-repeat 0 0; width:30px; height:30px;}
