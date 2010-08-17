@@ -1,7 +1,5 @@
 class GuidesController < ApplicationController
   
-  # include PdfHelper
-  
   before_filter :set_current_date_filter, :only => [:index]
   
   def index
