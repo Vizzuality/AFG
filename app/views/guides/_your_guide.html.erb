@@ -1,12 +1,12 @@
 <div class="long">
-	<% if current_page?('/') %>
-		<%= image_tag ('common/blue_arrow.png', :class=> 'arrow') %>
-	<% end %>
+  <% if current_page?('/') %>
+    <%= image_tag ('common/blue_arrow.png', :class=> 'arrow') %>
+  <% end %>
   <div class="long_in">
-		<div class="title">
-    	<h3>Your Atlantic Field Guide</h3> 
-    	<p class="subtitle"><%= @entries.total_pages > 1 ? "#{@entries.total_pages} pages": '' %></p> 
-		</div>
+    <div class="title">
+      <h3>Your Atlantic Field Guide</h3> 
+      <p class="subtitle"><%= @entries.total_pages > 1 ? "#{@entries.total_pages} pages": '' %></p> 
+    </div>
     <ul id="your_guide">
       <% @entries.each do |entry| %>
         <li class="<%= entry_css_class(entry) %>">
@@ -21,10 +21,14 @@
           <p class="count"><%= entry.elements_count %> species</p>
           <% end -%>
           <p class="page_title">PAGE</p>
-        	<div class="over_state">
-						<a href="#" title="view" class="view"></a>
-						<a href="#" title="delete" class="delete"></a>
-					</div>
+          <div class="over_state">
+            <% if entry.element_type == 'Landscape' %>
+            <a href="<%= landscape_path(entry.element) %>" title="view" class="view"></a>
+            <% elsif entry.element_type == 'Species' %>
+            <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
+            <% end -%>
+            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete ajax') %>
+          </div>
         </li> 
       <% end -%>
       <li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
