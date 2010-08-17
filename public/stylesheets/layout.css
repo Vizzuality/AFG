@@ -16,6 +16,12 @@ div.demo_map {position:relative; float:left; width:912px; padding:27px 12px; bac
 div.demo_map div.map div#map {width:100%; height:100%;}
 
 /* COMMON */
+div.pop_up {position:absolute; z-index:1000000; top:200px; left:50%; margin:0 0 0 -191px; width:349px; height:25px; padding:17px; background:url(../images/common/pop_up_bkg.png) no-repeat 0 0;}
+div.pop_up p {float:left; width:auto; font:bold 18px Helvetica; color:white; letter-spacing:-1px;}
+div.pop_up p a {padding:0 0 0 7px; font:bold 12px Helvetica; color:#999999; text-decoration:underline;}
+div.pop_up p a:hover {color:white;}
+div.pop_up a.close { float:right; width:10px; height:10px; background:url(../images/common/close_pop_up.png) no-repeat 0 0; margin:7px 0 0 0;}
+
 p.landscapes_rank {width:76px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px;}
 p.species_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
 p.species_guide_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
@@ -267,6 +273,7 @@ div.specie_header ul.breadcrumb li.first {background:none; padding:0;}
 div.specie_header ul.breadcrumb li a {text-decoration:none; display:inline-block; font:normal 13px "Lucida Grande"; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid #0091BC; color:white;}
 div.specie_header ul.breadcrumb li a:hover {border-bottom:1px solid white;}
 div.specie_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0 0 15px 0;}
+div.specie_header h1 small {font:normal 15px Helvetica; color:white; font-style:italic; padding:0 0 0 5px; letter-spacing:0px;}
 div.specie_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0;}
 div.specie_header p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
 div.specie_header div.left {padding:5px 0 0 0; width:576px;}
@@ -307,29 +314,29 @@ div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande
 div.main.specie div label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:30px 0 4px 0;}
 div.main.specie div p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
 
-/*if there isn't info of the specie*/
-div.main.species_no_info {background:white; padding:21px 21px 50px; width:894px;}
-div.main.species_no_info h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
-div.main.species_no_info p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
-div.main.species_no_info ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
-div.main.species_no_info ul li {position:relative; float:left; width:279px; border-bottom:1px solid #E5E5E5; margin:0 28px 0 0; padding:12px 0 9px;}
-div.main.species_no_info ul li:hover {cursor:pointer; background:url(../images/guide/li_over.png) no-repeat 250px 20px;}
-div.main.species_no_info ul li.last_item {margin:0;}
-div.main.species_no_info ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:0 8px 0 0;}
-div.main.species_no_info ul li div.image img {float:left; width:40px; height:40px;}
-div.main.species_no_info ul li div.info {float:left; width:210px; padding:4px 0 0 0;}
-div.main.species_no_info ul li div.info h4 {float:left; width:210px;}
-div.main.species_no_info ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
-div.main.species_no_info ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
-div.main.species_no_info ul li div.info p.common_name {float:left; width:210px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
+/*family info*/
+div.main.family {background:white; padding:21px 21px 50px; width:894px;}
+div.main.family h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.main.family p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
+div.main.family ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
+div.main.family ul li {position:relative; float:left; width:279px; border-bottom:1px solid #E5E5E5; margin:0 28px 0 0; padding:12px 0 9px;}
+div.main.family ul li:hover {cursor:pointer; background:url(../images/guide/li_over.png) no-repeat 250px 20px;}
+div.main.family ul li.last_item {margin:0;}
+div.main.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:0 8px 0 0;}
+div.main.family ul li div.image img {float:left; width:40px; height:40px;}
+div.main.family ul li div.info {float:left; width:210px; padding:4px 0 0 0;}
+div.main.family ul li div.info h4 {float:left; width:210px;}
+div.main.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.main.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
+div.main.family ul li div.info p.common_name {float:left; width:210px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
 
-div.main.species_no_info div.pagination {float:right; padding:20px 0 0;}
-div.main.species_no_info div.pagination p {float:right; padding:6px 0 0 0; margin:0 15px 0 0; font:normal 13px "Lucida Grande"; color:#666666;}
-div.main.species_no_info div.pagination a.left {float:right; background:url(../images/common/left_paginator.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
-div.main.species_no_info div.pagination a.right {float:right; background:url(../images/common/right_paginator.png) no-repeat 0 0; width:30px; height:30px; margin:0;}
-div.main.species_no_info div.pagination a.left.disabled {background-position:0 -60px; cursor:default;}
-div.main.species_no_info div.pagination a.right.disabled {background-position:0 -60px; cursor:default;}
-div.main.species_no_info div.pagination a:hover {background-position:0 -30px;}
+div.main.family div.pagination {float:right; padding:20px 0 0;}
+div.main.family div.pagination p {float:right; padding:6px 0 0 0; margin:0 15px 0 0; font:normal 13px "Lucida Grande"; color:#666666;}
+div.main.family div.pagination a.left {float:right; background:url(../images/common/left_paginator.png) no-repeat 0 0; width:30px; height:30px; margin:0 4px 0 0;}
+div.main.family div.pagination a.right {float:right; background:url(../images/common/right_paginator.png) no-repeat 0 0; width:30px; height:30px; margin:0;}
+div.main.family div.pagination a.left.disabled {background-position:0 -60px; cursor:default;}
+div.main.family div.pagination a.right.disabled {background-position:0 -60px; cursor:default;}
+div.main.family div.pagination a:hover {background-position:0 -30px;}
 
 
 
