@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100817161021) do
+ActiveRecord::Schema.define(:version => 20100817162514) do
 
   create_table "activities", :force => true do |t|
     t.column "user_id", :integer
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20100817161021) do
     t.column "guides_count", :integer, :default => 0
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
+    t.column "featured", :boolean, :default => false
   end
 
   create_table "pictures", :force => true do |t|

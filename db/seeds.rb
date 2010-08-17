@@ -24,6 +24,11 @@ s.save
 
 l = Landscape.new :name => 'South Pole'
 l.description = "El polo sur"
+l.featured = true
+l.save
+
+l = Landscape.new :name => 'Spanish base'
+l.description = "Spanish scientific observatory"
 l.save
 
 1.upto(10){ |i| Guide.create :name => "Guia #{i}", :description => "Una guia #{i}", :author => "Fernando Blat", :published => true }

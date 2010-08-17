@@ -1,6 +1,8 @@
 class LandscapesController < ApplicationController
   
-  def index  
+  def index 
+    @featured_landscape = Landscape.featured.first
+    @landscapes = Landscape.not_featured.limit(6).order("guides_count DESC")
   end
   
   def show

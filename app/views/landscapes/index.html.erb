@@ -1,94 +1,50 @@
+<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+<%= javascript_include_tag "landscapes/landscapes.js" %>
 
-	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-	<%= javascript_include_tag "landscapes/landscapes.js" %>
-	
+<div class="outer_layout"> 
+  <div class="landscapes_map"> 
+    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <h2>We have <%= Landscape.count %> Antarctic landscapes for your Guide</h2> 
+    <p class="subtitle">Do you have any recommendation? <%= link_to('Send it to us', '#') %></p> 
+    <div class="map"> 
+      <a href="javascript: void zoomIn()" class="zoomIn">+</a>
+      <a href="javascript: void zoomOut()" class="zoomOut">-</a>
+      <div id="map"></div>
+    </div> 
+  </div>
+</div>
 
+<div class="main landscapes">
+  <div class="left"> 
+    <div class="landscapes"> 
+      <h3>Most popular landscapes</h3> 
+      <p class="subtitle">Also you can <%= link_to('search landscapes', search_path) %> by name</p> 
+      <div class="species_list"> 
+        <ul class="published_afg">
+          <% @landscapes.each do |landscape| %>
+          <li class="<%= cycle('','','last') %>"> 
+            <%= render landscape %>
+          </li>
+          <% end -%>
+        </ul> 
+      </div> 
+    </div> 
+  </div> 
 
-	<div class="outer_layout"> 
-	  <div class="landscapes_map"> 
-			<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-	    <h2>We have 63 Antarctic landscapes for your Guide</h2> 
-	    <p class="subtitle">Do you have any recommendation? <%= link_to('Send it to us', '#') %></p> 
-	    <div class="map"> 
-				<a href="javascript: void zoomIn()" class="zoomIn">+</a>
-				<a href="javascript: void zoomOut()" class="zoomOut">-</a>
-				<div id="map"></div>
-	    </div> 
-	  </div>
-	</div>
-	
-	
-	<div class="main landscapes">
-		<div class="left"> 
-		  <div class="landscapes"> 
-		    <h3>Most popular landscapes</h3> 
-		    <p class="subtitle">Also you can <%= link_to('search landscapes', search_path) %> by name</p> 
-		    <div class="species_list"> 
-		      <ul class="published_afg">
-		        <li> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-						<li> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-						<li class="last"> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-						<li> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-						<li> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-						<li class="last"> 
-							<div class="specie"> 
-							  <a href="#"><img src="#" alt="#" /></a>
-							  <h4><a href="#">Name area (no truncate)</a></h4>
-							  <p class="star zero"><span><img src="images/common/gray_star.png" alt="heart"/>0</span></p> 
-							</div>
-						</li>
-		      </ul> 
-		    </div> 
-		  </div> 
-		</div> 
+  <div class="right"> 
+    <div class="feature"> 
+      <p class="subtitle">Featured landscape</p> 
+      <h3><a href="<%= landscape_path(@featured_landscape) %>"><%= @featured_landscape.name %></a></h3>
+      <%= stars(@featured_landscape) %>
+      <div class="image">
+        <img src="#" alt="#" title="#" />
+        <span class="shadow"></span>
+      </div>
+      <p class="info"><%= truncate(@featured_landscape.description, :length => 200, :omission => "...#{link_to('Learn more', landscape_path(@featured_landscape))}") %></p>
+    </div> 
+  </div>
+</div>
 
-		<div class="right"> 
-		  <div class="feature"> 
-		    <p class="subtitle">Featured landscape</p> 
-		    <h3><a href="#">Roosevelt Island</a></h3>
-				<p class="star"><span><img src="images/common/pink_star.png" alt="heart"/>3</span></p>
-				<div class="image">
-					<img src="#" alt="#" title="#" />
-					<span class="shadow"></span>
-				</div>
-				<p class="info">Last year, the historical and epic big big discovery discovery of 13 new  species of bacterias by dr. Xeniakis’ greatest expedition put Roosevelt Island on the international scientific life virtual map.
-				Roosevelt President Island on the international scientific map. <br/><br/>
-
-				Most of this coastal territory is still unexplored... <%= link_to('Learn more', '#') %></p>
-		  </div> 
-		</div>
-	</div>
-	
-	<div id="your_guide">
-		<%= render 'guides/your_guide' %>
-	</div>
+<div id="your_guide">
+  <%= render 'guides/your_guide' %>
+</div>
