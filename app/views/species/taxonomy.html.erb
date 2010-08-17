@@ -1,0 +1,34 @@
+<div class="main species_no_info">
+  <h3>Descendant species</h3> 
+  <p class="subtitle"><%= @species.total_entries %> total species belonging to the <%= @term %> <%= @taxonomy %></p>
+  <ul>
+    <% @species.each do |species| %>
+    <li class="<%= cycle('', '', 'last_item') %>">
+      <div class="image">
+        <img src="<%= species.picture ? species.picture.image.url(:medium) : species.default_picture(:medium) %>" alt="<%= species.full_name %>" />
+      </div>
+      <div class="info">
+        <h4><a href="<%= species_path(species) %>"><%= species.full_name %></a></h4>
+        <% if species.common_name? %>
+        <p class="common_name"><%= species.common_name %></p> 
+        <% end -%>
+      </div>
+    </li>
+    <% end -%>
+  </ul>
+  <% if @species.total_pages > 1 %>
+  <div class="pagination">
+    <% unless @species.current_page == @species.total_pages %>
+    <a href="<%= species_taxonomy_path(params.merge(:page => @species.current_page + 1)) %>" class="right"></a> 
+    <% end -%>
+    <% unless @species.current_page == 1 %>
+    <a href="<%= species_taxonomy_path(params.merge(:page => @species.current_page - 1)) %>" class="left"></a> 
+    <% end -%>
+    <p>viewing from <strong><%= @species.current_page*@species.per_page - @species.per_page + 1 %> to <%= (@species.current_page*@species.per_page < @species.total_entries ? @species.current_page*@species.per_page : @species.total_entries) %> of <%= @species.total_entries %></strong></p>
+  </div>
+  <% end -%>
+</div>
+
+<div id="your_guide">
+  <%= render 'guides/your_guide' %>
+</div>

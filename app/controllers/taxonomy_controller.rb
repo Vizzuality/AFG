@@ -5,7 +5,7 @@ class TaxonomyController < ApplicationController
   
   def index
     response = if (params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).size > 0
-      "Invalida parameter(s): #{(params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).join(',')}"
+      "Invalid parameter(s): #{(params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).join(',')}"
     elsif (params.keys & AVAILABLE_PARAMS).size == 0
       Taxonomy.kingdoms.to_json
     elsif (params.keys & AVAILABLE_PARAMS).size == 1 && params[:kingdom]
