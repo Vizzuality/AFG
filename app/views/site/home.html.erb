@@ -16,13 +16,14 @@
 	    and create your <a href="<%= guides_path %>">antartic field guide</a>.</h2> 
 	</div><!-- .images_gallery -->
 
+
 	<div class="left"> 
 	  <div class="information"> 
 	    <h3>Species that you can find in the antartic</h3> 
 	    <p class="subtitle">you can find more than <%= link_to("#{Species.complete.count} species", species_index_path) %></p> 
 	    <div class="species_list"> 
 	      <ul class="published_afg">
-	        <% Species.limit(6).each do |species| %>
+	        <% @species.each do |species| %>
 	        <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
 	          <%= render species %>
 	        </li> 
@@ -37,7 +38,7 @@
 	    <h3>Some of the already created Antartic Field Guides</h3> 
 	    <p class="subtitle">create your AFG with species and landscapes, and enjoy your trip</p> 
 	    <ul class="published_afg"> 
-	      <% Guide.highlighted.limit(3).each do |guide| %>
+	      <% @guides.each do |guide| %>
 	      <li class="<%= cycle('', '', 'last') %>"> 
 	        <%= render guide %>
 	      </li> 

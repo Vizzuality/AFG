@@ -2,32 +2,34 @@
 #
 # Table name: species
 #
-#  id             :integer         not null, primary key
-#  uid            :integer         
-#  permalink      :string(255)     
-#  name           :string(255)     
-#  guides_count   :integer         default(0)
-#  highlighted    :boolean         
-#  genus          :string(255)     
-#  family         :string(255)     
-#  common_name    :string(255)     
-#  description    :text            
-#  identification :string(255)     
-#  distribution   :text            
-#  ecology        :text            
-#  size           :text            
-#  depth          :text            
-#  reference      :text            
-#  created_at     :datetime        
-#  updated_at     :datetime        
-#  kingdom        :string(255)     
-#  phylum         :string(255)     
-#  t_class        :string(255)     
-#  t_order        :string(255)     
-#  featured       :boolean         
-#  imported_file  :string(255)     
-#  species        :string(255)     
-#  complete       :boolean         
+#  id                        :integer         not null, primary key
+#  uid                       :integer         
+#  permalink                 :string(255)     
+#  name                      :string(255)     
+#  guides_count              :integer         default(0)
+#  highlighted               :boolean         
+#  genus                     :string(255)     
+#  family                    :string(255)     
+#  common_name               :string(255)     
+#  description               :text            
+#  identification            :string(255)     
+#  distribution              :text            
+#  ecology                   :text            
+#  size                      :text            
+#  depth                     :text            
+#  reference                 :text            
+#  created_at                :datetime        
+#  updated_at                :datetime        
+#  kingdom                   :string(255)     
+#  phylum                    :string(255)     
+#  t_class                   :string(255)     
+#  t_order                   :string(255)     
+#  featured                  :boolean         
+#  imported_file             :string(255)     
+#  species                   :string(255)     
+#  complete                  :boolean         
+#  habitat                   :string(255)     
+#  distinguishing_characters :text            
 #
 
 # Taxonomy sample:

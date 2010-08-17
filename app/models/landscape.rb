@@ -15,15 +15,23 @@
 #  guides_count :integer         default(0)
 #  created_at   :datetime        
 #  updated_at   :datetime        
+#  featured     :boolean         
 #
 
 class Landscape < ActiveRecord::Base
   
   before_validation :set_permalink
   
+  scope :featured,      where(:featured => true)
+  scope :not_featured,  where(:featured => false)
+  
   def self.find_by_term(q)
     q = "%#{q}%"
     where(["name like ? OR description like ?", q, q]).order("guides_count DESC")
+  end
+  
+  def to_param
+    "#{id}-#{permalink}"
   end
   
   def sort_by_attribute

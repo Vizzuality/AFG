@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   
   def index
-    @entries = @current_guide.entries.paginate :page => params[:entry_page]
+    @entries = @current_guide.entries.paginate :page => params[:entry_page], :per_page => 5
     respond_to do |format|
       format.html
       format.js do
