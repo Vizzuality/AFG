@@ -20,12 +20,25 @@ module ApplicationHelper
     end
   end
   
-  def share_in_facebook(species)
-    "javascript:var%20d=document,f='http://www.new.facebook.com/share',l=d.location,e=encodeURIComponent,p='.php?src=bm&v=4&i=1219930092&u=#{CGI.escape(species_url(species))}&t='+e(d.title);1;try{if%20(!/^(.*\.)?facebook\.[^.]*$/.test(l.host))throw(0);share_internal_bookmarklet(p)}catch(z)%20{a=function()%20{if%20(!window.open(f+'r'+p,'sharer','toolbar=0,status=0,resizable=1,width=626,height=436'))l.href=f+p};if%20(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else{a()}}void(0)"
+  def share_in_facebook(element)
+    url = case element.class.to_s
+    when 'Species'
+      species_url(element)
+    when 'Landscape'
+      landscape_url(element)
+    end
+    "javascript:var%20d=document,f='http://www.new.facebook.com/share',l=d.location,e=encodeURIComponent,p='.php?src=bm&v=4&i=1219930092&u=#{CGI.escape(url)}&t='+e(d.title);1;try{if%20(!/^(.*\.)?facebook\.[^.]*$/.test(l.host))throw(0);share_internal_bookmarklet(p)}catch(z)%20{a=function()%20{if%20(!window.open(f+'r'+p,'sharer','toolbar=0,status=0,resizable=1,width=626,height=436'))l.href=f+p};if%20(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else{a()}}void(0)"
   end
   
-  def share_in_twitter(species)
-    "http://twitter.com/?status=#{CGI.escape("#{species.full_name} - #{species_url(species)}")}"
+  def share_in_twitter(element)
+    text, url = nil, nil
+    case element.class.to_s
+    when 'Species'
+      text, url = element.full_name, species_url(element)
+    when 'Landscape'
+      text, url = element.name, landscape_url(element)
+    end
+    "http://twitter.com/?status=#{CGI.escape("#{text} - #{url}")}"
   end
   
   def flush_the_flash

@@ -21,7 +21,7 @@ var map, popup;
 			map.addControl(new OpenLayers.Control.Navigation({zoomWheelEnabled : false}));
 			map.addControl(new OpenLayers.Control.MousePosition({element: $('location')}));
 			var demolayer = new OpenLayers.Layer.WMS(
-					"aadc:wider_antarctica","maps/tiles",
+					"aadc:wider_antarctica","/maps/tiles",
 					{layers: 'aadc:wider_antarctica', format: 'image/png' },
 					{ tileSize: new OpenLayers.Size(256,256) }
 			);
