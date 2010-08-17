@@ -30,11 +30,17 @@ class EntriesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'The entry you are trying to remove does not exist'
   ensure
+    @entries = @current_guide.entries.paginate :page => params[:entry_page]
     respond_to do |format|
       format.html do
         redirect_to :back
       end
-      format.js
+      format.js do
+        render :update do |page|
+          page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
+          page << "AFG.behaviour();"
+        end
+      end
     end
   end
 
