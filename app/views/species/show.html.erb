@@ -62,7 +62,7 @@
 		    <h3>Photos & Videos</h3> 
 		    <ul>
 		      <% @species.pictures.each do |picture| %>
-		      <li><img src="<%= picture.public_filename %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+		      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
 		      <% end -%>
 		    </ul> 
 		  </div>
