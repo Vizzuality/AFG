@@ -47,8 +47,12 @@ class Guide < ActiveRecord::Base
   end
   
   def self.find_by_term(q)
-    escaped_q = sanitize_sql(q)
-    published.where("name like '%#{escaped_q}%' OR author like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
+    q = "%#{q}%"
+    published.where(["name like ? OR author like ? OR description like ?", q, q, q]).order("downloads_count DESC")
+  end
+  
+  def sort_by_attribute
+    :downloads_count
   end
   
   def pdf_name
@@ -85,6 +89,15 @@ class Guide < ActiveRecord::Base
   
   def default_picture(style)
     "/images/defaults/#{style}_specie.jpg"
+  end
+  
+  def picture
+    species_ids = entries.find_all_by_element_type('Species')
+    Picture.find(:first, :conditions => "species_id IN (#{(species_ids + [-1]).join(',')})")
+  end
+  
+  def picture?
+    !picture.nil?
   end
   
   def undo_last_action

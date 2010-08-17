@@ -3,7 +3,7 @@
   <% if @pictures %>
   <div id="slider"> 
     <% @pictures.each do |picture| %>
-    <img src="<%= picture.image.url(:huge) %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.full_name %>" class="<%= picture.species.guides_count %>"/> 
+    <img src="<%= picture.image.url(:huge) %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
     <% end -%>
   </div><!-- #slider -->
   <% end -%>

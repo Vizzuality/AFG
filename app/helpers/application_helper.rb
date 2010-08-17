@@ -43,6 +43,13 @@ module ApplicationHelper
       end
     end
   end
-  
+
+  def stars(element)
+    content_tag(:p, :class => "star #{element.send(element.sort_by_attribute) == 0 ? 'zero' : ''}") do
+      content_tag(:span) do
+        image_tag("common/#{element.send(element.sort_by_attribute) == 0 ? 'gray' : 'pink'}_star.png", :alt=>"star") + element.send(element.sort_by_attribute).to_s
+      end
+    end
+  end
   
 end

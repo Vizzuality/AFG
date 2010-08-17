@@ -21,6 +21,15 @@ class Landscape < ActiveRecord::Base
   
   before_validation :set_permalink
   
+  def self.find_by_term(q)
+    q = "%#{q}%"
+    where(["name like ? OR description like ?", q, q]).order("guides_count DESC")
+  end
+  
+  def sort_by_attribute
+    :guides_count
+  end
+  
   private
   
     def set_permalink

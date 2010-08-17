@@ -1,18 +1,18 @@
 <div class="outer_layout"> 
   <div class="guides_header"> 
-		<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
     <p class="title">Most popular Antartic Field Guides</p> 
     <p class="by">choose one of this guides if you don't want to create yours from scratch</p> 
     <ul>
       <% Guide.highlighted.limit(4).each_with_index do |guide,index| %>
-      	<li class="<%= index==3 ? 'last' : ''  %>"><%= render guide %></li>
+        <li class="<%= index==3 ? 'last' : ''  %>"><%= render guide %></li>
       <% end %>
     </ul> 
   </div>
 </div>
 
 <div class="main guides">
-	<div class="left"> 
+  <div class="left"> 
     <div id="guides_left" class="create"> 
       <h3>Published Antartic Field Guides</h3> 
       <p class="subtitle"><b>More than <%= pluralize(Guide.published.not_highlighted.count, 'AFG', 'AFGs') %> published</b></p> 
@@ -27,19 +27,19 @@
       <h3>Atlantic Field Guide?</h3> 
       <p class="subtitle">A customized scientific guide for your next trip to Antarctica.</p> 
       <h2>Pick your items...</h2> 
-			<%= image_tag ('guides/step1.jpg') %>
+      <%= image_tag ('guides/step1.jpg') %>
       <p class="info">Explore Atlantic Field Guides and add your favorite <strong>species</strong> and <strong>landscapes</strong> to your guide.</p> 
-    
+      
       <h2>... or browse existing guides</h2> 
-			<%= image_tag ('guides/step2.jpg') %>
+      <%= image_tag ('guides/step2.jpg') %>
       <p class="info">You can also use a guide created by other travellers as a template for your own.</p> 
     
       <h2>Download, print and go!</h2> 
-			<%= image_tag ('guides/step3.jpg') %>
+      <%= image_tag ('guides/step3.jpg') %>
       <p class="info">Get your guide on PDF format and print it. Don’t forget to pack it on your next trip to Antarctica! </p> 
     
-			<p class="now">And now...</p>
-			<a href="#" class="start" title="Start exploring species!"></a>
+      <p class="now">And now...</p>
+      <a href="<%= species_index_path %>" class="start" title="Start exploring species!"></a>
     </div> 
   </div>
 </div>

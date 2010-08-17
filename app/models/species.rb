@@ -53,6 +53,7 @@ class Species < ActiveRecord::Base
   before_validation :set_permalink
   
   scope :highlighted, where(:highlighted => true)
+  scope :not_featured, where(:featured => false)
   scope :featured, where(:featured => true)
   scope :complete, where(:complete => true)
   
@@ -90,8 +91,12 @@ class Species < ActiveRecord::Base
   end
   
   def self.find_by_term(q)
-    escaped_q = sanitize_sql(q)
-    where("species like '%#{escaped_q}%' OR name like '%#{escaped_q}%' OR genus like '%#{escaped_q}%' OR description like '%#{escaped_q}%'")
+    q = "%#{q}%"
+    where(["species like ? OR name like ? OR genus like ? OR description like ?", q, q, q, q]).order("guides_count DESC")
+  end
+  
+  def sort_by_attribute
+    :guides_count
   end
   
   def self.get_taxon(uid)

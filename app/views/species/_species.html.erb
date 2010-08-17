@@ -1,7 +1,7 @@
 <div class="specie"> 
   <a href="<%= species_path(species) %>"><img src="<%= species.picture ? species.picture.image.url(:medium) : species.default_picture(:medium) %>" alt="<%= species.full_name %>" /></a>
   <h4><%= link_to(truncate(species.full_name, :length => 15, :omission =>"…"), species_path(species)) %></h4>
-  <p class="star <%= species.guides_count==0 ? 'zero' : '' %>"><span><img src="<%= species.guides_count==0 ? 'images/common/gray_star.png' : 'images/common/pink_star.png' %>" alt="heart"/><%= species.guides_count %></span></p> 
+  <%= stars(species) %>
   <% if species.common_name? %>
   <p class="taxa"><%= species.common_name %></p> 
   <% end -%>

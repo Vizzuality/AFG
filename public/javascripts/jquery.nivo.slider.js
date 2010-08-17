@@ -103,7 +103,7 @@
 				$('<div class="nivo-caption"><h2></h2><p class="common_name"></p><p class="downloads"><span></span></p></div>').css({ display:'none', opacity:settings.captionOpacity })
 			);			
 			//Process initial  caption
-			if(vars.currentImage.attr('title') != ''){
+			if(vars.currentImage.attr('alt') != ''){
 				$('.nivo-caption h2', slider).html(vars.currentImage.attr('alt'));			
 				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('title'));	
 				$('.nivo-caption p.downloads span', slider).html(vars.currentImage.attr('class') + ' DOWNLOADS');

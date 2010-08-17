@@ -13,7 +13,7 @@
       <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p> 
       <div class="species_list"> 
         <ul class="published_afg">
-          <% Species.limit(6).each do |species| %>
+          <% @species.each do |species| %>
           <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
             <%= render species %>
           </li> 
@@ -28,7 +28,7 @@
     <div class="feature"> 
       <p class="subtitle">Featured species</p> 
       <h3><%= link_to(@featured_species.name, species_path(@featured_species)) %></h3>
-      <p class="star <%= @featured_species.guides_count==0 ? 'zero' : '' %>"><span><img src="<%= @featured_species.guides_count==0 ? 'images/common/gray_star.png' : 'images/common/pink_star.png' %>" alt="heart"/><%= @featured_species.guides_count %></span></p>      
+      <%= stars(@featured_species) %>
       <div class="image">
         <img src="<%= @featured_species.picture ? @featured_species.picture.image.url(:large) : @featured_species.default_picture(:medium) %>" alt="<%= @featured_species.name %>" title="<%= @featured_species.name %>" />
         <span class="shadow"></span>

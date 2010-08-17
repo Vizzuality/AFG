@@ -1,114 +1,106 @@
+<div class="outer_layout"> 
+  <div class="search_container">
+    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <h2>Search for species, landscapes, guides...</h2> 
+    <form action="<%= search_path %>" method="get">
+      <input type="text" value="<%= params[:q] %>" name="q" />
+      <input type="submit" value="Search" />
+      <p>or view the <%= link_to('species browser', species_index_path) %></p>
+    </form>
+  </div>
+</div>
 
-	<div class="outer_layout"> 
-	  <div class="search_container">
-			<%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-	    <h2>Search for species, landscapes, guides...</h2> 
-	    <form action="#">
-				<input type="text" value="" />
-				<input type="submit" value="Search" />
-				<p>or view the <%= link_to('species browser', species_index_path) %></p>
-			</form>
-	    
-	  </div>
-	</div>
-	
+<div class="main results">
+  
+  <div class="left"> 
+    <div class="results"> 
+      <% if params[:q].blank? %>
+        <p><%= flash[:alert] %></p>
+      <% else %>
+        <h1>
+        <% if params[:type] %>
+        <%= pluralize(@results.total_entries, params[:type]) %> found for "<%= params[:q] %>"        
+        <% else %>
+        <%= pluralize(@results.total_entries, 'result', 'results') %> found for "<%= params[:q] %>"
+        <% end -%>
+        </h1>
+        <ul>
+          <% @results.each do |result| %>
+            <% if result.is_a?(Species) %>
+            <li class="specie">
+              <%= stars(result) %>
+              <div class="image">
+                <img src="<%= result.picture ? result.picture.image.url(:medium) : result.default_picture(:medium) %>" alt="<%= result.full_name %>" />
+              </div>
+              <div class="information">
+                <h2><%= link_to(result.full_name, species_path(result)) %></h2>
+                <% unless result.common_name.blank? %>
+                <p class="subtitle">Common name - <%= result.common_name %></p>
+                <% end -%>
+                <p class="description"><%= truncate(result.description, :length => 50, :omission => "...#{link_to('View more', species_path(result))}") %></p>
+              </div>
+            </li>
+            <% elsif result.is_a?(Guide) %>
+            <li class="guide">
+              <%= stars(result) %>
+              <div class="image">
+                <% if result.picture? %>
+                <img src="<%= result.picture.image.url(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />                
+                <% else %>
+                <img src="<%= result.default_picture(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />
+                <% end -%>
+              </div>
+              <div class="information">
+                <h2><%= link_to(result.name, guide_path(result)) %></h2>
+                <p class="subtitle">by <%= result.author %>, <%= result.updated_at.strftime("%dth %B %Y") %></p>
+                <p class="description"><%= truncate(result.description, :length => 50, :omission => "...#{link_to('View more', guide_path(result))}") %></p>
+              </div>
+            </li>
+            <% elsif result.is_a?(Landscape) %>
+            <li class="landscape">
+              <%= stars(result) %>
+              <div class="image">
+                <img src="" alt="" title=""/>
+              </div>
+              <div class="information">
+                <h2><%= link_to(resutl.name, landscape_path(result)) %></h2>
+                <p class="description"><%= truncate(result.description, :length => 50, :omission => "...#{link_to('View more', landscape_path(result))}") %></p>
+              </div>
+            </li>
+            <% end -%>
+          <% end -%>
+        </ul>
+      
+        <% if @results.total_pages > 1 %>
+        <div class="pagination">
+          <% unless @results.current_page == @results.total_pages %>
+          <a href="<%= search_path(params.merge(:page => @results.current_page + 1)) %>" class="right"></a> 
+          <% end -%>
+          <% unless @results.current_page == 1 %>
+          <a href="<%= search_path(params.merge(:page => @results.current_page - 1)) %>" class="left"></a> 
+          <% end -%>
+          <p>viewing from <strong><%= @results.current_page*@results.per_page - @results.per_page + 1 %> to <%= (@results.current_page*@results.per_page < @results.total_entries ? @results.current_page*@results.per_page : @results.total_entries) %> of <%= @results.total_entries %></strong></p>
+        </div><!-- .pagination -->
+        <% end -%>
+      <% end -%>
+    </div> 
+  </div> 
 
+  <div class="right">
+    <div class="results"> 
+      <% unless params[:q].blank? %>
+      <h4>FILTER YOUR RESULTS</h4>
+      <ul>
+        <li><a href="<%= search_path(:q => params[:q], :type => 'species') %>"><span><%= @total_species.size %> Species</span></a></li>
+        <li><a href="<%= search_path(:q => params[:q], :type => 'landscapes') %>"><span><%= pluralize(@total_landscapes.size, 'Landscape', 'Landscapes') %></span></a></li>
+        <li><a href="<%= search_path(:q => params[:q], :type => 'guides') %>"><span><%= pluralize(@total_guides.size, 'Guide', 'Guides') %></span></a></li>
+        <li><a href="<%= search_path(:q => params[:q]) %>" class="all">All results</a></li>
+      </ul>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
-	<div class="main results">
-		<div class="left"> 
-		  <div class="results"> 
-		    <h1>136 results found for "<%= params[:q] %>"</h1>
-		    <ul>
-					<!-- SPECIE ITEM -->
-					<li class="specie">
-						<p class="star"><span><%= image_tag ('common/pink_star.png', :alt=>"star") %>3</span></p>
-						<div class="image">
-							<img src="" alt="" title=""/>
-						</div>
-						<div class="information">
-							<h2><%=link_to("Gentoo Penguin","#")%></h2>
-							<p class="subtitle">Scientific name - Animalia</p>
-							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automated  are kept... <a href="#">View more</a></p>
-						</div>
-					</li>
-					
-					<!-- GUIDE ITEM -->
-					<li class="guide">
-						<p class="star"><span><%= image_tag ('common/pink_star.png', :alt=>"star") %>13</span></p>
-						<div class="image">
-						</div>
-						<div class="information">
-							<h2><%=link_to("The Definitive Anctartic Field Guide","#")%></h2>
-							<p class="subtitle">by Bruno Dannis, 16th March 2010</p>
-							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automateds... <a href="#">View more</a></p>
-						</div>
-					</li>
-					
-					<!-- LANDSCAPE ITEM -->
-					<li class="landscape">
-						<p class="star zero"><span><%= image_tag ('common/gray_star.png', :alt=>"star") %>0</span></p>
-						<div class="image">
-							<img src="" alt="" title=""/>
-						</div>
-						<div class="information">
-							<h2><%=link_to("The great Coral Barrier","#")%></h2>
-							<p class="description">The station is only inhabited during the southern summer, from mid-November to mid-March, although automated  are kept running all year long. Like the other Spanish Antarctic facilities... <a href="#">View more</a></p>
-						</div>
-					</li>
-				</ul>
-				<div class="pagination">
-			    <a href="#" class="right"></a> 
-			    <a href="#" class="left disabled"></a> 
-					<p>viewing from <strong>1 to 8 of 32</strong></p>
-				</div>
-		  </div> 
-		</div> 
-
-		<div class="right">
-			<div class="results"> 
-				<h4>FILTER YOUR RESULTS</h4>
-			  <ul>
-					<li><a href="#"><span>20 Species</span></a></li>
-					<li><a href="#"><span>12 Landscapes</span></a></li>
-					<li><a href="#"><span>14 Guides</span></a></li>
-					<li><a href="#" class="all">All results</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	
-  <div id="your_guide">
-	<%= render 'guides/your_guide' %>
-	</div>
-
-
-	
-
-		<!-- <h1>Results for <%= params[:q] %></h1>
-
-		<div class="left">
-		  <% unless @guides.empty? %>
-		    <h2>Guides</h2>
-		    <p>Found <%= pluralize(@guides.total_entries, 'guide', 'guides') %></p>
-		    <ul>
-		      <% @guides.each do |guide| %>
-		      <li><%= render guide %></li>
-		      <% end -%>
-		    </ul>
-		    <%= will_paginate(@guides) %>
-		  <% end -%>
-		</div>
-
-		<div class="right">
-		  <% unless @species.empty? %>
-		  <h2>Species</h2>
-		  <p>Found <%= @species.total_entries %> species</p>
-		  <ul>
-		    <% @species.each do |specie| %>
-		    <li><%= render specie %></li>
-		    <% end -%>
-		  </ul>
-
-		  <%= will_paginate(@species) %>
-		  <% end -%>
-		</div> -->
+<div id="your_guide">
+  <%= render 'guides/your_guide' %>
+</div>
