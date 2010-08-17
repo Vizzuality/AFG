@@ -20,12 +20,16 @@
 		    <h1><%= @species.full_name %></h1> 
 		    <h3>Description</h3> 
 		    <%= simple_format(@species.description) %>
+		    <h3>Distinguishing Characters</h3> 
+		    <%= simple_format(@species.description) %>
 
-		    <% unless @current_guide.include_species?(@species) %>
+		    <% if !@current_guide.include_species?(@species) %>
 		      <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
+				<% else %>
+					<span class="included"></span>
 		    <% end %>
 		    <% if @species.guides_count > 0 %>
-		    <p class="times_added"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
+		    	<p class="times_added <%= @current_guide.include_species?(@species) ? 'included' : ''%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
 		    <% end -%>
 		  </div> 
 		  <div class="right"> 
@@ -42,10 +46,10 @@
 	</div>
 	
 
-  <% if !@species.description.blank? %>
+  <% if !@species.pictures.empty? %>
 		<div class="main specie"> 
 		  <div class="left"> 
-				<%= image_tag ('specie/arrow_long.png', :class=> 'arrow') %>		
+				<%= image_tag ('species/arrow_long.png', :class=> 'arrow') %>		
 		    <h3>Species information</h3> 
 		    <p class="subtitle">More information that maybe could be useful for you</p> 
 		    <% unless @species.size.blank? %>
@@ -76,7 +80,7 @@
 
 		<div class="main specie"> 
 		  <div class="left"> 
-				<%= image_tag ('specie/arrow_long.png', :class=> 'arrow') %>		
+				<%= image_tag ('species/arrow_long.png', :class=> 'arrow') %>		
 		    <h3>Species distribution</h3> 
 		    <p class="subtitle">bla bla bla bla</p> 
 		    <% unless @species.distribution.blank? %>
@@ -97,7 +101,7 @@
 		      <span class="shadow"></span> 
 		    </div> 
 		    <label class="right">Depth of the distribution</label> 
-				<%= image_tag ('specie/depth_specie.jpg') %>		
+				<%= image_tag ('species/depth_specie.jpg') %>		
 		  </div> 
 		</div>
 	<% else %>
@@ -223,5 +227,5 @@
 	<% end %>
 
 <div id="your_guide">
-<%= render 'guides/your_guide' %>
+	<%= render 'guides/your_guide' %>
 </div>

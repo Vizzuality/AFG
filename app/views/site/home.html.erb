@@ -51,13 +51,7 @@
     <% unless @activities.empty? %>
     <p class="subtitle">species, guides and landscapes added...</p> 
     <ul>
-      <% @activities.each_with_index do |entry, i| %>
-      <li> 
-        <div class="latest <%= 'first' if i == 0 %>"> 
-          <%= render :partial => "activities/#{entry.activity_type}", :locals => { :entry => entry } %>
-        </div> 
-      </li> 
-      <% end -%>
+      
     </ul> 
     <% end -%>
   </div> 
