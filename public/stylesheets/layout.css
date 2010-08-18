@@ -22,6 +22,48 @@ div.pop_up p a {padding:0 0 0 7px; font:bold 12px Helvetica; color:#999999; text
 div.pop_up p a:hover {color:white;}
 div.pop_up a.close { float:right; width:10px; height:10px; background:url(../images/common/close_pop_up.png) no-repeat 0 0; margin:7px 0 0 0;}
 
+
+/*modal window*/
+#publish_container {display:none	; width:746px; height:622px; padding:0; margin:0;}
+#simplemodal-overlay {background:none; cursor:default;}
+#simplemodal-container {width:746px; height:622px; background:none; padding:0; margin:0;}
+#simplemodal-container code {background:none; }
+#publish_container div.top {float:left; margin:0; background:url(../images/modal/top_white_bkg.png) no-repeat 0 0; width:746px; padding:9px 0 0 0;}
+#publish_container div.bottom {float:left; margin:0; background:url(../images/modal/bottom_blue_bkg_1.png) no-repeat 0 bottom; width:746px; padding:0 0 10px 0;}
+#publish_container div.repeat {float:left; margin:0; background:url(../images/modal/repeat_bkg.png) repeat-y 0 0; width:732px; padding:0 7px 0 7px;}
+#publish_container div.repeat h4 {float:left; margin:26px 0 0 26px; font:; padding:0; width:690px; font:normal 25px Helvetica; color:#666666;}
+#publish_container div.repeat ul {float:left; margin:26px 0 0 26px; padding:0;}
+#publish_container div.repeat ul li {float:left; margin:0 5px 0 0; width:auto; background:url(../images/modal/left_list.png) no-repeat; padding:0 0 0 2px; width:auto;}
+#publish_container div.repeat ul li span {float:left; background:url(../images/modal/right_list.png) no-repeat right 0; padding:9px 10px 7px 8px; height:15px; color:#85D2ED; font:normal 13px Arial;}
+#publish_container div.repeat ul li.active {background-image:url(../images/modal/left_active.png);}
+#publish_container div.repeat ul li.active span {background-image:url(../images/modal/right_active.png); color:white;}
+#publish_container div.repeat div.choice {float:left; background:url(../images/modal/repeat_x_1.png) repeat-x 0 0; padding:30px; width:672px;}
+#publish_container div.repeat div.choice div.alternative {float:left; width:321px; height:167px; background:url(../images/modal/dark_area.png) no-repeat 0 0; margin:0 30px 0 0;}
+#publish_container div.repeat div.choice div.alternative.last {margin:0;}
+#publish_container div.repeat div.choice div.alternative div.type {}
+#publish_container div.repeat div.choice div.alternative div.type p {}
+#publish_container div.repeat div.choice div.alternative div.info {}
+#publish_container div.repeat div.choice div.alternative div.info a {}
+#publish_container div.repeat div.choice div.alternative div.info a:hover {}
+#publish_container div.repeat div.choice div.alternative div.info p {}
+
+
+#publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
+#publish_container div.repeat div.choice div.long div.type {position:relative; float:left; margin:16px 0 0 18px; width:128px; height:138px;}
+#publish_container div.repeat div.choice div.long div.type img.loading {float:left; margin:51px 0 0 49px;}
+#publish_container div.repeat div.choice div.long div.type img.ok {position:absolute; right:-13px; top:-16px;}
+#publish_container div.repeat div.choice div.long div.type img.image {position:relative; float:left; margin:29px 0 0 17px; width:32px; height:32px;}
+#publish_container div.repeat div.choice div.long div.type.loading {background:url(../images/modal/list_loading.png) no-repeat center center;}
+#publish_container div.repeat div.choice div.long div.type.finished {background:url(../images/modal/list_finish.png) no-repeat center center;}
+#publish_container div.repeat div.choice div.long div.info {float:left; margin:40px 0 0 25px; width:470px;}
+#publish_container div.repeat div.choice div.long div.info h5 {float:left; width:100%; font:normal 21px "Lucida Grande"; letter-spacing:-1px; color:white;}
+#publish_container div.repeat div.choice div.long div.info p {float:left; width:100%; font:normal 15px Arial; color:#80B4C5;}
+#publish_container div.repeat div.choice div.long div.info a {float:right; margin:20px 0 0 0; text-align:center; width:109px; height:20px; padding:8px 0; background:url(../images/modal/download_bkg.png) no-repeat 0 0; text-decoration:none; font:bold 19px Helvetica; letter-spacing:-1px; color:#0099CC;}
+#publish_container div.repeat div.choice div.long div.info a:hover {background-position:0 -36px; color:#1F628F;}
+#publish_container div.repeat div.choice div.long div.info a.disabled {color:#CCCCCC;}
+#publish_container div.repeat div.choice div.long div.info a.disabled:hover {background-position:0 -36px; cursor:default;}
+
+
 p.landscapes_rank {width:76px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px;}
 p.species_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
 p.species_guide_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
