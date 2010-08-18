@@ -1,0 +1,40 @@
+<% unless params[:q] %>
+<h1>Listing taxonomies</h1>
+<% else %>
+<h1>Listing taxonomies related to '<%= params[:q] %>'</h1>
+<p>Found <%= pluralize(@taxonomies.size, 'result', 'results') %></p>
+<% end -%>
+
+<ul class="families">
+  <% if params[:q] %>
+  <li><%= link_to('Back to index', admin_taxonomies_path) %></li>
+  <% end -%>
+</ul>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>hierarchy</th>
+    <th class="long">Description</th>
+    <th class="long"></th>
+  </tr>
+
+<% @taxonomies.each do |taxonomy| %>
+  <tr class="<%= cycle('', 'even') %>">
+    <td><%= taxonomy.id %></td>
+    <td><%= link_to "#{taxonomy.name}", edit_admin_taxonomy_path(taxonomy.id) %></td>
+    <td><%= taxonomy.hierarchy %></td>
+    <td class="long"><%= truncate(taxonomy.description, :length => 100) %></td>
+    <td>
+    <%= link_to 'Edit', edit_admin_taxonomy_path(taxonomy.id) %> · 
+    <%= link_to 'Destroy', admin_taxonomy_path(taxonomy), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate(@taxonomies) %>
+
+<br />
+
+<%= link_to '+ New Taxonomy', new_admin_taxonomy_path %>

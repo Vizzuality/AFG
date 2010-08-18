@@ -54,14 +54,14 @@ class Species < ActiveRecord::Base
   
   before_validation :set_permalink
   
-  scope :highlighted, where(:highlighted => true)
-  scope :not_featured, where(:featured => false)
-  scope :featured, where(:featured => true)
-  scope :complete, where(:complete => true)
+  scope :highlighted,   where(:highlighted => true)
+  scope :not_featured,  where(:featured => false)
+  scope :featured,      where(:featured => true)
+  scope :complete,      where(:complete => true)
   
   before_create :set_uid, :get_taxon, :set_complete
   
-  before_save :set_complete
+  before_save :set_complete, :propagate_taxon
 
   def to_param
     "#{id}-#{permalink}"
@@ -165,6 +165,7 @@ class Species < ActiveRecord::Base
       self.family  = atts[:family]
       self.species = atts[:species]
     end
+    propagate_taxon
   end
   
   def set_uid
@@ -202,6 +203,39 @@ class Species < ActiveRecord::Base
     def set_complete
       self.complete = (!self.uid.blank? && !self.kingdom.blank? && !self.t_order.blank? && !self.t_class.blank? && !self.genus.blank? && !self.phylum.blank? && !self.family.blank? && !self.species.blank?)
       return true
+    end
+    
+    def propagate_taxon
+      unless self.kingdom.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.kingdom, 'kingdom')
+          Taxonomy.create! :name => self.kingdom, :hierarchy => 'kingdom'
+        end
+      end
+      unless self.phylum.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.phylum, 'phylum')
+          Taxonomy.create! :name => self.phylum, :hierarchy => 'phylum'
+        end
+      end
+      unless self.t_class.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.t_class, 'class')
+          Taxonomy.create! :name => self.t_class, :hierarchy => 'class'
+        end
+      end
+      unless self.t_order.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.t_order, 'order')
+          Taxonomy.create! :name => self.t_order, :hierarchy => 'order'
+        end
+      end
+      unless self.family.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.family, 'family')
+          Taxonomy.create! :name => self.family, :hierarchy => 'family'
+        end
+      end
+      unless self.genus.blank?
+        unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.genus, 'genus')
+          Taxonomy.create! :name => self.genus, :hierarchy => 'genus'
+        end
+      end
     end
   
 end

@@ -75,53 +75,77 @@ class Entry < ActiveRecord::Base
           Landscape.increment_counter(:guides_count, element_id.to_i)
           Guide.increment_counter(:landscapes_count, guide_id)
         when 'Kingdom'
-          species = Species.find_all_by_kingdom(element_id)
+          species = Species.complete.find_all_by_kingdom(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('kingdom', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
         when 'Phylum'
-          species = Species.find_all_by_phylum(element_id)
+          species = Species.complete.find_all_by_phylum(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('phylum', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
         when 'Class'
-          species = Species.find_all_by_t_class(element_id)
+          species = Species.complete.find_all_by_t_class(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('class', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
         when 'Order'
-          species = Species.find_all_by_t_order(element_id)
+          species = Species.complete.find_all_by_t_order(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('order', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
         when 'Family'
-          species = Species.find_all_by_family(element_id)
+          species = Species.complete.find_all_by_family(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('family', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
         when 'Genus'
-          species = Species.find_all_by_genus(element_id)
+          species = Species.complete.find_all_by_genus(element_id)
           guide.update_attribute(:species_count, guide.species_count + species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
           end
           update_attribute(:elements_count, species.size)
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('genus', element_id)
+            taxonomy.increment(:downloads_count)
+            taxonomy.save
+          end
       end
     end
     
@@ -134,46 +158,70 @@ class Entry < ActiveRecord::Base
           Landscape.decrement_counter(:guides_count, element_id.to_i)
           Guide.decrement_counter(:landscapes_count, guide_id)
         when 'Kingdom'
-          species = Species.find_all_by_kingdom(element_id)
+          species = Species.complete.find_all_by_kingdom(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
+          end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('kingdom', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
           end
         when 'Phylum'
-          species = Species.find_all_by_phylum(element_id)
+          species = Species.complete.find_all_by_phylum(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
+          end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('phylum', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
           end
         when 'Class'
-          species = Species.find_all_by_t_class(element_id)
+          species = Species.complete.find_all_by_t_class(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
+          end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('class', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
           end
         when 'Order'
-          species = Species.find_all_by_t_order(element_id)
+          species = Species.complete.find_all_by_t_order(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
+          end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('order', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
           end
         when 'Family'
-          species = Species.find_all_by_family(element_id)
+          species = Species.complete.find_all_by_family(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
           end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('family', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
+          end
         when 'Genus'
-          species = Species.find_all_by_genus(element_id)
+          species = Species.complete.find_all_by_genus(element_id)
           guide.update_attribute(:species_count, guide.species_count - species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
+          end
+          if taxonomy = Taxonomy.find_by_hierarchy_and_name('genus', element_id)
+            taxonomy.decrement(:downloads_count)
+            taxonomy.save
           end
       end
     end

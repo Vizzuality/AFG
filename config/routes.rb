@@ -7,7 +7,9 @@ AFG::Application.routes.draw do |map|
 
   match 'about' => 'site#about', :as => 'about'
   
-  resources :guides, :only => [:index, :show, :update]
+  resources :guides, :only => [:index, :show, :update] do
+    get :undo, :on => :member
+  end
   match 'guides/pdf/:id' => 'guides#pdf', :as => 'pdf_guide'
   match 'guides/edit/current' => 'guides#edit', :as => 'edit_guide'
 
@@ -19,6 +21,7 @@ AFG::Application.routes.draw do |map|
 
   namespace :admin do
     resources :landscapes
+    resources :taxonomies
     resources :species, :except => [:show] do
       resources :pictures, :except => [:index, :show]
     end

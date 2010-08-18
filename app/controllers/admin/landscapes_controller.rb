@@ -44,7 +44,7 @@ class Admin::LandscapesController < ApplicationController
 
     respond_to do |format|
       if @landscape.update_attributes(params[:landscape])
-        format.html { redirect_to(edit_admin_landscape_path(@species), :notice => 'Landscape was successfully updated.') }
+        format.html { redirect_to(edit_admin_landscape_path(@landscape), :notice => 'Landscape was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end

@@ -1,0 +1,34 @@
+<%= form_for(@taxonomy, :url => (@taxonomy.new_record? ? admin_taxonomies_path : admin_taxonomy_path(@taxonomy.id))) do |f| %>
+  <% if @taxonomy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@taxonomy.errors.count, "error") %> prohibited this landscape from being saved:</h2>
+
+      <ul>
+      <% @taxonomy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :hierarchy %><br />
+    <%= f.text_field :hierarchy, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :distinguishing_characters %><br />
+    <%= f.text_area :distinguishing_characters, :rows => 8, :cols => 50 %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
