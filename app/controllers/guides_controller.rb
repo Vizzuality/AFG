@@ -49,12 +49,23 @@ class GuidesController < ApplicationController
   
   def update
     @guide = @current_guide
-    if @guide.update_attributes(params[:guide])
+    @guide.attributes = params[:guide]
+    if @guide.save
       flash[:notice] = 'Guide published'
       # TODO: habria que redirigir a download PDF
       redirect_to guide_path(@guide.id)
     else
       render :action => 'edit'
+    end
+  end
+  
+  def undo
+    @current_guide.undo_last_action
+    flash[:notice] = "Undo performed successfully"
+    respond_to do |format|
+      format.html do
+        redirect_to :back
+      end
     end
   end
   

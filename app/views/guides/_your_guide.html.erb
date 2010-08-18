@@ -27,7 +27,7 @@
             <% elsif entry.element_type == 'Species' %>
             <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
             <% end -%>
-            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete ajax') %>
+            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
           </div>
         </li> 
       <% end -%>

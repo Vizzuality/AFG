@@ -45,6 +45,13 @@ module ApplicationHelper
     "http://twitter.com/?status=#{CGI.escape("#{text} - #{url}")}"
   end
   
+  def pop_up_flash
+    return "" unless flash[:notice]
+    content_tag(:div, :class => 'pop_up') do
+      content_tag(:p, raw(flash[:notice])) + link_to('', '#', :class => 'close')
+    end
+  end
+  
   def flush_the_flash
     if flash[:alert]
       notice_div(flash[:alert], 'error')

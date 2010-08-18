@@ -118,6 +118,7 @@ class Guide < ActiveRecord::Base
           entry.destroy
         end
     end
+    update_attribute(:last_action, '')
   end
   
   private
