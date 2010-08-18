@@ -67,8 +67,8 @@ div.images_gallery .nivo-caption p.common_name {float:left; margin:0 0 0 95px; w
 div.images_gallery .nivo-caption p.downloads {float:left; margin:12px 0 0 95px; width:auto; padding:0 0 0 17px; background:url(../images/common/downloads_left.png) no-repeat 0 0; height:15px;}
 div.images_gallery .nivo-caption p.downloads span {float:left; height:15px; width:auto; background:url(../images/common/downloads_right.png) no-repeat right 0; font:bold 9px Arial; color:#FF0066; padding:3px 8px 3px 0;}
 div.images_gallery .nivo-directionNav a { position:absolute; bottom:10px; width:35px; height:35px; z-index:99;cursor:pointer;}
-div.images_gallery .nivo-prevNav {left:10px; background:url(../images/home/left_gallery.png) no-repeat 0 0;}
-div.images_gallery .nivo-nextNav {right:10px; background:url(../images/home/right_gallery.png) no-repeat 0 0;}
+div.images_gallery .nivo-prevNav {left:10px; background:url(../images/home/gallery_left.png) no-repeat 0 0;}
+div.images_gallery .nivo-nextNav {right:10px; background:url(../images/home/gallery_right.png) no-repeat 0 0;}
 div.images_gallery .nivo-directionNav a:hover {background-position:0 -35px;}
 div.images_gallery .nivo-controlNav a {display:none;}
 div.images_gallery .nivo-controlNav a.active {font-weight:bold;}

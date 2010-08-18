@@ -8,7 +8,7 @@
 	  <% if @pictures %>
 	  <div id="slider"> 
 	    <% @pictures.each do |picture| %>
-	    <img src="<%= picture.image.url(:huge) %>" alt="<%= picture.species.full_name %>" title="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
+	    <img src="<%= picture.image.url(:huge) %>" title="<%= picture.species.full_name %>" alt="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
 	    <% end -%>
 	  </div><!-- #slider -->
 	  <% end -%>
@@ -69,7 +69,8 @@
 	  <div class="bottom"> 
 	    <p>why this matters? <a href="<%= guides_path %>">create your guide</a></p> 
 	  </div> 
-	  <div class="blue"> 
+	  <div class="blue">
+	    <%= image_tag('home/white_arrow.png', :class=> 'arrow') %>
 	    <h4>Create your guide</h4> 
 	    <p class="subtitle">create your AFG when you want, it's free!</p> 
 	    <ul>
