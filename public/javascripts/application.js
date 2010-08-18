@@ -43,15 +43,15 @@ $(document).ready(function() {
 	});
 	
 	// click sorted box  >> GUIDES
-	$('div.sorted_by a.sorted_box_deactivated').click(function(ev){
+	$('div.sorted_by a.sorted_box_deactivated').live('click',function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
-		$(this).parent().children('div.activated_box').show();
+		$(this).parent().find('div.activated_box').show();
 
 	});
 
 	// click sorted box  >> GUIDES
-	$('div.activated_box a.sorted_box_activated').click(function(ev){
+	$('div.activated_box a.sorted_box_activated').live('click',function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		$(this).parent().fadeOut();

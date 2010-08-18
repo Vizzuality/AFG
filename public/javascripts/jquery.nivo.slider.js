@@ -103,9 +103,9 @@
 				$('<div class="nivo-caption"><h2></h2><p class="common_name"></p><p class="downloads"><span></span></p></div>').css({ display:'none', opacity:settings.captionOpacity })
 			);			
 			//Process initial  caption
-			if(vars.currentImage.attr('alt') != ''){
-				$('.nivo-caption h2', slider).html(vars.currentImage.attr('alt'));			
-				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('title'));	
+			if(vars.currentImage.attr('title') != ''){
+				$('.nivo-caption h2', slider).html(vars.currentImage.attr('title'));			
+				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('alt'));	
 				$('.nivo-caption p.downloads span', slider).html(vars.currentImage.attr('class') + ' DOWNLOADS');
 				$('.nivo-caption', slider).fadeIn(settings.animSpeed);
 			}
@@ -275,15 +275,14 @@
 			
 			//Process caption
 			if(vars.currentImage.attr('title') != ''){
-				
-				
+								
 				if($('.nivo-caption', slider).css('display') == 'block'){
 					$('.nivo-caption').fadeOut(settings.animSpeed, function(){
 							$('.nivo-caption p.downloads span').html(vars.currentImage.attr('class') + ' DOWNLOADS');
 							$('.nivo-caption p.downloads span').fadeIn(settings.animSpeed);
-							$('.nivo-caption p.common_name').html(vars.currentImage.attr('title'));
+							$('.nivo-caption p.common_name').html(vars.currentImage.attr('alt'));
 							$('.nivo-caption p.common_name').fadeIn(settings.animSpeed);
-							$('.nivo-caption h2').html(vars.currentImage.attr('alt'));
+							$('.nivo-caption h2').html(vars.currentImage.attr('title'));
 							$('.nivo-caption h2').fadeIn(settings.animSpeed);
 					});
 					// $('.nivo-caption p', slider).fadeOut(settings.animSpeed, function(){
@@ -297,7 +296,7 @@
 				} else {
 					$('.nivo-caption p', slider).html(vars.currentImage.attr('title'));
 					$('.nivo-caption h2', slider).html(vars.currentImage.attr('alt'));
-				}					
+				}
 				$('.nivo-caption', slider).fadeIn(settings.animSpeed);
 				
 			} else {
