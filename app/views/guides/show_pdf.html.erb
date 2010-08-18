@@ -1,81 +1,69 @@
-<% @species.each do |species| %>
-<div class="long top_species"> 
-  <ul class="breadcrumb"> 
-    <li class="first"><%= species.family %></li> 
-  </ul> 
-  <div class="left"> 
-    <h2><%= species.full_name %></h2> 
-    <label>Description</label> 
-    <%= simple_format(species.description) %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <!-- <base href="http://localhost:3000/" /> -->
+  <%= stylesheet_link_tag 'layout' %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
+	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+	<%= javascript_include_tag "pdf/map.js" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	
+	<% @species.each_with_index do |species,index| %>
+		<div class="outer_pdf">
+			<div class="main_pdf">
+				<p class="page"><%= index + 1 %></p>
+				<div class="left">
+					<div class="header">
+						<p class="common_name">Common name</p>
+						<h1><%= species.full_name %></h1>
+						<ul class="breadcrumb">
+							<li class="first">Animalia</li>
+							<li>Mollusca</li>
+							<li class="last">Gastropoda</li>
+						</ul>
+					</div>
+					<div class="images">
+						<ul>
+						 <% species.pictures.each do |picture| %>
+			      		<li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{@species.name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+				      <% end -%>
+						</ul>
+					</div>
+		
+					<div class="info">
+						<h2>Description</h2>
+						<%= simple_format(species.description) %>
+						<h2>Distinguishing Characters</h2>
+						<%= simple_format(species.description) %>
+						<h2>Distribution info</h2>
+						<%= simple_format(species.distribution) %>
+						<h2>Ecology</h2>
+						<%= simple_format(species.ecology) %>
+					</div>
+				</div>
+	
+				<div class="right">
+					<div class="map"></div>
+					<div class="info">
+						<h3>Size</h3>
+						<%= simple_format(species.size) %>
+						<h3>Feeding behavior</h3>
+						<%= simple_format(species.size) %>
+						<h3>Reproductive behavior</h3>
+						<%= simple_format(species.size) %>
+						<h3>Habitat</h3>
+						<%= simple_format(species.habitat) %>
+						<h3>Depth of the distribution</h3>
+						<%= simple_format(species.distribution) %>
+					</div>
+				</div>
 
-    <% if species.guides_count > 0 %>
-    <p class="times_added"><%= pluralize(species.guides_count, 'time', 'times') %> added</p> 
-    <% end -%>
-  </div> 
-  <div class="right"> 
-    <div class="share_this"> 
-      <p class="share">share this on</p><a class="share_twitter" href="#"></a><a class="share_facebook" href="#"></a> 
-    </div>
-    <% if species.picture %>
-    <div class="img_specie">
-    </div> 
-    <% end -%>    
-  </div><!-- .right -->
-</div> <!-- .long top_species -->
-  
-<div class="long border"> 
-  <div class="left species"> 
-    <h3>Species information</h3> 
-    <p class="subtitle">More information that maybe could be useful for you</p> 
-    <% unless species.size.blank? %>
-      <label>Size</label> 
-      <p><%= species.size %></p> 
-    <% end %>
-    <% unless species.reference.blank? %>
-      <label>Reference</label> 
-      <p><%= species.reference %></p>
-    <% end %>
-  </div> 
-  <% unless species.pictures.empty? %>
-  <div class="right species"> 
-    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
-    <h3>Photos & Videos</h3> 
-    <ul>
-      <% species.pictures.each do |picture| %>
-      
-      <% end -%>
-    </ul> 
-  </div>
-  <% else %>
-  <div class="right species">
-    No photos, no fun
-  </div>
-  <% end -%>
-</div> <!-- .long border -->
+			</div>
+		</div>
+	<% end %>
 
-<div class="long species"> 
-  <div class="left species"> 
-    <h3>Species distribution</h3> 
-    <% unless species.distribution.blank? %>
-      <label>Distribution info</label> 
-      <p><%= species.distribution %></p>
-    <% end %>
-    <% unless species.ecology.blank? %>
-      <label>Ecology</label> 
-      <%= simple_format(species.ecology) %>
-    <% end %>
-  </div> 
-  <div class="right species"> 
-    <img class="arrow" src="images/species/gray_arrow.png" alt="" /> 
-    <h3>Distribution map</h3> 
-    <div class="map"> 
-      <div id="map"></div> 
-      <span class="shadow"></span> 
-    </div> 
-    <label class="right">Depth of the distribution</label> 
-    <p><%= species.depth %></p> 
-  </div> 
-</div><!-- .long species -->
-
-<hr style="height:1px; page-break-after:always">
-<% end -%>
+</body>
+</html>
