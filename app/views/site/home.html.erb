@@ -1,21 +1,14 @@
-	
-	<div class="pop_up">
-		<p>32 species added to your guide<a class="undo" href="#">(undo)</a></p>
-		<a class="close" href="#"></a>
-	</div>
-	
-	<div class="images_gallery"> 
-	  <% if @pictures %>
-	  <div id="slider"> 
-	    <% @pictures.each do |picture| %>
-	    <img src="<%= picture.image.url(:huge) %>" title="<%= picture.species.full_name %>" alt="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
-	    <% end -%>
-	  </div><!-- #slider -->
-	  <% end -%>
-	  <h2>Meet incredible <%= link_to('species', species_index_path) %>, find amazing <%= link_to('landscapes', landscapes_path) %><br/> 
-	    and create your <a href="<%= guides_path %>">antartic field guide</a>.</h2> 
-	</div><!-- .images_gallery -->
-
+<div class="images_gallery"> 
+  <% if @pictures %>
+  <div id="slider"> 
+    <% @pictures.each do |picture| %>
+    <img src="<%= picture.image.url(:huge) %>" title="<%= picture.species.full_name %>" alt="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
+    <% end -%>
+  </div><!-- #slider -->
+  <% end -%>
+  <h2>Meet incredible <%= link_to('species', species_index_path) %>, find amazing <%= link_to('landscapes', landscapes_path) %><br/> 
+    and create your <a href="<%= guides_path %>">antartic field guide</a>.</h2> 
+</div><!-- .images_gallery -->
 
 <div class="left"> 
   <div class="information"> 
@@ -50,30 +43,13 @@
   </div> 
 </div> 
 
-	<div class="right"> 
-	  <div class="latest_"> 
-			<h3>Latest activity</h3> 
-	    <% unless @activities.empty? %>
-	    <p class="subtitle">species, guides and landscapes added...</p> 
-	    <ul>
-				<% @activities.each_with_index do |entry, i| %>
-		      <li> 
-		        <div class="latest <%= 'first' if i == 0 %>"> 
-		          <%= render :partial => "activities/#{entry.activity_type}", :locals => { :entry => entry } %>
-		        </div> 
-		      </li> 
-				<% end -%>
-	    </ul> 
-	    <% end -%>
-	  </div> 
-	  <div class="bottom"> 
-	    <p>why this matters? <a href="<%= guides_path %>">create your guide</a></p> 
-	  </div> 
-	  <div class="blue">
-	    <%= image_tag('home/white_arrow.png', :class=> 'arrow') %>
-	    <h4>Create your guide</h4> 
-	    <p class="subtitle">create your AFG when you want, it's free!</p> 
-	    <ul>
+<div class="right"> 
+  <div class="latest_"> 
+		<h3>Latest activity</h3> 
+    <% unless @activities.empty? %>
+    <p class="subtitle">species, guides and landscapes added...</p> 
+    <ul>
+			<% @activities.each_with_index do |entry, i| %>
 	      <li> 
 	        <div class="latest <%= 'first' if i == 0 %>"> 
 	          <%= render :partial => "activities/#{entry.activity_type}", :locals => { :entry => entry } %>
@@ -87,6 +63,7 @@
     <p>why this matters? <a href="<%= guides_path %>">create your guide</a></p> 
   </div> 
   <div class="blue"> 
+    <%= image_tag('home/white_arrow.png', :class=> 'arrow') %>
     <h4>Create your guide</h4> 
     <p class="subtitle">create your AFG when you want, it's free!</p> 
     <ul>
