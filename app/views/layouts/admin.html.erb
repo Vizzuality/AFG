@@ -28,7 +28,7 @@
       <div class="logo"> 
         <h1><a href="/">Atlantic Field Guides</a></h1> 
         <span class="search"> 
-          <form method="get" action="<%= admin_species_index_path %>"> 
+          <form method="get" action="<%= url_for(:action => 'index', :controller => params[:controller]) %>"> 
             <input id="search_term" type="text" name="q" size="50" />
             <input type="submit" value="Search" /> 
           </form> 
@@ -42,6 +42,7 @@
     <ul class="families">
       <li><%= link_to_unless(controller_name == 'species', 'Species', admin_species_index_path) %></li>
       <li><%= link_to_unless(controller_name == 'landscapes', 'Landscapes', admin_landscapes_path) %></li>
+      <li><%= link_to_unless(controller_name == 'taxonomies', 'Taxonomies', admin_taxonomies_path) %></li>
     </ul>
     
     <div class="message">

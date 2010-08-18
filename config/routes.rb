@@ -21,6 +21,7 @@ AFG::Application.routes.draw do |map|
 
   namespace :admin do
     resources :landscapes
+    resources :taxonomies
     resources :species, :except => [:show] do
       resources :pictures, :except => [:index, :show]
     end
