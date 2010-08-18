@@ -13,8 +13,10 @@ module ApplicationHelper
       'single'
     when 'Species'
       'specie'
-    when 'Landscapes'
+    when 'Landscape'
       'landscape'
+    when 'Order'
+      'specie'
     else
       'single'
     end
@@ -48,7 +50,7 @@ module ApplicationHelper
   def pop_up_flash
     return "" unless flash[:notice]
     content_tag(:div, :class => 'pop_up') do
-      content_tag(:p, raw(flash[:notice])) + link_to('', '#', :class => 'close')
+      content_tag(:p, raw(flash[:notice])) + link_to('', 'javascript: void closePopUp()', :class => 'close')
     end
   end
   

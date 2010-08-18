@@ -17,7 +17,11 @@
       <%= simple_format(@taxonomy.distinguishing_characters) %>
       
       <% unless @current_guide.include_taxonomy?(@taxonomy) %>
-        <%= link_to("Add #{@species.total_entries} species to your guide", entries_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'add_guide') %>
+
+				<% link_to entries_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add' do %>
+				  <span>Add <%=@species.total_entries%> species to your guide</span>
+				<% end %>
+
       <% else %>
       <span class="included"></span>
       <% end -%>
