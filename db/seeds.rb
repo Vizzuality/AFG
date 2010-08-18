@@ -34,3 +34,9 @@ l.save
 1.upto(10){ |i| Guide.create :name => "Guia #{i}", :description => "Una guia #{i}", :author => "Fernando Blat", :published => true }
 
 Guide.limit(3).each{ |g| g.update_attribute(:highlighted, true) }
+
+g = Guide.first
+Species.complete.limit(5).each do |species|
+  g.add_entry('Species', species.id.to_s)
+end
+g.add_entry('Landscape', l.id.to_s)

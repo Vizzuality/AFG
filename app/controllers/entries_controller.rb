@@ -15,16 +15,18 @@ class EntriesController < ApplicationController
   
   def create
     @entry = @current_guide.add_entry(params[:type], params[:id])
-    flash[:notice] = case @entry.element_type
-      when 'Species'
-        "#{@entry.element.name} added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
-      when 'Landscape'
-        "#{@entry.element.name} added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
-      when 'Guide'
-        "#{@entry.element.name} added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
-      else
-        "#{@entry.elements_count} species added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
+    flash[:notice] = if @entry.is_a?(Array)
+      "#{@entry.size} entries added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
+    else
+      case @entry.element_type
+        when 'Species'
+          "#{@entry.element.name} added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
+        when 'Landscape'
+          "#{@entry.element.name} added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
+        else
+          "#{@entry.elements_count} species added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
       end
+    end
   ensure
     respond_to do |format|
       format.html do

@@ -39,7 +39,7 @@ class GuidesController < ApplicationController
   def pdf
     @guide = Guide.find(params[:id])
     @species = Species.limit(20)
-    render :template => 'guides/show_pdf'
+    render :template => 'guides/show_pdf', :layout => false
   end
   
   def edit

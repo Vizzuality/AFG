@@ -1,0 +1,7 @@
+<div class="image">
+  <img src="#" alt="<%= entry.element.name %>" /> 
+</div> 
+<div class="data"> 
+  <p>Someone has added the landscape <%= link_to(entry.element.name, landscape_path(entry.element)) %> to a guide</p> 
+  <p class="ago"><%= time_ago_in_words(entry.created_at) %></p> 
+</div> 

@@ -83,9 +83,9 @@ class Guide < ActiveRecord::Base
         entries.create(:element_type => element_type, :element_id => element_id.to_s)
       when 'Guide'
         guide = Guide.find(element_id)
-        guide.entries.each do |entry|
+        guide.entries.map do |entry|
           entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
-        end
+        end.compact
     end
     update_attribute(:last_action, "#{element_type}##{element_id}")
     entry
@@ -119,6 +119,24 @@ class Guide < ActiveRecord::Base
         end
     end
     update_attribute(:last_action, '')
+  end
+  
+  def species
+    result = []
+    entries.each do |entry|
+      next if entry.element_type == 'Landscape'
+      result << entry.element
+    end
+    result.flatten
+  end
+  
+  def species_kingdoms
+    result = {}
+    kingdoms = species.map{|s| s.kingdom}.uniq
+    kingdoms.each do |k|
+      result[k] = species.select{|s| s.kingdom == k}.size
+    end
+    result
   end
   
   private
