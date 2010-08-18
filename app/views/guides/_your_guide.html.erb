@@ -15,10 +15,12 @@
           <img src="#" alt="landscape" title="landscape" />
           <% elsif entry.element_type == 'Species' %>
           <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
+					<% elsif entry.element_type == 'Order' %>
+          <img src="../images/defaults/small_specie.jpg" alt="specie" title="specie" />
           <% elsif entry.element_type == 'Guide' %>
           <p class="by">by <%= entry.element.author %></p>
           <% else %>
-          <p class="count"><%= entry.elements_count %> species</p>
+          <p class="page_title"><%= entry.elements_count %> SPECIES</p>
           <% end -%>
           <p class="page_title">PAGE</p>
           <div class="over_state">
@@ -26,8 +28,10 @@
             <a href="<%= landscape_path(entry.element) %>" title="view" class="view"></a>
             <% elsif entry.element_type == 'Species' %>
             <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
-            <% end -%>
-            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
+            <% elsif entry.element_type == 'Order' %>
+            <a href="#" title="view" class="view"></a>
+            <% end -%>            
+						<%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
           </div>
         </li> 
       <% end -%>

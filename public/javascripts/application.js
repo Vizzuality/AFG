@@ -8,6 +8,7 @@ AFG = {
 $(document).ready(function() {
 
 	$('#search_term').example('Search species, guides,...');
+	$('#pop_up').delay(3000).fadeOut();
 	
 	// dragg elements >> ALL PAGES
 	$(function() {
@@ -91,5 +92,9 @@ function changeList() {
 			$('div.right div.latest_ ul li:first div').addClass('first');
 			$('div.right div.latest_ ul li:first div').animate({opacity: 1}, 700);
 	});
+}
+
+function closePopUp() {
+	$('#pop_up').fadeOut();
 }
 
