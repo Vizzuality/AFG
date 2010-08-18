@@ -10,21 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100817162514) do
-
-  create_table "activities", :force => true do |t|
-    t.column "user_id", :integer
-    t.column "action", :string
-    t.column "item_id", :integer
-    t.column "item_type", :string
-    t.column "created_at", :datetime
-    t.column "updated_at", :datetime
-  end
-
-  add_index "activities", ["action"], :name => "index_activities_on_action"
-  add_index "activities", ["created_at"], :name => "index_activities_on_created_at"
-  add_index "activities", ["item_id", "item_type"], :name => "index_activities_on_item_type_and_item_id"
-  add_index "activities", ["user_id"], :name => "index_activities_on_user_id"
+ActiveRecord::Schema.define(:version => 20100818080736) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -124,6 +110,14 @@ ActiveRecord::Schema.define(:version => 20100817162514) do
     t.column "species", :string
     t.column "complete", :boolean, :default => false
     t.column "habitat", :string
+    t.column "distinguishing_characters", :text
+  end
+
+  create_table "taxonomies", :force => true do |t|
+    t.column "name", :string
+    t.column "hierarchy", :string
+    t.column "downloads_count", :integer, :default => 0
+    t.column "description", :text
     t.column "distinguishing_characters", :text
   end
 

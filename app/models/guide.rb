@@ -73,6 +73,10 @@ class Guide < ActiveRecord::Base
     entries.exists?(:element_type => landscape.class.to_s, :element_id => landscape.id.to_s)
   end
   
+  def include_taxonomy?(taxonomy)
+    entries.exists?(:element_type => taxonomy.hierarchy.humanize.to_s, :element_id => taxonomy.name)  
+  end
+  
   def add_entry(element_type, element_id)
     entry = case element_type
       when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'

@@ -1,4 +1,18 @@
-class Taxonomy
+# == Schema Information
+#
+# Table name: taxonomies
+#
+#  id                        :integer         not null, primary key
+#  name                      :string(255)     
+#  hierarchy                 :string(255)     
+#  downloads_count           :integer         default(0)
+#  description               :text            
+#  distinguishing_characters :text            
+#
+
+class Taxonomy < ActiveRecord::Base
+  
+  validates_uniqueness_of :name, :scope => :hierarchy
   
   def self.kingdoms
     kingdoms = Species.select("distinct(kingdom)").map{ |x| x.kingdom}.delete_if{ |k| k.nil? || k == 'Unknown' }
