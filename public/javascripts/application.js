@@ -13,11 +13,44 @@ $(document).ready(function() {
 	modal_publish = $('#publish_container').html();
 
 	$('#search_term').example('Search species, guides,...');
+
+	
+	//Search choices
+	$('div.right div.results ul li').each(function(index){
+		$(this).children('a').removeClass('all');
+	});
+	
+	var first = getUrlVars()["type"];
+	switch (first) {
+		case 'species': $('div.right div.results ul li:eq(0) a').addClass('all');
+				break;
+		case 'guides': $('div.right div.results ul li:eq(2) a').addClass('all');
+				break;
+		case 'landscapes': $('div.right div.results ul li:eq(1) a').addClass('all');
+				break;
+		default: $('div.right div.results ul li:eq(3) a').addClass('all');
+	}
+	
+	
+	//Build count filter search
+	var list_count = parseInt($('div.right div.results ul').attr('class'));
+	$('div.right div.results ul li').each(function(index){
+		if ($(this).attr('class')=='0') {
+			$(this).children('a').css('background-position','0 -200px');
+			$(this).children('a').children('span').css('background-position','0 -200px');
+		} else {
+			$(this).children('a').children('span').css('background-position','-'+((1*parseInt($(this).attr('class')))/list_count) + 'px 0px');
+			$(this).children('a').children('span').css('background-position','-1px 0px');
+		}
+	});
+	
+	
 	
 	//Show pop_up
 	var pop_up_width = parseInt($('div.pop_up').width())/2;
 	$('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
 	$('#pop_up').delay(3000).fadeOut();
+	
 	
 
 	//Landscapes and species count bars
@@ -235,3 +268,11 @@ function secondStep(type) {
 }
 
 
+
+function getUrlVars() {
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		vars[key] = value;
+	});
+	return vars;
+}

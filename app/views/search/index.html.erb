@@ -89,11 +89,11 @@
     <div class="results"> 
       <% unless params[:q].blank? %>
       <h4>FILTER YOUR RESULTS</h4>
-      <ul>
-        <li><a href="<%= search_path(:q => params[:q], :type => 'species') %>"><span><%= @total_species.size %> Species</span></a></li>
-        <li><a href="<%= search_path(:q => params[:q], :type => 'landscapes') %>"><span><%= pluralize(@total_landscapes.size, 'Landscape', 'Landscapes') %></span></a></li>
-        <li><a href="<%= search_path(:q => params[:q], :type => 'guides') %>"><span><%= pluralize(@total_guides.size, 'Guide', 'Guides') %></span></a></li>
-        <li><a href="<%= search_path(:q => params[:q]) %>" class="all">All results</a></li>
+      <ul class="<%= @results.total_entries %>">
+        <li class="<%= @total_species.size %>"><a href="<%= search_path(:q => params[:q], :type => 'species') %>"><span><%= @total_species.size %> Species</span></a></li>
+        <li class="<%= @total_landscapes.size %>"><a href="<%= search_path(:q => params[:q], :type => 'landscapes') %>"><span><%= pluralize(@total_landscapes.size, 'Landscape', 'Landscapes') %></span></a></li>
+        <li class="<%= @total_guides.size %>"><a href="<%= search_path(:q => params[:q], :type => 'guides') %>"><span><%= pluralize(@total_guides.size, 'Guide', 'Guides') %></span></a></li>
+        <li><a href="<%= search_path(:q => params[:q]) %>" class="all"><span>All results</span></a></li>
       </ul>
       <% end -%>
     </div>

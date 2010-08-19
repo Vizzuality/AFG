@@ -650,7 +650,7 @@ div.search_container img.arrow {position:absolute; top:0; left:388px; display:no
 div.search_container h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.search_container form {float:left; width:892px; padding:0 0 0 7px; margin:15px 0 0 0;}
 div.search_container form input[type="text"] {float:left; width:474px; height:16px; padding:10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
-div.search_container form input[type="submit"] {float:left; width:106px; height:36px; padding:10px 10px 10px 30px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 15px Arial; color:#0099CC;}
+div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:8px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
 div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer; color:#0083AE;}
 div.search_container form p {float:left; margin:8px 0 0 15px; font:normal 15px Arial; color:white;}
 div.search_container form p a {text-decoration:none; color:white; display:inline-block; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid white;}
@@ -693,10 +693,10 @@ div.main.results div.right div.results h4 {float:left; width:269px; font:bold 11
 div.main.results div.right div.results ul {float:left; width:269px; margin:10px 0 0 0;}
 div.main.results div.right div.results ul li {float:left; width:269px; margin:2px 0;}
 div.main.results div.right div.results ul li a {float:left; height:26px; padding:0 0 0 1px; width:268px; background:url(../images/search/left_gray.png) no-repeat 0 0; text-decoration:none;}
-div.main.results div.right div.results ul li a span {float:left; height:16px; background:url(../images/search/right_gray.png) no-repeat right 0; padding:5px 8px 5px 7px; font:bold 13px Arial; color:#0099CC;}
+div.main.results div.right div.results ul li a span {float:left; height:16px; width:254px; background:url(../images/search/right_gray.png) no-repeat right 0; padding:5px 8px 5px 7px; font:bold 13px Arial; color:#0099CC;}
 div.main.results div.right div.results ul li a:hover span {color:#007DA6;}
 div.main.results div.right div.results ul li a.all {float:left; height:16px; width:254px; background:url(../images/search/all_white.png) no-repeat 0 0; padding:5px 8px 5px 7px; font:bold 13px Arial; color:#999999;}
-
+div.main.results div.right div.results ul li a.all span {float:left; height:16px; background:none; padding:0; font:bold 13px Arial; color:#0099CC;}
 
 
 /* PDF */
