@@ -5,7 +5,7 @@
   <!-- <base href="http://localhost:3000/" /> -->
   <%= stylesheet_link_tag 'layout' %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-  <%= javascript_include_tag 'jquery.simplemodal-1.3.5', 'jquery.nivo.slider', 'jquery.ui', 'jquery.ui.widget', 'jquery.ui.mouse', 'jquery.ui.sortable', 'jquery.example.min', 'rails', 'application' %>
+  <%= javascript_include_tag 'jquery.simplemodal-1.3.5', 'jquery.nivo.slider', 'jquery.example.min', 'jquery.textshadow.js', 'rails', 'application' %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
@@ -24,20 +24,21 @@
 					</ul>
 					<div class="choice">
 						<div class="alternative">
-							<div class="type">
+							<div class="type list">
 								<p>3 PAGES</p>
 							</div>
 							<div class="info">
-								<a href="#">Checklist</a>
+								<a href="javascript:void firstStep('simple')">Checklist</a>
 								<p>Provides the species names in a list format</p>
 							</div>
 						</div>
 						<div class="alternative last">
-							<div class="type">
+							<div class="type complete">
+								<img src="" title="" alt=""/>
 								<p>3 PAGES</p>
 							</div>
 							<div class="info">
-								<a href="#">Complete</a>
+								<a href="javascript:void firstStep('complete')">Complete</a>
 								<p>Provides all available information for your species</p>
 							</div>
 						</div>
@@ -49,7 +50,7 @@
 	
 	
 	
-	<div id="publish_container">
+<!-- 	<div id="publish_container">
 		<div class="top">
 			<div class="bottom">
 				<div class="repeat">
@@ -126,7 +127,7 @@
 				</div>
 			</div>
 		</div>
-	</div>		
+	</div>	 -->	
 	
 	
 

@@ -4,7 +4,7 @@
   <% end %>
   <div class="long_in">
     <div class="title">
-      <h3>Your Anctartic Field Guide</h3> 
+      <h3>Your Antarctic Field Guide</h3> 
       <p class="subtitle"><%= @entries.total_pages > 1 ? "#{@entries.total_pages} pages": '' %></p> 
     </div>
     <ul id="your_guide">
@@ -50,7 +50,7 @@
       </div> 
     <% end -%>
     <div class="right_side">
-      <a href="<%= edit_guide_path %>" class="publish" id="publish_and_download"></a>
+      <a href="javascript: void openPublish()" class="publish" id="publish_and_download"></a> <!-- <%= edit_guide_path %> -->
       <p><a class="preview" href="<%= pdf_guide_path(@current_guide) %>">Preview</a> or </p>
     </div> 
   </div>

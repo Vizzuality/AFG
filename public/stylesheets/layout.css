@@ -24,28 +24,34 @@ div.pop_up a.close { float:right; width:10px; height:10px; background:url(../ima
 
 
 /*modal window*/
-#publish_container {display:none	; width:746px; height:622px; padding:0; margin:0;}
-#simplemodal-overlay {background:none; cursor:default;}
-#simplemodal-container {width:746px; height:622px; background:none; padding:0; margin:0;}
-#simplemodal-container code {background:none; }
+#simplemodal-overlay {background:#000000; cursor:default;}
+#simplemodal-container {width:746px; height:622px; background:none; padding:0; margin:0; overflow:hidden;}
+#simplemodal-container code {background:none;}
+.simplemodal-wrap {overflow:hidden;}
+.simplemodal-data {overflow:hidden;}
+#publish_container {display:none; width:746px; height:622px; padding:0; margin:0; overflow:hidden;}
 #publish_container div.top {float:left; margin:0; background:url(../images/modal/top_white_bkg.png) no-repeat 0 0; width:746px; padding:9px 0 0 0;}
 #publish_container div.bottom {float:left; margin:0; background:url(../images/modal/bottom_blue_bkg_1.png) no-repeat 0 bottom; width:746px; padding:0 0 10px 0;}
 #publish_container div.repeat {float:left; margin:0; background:url(../images/modal/repeat_bkg.png) repeat-y 0 0; width:732px; padding:0 7px 0 7px;}
-#publish_container div.repeat h4 {float:left; margin:26px 0 0 26px; font:; padding:0; width:690px; font:normal 25px Helvetica; color:#666666;}
+#publish_container div.repeat h4 {float:left; margin:26px 0 0 26px; font:; padding:0; width:690px; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px;}
 #publish_container div.repeat ul {float:left; margin:26px 0 0 26px; padding:0;}
 #publish_container div.repeat ul li {float:left; margin:0 5px 0 0; width:auto; background:url(../images/modal/left_list.png) no-repeat; padding:0 0 0 2px; width:auto;}
-#publish_container div.repeat ul li span {float:left; background:url(../images/modal/right_list.png) no-repeat right 0; padding:9px 10px 7px 8px; height:15px; color:#85D2ED; font:normal 13px Arial;}
+#publish_container div.repeat ul li span {float:left; background:url(../images/modal/right_list.png) no-repeat right 0; padding:9px 10px 7px 8px; height:15px; color:#85D2ED; font:bold 13px Arial;}
 #publish_container div.repeat ul li.active {background-image:url(../images/modal/left_active.png);}
-#publish_container div.repeat ul li.active span {background-image:url(../images/modal/right_active.png); color:white;}
+#publish_container div.repeat ul li.active span {background-image:url(../images/modal/right_active.png); color:white; text-shadow:#004D67 0 -1px;}
 #publish_container div.repeat div.choice {float:left; background:url(../images/modal/repeat_x_1.png) repeat-x 0 0; padding:30px; width:672px;}
 #publish_container div.repeat div.choice div.alternative {float:left; width:321px; height:167px; background:url(../images/modal/dark_area.png) no-repeat 0 0; margin:0 30px 0 0;}
 #publish_container div.repeat div.choice div.alternative.last {margin:0;}
-#publish_container div.repeat div.choice div.alternative div.type {}
-#publish_container div.repeat div.choice div.alternative div.type p {}
-#publish_container div.repeat div.choice div.alternative div.info {}
-#publish_container div.repeat div.choice div.alternative div.info a {}
-#publish_container div.repeat div.choice div.alternative div.info a:hover {}
-#publish_container div.repeat div.choice div.alternative div.info p {}
+#publish_container div.repeat div.choice div.alternative div.type {position:relative; float:left; margin:15px 15px 0 15px; width:128px; height:138px;}
+#publish_container div.repeat div.choice div.alternative div.type.list {background:url(../images/modal/list_bkg.png) no-repeat 0 0;}
+#publish_container div.repeat div.choice div.alternative div.type.complete {background:url(../images/modal/all_bkg.png) no-repeat 0 0;}
+#publish_container div.repeat div.choice div.alternative div.type.complete img {float:left; margin:32px 0 0 15px; width:32px; height:32px;}
+#publish_container div.repeat div.choice div.alternative div.type.complete p {float:none; margin:107px 0 0 13px; font:bold 9px "Lucida Grande"; color:#666666;}
+#publish_container div.repeat div.choice div.alternative div.type p {float:left; margin:107px 0 0 13px; font:bold 9px "Lucida Grande"; color:#666666;}
+#publish_container div.repeat div.choice div.alternative div.info {float:left; width:140px; padding:40px 0 0 0;}
+#publish_container div.repeat div.choice div.alternative div.info a {float:left; width:122px; height:22px; padding:7px 8px; margin:0; text-decoration:none; background:url(../images/modal/complete_bkg.png) no-repeat 0 0; font:bold 19px Helvetica; color:#0099CC; letter-spacing:-1px;}
+#publish_container div.repeat div.choice div.alternative div.info a:hover {background-position:0 -36px; color:#1F628F;}
+#publish_container div.repeat div.choice div.alternative div.info p {float:left; width:100%; font:normal 13px Arial; color:white; margin:8px 0 0 0;}
 
 
 #publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
@@ -64,13 +70,15 @@ div.pop_up a.close { float:right; width:10px; height:10px; background:url(../ima
 #publish_container div.repeat div.choice div.long div.info a.disabled:hover {background-position:0 -36px; cursor:default;}
 
 
-p.landscapes_rank {width:76px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px;}
+
+
+/*p.landscapes_rank {width:76px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px;}
 p.species_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
 p.species_guide_rank {width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:16px 0 0 17px; line-height:12px; margin-right:7px;}
 
 p.left {float:left;}
 p.right {float:right;}
-p.white {color:#FFFFFF;}
+p.white {color:#FFFFFF;}*/
 
 
 
@@ -98,7 +106,8 @@ div.images_gallery {position:relative; float:left; width:896px; padding:0 20px; 
 div.images_gallery h2 {float:left; width:896px; text-align:center; font:bold 36px Arial; color:#CCCCCC; letter-spacing:-2px; padding:27px 0 23px; line-height:36px;}
 div.images_gallery h2 a {text-decoration:none; color:#0099CC;}
 div.images_gallery h2 a:hover {border-bottom:2px dotted #0099CC;}
-div.images_gallery div#slider {float:left; position:relative; width:896px;}
+div.images_gallery div.slider_outer {float:left; position:relative; width:896px; height:381px; overflow:hidden; background:#666666;}
+div.images_gallery div#slider {float:left; position:relative; width:896px; height:381px;}
 div.images_gallery .nivoSlider {position:relative;}
 div.images_gallery .nivoSlider img {position:absolute; top:0px; left:0px;}
 div.images_gallery .nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:60; display:none;}
@@ -148,7 +157,7 @@ div.right div.latest_ p.subtitle {font:normal 13px "Lucida Grande"; color:#66666
 div.right div.latest_ p.subtitle a {text-decoration:none; font-weight:bold; color:#0099CC; letter-spacing:-1px;}
 div.right div.latest_ p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
 
-div.right div.latest_ ul {position:relative; float:left; width:269px; padding:13px 0 13px 0; height:340px; overflow:hidden}
+div.right div.latest_ ul {position:relative; float:left; width:269px; padding:14px 0 13px 0; height:340px; overflow:hidden}
 div.right div.latest_ ul li {position:relative; float:left; margin:3px 15px 0 0;}
 div.right div.latest_ ul li div.latest {float:left; padding:8px; width:251px; height:51px; background:url(../images/home/latest_bkg.png) no-repeat 0 0;}
 div.right div.latest_ ul li div.latest.first {background-position:0 -72px;}
@@ -272,7 +281,7 @@ div.left div.species h3 {float:left; font:bold 25px Helvetica; color:#666666; le
 div.left div.species p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:4px 0 0 0;}
 div.left div.species p.subtitle a {text-decoration:none; color:#0099CC; border-bottom:1px solid #0099CC; display:inline-block; vertical-align:top; padding:0 0 2px 0;}
 div.left div.species p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
-div.left div.species ul {float:left; width:582px; padding:10px 0 5px; margin:0;}
+div.left div.species ul {float:left; width:582px; padding:16px 0 5px; margin:0;}
 div.left div.species ul li {position:relative; float:left; margin:8px 15px 0 0;}
 div.left div.species ul li.last {margin:8px 0 0 0;}
 div.left div.species ul li div.specie {position:relative; float:left; padding:8px; width:168px; height:155px; background:url(../images/common/specie_bkg.png) no-repeat -4px -4px;}
@@ -406,7 +415,7 @@ div.left div.landscapes h3 {float:left; font:bold 25px Helvetica; color:#666666;
 div.left div.landscapes p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:4px 0 0 0;}
 div.left div.landscapes p.subtitle a {text-decoration:none; color:#0099CC; border-bottom:1px solid #0099CC; display:inline-block; vertical-align:top; padding:0 0 2px 0;}
 div.left div.landscapes p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
-div.left div.landscapes ul {float:left; width:582px; padding:10px 0 5px; margin:0;}
+div.left div.landscapes ul {float:left; width:582px; padding:16px 0 5px; margin:0;}
 div.left div.landscapes ul li {position:relative; float:left; margin:8px 15px 0 0;}
 div.left div.landscapes ul li.last {margin:8px 0 0 0;}
 div.left div.landscapes ul li div.specie {position:relative; float:left; padding:8px; width:168px; height:155px; background:url(../images/common/specie_bkg.png) no-repeat -4px -4px;}
