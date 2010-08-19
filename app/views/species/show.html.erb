@@ -3,7 +3,7 @@
 
 <div class="outer_layout"> 
   <div class="specie_header" id="species-<%= @species.uid %>"> 
-    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <ul class="breadcrumb"> 
       <li class="first"><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
       <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
@@ -43,7 +43,7 @@
 
 <div class="main specie"> 
   <div class="left"> 
-		<%= image_tag ('species/arrow_long.png', :class=> 'arrow') %>		
+		<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
     <h3>Species information</h3> 
     <p class="subtitle">More information that maybe could be useful for you</p> 
     <% unless @species.size.blank? %>

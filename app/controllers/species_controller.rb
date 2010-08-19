@@ -1,5 +1,7 @@
 class SpeciesController < ApplicationController
   
+  before_filter :validate_id_param, :only => [:show]
+  
   DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page']
   AVAILABLE_PARAMS = ['kingdom', 'phylum', 't_class', 'order', 'family', 'genus']
   
@@ -46,6 +48,7 @@ class SpeciesController < ApplicationController
   
   def show
     @species = Species.complete.find(params[:id])
+    validate_permalink(@species)
   end
   
 end

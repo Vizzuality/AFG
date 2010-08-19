@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_current_guide
   
+  def render_404
+    render :file => "public/404.html", :template => false, :status => 404
+  end
+  
   protected
   
     def set_current_guide
@@ -21,6 +25,18 @@ class ApplicationController < ActionController::Base
           nil
         end
       end
+    end
+    
+    def validate_id_param
+      if params[:id] =~ /\A\d+\-([a-z0-9\-]+)\z/
+        @permalink = $1
+      else
+        render_404 and return false
+      end
+    end
+    
+    def validate_permalink(object)
+      render_404 and return false unless object.permalink == @permalink
     end
   
 end

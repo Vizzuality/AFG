@@ -2,6 +2,8 @@ class GuidesController < ApplicationController
   
   before_filter :set_current_date_filter, :only => [:index]
   
+  before_filter :validate_id_param, :only => [:show]
+  
   def index
     guides = Guide.published.not_highlighted
     
@@ -34,6 +36,7 @@ class GuidesController < ApplicationController
 
   def show
     @guide = Guide.find(params[:id])
+    validate_permalink(@guide)
   end
   
   def pdf
