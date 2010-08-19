@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20100818150820) do
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
     t.column "featured", :boolean, :default => false
+    t.column "the_geom", :multi_polygon, :srid => 4326
   end
 
   create_table "pictures", :force => true do |t|
