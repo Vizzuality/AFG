@@ -5,37 +5,38 @@
   <div class="long_in">
     <div class="title">
       <h3>Your Antarctic Field Guide</h3> 
-      <p class="subtitle"><%= @entries.total_pages > 1 ? "#{@entries.total_pages} pages": '' %></p> 
+      <p class="subtitle">You will be able to choose between checklist or complete guide before publishing it</p> 
     </div>
     <ul id="your_guide">
       <% @entries.each do |entry| %>
+				<!--<%= entry.element_type %> -->
         <li class="<%= entry_css_class(entry) %>">
           <p class="title" title="<%= entry.full_name %>"><%= truncate(entry.full_name, :length => 15) %></p>
           <% if entry.element_type == 'Landscape' %>
           <img src="#" alt="landscape" title="landscape" />
           <% elsif entry.element_type == 'Species' %>
           <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
-					<% elsif entry.element_type == 'Order' %>
-          <img src="../images/defaults/small_specie.jpg" alt="specie" title="specie" />
           <% elsif entry.element_type == 'Guide' %>
           <p class="by">by <%= entry.element.author %></p>
           <% else %>
           <p class="page_title"><%= entry.elements_count %> SPECIES</p>
           <% end -%>
-          <p class="page_title">PAGE</p>
+          <!-- <p class="page_title">PAGE</p> -->
           <div class="over_state">
             <% if entry.element_type == 'Landscape' %>
             <a href="<%= landscape_path(entry.element) %>" title="view" class="view"></a>
             <% elsif entry.element_type == 'Species' %>
             <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
-            <% elsif entry.element_type == 'Order' %>
+            <% elsif entry.element_type == 'Order' || entry.element_type == 'Kingdom' || entry.element_type == 'Class' || entry.element_type == 'Family' || entry.element_type == 'Phylum' %>
             <a href="#" title="view" class="view"></a>
-            <% end -%>            
+            <% end -%>
 						<%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
           </div>
         </li> 
       <% end -%>
-      <li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
+		  <% if !current_page?('/') %> <!-- Si esta añadida la guia specie o landscape en la página que visitas, que no aparezca tampoco esto -->
+      	<li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
+		  <% end %>
     </ul> 
   </div> 
   <div class="bottom"> 
@@ -50,7 +51,7 @@
       </div> 
     <% end -%>
     <div class="right_side">
-      <a href="javascript: void openPublish()" class="publish" id="publish_and_download"></a> <!-- <%= edit_guide_path %> -->
+      <a href="javascript: void openPublish()" class="publish" id="publish_and_download"></a> <!-- <%= edit_guide_path %> --> <!-- javascript: void openPublish() -->
       <p><a class="preview" href="<%= pdf_guide_path(@current_guide) %>">Preview</a> or </p>
     </div> 
   </div>

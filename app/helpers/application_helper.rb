@@ -16,7 +16,15 @@ module ApplicationHelper
     when 'Landscape'
       'landscape'
     when 'Order'
-      'specie'
+      'amount'
+    when 'Class'
+      'amount'
+    when 'Family'
+      'amount'
+    when 'Kingdom'
+      'amount'
+    when 'Phylum'
+      'amount'
     else
       'single'
     end
@@ -50,7 +58,9 @@ module ApplicationHelper
   def pop_up_flash
     return "" unless flash[:notice]
     content_tag(:div, :class => 'pop_up') do
-      content_tag(:p, raw(flash[:notice])) + link_to('', 'javascript: void closePopUp()', :class => 'close')
+      content_tag(:p) do
+        content_tag(:span, raw(flash[:notice]) + link_to('', 'javascript: void closePopUp()', :class => 'close')) 
+      end
     end
   end
   

@@ -2,6 +2,6 @@
   <img src="<%= entry.element.default_picture(:small) %>" alt="<%= entry.element.name %>" /> 
 </div> 
 <div class="data"> 
-  <p>Someone has added <%= link_to(entry.element.name, guide_path(entry.element)) %> guide.</p> 
+  <p>Someone has added <%= link_to(entry.element.name, guide_path(entry.element)) %>.</p> 
   <p class="ago"><%= time_ago_in_words(entry.created_at) %> ago</p> 
 </div> 

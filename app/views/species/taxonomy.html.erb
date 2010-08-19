@@ -16,18 +16,18 @@
       <h3>Distinguishing Characters</h3> 
       <%= simple_format(@taxonomy.distinguishing_characters) %>
       
-      <% unless @current_guide.include_taxonomy?(@taxonomy) %>
-
-				<% link_to entries_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add' do %>
-				  <span>Add <%=@species.total_entries%> species to your guide</span>
-				<% end %>
-
-      <% else %>
-      <span class="included"></span>
-      <% end -%>
-      <% if @taxonomy.downloads_count > 0 %>
-      <p class="times_added"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
-      <% end -%>
+			<div class="added_cont">			
+      	<% unless @current_guide.include_taxonomy?(@taxonomy) %>
+					<% link_to entries_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add' do %>
+					  <span>Add <%=@species.total_entries%> species to your guide</span>
+					<% end %>
+	      <% else %>
+	      <span class="included"></span>
+	      <% end -%>
+	      <% if @taxonomy.downloads_count > 0 %>
+	      	<p class="times_added <%= (@current_guide.include_taxonomy?(@taxonomy))? 'included':'taxonomy' %>"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
+	      <% end -%>
+			</div>
     </div> 
     <div class="right"> 
       <div class="share_this"> 
