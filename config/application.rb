@@ -51,3 +51,5 @@ module AFG
 end
 
 require 'open-uri'
+
+require 'core_ext/arel'

@@ -4,6 +4,6 @@ class AddTheGeomToLandscapes < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :landscapes, :multi_polygon
+    remove_column :landscapes, :the_geom
   end
 end
