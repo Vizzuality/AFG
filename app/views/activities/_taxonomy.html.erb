@@ -2,6 +2,6 @@
   <img src="<%= entry.element && entry.element.picture ? entry.element.picture.url(:small) : Species.default_picture(:small) %>" alt="<%= entry.element_id %>" /> 
 </div> 
 <div class="data"> 
-  <p>Someone has added all species from <%= entry.element_type.downcase %> <%= entry.element_id %> to a guide</p> 
-  <p class="ago"><%= time_ago_in_words(entry.created_at) %></p> 
+  <p>Someone has added <%= entry.element_type.downcase %> <%= entry.element_id %>.</p> 
+  <p class="ago"><%= time_ago_in_words(entry.created_at) %> ago</p> 
 </div> 
