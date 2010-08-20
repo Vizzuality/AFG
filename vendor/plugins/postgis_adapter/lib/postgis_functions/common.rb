@@ -892,6 +892,18 @@ module PostgisFunctions
     end
 
   end
+  
+  #
+  #
+  #
+  #
+  # MultiPolygon
+  #
+  #
+  #
+  #
+  module MultiPolygonFunctions
+  end
 
 end
 

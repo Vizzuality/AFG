@@ -16,9 +16,12 @@
 #  created_at   :datetime        
 #  updated_at   :datetime        
 #  featured     :boolean         
+#  the_geom     :geometry        
 #
 
 class Landscape < ActiveRecord::Base
+  
+  has_geom :the_geom => :multi_polygon
   
   before_validation :set_permalink
   
@@ -36,6 +39,33 @@ class Landscape < ActiveRecord::Base
   
   def sort_by_attribute
     :guides_count
+  end
+  
+  def occurrences
+    Occurrence.select("o.*").from("occurrences AS o, landscapes AS l").where("ST_Intersects(o.the_geom, l.the_geom) AND l.id=#{self.id}")
+  end
+  
+  def species(options = {})
+    conditions = ["ST_Intersects(occurrences.the_geom, landscapes.the_geom)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions += options[:conditions] if options[:conditions]
+    limit = options[:limit] ? "LIMIT #{options[:limit]}" : nil
+    offset = options[:offset] ? "OFFSET #{options[:offset]}" : nil
+    Species.find_by_sql("select distinct(species.*) from species, occurrences, landscapes WHERE #{conditions.join(' AND ')} ORDER BY name DESC #{limit} #{offset}")
+  end
+  
+  def species_count(options = {})
+    conditions = ["ST_Intersects(occurrences.the_geom, landscapes.the_geom)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions += options[:conditions] if options[:conditions]
+    Species.find_by_sql("select count(distinct(species.id)) AS count from species, occurrences, landscapes WHERE #{conditions.join(' AND ')}").first.count.to_i
+  end
+  
+  def species_kingdoms
+    result = {}
+    kingdoms = species.map{|s| s.kingdom}.uniq
+    kingdoms.each do |k|
+      result[k] = species.select{|s| s.kingdom == k}.size
+    end
+    result
   end
   
   private

@@ -22,12 +22,16 @@ s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animali
 s.save
 
 
-l = Landscape.new :name => 'South Pole'
-l.description = "El polo sur"
+mp = MultiPolygon.from_polygons([Polygon.from_coordinates([[[-180,-65],[-180,-90],[180,-90],[180,-65],[-180,-65]]])])
+l = Landscape.new :name => 'Antartic Zone'
+l.description = "All the antartic, just for tests"
 l.featured = true
+l.the_geom = mp
 l.save
 
+mp = MultiPolygon.from_polygons([Polygon.from_coordinates([[[165,-77],[165,-79],[167,-79],[167,-77],[165,-77]]])])
 l = Landscape.new :name => 'Spanish base'
+l.the_geom = mp
 l.description = "Spanish scientific observatory"
 l.save
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818150820) do
+ActiveRecord::Schema.define(:version => 20100820093811) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20100818150820) do
     t.column "updated_at", :datetime
     t.column "featured", :boolean, :default => false
     t.column "the_geom", :multi_polygon, :srid => 4326
+  end
+
+  create_table "occurrences", :force => true do |t|
+    t.column "species_id", :integer
+    t.column "date", :date
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+    t.column "the_geom", :point, :srid => 4326, :null => false
   end
 
   create_table "pictures", :force => true do |t|

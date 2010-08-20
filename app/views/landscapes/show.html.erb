@@ -3,7 +3,7 @@
 
 <div class="outer_layout"> 
   <div class="landscape_header" id="landscape-<%= @landscape.id %>"> 
-    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <ul class="breadcrumb"> 
       <li><a href="<%= landscapes_path %>">Landscapes</a></li>
     </ul> 
@@ -33,124 +33,35 @@
   <h3>Species near this place</h3> 
   <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p>
   
-  <h5>ANIMALIA</h5>
+  <% @landscape.species_kingdoms.each do |k, count| %>
+  <h5><%= k.upcase %></h5>
   <ul>
-    <li>
+    <% @landscape.species(:conditions => ["kingdom = '#{k}'"]).each do |species| %>
+    <li class="<%= cycle('','','last_item') %>">
       <div class="image">
         <%= image_tag ('defaults/small_specie.jpg') %>
       </div>
       <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
+        <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
+        <% if species.common_name? %>
+        <p class="common_name"><%= species.common_name %></p>
+        <% end -%>
       </div>
     </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li class="last_item">
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li class="last_item">
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li class="last_item">
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
-    <li>
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>  
-    <li class="last_item">
-      <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
-      </div>
-      <div class="info">
-        <h4><a href="#">Penguinus</a></h4>
-        <p class="common_name">Cacatus</p>
-      </div>
-    </li>
+    <% end -%>
   </ul>
+  <% end %>  
+
+  <% if false %>
   <div class="pagination">
     <a href="#" class="right"></a> 
     <a href="#" class="left disabled"></a> 
     <p>viewing from <strong>1 to 8 of 32</strong></p>
   </div>
+  <% end -%>
+  
 </div>
 
 <div id="your_guide">
-<%= render 'guides/your_guide' %>
+  <%= render 'guides/your_guide' %>
 </div>

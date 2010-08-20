@@ -47,6 +47,7 @@ class Species < ActiveRecord::Base
   has_many :entries
   has_many :guides, :through => :entries
   has_many :pictures
+  has_many :occurrences
   
   validates_presence_of :name
   
@@ -59,7 +60,8 @@ class Species < ActiveRecord::Base
   scope :featured,      where(:featured => true)
   scope :complete,      where(:complete => true)
   
-  before_create :set_uid, :get_taxon, :set_complete
+  before_create :set_uid, :get_taxon, :set_complete 
+  after_create :get_occurrences
   
   before_save :set_complete, :propagate_taxon
 
@@ -181,6 +183,23 @@ class Species < ActiveRecord::Base
       end
     end
   rescue
+  end
+  
+  def get_occurrences
+    return if self.uid.blank?
+    response = open("http://es.mirror.gbif.org/ws/rest/occurrence/list?taxonconceptkey=#{self.uid}&minlatitude=-90&maxlatitude=-65&minlongitude=-180&maxlongitude=180&georeferencedonly=true&coordinateissues=false").read
+    doc = Nokogiri::XML(response)
+    total_returned = doc.xpath("//gbif:summary")[0].attr('totalReturned').to_i
+    (0...total_returned).each do |node|
+      latitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLatitude")[node].text.to_f            
+      longitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLongitude")[node].text.to_f
+      date = if node_date = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:latestDateCollected")[node]
+        Date.parse(node_date.text)
+      else
+        nil
+      end
+      occurrences.create :date => date, :the_geom => Point.from_lon_lat(longitude, latitude)
+    end
   end
   
   private

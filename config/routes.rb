@@ -1,5 +1,7 @@
 AFG::Application.routes.draw do |map|
 
+  resources :occurrences
+
   root :to => "site#home"  
 
   get "maps" => 'maps#index', :as => 'maps'
