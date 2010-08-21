@@ -97,6 +97,15 @@ class Landscape < ActiveRecord::Base
   def default_picture(style)
     "/images/defaults/#{style}_specie.jpg"
   end
+  
+  def to_json
+    {
+      :name => self.name,
+      :description => self.description,
+      :guides_count => self.guides_count,
+      :picture => self.picture? ? self.picture.image.url(:small) : nil
+    }
+  end
 
   private
   
