@@ -28,11 +28,16 @@ l.description = "All the antartic, just for tests"
 l.featured = true
 l.the_geom = mp
 l.save
+l.image1_url = 'http://commondatastorage.googleapis.com/static.panoramio.com/photos/original/9363915.jpg'
+l.save
 
 mp = MultiPolygon.from_polygons([Polygon.from_coordinates([[[165,-77],[165,-79],[167,-79],[167,-77],[165,-77]]])])
 l = Landscape.new :name => 'Spanish base'
 l.the_geom = mp
 l.description = "Spanish scientific observatory"
+l.save
+l.image1_url = 'http://mw2.google.com/mw-panoramio/photos/medium/9363990.jpg'
+l.image2_url = 'http://commondatastorage.googleapis.com/static.panoramio.com/photos/original/9363915.jpg'
 l.save
 
 1.upto(10){ |i| Guide.create :name => "Guia #{i}", :description => "Una guia #{i}", :author => "Fernando Blat", :published => true }
