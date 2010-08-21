@@ -25,7 +25,7 @@
     <td><%= landscape.id %></td>
     <td><%= link_to "#{landscape.name}", edit_admin_landscape_path(landscape.id) %></td>
     <td class="long"><%= truncate(landscape.description, :length => 100) %></td>
-    <td>223</td>
+    <td><%= landscape.pictures.count %></td>
     <td>
     <%= link_to 'Show', landscape_path(landscape) %> · 
     <%= link_to 'Edit', edit_admin_landscape_path(landscape.id) %> · 

@@ -23,6 +23,8 @@
     <%= f.label :source %><br />
     <%= f.text_field :source, :size => 50 %>
   </div>
+  
+  <% unless @landscape.new_record? %>
   <div class="field">
     <%= f.label :image1_url %><br />
     <%= f.text_field :image1_url, :size => 50 %>
@@ -38,6 +40,12 @@
   <div class="field">
     <%= f.label :image4_url %><br />
     <%= f.text_field :image4_url, :size => 50 %>
+  </div>
+  <% end -%>
+  
+  <div class="field" id="map">
+    <%= f.label :the_geom %><br />
+    <%= f.text_area :the_geom %>
   </div>
   
   <div class="actions">

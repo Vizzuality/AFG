@@ -32,7 +32,7 @@ class Admin::LandscapesController < ApplicationController
 
     respond_to do |format|
       if @landscape.save
-        format.html { redirect_to(edit_admin_landscape_path(@landscape), :notice => 'Landscape was successfully created.') }
+        format.html { redirect_to(edit_admin_landscape_path(@landscape), :notice => 'Landscape was successfully created. Please fill in the sources for the images') }
       else
         format.html { render :action => "new" }
       end
