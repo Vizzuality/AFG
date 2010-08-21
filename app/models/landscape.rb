@@ -86,6 +86,10 @@ class Landscape < ActiveRecord::Base
     end
   end
   
+  def picture?
+    !pictures.empty?
+  end
+  
   def picture
     pictures.empty? ? nil : pictures.first
   end

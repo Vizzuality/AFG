@@ -59,10 +59,14 @@
             <li class="landscape">
               <%= stars(result) %>
               <div class="image">
-                <img src="" alt="" title=""/>
+                <% if result.picture? %>
+                <img src="<%= result.picture.image.url(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />                
+                <% else %>
+                <img src="<%= result.default_picture(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />
+                <% end -%>
               </div>
               <div class="information">
-                <h2><%= link_to(resutl.name, landscape_path(result)) %></h2>
+                <h2><%= link_to(result.name, landscape_path(result)) %></h2>
                 <p class="description"><%= truncate(result.description, :length => 50, :omission => "...#{link_to('View more', landscape_path(result))}") %></p>
               </div>
             </li>
