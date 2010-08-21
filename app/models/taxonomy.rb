@@ -19,6 +19,10 @@ class Taxonomy < ActiveRecord::Base
     where(["name like ? OR hierarchy like ?", q, q]).order("name DESC")
   end
   
+  def species(limit = 1)
+    Species.where(self.hierarchy.to_sym => self.name).limit(limit).first
+  end
+  
   def self.kingdoms
     kingdoms = Species.select("distinct(kingdom)").map{ |x| x.kingdom}.delete_if{ |k| k.nil? || k == 'Unknown' }
     kingdoms.map do |k|

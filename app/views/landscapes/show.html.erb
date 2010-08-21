@@ -23,7 +23,7 @@
         <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@landscape) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@landscape) %>"></a> 
       </div>
       <div class="img_specie">
-        <%= image_tag('defaults/large_landscape.jpg') %>
+        <img src="<%= @landscape.picture ? @landscape.picture.image.url(:large) : @landscape.default_picture(:large) %>" alt="<%= @landscape.name %>" title="<%= @landscape.name %>" %>
       </div> 
     </div>
   </div>
@@ -39,7 +39,7 @@
     <% @landscape.species(:conditions => ["kingdom = '#{k}'"]).each do |species| %>
     <li class="<%= cycle('','','last_item') %>">
       <div class="image">
-        <%= image_tag ('defaults/small_specie.jpg') %>
+        <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.name %>" title="<%= species.name %>">
       </div>
       <div class="info">
         <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>

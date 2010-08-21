@@ -9,15 +9,13 @@
     </div>
     <ul id="your_guide">
       <% @entries.each do |entry| %>
-				<!--<%= entry.element_type %> -->
+        <!--<%= entry.element_type %> -->
         <li class="<%= entry_css_class(entry) %>">
           <p class="title" title="<%= entry.full_name %>"><%= truncate(entry.full_name, :length => 15) %></p>
           <% if entry.element_type == 'Landscape' %>
-          <img src="#" alt="landscape" title="landscape" />
+          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:small) %>" alt="<%= entry.element.name %>" title="<%= entry.element.name %>" />
           <% elsif entry.element_type == 'Species' %>
           <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
-          <% elsif entry.element_type == 'Guide' %>
-          <p class="by">by <%= entry.element.author %></p>
           <% else %>
           <p class="page_title"><%= entry.elements_count %> SPECIES</p>
           <% end -%>
@@ -28,13 +26,13 @@
             <% elsif entry.element_type == 'Species' %>
             <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
             <% elsif entry.element_type == 'Order' || entry.element_type == 'Kingdom' || entry.element_type == 'Class' || entry.element_type == 'Family' || entry.element_type == 'Phylum' %>
-            <a href="#" title="view" class="view"></a>
+            <a href="<%= expand_taxonomy_path(entry.element) %>" title="view" class="view"></a>
             <% end -%>
-						<%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
+            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
           </div>
         </li> 
       <% end -%>
-		  <% if !current_page?('/') %> <!-- Si esta añadida la guia specie o landscape en la página que visitas, que no aparezca tampoco esto -->
+      <% if !current_page?('/') && params[:action] == 'show' && ((@landscape && !@current_guide.include_landscape?(@landscape)) || (@species && !@current_guide.include_species?(@species))) %>
       	<li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
 		  <% end %>
     </ul> 

@@ -25,6 +25,8 @@ class Landscape < ActiveRecord::Base
   
   before_validation :set_permalink
   
+  has_many :pictures, :class_name => 'LandscapePicture'
+  
   scope :featured,      where(:featured => true)
   scope :not_featured,  where(:featured => false)
   
@@ -68,6 +70,30 @@ class Landscape < ActiveRecord::Base
     result
   end
   
+  1.upto(4) do |i|
+    define_method "image#{i}_url=".to_sym do |*args|
+      value = args.first
+      original_image_url = read_attribute("image#{i}_url".to_sym)
+      write_attribute("image#{i}_url".to_sym, value)
+      LandscapePicture.transaction do
+        if picture = pictures.find_by_original_image_url(original_image_url)
+          picture.destroy
+        end
+        picture = pictures.new :original_image_url => value
+        picture.image = open(value)
+        picture.save
+      end
+    end
+  end
+  
+  def picture
+    pictures.empty? ? nil : pictures.first
+  end
+  
+  def default_picture(style)
+    "/images/defaults/#{style}_specie.jpg"
+  end
+
   private
   
     def set_permalink

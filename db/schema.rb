@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100820093811) do
+ActiveRecord::Schema.define(:version => 20100821062935) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(:version => 20100820093811) do
   add_index "guides", ["name"], :name => "index_guides_on_name"
   add_index "guides", ["popularity"], :name => "index_guides_on_popularity"
   add_index "guides", ["session_id"], :name => "index_guides_on_session_id"
+
+  create_table "landscape_pictures", :force => true do |t|
+    t.column "original_image_url", :string
+    t.column "landscape_id", :integer
+    t.column "image_file_name", :string
+    t.column "image_content_type", :string
+    t.column "image_file_size", :integer
+    t.column "image_updated_at", :datetime
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+  end
 
   create_table "landscapes", :force => true do |t|
     t.column "name", :string

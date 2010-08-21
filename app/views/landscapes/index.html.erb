@@ -3,7 +3,7 @@
 
 <div class="outer_layout"> 
   <div class="landscapes_map"> 
-    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <h2>We have <%= Landscape.count %> Antarctic landscapes for your Guide</h2> 
     <p class="subtitle">Do you have any recommendation? <%= link_to('Send it to us', '#') %></p> 
     <div class="map"> 
@@ -37,7 +37,7 @@
       <h3><a href="<%= landscape_path(@featured_landscape) %>"><%= @featured_landscape.name %></a></h3>
       <%= stars(@featured_landscape) %>
       <div class="image">
-        <img src="#" alt="#" title="#" />
+        <img src="<%= @featured_landscape.picture ? @featured_landscape.picture.image.url(:large) : @featured_landscape.default_picture(:large) %>" alt="<%= @featured_landscape.name %>" title="<%= @featured_landscape.name %>" />
         <span class="shadow"></span>
       </div>
       <p class="info"><%= truncate(@featured_landscape.description, :length => 200, :omission => "...#{link_to('Learn more', landscape_path(@featured_landscape))}") %></p>

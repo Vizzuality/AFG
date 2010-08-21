@@ -1,5 +1,5 @@
 <div class="image">
-  <img src="#" alt="<%= entry.element.name %>" /> 
+  <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:small) %>" alt="<%= entry.element.name %>" /> 
 </div> 
 <div class="data"> 
   <p>Someone has added <%= link_to(entry.element.name, landscape_path(entry.element)) %>.</p> 

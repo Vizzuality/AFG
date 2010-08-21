@@ -7,7 +7,7 @@
 #  date       :date            
 #  created_at :datetime        
 #  updated_at :datetime        
-#  the_geom   :geometry        
+#  the_geom   :geometry        not null
 #
 
 class Occurrence < ActiveRecord::Base

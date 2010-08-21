@@ -29,10 +29,8 @@ class Entry < ActiveRecord::Base
       Species.find(element_id)
     when 'Landscape'
       Landscape.find(element_id)
-    when 'Guide'
-      Guide.find(element_id)
     else
-      Species.send("find_by_#{element_type.downcase}".to_sym, element_id)
+      Taxonomy.find_by_hierarchy_and_name(element_type.downcase, element_id)
     end
   rescue
     nil
@@ -44,8 +42,6 @@ class Entry < ActiveRecord::Base
       'species'
     when 'Landscape'
       'landscape'
-    when 'Guide'
-      'guide'
     else
       'taxonomy'
     end
@@ -56,8 +52,6 @@ class Entry < ActiveRecord::Base
     when 'Species'
       element.full_name
     when 'Landscape'
-      element.name
-    when 'Guide'
       element.name
     else
       element_id

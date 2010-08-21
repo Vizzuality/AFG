@@ -1,5 +1,5 @@
 <div class="specie"> 
-  <a href="#"><img src="#" alt="#" /></a>
+  <a href="<%= landscape_path(landscape) %>"><img src="<%= landscape.picture ? landscape.picture.image.url(:medium) : landscape.default_picture(:medium) %>" alt="<%= landscape.name %>" /></a>
   <h4><a href="<%= landscape_path(landscape) %>"><%= landscape.name %></a></h4>
   <%= stars(landscape) %>
 </div>

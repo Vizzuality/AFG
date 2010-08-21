@@ -4,7 +4,12 @@ module ApplicationHelper
     page_title = ["Antarctic Field Guides"]
     page_title << "Guides" if controller_name == 'guides'
     page_title << @guide.name if @guide
-    page_title.join(' - ')
+    page_title << "Landscapes" if controller_name == 'landscapes'
+    page_title << @landscape.name if @landscape
+    page_title << "Species" if controller_name == 'species'
+    page_title << "#{@taxonomy.name} (#{@taxonomy.hierarchy})" if @taxonomy
+    page_title << @species.name if @species && action_name == 'show'
+    page_title.reverse.join(' - ')
   end
   
   def entry_css_class(entry)
@@ -91,4 +96,30 @@ module ApplicationHelper
   def css_class_if(condition, css_class)
     condition ? raw(" class=\"#{css_class}\"") : ''
   end  
+  
+  def expand_taxonomy_path(taxonomy)
+    return if taxonomy.nil?
+    case taxonomy.hierarchy
+      when 'kingdom'
+        breadcrumb = [:kingdom]
+      when 'phylum'
+        breadcrumb = [:kingdom, :phylum]
+      when 'class'
+        breadcrumb = [:kingdom, :phylum, :t_class]
+      when 'order'
+        breadcrumb = [:kingdom, :phylum, :t_class, :t_order]
+      when 'family'
+        breadcrumb = [:kingdom, :phylum, :t_class, :t_order, :family]
+      when 'genus'
+        breadcrumb = [:kingdom, :phylum, :t_class, :t_order, :family, :genus]
+    end
+    url_params = {}
+    species = taxonomy.species
+    return unless species
+    breadcrumb.each do |param_name|
+      url_params.merge!({param_name => species.send(param_name)})
+    end
+    species_taxonomy_path(url_params)
+  end
+  
 end
