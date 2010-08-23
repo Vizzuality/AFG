@@ -470,9 +470,18 @@ div.landscape_header div.right div.share_this a.share_twitter {float:left; backg
 div.landscape_header div.right div.share_this a.share_facebook {float:left; background:url(../images/common/bttn_share_facebook.png) no-repeat 0 0; width:15px; height:15px;}
 div.landscape_header div.right div.share_this a:hover {background-position:0 -15px;}
 
-div.landscape_header div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;;}
+div.landscape_header div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;}
 div.landscape_header div.right div.img_specie img {width:260px; height:190px;}
 
+div.main.landscape_pictures {position:relative; background:white; padding:21px 21px 30px; width:894px;}
+div.main.landscape_pictures h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.main.landscape_pictures p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
+div.main.landscape_pictures p.subtitle a {color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 1px 0; border-bottom:1px solid white;}
+div.main.landscape_pictures p.subtitle a:hover {border-bottom:1px solid #0099CC;}
+div.main.landscape_pictures ul {float:left; width:100%;}
+div.main.landscape_pictures ul li {position:relative; float:left; width:221px; height:161px; background:url(../images/landscapes/pictures_bkg.png) no-repeat 0 0; margin:0;}
+div.main.landscape_pictures ul li img {float:left; width:197px; height:137px; margin:6px 0 0 12px;}
+div.main.landscape_pictures span.line {position:absolute; width:960px; height:1px; left:-10px; bottom:0; background:#CCCCCC;}
 
 div.main.landscape_species {background:white; padding:21px 21px 50px; width:894px;}
 div.main.landscape_species h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
