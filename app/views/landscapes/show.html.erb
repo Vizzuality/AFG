@@ -29,22 +29,18 @@
   </div>
 </div>
 
-
-
+<% unless @landscape.pictures.empty? %>
 <div class="main landscape_pictures">
   <h3>Pictures</h3> 
-  <p class="subtitle">Here are some pictures taken from <%= link_to('panoramio', "#") %></p>
-  
+  <p class="subtitle">Here are some pictures taken from <%= link_to('panoramio', "http://www.panoramio.com/") %></p>
   <ul>
-		<li><a href="#"><%= image_tag ('defaults/medium_landscape.jpg') %></a></li>
-		<li><a href="#"><%= image_tag ('defaults/medium_landscape.jpg') %></a></li>
-		<li><a href="#"><%= image_tag ('defaults/medium_landscape.jpg') %></a></li>
-		<li><a href="#"><%= image_tag ('defaults/medium_landscape.jpg') %></a></li>
+    <% @landscape.pictures.each do |picture| %>
+    <li><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>"></li>
+    <% end -%>
 	</ul>
   <span class="line"></span>
 </div>
-
-
+<% end -%>
 
 <div class="main landscape_species">
   <h3>Species near this place</h3> 
