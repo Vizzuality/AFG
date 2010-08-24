@@ -738,6 +738,22 @@ div.main_pdf div.right div.info p {float:left; width:100%; font:normal 12px "Bit
 
 
 
+/*404*/
+div.error_header {position:relative; float:left; width:896px; padding:27px 20px 20px 20px; background:url(../images/common/bkg_head_repeatx.png) repeat-x 0 0;}
+div.error_header h1 {float:left; width:100%; font:bold 27px "Helvetica"; color:white; letter-spacing:-1px;}
+div.error_header p {float:left; width:100%; font:normal 15px Arial; color:#BFE7F2;}
+div.main.error {background:white; padding:21px 21px 21px; width:894px; border-bottom:1px solid #CCCCCC;}
+div.main.error h3 {float:left; width:100%; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px;}
+div.main.error ul {float:left; width:800px; margin:8px 0 0 30px; list-style:disc; color:#999999;}
+div.main.error ul li {float:left; width:800px; padding:15px 0;}
+div.main.error ul li p {float:left; width:100%; font:normal 13px Arial; padding:0; color:#999999;}
+div.main.error ul li form {float:left; width:100%; margin:10px 0 0 0;}
+
+
+/*500*/
+
+
+
 
 /*FOOTER*/
 
