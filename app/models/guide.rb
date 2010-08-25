@@ -48,7 +48,7 @@ class Guide < ActiveRecord::Base
   
   def self.find_by_term(q)
     q = "%#{q}%"
-    published.where(["name like ? OR author like ? OR description like ?", q, q, q]).order("downloads_count DESC")
+    published.where(["name ilike ? OR author ilike ? OR description ilike ?", q, q, q]).order("downloads_count DESC")
   end
   
   def sort_by_attribute

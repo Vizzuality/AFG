@@ -16,7 +16,7 @@ class Taxonomy < ActiveRecord::Base
   
   def self.find_by_term(q)
     q = "%#{q}%"
-    where(["name like ? OR hierarchy like ?", q, q]).order("name DESC")
+    where(["name ilike ? OR hierarchy ilike ?", q, q]).order("name DESC")
   end
   
   def species(limit = 1)

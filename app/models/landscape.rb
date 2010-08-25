@@ -37,7 +37,7 @@ class Landscape < ActiveRecord::Base
   
   def self.find_by_term(q)
     q = "%#{q}%"
-    where(["name like ? OR description like ?", q, q]).order("guides_count DESC")
+    where(["name ilike ? OR description ilike ?", q, q]).order("guides_count DESC")
   end
   
   def to_param

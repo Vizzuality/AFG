@@ -98,7 +98,7 @@ class Species < ActiveRecord::Base
   
   def self.find_by_term(q)
     q = "%#{q}%"
-    where(["species like ? OR name like ? OR genus like ? OR description like ?", q, q, q, q]).order("guides_count DESC")
+    where(["species ilike ? OR name ilike ? OR genus ilike ? OR description ilike ?", q, q, q, q]).order("guides_count DESC")
   end
   
   def sort_by_attribute
