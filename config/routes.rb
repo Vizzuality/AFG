@@ -29,6 +29,9 @@ AFG::Application.routes.draw do |map|
     resources :landscapes
     resources :taxonomies
     resources :species, :except => [:show] do
+      member do
+        get :update_uid_and_taxon
+      end
       resources :pictures, :except => [:index, :show]
     end
   end

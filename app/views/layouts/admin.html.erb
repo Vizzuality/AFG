@@ -5,7 +5,7 @@
   <base href="http://localhost:3000/" />
   <%= stylesheet_link_tag 'scaffold' %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-  <%= javascript_include_tag 'jquery.nivo.slider', 'jquery.ui', 'jquery.ui.widget', 'jquery.ui.mouse', 'jquery.ui.sortable', 'rails', 'application' %>
+  <%= javascript_include_tag 'jquery.nivo.slider', 'jquery.ui', 'jquery.ui.widget', 'jquery.ui.mouse', 'jquery.example.min', 'jquery.ui.sortable', 'rails', 'application' %>
   <%= csrf_meta_tag %>
   <style>
   .message{
@@ -29,7 +29,7 @@
         <h1><a href="/">Atlantic Field Guides</a></h1> 
         <span class="search"> 
           <form method="get" action="<%= url_for(:action => 'index', :controller => (params[:controller] == 'admin/pictures' ? 'admin/species' : params[:controller])) %>"> 
-            <input id="search_term" type="text" name="q" size="50" />
+            <input type="text" name="q" size="50" />
             <input type="submit" value="Search" /> 
           </form> 
         </span> 

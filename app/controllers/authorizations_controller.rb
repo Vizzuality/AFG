@@ -7,7 +7,6 @@ class AuthorizationsController < ApplicationController
   end
 
   def create_or_update
-    debugger
     @admin_password = AdminPassword.first || AdminPassword.new
     @admin_password.password = params[:admin_password][:password]
     if @admin_password.save

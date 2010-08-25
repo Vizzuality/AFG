@@ -46,34 +46,26 @@ class Admin::SpeciesController < ApplicationController
       end
     end
   end
+  
+  def update_uid_and_taxon
+    @species = Species.find(params[:id])
+    if @species.uid = Species.get_uid(params[:name])
+      @species.name = params[:name]
+      @species.save
+      @species.get_taxon
+      if @species.save
+        redirect_to(edit_admin_species_path(@species.id), :notice => 'Species uid and taxonomy updated') and return
+      else
+        redirect_to(edit_admin_species_path(@species.id), :alert => 'Species uid wasn\'t updated') and return
+      end
+    else
+      redirect_to(edit_admin_species_path(@species.id), :alert => 'Species uid wasn\'t updated') and return
+    end
+  end
 
   # PUT /admin_species/1
   def update
     @species = Species.find(params[:id])
-
-    if params[:set_uid]
-      @species.set_uid
-      if @species.uid_changed?
-        @species.save
-        redirect_to(edit_admin_species_path(@species.id), :notice => 'Species uid') and return
-      else
-        if @species.uid.blank?
-          redirect_to(edit_admin_species_path(@species.id), :alert => 'Species uid wasn\'t updated') and return
-        else
-          redirect_to(edit_admin_species_path(@species.id), :notice => 'Species uid hasn\'t been updated because it seems to be fine') and return          
-        end
-      end
-    end
-    if params[:set_taxonomy]
-      @species.get_taxon
-      @species.save
-      if @species.complete?
-        redirect_to(edit_admin_species_path(@species.id), :notice => 'Species taxonomy updated successfully') and return
-      else
-        redirect_to(edit_admin_species_path(@species.id), :alert => 'Species taxonomy is incomplete') and return
-      end
-    end
-
     respond_to do |format|
       @species.attributes = (params[:species])
       if @species.save

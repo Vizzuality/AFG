@@ -172,19 +172,24 @@ class Species < ActiveRecord::Base
     propagate_taxon
   end
   
-  def set_uid
-    response = open("http://es.mirror.gbif.org/ws/rest/taxon/list?rank=species&scientificname="+URI.escape(self.full_name)).read
+  def self.get_uid(name)
+    response = open("http://es.mirror.gbif.org/ws/rest/taxon/list?rank=species&scientificname="+URI.escape(name)).read
     doc = Nokogiri::XML(response)
     if doc.xpath("//gbif:dataProvider").size > 0
       doc.xpath("//gbif:dataProvider").each do |data_provider|
         if data_provider.attr('gbifKey').to_i == 1
           if data_provider.xpath("gbif:dataResources//tc:TaxonConcept").size > 0
-            self.uid = data_provider.xpath("gbif:dataResources//tc:TaxonConcept")[0].attr('gbifKey').to_i
+            return data_provider.xpath("gbif:dataResources//tc:TaxonConcept")[0].attr('gbifKey').to_i
           end
         end
       end
     end
   rescue
+    nil
+  end
+  
+  def set_uid
+    self.uid = self.class.get_uid(self.full_name)
   end
   
   def get_occurrences
