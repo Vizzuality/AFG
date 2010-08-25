@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   layout 'application'
   
   before_filter :set_current_guide
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
   def render_404
     render :file => "public/404.html", :template => false, :status => 404
@@ -37,6 +39,10 @@ class ApplicationController < ActionController::Base
     
     def validate_permalink(object)
       render_404 and return false unless object.permalink == @permalink
+    end
+    
+    def record_not_found
+      render :file => "public/404.html", :status => 404
     end
   
 end
