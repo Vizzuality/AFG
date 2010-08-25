@@ -31,7 +31,7 @@ class Guide < ActiveRecord::Base
   scope :not_highlighted, published.where("highlighted = ?", false)
   
   scope :sort_by_most_recent, order("created_at DESC")
-  scope :sort_by_popularity,  order("popularity DESC")
+  scope :sort_by_popularity,  order("downloads_count DESC")
   
   before_validation :set_permalink
   
@@ -162,5 +162,5 @@ class Guide < ActiveRecord::Base
         self.permalink = temporal_permalink
       end
     end
-  
+      
 end
