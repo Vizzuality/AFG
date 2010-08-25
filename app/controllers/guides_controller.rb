@@ -41,6 +41,8 @@ class GuidesController < ApplicationController
   
   def pdf
     @guide = Guide.find(params[:id])
+    @guide.incement(:downloads_count)
+    @guide.save
     @species = Species.limit(20)
     render :template => 'guides/show_pdf', :layout => false
   end
