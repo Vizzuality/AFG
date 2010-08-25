@@ -49,11 +49,11 @@ class Landscape < ActiveRecord::Base
   end
   
   def occurrences
-    Occurrence.select("o.*").from("occurrences AS o, landscapes AS l").where("ST_Intersects(o.the_geom, l.the_geom) AND l.id=#{self.id}")
+    Occurrence.select("o.*").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom,l.the_geom, l.radius) AND l.id=#{self.id}")
   end
   
   def species(options = {})
-    conditions = ["ST_Intersects(occurrences.the_geom, landscapes.the_geom)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions = ["st_dwithin(occurrences.the_geom,landscapes.the_geom, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
     conditions += options[:conditions] if options[:conditions]
     limit = options[:limit] ? "LIMIT #{options[:limit]}" : nil
     offset = options[:offset] ? "OFFSET #{options[:offset]}" : nil
@@ -61,7 +61,7 @@ class Landscape < ActiveRecord::Base
   end
   
   def species_count(options = {})
-    conditions = ["ST_Intersects(occurrences.the_geom, landscapes.the_geom)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions = ["st_dwithin(occurrences.the_geom,landscapes.the_geom, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
     conditions += options[:conditions] if options[:conditions]
     Species.find_by_sql("select count(distinct(species.id)) AS count from species, occurrences, landscapes WHERE #{conditions.join(' AND ')}").first.count.to_i
   end
@@ -109,13 +109,16 @@ class Landscape < ActiveRecord::Base
       :name => self.name,
       :description => self.description,
       :guides_count => self.guides_count,
-      :picture => self.picture? ? self.picture.image.url(:small) : nil
+      :picture => self.picture? ? self.picture.image.url(:small) : nil,
+      :lat => self.the_geom.lat,
+      :lon => self.the_geom.lon
     }
   end
 
   private
   
     def set_the_geom
+      return if new_record? || self.longitude.nil? || self.latitude.nil?
       self.the_geom = Point.from_lon_lat(self.longitude, self.latitude)
     end
   

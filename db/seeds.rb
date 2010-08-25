@@ -22,7 +22,7 @@ s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animali
 s.save
 
 
-p = Point.from_x_y(-77, 0)
+p = Point.from_x_y(0, -77)
 l = Landscape.new :name => 'Antartic Zone'
 l.description = "All the antartic, just for tests"
 l.featured = true
@@ -31,7 +31,7 @@ l.save
 l.image1_url = 'http://commondatastorage.googleapis.com/static.panoramio.com/photos/original/9363915.jpg'
 l.save
 
-p = Point.from_x_y(-78, 166)
+p = Point.from_x_y(166,-78)
 l = Landscape.new :name => 'Spanish base'
 l.the_geom = p
 l.description = "Spanish scientific observatory"

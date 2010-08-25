@@ -22,7 +22,8 @@ AFG::Application.routes.draw do |map|
   resources :entries, :only => [:create, :destroy, :index]
   
   namespace :api do
-    get "taxonomy" => "taxonomy#index", :as => 'taxonomy', :format => :json
+    get "taxonomy" => "taxonomy#index", :format => :json
+    get "maps/features" => "maps#features", :format => :json
   end
 
   namespace :admin do

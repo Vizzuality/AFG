@@ -209,6 +209,10 @@ class Species < ActiveRecord::Base
     end
   end
   
+  def landscapes
+    Landscape.select("distinct(l.*)").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom,l.the_geom, l.radius) AND o.species_id=#{self.id}")
+  end
+  
   private
   
     def set_permalink

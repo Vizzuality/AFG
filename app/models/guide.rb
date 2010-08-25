@@ -139,6 +139,12 @@ class Guide < ActiveRecord::Base
     result
   end
   
+  def landscapes
+    entries.find_all_by_element_type('Landscape').map do |e|
+      e.element
+    end
+  end
+  
   private
   
     def set_permalink
