@@ -27,55 +27,53 @@ class Taxonomy < ActiveRecord::Base
     else 
       self.hierarchy.to_sym
     end
-    Species.where(column => self.name).limit(limit).first
+    Species.complete.where(column => self.name).limit(limit).first
+  end
+  
+  def species_count
+    column = if self.hierarchy == 'class'
+      :t_class
+    elsif self.hierarchy == 'order'
+      :t_order
+    else 
+      self.hierarchy.to_sym
+    end
+    Species.complete.where(column => self.name).count    
   end
   
   def self.kingdoms
-    kingdoms = Species.select("distinct(kingdom)").map{ |x| x.kingdom}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    kingdoms.map do |k|
-      [k, Species.count(:conditions => {:kingdom => k})]
+    Species.select("distinct(kingdom)").map{ |x| x.kingdom}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |k|
+      Taxonomy.find_by_name_and_hierarchy(k, 'kingdom')
     end
   end
   
   def self.phylums(kingdom)
-    phylums = Species.select("distinct(phylum)").where(:kingdom => kingdom).map{|x| x.phylum}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    phylums.map do |p|
-      [p, Species.count(:conditions => {:kingdom => kingdom, :phylum => p})]
+    Species.select("distinct(phylum)").where(:kingdom => kingdom).map{|x| x.phylum}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |p|
+      Taxonomy.find_by_name_and_hierarchy(p, 'phylum')
     end
   end
   
-  def self.t_classes(kingdom, phylum)
-    t_classes = Species.select("distinct(t_class)").where({:kingdom => kingdom, :phylum => phylum}).map{|x| x.t_class}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    t_classes.map do |tc|
-      [tc, Species.count(:conditions => {:kingdom => kingdom, :phylum => phylum, :t_class => tc})]
+  def self.t_classes(phylum)
+    Species.select("distinct(t_class)").where({:phylum => phylum}).map{|x| x.t_class}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |tc|
+      Taxonomy.find_by_name_and_hierarchy(tc, 'class')
     end
   end
   
-  def self.t_orders(kingdom, phylum, t_class)
-    t_orders = Species.select("distinct(t_order)").where({:kingdom => kingdom, :phylum => phylum, :t_class => t_class}).map{|x| x.to_order}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    t_orders.map do |to|
-      [to, Species.count(:conditions => {:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => to})]
+  def self.t_orders(t_class)
+    Species.select("distinct(t_order)").where({:t_class => t_class}).map{|x| x.t_order}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |to|
+      Taxonomy.find_by_name_and_hierarchy(to, 'order')
     end
   end
 
-  def self.families(kingdom, phylum, t_class, t_order)
-    families = Species.select("distinct(family)").where({:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order}).map{|x| x.family}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    families.map do |f|
-      [f, Species.count(:conditions => {:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order, :family => f})]
+  def self.families(t_order)
+    Species.select("distinct(family)").where({:t_order => t_order}).map{|x| x.family}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |f|
+      Taxonomy.find_by_name_and_hierarchy(f, 'family')
     end
   end
 
-  def self.genus(kingdom, phylum, t_class, t_order, family)
-    genus = Species.select("distinct(genus)").where({:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order, :family => family}).map{|x| x.genus}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    genus.map do |g|
-      [g, Species.count(:conditions => {:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order, :family => family, :genus => g})]
-    end
-  end
-
-  def self.species(kingdom, phylum, t_class, t_order, family, genus)
-    species = Species.select("distinct(name)").where({:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order, :family => family, :genus => genus}).map{|x| x.name}.delete_if{ |k| k.nil? || k == 'Unknown' }
-    species.map do |s|
-      [s, Species.count(:conditions => {:kingdom => kingdom, :phylum => phylum, :t_class => t_class, :t_order => t_order, :family => family, :genus => genus, :name => s})]
+  def self.genus(family)
+    Species.select("distinct(genus)").where({:family => family}).map{|x| x.genus}.delete_if{ |k| k.nil? || k == 'Unknown' }.map do |g|
+      Taxonomy.find_by_name_and_hierarchy(g, 'genus')
     end
   end
   
