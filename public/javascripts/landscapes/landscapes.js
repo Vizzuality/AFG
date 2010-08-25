@@ -35,7 +35,10 @@ var map, popup;
 			var size = new OpenLayers.Size(32,32);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
 			var icon = new OpenLayers.Icon('http://maps.google.com/mapfiles/kml/pal2/icon0.png',size,offset);
-			markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,7),icon));
+			markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(-589927.6475,3419924.3065),icon));
+			//-589927.6475,3419924.3065,221187.256,4231039.21
+			//markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(221187.256,4231039.21),icon));
+			//markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon));
 			markers.events.register("click", markers, click);
 			popup = new OpenLayers.Popup.Anchored("chicken", new OpenLayers.LonLat(0,7), new OpenLayers.Size(200,200), "example popup", {size: new OpenLayers.Size(200,200), offset: new OpenLayers.Pixel(100,-400)});
 			

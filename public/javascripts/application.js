@@ -276,3 +276,9 @@ function getUrlVars() {
 	});
 	return vars;
 }
+
+
+function goTo(place) {
+	$.scrollTo("#"+place, 500);
+	
+}

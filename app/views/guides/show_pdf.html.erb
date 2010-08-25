@@ -11,10 +11,118 @@
 </head>
 <body>
 	
+	<% count = 0 %>
+	
+	<!-- FRONT -->
+	<div class="outer_pdf">
+		<div class="main_pdf front">
+			<%= image_tag ('common/logo.png'), :class=>"AFG"%></a>
+			<h1>The Species that coolean</h1>
+			<h2>by Jamón</h2>
+		</div>
+	</div>
+	
+	<!-- INDEX -->
+	<div class="outer_pdf">
+		<div class="main_pdf index">
+			<h1>Index</h1>
+			<ul>
+				<li>Index <strong>/ 2</strong></li>
+				<li>About Antarctic Field Guides <strong>/ 3</strong></li>
+				<li>Species <strong>/ 4</strong>
+					<ul>
+						<li>Boxhead whale - 4</li>
+						<li>Boxhead whale - 4</li>
+					</ul>
+				</li>
+				<li>Landscapes <strong>/ 7</strong>
+					<ul>
+						<li>Vizzuality - 7</li>
+						<li>Lejos - 8</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="footer">
+				<span>
+					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
+				</span>
+				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+				<p class="right"><strong>page 1</strong> of 34</p>
+			</div>
+			<% count = count + 1 %>
+		</div>
+	</div>
+	
+	
+	
+	<!-- ABOUT -->
+	<div class="outer_pdf">
+		<div class="main_pdf about">
+			<h1>About Antarctic Field Guides</h1>
+			<h2>About the project</h2>
+			<p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+			<h2>About the data and its usage</h2>
+			<p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+			<div class="footer">
+				<span>
+					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
+				</span>
+				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+				<p class="right"><strong>page 1</strong> of 34</p>
+			</div>
+			<% count = count + 1 %>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<!-- SPECIES CHECKLIST-->
+	<div class="outer_pdf">
+		<div class="main_pdf checklist">
+			<p class="page">23</p>
+			<h1>Species checklist</h1>
+			<div class="check_specie">
+				<p class="common_name">Gentoo Penguin</p>
+				<h3>Pygoscelis Papua</h3>
+			</div>
+			
+			<div class="check_specie">
+				<p class="common_name">Gentoo Penguin</p>
+				<h3>Pygoscelis Papua</h3>
+			</div>
+			
+			<div class="check_specie">
+				<p class="common_name">Gentoo Penguin</p>
+				<h3>Pygoscelis Papua</h3>
+			</div>
+			
+			<div class="check_specie">
+				<p class="common_name">Gentoo Penguin</p>
+				<h3>Pygoscelis Papua</h3>
+			</div>
+
+			<div class="footer">
+				<span>
+					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
+				</span>
+				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+				<p class="right"><strong>page 1</strong> of 34</p>
+			</div>
+
+		</div>
+	</div>
+	
+	
+
+
+	
+	<!-- SPECIES -->
 	<% @species.each_with_index do |species,index| %>
 		<div class="outer_pdf">
 			<div class="main_pdf">
-				<p class="page"><%= index + 1 %></p>
+				<p class="page"><%= count + index + 1 %></p>
 				<div class="left">
 					<div class="header">
 						<p class="common_name">Common name</p>
@@ -60,10 +168,65 @@
 						<%= simple_format(species.distribution) %>
 					</div>
 				</div>
+				
+				<div class="footer">
+					<span>
+						<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
+					</span>
+					<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+					<p class="right"><strong>page 1</strong> of 34</p>
+				</div>
 
 			</div>
 		</div>
 	<% end %>
+	
+	
+	
+	<!-- LANDSCAPE -->
+		<div class="outer_pdf">
+			<div class="main_pdf">
+				<p class="page"><%= count + 1 %></p>
+				<div class="left">
+					<div class="header">
+						<h1>Vizzuality</h1>
+					</div>
+					<div class="images">
+						<ul>
+			      	<li><img src="#" /></li> 
+						</ul>
+					</div>
+		
+					<div class="info">
+						<h2>Description</h2>
+						<p>jkñlas dflñasj flasjdlfj sdlñf jsadlf jañsdfjlñas fjlksa fñjsa fsjflñ asfjs alf jaslñf jsdñlfj alñsd jflsajf lñksa jdflñkjsa ñflkasj lfjsaf ñasjf lñkasjfñlsadfñsad fs</p>
+						<h2>Notes</h2>
+					</div>
+				</div>
+	
+				<div class="right">
+					<div class="map"></div>
+					<div class="info">
+						<h3>Species near this place</h3>
+						<ul>
+							<li>Gentoo Penguin - <i>33</i></li>
+							<li>Gentoo Penguin - <i>33</i></li>
+							<li>Gentoo Penguin - <i>33</i></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer">
+					<span>
+						<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
+					</span>
+					<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+					<p class="right"><strong>page 1</strong> of 34</p>
+				</div>
+				
+			</div>
+		</div>
+	
 
 </body>
 </html>

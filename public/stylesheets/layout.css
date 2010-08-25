@@ -239,6 +239,10 @@ div.long div.long_in ul li.landscape p.title {float:left; margin:17px 0 0 12px; 
 div.long div.long_in ul li.dragg_here {float:left; width:136px; height:137px; background:url(../images/common/add_bkg.png) no-repeat 0 0;}
 div.long div.long_in ul .place_draggable {float:left; width:127px; height:137px; background:url(../images/common/bkg_place_draggable.png) no-repeat 0 0;}
 div.long div.long_in ul li.dragg_here p {float:left; margin:51px 0 0 35px; font:bold 11px "Lucida Grande"; color:#006789; text-transform:uppercase; text-align:center; width:96px;}
+div.long div.long_in p.empty {float:left; padding:110px 0 0 0; font:normal 17px "Lucida Grande"; color:#666666;}
+div.long div.long_in p.empty a {color:white; text-decoration:none; border-bottom:1px dotted #FFFFFF; display:inline-block; vertical-align:top; background:none;}
+div.long div.long_in p.empty a:hover {border-bottom:1px solid #FFFFFF;}
+
 
 div.long div.bottom {float:left; background:url(../images/common/your_guide_bottom_bkg.png) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0;}
 div.long div.bottom div.left_side {float:left; padding:18px 0 0 22px;}
@@ -252,9 +256,13 @@ div.long div.bottom div.right_side {float:right;}
 div.long div.bottom div.right_side p {float:right; width:auto; font:normal 14px Arial; color:#999999; margin:23px 0 0 0; line-height:20px;}
 div.long div.bottom div.right_side p a.preview {float:left; width:auto; margin:0 15px 0 0; padding:0 0 2px 0; font:normal 15px "Lucida Grande"; color:white; text-decoration:none; border-bottom:1px dotted #FFFFFF; display:inline-block; vertical-align:top; background:none;}
 div.long div.bottom div.right_side p a.preview:hover {border-bottom:1px solid #FFFFFF;}
-div.long div.bottom div.right_side a.publish{float:right; background:url(../images/common/bttn_publish_download.png) no-repeat 0 0; width:182px; height:33px; margin:18px 19px 16px 15px;}
-div.long div.bottom div.right_side a.publish:hover {background-position:0 -33px;}
+div.long div.bottom div.right_side p a.preview.disabled {color:#666666;}
+div.long div.bottom div.right_side p a.preview.disabled:hover {border-bottom:1px dotted #FFFFFF;}
 
+div.long div.bottom div.right_side a.publish {float:right; background:url(../images/common/bttn_publish_download.png) no-repeat 0 0; width:182px; height:33px; margin:18px 19px 16px 15px;}
+div.long div.bottom div.right_side a.publish:hover {background-position:0 -33px;}
+div.long div.bottom div.right_side a.publish.disabled {background-position:0 -66px;}
+div.long div.bottom div.right_side a.publish.disabled:hover {background-position:0 -66px;}
 
 
 
@@ -453,7 +461,11 @@ div.landscape_header ul.breadcrumb li {float:left; width:auto; background:url(..
 div.landscape_header ul.breadcrumb li.first {background:none; padding:0;}
 div.landscape_header ul.breadcrumb li a {font:normal 12px "Lucida Grande"; text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid #3FBBDF; color:white;}
 div.landscape_header ul.breadcrumb li a:hover {border-bottom:1px dotted #3FBBDF;}
-div.landscape_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0 0 15px 0;}
+div.landscape_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0;}
+div.landscape_header p.subtitle {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:16px; padding:0 0 15px 0;}
+div.landscape_header p.subtitle a {color:white; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.landscape_header p.subtitle a:hover {border-bottom:1px dotted white;}
+
 div.landscape_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0;}
 div.landscape_header p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
 div.landscape_header div.left {padding:5px 0 0 0; width:576px;}
@@ -554,7 +566,7 @@ div.left div.create div.sorted_by p.kind_sorted a.activated:hover {border-bottom
 div.left div.create div.sorted_by a {text-decoration:none;}
 div.left div.create div.sorted_by a:visited {text-decoration:none;}
 div.left div.create div.sorted_by div.deactivated_box {float:right; background:url(../images/guides/bkg_sort_box_deactivated.png) no-repeat 0 0; width:154px; height:27px; margin:8px 8px 0 0;}
-div.left div.create div.sorted_by div.deactivated_box p {float:left; font:normal 13px "Lucida Grande"; color:#666666; margin:5px 0 0 12px; width:123px;}
+div.left div.create div.sorted_by div.deactivated_box p {float:left; font:normal 12px "Lucida Grande"; color:#666666; margin:6px 0 0 10px; width:123px;}
 div.left div.create div.sorted_by div.activated_box {position:absolute; top:8px; right:1px; height:161px; height:auto; display:none;}
 div.left div.create div.sorted_by div.activated_box span.head {float:left; background:url(../images/guides/bkg_sort_box_activated.png) no-repeat 0 0; width:161px; height:30px;}
 div.left div.create div.sorted_by div.activated_box span.head p {float:left; font:normal 13px "Lucida Grande"; color:#CFCFCF; margin:5px 0 0 12px; width:123px;}
@@ -708,10 +720,39 @@ div.main.results div.right div.results ul li a.all {float:left; height:16px; wid
 div.main.results div.right div.results ul li a.all span {float:left; height:16px; background:none; padding:0; font:bold 13px Arial; color:#0099CC;}
 
 
+
+
 /* PDF */
+
 div.outer_pdf {margin:0 auto; width:1100px;}
-div.outer_pdf div.main_pdf {float:left; position:relative; width:1100px; background:url(../images/pdf/main_bkg.png) repeat-y right 0 white; margin:0; padding:0 0 50px 0;}
-div.outer_pdf div.main_pdf p.page {position:absolute; z-index:10000; right:0; top:98px; font:normal 21px "Bitstream Vera Serif"; color:white; background:#333333; padding:5px;}
+div.outer_pdf div.main_pdf {float:left; position:relative; width:1100px; height:1600px; background:url(../images/pdf/main_bkg.png) repeat-y right 0 white; margin:10px; padding:0 0 50px 0;}
+div.outer_pdf div.main_pdf.front {background:white;}
+div.outer_pdf div.main_pdf.front img.AFG {float:left; margin:90px 0 0 100px;}
+div.outer_pdf div.main_pdf.front h1 {float:left; margin:380px 0 0 100px; width:900px; font:normal 48px "Aller"; color:#0099CC;}
+div.outer_pdf div.main_pdf.front h2 {float:left; margin:0 0 0 100px; width:900px; font:normal 25px "Aller"; color:#333333;}
+
+div.outer_pdf div.main_pdf.index {background:white;}
+div.outer_pdf div.main_pdf.index img.AFG {float:left; margin:90px 0 0 100px;}
+div.outer_pdf div.main_pdf.index h1 {float:left; margin:90px 0 0 100px; width:900px; font:normal 48px "Aller"; color:#0099CC;}
+div.outer_pdf div.main_pdf.index ul {float:left; margin:40px 0 0 140px; width:900px;}
+div.outer_pdf div.main_pdf.index ul li {float:left; margin:0; width:1000px; font:normal 25px "Aller"; color:#333333; padding:0 0 42px 0;}
+div.outer_pdf div.main_pdf.index ul li strong {font:normal 20px "Bitstream Vera Serif"; color:#333333;}
+div.outer_pdf div.main_pdf.index ul li ul {float:left; margin:20px 0 0 20px;}
+div.outer_pdf div.main_pdf.index ul li ul li {padding:0 0 3px; font:normal 15px "Bitstream Vera Serif"; color:#666666;}
+
+div.outer_pdf div.main_pdf.about {background:white;}
+div.outer_pdf div.main_pdf.about h1 {float:left; margin:90px 0 0 100px; width:900px; font:normal 48px "Aller"; color:#0099CC;}
+div.outer_pdf div.main_pdf.about h2 {float:left; margin:40px 0 0 140px; width:583px; font:normal 25px "Aller"; color:#333333;}
+div.outer_pdf div.main_pdf.about p {float:left; margin:15px 0 0 140px; width:583px; font:normal 15px "Bitstream Vera Serif"; color:#666666;}
+
+div.outer_pdf div.main_pdf p.page {position:absolute; z-index:10000; right:0; width:43px; height:21px; top:98px; font:normal 21px "Bitstream Vera Serif"; color:white; background:#333333; padding:8px 0; text-align:center;}
+
+div.outer_pdf div.main_pdf.checklist {background:white;}
+div.main_pdf.checklist h1 {float:left; margin:90px 0 0 100px; width:900px; font:normal 41px "Aller"; color:#0099CC;}
+div.main_pdf.checklist div.check_specie {float:left; margin:80px 0 0 140px; width:900px; height:205px; font:normal 48px "Aller"; color:#0099CC; background:url(../images/pdf/notes_lines.png) no-repeat 0 bottom;}
+div.main_pdf.checklist div.check_specie p {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#666666;}
+div.main_pdf.checklist div.check_specie h3 {float:left; width:100%; font:normal 25px "Aller"; color:#333333;}
+
 div.main_pdf div.left {float:left; width:620px; background:none; padding:75px 0 0 90px; margin:0;}
 div.main_pdf div.left div.header {float:left; margin:0; padding:0; width:100%;}
 div.main_pdf div.left div.header p.common_name {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#0099CC;}
@@ -720,25 +761,33 @@ div.main_pdf div.left div.header ul.breadcrumb {float:left; width:100%;}
 div.main_pdf div.left div.header ul.breadcrumb li {float:left; width:auto; background:url(../images/pdf/arrow_breadcrumb.png) no-repeat right 5px; padding:0 9px 0 7px;}
 div.main_pdf div.left div.header ul.breadcrumb li.first {padding:0 10px 0 0;}
 div.main_pdf div.left div.header ul.breadcrumb li.last {background:none; padding:0 0 0 7px;}
-
 div.main_pdf div.left div.images {float:left; width:100%; margin:50px 0 0 0;}
 div.main_pdf div.left div.images ul {float:left; width:100%;}
 div.main_pdf div.left div.images ul li {float:left; width:129px; height:107px; background:url(../images/pdf/images_bkg.png) no-repeat 0 0; margin:0 10px 0 0;}
 div.main_pdf div.left div.images ul li img {float:left; width:117px; height:86px; margin:6px 0 0 6px;}
-
 div.main_pdf div.left div.info {float:left; width:100%;}
 div.main_pdf div.left div.info h2 {float:left; width:100%; font:normal 25px "Aller"; color:#333333; padding:40px 0 0 0;}
 div.main_pdf div.left div.info p {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#666666; padding:14px 0 0 0;}
-
 div.main_pdf div.right {float:right; width:390px; padding:0; background:none;}
 div.main_pdf div.right div.map {float:left; margin:0; padding:0; width:390px; height:315px; background:blue;}
 div.main_pdf div.right div.info {float:left; width:310px; padding:10px 40px 40px;}
 div.main_pdf div.right div.info h3 {float:left; width:100%; font:normal 21px "Aller"; color:#333333; margin:30px 0 0 0;}
 div.main_pdf div.right div.info p {float:left; width:100%; font:normal 12px "Bitstream Vera Serif"; color:#666666;}
+div.main_pdf div.right ul {float:left; margin:12px 0 0 0;}
+div.main_pdf div.right ul li {font:normal 15px "Bitstream Vera Serif"; color:#666666; padding:0 0 5px 0;}
+div.main_pdf div.right ul li i {font:normal 12px "Bitstream Vera Serif"; color:#666666; font-style:italic;}
+
+div.main_pdf div.footer {position:absolute; left:90px; bottom:50px; width:935px;}
+div.main_pdf div.footer span {float:left; width:100%; padding:0 0 13px 0;}
+div.main_pdf div.footer span img {float:left; width:auto;}
+div.main_pdf div.footer p.left {float:left; width:auto; font:normal 12px Arial; color:#999999;}
+div.main_pdf div.footer p.right {float:right; width:auto; font:normal 12px Arial; color:#999999;}
 
 
 
-/*404*/
+
+/*ERRORS PAGES*/
+
 div.error_header {position:relative; float:left; width:896px; padding:27px 20px 20px 20px; background:url(../images/common/bkg_head_repeatx.png) repeat-x 0 0;}
 div.error_header h1 {float:left; width:100%; font:bold 27px "Helvetica"; color:white; letter-spacing:-1px;}
 div.error_header p {float:left; width:100%; font:normal 15px Arial; color:#BFE7F2;}
@@ -747,11 +796,21 @@ div.main.error h3 {float:left; width:100%; font:bold 25px Helvetica; color:#6666
 div.main.error ul {float:left; width:800px; margin:8px 0 0 30px; list-style:disc; color:#999999;}
 div.main.error ul li {float:left; width:800px; padding:15px 0;}
 div.main.error ul li p {float:left; width:100%; font:normal 13px Arial; padding:0; color:#999999;}
+div.main.error ul li p a {color:#0099CC; }
+div.main.error ul li p a {text-decoration:none; border-bottom:1px solid #0099CC; display:inline-block; vertical-align:top; color:#0099CC;}
+div.main.error ul li p a:hover {border-bottom:1px dotted #0099CC;}
 div.main.error ul li form {float:left; width:100%; margin:10px 0 0 0;}
+div.main.error ul li form input[type="text"] {float:left; width:390px; height:22px; padding:7px; margin:0 10px 0 0; border:0; font:normal 15px Arial; color:#777777; background:url(../images/404/text_input_bkg.png) no-repeat 0 0;}
+div.main.error ul li form input[type="submit"] {float:left; width:104px; height:34px; padding:3px 0 0 26px; margin:1px 0 0 0; border:0; font:bold 19px Arial; color:#FFFFFF; background:url(../images/404/submit_input_bkg.png) no-repeat 0 0;}
+div.main.error ul li form input[type="submit"]:hover {background-position:0 -34px; cursor:pointer;}
 
-
-/*500*/
-
+div.main.error form.report {float:left; width:555px;}
+div.main.error form.report label {float:left; width:100%; margin:25px 0 0 0; padding:0 0 7px; font:normal 11px Arial; color:#999999;}
+div.main.error form.report input[type="text"] {float:left; width:286px; height:22px; padding:7px; margin:0 10px 0 0; border:0; font:normal 15px Arial; color:#777777; background:url(../images/404/text_input_bkg_500.png) no-repeat 0 0;}
+div.main.error form.report textarea {float:left; width:555px; max-width:555px; min-width:555px; min-height:92px; max-height:92px; height:92px; background:url(../images/404/textarea_bkg.png) no-repeat 0 0; border:none;}
+div.main.error form.report textarea:focus {outline:none;}
+div.main.error form.report input[type="submit"] {float:left; width:104px; height:34px; padding:7px; margin:15px 10px 0 0; border:0; font:bold 19px Arial; color:white; background:url(../images/404/submit_input_bkg_500.png) no-repeat 0 0;}
+div.main.error form.report input[type="submit"]:hover {background-position:0 -34px; cursor:pointer;}
 
 
 
@@ -775,6 +834,10 @@ div.footer div.in p a:hover {color:#666666;}
 
 
 /* STATS */
+div.stats.white p.species_rank {color:white;}
+div.stats.white p.landscapes_rank {color:white;}
+
+
 div.stats span {float:left; width:10px; height:40px; background:none;}
 div.stats span ul.stats {float:left; width:10px; height:24px; background:white; margin:0; padding:24px 0 0 0; border:none;}
 div.stats span ul.stats li {float:left; width:10px!important; height:2px!important; background:none!important; background-image:none; background-color:white; margin:1px 0!important; padding:0!important; border:none;}

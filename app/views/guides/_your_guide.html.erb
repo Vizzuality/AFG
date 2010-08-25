@@ -36,6 +36,9 @@
       	<li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
 		  <% end %>
     </ul> 
+		<% if @entries.empty? && params[:action] != 'show' %>
+			<p class="empty">There are no items yet! Start exploring <%= link_to 'species', species_index_path %> and <%= link_to 'landscapes', landscapes_path %> now.</p>
+		<% end %>
   </div> 
   <div class="bottom"> 
     <% if @entries.total_pages > 1 %>
@@ -49,8 +52,14 @@
       </div> 
     <% end -%>
     <div class="right_side">
-      <a href="javascript: void openPublish()" class="publish" id="publish_and_download"></a> <!-- <%= edit_guide_path %> --> <!-- javascript: void openPublish() -->
-      <p><a class="preview" href="<%= pdf_guide_path(@current_guide) %>">Preview</a> or </p>
+			<% if !@entries.empty? %>
+				<% href_publish = "href='javascript: void openPublish()'"%>
+				<% href_preview = "href='" +pdf_guide_path(@current_guide) + "'"%>
+			<% else %>
+				<% disabled = "disabled" %>
+			<% end %>
+      <a <%= href_publish %> class="publish <%= disabled %>" id="publish_and_download"></a> <!-- <%= edit_guide_path %> --> <!-- javascript: void openPublish() -->
+      <p><a class="preview <%= disabled %>" <%= href_preview %>>Preview</a> or </p>
     </div> 
   </div>
 </div>

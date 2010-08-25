@@ -8,7 +8,8 @@
       <li><a href="<%= landscapes_path %>">Landscapes</a></li>
     </ul> 
     <div class="left"> 
-      <h1><%= @landscape.name %></h1> 
+      <h1><%= @landscape.name %></h1>
+ 			<p class="subtitle">obtained from <a href="#">wikipedia</a></p>
       <h3>Description</h3> 
       <%= simple_format(@landscape.description) %>
       <% if !@current_guide.include_landscape?(@landscape) %>

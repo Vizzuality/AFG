@@ -22,9 +22,12 @@
           <p class="downloads_data"><span><%= @guide.popularity %> DOWNLOADS</span></p>
           <p class="download"><a href="<%= pdf_guide_path(@guide) + '.pdf' %>">or download it</a></p>
         </div> 
-        <div class="amount_info"> 
-          <p class="species_guide_rank second_rank white left"><%= pluralize(@guide.species.size, 'SPECIES') %></p> 
-        </div>
+				<div class="stats white">
+					<span class="<%= @guide.species_count %>" title="specie"></span>
+				  <p class="species_rank"><%= pluralize(@guide.species_count, 'SPECIE') %></p>
+					<span class="<%= @guide.landscapes_count %>" title="landscape"></span>
+				  <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'LANDSCAPE') %></p>
+				</div>
         <%= simple_format(@guide.description, :class => 'info_guide') %>
       
         <a class="download_guide" href="<%= pdf_guide_path(@guide) + '.pdf' %>"> 
@@ -46,7 +49,7 @@
     <div class="right">
       <ul>
         <% @guide.species_kingdoms.each do |k, count| %>
-        <li <%= raw('class="last"') if k == @guide.species_kingdoms.keys.first %>><a href="<%= species_taxonomy_path(:kingdom => k) %>"><span><%= count %> <%= k %></span></a></li>
+        <li <%= raw('class="last"') if k == @guide.species_kingdoms.keys.first %>><a href="javascript:void goTo('<%= k %>')"><span><%= k %> (<%= count %>)</span></a></li>
         <% end -%>
       </ul>
     </div>
@@ -54,7 +57,7 @@
   </div>
   
   <% @guide.species_kingdoms.each do |k, count| %>
-  <div class="family">
+  <div class="family" id="<%= k %>">
     <h3><%= count %> <%= k.upcase %></h3>
     <ul>
       <% @guide.species.select{|s| s.kingdom == k }.each do |species| %>

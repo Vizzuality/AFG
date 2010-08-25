@@ -11,10 +11,10 @@
     </ul>
     <div class="left"> 
       <h1><%= @taxonomy.name %><small>(<%= @taxonomy.hierarchy %>)</small></h1> 
-      <h3>Description</h3> 
+      <!-- <h3>Description</h3> 
       <%= simple_format(@taxonomy.description) %>
       <h3>Distinguishing Characters</h3> 
-      <%= simple_format(@taxonomy.distinguishing_characters) %>
+      <%= simple_format(@taxonomy.distinguishing_characters) %> -->
       
 			<div class="added_cont">			
       	<% unless @current_guide.include_taxonomy?(@taxonomy) %>
