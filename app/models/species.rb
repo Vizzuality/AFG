@@ -30,6 +30,8 @@
 #  complete                  :boolean         
 #  habitat                   :string(255)     
 #  distinguishing_characters :text            
+#  source_link               :string(255)     
+#  source_name               :string(255)     
 #
 
 # Taxonomy sample:

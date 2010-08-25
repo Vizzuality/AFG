@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825094158) do
+ActiveRecord::Schema.define(:version => 20100825145545) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -74,11 +74,16 @@ ActiveRecord::Schema.define(:version => 20100825094158) do
     t.column "image3_url", :string
     t.column "image4_url", :string
     t.column "guides_count", :integer, :default => 0
+    t.column "radius", :integer, :default => 50000
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
     t.column "featured", :boolean, :default => false
-    t.column "the_geom", :multi_polygon, :srid => 4326
+    t.column "the_geom", :point, :srid => 4326, :null => false
+    t.column "source_link", :string
+    t.column "source_name", :string
   end
+
+  add_index "landscapes", ["the_geom"], :name => "index_landscapes_on_the_geom", :spatial=> true 
 
   create_table "occurrences", :force => true do |t|
     t.column "species_id", :integer
@@ -133,6 +138,8 @@ ActiveRecord::Schema.define(:version => 20100825094158) do
     t.column "complete", :boolean, :default => false
     t.column "habitat", :string
     t.column "distinguishing_characters", :text
+    t.column "source_link", :string
+    t.column "source_name", :string
   end
 
   create_table "taxonomies", :force => true do |t|

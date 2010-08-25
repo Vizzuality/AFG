@@ -20,8 +20,12 @@
     <%= f.text_area :description, :rows => 8, :cols => 50 %>
   </div>
   <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source, :size => 50 %>
+    <%= f.label :source_name %><br />
+    <%= f.text_field :source_name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :source_link %><br />
+    <%= f.text_field :source_link, :size => 50 %>
   </div>
   
   <% unless @landscape.new_record? %>
@@ -42,11 +46,18 @@
     <%= f.text_field :image4_url, :size => 50 %>
   </div>
   <% end -%>
-  
-  <div class="field" id="map">
-    <%= f.label :the_geom %><br />
-    <%= f.text_area :the_geom %>
+  <div class="field">
+    <%= f.label :radius %><br />
+    <%= f.text_field :radius, :size => 50 %>
   </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude, :value => @landscape.the_geom.lat, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude, :value => @landscape.the_geom.lon, :size => 50 %>
+  </div>  
   
   <div class="actions">
     <%= f.submit %>

@@ -22,18 +22,18 @@ s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animali
 s.save
 
 
-mp = MultiPolygon.from_polygons([Polygon.from_coordinates([[[-180,-65],[-180,-90],[180,-90],[180,-65],[-180,-65]]])])
+p = Point.from_x_y(-77, 0)
 l = Landscape.new :name => 'Antartic Zone'
 l.description = "All the antartic, just for tests"
 l.featured = true
-l.the_geom = mp
+l.the_geom = p
 l.save
 l.image1_url = 'http://commondatastorage.googleapis.com/static.panoramio.com/photos/original/9363915.jpg'
 l.save
 
-mp = MultiPolygon.from_polygons([Polygon.from_coordinates([[[165,-77],[165,-79],[167,-79],[167,-77],[165,-77]]])])
+p = Point.from_x_y(-78, 166)
 l = Landscape.new :name => 'Spanish base'
-l.the_geom = mp
+l.the_geom = p
 l.description = "Spanish scientific observatory"
 l.save
 l.image1_url = 'http://mw2.google.com/mw-panoramio/photos/medium/9363990.jpg'
