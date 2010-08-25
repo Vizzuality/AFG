@@ -9,7 +9,12 @@ class LandscapesController < ApplicationController
         @landscapes = Landscape.not_featured.limit(6).order("guides_count DESC")
       end
       format.json do
-        render :json => Landscape.all.map{|l| l.to_json.merge(:url => landscape_url(l), :added => (@current_guide.include_landscape?(l) ? true : nil)) }.to_json
+        render :json => Landscape.all.map do |l| 
+          l.to_json.merge({
+            :url => landscape_url(l), 
+            :added => (@current_guide.include_landscape?(l) ? true : nil)
+          })
+        end.to_json
       end
     end
   end

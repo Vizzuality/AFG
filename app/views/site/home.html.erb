@@ -15,7 +15,7 @@
 	<div class="left"> 
 	  <div class="information"> 
 	    <h3>Species that you can find in the Antarctic</h3> 
-	    <p class="subtitle">you can find more than <%= link_to("#{Species.complete.count} species", species_index_path) %></p> 
+	    <p class="subtitle">you can find <%= link_to("#{Species.complete.count} species", species_index_path) %></p> 
 	    <div class="species_list"> 
 	      <ul class="published_afg">
 	        <% @species.each do |species| %>
@@ -27,7 +27,7 @@
 	    </div> 
 	  </div> 
 	  <div class="bottom"> 
-	    <p>more than <%= number_with_delimiter(Species.complete.count, :separator => ",")  %> species in our <%= link_to('species list', species_index_path) %></p> 
+	    <p><%= number_with_delimiter(Species.complete.count, :separator => ",")  %> species in our <%= link_to('species list', species_index_path) %></p> 
 	  </div> 
 	  <div class="create"> 
 	    <h3>Some of the already created Antarctic Field Guides</h3> 
