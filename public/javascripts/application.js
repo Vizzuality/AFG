@@ -217,21 +217,13 @@ function firstStep(type) {
 		$('div.choice').animate({
 		    height: 'toggle'
 		  }, 500, function() {
-				var second_step = '<div class="long"><div class="type loading"><img class="loading" src="../images/modal/ajax-loader.gif" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>Please, be patient, this will take less than five minutes.</p><a class="disabled" href="#">Download</a></div></div>';
-		    $('div.choice').html(second_step);
+			
+				var first_step = '<a href="#" class="checkbox disabled">I don’t want to publish my Field Guide</a><div class="blue_area"><a href="#" class="checkbox actived">I want to publish my Antarctic Field Guide</a><div class="fill"><p clas="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p><span><label>YOUR NAME</label></span><input type="text" /><span><label>GUIDE TITLE</label></span><input type="text" /><span><label>DESCRIPTION</label><p>231 CHARACTERS LEFT</p></span><textarea></textarea></div></div><a href="javascript:void secondStep(\'complete\')" class="download">Procced to download</a>';
+
+		    $('div.choice').html(first_step);
 				$('div.choice').animate({
 				    height: 'toggle'
-				  }, 500, function() {
-						$('div.choice').delay(4000).animate({
-						    height: 'toggle'
-						  }, 500, function() {
-								var third_step = '<div class="long"><div class="type finished"><img class="image" src="" /><img class="ok" src="../images/modal/ok.png" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>If your download doesn’t start in five seconds, click the download button</p><a href="#">Download</a></div></div>';
-								$('div.choice').html(third_step);
-								$('div.choice').animate({
-								    height: 'toggle'
-								  }, 500);
-						});
-				});
+				  }, 500);
 		  });
 }
 
@@ -249,20 +241,30 @@ function secondStep(type) {
 	$('div.choice').animate({
 	    height: 'toggle'
 	  }, 500, function() {
-			var second_step = '<div class="long"><div class="type loading"><img class="loading" src="../images/modal/ajax-loader.gif" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>Please, be patient, this will take less than five minutes.</p><a class="disabled" href="#">Download</a></div></div>';
+			var second_step = '<div class="long"><div class="type loading"><img class="loading" src="../images/modal/ajax-loader.gif" /></div><div class="info"><h5>We are processing your Antarctic Field Guide</h5><p>Please, be patient, this will take less than five minutes.</p><a class="disabled" href="#">Download</a></div></div>';
 	    $('div.choice').html(second_step);
 			$('div.choice').animate({
 			    height: 'toggle'
 			  }, 500, function() {
-					$('div.choice').delay(4000).animate({
-					    height: 'toggle'
-					  }, 500, function() {
-							var third_step = '<div class="long"><div class="type finished"><img class="image" src="" /><img class="ok" src="../images/modal/ok.png" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>If your download doesn’t start in five seconds, click the download button</p><a href="#">Download</a></div></div>';
-							$('div.choice').html(third_step);
-							$('div.choice').animate({
-							    height: 'toggle'
-							  }, 500);
-					});
+					setTimeout(function(){
+						$('div.choice div.type').removeClass('loading');
+						$('div.choice div.type').addClass('finished');
+						$('div.choice div.type img').remove();
+						$('div.choice div.type').append('<img class="image" src="" /><img class="ok" src="../images/modal/ok.png" />');
+						$('div.choice div.info h5').text('Your Anctartic Field Guide is ready to download');
+						$('div.choice div.info p').text('If your download doesn’t start in five seconds, click the download button');
+						$('div.choice div.info a').removeClass('disabled');
+					},3000);
+
+					// $('div.choice').delay(4000).animate({
+					// 					    height: 'toggle'
+					// 					  }, 500, function() {
+					// 							var third_step = '<div class="long"><div class="type finished"><img class="image" src="" /><img class="ok" src="../images/modal/ok.png" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>If your download doesn’t start in five seconds, click the download button</p><a href="#">Download</a></div></div>';
+					// 							$('div.choice').html(third_step);
+					// 							$('div.choice').animate({
+					// 							    height: 'toggle'
+					// 							  }, 500);
+					// 					});
 			});
 	  });
 }
