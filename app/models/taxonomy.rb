@@ -20,7 +20,14 @@ class Taxonomy < ActiveRecord::Base
   end
   
   def species(limit = 1)
-    Species.where(self.hierarchy.to_sym => self.name).limit(limit).first
+    column = if self.hierarchy == 'class'
+      :t_class
+    elsif self.hierarchy == 'order'
+      :t_order
+    else 
+      self.hierarchy.to_sym
+    end
+    Species.where(column => self.name).limit(limit).first
   end
   
   def self.kingdoms
