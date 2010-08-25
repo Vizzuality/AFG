@@ -2,8 +2,9 @@
   <div class="specie_header" id="family-<%= @species.id %>"> 
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <ul class="breadcrumb"> 
+      <li class="first"><%= link_to('All', species_index_path) %></li>
       <% @breadcrumb.each_with_index do |b, i|%>
-      <li <%= css_class_if(i==0,'first') %> <%= css_class_if(@breadcrumb.size > 1 && i == @breadcrumb.size-1,'last') %>>
+      <li <%= css_class_if(@breadcrumb.size > 1 && i == @breadcrumb.size-1,'last') %>>
       <% t_params = {}; 0.upto(i){ |j| t_params[@breadcrumb[j]] = params[@breadcrumb[j]] } %>
       <%= link_to(params[b], species_taxonomy_path(t_params)) %>
       </li>

@@ -61,11 +61,37 @@ And then, set the new password.
 
 The base URL of the JSON taxonomy API is:
 
-<http://localhost:3000/taxonomy>
+<http://localhost:3000/api/taxonomy>
 
-If you add more parameters you can go deeper in the taxonomy browsing. This is an example of the most deepest browsing, which is a species:
+### Getting available kingdoms ###
 
-<http://localhost:3000/taxonomy?kingdom=Animalia&phylum=Arthropoda&t_class=Malacostraca&order=Cumacea&family=Arthropods&genus=Eudorella>
+<http://localhost:3000/api/taxonomy>
+
+Response:
+
+    {"kingdoms":[{"count":10,"add_url":null,"name":"Animalia","id":1},{"count":1,"add_url":"http://localhost:3000/entries?type=Kingdom&id=Plantae","name":"Plantae","id":111}]}
+    
+### Getting available phylums from a kingdom ###
+
+<http://localhost:3000/api/taxonomy?id=1>
+
+Response:
+
+    {"phylums":[{"count":8,"add_url":"http://localhost:3000/entries?type=Phylum&id=Arthropoda","name":"Arthropoda","id":9},{"count":2,"add_url":"http://localhost:3000/entries?type=Phylum&id=Annelida","name":"Annelida","id":2}]}
+
+### Getting the other taxonomies ###
+
+All taxonomies can be fetched trough requests using the `id` parameter.
+
+### Attributes ####
+
+There are four attributes in a taxonomy object:
+
+  - `count`: the number of species belonging to the taxonomy
+  - `add_url`: if null means that the taxonomy has been added to the current guide. If not, is the url to add the taxonomy to the current guide
+  - `name`: the name of the taxonomy
+  - `id`: the internal identifier
+
 
 
 ## Landscapes JSON API ##

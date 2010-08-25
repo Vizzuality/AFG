@@ -8,9 +8,9 @@
       <li class="first"><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
       <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
       <li><%= link_to(@species.t_class, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class)) %></li>
-      <li><%= link_to(@species.t_order, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order)) %></li>
-      <li><%= link_to(@species.family, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family)) %></li>
-      <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
+      <li><%= link_to(@species.t_order, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order)) %></li>
+      <li><%= link_to(@species.family, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order, :family => @species.family)) %></li>
+      <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
     </ul>
     <div class="left"> 
       <h1><%= @species.full_name %></h1> 
