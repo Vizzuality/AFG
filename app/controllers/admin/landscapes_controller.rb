@@ -41,9 +41,9 @@ class Admin::LandscapesController < ApplicationController
 
   def update
     @landscape = Landscape.find(params[:id])
-
+    @landscape.attributes = params[:landscape]
     respond_to do |format|
-      if @landscape.update_attributes(params[:landscape])
+      if @landscape.save
         format.html { redirect_to(edit_admin_landscape_path(@landscape), :notice => 'Landscape was successfully updated.') }
       else
         format.html { render :action => "edit" }

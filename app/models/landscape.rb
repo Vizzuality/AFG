@@ -13,17 +13,22 @@
 #  image3_url   :string(255)     
 #  image4_url   :string(255)     
 #  guides_count :integer         default(0)
+#  radius       :integer         default(50000)
 #  created_at   :datetime        
 #  updated_at   :datetime        
 #  featured     :boolean         
-#  the_geom     :geometry        
+#  the_geom     :geometry        not null
+#  source_link  :string(255)     
+#  source_name  :string(255)     
 #
 
 class Landscape < ActiveRecord::Base
   
-  has_geom :the_geom => :multi_polygon
+  has_geom :the_geom => :point
   
-  before_validation :set_permalink
+  before_validation :set_permalink, :set_the_geom
+  
+  attr_accessor :latitude, :longitude
   
   has_many :pictures, :class_name => 'LandscapePicture'
   
@@ -73,6 +78,7 @@ class Landscape < ActiveRecord::Base
   1.upto(4) do |i|
     define_method "image#{i}_url=".to_sym do |*args|
       value = args.first
+      return if value.blank?
       original_image_url = read_attribute("image#{i}_url".to_sym)
       write_attribute("image#{i}_url".to_sym, value)
       LandscapePicture.transaction do
@@ -108,6 +114,10 @@ class Landscape < ActiveRecord::Base
   end
 
   private
+  
+    def set_the_geom
+      self.the_geom = Point.from_lon_lat(self.longitude, self.latitude)
+    end
   
     def set_permalink
       return unless self.permalink.blank?

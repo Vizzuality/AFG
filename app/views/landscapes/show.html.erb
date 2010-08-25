@@ -8,8 +8,18 @@
       <li><a href="<%= landscapes_path %>">Landscapes</a></li>
     </ul> 
     <div class="left"> 
-      <h1><%= @landscape.name %></h1>
- 			<p class="subtitle">obtained from <a href="#">wikipedia</a></p>
+      <h1><%= @landscape.name %></h1> 
+      <% if !@landscape.source_name.blank? || !@landscape.source_link.blank? %>
+      <p class="subtitle">
+        obtained from <% if @landscape.source_name.blank? %>
+          <%= link_to(@landscape.source_link, @landscape.source_link) %>
+        <% elsif @landscape.source_link.blank? %>
+        <%= @landscape.source_name %>
+        <% else %>
+        <%= link_to(@landscape.source_name, @landscape.source_link) %>
+        <% end -%>
+      </p>
+      <% end -%>
       <h3>Description</h3> 
       <%= simple_format(@landscape.description) %>
       <% if !@current_guide.include_landscape?(@landscape) %>

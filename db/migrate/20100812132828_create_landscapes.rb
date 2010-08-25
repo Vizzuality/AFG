@@ -3,7 +3,6 @@ class CreateLandscapes < ActiveRecord::Migration
     create_table :landscapes do |t|
       t.string :name
       t.string :permalink
-      t.string :source
       t.text :description
       t.string :related_url
       t.string :image1_url
@@ -11,6 +10,9 @@ class CreateLandscapes < ActiveRecord::Migration
       t.string :image3_url
       t.string :image4_url
       t.integer :guides_count, :default => 0
+      t.point :the_geom, :srid => 4326, :null => false
+      t.integer :radius, :default => 50000
+      
       t.timestamps
     end
   end
