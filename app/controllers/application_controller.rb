@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
   
-  before_filter :set_current_guide
+  before_filter :set_current_guide, :except => [:tiles]
 
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   

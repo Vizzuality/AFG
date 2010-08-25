@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
   
   SNAP_TO_GRID_FACTOR = 0.1
-  
+    
   def index
   end
 
