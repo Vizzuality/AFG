@@ -94,7 +94,7 @@ There are four attributes in a taxonomy object:
 
 
 
-## Landscapes JSON API ##
+## Maps JSON API ##
 
 The base URL of the API is:
 
