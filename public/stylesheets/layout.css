@@ -45,6 +45,8 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.alternative {float:left; width:321px; height:167px; background:url(../images/modal/dark_area.png) no-repeat 0 0; margin:0 30px 0 0;}
 #publish_container div.repeat div.choice div.alternative.last {margin:0;}
 #publish_container div.repeat div.choice div.alternative div.type {position:relative; float:left; margin:15px 15px 0 15px; width:128px; height:138px;}
+#publish_container div.repeat div.choice div.alternative div.type a {position:absolute; right:12px; top:14px; width:31px; height:31px; background:url(../images/modal/len.png) no-repeat 0 0;}
+#publish_container div.repeat div.choice div.alternative div.type a:hover {background-position:0 -31px;}
 #publish_container div.repeat div.choice div.alternative div.type.list {background:url(../images/modal/list_bkg.png) no-repeat 0 0;}
 #publish_container div.repeat div.choice div.alternative div.type.complete {background:url(../images/modal/all_bkg.png) no-repeat 0 0;}
 #publish_container div.repeat div.choice div.alternative div.type.complete img {float:left; margin:32px 0 0 15px; width:32px; height:32px;}
@@ -55,6 +57,9 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.alternative div.info a:hover {background-position:0 -36px; color:#1F628F;}
 #publish_container div.repeat div.choice div.alternative div.info p {float:left; width:100%; font:normal 13px Arial; color:white; margin:8px 0 0 0;}
 
+#publish_container div.repeat div.choice div.blue_area {float:left; width:672px; height:375px; background:url(../images/modal/blue_area.png) no-repeat -7px -1px;}
+#publish_container div.repeat div.choice a.checkbox {float:left; padding:0 0 0 23px; background:url(../images/modal/checkbox.png) no-repeat 0 0; text-decoration:none; margin:0 0 0 15px;}
+#publish_container div.repeat div.choice a.download {float:right;}
 
 #publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
 #publish_container div.repeat div.choice div.long div.type {position:relative; float:left; margin:16px 0 0 18px; width:128px; height:138px;}
