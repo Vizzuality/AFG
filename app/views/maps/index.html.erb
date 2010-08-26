@@ -2,7 +2,7 @@
 <% content_for :head do %>
 <%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
 <style type="text/css"> 
-#map { width: 910px; height: 400px;}
+#map { width: 390px; height: 315px;}
 </style>
 <script type="text/javascript"> 
 OpenLayers.DOTS_PER_INCH = 90.71428571428572;
@@ -22,9 +22,7 @@ controls: []
 
 
 map = new OpenLayers.Map('map', mapOptions );
-map.addControl(new OpenLayers.Control.PanZoomBar({
-		position: new OpenLayers.Pixel(2, 15)
-}));
+
 map.addControl(new OpenLayers.Control.Navigation());
 map.addControl(new OpenLayers.Control.MousePosition({element: $('location')}));
 var demolayer = new OpenLayers.Layer.WMS(

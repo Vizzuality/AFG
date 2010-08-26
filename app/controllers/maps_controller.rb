@@ -65,6 +65,7 @@ class MapsController < ApplicationController
         :description => l.description,
         :guides_count => l.guides_count,
         :picture => l.picture? ? l.picture.image.url(:small) : nil,
+        :picture_large => l.picture? ? l.picture.image.url(:large) : nil,
         :lat => l.lat,
         :lon => l.lon
       }

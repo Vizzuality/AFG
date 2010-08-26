@@ -334,7 +334,6 @@ div.taxonomic_browser div.in ul#column2 li.first_column2 {float:left; width:293p
 div.taxonomic_browser div.in ul#column2 li.last_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_unselected_last.png); }
 div.taxonomic_browser div.in ul#column2 li.selected_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
 div.taxonomic_browser div.in ul#column2 li.selected_column2 div.text {margin:0 0 0 25px;}
-
 /* Column3 */
 /*div.taxonomic_browser div.in ul#column3 {float:left; width:312px; height:310px; overflow:auto; background-color:#FFFFFF}*/
 div.taxonomic_browser div.in ul#column3 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none;}
@@ -367,7 +366,7 @@ div.left div.species ul li div.specie p.star span img {position:absolute; top:3p
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border:1px solid white;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
 div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -488,7 +487,7 @@ div.landscapes_map div.map a.zoomOut:hover {background-position:0 -26px;}
 div.landscapes_map div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:1000;}
 div.landscapes_map div.map a.full_screen:hover {background-position:0 -26px;}
 
-div.main.landscapes {background:url(../images/common/main_bkg.png) repeat-y right 0 white;}
+div.main.landscapes {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.left div.landscapes {float:left; padding:21px; width:582px; background:white; margin:0;}
 div.left div.landscapes h3 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
 div.left div.landscapes p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:4px 0 0 0;}
@@ -510,7 +509,7 @@ div.left div.landscapes ul li div.specie p.star span img {position:absolute; top
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border:1px solid white;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
 div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -922,3 +921,27 @@ p.species_rank {float:left; width:40px; font:normal 11px "Lucida Grande"; text-t
 p.landscapes_rank {float:left; width:55px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:0;}
 .highlighted p.species_rank {padding:11px 0 0 5px;}
 .highlighted p.landscapes_rank {padding:11px 0 0 5px;}
+
+
+
+/* MAP INFOWINDOW */
+div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
+div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666;}
+div.infowindow p.star {float:left; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
+div.infowindow p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div.infowindow p.star.zero span {color:#999999; background:url(../images/common/heart_bkg.png) no-repeat right 0;}
+div.infowindow p.star span img {position:absolute; top:3px; left:0; z-index:40;}
+div.infowindow a.add {float:left; margin:7px 0 0 10px; font:normal 11px Arial; color:#0099CC;}
+div.infowindow a.add:hover {color:#007DA6;}
+div.infowindow a.add.disabled {color:#CCCCCC;}
+div.infowindow a.add.disabled:hover {color:#CCCCCC;}
+div.infowindow div.info {float:left; width:247px; height:165px; margin:9px 0 0 0;}
+div.infowindow div.info span {float:left; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
+div.infowindow div.info span p {font:left; width:100%; font:normal 13px Arial; color:white;}
+div.infowindow div.info span a.more {float:right; width:auto; font:normal 13px Arial; color:white; margin:10px 0 0 0; padding:0 0 0 18px; background:url(../images/map/eye.png) no-repeat 0 3px; display:inline-block; vertical-align:top; border-bottom:1px solid white; text-decoration:none;}
+div.infowindow div.info span a.more:hover {border-bottom:1px dotted white;}
+div.infowindow img.landscape {float:left; width:247px; height:165px; margin:9px 0 0 0;}
+div.infowindow a.close {position:absolute; z-index:1000; right:-12px; top:-12px; height:28px; width:28px; background:url(../images/map/close.png) no-repeat 0 0;}
+div.infowindow a.close:hover {background-position:0 -28px;}
+
+

@@ -48,9 +48,10 @@ LandscapeMarker = OpenLayers.Class({
      * lonlat - {<OpenLayers.LonLat>} the position of this marker
      * icon - {<OpenLayers.Icon>}  the icon for this marker
      */
-    initialize: function(lonlat, icon) {
+    initialize: function(lonlat, icon, info) {
         this.lonlat = lonlat;
-        
+        this.info = info;
+
         var newIcon = (icon) ? icon : OpenLayers.Marker.defaultIcon();
         if (this.icon == null) {
             this.icon = newIcon;
@@ -97,13 +98,53 @@ LandscapeMarker = OpenLayers.Class({
     * location passed-in
     */
     draw: function(px) {
+				
+				var me = this;
+				
 				$(this.icon.imageDiv).css('background','url(../images/map/landscape_bkg.png) no-repeat 0 0');
-				$(this.icon.imageDiv).children().width(30);
-				$(this.icon.imageDiv).children().height(30);
 				$(this.icon.imageDiv).children().hide();
-				$(this.icon.imageDiv).append('<img src="'+this.icon.url+'" style="position:relative; margin:5px 0 0 6px; width:70px; height:47px" />');
+				$(this.icon.imageDiv).append('<a href="#" class="open" style="position:relative; float:left; width:100%; height:57px; "><img src="'+this.icon.url+'" style="position:relative; margin:5px 0 0 6px; width:70px; height:47px" /></a><div class="infowindow"><a href="#" class="close"></a><h1>'+this.info.name+'</h1><p class="star zero"><span><img alt="star" src="/images/common/gray_star.png" />'+ this.info.guides_count+'</span></p> <a href="'+ this.info.add_url +'" class="add">Add this guide</a></div>');
+				
+				if (this.info.guides_count!=0) {
+					$(this.icon.imageDiv).find('p.star span img').attr('src','/images/common/pink_star.png');
+					$(this.icon.imageDiv).find('p.star').removeClass('zero');
+				}
+				
+
+				if (this.info.add_url == null || this.info.add_url == "") {
+					$(this.icon.imageDiv).find('a.add').addClass('src','disabled');
+					$(this.icon.imageDiv).find('a.add').removeAttr('href');
+					$(this.icon.imageDiv).find('a.add').text('Already added');
+				}
+				
+				
+				if (this.info.description!=null && this.info.description!="") {
+					$(this.icon.imageDiv).find('div.infowindow').append('<div class="info" style="background:url('+this.info.picture_large+') no-repeat center center"><span><p>'+this.info.description+'</p><a href="'+ this.info.url +'" class="more">Learn more</a></span></div>');
+				} else {
+					$(this.icon.imageDiv).find('div.infowindow').append('<img class="landscape" src="'+ this.icon.url +'" alt="'+this.info.name+'"/>');
+				}
+
+				
+				$(this.icon.imageDiv).find('a.open').click(function(ev){
+					ev.stopPropagation();
+					ev.preventDefault();
+					if (!$(me.icon.imageDiv).find('div').is(':visible')) {
+						$('div.infowindow').hide();
+						var position = map.getViewPortPxFromLonLat(me.lonlat);
+						$(me.icon.imageDiv).find('div').fadeIn('fast');
+					}
+				});
+				
+				$(this.icon.imageDiv).find('a.close').click(function(ev){
+					ev.stopPropagation();
+					ev.preventDefault();
+					if ($(me.icon.imageDiv).find('div.infowindow').is(':visible')) {
+						$('div.infowindow').fadeOut();
+					}
+				});
+				
         return this.icon.draw(px);
-    }, 
+    },
 
     /** 
     * Method: erase
