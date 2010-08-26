@@ -108,6 +108,8 @@ The action supports three parameters:
   
 Returns a hash serialized in JSON format with two keys: `landscapes` and `occurrences`.
 
+If no parameter is given returns all the occurrences and landscapes.
+
 For example:
 
 <http://localhost:3000/api/maps/features?species_id=1>
