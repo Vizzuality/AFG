@@ -49,3 +49,4 @@ Species.complete.limit(5).each do |species|
   g.add_entry('Species', species.id.to_s)
 end
 g.add_entry('Landscape', l.id.to_s)
+g.add_entry('Class', 'Malacostraca')
