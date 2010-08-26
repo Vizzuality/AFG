@@ -13,8 +13,12 @@
   <div class="outer_pdf">
     <div class="main_pdf front">
       <%= image_tag('common/logo.png', :class=>"AFG") %></a>
-      <h1><%= @guide.name %></h1>
-      <h2>by <%= @guide.author %></h2>
+      <% if @guide.published? %>
+        <h1><%= @guide.name %></h1>
+        <h2>by <%= @guide.author %></h2>
+      <% else %>
+        <h1>Previewing guide</h1>
+      <% end %>
     </div>
   </div>
   <%= page_break %>
