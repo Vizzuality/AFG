@@ -40,8 +40,12 @@ class Guide < ActiveRecord::Base
     update_attribute(:published, true)
   end
   
-  def pages_count
-    species.size + landscapes.size + 2
+  def pages_count(mode = :complete)
+    if mode == :complete
+      species.size + landscapes.size + 3
+    else
+      (species.size.to_f / 4.0).ceil + (landscapes.size.to_f / 4.0).ceil + 3
+    end
   end
   
   def size_in_bytes
@@ -104,7 +108,7 @@ class Guide < ActiveRecord::Base
   end
   
   def picture
-    species_ids = entries.find_all_by_element_type('Species')
+    species_ids = species.map{ |s| s.id }
     Picture.find(:first, :conditions => "species_id IN (#{(species_ids + [-1]).join(',')})")
   end
   
