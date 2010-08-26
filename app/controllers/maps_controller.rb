@@ -34,7 +34,7 @@ class MapsController < ApplicationController
         render :text => "Invalid guide_id: #{params[:guide_id]}", :status => 404 and return
       end
     else
-      nil
+      Occurrence.select("distinct on (SnapToGrid(the_geom,#{SNAP_TO_GRID_FACTOR})) id, x(ST_Transform(the_geom,3031)) as lon, y(ST_Transform(the_geom,3031)) as lat")
     end.map{ |o| {:lat => o.lat, :lon => o.lon}}
     
     landscapes = if params[:species_id]
@@ -56,7 +56,7 @@ class MapsController < ApplicationController
         render :text => "Invalid guide_id: #{params[:guide_id]}", :status => 404 and return
       end
     else
-      nil
+      Landscape.select("distinct(landscapes.id), landscapes.name, landscapes.permalink, landscapes.description, landscapes.guides_count, x(ST_Transform(landscapes.the_geom,3031)) as lon, y(ST_Transform(landscapes.the_geom,3031)) as lat")
     end.map do |l| 
       {
         :url => landscape_url(l), 
