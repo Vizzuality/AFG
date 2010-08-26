@@ -19,6 +19,9 @@ class Api::TaxonomyController < ApplicationController
         when 'family'
           k = 'genus'
           Taxonomy.genus(taxonomy.name)
+        when 'genus'
+          k = 'species'
+          Species.complete.where(:genus => taxonomy.name)
       end
     else
       k = 'kingdoms'
@@ -28,13 +31,28 @@ class Api::TaxonomyController < ApplicationController
     respond_to do |format|
       format.json do 
         if !taxonomies.nil?
-          childs = taxonomies.map do |taxonomy|
-            {
-              :id => taxonomy.id,
-              :name => taxonomy.name,
-              :count => taxonomy.species_count,
-              :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : entries_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name))
-            }
+          if k != 'species'
+            childs = taxonomies.map do |taxonomy|
+              {
+                :id => taxonomy.id,
+                :name => taxonomy.name,
+                :count => taxonomy.species_count,
+                :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : entries_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name)),
+                :picture => nil,
+                :common_name => nil
+              }
+            end
+          else
+            childs = taxonomies.map do |species|
+              {
+                :id => species.id,
+                :name => species.full_name,
+                :common_name => species.common_name,
+                :count => 0,
+                :add_url => (@current_guide.include_species?(species) ? nil : entries_url(:type => 'Species', :id => species.id)),
+                :picture => species.picture ? species.picture.image.url(:small) : species.default_picture(:small)
+              }
+            end
           end
         else
           childs=nil
