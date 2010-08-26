@@ -20,7 +20,7 @@ class MapsController < ApplicationController
       end
     elsif params[:landscape_id]
       if landscape = Landscape.find_by_id(params[:landscape_id])
-        Occurrence.select("distinct on (SnapToGrid(occurrences.the_geom,#{SNAP_TO_GRID_FACTOR})) occurrences.id, x(ST_Transform(occurrences.the_geom,3031)) as lon, y(ST_Transform(occurrences.the_geom,3031)) as lat").where("st_dwithin(occurrences.the_geom,landscapes.the_geom, radius) AND landscapes.id = #{landscape.id}").from("landscapes, occurrences")
+        Occurrence.select("distinct on (SnapToGrid(occurrences.the_geom,#{SNAP_TO_GRID_FACTOR})) occurrences.id, x(ST_Transform(occurrences.the_geom,3031)) as lon, y(ST_Transform(occurrences.the_geom,3031)) as lat").where("st_dwithin(occurrences.the_geom::geography,landscapes.the_geom::geography, radius) AND landscapes.id = #{landscape.id}").from("landscapes, occurrences")
       else
         render :text => "Invalid landscape_id: #{params[:landscape_id]}", :status => 404 and return
       end
@@ -37,7 +37,7 @@ class MapsController < ApplicationController
     
     landscapes = if params[:species_id]
       if species = Species.find_by_id(params[:species_id])
-        Landscape.select("distinct(landscapes.id), landscapes.name, landscapes.permalink, landscapes.description, landscapes.guides_count, x(ST_Transform(landscapes.the_geom,3031)) as lon, y(ST_Transform(landscapes.the_geom,3031)) as lat").from("occurrences, landscapes").where("st_dwithin(occurrences.the_geom,landscapes.the_geom, landscapes.radius) AND occurrences.species_id=#{species.id}")
+        Landscape.select("distinct(landscapes.id), landscapes.name, landscapes.permalink, landscapes.description, landscapes.guides_count, x(ST_Transform(landscapes.the_geom,3031)) as lon, y(ST_Transform(landscapes.the_geom,3031)) as lat").from("occurrences, landscapes").where("st_dwithin(occurrences.the_geom::geography,landscapes.the_geom::geography, landscapes.radius) AND occurrences.species_id=#{species.id}")
       else
         render :text => "Invalid species_id: #{params[:species_id]}", :status => 404 and return
       end

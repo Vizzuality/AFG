@@ -49,11 +49,11 @@ class Landscape < ActiveRecord::Base
   end
   
   def occurrences
-    Occurrence.select("o.*").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom,l.the_geom, l.radius) AND l.id=#{self.id}")
+    Occurrence.select("o.*").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom::geography,l.the_geom::geography, l.radius) AND l.id=#{self.id}")
   end
   
   def species(options = {})
-    conditions = ["st_dwithin(occurrences.the_geom,landscapes.the_geom, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions = ["st_dwithin(occurrences.the_geom::geography,landscapes.the_geom::geography, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
     conditions += options[:conditions] if options[:conditions]
     limit = options[:limit] ? "LIMIT #{options[:limit]}" : nil
     offset = options[:offset] ? "OFFSET #{options[:offset]}" : nil
@@ -61,7 +61,7 @@ class Landscape < ActiveRecord::Base
   end
   
   def species_count(options = {})
-    conditions = ["st_dwithin(occurrences.the_geom,landscapes.the_geom, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
+    conditions = ["st_dwithin(occurrences.the_geom::geography,landscapes.the_geom::geography, landscapes.radius)", "landscapes.id=#{self.id}", "occurrences.species_id = species.id", "species.complete = true"]
     conditions += options[:conditions] if options[:conditions]
     Species.find_by_sql("select count(distinct(species.id)) AS count from species, occurrences, landscapes WHERE #{conditions.join(' AND ')}").first.count.to_i
   end

@@ -44,6 +44,7 @@ class GuidesController < ApplicationController
     @guide.increment(:downloads_count)
     @guide.save
     @species = Species.limit(20)
+    @count = 0
     render :template => 'guides/show_pdf', :layout => false
   end
   
