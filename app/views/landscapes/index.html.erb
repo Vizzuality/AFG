@@ -1,5 +1,5 @@
 <%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-<%= javascript_include_tag "landscapes/landscapes.js" %>
+<%= javascript_include_tag 'maps/Marker', "landscapes/landscapes.js"  %>
 
 <div class="outer_layout"> 
   <div class="landscapes_map"> 
@@ -7,8 +7,9 @@
     <h2>We have <%= Landscape.count %> Antarctic landscapes for your Guide</h2> 
     <p class="subtitle">Do you have any recommendation? <%= link_to('Send it to us', '#') %></p> 
     <div class="map"> 
-      <a href="javascript: void zoomIn()" class="zoomIn">+</a>
-      <a href="javascript: void zoomOut()" class="zoomOut">-</a>
+      <a href="javascript: void zoomIn()" class="zoomIn"></a>
+      <a href="javascript: void zoomOut()" class="zoomOut"></a>
+			<a href="javascript: void toggleFullScreen()" class="full_screen"></a>
       <div id="map"></div>
     </div> 
   </div>
