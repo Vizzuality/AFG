@@ -40,6 +40,14 @@ class Guide < ActiveRecord::Base
     update_attribute(:published, true)
   end
   
+  def pages_count
+    species.size + landscapes.size + 2
+  end
+  
+  def size_in_bytes
+    pages_count.to_f * 10000.to_f
+  end
+  
   def self.per_page; 9 end
   
   def to_param
