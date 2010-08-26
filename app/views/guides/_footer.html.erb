@@ -1,0 +1,8 @@
+<div class="footer">
+  <span>
+    <%= image_tag("pdf/footer_logo.png", :class=>"footer_logo") %>
+  </span>
+  <p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
+  <p class="right"><strong>page <%= @count %></strong> of <%= @total_pages %></p>
+</div>
+<% @count +=  1 %>

@@ -122,12 +122,16 @@ class Guide < ActiveRecord::Base
   end
   
   def species
-    result = []
-    entries.each do |entry|
-      next if entry.element_type == 'Landscape'
-      result << entry.element
-    end
-    result.flatten
+    entries.map do |entry|
+      case entry.element_type
+      when 'Landscape'
+        nil
+      when 'Species'
+        entry.element
+      else
+        entry.element.all_species
+      end
+    end.compact.flatten.uniq
   end
   
   def species_kingdoms

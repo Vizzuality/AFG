@@ -43,8 +43,12 @@ class GuidesController < ApplicationController
     @guide = Guide.find(params[:id])
     @guide.increment(:downloads_count)
     @guide.save
-    @species = Species.limit(20)
-    @count = 0
+    @count = 2
+    @total_pages = if params[:checklist]
+      (@guide.species.size.to_f / 4.0).ceil + (@guide.landscapes.size.to_f / 4.0).ceil + 3
+    else
+      @guide.species.size + @guide.landscapes.size + 3
+    end
     render :template => 'guides/show_pdf', :layout => false
   end
   

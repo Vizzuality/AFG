@@ -30,6 +30,17 @@ class Taxonomy < ActiveRecord::Base
     Species.complete.where(column => self.name).limit(limit).first
   end
   
+  def all_species
+    column = if self.hierarchy == 'class'
+      :t_class
+    elsif self.hierarchy == 'order'
+      :t_order
+    else 
+      self.hierarchy.to_sym
+    end
+    Species.complete.where(column => self.name)
+  end
+  
   def species_count
     column = if self.hierarchy == 'class'
       :t_class
