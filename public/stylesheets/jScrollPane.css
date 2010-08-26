@@ -1,0 +1,65 @@
+.holder {position:absolute; top:0; left:0;}
+.jScrollPaneContainer {
+	position: relative;
+	overflow: hidden;
+	z-index: 50;
+}
+
+.jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	right: 25px;
+	top: 0;
+	height: 100%;
+	z-index: 50;
+
+}
+.jScrollPaneDrag {
+	position: absolute;
+	background: #666;
+	cursor: pointer;
+	overflow: hidden;
+}
+.jScrollPaneDragTop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.jScrollPaneDragBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.scrollTaxon .jScrollPaneTrack {
+
+}
+.scrollTaxon .jScrollPaneDrag {
+	background: url(../images/taxonScrollBar_drag_middle.png) no-repeat 0 50%;
+}
+
+.scrollTaxon .jScrollPaneDrag:hover {
+	background-position:-15px 0;
+}
+
+.scrollTaxon .jScrollPaneDragTop {
+	height:5px;
+}
+
+.scrollTaxon .jScrollPaneDragTop:hover  {
+	background-position:-15px 0;
+	height:5px;
+}
+
+
+.scrollTaxon .jScrollPaneDragBottom {
+	height: 5px;
+}
+
+.scrollTaxon .jScrollPaneDragBottom:hover {
+	background-position:-15px 0;
+	height: 5px;
+}
