@@ -102,15 +102,7 @@ var initDataLoaded = 0;
 		var html = '';
 		
 		// Is the first column -> We have kingdoms
-		if (column == 1) {
-			result = result.kingdoms;
-		}
-		else {
-			result = result.phylums;
-		}
-		else {
-			result = result.families;
-		}
+		result = result.childs;
 		
 		for(var i=0; i<result.length; i++) {
 			var li = document.createElement("li");

@@ -25,14 +25,10 @@ class Api::TaxonomyController < ApplicationController
       Taxonomy.kingdoms
     end
     
-    
-    
     respond_to do |format|
       format.json do 
-        render :json => {
-          :name => k,
-          :id => params[:id],
-          :childs => taxonomies.map do |taxonomy|
+        if !taxonomies.nil?
+          childs = taxonomies.map do |taxonomy|
             {
               :id => taxonomy.id,
               :name => taxonomy.name,
@@ -40,6 +36,15 @@ class Api::TaxonomyController < ApplicationController
               :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : entries_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name))
             }
           end
+        else
+          childs=nil
+        end        
+        
+        render :json => {
+          :rank => k,
+          :name => taxonomy.name,
+          :id => params[:id],
+          :childs => childs
         }.to_json
       end
     end
