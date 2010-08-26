@@ -25,10 +25,14 @@ class Api::TaxonomyController < ApplicationController
       Taxonomy.kingdoms
     end
     
+    
+    
     respond_to do |format|
       format.json do 
         render :json => {
-          k.to_sym => taxonomies.map do |taxonomy|
+          :name => k,
+          :id => params[:id],
+          :childs => taxonomies.map do |taxonomy|
             {
               :id => taxonomy.id,
               :name => taxonomy.name,

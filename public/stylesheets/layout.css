@@ -269,16 +269,81 @@ div.long div.bottom div.right_side a.publish:hover {background-position:0 -33px;
 div.long div.bottom div.right_side a.publish.disabled {background-position:0 -66px;}
 div.long div.bottom div.right_side a.publish.disabled:hover {background-position:0 -66px;}
 
-
-
 /*SPECIES*/
-
-div.species_explore {position:relative; float:left; width:912px; padding:27px 12px 20px; height:400px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 0 #008CB9;}
+div.species_explore {position:relative; float:left; width:912px; padding:27px 12px 20px; height:442px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 0 #008CB9;}
 div.species_explore img.arrow {position:absolute; top:0; left:225px;}
 div.species_explore h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.species_explore p.subtitle {float:left; width:892px; padding:4px 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.species_explore p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
 div.species_explore p.subtitle a:hover {border-bottom:1px dotted white;}
+
+/************** BEGIN -  TAXON_BROWSER *****************/
+div.taxonomic_browser {float:left; overflow:hidden; background:url(../images/species/taxonomy_browser/bkg_taxon_browser.png) no-repeat 0 0; width:886px; height:371px; margin:15px 0 10px 8px;}
+div.taxonomic_browser div.breadcrumbs {float:left; margin:6px 0 0 6px; width:886px; height:30px;}
+div.taxonomic_browser div.breadcrumbs ul {float:left; width:100%; height:30px; position:relative;}
+div.taxonomic_browser div.breadcrumbs ul li {font:normal 13px "Lucida Grande"; color:#FFFFFF; width:auto; position:absolute; top:0; left:0;}
+div.taxonomic_browser div.breadcrumbs ul li.first p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_first.png) no-repeat left 0; width:auto; height:29px; top:0; left:0;}
+div.taxonomic_browser div.breadcrumbs ul li.first p a {float:left; margin:0 0 0 6px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_first.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
+div.taxonomic_browser div.breadcrumbs ul li p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_any.png) no-repeat left 0; width:auto; height:29px; color:#FFFFFF;}
+div.taxonomic_browser div.breadcrumbs ul li p a {float:left; margin:0 0 0 16px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_first.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px; text-decoration:none; color:#FFFFFF; cursor:pointer;}
+div.taxonomic_browser div.breadcrumbs ul li.actual p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_actual.png) no-repeat left 0; width:auto; height:29px;}
+div.taxonomic_browser div.breadcrumbs ul li.actual p a {float:left; margin:0 0 0 16px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_actual.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
+div.taxonomic_browser div.breadcrumbs ul li.actual.first p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_first_actual.png) no-repeat left 0; width:auto; height:29px;}
+div.taxonomic_browser div.breadcrumbs ul li.actual.first p a {float:left; margin:0 0 0 6px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_actual.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
+
+div.taxonomic_browser div.taxon_content {float:left; overflow:hidden; width:auto; height:auto;}
+div.taxonomic_browser div.in {float:left; margin:5px 0 0 1px; width:885px; height:330px; padding:0; position:relative; overflow:auto;}
+div.taxonomic_browser div.in ul {float:left; width:296px; height:310px; overflow:auto; background-color:#FFFFFF; margin:0;}
+div.taxonomic_browser div.in ul li {float:left; width:296px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none; margin:0;}
+div.taxonomic_browser div.in ul li div.line_divided {position:absolute; width:250px; height:1px; bottom:1px; left:14px; background-color:#E0E0E0;}
+div.taxonomic_browser div.in ul li div.text {margin:0 0 0 10px; width:250px;}
+div.taxonomic_browser div.in ul li div.text h3 {float:none; letter-spacing:-1.0px; font:normal 17px "Lucida Grande"; color:#0099CC;}
+div.taxonomic_browser div.in ul li div.text p {float:left; font:italic 13px "Lucida Grande"; color:#999999; line-height:13px; letter-spacing:-1.0px; margin:5px 0 0 0;}
+div.taxonomic_browser div.in ul li div.text p strong {color:#666666;}
+div.taxonomic_browser div.in ul li div.text a.add {color:#0099CC; font-style:normal; text-decoration:none; }
+div.taxonomic_browser div.in ul li div.text a.add:hover {text-decoration:none; border-bottom:1px dotted #0099CC;}
+div.taxonomic_browser div.in ul li div.text a.specie {color:#0099CC; font-style:normal; text-decoration:none; }
+div.taxonomic_browser div.in ul li div.text a.specie:hover {text-decoration:none; border-bottom:1px dotted #0099CC; border-bottom:1px solid #0099CC;}
+div.taxonomic_browser div.in ul li:hover {cursor:pointer;}
+div.taxonomic_browser div.in ul li a.bttn_add {position:absolute; background:url(../images/species/taxonomy_browser/bttnAddTaxonBrowser.png) no-repeat 0 0; width:15px; height:15px; bottom:25px; right:30px;}
+div.taxonomic_browser div.in ul li a.bttn_add:hover {background-position:0 -15px;}
+
+div.taxonomic_browser div.in ul {float:left; width:312px; height:310px; overflow:auto; background-color:#FFFFFF}
+div.taxonomic_browser div.in ul li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none;}
+div.taxonomic_browser div.in ul li.first {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_first.png); }
+div.taxonomic_browser div.in ul li.last {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_last.png); }
+div.taxonomic_browser div.in ul li.selected {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
+div.taxonomic_browser div.in ul li.selected div.text {margin:0 0 0 25px;}
+
+div.taxonomic_browser div.in ul li div.image {float:left; width:46px;}
+div.taxonomic_browser div.in ul li div.image img {width:41px; height:41px;}
+
+/* Column1 */
+div.taxonomic_browser div.in ul#column1 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#F0F0F0; border-left:1px solid #E0E0E0; border-right:1px solid #E0E0E0;}
+div.taxonomic_browser div.in ul#column1 li.first_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_unselected_first.png) no-repeat 0 0;}
+div.taxonomic_browser div.in ul#column1 li.last_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_unselected_last.png) no-repeat 0 0;}
+div.taxonomic_browser div.in ul#column1 li.selected_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected.png) no-repeat 0 0; border:none;}
+div.taxonomic_browser div.in ul#column1 li.selected_column1.first_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected_first.png) no-repeat 0 0;}
+div.taxonomic_browser div.in ul#column1 li.selected_column1.last_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected_last.png) no-repeat 0 0;}
+div.taxonomic_browser div.in ul#column1 li.selected_column1 div.text {margin:0 0 0 25px;}
+
+/* Column2 */
+/*div.taxonomic_browser div.in ul#column2 {float:left; width:312px; height:310px; overflow:auto; background-color:#F7F7F7}*/
+div.taxonomic_browser div.in ul#column2 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#F7F7F7; border:none;}
+div.taxonomic_browser div.in ul#column2 li.first_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_unselected_first.png); }
+div.taxonomic_browser div.in ul#column2 li.last_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_unselected_last.png); }
+div.taxonomic_browser div.in ul#column2 li.selected_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
+div.taxonomic_browser div.in ul#column2 li.selected_column2 div.text {margin:0 0 0 25px;}
+
+/* Column3 */
+/*div.taxonomic_browser div.in ul#column3 {float:left; width:312px; height:310px; overflow:auto; background-color:#FFFFFF}*/
+div.taxonomic_browser div.in ul#column3 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none;}
+div.taxonomic_browser div.in ul#column3 li.first_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_first.png); }
+div.taxonomic_browser div.in ul#column3 li.last_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_last.png); }
+div.taxonomic_browser div.in ul#column3 li.selected_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
+div.taxonomic_browser div.in ul#column3 li.selected_column3 div.text {margin:0 0 0 25px;}
+
+/************** END -  TAXON_BROWSER *****************/
 
 div.main.species {background:url(../images/common/main_bkg.png) repeat-y right 0 white;}
 div.left div.species {float:left; padding:21px; width:582px; background:white; margin:0;}
