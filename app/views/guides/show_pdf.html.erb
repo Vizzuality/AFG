@@ -2,231 +2,243 @@
 <html>
 <head>
   <title><%= title %></title>
-  <!-- <base href="http://localhost:3000/" /> -->
   <%= stylesheet_link_tag 'layout' %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-	<%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-	<%= javascript_include_tag "pdf/map.js" %>
+  <%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+  <%= javascript_include_tag "pdf/map.js" %>
   <%= csrf_meta_tag %>
 </head>
-<body>
-	
-	<% count = 0 %>
-	
-	<!-- FRONT -->
-	<div class="outer_pdf">
-		<div class="main_pdf front">
-			<%= image_tag ('common/logo.png'), :class=>"AFG"%></a>
-			<h1>The Species that coolean</h1>
-			<h2>by Jamón</h2>
-		</div>
-	</div>
-	
-	<!-- INDEX -->
-	<div class="outer_pdf">
-		<div class="main_pdf index">
-			<h1>Index</h1>
-			<ul>
-				<li>Index <strong>/ 2</strong></li>
-				<li>About Antarctic Field Guides <strong>/ 3</strong></li>
-				<li>Species <strong>/ 4</strong>
-					<ul>
-						<li>Boxhead whale - 4</li>
-						<li>Boxhead whale - 4</li>
-					</ul>
-				</li>
-				<li>Landscapes <strong>/ 7</strong>
-					<ul>
-						<li>Vizzuality - 7</li>
-						<li>Lejos - 8</li>
-					</ul>
-				</li>
-			</ul>
-			<div class="footer">
-				<span>
-					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
-				</span>
-				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
-				<p class="right"><strong>page 1</strong> of 34</p>
-			</div>
-			<% count = count + 1 %>
-		</div>
-	</div>
-	
-	
-	
-	<!-- ABOUT -->
-	<div class="outer_pdf">
-		<div class="main_pdf about">
-			<h1>About Antarctic Field Guides</h1>
-			<h2>About the project</h2>
-			<p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
-			<h2>About the data and its usage</h2>
-			<p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
-			<div class="footer">
-				<span>
-					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
-				</span>
-				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
-				<p class="right"><strong>page 1</strong> of 34</p>
-			</div>
-			<% count = count + 1 %>
-		</div>
-	</div>
-	
-	
-	
-	
-	
-	<!-- SPECIES CHECKLIST-->
-	<div class="outer_pdf">
-		<div class="main_pdf checklist">
-			<p class="page">23</p>
-			<h1>Species checklist</h1>
-			<div class="check_specie">
-				<p class="common_name">Gentoo Penguin</p>
-				<h3>Pygoscelis Papua</h3>
-			</div>
-			
-			<div class="check_specie">
-				<p class="common_name">Gentoo Penguin</p>
-				<h3>Pygoscelis Papua</h3>
-			</div>
-			
-			<div class="check_specie">
-				<p class="common_name">Gentoo Penguin</p>
-				<h3>Pygoscelis Papua</h3>
-			</div>
-			
-			<div class="check_specie">
-				<p class="common_name">Gentoo Penguin</p>
-				<h3>Pygoscelis Papua</h3>
-			</div>
+<body>  
+  <!-- FRONT -->
+  <div class="outer_pdf">
+    <div class="main_pdf front">
+      <%= image_tag('common/logo.png', :class=>"AFG") %></a>
+      <h1><%= @guide.name %></h1>
+      <h2>by <%= @guide.author %></h2>
+    </div>
+  </div>
+  <%= page_break %>
+  
+  <!-- INDEX -->
+  <div class="outer_pdf">
+    <div class="main_pdf index">
+      <h1>Index</h1>
+      <ul>
+        <li>Index <strong>/ 2</strong></li>
+        <li>About Antarctic Field Guides <strong>/ 3</strong></li>
+        
+        <% if params[:checklist] %>
+          <% species_page = 4; landscape_page = species_page %>
+          <% unless @guide.species.empty? %>
+          <li>Species <strong>/ 4</strong>
+            <ul>
+              <% @guide.species.each_with_index do |species, i| %>
+                <% species_page += 1 if i%4 == 0 && i > 1%>
+                <li><%= species.full_name %> - <%= species_page %></li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        
+          <% unless @guide.landscapes.empty? %>
+          <% landscape_page = species_page + 1 %>
+          <li>Landscapes <strong>/ <%= landscape_page %></strong>
+            <ul>
+              <% @guide.landscapes.each_with_index do |landscape, i| %>
+                <% landscape_page += 1 if i%4 == 0 && i > 1%>
+                <li><%= landscape.name %> - <%= landscape_page %></li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        <% else %>
+          <% species_page = 4; landscape_page = species_page %>
+          <% unless @guide.species.empty? %>
+          <li>Species <strong>/ 4</strong>
+            <ul>
+              <% @guide.species.each do |species| %>
+              <li><%= species.full_name %> - <%= species_page %></li>
+              <% species_page += 1 %>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        
+          <% unless @guide.landscapes.empty? %>
+          <% landscape_page = species_page %>
+          <li>Landscapes <strong>/ <%= landscape_page %></strong>
+            <ul>
+              <% @guide.landscapes.each do |landscape| %>
+              <li><%= landscape.name %> - <%= landscape_page %></li>
+              <% landscape_page += 1 %>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= render :partial => 'footer' %>
+    </div>
+  </div>
+  <%= page_break %>
+  
+  
+  <!-- ABOUT -->
+  <div class="outer_pdf">
+    <div class="main_pdf about">
+      <h1>About Antarctic Field Guides</h1>
+      <h2>About the project</h2>
+      <p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+      <h2>About the data and its usage</h2>
+      <p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+      <%= render :partial => 'footer' %>
+    </div>
+  </div>
+  <%= page_break %>
+  
+  <% if params[:checklist] %>
+    <!-- SPECIES CHECKLIST-->
+    <% @guide.species.in_groups_of(4) do |group| %>
+    <div class="outer_pdf">
+      <div class="main_pdf checklist">
+        <p class="page"><%= @count %></p>
+        <h1>Species checklist</h1>
+        <% group.each do |species| %>
+          <% next if species.nil? %>
+          <div class="check_specie">
+            <p class="common_name"><%= species.common_name %></p>
+            <h3><%= species.full_name %></h3>
+          </div>
+        <% end %>      
+        <%= render :partial => 'footer' %>
+      </div>
+    </div>
+    <%= page_break %>
+    <% end %>
+  
+    <% @guide.landscapes.in_groups_of(4) do |group| %>
+    <div class="outer_pdf">
+      <div class="main_pdf checklist">
+        <p class="page"><%= @count %></p>
+        <h1>Landscapes checklist</h1>
+        <% group.each do |landscape| %>
+          <% next if landscape.nil? %>
+          <div class="check_specie">
+            <h3><%= landscape.name %></h3>
+          </div>
+        <% end %>      
+        <%= render :partial => 'footer' %>
+      </div>
+    </div>
+    <%= page_break %>
+    <% end %>
+    
+  <% else %>
+  
+    <!-- SPECIES -->
+    <% @guide.species.each do |species| %>
+      <div class="outer_pdf">
+        <div class="main_pdf">
+          <p class="page"><%= @count %></p>
+          <div class="left">
+            <div class="header">
+              <p class="common_name">Scientific name</p>
+              <h1><%= species.full_name %></h1>
+              <ul class="breadcrumb">
+                <li class="first"><%= species.kingdom %></li>
+                <li><%= species.phylum %></li>
+                <li><%= species.t_class %></li>
+                <li><%= species.t_order %></li>
+                <li><%= species.family %></li>
+                <li class="last"><%= species.genus %></li>
+              </ul>
+            </div>
+            <div class="images">
+              <ul>
+               <% species.pictures.each do |picture| %>
+                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+                <% end -%>
+              </ul>
+            </div>
+    
+            <div class="info">
+              <h2>Description</h2>
+              <%= simple_format(species.description) %>
+              <h2>Distinguishing Characters</h2>
+              <%= simple_format(species.distinguishing_characters) %>
+              <h2>Distribution info</h2>
+              <%= simple_format(species.distribution) %>
+              <h2>Ecology</h2>
+              <%= simple_format(species.ecology) %>
+            </div>
+          </div>
+  
+          <div class="right">
+            <div class="map"></div>
+            <div class="info">
+              <h3>Size</h3>
+              <%= simple_format(species.size) %>
+              <!-- 
+              <h3>Feeding behavior</h3>
+              <%= simple_format(species.size) %>
+              <h3>Reproductive behavior</h3>
+              <%= simple_format(species.size) %>
+              -->
+              <h3>Habitat</h3>
+              <%= simple_format(species.habitat) %>
+              <h3>Depth of the distribution</h3>
+              <%= simple_format(species.distribution) %>
+            </div>
+          </div>
+        
+          <%= render :partial => 'footer' %>
 
-			<div class="footer">
-				<span>
-					<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
-				</span>
-				<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
-				<p class="right"><strong>page 1</strong> of 34</p>
-			</div>
-
-		</div>
-	</div>
-	
-	
-
-
-	
-	<!-- SPECIES -->
-	<% @species.each_with_index do |species,index| %>
-		<div class="outer_pdf">
-			<div class="main_pdf">
-				<p class="page"><%= count + index + 1 %></p>
-				<div class="left">
-					<div class="header">
-						<p class="common_name">Common name</p>
-						<h1><%= species.full_name %></h1>
-						<ul class="breadcrumb">
-							<li class="first">Animalia</li>
-							<li>Mollusca</li>
-							<li class="last">Gastropoda</li>
-						</ul>
-					</div>
-					<div class="images">
-						<ul>
-						 <% species.pictures.each do |picture| %>
-			      		<li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{@species.name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
-				      <% end -%>
-						</ul>
-					</div>
-		
-					<div class="info">
-						<h2>Description</h2>
-						<%= simple_format(species.description) %>
-						<h2>Distinguishing Characters</h2>
-						<%= simple_format(species.description) %>
-						<h2>Distribution info</h2>
-						<%= simple_format(species.distribution) %>
-						<h2>Ecology</h2>
-						<%= simple_format(species.ecology) %>
-					</div>
-				</div>
-	
-				<div class="right">
-					<div class="map"></div>
-					<div class="info">
-						<h3>Size</h3>
-						<%= simple_format(species.size) %>
-						<h3>Feeding behavior</h3>
-						<%= simple_format(species.size) %>
-						<h3>Reproductive behavior</h3>
-						<%= simple_format(species.size) %>
-						<h3>Habitat</h3>
-						<%= simple_format(species.habitat) %>
-						<h3>Depth of the distribution</h3>
-						<%= simple_format(species.distribution) %>
-					</div>
-				</div>
-				
-				<div class="footer">
-					<span>
-						<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
-					</span>
-					<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
-					<p class="right"><strong>page 1</strong> of 34</p>
-				</div>
-
-			</div>
-		</div>
-	<% end %>
-	
-	
-	
-	<!-- LANDSCAPE -->
-		<div class="outer_pdf">
-			<div class="main_pdf">
-				<p class="page"><%= count + 1 %></p>
-				<div class="left">
-					<div class="header">
-						<h1>Vizzuality</h1>
-					</div>
-					<div class="images">
-						<ul>
-			      	<li><img src="#" /></li> 
-						</ul>
-					</div>
-		
-					<div class="info">
-						<h2>Description</h2>
-						<p>jkñlas dflñasj flasjdlfj sdlñf jsadlf jañsdfjlñas fjlksa fñjsa fsjflñ asfjs alf jaslñf jsdñlfj alñsd jflsajf lñksa jdflñkjsa ñflkasj lfjsaf ñasjf lñkasjfñlsadfñsad fs</p>
-						<h2>Notes</h2>
-					</div>
-				</div>
-	
-				<div class="right">
-					<div class="map"></div>
-					<div class="info">
-						<h3>Species near this place</h3>
-						<ul>
-							<li>Gentoo Penguin - <i>33</i></li>
-							<li>Gentoo Penguin - <i>33</i></li>
-							<li>Gentoo Penguin - <i>33</i></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="footer">
-					<span>
-						<%= image_tag ("pdf/footer_logo.png"), :class=>"footer_logo" %>
-					</span>
-					<p class="left">Project implemented by the <strong>Belgian Biodiversity platform</strong>. www.afg.org</p>
-					<p class="right"><strong>page 1</strong> of 34</p>
-				</div>
-				
-			</div>
-		</div>
-	
+        </div>
+      </div>
+      <%= page_break %>
+    <% end %>
+  
+    <!-- LANDSCAPE -->
+    <% @guide.landscapes.each do |lanscape| %>
+      <div class="outer_pdf">
+        <div class="main_pdf">
+          <p class="page"><%= @count %></p>
+          <div class="left">
+            <div class="header">
+              <h1><%= lanscape.name %></h1>
+            </div>
+            <div class="images">
+              <ul>
+                <% lanscape.pictures.each do |picture| %>
+                   <li><img src="<%= picture.image.url(:medium) %>" alt="<%= lanscape.name %>" /></li> 
+                 <% end -%>
+              </ul>
+            </div>
+    
+            <div class="info">
+              <h2>Description</h2>
+              <%= simple_format(lanscape.description) %>
+              <h2>Notes</h2>
+            </div>
+          </div>
+  
+          <div class="right">
+            <div class="map"></div>
+            <div class="info">
+              <h3>Species near this place</h3>
+              <ul>
+                <% lanscape.species(:limit => 3).each do |species| %>
+                <li><%= species.name %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <%= render :partial => 'footer' %>
+        </div>
+      </div>
+      <%= page_break %>
+    <% end %>
+  <% end %>
 
 </body>
 </html>

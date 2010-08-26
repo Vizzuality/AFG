@@ -122,4 +122,8 @@ module ApplicationHelper
     species_taxonomy_path(url_params)
   end
   
+  def page_break
+    raw("<hr style=\"height:1px; page-break-after:always\">")
+  end
+  
 end
