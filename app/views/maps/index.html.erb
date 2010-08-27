@@ -36,6 +36,11 @@ map.zoomToExtent(new OpenLayers.Bounds(-6267731.972,-5502339.632,0,7));
 var markers = new OpenLayers.Layer.Markers( "Markers" );
 map.addLayer(markers);
 
+
+
+var occurrence_marker = new OpenLayers.Marker(new OpenLayers.LonLat(-2489051.58602589, 1240995.34228873));
+markers.addMarker(occurrence_marker);
+
 });
 </script>
 <% end %> 

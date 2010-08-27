@@ -25,9 +25,13 @@ div.map a.zoomOut {position:absolute; top:47px; left:23px; height:26px; width:26
 div.map a.zoomOut:hover {background-position:0 -26px;}
 div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:1000;}
 div.map a.full_screen:hover {background-position:0 -26px;}
+div.map a.full_screen.back {background:url(../images/common/back_full_screen.png) no-repeat 0 0;}
+div.map a.full_screen.back:hover {background-position:0 -26px;}
+div.map a.vizzuality {position:absolute; z-index:10000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
 
 
 /* MAP INFOWINDOW */
+
 div#map div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
 div#map div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666; margin:0; padding:0;}
 div#map div.infowindow p.star {float:left; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -473,8 +477,9 @@ div.main.specie div.right div.map span.shadow {position:absolute; bottom:-7px; l
 div.main.specie div.right div.map div#map {float:left; width:100%; height:100%; margin:0; padding:0;}
 div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; padding:0; background:0;}
 div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
-div.main.specie div.right div.map a.zoomIn {right:11px; display:none;}
-div.main.specie div.right div.map a.zoomOut {right:11px; display:none;}
+div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
+div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
+div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px;}
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}

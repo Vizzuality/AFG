@@ -37,11 +37,12 @@ var map, popup;
 	    dblclick.setMap(map);
 	    dblclick.activate();
 			
+
 			
 			
 			var markers = new OpenLayers.Layer.Markers( "Markers" );
 			map.addLayer(markers);
-			
+
 			var size = new OpenLayers.Size(5,5);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
 			var occurrence = new OpenLayers.Icon('../images/map/occurrence.png',size,offset);
@@ -86,10 +87,15 @@ var map, popup;
 			if (map.getZoom()==2) {
 				map.zoomIn();
 			}
+			$('a,full_screen').addClass('back');
 			$.scrollTo(0,0);
 		} else {
 			$('div.map').attr('style','position:relative; float:left; margin:20px 0 0 0; width:880px; height:373px; padding:8px 15px 13px; background:url(../images/common/map_bkg_shadow.png) no-repeat 5px bottom;');
 			$('body').css('overflow','auto');
+			if (map.getZoom()>2) {
+				map.zoomTo(2);
+			}
+			$('a,full_screen').removeClass('back');
 		}
 	}
 		

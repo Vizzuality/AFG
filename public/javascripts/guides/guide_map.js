@@ -88,10 +88,12 @@ var map, popup;
 			if (map.getZoom()==2) {
 				map.zoomIn();
 			}
+			$('a,full_screen').addClass('back');
 			$.scrollTo(0,0);
 		} else {
 			$('div.map').attr('style','position:relative; float:left; width:555px; height:316px; padding:10px 12px 15px 12px; background:url(../images/guides/map_bkg.png) no-repeat 0 0; margin:22px 0 0 1px;');
 			$('body').css('overflow','auto');
+			$('a,full_screen').removeClass('back');
 		}
 	}
 		
