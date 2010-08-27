@@ -10,12 +10,12 @@ namespace :afg do
     species_errors = []
     pictures_errors = []
     # Families in the data files
-    # %W{
-    #   Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
-    # }.each do |importing_file|
     %W{
-      Arthropods
+      Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
     }.each do |importing_file|
+    # %W{
+    #   Arthropods
+    # }.each do |importing_file|
       # Species
       puts
       puts
