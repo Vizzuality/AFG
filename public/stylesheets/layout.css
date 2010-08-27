@@ -30,8 +30,8 @@ div.map a.full_screen.back:hover {background-position:0 -26px;}
 div.map a.vizzuality {position:absolute; z-index:1000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
 
 
-/* MAP INFOWINDOW */
 
+/* MAP INFOWINDOW */
 div#map div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
 div#map div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666; margin:0; padding:0;}
 div#map div.infowindow p.star {float:left; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -350,7 +350,6 @@ div.taxonomic_browser div.taxon_content {float:left; overflow:hidden; width:auto
 div.taxonomic_browser div.in {float:left; margin:5px 0 0 1px; width:885px; height:330px; padding:0; position:relative; overflow:auto;}
 div.taxonomic_browser div.in ul {float:left; width:296px; height:310px; overflow:auto; background-color:#FFFFFF; margin:0; }
 div.taxonomic_browser div.in ul li {float:left; width:296px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none; margin:0;}
-div.taxonomic_browser div.in ul li:hover {cursor:pointer;}
 div.taxonomic_browser div.in ul li:focus {outline:none;}
 div.taxonomic_browser div.in ul li div.line_divided {position:absolute; width:250px; height:1px; bottom:1px; left:14px; background-color:#E0E0E0; }
 div.taxonomic_browser div.in ul li div.text {margin:0 0 0 10px; width:250px; }
@@ -361,7 +360,7 @@ div.taxonomic_browser div.in ul li div.text a.add {color:#0099CC; font-style:nor
 div.taxonomic_browser div.in ul li div.text a.add:hover {text-decoration:none; border-bottom:1px dotted #0099CC;}
 div.taxonomic_browser div.in ul li div.text a.specie {color:#0099CC; font-style:normal; text-decoration:none; }
 div.taxonomic_browser div.in ul li div.text a.specie:hover {text-decoration:none; border-bottom:1px dotted #0099CC; border-bottom:1px solid #0099CC;}
-
+div.taxonomic_browser div.in ul li:hover {cursor:pointer;}
 div.taxonomic_browser div.in ul li a.bttn_add {position:absolute; background:url(../images/species/taxonomy_browser/bttnAddTaxonBrowser.png) no-repeat 0 0; width:15px; height:15px; bottom:25px; right:30px; outline:none;}
 div.taxonomic_browser div.in ul li a.bttn_add:hover {background-position:0 -15px;}
 
@@ -494,9 +493,14 @@ div.main.specie div.right div.map span.shadow {position:absolute; bottom:-7px; l
 div.main.specie div.right div.map div#map {float:left; width:100%; height:100%; margin:0; padding:0;}
 div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; padding:0; background:0;}
 div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
+<<<<<<< HEAD
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
 div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
+=======
+div.main.specie div.right div.map a.zoomIn {right:11px; display:none;}
+div.main.specie div.right div.map a.zoomOut {right:11px; display:none;}
+>>>>>>> 557f3afb1a38c4b067dc23615fa64ebdc563dc18
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
