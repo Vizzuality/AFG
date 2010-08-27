@@ -93,7 +93,7 @@ class Species < ActiveRecord::Base
   end
   
   def full_name
-    species.blank? ? "#{self.genus} #{name}" : species
+    species.blank? ? "#{self.genus} #{name}".strip : species
   end
   
   def self.find_by_term(q)

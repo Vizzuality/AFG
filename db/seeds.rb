@@ -28,87 +28,60 @@ s.save
 
 ################## ADDING MORE DATA
 # Specie 4
-s = Species.new :name => 'Carbasea ovoidea', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'David Barnes', :family => 'Polynoidae', :genus => 'Carbasea',
+s = Species.new :name => 'ovoidea', :identification => 'David Barnes', :genus => 'Carbasea',
                 :species => 'Trissophyllus', :featured => true, :highlighted => true
 s.save
 
 # Specie 5
-s = Species.new :name => 'Isosecuriflustra tenuis', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Brigitte Hilbig', :family => 'Polynoidae', :genus => 'Isosecuriflustra',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'tenuis', :identification => 'Brigitte Hilbig', :genus => 'Isosecuriflustra', :species => 'Trissophyllus', :featured => true, :highlighted => false
 s.save
 
 # Specie 6
-s = Species.new :name => 'Tubulipora tubigera', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Kathy Conlan', :family => 'Polynoidae', :genus => 'Tubulipora',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'Tubulipora tubigera', :identification => 'Kathy Conlan', :family => 'Polynoidae', :featured => true, :highlighted => true
 s.save
 
 # Specie 6
-s = Species.new :name => 'Kymella polaris', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Stefan Hain', :family => 'Polynoidae', :genus => 'Kymella',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Kymella polaris', :identification => 'Stefan Hain', :species => 'Trissophyllus', :featured => true, :highlighted => false
 s.save
 
 # Specie 7
-s = Species.new :name => 'Isosecuriflustra rubefacta', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Louise Allcock', :family => 'Polynoidae', :genus => 'Isosecuriflustra',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'rubefacta', :identification => 'Louise Allcock', :genus => 'Isosecuriflustra', :featured => true, :highlighted => true
 s.save
 
 # Specie 8
-s = Species.new :name => 'Inversiula nutrix', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Stefan Hain', :family => 'Polynoidae', :genus => 'Inversiula',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Inversiula nutrix', :identification => 'Stefan Hain', :featured => true, :highlighted => false
 s.save
 
 # Specie 9
-s = Species.new :name => 'Himantozoum antarcticum', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Paul Dayton', :family => 'Polynoidae', :genus => 'Himantozoum',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'Himantozoum antarcticum', :identification => 'Paul Dayton', :featured => true, :highlighted => true
 s.save
 
 # Specie 10
-s = Species.new :name => 'Celleporella antartica', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Peter Brueggemann', :family => 'Polynoidae', :genus => 'Celleporella',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Celleporella antartica', :identification => 'Peter Brueggemann', :featured => true, :highlighted => false
 s.save
 
 # Specie 10
-s = Species.new :name => 'Polyeunoa laevis', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Brigitte Hilbig', :family => 'Polynoidae', :genus => 'Polyeunoa',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'Polyeunoa laevis', :identification => 'Brigitte Hilbig', :featured => true, :highlighted => true
 s.save
 
 # Specie 11
-s = Species.new :name => 'Ophelina breviata', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Tomas Munilla', :family => 'Polynoidae', :genus => 'Ophelina',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Ophelina breviata', :identification => 'Tomas Munilla', :featured => true, :highlighted => false
 s.save
 
 # Specie 12
-s = Species.new :name => 'Eulagisca gigantea', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Myriam Schuller', :family => 'Polynoidae', :genus => 'Eulagisca',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'Eulagisca gigantea', :identification => 'Myriam Schuller', :featured => true, :highlighted => true
 s.save
 
 # Specie 13
-s = Species.new :name => 'Barrukia cristata', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Stephanie Kaiser', :family => 'Polynoidae', :genus => 'Barrukia',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Barrukia cristata', :identification => 'Stephanie Kaiser', :featured => true, :highlighted => false
 s.save
 
 # Specie 14
-s = Species.new :name => 'Aglaophamus trissophyllus', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Brigitte Hilbig', :family => 'Polynoidae', :genus => 'Aglaophamus',
-                :species => 'Trissophyllus', :featured => true, :highlighted => true
+s = Species.new :name => 'Aglaophamus trissophyllus', :identification => 'Brigitte Hilbig', :featured => true, :highlighted => true
 s.save
 
 # Specie 15
-s = Species.new :name => 'Thelepus cincinnatus', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Aberrantidae', :t_order => 'Aciculata', 
-                :identification => 'Anne-Nina Loerz', :family => 'Polynoidae', :genus => 'Thelepus',
-                :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Thelepus cincinnatus', :identification => 'Anne-Nina Loerz', :featured => true, :highlighted => false
 s.save
 
 # Point 1
