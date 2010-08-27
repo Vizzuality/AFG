@@ -41,9 +41,9 @@ var initDataLoaded = 0;
 				addColumn(columnID,result,taxonID);
 	   		},
 	     	error:function (xhr, ajaxOptions, thrownError){
-	      		 	console.log('TAXONOMIC' + xhr.status + "\n" + thrownError);
+	      	console.log('TAXONOMIC' + xhr.status + "\n" + thrownError);
 					return null;
-	      	}
+	      }
 			});
 		}else {
 			$.ajax({
