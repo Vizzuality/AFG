@@ -38,35 +38,35 @@ s.save
 
 # Specie 7
 
-# # Specie 8
-# s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => false
-# s.save
-# 
-# # Specie 9
-# 
-# # Specie 10
-# 
-# # Specie 10
-# s = Species.new :name => 'laevis', :identification => 'Brigitte Hilbig', :genus => 'Polyeunoa', :featured => true, :highlighted => true
-# s.save
-# 
-# # Specie 11
-# 
-# # Specie 12
-# s = Species.new :name => 'gigantea', :identification => 'Myriam Schuller', :genus => 'Eulagisca', :featured => true, :highlighted => true
-# s.save
-# 
-# # Specie 13
-# s = Species.new :name => 'cristata', :identification => 'Stephanie Kaiser', :genus => 'Barrukia', :featured => true, :highlighted => false
-# s.save
-# 
-# # Specie 14
-# s = Species.new :name => 'trissophyllus', :identification => 'Brigitte Hilbig', :genus => 'Aglaophamus', :featured => true, :highlighted => true
-# s.save
-# 
-# # Specie 15
-# s = Species.new :name => 'cincinnatus', :identification => 'Anne-Nina Loerz', :genus => 'Thelepus', :featured => true, :highlighted => false
-# s.save
+# Specie 8
+s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => false
+s.save
+
+# Specie 9
+
+# Specie 10
+
+# Specie 10
+s = Species.new :name => 'laevis', :identification => 'Brigitte Hilbig', :genus => 'Polyeunoa', :featured => true, :highlighted => true
+s.save
+
+# Specie 11
+
+# Specie 12
+s = Species.new :name => 'gigantea', :identification => 'Myriam Schuller', :genus => 'Eulagisca', :featured => true, :highlighted => true
+s.save
+
+# Specie 13
+s = Species.new :name => 'cristata', :identification => 'Stephanie Kaiser', :genus => 'Barrukia', :featured => true, :highlighted => false
+s.save
+
+# Specie 14
+s = Species.new :name => 'trissophyllus', :identification => 'Brigitte Hilbig', :genus => 'Aglaophamus', :featured => true, :highlighted => true
+s.save
+
+# Specie 15
+s = Species.new :name => 'cincinnatus', :identification => 'Anne-Nina Loerz', :genus => 'Thelepus', :featured => true, :highlighted => false
+s.save
 
 # Point 1
 p = Point.from_x_y(0, -77)
