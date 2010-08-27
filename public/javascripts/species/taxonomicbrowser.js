@@ -67,8 +67,6 @@ var initDataLoaded = 0;
 
 		var nextColumn = parseInt(noColumn)+1;
 
-		// console.log("columna: " + noColumn);
-
 		if (noColumn == 0){
 			makeHtmlList(nextColumn,data);
 			elementClicked = $('ul#column1 li').first();
@@ -92,8 +90,7 @@ var initDataLoaded = 0;
 					initDataLoaded = 1;
 					elementClicked = $('ul#column2 li').first();
 					clickColumnFunction(null,elementClicked);
-				}
-				
+				}				
 		}
 	}
 	
@@ -104,7 +101,6 @@ var initDataLoaded = 0;
 		
 		// Is the first column -> We have kingdoms
 		result = result.childs;	
-		
 		
 		if (result == null){
 			$(li).children('div.text').children('a.bttn_add').css("display","none");
@@ -148,27 +144,18 @@ var initDataLoaded = 0;
 				}else if (i+1 == result.length){
 					$(li).attr('class','last_column'+column);
 				}
-
 				html = html+'<li class="'+$(li).attr('class')+'" id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
 			}			
 		}
-		
-		console.log(html);
 		
 		$('ul#column'+ column).append(html);
 		$('ul#column'+ column).jScrollPane({showArrows:false, scrollbarWidth: 15,topCapHeight:7, bottomCapHeight:7}); 
 		
 		// If we've results
-		if (column > 2) {
-			// TODO -> delay is necessary?
-			$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
-			$('div.in').css("overflow","auto");
-		}
-		else {
-			// To hide the scrollbar if is not necessary
-			$('div.in').css("overflow","hidden");
-		}
 
+		// TODO -> delay is necessary?
+		$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
+		$('div.in').css("overflow","auto");
 	}
 	
 	
