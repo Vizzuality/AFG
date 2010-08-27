@@ -64,8 +64,11 @@ var initDataLoaded = 0;
 
 	//add column or change data column
 	function addColumn(noColumn,data,taxonID) {
-		
+
+		console.log(data);
+
 		var nextColumn = parseInt(noColumn)+1;
+
 		// console.log("columna: " + noColumn);
 
 		if (noColumn == 0){
@@ -110,6 +113,10 @@ var initDataLoaded = 0;
 		}
 		else {
 			for(var i=0; i<result.length; i++) {
+				
+				if ((result[i].common_name!= null) && (result[i].picture != null)) {
+					alert('llega al último');
+				} 
 				var li = document.createElement("li");
 
 				$(li).append(list_item);
@@ -119,7 +126,12 @@ var initDataLoaded = 0;
 				}
 
 				$(li).children('div.text').children('h3').children('a').text(result[i].name);
-				$(li).children('div.text').children('h3').children('a').attr("href", result[i].add_url); 
+				// URL del TAXON?
+//				$(li).children('div.text').children('h3').children('a.bttn_add').attr("href", result[i].add_url); 
+				if (result[i].add_url != null) {
+					$(li).children('div.text').children('a.bttn_add').attr("href", result[i].add_url); 
+				}
+				
 				$(li).children('div.text').children('p').children('strong').text(result[i].count);
 				$(li).attr('id',result[i].id);
 
@@ -135,6 +147,17 @@ var initDataLoaded = 0;
 		
 		$('ul#column'+ column).append(html);
 		$('ul#column'+ column).jScrollPane({showArrows:false, scrollbarWidth: 15,topCapHeight:7, bottomCapHeight:7}); 
+		
+		// If we've results
+		if (column > 2) {
+			// TODO -> delay is necessary?
+			$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
+			$('div.in').css("overflow","auto");
+		}
+		else {
+			// To hide the scrollbar if is not necessary
+			$('div.in').css("overflow","hidden");
+		}
 
 	}
 	
@@ -202,17 +225,6 @@ var initDataLoaded = 0;
 			var htmlBreadCrumbs = '<li class="first actual" style="left:0px"><p><a id="bread0">' + specie_selected + '</a></p></li>';
 			$('div.breadcrumbs ul').append(htmlBreadCrumbs);					
 			numBreadCrumbs += 1;	
-		}
-
-		// If we've results
-		if (selectedColumn > 2) {
-			// TODO -> delay is necessary?
-			$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
-			$('div.in').css("overflow","auto");
-		}
-		else {
-			// To hide the scrollbar if is not necessary
-			$('div.in').css("overflow","hidden");
 		}
 
 		// To show the line to divide each li

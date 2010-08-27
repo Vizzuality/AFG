@@ -281,7 +281,7 @@ div.species_explore p.subtitle a:hover {border-bottom:1px dotted white;}
 div.taxonomic_browser {float:left; overflow:hidden; background:url(../images/species/taxonomy_browser/bkg_taxon_browser.png) no-repeat 0 0; width:886px; height:371px; margin:15px 0 10px 8px;}
 div.taxonomic_browser div.breadcrumbs {float:left; margin:6px 0 0 6px; width:886px; height:30px;}
 div.taxonomic_browser div.breadcrumbs ul {float:left; width:100%; height:30px; position:relative;}
-div.taxonomic_browser div.breadcrumbs ul li {font:normal 13px "Lucida Grande"; color:#FFFFFF; width:auto; position:absolute; top:0; left:0;}
+div.taxonomic_browser div.breadcrumbs ul li {font:normal 13px "Lucida Grande"; color:#FFFFFF; width:auto; position:absolute; top:0; left:0; outline:none;}
 div.taxonomic_browser div.breadcrumbs ul li.first p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_first.png) no-repeat left 0; width:auto; height:29px; top:0; left:0;}
 div.taxonomic_browser div.breadcrumbs ul li.first p a {float:left; margin:0 0 0 6px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_first.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
 div.taxonomic_browser div.breadcrumbs ul li p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_any.png) no-repeat left 0; width:auto; height:29px; color:#FFFFFF;}
@@ -292,9 +292,9 @@ div.taxonomic_browser div.breadcrumbs ul li.actual.first p{float:left; backgroun
 div.taxonomic_browser div.breadcrumbs ul li.actual.first p a {float:left; margin:0 0 0 6px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_actual.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
 
 div.taxonomic_browser div.taxon_content {float:left; overflow:hidden; width:auto; height:auto;}
-div.taxonomic_browser div.in {float:left; margin:5px 0 0 1px; width:885px; height:330px; padding:0; position:relative; overflow:auto;}
-div.taxonomic_browser div.in ul {float:left; width:296px; height:310px; overflow:auto; background-color:#FFFFFF; margin:0;}
-div.taxonomic_browser div.in ul li {float:left; width:296px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none; margin:0;}
+div.taxonomic_browser div.in {float:left; margin:5px 0 0 1px; width:885px; height:330px; padding:0; position:relative; overflow:auto; outline:none;}
+div.taxonomic_browser div.in ul {float:left; width:296px; height:310px; overflow:auto; background-color:#FFFFFF; margin:0; outline:none;}
+div.taxonomic_browser div.in ul li {float:left; width:296px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none; margin:0; outline:none; }
 div.taxonomic_browser div.in ul li div.line_divided {position:absolute; width:250px; height:1px; bottom:1px; left:14px; background-color:#E0E0E0;}
 div.taxonomic_browser div.in ul li div.text {margin:0 0 0 10px; width:250px;}
 div.taxonomic_browser div.in ul li div.text h3 {float:none; letter-spacing:-1.0px; font:normal 17px "Lucida Grande"; color:#0099CC;}
@@ -669,6 +669,79 @@ div.right div.about_afg p.now {float:left; width:100%; font:normal 17px "Lucida 
 div.right div.about_afg a.start {float:left; width:198px; height:32px; margin:10px 0 0 33px; background:url(../images/guides/start_exploring.png) no-repeat 0 0;}
 div.right div.about_afg a.start:hover {background-position:0 -32px;}
 
+
+/*ABOUT*/
+div.about_header {position:relative; float:left; width:912px; padding:27px 12px 20px; height:207px; background:url(../images/about/bkg_about_header.jpg) no-repeat 0 0 #008CB9;}
+div.about_header img.arrow {position:absolute; top:0; left:388px;}
+div.about_header h2 {float:left; width:580px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
+div.about_header p.subtitle {float:left; width:580px; padding:4px 0 0 7px; text-align:left; font:normal 15px Arial; color:#A8DDEF; line-height:17px; margin:25px 0 0 0;}
+div.about_header p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
+div.about_header p.subtitle a:hover {border-bottom:1px dotted white;}
+div.about_header div.features {position:absolute; top:0; right:0px; background:url(../images/about/bkg_features_header.png) no-repeat 0 0; width:320px; height:253px;}
+div.about_header div.features ul {float:left; margin:27px 0 0 20px;}
+div.about_header div.features ul li {float:left; width:100%; height:60px; margin:15px 0 0 0;}
+div.about_header div.features ul li img {float:left; margin:4px 19px 0 0;}
+div.about_header div.features ul li.quality {float:left; height:60px; margin:0 0 0 7px;}
+div.about_header div.features ul li img.quality {margin:4px 23px 0 0;}
+div.about_header div.features ul li h4 {float:left; font:bold 15px "Lucida Grande"; color:white; margin:0;}
+div.about_header div.features ul li p {float:left; font:normal 13px Arial; color:white; width:231px; height:auto; margin:2px 0 0 0;}  
+
+/*if there is info of the specie*/
+div.main.about {border-bottom:1px solid #CCCCCC; background:white; width:888px; padding:24px 24px 5px 24px; }
+div.main.about h3 {font:bold 25px Helvetica; float:left; letter-spacing:-1px; line-height:25px; }
+div.main.about ul.explain {float:left; margin:25px 0 0 0; height:200px; width:100%;}
+div.main.about ul.explain li {float:left; height:100%; width:282px; margin:0 20px 0 0;}
+div.main.about ul.explain li.last {margin:0 0 0 2px;}
+div.main.about ul.explain li img {float:left; width:100%; }
+div.main.about ul.explain li img.explore {width:280px; height:110px;}
+div.main.about ul.explain li img.others {width:281px; height:112px;}
+div.main.about ul.explain li img.download {width:282px; height:111px;}
+div.main.about ul.explain li p {float:left; width:100%; height:auto; font:normal 13px Arial; color:#999999; margin:15px 0 0 0;}
+div.main.about ul.explain li p a {text-decoration:none; color:#0099CC; border-bottom:1px solid #0099CC; padding:0;}
+div.main.about ul.explain li p a:hover {border-bottom:1px dotted #0099CC;}
+
+
+div.main.content_about {background:url(../images/about/main_bkg.png) repeat-y right 0 white;}
+
+div.left div.information_about {float:left; padding:21px; width:582px; background:white; margin:0;}
+div.left div.information_about h3 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
+div.left div.information_about p {float:left; font:normal 13px Arial; color:#999999; margin:15px 0 0 0;}
+div.left div.information_about ul {float:left; width:100%; margin:20px 0 0 0;}
+div.left div.information_about ul li {float:left; width:178px; height:auto; margin:0 20px 0 0;}
+div.left div.information_about ul li.last {margin:0;}
+div.left div.information_about ul li a {text-decoration:none;}
+div.left div.information_about ul li img {float:left; }
+div.left div.information_about ul li img.scar {width:36px; height:36px;}
+div.left div.information_about ul li img.wikipedia {width:84px; height:41px;}
+div.left div.information_about ul li img.panoramio {width:93px; height:31px;}
+div.left div.information_about ul li p {float:left; font:normal 13px Arial; color:#8C8C8C; width:100%; margin:5px;}
+div.left div.information_about ul li p.source_name { font:bold 15px "Lucida Grande"; color:#666666; margin:10px 0 0 0;}
+
+div.right div.questions {float:right; padding:21px; width:269px; height:auto; position:relative;}
+div.right div.questions img {position:absolute; top:25px; left:-26px; z-index:400; width:51px; height:52px;}
+
+div.right div.questions h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px;}
+div.right div.questions p {float:left; font:normal 13px Arial; color:#999999; margin:15px 0 0 0;}
+
+div.main.footer_about {background:url(../images/about/footer_bkg.png) repeat-y right 0 white;}
+
+div.left div.initiative {float:left; padding:21px; width:582px; margin:0;}
+div.left div.initiative h3 {float:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; width:582px; line-height:25px;}
+div.left div.initiative p {float:left; font:normal 13px Arial; color:#CCCCCC; margin:15px 0 0 0;}
+div.left div.initiative p.subtitle {margin:0;}
+div.left div.initiative p a {font:normal 13px Arial; text-decoration:none; color:#0099CC; border-bottom:1px solid #0099CC; padding:0; }
+div.left div.initiative p a:hover {border-bottom:1px dotted #0099CC;}
+div.left div.initiative p.partners {color:white;}
+div.left div.initiative ul.partners_list {float:left; width:100%; margin:10px 0 0 0;}
+div.left div.initiative ul.partners_list li {float:left; width:43px; height:43px; margin:0 15px 0 0;}
+div.left div.initiative ul.partners_list li a {float:left; width:100%; height:100%; text-decoration:none; background:white;}
+
+div.right div.contact {float:right; padding:21px; width:269px; height:auto; position:relative;}
+div.right div.contact img {position:absolute; top:25px; left:-26px; z-index:400; width:50px; height:49px;}
+div.right div.contact h3 {font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px;}
+div.right div.contact p {float:left; font:normal 13px Arial; color:white; margin:15px 0 0 0;}
+div.right div.contact a {font:normal 13px Arial; text-decoration:none; color:white; border-bottom:1px solid white; padding:0; margin:15px 0 0 0; }
+div.right div.contact a:hover {border-bottom:1px dotted white;}
 
 
 /*GUIDE*/
