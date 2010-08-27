@@ -65,11 +65,7 @@ var initDataLoaded = 0;
 	//add column or change data column
 	function addColumn(noColumn,data,taxonID) {
 
-		console.log(data);
-
 		var nextColumn = parseInt(noColumn)+1;
-
-		// console.log("columna: " + noColumn);
 
 		if (noColumn == 0){
 			makeHtmlList(nextColumn,data);
@@ -94,8 +90,7 @@ var initDataLoaded = 0;
 					initDataLoaded = 1;
 					elementClicked = $('ul#column2 li').first();
 					clickColumnFunction(null,elementClicked);
-				}
-				
+				}				
 		}
 	}
 	
@@ -107,13 +102,12 @@ var initDataLoaded = 0;
 		// Is the first column -> We have kingdoms
 		result = result.childs;	
 		
-		
 		if (result == null){
 			$(li).children('div.text').children('a.bttn_add').css("display","none");
 		}
 		else {
 			for(var i=0; i<result.length; i++) {
-				
+
 				if ((result[i].common_name!= null) && (result[i].picture != null)) {
 					alert('llega al último');
 				} 
@@ -127,19 +121,21 @@ var initDataLoaded = 0;
 
 				$(li).children('div.text').children('h3').children('a').text(result[i].name);
 				// URL del TAXON?
+				
+				if (result[i].url != null) {
+					$(li).children('div.text').children('h3').children('a').attr("href",result[i].url);	
+				}
+				else {
+					$(li).children('div.text').children('h3').children('a').attr("href","/");	
+				}
 
-//				$(li).children('div.text').children('h3').children('a.bttn_add').attr("href", result[i].add_url); 
-				
-				console.log(result[i].add_url);
-				
 				if (result[i].add_url != null) {
-
-					$(li).children('div.text').children('a.bttn_add').attr("href", result[i].add_url); 
+					$(li).children('div.text').children('p').children('a.add').attr("href", result[i].add_url); 
+				}
+				else {
+					$(li).children('div.text').children('p').children('a.add').attr("href", "/"); 
 				}
 				
-				$(li).children('div.text').children('h3').children('a.bttn_add').attr("href", result[i].add_url); 		
-				console.log()
-						
 				$(li).children('div.text').children('p').children('strong').text(result[i].count);
 				$(li).attr('id',result[i].id);
 
@@ -148,7 +144,6 @@ var initDataLoaded = 0;
 				}else if (i+1 == result.length){
 					$(li).attr('class','last_column'+column);
 				}
-
 				html = html+'<li class="'+$(li).attr('class')+'" id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
 			}			
 		}
@@ -157,16 +152,10 @@ var initDataLoaded = 0;
 		$('ul#column'+ column).jScrollPane({showArrows:false, scrollbarWidth: 15,topCapHeight:7, bottomCapHeight:7}); 
 		
 		// If we've results
-		if (column > 2) {
-			// TODO -> delay is necessary?
-			$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
-			$('div.in').css("overflow","auto");
-		}
-		else {
-			// To hide the scrollbar if is not necessary
-			$('div.in').css("overflow","hidden");
-		}
 
+		// TODO -> delay is necessary?
+		$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
+		$('div.in').css("overflow","auto");
 	}
 	
 	
