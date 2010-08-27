@@ -126,4 +126,12 @@ module ApplicationHelper
     raw("<hr style=\"height:1px; page-break-after:always\">")
   end
   
+  def download_pdf_guide_url(guide)
+    if guide.pdf_file.blank?
+      pdf_guide_path(guide) + '.pdf'
+    else
+      guide.pdf_file
+    end
+  end
+  
 end

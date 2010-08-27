@@ -16,6 +16,40 @@ div.demo_map {position:relative; float:left; width:912px; padding:27px 12px; bac
 div.demo_map div.map div#map {width:100%; height:100%;}
 
 
+/*MAP CONTROLS*/
+
+div.map div#map {float:left; padding:0; margin:0; width:100%; height:100%;}
+div.map a.zoomIn {position:absolute; top:17px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_in.png) no-repeat 0 0; z-index:1000;}
+div.map a.zoomIn:hover {background-position:0 -26px;}
+div.map a.zoomOut {position:absolute; top:47px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_out.png) no-repeat 0 0; z-index:1000;}
+div.map a.zoomOut:hover {background-position:0 -26px;}
+div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:1000;}
+div.map a.full_screen:hover {background-position:0 -26px;}
+
+
+/* MAP INFOWINDOW */
+div#map div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
+div#map div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666; margin:0; padding:0;}
+div#map div.infowindow p.star {float:left; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
+div#map div.infowindow p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
+div#map div.infowindow p.star.zero span {color:#999999; background:url(../images/common/heart_bkg.png) no-repeat right 0;}
+div#map div.infowindow p.star span img {position:absolute; top:3px; left:0; z-index:40;}
+div#map div.infowindow a.add {float:left; margin:7px 0 0 10px; font:normal 11px Arial; color:#0099CC;}
+div#map div.infowindow a.add:hover {color:#007DA6;}
+div#map div.infowindow a.add.disabled {color:#CCCCCC;}
+div#map div.infowindow a.add.disabled:hover {color:#CCCCCC;}
+div#map div.infowindow div.info {position:relative; float:left; width:247px; height:165px; margin:9px 0 0 0;}
+div#map div.infowindow div.info img.background {position:absolute; top:0; left:0; width:247px; height:165px; z-index:10;}
+div#map div.infowindow div.info span {position:absolute; top:0; left:0; z-index:100; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
+div#map div.infowindow div.info span p {font:left; width:100%; font:normal 13px Arial; color:white;}
+div#map div.infowindow div.info span a.more {float:right; width:auto; font:normal 13px Arial; color:white; margin:10px 0 0 0; padding:0 0 0 18px; background:url(../images/map/eye.png) no-repeat 0 3px; display:inline-block; vertical-align:top; border-bottom:1px solid white; text-decoration:none;}
+div#map div.infowindow div.info span a.more:hover {border-bottom:1px dotted white;}
+div#map div.infowindow img.landscape {float:left; width:247px; height:165px; margin:9px 0 0 0;}
+div#map div.infowindow a.close {position:absolute; z-index:1000; right:-12px; top:-12px; height:28px; width:28px; background:url(../images/map/close.png) no-repeat 0 0;}
+div#map div.infowindow a.close:hover {background-position:0 -28px;}
+
+
+
 /* COMMON */
 div.pop_up {position:absolute; z-index:1000000; top:200px; left:50%; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
 div.pop_up p {position:relative; float:left; height:59px; width:auto; margin:0; padding:0 0 0 10px; background:url(../images/common/pop_up_left.png) no-repeat 0 0;}
@@ -344,7 +378,7 @@ div.taxonomic_browser div.in ul#column3 li.selected_column3 div.text {margin:0 0
 
 /************** END -  TAXON_BROWSER *****************/
 
-div.main.species {background:url(../images/common/main_bkg.png) repeat-y right 0 white;}
+div.main.species {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.left div.species {float:left; padding:21px; width:582px; background:white; margin:0;}
 div.left div.species h3 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
 div.left div.species p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:4px 0 0 0;}
@@ -418,7 +452,7 @@ div.specie_header div.right div.share_this a.share_twitter {float:left; backgrou
 div.specie_header div.right div.share_this a.share_facebook {float:left; background:url(../images/common/bttn_share_facebook.png) no-repeat 0 0; width:15px; height:15px;}
 div.specie_header div.right div.share_this a:hover {background-position:0 -15px;}
 
-div.specie_header div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;;}
+div.specie_header div.right div.img_specie {float:right; background:url(../images/species/bkg_header_image.png) no-repeat 0 0; width:265px; height:199px; margin:18px 0px 0 0; padding:6px 5px 5px 10px;}
 div.specie_header div.right div.img_specie img {width:260px; height:190px;}
 
 
@@ -428,19 +462,23 @@ div.main.specie div.left {position:relative; float:left; width:576px; padding:24
 div.main.specie div.left img {position:absolute; right:-2px; top:26px; z-index:100;}
 
 div.main.specie div.right {padding:24px; width:264px;}
-div.main.specie div.right img {float:left; margin:10px 0 0 0;}
 div.main.specie div.right ul {float:left; width:264px; margin:24px 0 0 0; padding:0 0 6px 0;}
 div.main.specie div.right ul li {float:left; padding:3px; border:1px solid #CCCCCC; width:76px; height:76px; margin:5px 4px 0 0;}
 div.main.specie div.right ul li:hover {border:1px solid #BCBCBC;}
 div.main.specie div.right ul li img {float:left; margin:0; padding:0; height:76px; width:76px;}
 div.main.specie div.right div.map {position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; padding:6px; width:250px; height:190px; background:white;}
 div.main.specie div.right div.map span.shadow {position:absolute; bottom:-7px; left:0; width:264px; height:8px; background:url(../images/species/map_shadow.png) no-repeat 0 0;}
-div.main.specie div.right div.map div#map {float:left; width:250px; height:190px;}
+div.main.specie div.right div.map div#map {float:left; width:100%; height:100%; margin:0; padding:0;}
+div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; padding:0; background:0;}
+div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
+div.main.specie div.right div.map a.zoomIn {right:11px; top:11px; display:none;}
+div.main.specie div.right div.map a.zoomOut {right:11px; top:11px; display:none;}
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
 div.main.specie div label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:30px 0 4px 0;}
 div.main.specie div p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
+
 
 /*family info*/
 div.main.family {background:white; padding:21px 21px 50px; width:894px;}
@@ -479,13 +517,6 @@ div.landscapes_map p.subtitle a {color:white; text-decoration:none; border-botto
 div.landscapes_map p.subtitle a:hover {border-bottom:1px dotted white;}
 div.landscapes_map div.map {position:relative; float:left; margin:20px 0 0 0; width:880px; height:373px; padding:8px 15px 13px; background:url(../images/common/map_bkg_shadow.png) no-repeat 5px bottom;}
 
-div.landscapes_map div.map div#map {float:left; padding:0; margin:0; width:100%; height:100%;}
-div.landscapes_map div.map a.zoomIn {position:absolute; top:17px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_in.png) no-repeat 0 0; z-index:1000;}
-div.landscapes_map div.map a.zoomIn:hover {background-position:0 -26px;}
-div.landscapes_map div.map a.zoomOut {position:absolute; top:47px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_out.png) no-repeat 0 0; z-index:1000;}
-div.landscapes_map div.map a.zoomOut:hover {background-position:0 -26px;}
-div.landscapes_map div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:1000;}
-div.landscapes_map div.map a.full_screen:hover {background-position:0 -26px;}
 
 div.main.landscapes {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.left div.landscapes {float:left; padding:21px; width:582px; background:white; margin:0;}
@@ -746,9 +777,9 @@ div.right div.contact a:hover {border-bottom:1px dotted white;}
 
 /*GUIDE*/
 
-div.guide_header {position:relative; float:left; width:899px; padding:27px 20px 20px 17px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.guide_header img.arrow {position:absolute; top:0; left:309px; z-index:10;}
-
+div.guide_header {float:left; width:899px; padding:0 20px 20px 17px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
+div.guide_header img.arrow {float:left; padding:0; margin:0 0 0 292px; padding:0 0 17px 0;}
+div.guide_header div.large {float:left; width:100%;}
 div.guide_header div.left {float:left; width:580px; padding:0 0 10px 0;}
 div.guide_header div.left ul.breadcrumb {float:left; width:577px; margin:0 0 0 3px; padding:0;}
 div.guide_header div.left ul.breadcrumb li {float:left; width:auto; padding: 0 12px 0 0; background:url(../images/common/breadcrumb_arrow.png) no-repeat right 3px;}
@@ -756,8 +787,11 @@ div.guide_header div.left ul.breadcrumb li a {text-decoration:none; display:inli
 div.guide_header div.left ul.breadcrumb li a:hover {border-bottom:1px dotted #40BAE3;}
 div.guide_header div.left h1 {float:left; font:bold 25px Helvetica; color:#FFFFFF;  margin:10px 0 0 3px; width:577px;}
 div.guide_header div.left p.by {float:left; font:normal 15px; font-family:"Lucida Grande"; color:#FFFFFF; width:577px; margin:0 0 0 3px;}
-div.guide_header div.left div.map_container {float:left; width:555px; height:316px; padding:10px 12px 15px 12px; background:url(../images/guides/map_bkg.png) no-repeat 0 0; margin:22px 0 0 1px;}
-div.guide_header div.left div.map_container div#map {float:left; width:100%; height:100%;}
+div.guide_header div.left div.map {position:relative; float:left; width:555px; height:316px; padding:10px 12px 15px 12px; background:url(../images/guides/map_bkg.png) no-repeat 0 0; margin:22px 0 0 1px;}
+div.guide_header div.left div.map a.full_screen {right:19px;}
+div.guide_header div.left div.map a.zoomIn {left:19px;}
+div.guide_header div.left div.map a.zoomOut {left:19px;}
+div.guide_header div.left div.map div#map {float:left; width:100%; height:100%;}
 
 
 div.guide_header div.right {float:right; width:297px; padding:23px 0 0 0;}
@@ -771,7 +805,7 @@ div.guide_header div.right div.amount_info {float:left; width:100%;}
 div.guide_header div.right p.info_guide {float:left; font:normal 15px "Lucida Grande"; color:#BFE5F2; width:100%; margin:16px 0 5px 0; letter-spacing:-1px;}
 div.guide_header div.right a.download_guide {float:left; background:url(../images/guides/bkg_download_button.png) no-repeat 0 0; width:265px; height:59px; text-decoration:none; margin:20px 0 0 10px;}
 div.guide_header div.right a.download_guide p.title {float:left; font:bold 19px Arial; color:#0099CC; margin:9px 0 0 65px;}
-div.guide_header div.right a.download_guide p.size {float:left; font:normal 13px Arial; color:#0099CC; margin:0px 0 0 100px;}
+div.guide_header div.right a.download_guide p.size {float:left; font:normal 13px Arial; color:#0099CC; width:210px; text-align:center; padding:0 0 0 50px;}
 div.guide_header div.right p.template {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande"; color:#FFFFFF; width:100%; margin:5px 0 0 57px; letter-spacing:-1.0px;}
 div.guide_header div.right p.template a{text-decoration:none; color:#FFFFFF; display:inline-block; vertical-align:top; padding:0 0 1px 0; border-bottom:1px solid white;}
 div.guide_header div.right p.template a:hover {border-bottom:1px dotted white;}
@@ -985,8 +1019,6 @@ div.footer div.in p a:hover {color:#666666;}
 /* STATS */
 div.stats.white p.species_rank {color:white;}
 div.stats.white p.landscapes_rank {color:white;}
-
-
 div.stats span {float:left; width:10px; height:40px; background:none;}
 div.stats span ul.stats {float:left; width:10px; height:24px; background:white; margin:0; padding:24px 0 0 0; border:none;}
 div.stats span ul.stats li {float:left; width:10px!important; height:2px!important; background:none!important; background-image:none; background-color:white; margin:1px 0!important; padding:0!important; border:none;}
@@ -997,24 +1029,5 @@ p.landscapes_rank {float:left; width:55px; font:normal 11px "Lucida Grande"; tex
 
 
 
-/* MAP INFOWINDOW */
-div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
-div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666;}
-div.infowindow p.star {float:left; margin:6px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
-div.infowindow p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
-div.infowindow p.star.zero span {color:#999999; background:url(../images/common/heart_bkg.png) no-repeat right 0;}
-div.infowindow p.star span img {position:absolute; top:3px; left:0; z-index:40;}
-div.infowindow a.add {float:left; margin:7px 0 0 10px; font:normal 11px Arial; color:#0099CC;}
-div.infowindow a.add:hover {color:#007DA6;}
-div.infowindow a.add.disabled {color:#CCCCCC;}
-div.infowindow a.add.disabled:hover {color:#CCCCCC;}
-div.infowindow div.info {float:left; width:247px; height:165px; margin:9px 0 0 0;}
-div.infowindow div.info span {float:left; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
-div.infowindow div.info span p {font:left; width:100%; font:normal 13px Arial; color:white;}
-div.infowindow div.info span a.more {float:right; width:auto; font:normal 13px Arial; color:white; margin:10px 0 0 0; padding:0 0 0 18px; background:url(../images/map/eye.png) no-repeat 0 3px; display:inline-block; vertical-align:top; border-bottom:1px solid white; text-decoration:none;}
-div.infowindow div.info span a.more:hover {border-bottom:1px dotted white;}
-div.infowindow img.landscape {float:left; width:247px; height:165px; margin:9px 0 0 0;}
-div.infowindow a.close {position:absolute; z-index:1000; right:-12px; top:-12px; height:28px; width:28px; background:url(../images/map/close.png) no-repeat 0 0;}
-div.infowindow a.close:hover {background-position:0 -28px;}
 
 

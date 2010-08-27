@@ -17,9 +17,9 @@
 #  created_at   :datetime        
 #  updated_at   :datetime        
 #  featured     :boolean         
-#  the_geom     :geometry        not null
 #  source_link  :string(255)     
 #  source_name  :string(255)     
+#  the_geom     :geometry        not null
 #
 
 class Landscape < ActiveRecord::Base

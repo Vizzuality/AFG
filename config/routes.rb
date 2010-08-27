@@ -9,11 +9,12 @@ AFG::Application.routes.draw do |map|
 
   match 'about' => 'site#about', :as => 'about'
   
-  resources :guides, :only => [:index, :show, :update] do
+  resources :guides, :only => [:index, :show] do
     get :undo, :on => :member
   end
   match 'guides/pdf/:id' => 'guides#pdf', :as => 'pdf_guide'
   match 'guides/edit/current' => 'guides#edit', :as => 'edit_guide'
+  match 'guides/update/current' => 'guides#update', :as => 'update_guide', :format => :js
 
   get 'taxonomy' => 'species#index', :as => 'species_taxonomy', :defaults => { :taxonomy => true }
 
