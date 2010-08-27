@@ -60,7 +60,7 @@ class MapsController < ApplicationController
     end.map do |l| 
       {
         :url => landscape_url(l), 
-        :add_url => (@current_guide.include_landscape?(l) ? nil : entries_url(:type => 'Landscape', :id => l.id)),
+        :add_url => (@current_guide.include_landscape?(l) ? nil : create_entry_url(:type => 'Landscape', :id => l.id)),
         :name => l.name,
         :description => l.description,
         :guides_count => l.guides_count,

@@ -23,7 +23,7 @@
       <h3>Description</h3> 
       <%= simple_format(@landscape.description) %>
       <% if !@current_guide.include_landscape?(@landscape) %>
-        <%= link_to('Add your guide', entries_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'add_guide') %>
+        <%= link_to('Add your guide', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'add_guide') %>
       <% else %>
         <span class="included"></span>
       <% end %>

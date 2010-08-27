@@ -37,7 +37,7 @@ class Api::TaxonomyController < ApplicationController
                 :id => taxonomy.id,
                 :name => taxonomy.name,
                 :count => taxonomy.species_count,
-                :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : entries_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name)),
+                :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : create_entry_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name)),
                 :picture => nil,
                 :common_name => nil,
                 :url => nil,
@@ -50,7 +50,7 @@ class Api::TaxonomyController < ApplicationController
                 :name => species.full_name,
                 :common_name => species.common_name,
                 :count => nil,
-                :add_url => (@current_guide.include_species?(species) ? nil : entries_url(:type => 'Species', :id => species.id)),
+                :add_url => (@current_guide.include_species?(species) ? nil : create_entry_url(:type => 'Species', :id => species.id)),
                 :picture => species.picture ? species.picture.image.url(:small) : species.default_picture(:small),
                 :url => species_url(species)
               }

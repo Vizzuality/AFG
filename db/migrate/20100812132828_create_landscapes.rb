@@ -12,9 +12,12 @@ class CreateLandscapes < ActiveRecord::Migration
       t.integer :guides_count, :default => 0
       t.point :the_geom, :srid => 4326, :null => false
       t.integer :radius, :default => 50000
+      t.boolean :featured, :default => false
       
       t.timestamps
     end
+    
+    add_index :landscapes, :featured
   end
 
   def self.down

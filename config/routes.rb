@@ -20,7 +20,9 @@ AFG::Application.routes.draw do |map|
 
   resources :landscapes, :only => [:index, :show]
   resources :species
-  resources :entries, :only => [:create, :destroy, :index]
+  
+  match 'entries/create' => 'entries#create', :as => 'create_entry'
+  resources :entries, :only => [:destroy, :index]
   
   namespace :api do
     get "taxonomy" => "taxonomy#index", :format => :json

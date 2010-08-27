@@ -10,6 +10,8 @@ class CreatePictures < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :pictures, :species_id
   end
 
   def self.down

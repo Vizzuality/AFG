@@ -6,6 +6,8 @@ class CreateOccurrences < ActiveRecord::Migration
       t.point :the_geom, :srid => 4326, :null => false
       t.timestamps
     end
+    
+    add_index :occurrences, :species_id
   end
 
   def self.down
