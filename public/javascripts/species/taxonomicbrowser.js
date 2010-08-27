@@ -1,4 +1,3 @@
-
 var selectedColumn;
 var selectedTaxonId;
 var maxColumn = 1;
