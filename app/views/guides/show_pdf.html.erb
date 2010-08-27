@@ -3,10 +3,9 @@
 <head>
   <title><%= title %></title>
   <%= stylesheet_link_tag 'layout' %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-  <%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-  <%= javascript_include_tag "pdf/map.js" %>
-  <%= csrf_meta_tag %>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script>  -->
+  <%#javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
+  <%# javascript_include_tag "pdf/map.js" %>
 </head>
 <body>  
   <!-- FRONT -->
@@ -17,7 +16,14 @@
         <h1><%= @guide.name %></h1>
         <h2>by <%= @guide.author %></h2>
       <% else %>
-        <h1>Previewing guide</h1>
+        <% if @guide.name.blank? %>
+          <h1>Previewing guide</h1>
+        <% else %>
+          <h1><%= @guide.name %></h1>
+        <% end %>
+        <% unless @guide.author.blank? %>
+          <h2>by <%= @guide.author %></h2>        
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -59,14 +59,58 @@ class GuidesController < ApplicationController
   end
   
   def update
-    @guide = @current_guide
-    @guide.attributes = params[:guide]
-    if @guide.save
-      flash[:notice] = 'Guide published'
-      # TODO: habria que redirigir a download PDF
-      redirect_to guide_path(@guide.id)
-    else
-      render :action => 'edit'
+    
+    if params[:reset]
+      session[:current_guide_print] = {}
+    end
+    
+    if params[:guide_format]
+      session[:current_guide_print][:guide_format] = (params[:guide_format] == 'checklist') ? 'checklist' : 'complete'
+    end
+    if params[:name]
+      session[:current_guide_print][:name] = params[:name]
+    end
+    if params[:author]
+      session[:current_guide_print][:author] = params[:author]
+    end
+    if params[:publish]
+      session[:current_guide_print][:publish] = params[:publish] == 'true' ? true : false
+    end
+    if params[:description]
+      session[:current_guide_print][:description] = params[:description]
+    end
+
+    logger.info "==============================="
+    logger.info "== session[:current_guide_print]: #{session[:current_guide_print].inspect} =="
+    logger.info "==============================="
+    
+    if params[:print] && params[:print] == 'true'
+      new_attributes = {}
+      new_attributes.merge!(:name => session[:current_guide_print][:name]) if session[:current_guide_print][:name]
+      new_attributes.merge!(:author => session[:current_guide_print][:author]) if session[:current_guide_print][:author]
+      new_attributes.merge!(:description => session[:current_guide_print][:description]) if session[:current_guide_print][:description]
+      new_attributes.merge!(:published => session[:current_guide_print][:publish]) if session[:current_guide_print][:publish]
+
+      @current_guide.attributes = new_attributes
+      @current_guide.save
+      
+      if @current_guide.published?
+        @current_guide.update_attribute(:session_id, nil)
+      end
+      
+      # actualizamos guia actual en funcion de los valores de la session
+      pdf_path = @current_guide.generate_pdf!(session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
+      
+      render :text => {:href => pdf_path, :url => guide_path(@current_guide)}.to_json, :status => 200 and return
+      
+      # ordenamos por DJ que se empiece a generar el pdf
+      
+    end
+        
+    respond_to do |format|
+      format.js do
+        render :text => '', :status => 200
+      end
     end
   end
   

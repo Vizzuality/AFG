@@ -20,3 +20,5 @@ AFG::Application.configure do
   # Deprecation warnings
   config.active_support.deprecation = :log 
 end
+
+DOMAIN = 'http://localhost:3001'
