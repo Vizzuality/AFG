@@ -12,6 +12,33 @@ class MapsController < ApplicationController
     send_file tile, :type=>'image/png', :disposition => 'inline'
   end
   
+  def static_map
+    rvg = Magick::RVG.new(390, 315) do |canvas|
+      canvas.background_fill = 'white'
+      bkg = ::Magick::Image.read("#{Rails.root}/public/images/pdf/map_bkg.jpg").first
+      canvas.image(bkg, 390, 315, 0, 0).preserve_aspect_ratio('none')
+      
+      #Draw the points. We could be using: http://studio.imagemagick.org/RMagick/doc/rvgstyle.html
+      canvas.g.styles(:fill=>'red') do |g|
+        Occurrence.select("distinct on (SnapToGrid(the_geom,#{SNAP_TO_GRID_FACTOR})) id, 
+          x(ST_Transform(the_geom,3031)) as lon, 
+          y(ST_Transform(the_geom,3031)) as lat").where({:species_id => params[:species_id]}).each { |occ|
+            #extends of the map
+            #ESTO ESTA MAL, HAY QUE REHACER LA IMAGEN
+            #bottom: -5502339.632
+            #left: -6267731.972
+            #right: 6710106.484
+            #top: 7475498.824
+            widthspan = 12977838.5
+            hightspan = 12977838.5
+            g.circle(3, 125,125)
+          }
+      end
+      
+    end
+    rvg.draw.write('image.gif')
+  end
+  
   def features
     
     occurrences = if params[:species_id]
