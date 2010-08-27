@@ -1,6 +1,6 @@
 class MapsController < ApplicationController
   
-  skip_before_filter :set_current_guide, :only => [:static_map,:tiles]
+  skip_before_filter :set_current_guide, :only => [:static_map,:tiles,:create_static_map]
   
   SNAP_TO_GRID_FACTOR = 0.1
     
@@ -25,6 +25,12 @@ class MapsController < ApplicationController
       img = create_static_map(coords.join("|"))
       send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
     
+    #if Lanscape ID is being sent
+    elsif params[:landscape_id]
+      l = Landscape.select("x(ST_Transform(the_geom,3031)) as lon,y(ST_Transform(the_geom,3031)) as lat").where({:id => params[:landscape_id]})
+      img = create_static_map(l.first.lon + "," + l.first.lat,"red",6)
+      send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
+    
     #If the map is asked by coords just draw  
     elsif params[:coords]
       img = create_static_map(params[:coords])
@@ -36,7 +42,7 @@ class MapsController < ApplicationController
     end
   end
   
-  def create_static_map(coords)
+  def create_static_map(coords,color="red",marker_size=3)
     rvg = Magick::RVG.new(390, 315) do |canvas|
       canvas.background_fill = 'white'
       bkg = ::Magick::Image.read("#{Rails.root}/public/images/pdf/map_bkg.jpg").first
@@ -55,7 +61,7 @@ class MapsController < ApplicationController
       image_map_height=315    
       
       #Draw the points. We could be using: http://studio.imagemagick.org/RMagick/doc/rvgstyle.html
-      canvas.g.styles(:fill=>'red') do |g|       
+      canvas.g.styles(:fill=>color) do |g|       
         coords.split("|").each { |pair|
           lon = pair.split(",")[0]
           lat = pair.split(",")[1]
@@ -67,7 +73,7 @@ class MapsController < ApplicationController
           yoffset = image_map_height - ((heightposspan*image_map_height)/heightspan)
 
           if (xoffset>=0 and xoffset<=image_map_width and yoffset>=0 and yoffset<=image_map_height)
-            g.circle(3, xoffset,yoffset)
+            g.circle(marker_size, xoffset,yoffset)
           end          
 
         }

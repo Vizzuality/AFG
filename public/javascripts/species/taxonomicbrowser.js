@@ -12,7 +12,7 @@ var initDataLoaded = 0;
 				
 		// Simulate first row clicked, to the first and the second column
 		createFirstColumn();
-	
+		
 		$("div.in ul li").live(
 		        'hover',
 		        function (ev) {
@@ -22,8 +22,9 @@ var initDataLoaded = 0;
 		            if (ev.type == 'mouseout') {
 		                $(this).find('a.bttn_add').css("background-position","0 0");
 		            }});
-
-		$('div.in ul li').live('click',function(event){			
+						
+		$('div.in ul li').live('click',function(event){	
+			
 			clickColumnFunction(event,$(this));
 		}); // end click function
 		
@@ -98,6 +99,12 @@ var initDataLoaded = 0;
 	function makeHtmlList(column,result) {
 		var list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a href="#" class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line_divided"></div>';
 		var html = '';
+		var last_element = 0;
+		
+		if (result.rank == "species") {
+			last_element = 1;
+			
+		}
 		
 		// Is the first column -> We have kingdoms
 		result = result.childs;	
@@ -107,10 +114,7 @@ var initDataLoaded = 0;
 		}
 		else {
 			for(var i=0; i<result.length; i++) {
-
-				if ((result[i].common_name!= null) && (result[i].picture != null)) {
-					alert('llega al último');
-				} 
+				
 				var li = document.createElement("li");
 
 				$(li).append(list_item);
@@ -136,7 +140,13 @@ var initDataLoaded = 0;
 					$(li).children('div.text').children('p').children('a.add').attr("href", "/"); 
 				}
 				
-				$(li).children('div.text').children('p').children('strong').text(result[i].count);
+				if (result[i].count != null){
+					$(li).children('div.text').children('p').children('strong').text(result[i].count);
+				}
+				else {
+					$(li).children('div.text').children('p').children('strong').text("0");
+				}
+				
 				$(li).attr('id',result[i].id);
 
 				if (i == 0) {
@@ -154,8 +164,12 @@ var initDataLoaded = 0;
 		// If we've results
 
 		// TODO -> delay is necessary?
-		$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
-		$('div.in').css("overflow","auto");
+		if (last_element != 1){
+			var widthTaxonContent = parseInt($('div.taxon_content').width()); 
+			$('div.taxon_content').css("width",widthTaxonContent+296);			
+			$('div.in').delay(250).scrollTo('+=296px',{axis:'x'});
+		}
+		
 	}
 	
 	
@@ -191,9 +205,7 @@ var initDataLoaded = 0;
 		var nextColumn = parseInt(selectedColumn) + 1;
 
 		var actual_index = element.index();
-						
-		$('div.taxon_content').css("width",nextColumn*296);
-
+		
 		var specie_selected = element.find('a.specie').text();
 
 		// If is necessary to delete the rest of elements
@@ -206,8 +218,8 @@ var initDataLoaded = 0;
 			}
 		}
 
+		// Creating new breadcrumbs
 		$('div.breadcrumbs ul li').each(function(index) {
-
 			if ((parseInt($(this).index()) + 2 ==  selectedColumn)&&(selectedColumn != 1)) {
 				$(this).removeClass('actual');
 				var finalPosition = $(this).position().left + $(this).width() - 13;
@@ -215,9 +227,9 @@ var initDataLoaded = 0;
 				$(this).parent().append(htmlBreadCrumbs);					
 				numBreadCrumbs += 1;
 			}
-
 	  	});
 
+		// If is the first time or we've clicked on first element
 		if (numBreadCrumbs == 0) {				
 			var htmlBreadCrumbs = '<li class="first actual" style="left:0px"><p><a id="bread0">' + specie_selected + '</a></p></li>';
 			$('div.breadcrumbs ul').append(htmlBreadCrumbs);					
@@ -243,7 +255,7 @@ var initDataLoaded = 0;
 			element.addClass('selected_column'+selectedColumn);
 
 			element.find('a.bttn_add').css('display','none');
-
+			
 			element.children().children('h3').css("color","#0099CC");
 			getData(element.attr('id'),selectedColumn);
 		}
@@ -261,8 +273,7 @@ var initDataLoaded = 0;
 		var numOfBread = parseInt($(this).attr('id').substring(5,id_Element.length));
 		var offset = numOfBread * 296;
 		offset += 'px';
-		
-		$('div.in').delay(250).scrollTo(offset,{axis:'x'});
+		$('div.in').delay(350).scrollTo(offset,{axis:'x'});
 	}); // end click function
 	
 	

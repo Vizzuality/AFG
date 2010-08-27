@@ -165,7 +165,7 @@
             </div>
             <div class="images">
               <ul>
-               <% species.pictures.each do |picture| %>
+                <% species.pictures.each do |picture| %>
                   <li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
                 <% end -%>
               </ul>
@@ -214,8 +214,8 @@
             <div class="images">
               <ul>
                 <% lanscape.pictures.each do |picture| %>
-                   <li><img src="<%= picture.image.url(:medium) %>" alt="<%= lanscape.name %>" /></li> 
-                 <% end -%>
+                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= lanscape.name %>" /></li> 
+                <% end -%>
               </ul>
             </div>
     
