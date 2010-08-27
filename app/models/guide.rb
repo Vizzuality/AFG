@@ -181,6 +181,9 @@ class Guide < ActiveRecord::Base
           file.write(resp.body)
          }
       }
+      if published?
+        update_attribute(:pdf_file, "/pdfs/#{filename}")
+      end
     else
       # We have to wait for the JS to be executed
       sleep 2

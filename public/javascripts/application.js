@@ -229,6 +229,8 @@ function firstStep(type) {
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
 		'<label>DESCRIPTION</label><p>231 CHARACTERS LEFT</p></span>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
+		'<div class="errors"><div id="error_invalid_name" style="display:none"><p>The name of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><div id="error_invalid_author" style="display:none"><p>The author of the guide can\'t be blank</p></div></div>' +
 		'<a href="javascript:void secondStep()" class="download">Procced to download</a>';
 
     $('div.choice').html(first_step);
@@ -240,12 +242,29 @@ function firstStep(type) {
 
 function secondStep() {
 	
+	$('#error_invalid_name').hide();
+	$('#error_invalid_author').hide();
+	
 	var publish = true;
 	
 	if($('#no_publish').attr('checked') == true) {
 		publish = false;
 	}
-	var dataString = 'description='+ $('#description').val() + '&author=' + $('#author').val() + '&name=' + $('#name').val() + '&publish=' + publish+'&print=true';
+	
+	var author = $('#author').val();
+	var name = $('#name').val();
+	if(publish == true) {
+		if(author == "") {
+			$('#error_invalid_author').show();
+			return false;
+		}
+		if(name == "") {
+			$('#error_invalid_name').show();
+			return false;			
+		}
+	}
+	
+	var dataString = 'description='+ $('#description').val() + '&author=' + author + '&name=' + name + '&publish=' + publish+'&print=true';
 	
 	var pdf_path = null;
 	
@@ -258,10 +277,11 @@ function secondStep() {
 			$('#pdf_path').attr('href',object['href']);
 			$('#pdf_path').click(function(){
 				$.modal.close();
-				if(publish == true) {
-					window.location.href=object['url'];
-				}
-				return false;
+				// TODO: redirect to the generated guide
+				// if(publish == true) {
+				// 	window.location.href=object['url'];
+				// }
+				// return false;
 			});
 			$('div.choice div.type').removeClass('loading');
 			$('div.choice div.type').addClass('finished');

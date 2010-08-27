@@ -20,7 +20,7 @@
       <div class="right"> 
         <div class="data_info"> 
           <p class="downloads_data"><span><%= @guide.downloads_count %> DOWNLOADS</span></p>
-          <p class="download"><a href="<%= pdf_guide_path(@guide) + '.pdf' %>">or download it</a></p>
+          <p class="download"><a href="<%= download_pdf_guide_url(@guide) %>">or download it</a></p>
         </div> 
 				<div class="stats white">
 					<span class="<%= @guide.species_count %>" title="specie"></span>
@@ -30,7 +30,7 @@
 				</div>
         <%= simple_format(@guide.description, :class => 'info_guide') %>
       
-        <a class="download_guide" href="<%= pdf_guide_path(@guide) + '.pdf' %>"> 
+        <a class="download_guide" href="<%= download_pdf_guide_url(@guide) %>"> 
           <p class="title">download this guide</p> 
           <p class="size">(<%= @guide.pages_count %> pages, <%= number_to_human_size(@guide.size_in_bytes) %> approx.)</p>
         </a> 
@@ -63,7 +63,7 @@
       <% @guide.species.select{|s| s.kingdom == k }.each do |species| %>
       <li class="<%= cycle('','','last_item') %>">
         <div class="image">
-          <%= image_tag ('defaults/small_specie.jpg') %>
+          <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.full_name %>" />
         </div>
         <div class="info">
           <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
