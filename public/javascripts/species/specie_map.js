@@ -52,16 +52,6 @@ var map, popup;
 				markers.addMarker(occurrence_marker);
 			}
 			
-			
-			var size = new OpenLayers.Size(81,63);
-			var offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
-			
-			for (var i=0; i<data.landscapes.length; i++) {
-				var landscape_image = new OpenLayers.Icon(data.landscapes[i].picture,size,offset);
-				var landscape_marker = new LandscapeMarker(new OpenLayers.LonLat(data.landscapes[i].lon,data.landscapes[i].lat),landscape_image, data.landscapes[i]); // data.landscapes[i].picture, size, offset
-				markers.addMarker(landscape_marker);
-			}
-			
 			map.zoomOut();
 
 		});
@@ -78,6 +68,7 @@ var map, popup;
 			}
 			$('a.zoomIn').fadeIn('fast');
 			$('a.zoomOut').fadeIn('fast');
+			$('a,full_screen').addClass('back');
 			$.scrollTo(0,0);
 		} else {
 			$('a.zoomIn').hide();
@@ -85,6 +76,7 @@ var map, popup;
 			map.zoomTo(1);
 			$('div.map').attr('style','position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; padding:6px; width:250px; height:190px; background:white;');
 			$('body').css('overflow','auto');
+			$('a,full_screen').removeClass('back');
 		}
 	}
 		
