@@ -100,11 +100,19 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 
 
 #publish_container div.repeat div.choice div.errors {float:left; width:auto; color:#990000; font:bold 14px Arial; padding:10px 0 0 0;}
-#publish_container div.repeat div.choice div.blue_area {float:left; width:672px; height:375px; background:url(../images/modal/blue_area.png) no-repeat -7px -1px;}
-#publish_container div.repeat div.choice a.checkbox {float:left; padding:0 0 0 23px; background:url(../images/modal/checkbox.png) no-repeat 0 0; text-decoration:none; margin:0 0 0 15px;}
+#publish_container div.repeat div.choice input[type="radio"] {float:left; margin:3px 8px 0 14px; padding:0;}
+#publish_container div.repeat div.choice label {float:left; font:bold 15px Arial; color:white;}
+#publish_container div.repeat div.choice div.blue_area {float:left; width:644px; height:347px; padding:14px; background:url(../images/modal/blue_area.png) no-repeat -7px -1px; margin:15px 0 0 0;}
+#publish_container div.repeat div.choice div.blue_area label[for="publish"] {float:left; margin:0; font:bold 15px Arial; color:white;}
+#publish_container div.repeat div.choice div.blue_area input[type="radio"] {float:left; margin:2px 8px 0 0; padding:0;}
+#publish_container div.repeat div.choice div.blue_area p.subtitle {float:left; width:auto; margin:4px 0 0 20px; font:normal 13px Arial; color:#80ADBD;}
+#publish_container div.repeat div.choice div.blue_area label {float:left; width:500px; font:bold 11px Arial; color:white; margin:15px 0 0 20px;}
+#publish_container div.repeat div.choice div.blue_area input[type="text"] {float:left; margin:6px 8px 0 20px; width:280px; height:24px; padding:6px 10px 6px 10px; background:url(../images/modal/input_2.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.blue_area textarea {float:left; margin:6px 0 0 20px; width:585px; height:84px; padding:6px 10px 6px 10px; background:url(../images/modal/textarea_bkg.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.blue_area textarea:focus {outline:none;}
+
 #publish_container div.repeat div.choice a.download {float:right; width:232px; height:23px; padding:7px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px;}
 #publish_container div.repeat div.choice a.download:hover {color:#1F628F; background-position:0 -36px;}
-
 
 
 
@@ -415,7 +423,7 @@ div.left div.species ul li div.specie p.star span img {position:absolute; top:3p
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7;}
 div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -556,7 +564,7 @@ div.left div.landscapes ul li div.specie p.star span img {position:absolute; top
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7;}
 div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
