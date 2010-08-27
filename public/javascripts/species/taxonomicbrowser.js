@@ -33,7 +33,7 @@ var initDataLoaded = 0;
 		if (taxonID == "all") {			
 			$.ajax({
 	        method: 'GET',
-	   		url: "http://localhost:3000/api/taxonomy",
+	   		url: "/api/taxonomy",
 	   		data: null,
 	   		cache: false,
 				dataType: 'json',
@@ -48,7 +48,7 @@ var initDataLoaded = 0;
 		}else {
 			$.ajax({
 	        type: 'GET',
-	   		url: "http://localhost:3000/api/taxonomy?id="+taxonID,
+	   		url: "/api/taxonomy?id="+taxonID,
 	   		data: null,
 	   		cache: false,
 				dataType: 'json',
@@ -102,29 +102,35 @@ var initDataLoaded = 0;
 		var html = '';
 		
 		// Is the first column -> We have kingdoms
-		result = result.childs;
+		result = result.childs;	
 		
-		for(var i=0; i<result.length; i++) {
-			var li = document.createElement("li");
-			
-			$(li).append(list_item);
-			
-			if (result[i].name.length > 28) {
-				result[i].name = result[i].name.substring(0,25) + "...";
-			}
-			
-			$(li).children('div.text').children('h3').children('a').text(result[i].name);
-			$(li).children('div.text').children('h3').children('a').attr("href", result[i].add_url); 
-			$(li).children('div.text').children('p').children('strong').text(result[i].count);
-			$(li).attr('id',result[i].id);
+		
+		if (result == null){
+			$(li).children('div.text').children('a.bttn_add').css("display","none");
+		}
+		else {
+			for(var i=0; i<result.length; i++) {
+				var li = document.createElement("li");
 
-			if (i == 0) {
-				$(li).attr('class','first_column'+column);
-			}else if (i+1 == result.length){
-				$(li).attr('class','last_column'+column);
-			}
-			
-			html = html+'<li class="'+$(li).attr('class')+'" id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
+				$(li).append(list_item);
+
+				if (result[i].name.length > 28) {
+					result[i].name = result[i].name.substring(0,25) + "...";
+				}
+
+				$(li).children('div.text').children('h3').children('a').text(result[i].name);
+				$(li).children('div.text').children('h3').children('a').attr("href", result[i].add_url); 
+				$(li).children('div.text').children('p').children('strong').text(result[i].count);
+				$(li).attr('id',result[i].id);
+
+				if (i == 0) {
+					$(li).attr('class','first_column'+column);
+				}else if (i+1 == result.length){
+					$(li).attr('class','last_column'+column);
+				}
+
+				html = html+'<li class="'+$(li).attr('class')+'" id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
+			}			
 		}
 		
 		$('ul#column'+ column).append(html);
@@ -162,7 +168,6 @@ var initDataLoaded = 0;
 		// event.preventDefault();
 		
 		var selectedColumn = getColumnID(element.parent().attr('id'));
-		
 		var nextColumn = parseInt(selectedColumn) + 1;
 
 		var actual_index = element.index();

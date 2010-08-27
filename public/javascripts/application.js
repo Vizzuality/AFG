@@ -311,5 +311,4 @@ function getUrlVars() {
 
 function goTo(place) {
 	$.scrollTo("#"+place, 500);
-	
 }
