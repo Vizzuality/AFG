@@ -1,7 +1,8 @@
 # Specie 1
 s = Species.new :name => 'cristata', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
                 :identification => 'Kathy Conlan (Canadian Museum of Nature)', :uid => '13776449', :family => 'Polynoidae', :genus => 'Barrukia',
-                :species => 'Barrukia cristata', :featured => true, :highlighted => true, :description=>''
+                :species => 'Barrukia cristata', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+                :distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 #Picture asociated
@@ -12,8 +13,8 @@ picture.save
 # Specie 2
 s = Species.new :name => 'gigantea', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
                 :identification => 'Myriam Schuller', :uid => '13783975', :family => 'Polynoidae', :genus => 'Eulagisca',
-                :species => 'Eulagisca gigantea', :featured => true, :highlighted => true
-
+                :species => 'Eulagisca gigantea', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+                :distinguishing_characters=>'lorem ipsum dolor sit amet'                
 s.save
 
 # Picture asociated
@@ -24,7 +25,8 @@ picture.save
 # Specie 3
 s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
                 :identification => 'Myriam Schuller', :uid => '13783975', :family => 'Aphroditidae', :genus => 'Laetmonice',
-                :species => 'Laetmonice producta', :featured => true, :highlighted => true
+                :species => 'Laetmonice producta', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+                :distinguishing_characters=>'lorem ipsum dolor sit amet'                
 
 s.save
 
@@ -39,7 +41,7 @@ picture.save
 
 ################## ADDING MORE DATA
 # Specie 4
-s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => true
+s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet', :distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Picture asociated
@@ -48,7 +50,8 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Colossend
 picture.save
 
 # Specie 5
-s = Species.new :name => 'laevis', :identification => 'Brigitte Hilbig', :genus => 'Polyeunoa', :featured => true, :highlighted => true
+s = Species.new :name => 'laevis', :identification => 'Brigitte Hilbig', :genus => 'Polyeunoa', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+:distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Picture asociated
@@ -57,7 +60,8 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Colossend
 picture.save
 
 # Specie 6
-s = Species.new :name => 'gigantea', :identification => 'Myriam Schuller', :genus => 'Eulagisca', :featured => true, :highlighted => true
+s = Species.new :name => 'gigantea', :identification => 'Myriam Schuller', :genus => 'Eulagisca', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+:distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Picture asociated
@@ -66,7 +70,8 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Epimeria1
 picture.save
 
 # Specie 6
-s = Species.new :name => 'cristata', :identification => 'Stephanie Kaiser', :genus => 'Barrukia', :featured => true, :highlighted => true
+s = Species.new :name => 'cristata', :identification => 'Stephanie Kaiser', :genus => 'Barrukia', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+:distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Picture asociated
@@ -75,31 +80,14 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Eurypodiu
 picture.save
 
 # Specie 7
-s = Species.new :name => 'trissophyllus', :identification => 'Brigitte Hilbig', :genus => 'Aglaophamus', :featured => true, :highlighted => false
+s = Species.new :name => 'trissophyllus', :identification => 'Brigitte Hilbig', :genus => 'Aglaophamus', :featured => true, :highlighted => false, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+:distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Specie 8
-s = Species.new :name => 'cincinnatus', :identification => 'Anne-Nina Loerz', :genus => 'Thelepus', :featured => true, :highlighted => false
+s = Species.new :name => 'cincinnatus', :identification => 'Anne-Nina Loerz', :genus => 'Thelepus', :featured => true, :highlighted => false, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
+:distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
-
-# Specie 9
-
-# Specie 10
-
-# Specie 10
-
-# Specie 11
-
-# Specie 12
-
-
-# Specie 13
-
-
-# Specie 14
-
-
-# Specie 15
 
 
 # Point 1
@@ -125,6 +113,7 @@ l.save
 
 # Creating guides
 1.upto(10){ |i| Guide.create :name => "Guia #{i}", :description => "Una guia #{i}", :author => "Fernando Blat", :published => true }
+
 Guide.limit(3).each{ |g| g.update_attribute(:highlighted, true) }
 
 g = Guide.first
