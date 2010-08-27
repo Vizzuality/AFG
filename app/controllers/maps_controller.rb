@@ -29,7 +29,6 @@ class MapsController < ApplicationController
     elsif params[:landscape_id]
       l = Landscape.select("x(ST_Transform(the_geom,3031)) as lon,y(ST_Transform(the_geom,3031)) as lat").where({:id => params[:landscape_id]})
       img = create_static_map(l.first.lon + "," + l.first.lat)
-      print (l.first.lon + "," + l.first.lat)
       send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
     
     #If the map is asked by coords just draw  
