@@ -16,11 +16,8 @@ class CreateGuides < ActiveRecord::Migration
       t.timestamps
     end
     
+    add_index :guides, [:published, :highlighted]
     add_index :guides, :session_id
-    add_index :guides, :popularity
-    add_index :guides, :created_at
-    add_index :guides, :name
-    add_index :guides, :author
   end
 
   def self.down

@@ -23,7 +23,7 @@
       
 			<div class="added_cont">
 	      <% if !@current_guide.include_species?(@species) %>
-	        <%= link_to('Add your guide', entries_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
+	        <%= link_to('Add your guide', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
 	      <% else %>
 	        <span class="included"></span>
 	      <% end %>

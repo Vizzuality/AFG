@@ -5,7 +5,6 @@
 #  id           :integer         not null, primary key
 #  name         :string(255)     
 #  permalink    :string(255)     
-#  source       :string(255)     
 #  description  :text            
 #  related_url  :string(255)     
 #  image1_url   :string(255)     
@@ -14,12 +13,12 @@
 #  image4_url   :string(255)     
 #  guides_count :integer         default(0)
 #  radius       :integer         default(50000)
+#  featured     :boolean         
 #  created_at   :datetime        
 #  updated_at   :datetime        
-#  featured     :boolean         
+#  the_geom     :geometry        not null
 #  source_link  :string(255)     
 #  source_name  :string(255)     
-#  the_geom     :geometry        not null
 #
 
 class Landscape < ActiveRecord::Base

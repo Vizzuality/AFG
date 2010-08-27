@@ -19,7 +19,7 @@
       
 			<div class="added_cont">			
       	<% unless @current_guide.include_taxonomy?(@taxonomy) %>
-					<% link_to entries_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add' do %>
+					<%= link_to create_entry_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add' do %>
 					  <span>Add <%=@species.total_entries%> species to your guide</span>
 					<% end %>
 	      <% else %>
