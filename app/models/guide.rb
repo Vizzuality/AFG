@@ -47,6 +47,8 @@ class Guide < ActiveRecord::Base
     else
       (species.size.to_f / 4.0).ceil + (landscapes.size.to_f / 4.0).ceil + 3
     end
+  rescue
+    0
   end
   
   def size_in_bytes
@@ -142,7 +144,7 @@ class Guide < ActiveRecord::Base
       when 'Species'
         entry.element
       else
-        entry.element.all_species
+        (entry && entry.element) ? entry.element.all_species : nil
       end
     end.compact.flatten.uniq
   end
