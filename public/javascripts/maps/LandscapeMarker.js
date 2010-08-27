@@ -1,39 +1,4 @@
-/* Copyright (c) 2006-2008 MetaCarta, Inc., published under the Clear BSD
- * license.  See http://svn.openlayers.org/trunk/openlayers/license.txt for the
- * full text of the license. */
 
-
-/**
- * @requires OpenLayers/Events.js
- * @requires OpenLayers/Icon.js
- */
-
-/**
- * Class: OpenLayers.Marker
- * Instances of OpenLayers.Marker are a combination of a 
- * <OpenLayers.LonLat> and an <OpenLayers.Icon>.  
- *
- * Markers are generally added to a special layer called
- * <OpenLayers.Layer.Markers>.
- *
- * Example:
- * (code)
- * var markers = new OpenLayers.Layer.Markers( "Markers" );
- * map.addLayer(markers);
- *
- * var size = new OpenLayers.Size(21,25);
- * var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
- * var icon = new OpenLayers.Icon('http://www.openlayers.org/dev/img/marker.png', size, offset);
- * markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon));
- * markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon.clone()));
- *
- * (end)
- *
- * Note that if you pass an icon into the Marker constructor, it will take
- * that icon and use it. This means that you should not share icons between
- * markers -- you use them once, but you should clone() for any additional
- * markers using that same icon.
- */
 LandscapeMarker = OpenLayers.Class({
     
 
@@ -41,13 +6,7 @@ LandscapeMarker = OpenLayers.Class({
     lonlat: null,
     events: null,
     map: null,
-    
-    /** 
-     * Constructor: OpenLayers.Marker
-     * Parameters:
-     * lonlat - {<OpenLayers.LonLat>} the position of this marker
-     * icon - {<OpenLayers.Icon>}  the icon for this marker
-     */
+
     initialize: function(lonlat, icon, info) {
         this.lonlat = lonlat;
         this.info = info;
@@ -64,13 +23,7 @@ LandscapeMarker = OpenLayers.Class({
         this.events = new OpenLayers.Events(this, this.icon.imageDiv, null);
     },
     
-    /**
-     * APIMethod: destroy
-     * Destroy the marker. You must first remove the marker from any 
-     * layer which it has been added to, or you will get buggy behavior.
-     * (This can not be done within the marker since the marker does not
-     * know which layer it is attached to.)
-     */
+
     destroy: function() {
         // erase any drawn features
         this.erase();
@@ -86,17 +39,7 @@ LandscapeMarker = OpenLayers.Class({
         }
     },
     
-    /** 
-    * Method: draw
-    * Calls draw on the icon, and returns that output.
-    * 
-    * Parameters:
-    * px - {<OpenLayers.Pixel>}
-    * 
-    * Returns:
-    * {DOMElement} A new DOM Image with this marker's icon set at the 
-    * location passed-in
-    */
+
     draw: function(px) {
 				
 				var me = this;
@@ -119,7 +62,7 @@ LandscapeMarker = OpenLayers.Class({
 				
 				
 				if (this.info.description!=null && this.info.description!="") {
-					$(this.icon.imageDiv).find('div.infowindow').append('<div class="info" style="background:url('+this.info.picture_large+') no-repeat center center"><span><p>'+this.info.description+'</p><a href="'+ this.info.url +'" class="more">Learn more</a></span></div>');
+					$(this.icon.imageDiv).find('div.infowindow').append('<div class="info"><img class="background" src="'+ this.info.picture_large +'" /><span><p>'+this.info.description+'</p><a href="'+ this.info.url +'" class="more">Learn more</a></span></div>');
 				} else {
 					$(this.icon.imageDiv).find('div.infowindow').append('<img class="landscape" src="'+ this.icon.url +'" alt="'+this.info.name+'"/>');
 				}
@@ -131,7 +74,24 @@ LandscapeMarker = OpenLayers.Class({
 					if (!$(me.icon.imageDiv).find('div').is(':visible')) {
 						$('div.infowindow').hide();
 						var position = map.getViewPortPxFromLonLat(me.lonlat);
+						var move_y = 0;
+						var move_x = 0;
+						
+						if (position.y<237) {
+							move_y = -237+ position.y - 65;
+						}
+						
+						if (position.x<125) {
+							move_x = -125+position.x -30;
+						}
+						
+						if (($('div#map').width() - position.x)<125) {
+							move_x = 125 - ($('div#map').width() - position.x) + 30;
+						}
+						
+						map.pan(move_x,move_y);
 						$(me.icon.imageDiv).find('div').fadeIn('fast');
+						
 					}
 				});
 				
@@ -146,23 +106,14 @@ LandscapeMarker = OpenLayers.Class({
         return this.icon.draw(px);
     },
 
-    /** 
-    * Method: erase
-    * Erases any drawn elements for this marker.
-    */
+
     erase: function() {
         if (this.icon != null) {
             this.icon.erase();
         }
     }, 
 
-    /**
-    * Method: moveTo
-    * Move the marker to the new location.
-    *
-    * Parameters:
-    * px - {<OpenLayers.Pixel>} the pixel position to move to
-    */
+
     moveTo: function (px) {
         if ((px != null) && (this.icon != null)) {
             this.icon.moveTo(px);
@@ -170,23 +121,13 @@ LandscapeMarker = OpenLayers.Class({
         this.lonlat = this.map.getLonLatFromLayerPx(px);
     },
 
-    /**
-     * APIMethod: isDrawn
-     * 
-     * Returns:
-     * {Boolean} Whether or not the marker is drawn.
-     */
+
     isDrawn: function() {
         var isDrawn = (this.icon && this.icon.isDrawn());
         return isDrawn;   
     },
 
-    /**
-     * Method: onScreen
-     *
-     * Returns:
-     * {Boolean} Whether or not the marker is currently visible on screen.
-     */
+
     onScreen:function() {
         
         var onScreen = false;
@@ -197,14 +138,7 @@ LandscapeMarker = OpenLayers.Class({
         return onScreen;
     },
     
-    /**
-     * Method: inflate
-     * Englarges the markers icon by the specified ratio.
-     *
-     * Parameters:
-     * inflate - {float} the ratio to enlarge the marker by (passing 2
-     *                   will double the size).
-     */
+
     inflate: function(inflate) {
         if (this.icon) {
             var newSize = new OpenLayers.Size(this.icon.size.w * inflate,
@@ -213,34 +147,17 @@ LandscapeMarker = OpenLayers.Class({
         }        
     },
     
-    /** 
-     * Method: setOpacity
-     * Change the opacity of the marker by changin the opacity of 
-     *   its icon
-     * 
-     * Parameters:
-     * opacity - {float}  Specified as fraction (0.4, etc)
-     */
+
     setOpacity: function(opacity) {
         this.icon.setOpacity(opacity);
     },
 
-    /**
-     * Method: setUrl
-     * Change URL of the Icon Image.
-     * 
-     * url - {String} 
-     */
+
     setUrl: function(url) {
         this.icon.setUrl(url);
     },    
 
-    /** 
-     * Method: display
-     * Hide or show the icon
-     * 
-     * display - {Boolean} 
-     */
+
     display: function(display) {
         this.icon.display(display);
     },
@@ -249,13 +166,7 @@ LandscapeMarker = OpenLayers.Class({
 });
 
 
-/**
- * Function: defaultIcon
- * Creates a default <OpenLayers.Icon>.
- * 
- * Returns:
- * {<OpenLayers.Icon>} A default OpenLayers.Icon to use for a marker
- */
+
 LandscapeMarker.defaultIcon = function() {
     var url = OpenLayers.Util.getImagesLocation() + "marker.png";
     var size = new OpenLayers.Size(21, 25);

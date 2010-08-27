@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825145545) do
+ActiveRecord::Schema.define(:version => 20100827084713) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20100825145545) do
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
     t.column "last_action", :string
+    t.column "pdf_file", :string
   end
 
   add_index "guides", ["author"], :name => "index_guides_on_author"
@@ -78,9 +79,9 @@ ActiveRecord::Schema.define(:version => 20100825145545) do
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
     t.column "featured", :boolean, :default => false
-    t.column "the_geom", :point, :srid => 4326, :null => false
     t.column "source_link", :string
     t.column "source_name", :string
+    t.column "the_geom", :point, :srid => 4326, :null => false
   end
 
   add_index "landscapes", ["the_geom"], :name => "index_landscapes_on_the_geom", :spatial=> true 

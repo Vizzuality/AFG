@@ -17,6 +17,7 @@
 #  created_at       :datetime        
 #  updated_at       :datetime        
 #  last_action      :string(255)     
+#  pdf_file         :string(255)     
 #
 
 class Guide < ActiveRecord::Base
@@ -159,6 +160,35 @@ class Guide < ActiveRecord::Base
     entries.find_all_by_element_type('Landscape').map do |e|
       e.element
     end
+  end
+  
+  def generate_pdf!(checklist = false)
+    dir = "#{Rails.root}/public/pdfs"
+    FileUtils.mkdir(dir) unless File.directory?(dir)
+    filename = if self.published?
+      "#{self.to_param}.pdf"
+    else
+      "#{self.id}-guide.pdf"
+    end
+    if checklist
+      checklist = "?checklist=true"
+    end
+    if !File.file?("#{dir}/#{filename}") || !self.published?
+      url = URI.parse(DOMAIN)
+      Net::HTTP.start(url.host, url.port) { |http|
+        resp = http.get("/guides/pdf/#{self.to_param}.pdf#{checklist}")
+        open("#{dir}/#{filename}", "wb") { |file|
+          file.write(resp.body)
+         }
+      }
+      if published?
+        update_attribute(:pdf_file, "/pdfs/#{filename}")
+      end
+    else
+      # We have to wait for the JS to be executed
+      sleep 2
+    end
+    "/pdfs/#{filename}"
   end
   
   private

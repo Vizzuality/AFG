@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   
   def render_404
-    render :file => "public/404.html", :template => false, :status => 404
+    render :file => "public/404.html", :layout => false, :status => 404
   end
   
   protected
@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     end
     
     def record_not_found
-      render :file => "public/404.html", :status => 404
+      render :file => "public/404.html", :status => 404, :layout => false
     end
   
 end

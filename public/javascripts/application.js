@@ -179,6 +179,7 @@ function closePopUp() {
 
 //Modal publish window
 function openPublish() {
+	$.get("/guides/update/current", { reset: "true"} );
 	$('#publish_container').html(modal_publish);
 	$('#publish_container').modal(
 		{onOpen: function (dialog) {
@@ -201,9 +202,13 @@ function openPublish() {
 	});
 }
 
-
-
 function firstStep(type) {
+	
+	if(type == 'simple') {
+		$.get("/guides/update/current", { guide_format: "checklist"} );
+	} else {
+		$.get("/guides/update/current", { guide_format: "complete"} );
+	}
 	
 	$('div#publish_container ul li').each(function(index,element){
 		if (index==1) {
@@ -212,61 +217,105 @@ function firstStep(type) {
 			$(this).removeClass('active');
 		}
 	});
-	
 		
+	$('div.choice').animate({
+	    height: 'toggle'
+	  }, 500, function() {
+		
+		var first_step = '<form id="publish_current_guide" action="/guides/update/current"><label for="no_publish"><input id="no_publish" type="radio" name="publish" value="no" />I don’t want to publish my Field Guide</label>'+
+		'<div class="blue_area"><label for="publish"><input id="publish" type="radio" name="publish" value="yes" checked="checked"/>I want to publish my Antarctic Field Guide</label>'+
+		'<div class="fill"><p clas="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>' +
+		'<span><label>YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
+		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
+		'<label>DESCRIPTION</label><p>231 CHARACTERS LEFT</p></span>'+
+		'<textarea name="description" id="description"></textarea></div></div>'+
+		'<div class="errors"><div id="error_invalid_name" style="display:none"><p>The name of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><div id="error_invalid_author" style="display:none"><p>The author of the guide can\'t be blank</p></div></div>' +
+		'<a href="javascript:void secondStep()" class="download">Procced to download</a>';
+
+    $('div.choice').html(first_step);
 		$('div.choice').animate({
 		    height: 'toggle'
-		  }, 500, function() {
-			
-				var first_step = '<a href="#" class="checkbox disabled">I don’t want to publish my Field Guide</a><div class="blue_area"><a href="#" class="checkbox actived">I want to publish my Antarctic Field Guide</a><div class="fill"><p clas="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p><span><label>YOUR NAME</label></span><input type="text" /><span><label>GUIDE TITLE</label></span><input type="text" /><span><label>DESCRIPTION</label><p>231 CHARACTERS LEFT</p></span><textarea></textarea></div></div><a href="javascript:void secondStep(\'complete\')" class="download">Procced to download</a>';
-
-		    $('div.choice').html(first_step);
-				$('div.choice').animate({
-				    height: 'toggle'
-				  }, 500);
-		  });
+		  }, 500);
+  });
 }
 
-
-
-function secondStep(type) {
+function secondStep() {
 	
+	$('#error_invalid_name').hide();
+	$('#error_invalid_author').hide();
+	
+	var publish = true;
+	
+	if($('#no_publish').attr('checked') == true) {
+		publish = false;
+	}
+	
+	var author = $('#author').val();
+	var name = $('#name').val();
+	if(publish == true) {
+		if(author == "") {
+			$('#error_invalid_author').show();
+			return false;
+		}
+		if(name == "") {
+			$('#error_invalid_name').show();
+			return false;			
+		}
+	}
+	
+	var dataString = 'description='+ $('#description').val() + '&author=' + author + '&name=' + name + '&publish=' + publish+'&print=true';
+	
+	var pdf_path = null;
+	
+	$.ajax({
+    type: "POST",
+    url: "/guides/update/current",
+    data: dataString,
+	  success: function(res) {
+			var object = JSON.parse(res);
+			$('#pdf_path').attr('href',object['href']);
+			$('#pdf_path').click(function(){
+				$.modal.close();
+				// TODO: redirect to the generated guide
+				// if(publish == true) {
+				// 	window.location.href=object['url'];
+				// }
+				// return false;
+			});
+			$('div.choice div.type').removeClass('loading');
+			$('div.choice div.type').addClass('finished');
+			$('div.choice div.type img').remove();
+			$('div.choice div.type').append('<img class="image" src="" /><img class="ok" src="/images/modal/ok.png" />');
+			$('div.choice div.info h5').text('Your Anctartic Field Guide is ready to download');
+			$('div.choice div.info p').text('If your download doesn’t start in five seconds, click the download button');
+			$('div.choice div.info a').removeClass('disabled');
+	  }
+   });
+
 	$('div#publish_container ul li').each(function(index,element){
 		if (index==2) {
 			$(this).addClass('active');
 		} else {
 			$(this).removeClass('active');
-		}	});
+		}	
+	});
 	
-	$('div.choice').animate({
-	    height: 'toggle'
-	  }, 500, function() {
-			var second_step = '<div class="long"><div class="type loading"><img class="loading" src="../images/modal/ajax-loader.gif" /></div><div class="info"><h5>We are processing your Antarctic Field Guide</h5><p>Please, be patient, this will take less than five minutes.</p><a class="disabled" href="#">Download</a></div></div>';
-	    $('div.choice').html(second_step);
-			$('div.choice').animate({
-			    height: 'toggle'
-			  }, 500, function() {
-					setTimeout(function(){
-						$('div.choice div.type').removeClass('loading');
-						$('div.choice div.type').addClass('finished');
-						$('div.choice div.type img').remove();
-						$('div.choice div.type').append('<img class="image" src="" /><img class="ok" src="../images/modal/ok.png" />');
-						$('div.choice div.info h5').text('Your Anctartic Field Guide is ready to download');
-						$('div.choice div.info p').text('If your download doesn’t start in five seconds, click the download button');
-						$('div.choice div.info a').removeClass('disabled');
-					},3000);
-
-					// $('div.choice').delay(4000).animate({
-					// 					    height: 'toggle'
-					// 					  }, 500, function() {
-					// 							var third_step = '<div class="long"><div class="type finished"><img class="image" src="" /><img class="ok" src="../images/modal/ok.png" /></div><div class="info"><h5>Your Anctartic Field Guide is ready to download</h5><p>If your download doesn’t start in five seconds, click the download button</p><a href="#">Download</a></div></div>';
-					// 							$('div.choice').html(third_step);
-					// 							$('div.choice').animate({
-					// 							    height: 'toggle'
-					// 							  }, 500);
-					// 					});
-			});
-	  });
+	$('div.choice').animate({ height: 'toggle' }, 500, function() {
+		var second_step = '<div class="long"><div class="type loading"><img class="loading" src="/images/modal/ajax-loader.gif" /></div>'+
+		'<div class="info"><h5>We are processing your Antarctic Field Guide</h5><p>Please, be patient, this will take less than five minutes.</p>'+
+		'<a class="disabled" id="pdf_path" href="javascript:void(null)">Download</a></div></div>';
+    $('div.choice').html(second_step);
+		$('div.choice').animate({
+		    height: 'toggle'
+		  }, 500, function() {
+				setTimeout(function(){
+				},3000);
+		});
+		$('#pdf_path').click(function(){
+			$.modal.close();
+		});
+	});
 }
 
 

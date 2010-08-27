@@ -32,3 +32,6 @@ AFG::Application.configure do
   
   config.active_support.deprecation = :stderr
 end
+
+
+DOMAIN = 'http://test.host'
