@@ -13,105 +13,36 @@
 	
 
 	
-<div id="publish_container">
-	<div class="top">
-		<div class="bottom">
-			<div class="repeat">
-				<h4>Download your Antartic Field Guide</h4>
-				<ul>
-					<li class="active"><span>1.SELECT YOUR FORMAT</span></li>
-					<li><span>2.PUBLISH IT (IF YOU WANT)</span></li>
-					<li><span>3.FINISH AND DOWNLOAD</span></li>
-				</ul>
-				<div class="choice">
-					<div class="alternative">
-						<div class="type list">
-							<a href="#"></a>
-							<p><%= @current_guide.pages_count(:checklist) %> PAGES</p>
-						</div>
-						<div class="info">
-							<a href="javascript:void firstStep('simple')">Checklist</a>
-							<p>Provides the species names in a list format</p>
-						</div>
-					</div>
-					<div class="alternative last">
-						<div class="type complete">
-							<img src="<%= @current_guide.picture? ? @current_guide.picture.image.url(:small) : '' %>" title="" alt=""/>
-							<a href="#"></a>
-							<p><%= @current_guide.pages_count(:complete) %> PAGES</p>
-						</div>
-						<div class="info">
-							<a href="javascript:void firstStep('complete')">Complete</a>
-							<p>Provides all available information for your species</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-	
-	
-<!-- <div id="publish_container">
+	<div id="publish_container">
 		<div class="top">
 			<div class="bottom">
 				<div class="repeat">
-					<h4>Download your Anctartic Field Guide</h4>
+					<h4>Download your Antartic Field Guide</h4>
 					<ul>
 						<li class="active"><span>1.SELECT YOUR FORMAT</span></li>
 						<li><span>2.PUBLISH IT (IF YOU WANT)</span></li>
 						<li><span>3.FINISH AND DOWNLOAD</span></li>
 					</ul>
 					<div class="choice">
-						<a href="#" class="checkbox disabled">I don’t want to publish my Field Guide</a>
-						<div class="blue_area">
-							<a href="#" class="checkbox actived">I want to publish my Antarctic Field Guide</a>
-							<div class="fill">
-								<p clas="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>
-								<span>
-									<label>YOUR NAME</label>
-								</span>
-								<input type="text" />
-								<span>
-									<label>GUIDE TITLE</label>
-								</span>
-								<input type="text" />
-								<span>
-									<label>DESCRIPTION</label>
-									<p>231 CHARACTERS LEFT</p>
-								</span>
-								<textarea></textarea>
-							</div>
-						</div>
-						<a href="javascript:void secondStep('complete')" class="download">Procced to download</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	
-	
-	<!-- 	
-	<div id="publish_container">
-		<div class="top">
-			<div class="bottom">
-				<div class="repeat">
-					<h4>Download your Anctartic Field Guide</h4>
-					<ul>
-						<li><span>1.SELECT YOUR FORMAT</span></li>
-						<li><span>2.PUBLISH IT (IF YOU WANT)</span></li>
-						<li class="active"><span>3.FINISH AND DOWNLOAD</span></li>
-					</ul>
-					<div class="choice">
-						<div class="long">
-							<div class="type loading">
-								<img class="loading" src="../images/modal/ajax-loader.gif" />
+						<div class="alternative">
+							<div class="type list">
+								<a href="#"></a>
+								<p><%= @current_guide.pages_count(:checklist) %> PAGES</p>
 							</div>
 							<div class="info">
-								<h5>Your Anctartic Field Guide is ready to download</h5>
-								<p>Please, be patient, this will take less than five minutes.</p>
-								<a class="disabled" href="#">Download</a>
+								<a href="javascript:void firstStep('simple')">Checklist</a>
+								<p>Provides the species names in a list format</p>
+							</div>
+						</div>
+						<div class="alternative last">
+							<div class="type complete">
+								<img src="<%= @current_guide.picture? ? @current_guide.picture.image.url(:small) : '' %>" title="" alt=""/>
+								<a href="#"></a>
+								<p><%= @current_guide.pages_count(:complete) %> PAGES</p>
+							</div>
+							<div class="info">
+								<a href="javascript:void firstStep('complete')">Complete</a>
+								<p>Provides all available information for your species</p>
 							</div>
 						</div>
 					</div>
@@ -119,35 +50,7 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<div id="publish_container">
-		<div class="top">
-			<div class="bottom">
-				<div class="repeat">
-					<h4>Download your Anctartic Field Guide</h4>
-					<ul>
-						<li><span>1.SELECT YOUR FORMAT</span></li>
-						<li><span>2.PUBLISH IT (IF YOU WANT)</span></li>
-						<li class="active"><span>3.FINISH AND DOWNLOAD</span></li>
-					</ul>
-					<div class="choice">
-						<div class="long">
-							<div class="type finished">
-								<img class="image" src="" />
-								<img class="ok" src="../images/modal/ok.png" />
-							</div>
-							<div class="info">
-								<h5>Your Anctartic Field Guide is ready to download</h5>
-								<p>If your download doesn’t start in five seconds, click the download button</p>
-								<a href="#">Download</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	 -->	
+
 	
 	
 

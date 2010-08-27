@@ -66,6 +66,7 @@ var map, popup;
 			if (map.getZoom()<3) {
 				map.zoomTo(3);
 			}
+			$('a.vizzuality').fadeIn('fast');
 			$('a.zoomIn').fadeIn('fast');
 			$('a.zoomOut').fadeIn('fast');
 			$('a,full_screen').addClass('back');
@@ -73,10 +74,11 @@ var map, popup;
 		} else {
 			$('a.zoomIn').hide();
 			$('a.zoomOut').hide();
-			map.zoomTo(1);
+			$('a.vizzuality').fadeOut('fast');
 			$('div.map').attr('style','position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; padding:6px; width:250px; height:190px; background:white;');
 			$('body').css('overflow','auto');
 			$('a,full_screen').removeClass('back');
+			map.zoomTo(1);
 		}
 	}
 		

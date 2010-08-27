@@ -177,12 +177,14 @@ function closePopUp() {
 
 
 
+
 //Modal publish window
 function openPublish() {
 	$.get("/guides/update/current", { reset: "true"} );
 	$('#publish_container').html(modal_publish);
 	$('#publish_container').modal(
-		{onOpen: function (dialog) {
+		{closeHTML: '<a class="modalCloseImg" title="Close"></a>',
+			onOpen: function (dialog) {
 						 	dialog.overlay.fadeIn('slow', function () {
 								dialog.data.hide();
 								dialog.container.fadeIn('slow', function () {

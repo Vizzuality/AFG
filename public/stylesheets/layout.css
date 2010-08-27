@@ -27,7 +27,7 @@ div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; wid
 div.map a.full_screen:hover {background-position:0 -26px;}
 div.map a.full_screen.back {background:url(../images/common/back_full_screen.png) no-repeat 0 0;}
 div.map a.full_screen.back:hover {background-position:0 -26px;}
-div.map a.vizzuality {position:absolute; z-index:10000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
+div.map a.vizzuality {position:absolute; z-index:1000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
 
 
 /* MAP INFOWINDOW */
@@ -66,6 +66,8 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 /*modal window*/
 #simplemodal-overlay {background:#000000; cursor:default;}
 #simplemodal-container {width:746px; height:622px; background:none; padding:0; margin:0; overflow:hidden;}
+#simplemodal-container a.modalCloseImg {position:absolute; right:10px; top:10px; height:20px; width:20px; background:url(../images/modal/close_modal.png) no-repeat 0 0;}
+#simplemodal-container a.modalCloseImg:hover {background-position:0 -20px; cursor:pointer;}
 #simplemodal-container code {background:none;}
 .simplemodal-wrap {overflow:hidden;}
 .simplemodal-data {overflow:hidden;}
@@ -95,9 +97,16 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.alternative div.info a:hover {background-position:0 -36px; color:#1F628F;}
 #publish_container div.repeat div.choice div.alternative div.info p {float:left; width:100%; font:normal 13px Arial; color:white; margin:8px 0 0 0;}
 
+
+
+#publish_container div.repeat div.choice div.errors {float:left; width:auto; color:#990000; font:bold 14px Arial; padding:10px 0 0 0;}
 #publish_container div.repeat div.choice div.blue_area {float:left; width:672px; height:375px; background:url(../images/modal/blue_area.png) no-repeat -7px -1px;}
 #publish_container div.repeat div.choice a.checkbox {float:left; padding:0 0 0 23px; background:url(../images/modal/checkbox.png) no-repeat 0 0; text-decoration:none; margin:0 0 0 15px;}
-#publish_container div.repeat div.choice a.download {float:right;}
+#publish_container div.repeat div.choice a.download {float:right; width:232px; height:23px; padding:7px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px;}
+#publish_container div.repeat div.choice a.download:hover {color:#1F628F; background-position:0 -36px;}
+
+
+
 
 #publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
 #publish_container div.repeat div.choice div.long div.type {position:relative; float:left; margin:16px 0 0 18px; width:128px; height:138px;}
@@ -477,7 +486,7 @@ div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; pa
 div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
-div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px;}
+div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
@@ -706,7 +715,9 @@ div.right div.about_afg a.start {float:left; width:198px; height:32px; margin:10
 div.right div.about_afg a.start:hover {background-position:0 -32px;}
 
 
+
 /*ABOUT*/
+
 div.about_header {position:relative; float:left; width:912px; padding:27px 12px 20px; height:207px; background:url(../images/about/bkg_about_header.jpg) no-repeat 0 0 #008CB9;}
 div.about_header img.arrow {position:absolute; top:0; left:388px;}
 div.about_header h2 {float:left; width:580px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
