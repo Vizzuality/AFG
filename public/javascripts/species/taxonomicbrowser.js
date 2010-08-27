@@ -138,7 +138,7 @@ var initDataLoaded = 0;
 				}
 				
 				$(li).children('div.text').children('h3').children('a.bttn_add').attr("href", result[i].add_url); 		
-				console.log()
+
 						
 				$(li).children('div.text').children('p').children('strong').text(result[i].count);
 				$(li).attr('id',result[i].id);
