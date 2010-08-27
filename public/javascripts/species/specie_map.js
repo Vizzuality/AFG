@@ -5,8 +5,8 @@ var map, popup;
 
 	$(document).ready(function() {
 		
-		$.getJSON('/api/maps/features', function(data){
-			console.log(data);
+		
+		$.getJSON('/api/maps/features?species_id='+$('span#specie_id').text(), function(data){
 			
 			var mapOptions = { 
 				resolutions: [50694.68146875, 25347.340734375, 12673.6703671875, 6336.83518359375, 3168.417591796875, 1584.2087958984375, 792.1043979492188, 396.0521989746094, 198.0260994873047, 99.01304974365235, 49.50652487182617, 24.753262435913086, 12.376631217956543, 6.188315608978272, 3.094157804489136, 1.547078902244568, 0.773539451122284, 0.386769725561142, 0.193384862780571, 0.0966924313902855, 0.04834621569514275, 0.024173107847571373, 0.012086553923785687, 0.006043276961892843, 0.0030216384809464217],
@@ -61,24 +61,13 @@ var map, popup;
 				var landscape_marker = new LandscapeMarker(new OpenLayers.LonLat(data.landscapes[i].lon,data.landscapes[i].lat),landscape_image, data.landscapes[i]); // data.landscapes[i].picture, size, offset
 				markers.addMarker(landscape_marker);
 			}
+			
+			map.zoomOut();
 
 		});
 	});
 	
-	
 
-	function zoomIn() {
-		if (map.getZoom() < 4) {
-			map.zoomIn();
-		}
-	}
-	
-	
-	function zoomOut() {
-		if (map.getZoom() > 2 && map.getZoom() < 5) {
-			map.zoomOut();
-		}
-	}
 	
 	function toggleFullScreen() {
 		if ($('div.map').css('position')!='absolute') {
@@ -87,9 +76,12 @@ var map, popup;
 			if (map.getZoom()==2) {
 				map.zoomIn();
 			}
+			$('a.zoomIn').fadeIn('fast');
+			$('a.zoomOut').fadeIn('fast');
 			$.scrollTo(0,0);
 		} else {
-			$('div.map').attr('style','position:relative; float:left; margin:20px 0 0 0; width:880px; height:373px; padding:8px 15px 13px; background:url(../images/common/map_bkg_shadow.png) no-repeat 5px bottom;');
+			
+			$('div.map').attr('style','position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; padding:6px; width:250px; height:190px; background:white;');
 			$('body').css('overflow','auto');
 		}
 	}

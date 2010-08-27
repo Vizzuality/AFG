@@ -1,10 +1,14 @@
 <%= javascript_include_tag "http://openlayers.org/dev/OpenLayers.js" %>
-<%= javascript_include_tag "landscapes/landscapes.js" %>
+<%= javascript_include_tag "maps/LandscapeMarker", "guides/guide_map.js" %>
   
+
+<span style="display:none" id="guide_id"><%= @guide.id %></span>
+
 
 <div class="outer_layout"> 
   <div class="guide_header"> 
     <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
+		<div class="large">
       <div class="left"> 
         <ul class="breadcrumb">
           <li><a href="<%= guides_path %>">Guides</a></li>
@@ -12,8 +16,11 @@
         <h1><%= @guide.name %></h1> 
         <p class="by">created by <strong><%= @guide.author %></strong> on <%= @guide.updated_at.strftime("%B %dth, %Y") %></p>
       
-        <div class="map_container">
+        <div class="map">
           <div id="map"></div>
+					<a href="javascript: void toggleFullScreen()" class="full_screen"></a>
+		      <a href="javascript: void zoomIn()" class="zoomIn"></a>
+		      <a href="javascript: void zoomOut()" class="zoomOut"></a>
         </div>
       </div>  
 
@@ -36,6 +43,7 @@
         </a> 
         <p class="template">or <%= link_to('use it as template', entries_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours</p>
       </div>
+		</div>
   </div>
 </div>
 

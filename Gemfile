@@ -15,7 +15,7 @@ gem 'fastercsv'
 gem 'pdfkit'
 gem 'nokogiri'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
-gem 'rmagick', :require => 'RMagick'
+#gem 'rmagick', :require => 'RMagick'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'
