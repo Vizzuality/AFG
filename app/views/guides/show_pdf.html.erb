@@ -184,16 +184,10 @@
           </div>
   
           <div class="right">
-            <div class="map"></div>
+            <div class="map" style="background:url(../api/maps/static_map?species_id=<%= species.id %>) no-repeat center center"></div>
             <div class="info">
               <h3>Size</h3>
               <%= simple_format(species.size) %>
-              <!-- 
-              <h3>Feeding behavior</h3>
-              <%= simple_format(species.size) %>
-              <h3>Reproductive behavior</h3>
-              <%= simple_format(species.size) %>
-              -->
               <h3>Habitat</h3>
               <%= simple_format(species.habitat) %>
               <h3>Depth of the distribution</h3>
@@ -233,7 +227,7 @@
           </div>
   
           <div class="right">
-            <div class="map"></div>
+            <div class="map" style="background:url(../api/maps/static_map?coords=<%= "#{lanscape.the_geom.x},#{lanscape.the_geom.y}" %>) no-repeat center center"></div>
             <div class="info">
               <h3>Species near this place</h3>
               <ul>
