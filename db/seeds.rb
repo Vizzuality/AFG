@@ -37,11 +37,11 @@ s = Species.new :name => 'tenuis', :identification => 'Brigitte Hilbig', :genus 
 s.save
 
 # Specie 6
-s = Species.new :name => 'Tubulipora tubigera', :identification => 'Kathy Conlan', :family => 'Polynoidae', :featured => true, :highlighted => true
+s = Species.new :name => 'Tubulipora tubigera', :identification => 'Kathy Conlan', :genus => 'Tubulipora', :family => 'Polynoidae', :featured => true, :highlighted => true
 s.save
 
 # Specie 6
-s = Species.new :name => 'Kymella polaris', :identification => 'Stefan Hain', :species => 'Trissophyllus', :featured => true, :highlighted => false
+s = Species.new :name => 'Kymella polaris', :identification => 'Stefan Hain', :genus => 'Kymella', :species => 'Trissophyllus', :featured => true, :highlighted => false
 s.save
 
 # Specie 7
@@ -49,39 +49,39 @@ s = Species.new :name => 'rubefacta', :identification => 'Louise Allcock', :genu
 s.save
 
 # Specie 8
-s = Species.new :name => 'Inversiula nutrix', :identification => 'Stefan Hain', :featured => true, :highlighted => false
+s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => false
 s.save
 
 # Specie 9
-s = Species.new :name => 'Himantozoum antarcticum', :identification => 'Paul Dayton', :featured => true, :highlighted => true
+s = Species.new :name => 'antarcticum', :identification => 'Paul Dayton', :genus => 'Himantozoum', :featured => true, :highlighted => true
 s.save
 
 # Specie 10
-s = Species.new :name => 'Celleporella antartica', :identification => 'Peter Brueggemann', :featured => true, :highlighted => false
+s = Species.new :name => 'antartica', :identification => 'Peter Brueggemann', :genus => 'Celleporella', :featured => true, :highlighted => false
 s.save
 
 # Specie 10
-s = Species.new :name => 'Polyeunoa laevis', :identification => 'Brigitte Hilbig', :featured => true, :highlighted => true
+s = Species.new :name => 'laevis', :identification => 'Brigitte Hilbig', :genus => 'Polyeunoa', :featured => true, :highlighted => true
 s.save
 
 # Specie 11
-s = Species.new :name => 'Ophelina breviata', :identification => 'Tomas Munilla', :featured => true, :highlighted => false
+s = Species.new :name => 'breviata', :identification => 'Tomas Munilla', :genus => 'Ophelina', :featured => true, :highlighted => false
 s.save
 
 # Specie 12
-s = Species.new :name => 'Eulagisca gigantea', :identification => 'Myriam Schuller', :featured => true, :highlighted => true
+s = Species.new :name => 'gigantea', :identification => 'Myriam Schuller', :genus => 'Eulagisca', :featured => true, :highlighted => true
 s.save
 
 # Specie 13
-s = Species.new :name => 'Barrukia cristata', :identification => 'Stephanie Kaiser', :featured => true, :highlighted => false
+s = Species.new :name => 'cristata', :identification => 'Stephanie Kaiser', :genus => 'Barrukia', :featured => true, :highlighted => false
 s.save
 
 # Specie 14
-s = Species.new :name => 'Aglaophamus trissophyllus', :identification => 'Brigitte Hilbig', :featured => true, :highlighted => true
+s = Species.new :name => 'trissophyllus', :identification => 'Brigitte Hilbig', :genus => 'Aglaophamus', :featured => true, :highlighted => true
 s.save
 
 # Specie 15
-s = Species.new :name => 'Thelepus cincinnatus', :identification => 'Anne-Nina Loerz', :featured => true, :highlighted => false
+s = Species.new :name => 'cincinnatus', :identification => 'Anne-Nina Loerz', :genus => 'Thelepus', :featured => true, :highlighted => false
 s.save
 
 # Point 1
