@@ -1,1 +1,106 @@
-# About
+<div class="outer_layout"> 
+	<div class="about_header"> 
+		<%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
+		<h2>About Antarctic Field Guides</h2>
+		<p class="subtitle">The Antarctic Field Guides offers helpful information about natural species living at the Antarctica, and about the main landscapes and interesting places. It allows travellers and scientific expeditions to organize natural information for their trips, creating their own customized and printable field guides.</p>
+	
+		<div class="features">
+			<ul>
+				<li class="quality">
+					<%= image_tag ('about/quality_icon.png'), :class=>'quality' %>
+					<h4>Quality information</h4>
+					<p>You choose what information will be included in your guide</p>
+				</li>
+				<li>
+					<%= image_tag ('about/customizable_icon.png') %>
+					<h4>Fully customizable</h4>
+					<p>You choose what information will be included in your guide</p>
+				</li>
+				<li>
+					<%= image_tag ('about/printable_icon.png') %>
+					<h4>Downloadable & printable</h4>
+					<p>All information can be downloaded in printer-friendly format</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="main about">
+		
+		<h3>How does it work?</h3>
+		<ul class="explain">
+			<li>
+				<%= image_tag ('about/explore_explain.png'), :class=>'explore' %>
+				<p>Explore <a href="/species">species</a> and <a href="/landscapes">landscapes</a> at the AFG site and add them to your own Atlantic Field Guide.</p>
+			</li>
+			<li>
+				<%= image_tag ('about/using_other_explain.png'), :class=>'others' %>
+				<p>You can also start your guide using an existing one as a template. Explore the <a href="/guides">available field guides</a> submitted by other travellers.</p>
+			</li>
+			<li class="last">
+				<%= image_tag ('about/download_explain.png'), :class=>'download' %>
+				<p>Download your guide in PDF format and print it. And don’t forget to pack it in your next trip to Antarctica!.</p>
+			</li>
+		</ul>
+	</div>
+	<div class="main content_about">		
+		<div class="left">
+			<div class="information_about"> 
+				<h3>Where does data come from?</h3> 
+				<p>Atlantic Field Guides aggregates information coming comes from the following sources:</p>
+				<ul>
+					<li>
+						<a href="http://www.scarmarbin.be/" target="_blank"><%= image_tag ('about/SCAR_MarBIN_logo.png'), :class=>'scar' %></a>
+						<p class="source_name">SCAR MarBIN</p>
+						<p>Herbivorous grazer on algae and diatoms.</p>
+					</li>
+					<li>
+						<a href="http://www.wikipedia.org/" target="_blank"><%= image_tag ('about/wikipedia_logo.png'), :class=>'wikipedia' %></a>
+						<p class="source_name">Wikipedia</p>
+						<p>Herbivorous grazer on algae and diatoms.</p>
+					</li>
+					<li class="last">
+						<a href="http://www.panoramio.com/" target="_blank"><%= image_tag ('about/panoramio_logo.png'), :class=>'panoramio' %></a>
+						<p class="source_name">Panoramio</p>
+						<p>Herbivorous grazer on algae and diatoms.</p>
+					</li>
+					
+				</ul>
+	
+			</div>
+	  	</div>
+		<div class="right"> 
+			<div class="questions">
+				<%= image_tag ('about/vertex_right.png') %>
+				<h3>Can I reuse the data?</h3>
+				<p>You can use ... lorem ipsum</p>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="main footer_about">		
+		<div class="left">
+			<div class="initiative">
+				<p class="subtitle">An initiative of</p>
+				<h3>SCAR-MarBIN</h3>
+				<p>SCAR-MarBIN (SCAR Marine Biodiversity Information Network) establishes and supports a distributed system of interoperable databases, forming the Antarctic Regional OBIS Node, under the aegis of SCAR (Scientific Committee on Antarctic Research). <a href="#">Learn more</a></p>
+				
+				<p class="partners">Partners</p>
+				<ul class="partners_list">
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right">
+			<div class="contact">
+				<%= image_tag ('about/vertex_blue.png') %>
+				<h3>Contact</h3>
+				<p>If you need more information about Antarctic Field Guides, please send us an email to <a href="mailto:info@atlanticfieldguides.com">info@atlanticfieldguides.com</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
