@@ -16,9 +16,15 @@ class CreateSpecies < ActiveRecord::Migration
       t.text    :size
       t.text    :depth
       t.text    :reference
+      t.boolean :complete, :default => false
       
       t.timestamps
     end
+    
+    add_index :species, :complete
+    add_index :species, :uid
+    add_index :species, :genus
+    add_index :species, :family
   end
 
   def self.down

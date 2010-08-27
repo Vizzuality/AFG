@@ -9,6 +9,8 @@ class CreateLandscapePictures < ActiveRecord::Migration
       t.datetime :image_updated_at
       t.timestamps
     end
+    
+    add_index :landscape_pictures, :landscape_id
   end
 
   def self.down

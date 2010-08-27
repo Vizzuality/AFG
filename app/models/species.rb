@@ -18,6 +18,7 @@
 #  size                      :text            
 #  depth                     :text            
 #  reference                 :text            
+#  complete                  :boolean         
 #  created_at                :datetime        
 #  updated_at                :datetime        
 #  kingdom                   :string(255)     
@@ -27,7 +28,6 @@
 #  featured                  :boolean         
 #  imported_file             :string(255)     
 #  species                   :string(255)     
-#  complete                  :boolean         
 #  habitat                   :string(255)     
 #  distinguishing_characters :text            
 #  source_link               :string(255)     
@@ -93,7 +93,7 @@ class Species < ActiveRecord::Base
   end
   
   def full_name
-    species.blank? ? "#{self.genus} #{name}" : species
+    species.blank? ? "#{self.genus} #{name}".strip : species
   end
   
   def self.find_by_term(q)

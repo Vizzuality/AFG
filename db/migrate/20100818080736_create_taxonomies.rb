@@ -7,6 +7,8 @@ class CreateTaxonomies < ActiveRecord::Migration
       t.text    :description
       t.text    :distinguishing_characters
     end
+    
+    add_index :taxonomies, [:hierarchy, :name], :name => 'idx_hierarchy_name'
   end
 
   def self.down

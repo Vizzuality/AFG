@@ -33,6 +33,9 @@ var demolayer = new OpenLayers.Layer.WMS(
 map.addLayer(demolayer);
 map.zoomToExtent(new OpenLayers.Bounds(-6267731.972,-5502339.632,0,7));
 
+var markers = new OpenLayers.Layer.Markers( "Markers" );
+map.addLayer(markers);
+
 });
 </script>
 <% end %> 
