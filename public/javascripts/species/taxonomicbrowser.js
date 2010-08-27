@@ -13,7 +13,6 @@ var initDataLoaded = 0;
 		// Simulate first row clicked, to the first and the second column
 		createFirstColumn();
 		
-		
 		$("div.in ul li").live(
 		        'hover',
 		        function (ev) {
