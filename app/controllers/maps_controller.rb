@@ -8,7 +8,7 @@ class MapsController < ApplicationController
   end
 
   def tiles
-    tile = "public/map/"+params[:BBOX]+".png"
+    tile = "public/map/base_tiles/"+params[:BBOX]+".png"
     send_file tile, :type=>'image/png', :disposition => 'inline'
   end
   
