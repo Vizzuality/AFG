@@ -471,8 +471,8 @@ div.main.specie div.right div.map span.shadow {position:absolute; bottom:-7px; l
 div.main.specie div.right div.map div#map {float:left; width:100%; height:100%; margin:0; padding:0;}
 div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; padding:0; background:0;}
 div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
-div.main.specie div.right div.map a.zoomIn {right:11px; top:11px; display:none;}
-div.main.specie div.right div.map a.zoomOut {right:11px; top:11px; display:none;}
+div.main.specie div.right div.map a.zoomIn {right:11px; display:none;}
+div.main.specie div.right div.map a.zoomOut {right:11px; display:none;}
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}

@@ -1,6 +1,6 @@
 class MapsController < ApplicationController
   
-  skip_before_filter :set_current_guide, :only => [:index, :tiles]
+  skip_before_filter :set_current_guide, :only => [:tiles]
   
   SNAP_TO_GRID_FACTOR = 0.1
     

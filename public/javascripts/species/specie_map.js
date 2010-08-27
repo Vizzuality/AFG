@@ -73,14 +73,16 @@ var map, popup;
 		if ($('div.map').css('position')!='absolute') {
 			$('div.map').attr('style','position:absolute; top:0; left:0; width:100%; height:100%; padding:0; margin:0; background:white; z-index:100000');
 			$('body').css('overflow','hidden');
-			if (map.getZoom()==2) {
-				map.zoomIn();
+			if (map.getZoom()<3) {
+				map.zoomTo(3);
 			}
 			$('a.zoomIn').fadeIn('fast');
 			$('a.zoomOut').fadeIn('fast');
 			$.scrollTo(0,0);
 		} else {
-			
+			$('a.zoomIn').hide();
+			$('a.zoomOut').hide();
+			map.zoomTo(1);
 			$('div.map').attr('style','position:relative; float:left; margin:24px 0 0 0; border:1px solid #EAEAEA; padding:6px; width:250px; height:190px; background:white;');
 			$('body').css('overflow','auto');
 		}
