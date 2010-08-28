@@ -2,6 +2,6 @@
   <img src="<%= (entry.element && entry.element.species && entry.element.species.picture) ? entry.element.species.picture.image.url(:small) : Species.default_picture(:small) %>" alt="<%= entry.element_id %>" /> 
 </div> 
 <div class="data"> 
-  <p>Someone has added <%= entry.element_type.downcase %> <%= entry.element_id %>.</p> 
+  <p>Someone has added <%= link_to("#{entry.element_type.downcase} #{entry.element_id}", species_taxonomy_path(entry.element.params_for_url)) %></p> 
   <p class="ago"><%= time_ago_in_words(entry.created_at) %> ago</p> 
 </div> 

@@ -41,8 +41,10 @@ class GuidesController < ApplicationController
   
   def pdf
     @guide = Guide.find(params[:id])
+    validate_permalink(@guide)
     @guide.increment(:downloads_count)
     @guide.save
+    # Current page number
     @count = 2
     @total_pages = if params[:checklist]
       @guide.pages_count(:checklist)
@@ -51,11 +53,6 @@ class GuidesController < ApplicationController
     end
 
     render :template => 'guides/show_pdf', :layout => false
-  end
-  
-  def edit
-    @guide = @current_guide
-    @guide.publish!
   end
   
   def update
@@ -80,10 +77,6 @@ class GuidesController < ApplicationController
       session[:current_guide_print][:description] = params[:description]
     end
 
-    logger.info "==============================="
-    logger.info "== session[:current_guide_print]: #{session[:current_guide_print].inspect} =="
-    logger.info "==============================="
-    
     if params[:print] && params[:print] == 'true'
       new_attributes = {}
       new_attributes.merge!(:name => session[:current_guide_print][:name]) if session[:current_guide_print][:name]
@@ -98,13 +91,9 @@ class GuidesController < ApplicationController
         @current_guide.update_attribute(:session_id, nil)
       end
       
-      # actualizamos guia actual en funcion de los valores de la session
       pdf_path = @current_guide.generate_pdf!(session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
       
       render :text => {:href => pdf_path, :url => guide_path(@current_guide)}.to_json, :status => 200 and return
-      
-      # ordenamos por DJ que se empiece a generar el pdf
-      
     end
         
     respond_to do |format|
