@@ -14,8 +14,9 @@ gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branc
 gem 'fastercsv'
 gem 'pdfkit'
 gem 'nokogiri'
-gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'paperclip', :tag => 'v2.3.3'
 gem 'rmagick', :require => 'RMagick'
+gem 'rack-noie', :require => 'noie'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'

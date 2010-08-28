@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cavalle/steak.git
-  revision: 1ef6b30
+  revision: 894084d
   specs:
     steak (0.4.0.beta.1)
       rspec-core (>= 2.0.0.beta.19)
@@ -13,18 +13,10 @@ GIT
     will_paginate (3.0.pre2)
 
 GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: 32b9a28
-  specs:
-    paperclip (2.3.3)
-      activerecord
-      activesupport
-
-GIT
   remote: http://github.com/bmabey/database_cleaner.git
-  revision: 7ea99d7
+  revision: de440ec
   specs:
-    database_cleaner (0.5.2)
+    database_cleaner (0.6.0.rc.2)
 
 GEM
   remote: http://rubygems.org/
@@ -68,7 +60,7 @@ GEM
       selenium-webdriver (>= 0.0.3)
     columnize (0.3.1)
     configuration (1.1.0)
-    culerity (0.2.10)
+    culerity (0.2.12)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -88,12 +80,16 @@ GEM
     mime-types (1.16)
     nofxx-georuby (1.7.1)
     nokogiri (1.4.3.1)
-    pdfkit (0.4.3)
+    paperclip (2.3.3)
+      activerecord
+      activesupport
+    pdfkit (0.4.5)
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-mount (0.6.9)
+    rack-mount (0.6.12)
       rack (>= 1.0.0)
+    rack-noie (1.0)
     rack-test (0.5.4)
       rack (>= 1.0)
     rails (3.0.0.rc)
@@ -111,32 +107,31 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     rmagick (2.13.1)
-    rspec (2.0.0.beta.19)
-      rspec-core (= 2.0.0.beta.19)
-      rspec-expectations (= 2.0.0.beta.19)
-      rspec-mocks (= 2.0.0.beta.19)
-    rspec-core (2.0.0.beta.19)
-    rspec-expectations (2.0.0.beta.19)
+    rspec (2.0.0.beta.20)
+      rspec-core (= 2.0.0.beta.20)
+      rspec-expectations (= 2.0.0.beta.20)
+      rspec-mocks (= 2.0.0.beta.20)
+    rspec-core (2.0.0.beta.20)
+    rspec-expectations (2.0.0.beta.20)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.19)
-    rspec-rails (2.0.0.beta.19)
-      rspec (= 2.0.0.beta.19)
-      webrat (>= 0.7.2.beta.1)
+    rspec-mocks (2.0.0.beta.20)
+    rspec-rails (2.0.0.beta.20)
+      rspec (= 2.0.0.beta.20)
     ruby-debug (0.10.3)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.3.0)
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.27)
+    selenium-webdriver (0.0.28)
       ffi (>= 0.6.1)
       json_pure
       rubyzip
     thor (0.14.0)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.22)
-    webrat (0.7.2.beta.1)
+    tzinfo (0.3.23)
+    webrat (0.7.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
@@ -151,9 +146,10 @@ DEPENDENCIES
   launchy
   nofxx-georuby
   nokogiri
-  paperclip!
+  paperclip
   pdfkit
   pg (= 0.9.0)
+  rack-noie
   rails (= 3.0.0.rc)
   rmagick
   rspec (>= 2.0.0.beta.13)
