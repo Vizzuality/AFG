@@ -17,6 +17,6 @@ class LandscapePicture < ActiveRecord::Base
   
   belongs_to :landscape
   
-  has_attached_file :image, :styles => { :small => "70x47", :medium => "168x110>", :large => "247x158>" }  
+  has_attached_file :image, :styles => { :small => "70x47#", :medium => "168x110#", :large => "247x158#" }  
   
 end
