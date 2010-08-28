@@ -36,9 +36,6 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Ceratoser
 picture.save
 
 
-
-
-
 ################## ADDING MORE DATA
 # Specie 4
 s = Species.new :name => 'nutrix', :identification => 'Stefan Hain', :genus => 'Inversiula', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet', :distinguishing_characters=>'lorem ipsum dolor sit amet'

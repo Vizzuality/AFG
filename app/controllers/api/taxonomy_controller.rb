@@ -40,7 +40,7 @@ class Api::TaxonomyController < ApplicationController
                 :add_url => (@current_guide.include_taxonomy?(taxonomy) ? nil : create_entry_url(:type => taxonomy.hierarchy.humanize, :id => taxonomy.name)),
                 :picture => nil,
                 :common_name => nil,
-                :url => nil,
+                :url => species_taxonomy_url(taxonomy.params_for_url),
               }
             end
           else

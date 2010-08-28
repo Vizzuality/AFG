@@ -8,6 +8,7 @@
 #  downloads_count           :integer         default(0)
 #  description               :text            
 #  distinguishing_characters :text            
+#  parents                   :string(255)     
 #
 
 class Taxonomy < ActiveRecord::Base
@@ -17,6 +18,30 @@ class Taxonomy < ActiveRecord::Base
   def self.find_by_term(q)
     q = "%#{q}%"
     where(["name ilike ? OR hierarchy ilike ?", q, q]).order("name DESC")
+  end
+  
+  def parents
+    att = read_attribute(:parents)
+    return [] if att.blank?
+    YAML.load(att)
+  end
+  
+  def params_for_url
+    hash = {}
+    parents.each do |p|
+      k,v = p.split(':')
+      k = 't_order' if k == 'order'
+      k = 't_class' if k == 'class'
+      hash[k.to_sym] = v
+    end
+    column = if self.hierarchy == 'class'
+      :t_class
+    elsif self.hierarchy == 'order'
+      :t_order
+    else 
+      self.hierarchy.to_sym
+    end
+    hash.merge(column => self.name)
   end
   
   def species(limit = 1)
@@ -87,5 +112,5 @@ class Taxonomy < ActiveRecord::Base
       Taxonomy.find_by_name_and_hierarchy(g, 'genus')
     end
   end
-  
+    
 end
