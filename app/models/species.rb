@@ -85,7 +85,7 @@ class Species < ActiveRecord::Base
   end
   
   def picture
-    pictures.try(:first)
+    pictures.try(:last)
   end
   
   def name

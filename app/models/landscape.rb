@@ -98,7 +98,7 @@ class Landscape < ActiveRecord::Base
   end
   
   def picture
-    pictures.empty? ? nil : pictures.first
+    pictures.try(:last)
   end
   
   def default_picture(style)
