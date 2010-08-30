@@ -1006,15 +1006,12 @@ div.main.error form.report input[type="submit"]:hover {background-position:0 -34
 
 
 /*NO IE SUPPORTED */
-div.main.noie {float:left; background-color:white; width:896px; height:372px; margin:0; padding:0;}
-div.main.noie 
-/*div.main.error.noie {}
-div.main.error.noie div.bkg_header {float:left; width:409px; height:372px;  }
-div.main.error.noie div.info {position:absolute; top:50px; left:409px; width:525px; height:220px;}
-div.main.error.noie div.info h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px;}}
-*/
-
-
+div.main.noie {float:left; background-color:white; width:936px; height:370px; margin:0; padding:0; border-bottom:1px solid #CCCCCC;}
+div.main.noie div.content {float:left; background:url(../images/noie/bkg_noie.jpg) no-repeat 0 0; width:440px; height:370px;}
+div.main.noie div.content h3 {float:left; width:400px; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; margin:76px 0 0 400px;}
+div.main.noie div.content p {float:left; font:normal 15px Arial; color:#666666; width:435px; margin:20px 0 0 400px;}
+div.main.noie div.content a {float:left; font:bold 15px Arial; background:url(../images/noie/bkg_bttn.png) no-repeat 0 0; width:176px; height:29px; color:#FFFFFF; text-align:center; padding:8px 0 0 0; line-height:18px; margin:20px 0 0 400px; text-decoration:none;}
+div.main.noie div.content a:hover {background-position:0 -37px; }
 
 
 /*FOOTER*/
@@ -1033,7 +1030,8 @@ div.footer div.in div.logo span.menu ul li a:hover {color:#0099CC;}
 div.footer div.in p {float:left; padding:40px 0 0 0; font:normal 12px Arial; color:#999999;}
 div.footer div.in p a {font-weight:bold; text-decoration:none; color:#999999;}
 div.footer div.in p a:hover {color:#666666;}
-
+div.footer div.in p.source_image {float:right; font:bold 12px Arial; color:#999999;}
+ 
 
 
 /* STATS */
