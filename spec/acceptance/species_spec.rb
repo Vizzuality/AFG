@@ -11,7 +11,7 @@ feature "Species" do
     
     page.should have_css("h2", :text => penguin.name)
     
-    click "Add your guide"
+    click "Add to your guide"
     
     page.should have_css("p.times_added", :text => "1 time added")
     page.should have_css("div.long ul#sortable li.single p.title", :text => penguin.name)

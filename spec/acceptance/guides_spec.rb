@@ -92,7 +92,7 @@ feature "Guides of species" do
     
     page.should have_css("h2", :text => penguin.name)
     
-    click "Add your guide"
+    click "Add to your guide"
     
     page.find(:css, "a#publish_and_download").click
 

@@ -13,9 +13,6 @@ namespace :afg do
     %W{
       Annelida Arthropods Ascidians Bryozoa Cnidaria Echinodermata Mollusca Prorifera Various
     }.each do |importing_file|
-    # %W{
-    #   Arthropods
-    # }.each do |importing_file|
       # Species
       puts
       puts

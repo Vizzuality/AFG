@@ -27,6 +27,8 @@ class Landscape < ActiveRecord::Base
   
   before_validation :set_permalink, :set_the_geom
   
+  before_save :expire_cache
+  
   attr_accessor :latitude, :longitude
   
   has_many :pictures, :class_name => 'LandscapePicture'
@@ -113,12 +115,46 @@ class Landscape < ActiveRecord::Base
       :lon => self.the_geom.lon
     }
   end
+  
+  def self.maps_cache_path(key)
+    dir = "#{Rails.root}/public/cache/#{key.split('/').first}"
+    FileUtils.mkdir_p(dir) unless File.directory?(dir)
+    "#{dir}/#{key.split('/').last}"
+  end
+  
+  def self.maps_cache_get(id)
+    key = "landscapes/#{id}"
+    if File.file?(maps_cache_path(key))
+      File.read(maps_cache_path(key))
+    else
+      nil
+    end
+  end
+  
+  def self.maps_cache_set(id, value)
+    key = "landscapes/#{id}"
+    File.open(maps_cache_path(key), "w").write(value)
+  end
+  
+  def self.maps_cache_delete(id)
+    key = "landscapes/#{id}"
+    if File.file?(maps_cache_path(key))
+      FileUtils.rm(maps_cache_path(key))
+    end
+  end
 
   private
+  
+    def expire_cache
+      if radius_changed? && !self.new_record?
+        self.class.maps_cache_delete(self.id)
+      end
+    end
   
     def set_the_geom
       return if new_record? || self.longitude.nil? || self.latitude.nil?
       self.the_geom = Point.from_lon_lat(self.longitude, self.latitude)
+      self.class.maps_cache_delete(self.id) unless self.new_record?
     end
   
     def set_permalink
