@@ -1,16 +1,3 @@
-# # Old SQLite way
-# development:
-#   adapter: sqlite3
-#   database: db/development.sqlite3
-#   pool: 5
-#   timeout: 5000
-# 
-# test:
-#   adapter: sqlite3
-#   database: db/test.sqlite3
-#   pool: 5
-#   timeout: 5000
-
 development:
   adapter: postgresql
   template: template_postgis
@@ -26,3 +13,12 @@ test:
   database: afg_test
   username: postgres
   password:
+
+production:
+  adapter: postgresql
+  template: template_postgis
+  encoding: unicode
+  database: afg_production
+  username: postgres
+  password:
+  
