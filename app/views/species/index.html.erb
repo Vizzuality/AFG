@@ -60,10 +60,12 @@
       <p class="subtitle">Featured species</p> 
       <h3><%= link_to(@featured_species.full_name, species_path(@featured_species)) %></h3>
       <%= stars(@featured_species) %>
-      <div class="image">
+		<a href="javascript: void openBigImage()">
+        <div class="image">
         <img src="<%= @featured_species.picture ? @featured_species.picture.image.url(:large) : @featured_species.default_picture(:medium) %>" alt="<%= @featured_species.full_name %>" title="<%= @featured_species.full_name %>" />
         <span class="shadow"></span>
       </div>
+		</a>
       <p class="info">
         <%= truncate(@featured_species.description, :length => 200, :omission => "...#{link_to('Learn more', species_path(@featured_species))}") %>
       </p>
