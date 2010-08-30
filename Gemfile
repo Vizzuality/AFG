@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc2'
+gem 'rails'
 # PostgreSQL
 gem "pg", "0.9.0"
 # SQLite
@@ -17,6 +17,7 @@ gem 'nokogiri'
 gem 'paperclip', :tag => 'v2.3.3'
 gem 'rmagick', :require => 'RMagick'
 gem 'rack-noie', :require => 'noie'
+gem 'capistrano'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'
