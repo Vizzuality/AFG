@@ -5,13 +5,23 @@
 <%= javascript_include_tag "jScrollPane.js" %>
 <%= javascript_include_tag "species/taxonomicbrowser.js" %>
 
-<%= stylesheet_link_tag 'jScrollPane' %>
+<%= stylesheet_link_tag 'scrollbars' %>
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
-	  $('#column1').jScrollPane({showArrows:false, scrollbarWidth: 15, topCapHeight:7, bottomCapHeight:7}); 
-      $('#taxon_browser').taxonomicbrowser();
-  });
+		// var $j = jQuery.noConflict();
+		// 				// $j(function(){
+		// 				//     jQuery('.scroll-pane').jScrollPane({scrollbarWidth:10});
+		// 				// });
+		// 			
+		// 				$j(function(){
+		// 				 	jQuery('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
+		// 				});
+		
+		$('.scroll-vertical-pane').jScrollPane({showArrows:false, scrollbarWidth: 15, topCapHeight:7, bottomCapHeight:7});
+		$('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
+		$('#taxon_browser').taxonomicbrowser();
+	});
 </script>
 
 <div class="outer_layout"> 
@@ -24,15 +34,117 @@
 		<div class="breadcrumbs">
 			<ul></ul>
 		</div>
-		<div class="taxon_content">
+		<div class="taxon_content scroll-horizontal-pane" >
 			<div class="in">
-				<div class="holder scrollTaxon">
-					
-					<ul class="menu jScrollPaneContainer jScrollPaneScrollable" id="column1">
+							
+				<ul id="column1" class="jScrollVPaneContainer">
+				</ul>	
+					<!-- <li class="active">
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li class="active">
 						
-				  	</ul>
-				</div>
- 
+						
+						
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+																						
+				</ul>
+				<ul id="column2">
+					<li class="active">
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li class="active">
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>
+					<li>
+						<div class="text">
+							<h3><a class="specie" href="#">Animalia</a></h3>
+							<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+						</div>
+						<a class="bttn_add" href="#"></a>
+						<div class="line"></div>
+					</li>					
+				</ul>			
+				<ul id="column3">
+								<li class="active">
+									<div class="text">
+										<h3><a class="specie" href="#">Animalia</a></h3>
+										<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+									</div>
+									<a class="bttn_add" href="#"></a>
+									<div class="line"></div>
+								</li>
+								<li><div class="text">
+									<h3><a class="specie" href="#">Animalia</a></h3>
+									<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+								</div>
+								<a class="bttn_add" href="#"></a>
+								<div class="line"></div>
+								</li>
+								<li>
+									<div class="text">
+										<h3><a class="specie" href="#">Animalia</a></h3>
+										<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+									</div>
+									<a class="bttn_add" href="#"></a>
+									<div class="line"></div>						
+								</li>
+								<li><div class="text">
+									<h3><a class="specie" href="#">Animalia</a></h3>
+									<p><strong>123</strong> species, <a href="#" class="specie">add</a></p>
+								</div>
+								<a class="bttn_add" href="#"></a>
+									<div class="line"></div>					
+								</li>					
+							</ul>			
+							<ul id="column3">
+								<li></li>
+							</ul>			 -->
 			</div>
 		</div>
 	</div>
