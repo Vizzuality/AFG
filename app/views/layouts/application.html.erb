@@ -4,6 +4,7 @@
   <title><%= title %></title>
   <!-- <base href="http://localhost:3000/" /> -->
   <%= raw stylesheet_link_merged :base %>
+  <%= yield :pre_js %>
   <%= raw javascript_include_merged :base %>
   <%= csrf_meta_tag %>
   <%= yield :head %>

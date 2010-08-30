@@ -1,3 +1,7 @@
+<% content_for :pre_js do %>
+<%= javascript_include_tag 'OpenLayers' %>
+<% end -%>
+
 <span style="display:none" id="specie_id"><%= @species.id %></span>
 
 <div class="outer_layout"> 

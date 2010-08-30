@@ -13,7 +13,6 @@ javascripts:
   - jquery.em
   - jquery.dimensions
   - jquery.columnview
-  - OpenLayers
   - LandscapeMarker
   - landscapes_map
   - specie_map
