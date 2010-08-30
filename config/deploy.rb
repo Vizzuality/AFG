@@ -40,7 +40,7 @@ end
  
 task :symlinks, :roles => [:app] do
   run <<-CMD
-    ln -s #{shared_path}/system/images #{release_path}/public/system/images;
+    ln -s #{shared_path}/system #{release_path}/public/system;
     ln -s #{shared_path}/pdfs #{release_path}/public/;
     ln -s #{shared_path}/cache #{release_path}/public/;
   CMD
