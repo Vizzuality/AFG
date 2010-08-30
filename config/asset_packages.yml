@@ -16,12 +16,18 @@ javascripts:
   - taxonomicbrowser
   - rails
   - application
-- maps:
+- landscapes_maps:
   - OpenLayers
-  - landscapes_map
-  - specie_map
-  - guide_map
   - LandscapeMarker
+  - landscapes_map
+- species_maps:
+  - OpenLayers
+  - LandscapeMarker
+  - specie_map
+- guides_maps:
+  - OpenLayers
+  - LandscapeMarker
+  - guide_map
   
 stylesheets: 
 - base: 
