@@ -21,6 +21,6 @@ class Picture < ActiveRecord::Base
 
   belongs_to :species
   
-  has_attached_file :image, :styles => { :small => "48x48#", :medium => "168x110#", :large => "247x158#", :huge => "890x381#" }  
+  has_attached_file :image, :styles => { :small => "48x48#", :medium => "168x110#", :large => "247x158#", :huge => "896x381#" }  
     
 end

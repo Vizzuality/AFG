@@ -32,7 +32,7 @@ class Api::TaxonomyController < ApplicationController
       format.json do 
         if !taxonomies.nil?
           if k != 'species'
-            childs = taxonomies.map do |taxonomy|
+            childs = taxonomies.delete_if{|t| t.species_count == 0}.map do |taxonomy|
               {
                 :id => taxonomy.id,
                 :name => taxonomy.name,
