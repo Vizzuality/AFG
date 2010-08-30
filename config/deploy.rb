@@ -11,6 +11,7 @@ set :scm_user, 'ubuntu'
 set :repository,  "git@github.com:jatorre/AFG.git"
 ssh_options[:forward_agent] = true
 set :keep_releases, 5
+set :branch, "production"
 
 set :slice, '178.79.131.104'
 set :user,  'ubuntu'
