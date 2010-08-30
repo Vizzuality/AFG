@@ -3,15 +3,12 @@
 <head>
   <title><%= title %></title>
   <!-- <base href="http://localhost:3000/" /> -->
-  <%= stylesheet_link_tag 'layout' %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-  <%= javascript_include_tag 'jquery.simplemodal-1.3.5', 'jquery.nivo.slider', 'jquery.example.min', 'jquery.textshadow.js', 'jquery.scrollTo-1.4.2-min' ,'rails', 'application' %>
+  <%= raw stylesheet_link_merged :base %>
+  <%= raw javascript_include_merged :base %>
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
 <body>
-	
-
 	
 	<div id="publish_container">
 		<div class="top">
@@ -50,9 +47,6 @@
 			</div>
 		</div>
 	</div>
-
-	
-	
 
   <div class="outer_layout"> 
     <div class="header"> 

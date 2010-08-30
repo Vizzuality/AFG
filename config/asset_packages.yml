@@ -1,0 +1,28 @@
+--- 
+javascripts: 
+- base: 
+  - jquery.min
+  - jScrollPane
+  - jScrollHorizontalPane
+  - jquery.textshadow
+  - jquery.simplemodal-1.3.5
+  - jquery.scrollTo-1.4.2-min
+  - jquery.nivo.slider
+  - jquery.mousewheel
+  - jquery.example.min
+  - jquery.em
+  - jquery.dimensions
+  - jquery.columnview
+  - OpenLayers
+  - LandscapeMarker
+  - landscapes_map
+  - specie_map
+  - taxonomicbrowser
+  - guide_map
+  - rails
+  - application
+stylesheets: 
+- base: 
+  - jScrollPane
+  - layout
+  - scrollbars

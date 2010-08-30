@@ -22,7 +22,7 @@ role :app, slice
 role :web, slice
 role :db,  slice, :primary => true
 
-after  "deploy:update_code", :run_migrations, :symlinks
+after  "deploy:update_code", :run_migrations, :symlinks, :asset_packages
 
 desc "Restart Application"
 deploy.task :restart, :roles => [:app] do
@@ -46,8 +46,11 @@ task :symlinks, :roles => [:app] do
   CMD
 end
 
-# On setup:
-#   - create shared/system
-#   - create shared/pdfs
-#   - create shared/cache
-#   - ...
+desc 'Create asset packages'
+task :asset_packages, :roles => [:app] do
+ run <<-CMD
+   export RAILS_ENV=production &&
+   cd #{release_path} &&
+   rake asset:packager:build_all
+ CMD
+end
