@@ -47,6 +47,8 @@ module AFG
     
     # PDF kit
     config.middleware.use PDFKit::Middleware
+    config.middleware.use Rack::NoIE, :redirect => '/noie.html'
+    
   end
 end
 

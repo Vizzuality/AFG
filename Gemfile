@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails'
 # PostgreSQL
 gem "pg", "0.9.0"
 # SQLite
@@ -14,8 +14,10 @@ gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branc
 gem 'fastercsv'
 gem 'pdfkit'
 gem 'nokogiri'
-gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'paperclip', :tag => 'v2.3.3'
 gem 'rmagick', :require => 'RMagick'
+gem 'rack-noie', :require => 'noie'
+gem 'capistrano'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'

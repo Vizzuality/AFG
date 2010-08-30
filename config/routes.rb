@@ -13,7 +13,6 @@ AFG::Application.routes.draw do |map|
     get :undo, :on => :member
   end
   match 'guides/pdf/:id' => 'guides#pdf', :as => 'pdf_guide'
-  match 'guides/edit/current' => 'guides#edit', :as => 'edit_guide'
   match 'guides/update/current' => 'guides#update', :as => 'update_guide', :format => :js
 
   get 'taxonomy' => 'species#index', :as => 'species_taxonomy', :defaults => { :taxonomy => true }

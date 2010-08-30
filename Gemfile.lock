@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/cavalle/steak.git
-  revision: 1ef6b30
+  revision: 894084d
   specs:
     steak (0.4.0.beta.1)
       rspec-core (>= 2.0.0.beta.19)
@@ -13,52 +13,50 @@ GIT
     will_paginate (3.0.pre2)
 
 GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: 32b9a28
-  specs:
-    paperclip (2.3.3)
-      activerecord
-      activesupport
-
-GIT
   remote: http://github.com/bmabey/database_cleaner.git
-  revision: 7ea99d7
+  revision: de440ec
   specs:
-    database_cleaner (0.5.2)
+    database_cleaner (0.6.0.rc.2)
 
 GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
-    actionmailer (3.0.0.rc)
-      actionpack (= 3.0.0.rc)
+    actionmailer (3.0.0)
+      actionpack (= 3.0.0)
       mail (~> 2.2.5)
-    actionpack (3.0.0.rc)
-      activemodel (= 3.0.0.rc)
-      activesupport (= 3.0.0.rc)
+    actionpack (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
       i18n (~> 0.4.1)
       rack (~> 1.2.1)
-      rack-mount (~> 0.6.9)
+      rack-mount (~> 0.6.12)
       rack-test (~> 0.5.4)
-      tzinfo (~> 0.3.22)
-    activemodel (3.0.0.rc)
-      activesupport (= 3.0.0.rc)
+      tzinfo (~> 0.3.23)
+    activemodel (3.0.0)
+      activesupport (= 3.0.0)
       builder (~> 2.1.2)
       i18n (~> 0.4.1)
-    activerecord (3.0.0.rc)
-      activemodel (= 3.0.0.rc)
-      activesupport (= 3.0.0.rc)
-      arel (~> 0.4.0)
-      tzinfo (~> 0.3.22)
-    activeresource (3.0.0.rc)
-      activemodel (= 3.0.0.rc)
-      activesupport (= 3.0.0.rc)
-    activesupport (3.0.0.rc)
-    arel (0.4.0)
-      activesupport (>= 3.0.0.beta)
+    activerecord (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
+      arel (~> 1.0.0)
+      tzinfo (~> 0.3.23)
+    activeresource (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    arel (1.0.1)
+      activesupport (~> 3.0.0)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -68,13 +66,14 @@ GEM
       selenium-webdriver (>= 0.0.3)
     columnize (0.3.1)
     configuration (1.1.0)
-    culerity (0.2.10)
+    culerity (0.2.12)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fastercsv (1.5.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    highline (1.6.1)
     i18n (0.4.1)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -86,57 +85,67 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    net-scp (1.0.3)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nofxx-georuby (1.7.1)
     nokogiri (1.4.3.1)
-    pdfkit (0.4.3)
+    paperclip (2.3.3)
+      activerecord
+      activesupport
+    pdfkit (0.4.5)
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-mount (0.6.9)
+    rack-mount (0.6.12)
       rack (>= 1.0.0)
+    rack-noie (1.0)
     rack-test (0.5.4)
       rack (>= 1.0)
-    rails (3.0.0.rc)
-      actionmailer (= 3.0.0.rc)
-      actionpack (= 3.0.0.rc)
-      activerecord (= 3.0.0.rc)
-      activeresource (= 3.0.0.rc)
-      activesupport (= 3.0.0.rc)
-      bundler (>= 1.0.0.rc.1)
-      railties (= 3.0.0.rc)
-    railties (3.0.0.rc)
-      actionpack (= 3.0.0.rc)
-      activesupport (= 3.0.0.rc)
-      rake (>= 0.8.3)
+    rails (3.0.0)
+      actionmailer (= 3.0.0)
+      actionpack (= 3.0.0)
+      activerecord (= 3.0.0)
+      activeresource (= 3.0.0)
+      activesupport (= 3.0.0)
+      bundler (~> 1.0.0)
+      railties (= 3.0.0)
+    railties (3.0.0)
+      actionpack (= 3.0.0)
+      activesupport (= 3.0.0)
+      rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
     rmagick (2.13.1)
-    rspec (2.0.0.beta.19)
-      rspec-core (= 2.0.0.beta.19)
-      rspec-expectations (= 2.0.0.beta.19)
-      rspec-mocks (= 2.0.0.beta.19)
-    rspec-core (2.0.0.beta.19)
-    rspec-expectations (2.0.0.beta.19)
+    rspec (2.0.0.beta.20)
+      rspec-core (= 2.0.0.beta.20)
+      rspec-expectations (= 2.0.0.beta.20)
+      rspec-mocks (= 2.0.0.beta.20)
+    rspec-core (2.0.0.beta.20)
+    rspec-expectations (2.0.0.beta.20)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.19)
-    rspec-rails (2.0.0.beta.19)
-      rspec (= 2.0.0.beta.19)
-      webrat (>= 0.7.2.beta.1)
+    rspec-mocks (2.0.0.beta.20)
+    rspec-rails (2.0.0.beta.20)
+      rspec (= 2.0.0.beta.20)
     ruby-debug (0.10.3)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.3.0)
     ruby-debug-base (0.10.3)
       linecache (>= 0.3)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.27)
+    selenium-webdriver (0.0.28)
       ffi (>= 0.6.1)
       json_pure
       rubyzip
     thor (0.14.0)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.22)
-    webrat (0.7.2.beta.1)
+    tzinfo (0.3.23)
+    webrat (0.7.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
@@ -145,16 +154,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
   capybara
   database_cleaner!
   fastercsv
   launchy
   nofxx-georuby
   nokogiri
-  paperclip!
+  paperclip
   pdfkit
   pg (= 0.9.0)
-  rails (= 3.0.0.rc)
+  rack-noie
+  rails
   rmagick
   rspec (>= 2.0.0.beta.13)
   rspec-rails (>= 2.0.0.beta.8)

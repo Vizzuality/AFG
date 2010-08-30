@@ -7,7 +7,7 @@ class SpeciesController < ApplicationController
   
   def index
     if params[:taxonomy].blank?
-      @featured_species = Species.featured.first
+      @featured_species = Species.complete.featured.first
       @species = Species.complete.not_featured.limit(6).order("guides_count DESC")
       render :action => 'index'
     else

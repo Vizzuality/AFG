@@ -30,7 +30,19 @@ class EntriesController < ApplicationController
   ensure
     respond_to do |format|
       format.html do
-        redirect_to :back
+        url = if @entry.is_a?(Array)
+          guide_path(Guide.find_by_id(params[:id]))
+        else
+          case @entry.element_type
+            when 'Species'
+              species_path(@entry.element)
+            when 'Landscape'
+              landscape_path(@entry.element)
+            else
+              species_taxonomy_path(@entry.element.params_for_url)
+          end
+        end
+        redirect_to url
       end
       format.js
     end

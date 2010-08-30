@@ -241,29 +241,45 @@ class Species < ActiveRecord::Base
           Taxonomy.create! :name => self.kingdom, :hierarchy => 'kingdom'
         end
       end
+      parents = []
       unless self.phylum.blank?
+        parents << "kingdom:#{self.kingdom}" unless self.kingdom.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.phylum, 'phylum')
-          Taxonomy.create! :name => self.phylum, :hierarchy => 'phylum'
+          Taxonomy.create! :name => self.phylum, :hierarchy => 'phylum', :parents => parents.to_yaml
+        else
+          taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
       unless self.t_class.blank?
+        parents << "phylum:#{self.phylum}" unless self.phylum.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.t_class, 'class')
-          Taxonomy.create! :name => self.t_class, :hierarchy => 'class'
+          Taxonomy.create! :name => self.t_class, :hierarchy => 'class', :parents => parents.to_yaml
+        else
+          taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
       unless self.t_order.blank?
+        parents << "class:#{self.t_class}" unless self.t_class.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.t_order, 'order')
-          Taxonomy.create! :name => self.t_order, :hierarchy => 'order'
+          Taxonomy.create! :name => self.t_order, :hierarchy => 'order', :parents => parents.to_yaml
+        else
+          taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
       unless self.family.blank?
+        parents << "order:#{self.t_order}" unless self.t_order.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.family, 'family')
-          Taxonomy.create! :name => self.family, :hierarchy => 'family'
+          Taxonomy.create! :name => self.family, :hierarchy => 'family', :parents => parents.to_yaml
+        else
+          taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
       unless self.genus.blank?
+        parents << "family:#{self.family}" unless self.family.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.genus, 'genus')
-          Taxonomy.create! :name => self.genus, :hierarchy => 'genus'
+          Taxonomy.create! :name => self.genus, :hierarchy => 'genus', :parents => parents.to_yaml
+        else
+          taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
     end

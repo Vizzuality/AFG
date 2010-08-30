@@ -6,7 +6,7 @@ class SiteController < ApplicationController
     end
     @species = Species.complete.limit(6)
     @guides = Guide.highlighted.limit(3)
-    @activities = Entry.limit(10).order('created_at DESC')
+    @activities = Entry.limit(10).order('created_at DESC').delete_if{ |e| e.element.nil? }
   end
   
   def about

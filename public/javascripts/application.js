@@ -177,12 +177,14 @@ function closePopUp() {
 
 
 
+
 //Modal publish window
 function openPublish() {
 	$.get("/guides/update/current", { reset: "true"} );
 	$('#publish_container').html(modal_publish);
 	$('#publish_container').modal(
-		{onOpen: function (dialog) {
+		{closeHTML: '<a class="modalCloseImg" title="Close"></a>',
+			onOpen: function (dialog) {
 						 	dialog.overlay.fadeIn('slow', function () {
 								dialog.data.hide();
 								dialog.container.fadeIn('slow', function () {
@@ -224,10 +226,10 @@ function firstStep(type) {
 		
 		var first_step = '<form id="publish_current_guide" action="/guides/update/current"><label for="no_publish"><input id="no_publish" type="radio" name="publish" value="no" />I don’t want to publish my Field Guide</label>'+
 		'<div class="blue_area"><label for="publish"><input id="publish" type="radio" name="publish" value="yes" checked="checked"/>I want to publish my Antarctic Field Guide</label>'+
-		'<div class="fill"><p clas="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>' +
+		'<div class="fill"><p class="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>' +
 		'<span><label>YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
-		'<label>DESCRIPTION</label><p>231 CHARACTERS LEFT</p></span>'+
+		'<label>DESCRIPTION</label>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
 		'<div class="errors"><div id="error_invalid_name" style="display:none"><p>The name of the guide can\'t be blank</p></div></div>' +
 		'<div class="errors"><div id="error_invalid_author" style="display:none"><p>The author of the guide can\'t be blank</p></div></div>' +
