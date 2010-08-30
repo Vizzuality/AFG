@@ -52,11 +52,11 @@
   </div>
   <div class="field">
     <%= f.label :latitude %><br />
-    <%= f.text_field :latitude, :value => @landscape.the_geom.lat, :size => 50 %>
+    <%= f.text_field :latitude, :value => @landscape.new_record? ? nil : @landscape.the_geom.lat, :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :longitude %><br />
-    <%= f.text_field :longitude, :value => @landscape.the_geom.lon, :size => 50 %>
+    <%= f.text_field :longitude, :value => @landscape.new_record? ? nil : @landscape.the_geom.lon, :size => 50 %>
   </div>  
   
   <div class="actions">
