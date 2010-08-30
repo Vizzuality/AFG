@@ -13,7 +13,6 @@ javascripts:
   - jquery.em
   - jquery.dimensions
   - jquery.columnview
-  - LandscapeMarker
   - taxonomicbrowser
   - rails
   - application
@@ -22,6 +21,7 @@ javascripts:
   - landscapes_map
   - specie_map
   - guide_map
+  - LandscapeMarker
   
 stylesheets: 
 - base: 
