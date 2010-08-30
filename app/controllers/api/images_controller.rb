@@ -1,6 +1,7 @@
 class Api::ImagesController < ApplicationController
   
   def show
+    pictures = nil
     if params[:species_id]
       species = Species.find_by_id(params[:species_id])
       render :text => "Species not found with id #{params[:species_id]}" and return unless species
@@ -14,7 +15,7 @@ class Api::ImagesController < ApplicationController
       render :text => "Picture not found with id #{params[:image_id]}" and return unless picture      
       pictures = ([picture] + (landscape.pictures - [picture]))
     end
-    pictures.map do |picture|
+    result = pictures.map do |picture|
       {
         :id => picture.id,
         :url => picture.image.url(:huge),
@@ -24,7 +25,7 @@ class Api::ImagesController < ApplicationController
     
     respond_to do |format|
       format.json do 
-        render :json => pictures.to_json
+        render :json => result.to_json
       end
     end
   end

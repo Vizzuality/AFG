@@ -93,6 +93,20 @@ There are four attributes in a taxonomy object:
   - `id`: the internal identifier
 
 
+## Images JSON API ##
+
+The base URL of the API is:
+
+<http://localhost:3000/api/images>
+
+The action supports three parameters:
+
+  - `landscape_id`
+  - `species_id`
+  - `ìmage_id`
+  
+Returns a url of the image and the description
+
 
 ## Maps JSON API ##
 
