@@ -14,12 +14,15 @@ javascripts:
   - jquery.dimensions
   - jquery.columnview
   - LandscapeMarker
-  - landscapes_map
-  - specie_map
   - taxonomicbrowser
-  - guide_map
   - rails
   - application
+- maps:
+  - OpenLayers
+  - landscapes_map
+  - specie_map
+  - guide_map
+  
 stylesheets: 
 - base: 
   - jScrollPane

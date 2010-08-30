@@ -1,5 +1,5 @@
-<% content_for :pre_js do %>
-<%= javascript_include_tag 'OpenLayers' %>
+<% content_for :post_js do %>
+  <%= raw javascript_include_merged :maps %>
 <% end -%>
 
 <span style="display:none" id="guide_id"><%= @guide.id %></span>
