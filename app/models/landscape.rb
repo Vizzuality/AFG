@@ -152,8 +152,9 @@ class Landscape < ActiveRecord::Base
     end
   
     def set_the_geom
+      return if self.longitude.nil? || self.latitude.nil?
       self.the_geom = Point.from_lon_lat(self.longitude, self.latitude)
-      return if new_record? || self.longitude.nil? || self.latitude.nil?
+      return if new_record?
       self.class.maps_cache_delete(self.id) unless self.new_record?
     end
   
