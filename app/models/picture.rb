@@ -15,6 +15,7 @@
 #  image_content_type :string(255)     
 #  image_file_size    :integer         
 #  image_updated_at   :datetime        
+#  description        :text            
 #
 
 class Picture < ActiveRecord::Base

@@ -39,7 +39,7 @@
       </div>
       <% if @species.picture %>
       <div class="img_specie">
-        <img src="<%= @species.picture.image.url(:medium) %>"/>
+        <img src="<%= @species.picture.image.url(:medium) %>" id="<%= @species.picture.id %>"/>
       </div> 
       <% end -%>    
     </div>
@@ -65,7 +65,7 @@
     <h3>Photos & Videos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
-      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+      <li><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>"/></li> 
       <% end -%>
     </ul> 
   </div>

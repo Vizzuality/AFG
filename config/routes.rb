@@ -25,6 +25,7 @@ AFG::Application.routes.draw do |map|
   
   namespace :api do
     get "taxonomy" => "taxonomy#index", :format => :json
+    get "images" => "images#show", :format => :json
   end
   
   get "api/maps/features" => "maps#features", :format => :json

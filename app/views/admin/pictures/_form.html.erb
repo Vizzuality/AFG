@@ -12,6 +12,10 @@
   <% end %>
   
   <div class="field">
+    <p><img src="<%= @picture.image.url(:medium) %>" /></p>
+  </div>
+  
+  <div class="field">
     <%= f.label :filename %><br />
     <%= f.text_field :filename, :size => 50 %>
   </div>
@@ -34,6 +38,10 @@
   <div class="field">
     <%= f.label :locality %><br />
     <%= f.text_field :locality, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 8, :cols => 50 %>
   </div>
   <div class="actions">
     <%= f.submit %>
