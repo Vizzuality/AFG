@@ -47,7 +47,7 @@
   <p class="subtitle">Here are some pictures taken from <%= link_to('panoramio', "http://www.panoramio.com/") %></p>
   <ul>
     <% @landscape.pictures.each do |picture| %>
-    <li><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>"></li>
+    <li><a href="javascript: void openBigImage()"><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>"></a></li>
     <% end -%>
 	</ul>
   <span class="line"></span>
