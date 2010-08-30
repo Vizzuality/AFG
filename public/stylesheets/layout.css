@@ -479,14 +479,9 @@ div.main.specie div.right div.map span.shadow {position:absolute; bottom:-7px; l
 div.main.specie div.right div.map div#map {float:left; width:100%; height:100%; margin:0; padding:0;}
 div.main.specie div.right div.map div#map div {clear:both; top:0px; margin:0; padding:0; background:0;}
 div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
-<<<<<<< HEAD
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
 div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
-=======
-div.main.specie div.right div.map a.zoomIn {right:11px; display:none;}
-div.main.specie div.right div.map a.zoomOut {right:11px; display:none;}
->>>>>>> 557f3afb1a38c4b067dc23615fa64ebdc563dc18
 div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
@@ -1009,6 +1004,15 @@ div.main.error form.report textarea:focus {outline:none;}
 div.main.error form.report input[type="submit"] {float:left; width:104px; height:34px; padding:7px; margin:15px 10px 0 0; border:0; font:bold 19px Arial; color:white; background:url(../images/404/submit_input_bkg_500.png) no-repeat 0 0;}
 div.main.error form.report input[type="submit"]:hover {background-position:0 -34px; cursor:pointer;}
 
+
+/*NO IE SUPPORTED */
+div.main.error div.noie {float:left; background:url(../images/noie/bkg_noie.jpg) no-repeat 0 0; width:409px; height:372px; margin:0; padding:0;}
+
+/*div.main.error.noie {}
+div.main.error.noie div.bkg_header {float:left; width:409px; height:372px;  }
+div.main.error.noie div.info {position:absolute; top:50px; left:409px; width:525px; height:220px;}
+div.main.error.noie div.info h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px;}}
+*/
 
 
 
