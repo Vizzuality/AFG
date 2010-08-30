@@ -192,12 +192,12 @@ class Species < ActiveRecord::Base
     self.uid = self.class.get_uid(self.full_name)
   end
   
-  def get_occurrences
-    return if self.uid.blank?
-    response = open("http://es.mirror.gbif.org/ws/rest/occurrence/list?taxonconceptkey=#{self.uid}&minlatitude=-90&maxlatitude=-65&minlongitude=-180&maxlongitude=180&georeferencedonly=true&coordinateissues=false").read
+  def self.get_occurrences(uid)
+    return [] if uid.blank?
+    response = open("http://es.mirror.gbif.org/ws/rest/occurrence/list?taxonconceptkey=#{uid}&minlatitude=-90&maxlatitude=-65&minlongitude=-180&maxlongitude=180&georeferencedonly=true&coordinateissues=false").read
     doc = Nokogiri::XML(response)
     total_returned = doc.xpath("//gbif:summary")[0].attr('totalReturned').to_i
-    (0...total_returned).each do |node|
+    (0...total_returned).map do |node|
       latitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLatitude")[node].text.to_f            
       longitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLongitude")[node].text.to_f
       date = if node_date = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:latestDateCollected")[node]
@@ -205,7 +205,15 @@ class Species < ActiveRecord::Base
       else
         nil
       end
-      occurrences.create :date => date, :the_geom => Point.from_lon_lat(longitude, latitude)
+      {:date => date, :lon => longitude, :lat => latitude}
+    end
+  end
+  
+  def get_occurrences
+    return if self.uid.blank?
+    response_occurrences = self.class.get_occurrences(self.uid)
+    response_occurrences.each do |occurrence|
+      occurrences.create :date => occurrence[:date], :the_geom => Point.from_lon_lat(occurrence[:lon], occurrence[:lat])
     end
   end
   

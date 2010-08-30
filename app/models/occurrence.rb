@@ -14,7 +14,7 @@ class Occurrence < ActiveRecord::Base
 
   acts_as_geom :the_geom => :point
   
-  validates_uniqueness_of :the_geom
+  validates_uniqueness_of :the_geom, :scope => :species_id
   
   belongs_to :species
   
