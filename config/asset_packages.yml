@@ -20,14 +20,20 @@ javascripts:
   - OpenLayers
   - LandscapeMarker
   - landscapes_map
+  - Icon
+  - Marker
 - species_maps:
   - OpenLayers
   - LandscapeMarker
   - specie_map
+  - Icon
+  - Marker  
 - guides_maps:
   - OpenLayers
   - LandscapeMarker
   - guide_map
+  - Icon
+  - Marker  
   
 stylesheets: 
 - base: 
