@@ -1,6 +1,3 @@
-# require 'config/boot'
-# require 'hoptoad_notifier/capistrano'
-
 default_run_options[:pty] = true
 
 set :application, 'afg'
@@ -22,7 +19,7 @@ role :app, slice
 role :web, slice
 role :db,  slice, :primary => true
 
-after  "deploy:update_code", 'bundler:bundle_new_release', :run_migrations
+after  "deploy:update_code", 'bundler:bundle_new_release', :run_migrations, :symlinks
 
 desc "Restart Application"
 deploy.task :restart, :roles => [:app] do
@@ -50,3 +47,15 @@ namespace :bundler do
     run "cd #{release_path} && bundle install"
   end
 end
+
+task :symlinks, :roles => [:app] do
+  run <<-CMD
+    ln -s #{shared_path}/system #{release_path}/public/;
+    ln -s #{shared_path}/pdfs #{release_path}/public/;
+  CMD
+end
+
+# On setup:
+#   - create shared/system
+#   - create shared/pdfs
+#   - ...
