@@ -40,7 +40,8 @@
       <h3><a href="<%= landscape_path(@featured_landscape) %>"><%= @featured_landscape.name %></a></h3>
       <%= stars(@featured_landscape) %>
       <div class="image">
-        <img src="<%= @featured_landscape.picture ? @featured_landscape.picture.image.url(:large) : @featured_landscape.default_picture(:large) %>" alt="<%= @featured_landscape.name %>" title="<%= @featured_landscape.name %>" />
+        <a href="<%= landscape_path(@featured_landscape) %>"><img src="<%= @featured_landscape.picture ? @featured_landscape.picture.image.url(:large) : @featured_landscape.default_picture(:large) %>" alt="<%= @featured_landscape.name %>" title="<%= @featured_landscape.name %>" />
+		</a>
         <span class="shadow"></span>
       </div>
       <p class="info"><%= truncate(@featured_landscape.description, :length => 200, :omission => "...#{link_to('Learn more', landscape_path(@featured_landscape))}") %></p>
