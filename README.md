@@ -131,3 +131,15 @@ These are the attributes for the landscapes:
   - `picture`: a url from a picture
   - `description`: the description of the landscape
 
+
+## Optimizing map image generation ##
+
+If working with **nginx** in production environment you can add the following rule to serve images directly with the webserver:
+
+    location /maps/tiles {
+      if ($args ~* BBOX=([^&]+)) {
+        set $bbox $1;
+        rewrite ^.+$ /map/base_tiles/$bbox.png;
+      }
+    }
+    
