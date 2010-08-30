@@ -16,6 +16,15 @@ class Occurrence < ActiveRecord::Base
   
   validates_uniqueness_of :the_geom, :scope => :species_id
   
+  after_create :expire_species_map_cache
+  before_destroy :expire_species_map_cache
+  
   belongs_to :species
+  
+  private
+  
+    def expire_species_map_cache
+      Species.maps_cache_delete(species.id)
+    end
   
 end

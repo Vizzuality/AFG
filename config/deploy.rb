@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 default_run_options[:pty] = true
 
 set :application, 'afg'
@@ -52,10 +54,12 @@ task :symlinks, :roles => [:app] do
   run <<-CMD
     ln -s #{shared_path}/system #{release_path}/public/;
     ln -s #{shared_path}/pdfs #{release_path}/public/;
+    ln -s #{shared_path}/cache #{release_path}/public/;
   CMD
 end
 
 # On setup:
 #   - create shared/system
 #   - create shared/pdfs
+#   - create shared/cache
 #   - ...

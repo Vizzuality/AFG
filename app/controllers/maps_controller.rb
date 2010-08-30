@@ -3,42 +3,49 @@ class MapsController < ApplicationController
   skip_before_filter :set_current_guide, :only => [:static_map,:tiles,:create_static_map]
   
   SNAP_TO_GRID_FACTOR = 0.1
+  
+  IMAGE_FORMAT = 'png'
     
   def index
   end
 
   def tiles
-    tile = "public/map/base_tiles/"+params[:BBOX]+".png"
-    send_file tile, :type=>'image/png', :disposition => 'inline'
+    tile = "public/map/base_tiles/"+params[:BBOX]+".#{IMAGE_FORMAT}"
+    send_file tile, :type=>"image/#{IMAGE_FORMAT}", :disposition => 'inline'
   end
   
   def static_map
     
     #If the map is asked by speciesId take the data from DB
-    if params[:species_id] 
-      coords=Array.new
-      Occurrence.select("distinct on (SnapToGrid(the_geom,#{SNAP_TO_GRID_FACTOR})) id, 
-        x(ST_Transform(the_geom,3031)) as lon, 
-        y(ST_Transform(the_geom,3031)) as lat").where({:species_id => params[:species_id]}).each { |occ|
-        coords << occ.lon+","+occ.lat
-      }
-      img = create_static_map(coords.join("|"))
-      send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
+    if params[:species_id]
+      maps_cache_fetch(:species, params[:species_id]) do
+        coords=Array.new
+        Occurrence.select("distinct on (SnapToGrid(the_geom,#{SNAP_TO_GRID_FACTOR})) id, 
+          x(ST_Transform(the_geom,3031)) as lon, 
+          y(ST_Transform(the_geom,3031)) as lat").where({:species_id => params[:species_id]}).each { |occ|
+          coords << occ.lon+","+occ.lat
+        }
+        img = create_static_map(coords.join("|"))
+        img.to_blob
+      end
+      
     
     #if Lanscape ID is being sent
     elsif params[:landscape_id]
-      l = Landscape.select("x(ST_Transform(the_geom,3031)) as lon,y(ST_Transform(the_geom,3031)) as lat").where({:id => params[:landscape_id]})
-      img = create_static_map(l.first.lon + "," + l.first.lat,"red",6)
-      send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
+      maps_cache_fetch(:landscapes, params[:landscape_id]) do      
+        l = Landscape.select("x(ST_Transform(the_geom,3031)) as lon,y(ST_Transform(the_geom,3031)) as lat").where({:id => params[:landscape_id]})
+        img = create_static_map(l.first.lon + "," + l.first.lat,"red",6)
+        img.to_blob
+      end
     
     #If the map is asked by coords just draw  
     elsif params[:coords]
       img = create_static_map(params[:coords])
-      send_data img.to_blob,:type => 'image/png',:disposition => 'inline',:filename => "static.png"
+      send_data img.to_blob,:type => "image/#{IMAGE_FORMAT}",:disposition => 'inline',:filename => "static.#{IMAGE_FORMAT}"
       
     #if nothing is being sent just send the background.
     else
-      send_file "#{Rails.root}/public/images/pdf/map_bkg.jpg", :type=>'image/png', :disposition => 'inline'
+      send_file "#{Rails.root}/public/images/pdf/map_bkg.jpg", :type=>"image/#{IMAGE_FORMAT}", :disposition => 'inline'
     end
   end
   
@@ -80,7 +87,7 @@ class MapsController < ApplicationController
       end
     end
     img = rvg.draw
-    img.format = "png"
+    img.format = 'jpg'#IMAGE_FORMAT
     return img
   end
   
@@ -149,5 +156,25 @@ class MapsController < ApplicationController
       end
     end
   end
-
+  
+  private
+  
+    def maps_cache_fetch(type, id, options = {})
+      if !options[:force] and value = get(type, id)
+        send_data value,:type => "image/#{IMAGE_FORMAT}",:disposition => 'inline',:filename => "static.#{IMAGE_FORMAT}"
+      elsif block_given?
+        value = yield
+        set(type, id, value)
+        send_data value,:type => "image/#{IMAGE_FORMAT}",:disposition => 'inline',:filename => "static.#{IMAGE_FORMAT}"
+      end
+    end
+    
+    def get(type, id)
+      type.to_s.classify.constantize.maps_cache_get(id)
+    end 
+    
+    def set(type, id, value)
+      type.to_s.classify.constantize.maps_cache_set(id, value)
+    end
+    
 end

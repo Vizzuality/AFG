@@ -221,6 +221,33 @@ class Species < ActiveRecord::Base
     Landscape.select("distinct(l.*)").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom,l.the_geom, l.radius) AND o.species_id=#{self.id}")
   end
   
+  def self.maps_cache_path(key)
+    dir = "#{Rails.root}/public/cache/#{key.split('/').first}"
+    FileUtils.mkdir_p(dir) unless File.directory?(dir)
+    "#{dir}/#{key.split('/').last}"
+  end
+  
+  def self.maps_cache_get(id)
+    key = "species/#{id}"
+    if File.file?(maps_cache_path(key))
+      File.read(maps_cache_path(key))
+    else
+      nil
+    end
+  end
+  
+  def self.maps_cache_set(id, value)
+    key = "species/#{id}"
+    File.open(maps_cache_path(key), "w").write(value)
+  end
+  
+  def self.maps_cache_delete(id)
+    key = "species/#{id}"
+    if File.file?(maps_cache_path(key))
+      FileUtils.rm(maps_cache_path(key))
+    end
+  end
+  
   private
   
     def set_permalink
