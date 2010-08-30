@@ -425,9 +425,6 @@ div.right div.feature p.info {float:left; width:261px; margin:18px 0 0 0; font:n
 div.right div.feature p.info a {color:#0099CC; text-decoration:none; border-bottom:1px solid #0099CC !important; display:inline-block; vertical-align:top;}
 div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !important;}
 
-
-
-
 /* SPECIE */
 
 div.specie_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 bottom #008CB9;}
@@ -443,7 +440,7 @@ div.specie_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; co
 div.specie_header p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
 div.specie_header div.left {padding:5px 0 0 0; width:576px;}
 div.specie_header div.left div.added_cont {float:left; width:300px; margin:0; padding:0;}
-div.specie_header div.left a.add_guide {float:left; background:url(../images/common/bkg_add_guide_bttn.png) no-repeat 0 0; width:122px; height:31px; font:bold 15px Arial; color:#0099CC; text-decoration:none; line-height:15px; margin:20px 0 0 0; padding:11px 7px 0 47px;}
+div.specie_header div.left a.add_guide {float:left; background:url(../images/common/bkg_add_guide_bttn.png) no-repeat 0 0; width:129px; height:31px; font:bold 15px Arial; color:#0099CC; text-decoration:none; line-height:15px; margin:20px 0 0 0; padding:11px 7px 0 40px;}
 div.specie_header div.left a.add_guide:hover {background-position:0 -42px; color:#006D91;}
 div.specie_header div.left a.special_add {float:left; background:url(../images/common/add_family_left.png) no-repeat 0 0; padding:0 0 0 34px; margin:20px 0 0 0; height:37px; text-decoration:none;}
 div.specie_header div.left a.special_add span {float:left; background:url(../images/common/add_family_right.png) no-repeat right 0; padding:10px; height:17px; font:bold 15px Arial; color:#0099CC;}
