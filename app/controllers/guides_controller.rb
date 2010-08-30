@@ -55,10 +55,11 @@ class GuidesController < ApplicationController
   end
   
   def update
-    
     if params[:reset]
       session[:current_guide_print] = {}
     end
+    
+    session[:current_guide_print] ||= {}
     
     if params[:guide_format]
       session[:current_guide_print][:guide_format] = (params[:guide_format] == 'checklist') ? 'checklist' : 'complete'
