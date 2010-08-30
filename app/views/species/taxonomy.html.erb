@@ -44,9 +44,11 @@
   <ul>
     <% @species.each do |species| %>
     <li class="<%= cycle('', '', 'last_item') %>">
+	  <a href="<%= species_path(species) %>">
       <div class="image">
         <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.full_name %>" />
       </div>
+	  </a>
       <div class="info">
         <h4><a href="<%= species_path(species) %>"><%= species.full_name %></a></h4>
         <% if species.common_name? %>
