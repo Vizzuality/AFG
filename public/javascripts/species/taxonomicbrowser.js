@@ -3,7 +3,7 @@ var maxColumn = 1;
 var initDataLoaded = 0;
 var numBreadCrumbs = 0;
 var columnWidth = 292;
-
+var clickOnHref = 0;
 (function($){
 	
 	$.fn.taxonomicbrowser = function(){
@@ -30,6 +30,16 @@ var columnWidth = 292;
 		$('div.taxon_content div.in ul li').live('click',function(event){			
 			clickColumnFunction(event,$(this));
 		}); // end click function
+		
+		// To get the event and redirect correctly to new page
+		$('div.taxon_content div.in ul li div.text a.specie').live('click', function (event) {
+			clickOnHref = 1;
+		});
+		// To get the event and redirect correctly to new page
+		$('div.taxon_content div.in ul li div.text a.add').live('click', function (event) {
+			clickOnHref = 1;
+		});
+		
 		
 		// Call for data
 		function getData(taxonID,columnID) {
@@ -113,7 +123,7 @@ var columnWidth = 292;
 		function clickColumnFunction(event,element) {			
 			// event.stopPropagation();
 			// event.preventDefault();
-			if (!element.hasClass('specie')){
+			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
 				var selectedColumn = getColumnID(element.parent().attr('id'));
 				var nextColumn = parseInt(selectedColumn) + 1;
 
@@ -239,7 +249,7 @@ var columnWidth = 292;
 						isSpecie = 1;
 						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p><a href="#" class="add">add</a></p></div> <div class="line"></div>';
 					}else {
-						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a href="#" class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line"></div>';
+						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line"></div>';
 					}
 					
 					$(li).append(list_item);

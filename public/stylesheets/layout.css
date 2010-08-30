@@ -387,59 +387,6 @@ div.taxonomic_browser div.taxon_content ul li:hover {cursor:pointer;}
 div.taxonomic_browser div.taxon_content ul li a.bttn_add {position:absolute; background:url(../images/species/taxonomy_browser/bttnAddTaxonBrowser.png) no-repeat 0 0; width:15px; height:15px; bottom:22px; right:18px; outline:none;}
 div.taxonomic_browser div.taxon_content ul li a.bttn_add:hover {background-position:0 -15px;}
 
-
-
-/*div.taxonomic_browser div.in {float:left; margin:5px 0 0 1px; width:885px; height:330px; padding:0; position:relative; overflow:auto;}
-div.taxonomic_browser div.in ul {float:left; width:296px; height:310px; overflow:auto; background-color:#FFFFFF; margin:0; }
-div.taxonomic_browser div.in ul li {float:left; width:296px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none; margin:0;}
-div.taxonomic_browser div.in ul li:focus {outline:none;}
-div.taxonomic_browser div.in ul li div.line_divided {position:absolute; width:250px; height:1px; bottom:1px; left:14px; background-color:#E0E0E0; }
-div.taxonomic_browser div.in ul li div.text {margin:0 0 0 10px; width:250px; }
-div.taxonomic_browser div.in ul li div.text h3 {float:none; letter-spacing:-1.0px; font:normal 17px "Lucida Grande"; color:#0099CC;}
-div.taxonomic_browser div.in ul li div.text p {float:left; font:italic 13px "Lucida Grande"; color:#999999; line-height:13px; letter-spacing:-1.0px; margin:5px 0 0 0;}
-div.taxonomic_browser div.in ul li div.text p strong {color:#666666;}
-div.taxonomic_browser div.in ul li div.text a.add {color:#0099CC; font-style:normal; text-decoration:none; }
-div.taxonomic_browser div.in ul li div.text a.add:hover {text-decoration:none; border-bottom:1px dotted #0099CC;}
-div.taxonomic_browser div.in ul li div.text a.specie {color:#0099CC; font-style:normal; text-decoration:none; }
-div.taxonomic_browser div.in ul li div.text a.specie:hover {text-decoration:none; border-bottom:1px dotted #0099CC; border-bottom:1px solid #0099CC;}
-div.taxonomic_browser div.in ul li:hover {cursor:pointer;}
-div.taxonomic_browser div.in ul li a.bttn_add {position:absolute; background:url(../images/species/taxonomy_browser/bttnAddTaxonBrowser.png) no-repeat 0 0; width:15px; height:15px; bottom:25px; right:30px; outline:none;}
-div.taxonomic_browser div.in ul li a.bttn_add:hover {background-position:0 -15px;}
-
-div.taxonomic_browser div.in ul {float:left; width:312px; height:310px; overflow:auto; background-color:#FFFFFF}
-div.taxonomic_browser div.in ul li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none;}
-div.taxonomic_browser div.in ul li.first {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_first.png); }
-div.taxonomic_browser div.in ul li.last {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_last.png); }
-div.taxonomic_browser div.in ul li.selected {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
-div.taxonomic_browser div.in ul li.selected div.text {margin:0 0 0 25px;}
-
-div.taxonomic_browser div.in ul li div.image {float:left; width:46px;}
-div.taxonomic_browser div.in ul li div.image img {width:41px; height:41px;}
-
-/* Column1 */
-/*div.taxonomic_browser div.in ul#column1 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#F0F0F0; border-left:1px solid #E0E0E0; border-right:1px solid #E0E0E0;}
-div.taxonomic_browser div.in ul#column1 li.first_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_unselected_first.png) no-repeat 0 0;}
-div.taxonomic_browser div.in ul#column1 li.last_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_unselected_last.png) no-repeat 0 0;}
-div.taxonomic_browser div.in ul#column1 li.selected_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected.png) no-repeat 0 0; border:none;}
-div.taxonomic_browser div.in ul#column1 li.selected_column1.first_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected_first.png) no-repeat 0 0;}
-div.taxonomic_browser div.in ul#column1 li.selected_column1.last_column1 {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_bkg_selected_last.png) no-repeat 0 0;}
-div.taxonomic_browser div.in ul#column1 li.selected_column1 div.text {margin:0 0 0 25px;}
-*/
-/* Column2 */
-/*div.taxonomic_browser div.in ul#column2 {float:left; width:312px; height:310px; overflow:auto; background-color:#F7F7F7}*/
-/*div.taxonomic_browser div.in ul#column2 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#F7F7F7; border:none;}
-div.taxonomic_browser div.in ul#column2 li.first_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_unselected_first.png); }
-div.taxonomic_browser div.in ul#column2 li.last_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_unselected_last.png); }
-div.taxonomic_browser div.in ul#column2 li.selected_column2 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
-div.taxonomic_browser div.in ul#column2 li.selected_column2 div.text {margin:0 0 0 25px;}
-*//* Column3 */
-/*div.taxonomic_browser div.in ul#column3 {float:left; width:312px; height:310px; overflow:auto; background-color:#FFFFFF}*/
-/*div.taxonomic_browser div.in ul#column3 li {float:left; width:294px; height:42px; padding:10px 0; overflow:hidden; position:relative; background-color:#FFFFFF; border:none;}
-div.taxonomic_browser div.in ul#column3 li.first_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_first.png); }
-div.taxonomic_browser div.in ul#column3 li.last_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_3_bkg_unselected_last.png); }
-div.taxonomic_browser div.in ul#column3 li.selected_column3 {float:left; width:293px; height:42px; padding:10px 0; overflow:hidden; background:url(../images/species/taxonomy_browser/li_2_bkg_selected.png); }
-div.taxonomic_browser div.in ul#column3 li.selected_column3 div.text {margin:0 0 0 25px;}*/
-
 /************** END -  TAXON_BROWSER *****************/
 
 div.main.species {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
