@@ -1,0 +1,183 @@
+.scroll-horizontal-pane {
+	float: left;
+}
+
+.single .jScrollPaneContainer {
+	width: auto !important; /* bug ?? */
+}
+
+.single .jScrollVPaneContainer {
+	width: auto !important; /* bug ?? */
+}
+
+
+.category .jScrollHPaneContainer {
+	clear: both;
+	margin-top: 5px;
+}
+
+.jScrollPaneContainer {
+	width:15px;
+	float:left;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	outline: none;
+/*	background-color:red;*/
+}
+
+.jScrollVPaneContainer {
+	width:15px;
+	float:left;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	outline: none;
+/*	background-color:red;*/
+}
+
+
+.jScrollHPaneContainer {
+	margin-bottom: 5px; /* hack because the margin of the original element is not aken into account */
+}
+
+.jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	left: 30px;
+	top: 0;
+	z-index: 5;
+	height: 100%;
+	background: red repeat-y !important;
+}
+
+.single .jScrollPaneTrack {
+	left: 0;
+}
+
+.jScrollHPaneContainer .jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	left: 6px !important;
+	bottom: 0px;
+	right: auto;
+	top: auto;
+	height: 15px !important;
+	width: 873px;
+	z-index: 5;
+}
+
+.jScrollPaneContainer .jScrollPaneDrag {
+	background-color:red;
+	position: absolute;
+	background: url(../images/taxonScrollBar_drag_middle.png) no-repeat 0 50%;
+	cursor: pointer;
+	overflow: hidden;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+
+jScrollVPaneContainer .jScrollPaneDrag {
+	background: url(../images/taxonScrollBar_drag_middle.png) no-repeat 0 50%;
+	position: absolute;
+	cursor: pointer;
+	overflow: hidden;
+	-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+
+
+.jScrollHPaneContainer .jScrollPaneTrack {
+	background: url(../images/species/taxonomy_browser/h_scrollbar.png) repeat-x !important;
+
+}
+
+.jScrollVPaneContainer .jScrollVPaneDrag {
+
+	background: url(../images/taxonScrollBar_drag_middle.png) no-repeat 0 0;
+	width:147px;
+	height:15px;
+}
+
+
+.jScrollHPaneContainer .jScrollPaneDrag {
+
+	background: url(../images/species/taxonomy_browser/h_bar.png) no-repeat !important;
+	width:147px;
+	height:15px;
+}
+
+.jScrollPaneDragTop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.jScrollPaneDragBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+a.jScrollArrowUp, a.jScrollArrowDown,
+a.jScrollArrowLeft, a.jScrollArrowRight {
+	display: block;
+	position: absolute;
+	z-index: 1;
+	text-indent: -2000px;
+	overflow: hidden;
+	height: 7px;
+	width: 7px;
+	background-repeat: no-repeat;
+}
+
+.category a.jScrollArrowUp, .category a.jScrollArrowDown {
+	left: 30px;
+}
+
+a.jScrollArrowUp, a.jScrollArrowDown {
+	left: 0;
+}
+
+a.jScrollArrowLeft, a.jScrollArrowRight {
+	bottom: 7px;
+}
+
+#homepage .jScrollHPaneContainer .jScrollPaneTrack,
+#homepage a.jScrollArrowLeft, #homepage a.jScrollArrowRight {
+	/*bottom: 8px;*/
+}
+
+a.jScrollArrowUp {
+	top: 0;
+	background-image: url(../images/species/taxonomy_browser/taxonScrollBar_drag_top.png);
+}
+
+a.jScrollArrowDown {
+	bottom: 0;
+	background-image: url(../images/species/taxonomy_browser/taxonScrollBar_drag_bottom.png);
+}
+
+a.jScrollArrowLeft {
+	left: 3px;
+	background-image: url(left.png);
+}
+
+a.jScrollArrowRight {
+	right: 0;
+	background-image: url(right.png);
+}
+
+.jScrollHPaneContainer .jScrollPaneDragLeft {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+.jScrollHPaneContainer .jScrollPaneDragRight {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+}

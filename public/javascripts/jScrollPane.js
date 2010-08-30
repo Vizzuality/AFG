@@ -1,7 +1,7 @@
 /* Copyright (c) 2009 Kelvin Luck (kelvin AT kelvinluck DOT com || http://www.kelvinluck.com)
- * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) 
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
- * 
+ *
  * See http://kelvinluck.com/assets/jquery/jScrollPane/
  * $Id: jScrollPane.js 90 2010-01-25 03:52:10Z kelvin.luck $
  */
@@ -52,7 +52,7 @@ $.fn.jScrollPane = function(settings)
 	settings = $.extend({}, $.fn.jScrollPane.defaults, settings);
 
 	var rf = function() { return false; };
-	
+
 	return this.each(
 		function()
 		{
@@ -64,7 +64,7 @@ $.fn.jScrollPane = function(settings)
 			var trackHeight;
 			var trackOffset = settings.topCapHeight;
 			var $container;
-			
+
 			if ($(this).parent().is('.jScrollPaneContainer')) {
 				$container = $(this).parent();
 				currentScrollPosition = settings.maintainPosition ? $this.position().top : 0;
@@ -82,16 +82,16 @@ $.fn.jScrollPane = function(settings)
 				paneWidth = $this.innerWidth();
 				paneHeight = $this.innerHeight();
 				$container = $('<div></div>')
-					.attr({'className':'jScrollPaneContainer'})
+					.attr({'className':'jScrollVPaneContainer'})
 					.css(
 						{
-							'height':paneHeight+'px', 
+							'height':paneHeight+'px',
 							'width':paneWidth+'px'
 						}
 					);
 				if (settings.enableKeyboardNavigation) {
 					$container.attr(
-						'tabindex', 
+						'tabindex',
 						settings.tabIndex
 					);
 				}
@@ -101,23 +101,23 @@ $.fn.jScrollPane = function(settings)
 				// and re-initialise the scrollPane so the track maintains the
 				// correct size
 				$(document).bind(
-					'emchange', 
+					'emchange',
 					function(e, cur, prev)
 					{
 						$this.jScrollPane(settings);
 					}
 				);
-				
+
 			}
 			trackHeight = paneHeight;
-			
+
 			if (settings.reinitialiseOnImageLoad) {
 				// code inspired by jquery.onImagesLoad: http://plugins.jquery.com/project/onImagesLoad
 				// except we re-initialise the scroll pane when each image loads so that the scroll pane is always up to size...
 				// TODO: Do I even need to store it in $.data? Is a local variable here the same since I don't pass the reinitialiseOnImageLoad when I re-initialise?
 				var $imagesToLoad = $.data(paneEle, 'jScrollPaneImagesToLoad') || $('img', $this);
 				var loadedImages = [];
-				
+
 				if ($imagesToLoad.length) {
 					$imagesToLoad.each(function(i, val)	{
 						$(this).bind('load readystatechange', function() {
@@ -131,10 +131,10 @@ $.fn.jScrollPane = function(settings)
 								$this.jScrollPane(s2); // re-initialise
 							}
 						}).each(function(i, val) {
-							if(this.complete || this.complete===undefined) { 
+							if(this.complete || this.complete===undefined) {
 								//needed for potential cached images
-								this.src = this.src; 
-							} 
+								this.src = this.src;
+							}
 						});
 					});
 				};
@@ -158,7 +158,7 @@ $.fn.jScrollPane = function(settings)
 
 			var contentHeight = $this.outerHeight();
 			var percentInView = paneHeight / contentHeight;
-			
+
 			var isScrollable = percentInView < .99;
 			$container[isScrollable ? 'addClass' : 'removeClass']('jScrollPaneScrollable');
 
@@ -166,22 +166,22 @@ $.fn.jScrollPane = function(settings)
 				$container.append(
 					$('<div></div>').addClass('jScrollCap jScrollCapTop').css({height:settings.topCapHeight}),
 					$('<div></div>').attr({'className':'jScrollPaneTrack'}).css({'width':settings.scrollbarWidth+'px'}).append(
-						$('<div></div>').attr({'className':'jScrollPaneDrag'}).css({'width':settings.scrollbarWidth+'px'}).append(
-							$('<div></div>').attr({'className':'jScrollPaneDragTop'}).css({'width':settings.scrollbarWidth+'px'}),
-							$('<div></div>').attr({'className':'jScrollPaneDragBottom'}).css({'width':settings.scrollbarWidth+'px'})
+						$('<div></div>').attr({'className':'jScrollVPaneDrag'}).css({'width':settings.scrollbarWidth+'px'}).append(
+							$('<div></div>').attr({'className':'jScrollVPaneDragTop'}).css({'width':settings.scrollbarWidth+'px'}),
+							$('<div></div>').attr({'className':'jScrollVPaneDragBottom'}).css({'width':settings.scrollbarWidth+'px'})
 						)
 					),
 					$('<div></div>').addClass('jScrollCap jScrollCapBottom').css({height:settings.bottomCapHeight})
 				);
-				
+
 				var $track = $('>.jScrollPaneTrack', $container);
-				var $drag = $('>.jScrollPaneTrack .jScrollPaneDrag', $container);
-				
-				
+				var $drag = $('>.jScrollPaneTrack .jScrollVPaneDrag', $container);
+
+
 				var currentArrowDirection;
 				var currentArrowTimerArr = [];// Array is used to store timers since they can stack up when dealing with keyboard events. This ensures all timers are cleaned up in the end, preventing an acceleration bug.
 				var currentArrowInc;
-				var whileArrowButtonDown = function() 
+				var whileArrowButtonDown = function()
 				{
 					if (currentArrowInc > 4 || currentArrowInc % 4 == 0) {
 						positionDrag(dragPosition + currentArrowDirection * mouseWheelMultiplier);
@@ -192,7 +192,7 @@ $.fn.jScrollPane = function(settings)
 				if (settings.enableKeyboardNavigation) {
 					$container.bind(
 						'keydown.jscrollpane',
-						function(e) 
+						function(e)
 						{
 							switch (e.keyCode) {
 								case 38: //up
@@ -216,7 +216,7 @@ $.fn.jScrollPane = function(settings)
 						}
 					).bind(
 						'keyup.jscrollpane',
-						function(e) 
+						function(e)
 						{
 							if (e.keyCode == 38 || e.keyCode == 40) {
 								for (var i = 0; i < currentArrowTimerArr.length; i++) {
@@ -229,7 +229,7 @@ $.fn.jScrollPane = function(settings)
 				}
 
 				if (settings.showArrows) {
-					
+
 					var currentArrowButton;
 					var currentArrowInterval;
 
@@ -251,8 +251,8 @@ $.fn.jScrollPane = function(settings)
 							$('<a></a>')
 								.attr(
 									{
-										'href':'javascript:;', 
-										'className':'jScrollArrowUp', 
+										'href':'javascript:;',
+										'className':'jScrollArrowUp',
 										'tabindex':-1
 									}
 								)
@@ -275,8 +275,8 @@ $.fn.jScrollPane = function(settings)
 							$('<a></a>')
 								.attr(
 									{
-										'href':'javascript:;', 
-										'className':'jScrollArrowDown', 
+										'href':'javascript:;',
+										'className':'jScrollArrowDown',
 										'tabindex':-1
 									}
 								)
@@ -300,7 +300,7 @@ $.fn.jScrollPane = function(settings)
 					var $upArrow = $('>.jScrollArrowUp', $container);
 					var $downArrow = $('>.jScrollArrowDown', $container);
 				}
-				
+
 				if (settings.arrowSize) {
 					trackHeight = paneHeight - settings.arrowSize - settings.arrowSize;
 					trackOffset += settings.arrowSize;
@@ -312,24 +312,24 @@ $.fn.jScrollPane = function(settings)
 				}
 				trackHeight -= settings.topCapHeight + settings.bottomCapHeight;
 				$track.css({'height': trackHeight+'px', top:trackOffset+'px'})
-				
+
 				var $pane = $(this).css({'position':'absolute', 'overflow':'visible'});
-				
+
 				var currentOffset;
 				var maxY;
 				var mouseWheelMultiplier;
 				// store this in a seperate variable so we can keep track more accurately than just updating the css property..
 				var dragPosition = 0;
 				var dragMiddle = percentInView*paneHeight/2;
-				
+
 				// pos function borrowed from tooltip plugin and adapted...
 				var getPos = function (event, c) {
 					var p = c == 'X' ? 'Left' : 'Top';
 					return event['page' + c] || (event['client' + c] + (document.documentElement['scroll' + p] || document.body['scroll' + p])) || 0;
 				};
-				
+
 				var ignoreNativeDrag = function() {	return false; };
-				
+
 				var initDrag = function()
 				{
 					ceaseAnimation();
@@ -338,7 +338,7 @@ $.fn.jScrollPane = function(settings)
 					maxY = trackHeight - $drag[0].offsetHeight;
 					mouseWheelMultiplier = 2 * settings.wheelSpeed * maxY / contentHeight;
 				};
-				
+
 				var onStartDrag = function(event)
 				{
 					initDrag();
@@ -376,13 +376,13 @@ $.fn.jScrollPane = function(settings)
 				{
 					positionDrag(getPos(e, 'Y') - currentOffset.top - dragMiddle);
 				};
-				
+
 				var dragH = Math.max(Math.min(percentInView*(paneHeight-settings.arrowSize*2), settings.dragMaxHeight), settings.dragMinHeight);
-				
+
 				$drag.css(
 					{'height':dragH+'px'}
 				).bind('mousedown', onStartDrag);
-				
+
 				var trackScrollInterval;
 				var trackScrollInc;
 				var trackScrollMousePos;
@@ -412,9 +412,9 @@ $.fn.jScrollPane = function(settings)
 					doTrackScroll();
 					return false;
 				};
-				
+
 				$track.bind('mousedown', onTrackClick);
-				
+
 				$container.bind(
 					'mousewheel',
 					function (event, delta) {
@@ -475,34 +475,34 @@ $.fn.jScrollPane = function(settings)
 					}
 				};
 				$this[0].scrollTo = scrollTo;
-				
+
 				$this[0].scrollBy = function(delta)
 				{
 					var currentPos = -parseInt($pane.css('top')) || 0;
 					scrollTo(currentPos + delta);
 				};
-				
+
 				initDrag();
-				
+
 				scrollTo(-currentScrollPosition, true);
-			
+
 				// Deal with it when the user tabs to a link or form element within this scrollpane
 				$('*', this).bind(
 					'focus',
 					function(event)
 					{
 						var $e = $(this);
-						
+
 						// loop through parents adding the offset top of any elements that are relatively positioned between
 						// the focused element and the jScrollPaneContainer so we can get the true distance from the top
 						// of the focused element to the top of the scrollpane...
 						var eleTop = 0;
-						
+
 						while ($e[0] != $this[0]) {
 							eleTop += $e.position().top;
 							$e = $e.offsetParent();
 						}
-						
+
 						var viewportTop = -parseInt($pane.css('top')) || 0;
 						var maxVisibleEleTop = viewportTop + paneHeight;
 						var eleInView = eleTop > viewportTop && eleTop < maxVisibleEleTop;
@@ -515,15 +515,15 @@ $.fn.jScrollPane = function(settings)
 						}
 					}
 				)
-				
-				
+
+
 				if (settings.observeHash) {
 					if (location.hash && location.hash.length > 1) {
 						setTimeout(function(){
 							scrollTo(location.hash);
 						}, $.browser.safari ? 100 : 0);
 					}
-					
+
 					// use event delegation to listen for all clicks on links and hijack them if they are links to
 					// anchors within our content...
 					$(document).bind('click', function(e){
@@ -538,18 +538,18 @@ $.fn.jScrollPane = function(settings)
 						}
 					});
 				}
-				
+
 				// Deal with dragging and selecting text to make the scrollpane scroll...
 				function onSelectScrollMouseDown(e)
 				{
-				   $(document).bind('mousemove.jScrollPaneDragging', onTextSelectionScrollMouseMove);
-				   $(document).bind('mouseup.jScrollPaneDragging',   onSelectScrollMouseUp);
-				  
+				   $(document).bind('mousemove.jScrollVPaneDragging', onTextSelectionScrollMouseMove);
+				   $(document).bind('mouseup.jScrollVPaneDragging',   onSelectScrollMouseUp);
+
 				}
-				
+
 				var textDragDistanceAway;
 				var textSelectionInterval;
-				
+
 				function onTextSelectionInterval()
 				{
 					direction = textDragDistanceAway < 0 ? -1 : 1;
@@ -563,7 +563,7 @@ $.fn.jScrollPane = function(settings)
 						textSelectionInterval = undefined;
 					}
 				}
-				
+
 				function onTextSelectionScrollMouseMove(e)
 				{
 					var offset = $this.parent().offset().top;
@@ -582,16 +582,16 @@ $.fn.jScrollPane = function(settings)
 				function onSelectScrollMouseUp(e)
 				{
 				   $(document)
-					  .unbind('mousemove.jScrollPaneDragging')
-					  .unbind('mouseup.jScrollPaneDragging');
+					  .unbind('mousemove.jScrollVPaneDragging')
+					  .unbind('mouseup.jScrollVPaneDragging');
 				   clearTextSelectionInterval();
 				}
 
 				$container.bind('mousedown.jScrollPane', onSelectScrollMouseDown);
 
-				
+
 				$.jScrollPane.active.push($this[0]);
-				
+
 			} else {
 				$this.css(
 					{
@@ -604,7 +604,7 @@ $.fn.jScrollPane = function(settings)
 				// clean up listeners
 				$this.parent().unbind('mousewheel').unbind('mousedown.jScrollPane').unbind('keydown.jscrollpane').unbind('keyup.jscrollpane');
 			}
-			
+
 		}
 	)
 };
@@ -655,13 +655,13 @@ $.fn.jScrollPane.defaults = {
 };
 
 // clean up the scrollTo expandos
-$(window)
+/*$(window)
 	.bind('unload', function() {
-		var els = $.jScrollPane.active; 
+		var els = $.jScrollPane.active;
 		for (var i=0; i<els.length; i++) {
 			els[i].scrollTo = els[i].scrollBy = null;
 		}
 	}
 );
-
+*/
 })(jQuery);

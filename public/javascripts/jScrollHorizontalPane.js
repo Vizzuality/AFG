@@ -1,41 +1,41 @@
 /*
  * Copyright (c) 2008 Threeformed Media (http://www.threeformed.com)
  * This is licensed under GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
- * 
- * 
+ *
+ *
  * *******
- * 
+ *
  * This plugin is derived in part from JScrollPane created by Kevin Luck(http://www.kelvinluck.com)
- * 
+ *
  * Copyright (c) 2006 Kelvin Luck (kelvin AT kelvinluck DOT com || http://www.kelvinluck.com)
- * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) 
+ * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
- * 
+ *
  * See http://kelvinluck.com/assets/jquery/jScrollPane/
  * $Id: jScrollPane.js 3125 2007-09-06 20:39:42Z kelvin.luck $
  */
 
 /**
- * Replace the default horizontal scroll bars on matched 
- * elements with a CSS styled veresion.  Very similar to the JScrollPane 
- * which does vertical scrolling, 2 features in particular have been added. 
- * 
+ * Replace the default horizontal scroll bars on matched
+ * elements with a CSS styled veresion.  Very similar to the JScrollPane
+ * which does vertical scrolling, 2 features in particular have been added.
+ *
  * 1) Intervals
  * 2) Resizing
- * 
- * 1) Intervals can be added by attaching a class type of "scroll-interval" to any 
+ *
+ * 1) Intervals can be added by attaching a class type of "scroll-interval" to any
  * element wrapped within the jscrollhorizontalpane context.  This provides
- * the following abilitiies: 
+ * the following abilitiies:
  * 			a) When dragging, it will snap to the closest element on release of dragger.
  * 			b) Mousewheel motions jump between intervals
  * 			c) Notches appear by default on the scrollbar, but can be overriden by css.
- * 
- * 2) Resizing Also occurs. When turned on, all widths are dealt in percentages, so on a 
+ *
+ * 2) Resizing Also occurs. When turned on, all widths are dealt in percentages, so on a
  * screen refresh, the scroller will resize itself based on it's initial percentage.
- * There are a ton of different circumstances that need to be accounted for, and i'm sure 
- * it's not meeting some people's expected behaviour so let me know about any problems or 
+ * There are a ton of different circumstances that need to be accounted for, and i'm sure
+ * it's not meeting some people's expected behaviour so let me know about any problems or
  * feature requests for that!  The resizing is done through the WResize plugin.
- * 
+ *
  *
  * @example jQuery(".scroll-pane").jScrollHorizontalPane();
  *
@@ -79,7 +79,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 {
 	settings = jQuery.extend(
 		{
-			scrollbarHeight : 10,
+			scrollbarHeight : 15,
 			scrollbarMargin : 5,
 			wheelSpeed : 18,
 			showArrows : false,
@@ -89,53 +89,53 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 			dragMaxWidth : 99999,
 			animateInterval : 100,
 			animateStep: 3,
-			maintainPosition: true, 
+			maintainPosition: true,
 			resize: true,
-			minimumWidth: 200,
+			minimumWidth: 137,
 			reset: false
 		}, settings
 	);
-	
+
 	return this.each(
 		function()
 		{
 			if(settings.reset == true) {
 				jQuery.fn.jScrollHorizontalPane.reset();
 			}
-			
+
 			//This holds each one of the intervals, defaulting with one at the beginning.
-			var $this = jQuery(this);			
+			var $this = jQuery(this);
 			var mouseWheelNext = 0;
 			var mouseWheelMove = false;
 			var currentId = $this.attr('id');
-			
+
 			if(currentId == undefined) {
 				currentId = $this.attr('class');
 			}
-			
+
 			var previousWindow = _jscr_previousWindowSize[currentId];
 			_jscr_originalPos[currentId] = -1;
 			_jscr_globalProperties[currentId] = settings;
-			_jscr_previousWindowSize[currentId] = $(window).width();
+			_jscr_previousWindowSize[currentId] = jQuery(window).width();
 
 			//On initial load, set values needed for percentage resizing.
-			if(_jscr_originalSizes[currentId] == undefined) {		
+			if(_jscr_originalSizes[currentId] == undefined) {
 
 				//ie6 hack, since jquery width doesnt get the right value on an inproper refresh
 				if((jQuery.browser.msie) && (parseInt(jQuery.browser.version) == 6)) {
 					var outerWidth = parseInt($this.outerWidth()) - parseInt($this.offset().left);
-					_jscr_differenceSizes[currentId] = $this.offset().left / $(window).width();
+					_jscr_differenceSizes[currentId] = $this.offset().left / jQuery(window).width();
 				} else {
 					var outerWidth = $this.outerWidth();
-					_jscr_differenceSizes[currentId] = $this.position().left / $(window).width();
+					_jscr_differenceSizes[currentId] = $this.position().left / jQuery(window).width();
 				}
 
-				percentageWidth = (outerWidth / $(window).width());			
+				percentageWidth = (outerWidth / jQuery(window).width());
 				_jscr_originalPercentages[currentId] = percentageWidth;
-				_jscr_originalSizes[currentId] = $(window).width();
-			} else { 
+				_jscr_originalSizes[currentId] = jQuery(window).width();
+			} else {
 				percentageWidth = _jscr_originalPercentages[currentId];
-				diff = _jscr_differenceSizes[currentId] - (($this.offset().left + _jscr_originalPos[currentId])/ $(window).width());
+				diff = _jscr_differenceSizes[currentId] - (($this.offset().left + _jscr_originalPos[currentId])/ jQuery(window).width());
 				percentageWidth = percentageWidth + diff;
 			}
 
@@ -145,24 +145,23 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 			_jscr_intervals[0] = 0;
 			margin = $this.position().left;
 			offset = 1;
-			
+
 			if(margin < 0) {
 				margin = 0;
 			}
-			
+
 			//Handles interval code
-			$(".scroll-interval", $this).each(
+			jQuery(".scroll-interval", $this).each(
 				function(i, elem) {
-					pos = $(elem).position().left - margin;
+					pos = jQuery(elem).position().left - margin;
 					if(pos != 0) {
 						_jscr_intervals[i+offset] = pos;
-					} else { 
+					} else {
 						offset--;
 					}
 				}
 			);
-				
-			if(_jscr_intervals.length <= 1) { 
+			if(_jscr_intervals.length <= 1) {
 				_jscr_intervals = new Array();
 			}
 
@@ -172,14 +171,14 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				var paneWidth = $c.outerWidth();
 				var paneHeight = $c.innerHeight();
 				var rightPos = $this.offset().left + _jscr_originalPos[currentId] + paneWidth;
-				
-				if((previousWindow != $(window).width()) && ((rightPos > $(window).width()) || (previousWindow < $(window).width())) && (settings.resize == true)) {
 
-					if($(window).width() >= _jscr_originalSizes[currentId]) {
-						paneWidth = ($(window).width() *  percentageWidth);
+				if((previousWindow != jQuery(window).width()) && ((rightPos > jQuery(window).width()) || (previousWindow < jQuery(window).width())) && (settings.resize == true)) {
+
+					if(jQuery(window).width() >= _jscr_originalSizes[currentId]) {
+						paneWidth = (jQuery(window).width() *  percentageWidth);
 					} else {
 						//Give the outside edge a 10 px buffer margin
-						paneWidth = $(window).width() - ($this.offset().left + _jscr_originalPos[currentId]) - 10;
+						paneWidth = jQuery(window).width() - ($this.offset().left + _jscr_originalPos[currentId]) - 10;
 					}
 
 					if(paneWidth < settings.minimumWidth){
@@ -187,22 +186,22 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					}
 
 					jQuery(this).parent().css(
-									{ 
-										'height':paneHeight+'px', 
+									{
+										'height':paneHeight+'px',
 										'width': paneWidth + 'px'
 									}
 								);
 				}
-				
+
 				var trackWidth = paneWidth;
 
 				if($c.unmousewheel) {
-						
-					if($.browser.opera) {
-						$c.unbind("mousewheel", fn = function() { });	
+
+					if(jQuery.browser.opera) {
+						$c.unbind("mousewheel", fn = function() { });
 					} else {
 						$c.unmousewheel();
-					}				
+					}
 				}
 
 				jQuery('>.jScrollPaneTrack, >.jScrollArrowLeft, >.jScrollArrowRight', $c).remove();
@@ -215,23 +214,23 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				var paneWidth = $this.outerWidth();
 				var rightPos = $this.offset().left + _jscr_originalPos[currentId] + paneWidth;
 
-				if((rightPos) > $(window).width()) { 
-					paneWidth = $(window).width() *  percentageWidth; 
+				if((rightPos) > jQuery(window).width()) {
+					paneWidth = jQuery(window).width() *  percentageWidth;
 				}
-				
+
 				if(paneWidth < settings.minimumWidth){
 					paneWidth = settings.minimumWidth;
 				}
-					
+
 				var paneHeight = $this.innerHeight();
 				var trackWidth = paneWidth;
-				
+
 				$this.wrap(
 					jQuery('<div></div>').attr(
-						{'className':'jScrollPaneContainer'}
+						{'className':'jScrollPaneContainer jScrollHPaneContainer'}
 					).css(
 						{
-							'height':paneHeight+'px', 
+							'height':paneHeight+'px',
 							'width':paneWidth+'px'
 						}
 					)
@@ -240,7 +239,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				// and re-initialise the scrollPane so the track maintains the
 				// correct size
 				jQuery(document).bind(
-					'emchange', 
+					'emchange',
 					function(e, cur, prev)
 					{
 						$this.jScrollHorizontalPane(settings);
@@ -248,26 +247,27 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				);
 			}
 			var p = this.originalSidePaddingTotal;
-			
-			$this.css(
-				{
+
+			$this.css({
 					'height': paneHeight - settings.scrollbarHeight - p + 'px',
 					'width': 'auto',
 					'paddingRight':settings.scrollbarMargin + 'px'
-				}
-			);
+			});
 
 			var contentWidth = $this.outerWidth();
 
 			//ie6 and 7, outside width does not always guarantee the full size of the div
 			//is returned for outerWidth
-			if($.browser.msie || $.browser.opera || $.browser.safari) {
+
+			/*
+			 if(jQuery.browser.msie || jQuery.browser.opera || jQuery.browser.safari) {
 				var ieWidth = 0;
 				$this.children().each(function(i, elem) { if($(elem).outerWidth() > ieWidth) { ieWidth = $(elem).outerWidth();}});
 				if(ieWidth > contentWidth) {
 					contentWidth = ieWidth;
-				}				
+				}
 			}
+			*/
 
 			var percentInView = paneWidth / contentWidth;
 			var trackIntervals = new Array();
@@ -283,35 +283,35 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 						)
 					)
 				);
-				
+
 				var $track = jQuery('>.jScrollPaneTrack', $container);
-			
+
 				//Attach the intervals to the track
-				for(inter in _jscr_intervals) { 
-					
-					if(settings.showArrows == true) { 
+				for(inter in _jscr_intervals) {
+
+					if(settings.showArrows == true) {
 						scrollOffset = settings.arrowSize;
-					} else { 
+					} else {
 						scrollOffset = 0;
 					}
 
 					intervalTrackPos = _jscr_intervals[inter] / contentWidth * $track.width() - (scrollOffset);
 					trackIntervals[inter] = intervalTrackPos;
-					
+
 					if(trackIntervals[inter - 1] != undefined) {
 						halfIntervals[inter-1] = (trackIntervals[inter] + trackIntervals[inter-1]) / 2;
 					}
-				
-					if(inter != 0) { 
+
+					if(inter != 0) {
 						interObj = jQuery('<div>|</div>').attr({'className':'jScrollIntervalTrack'}).css({'left':intervalTrackPos + 'px'})
 						$track.append(interObj);
 					}
 				}
 
 				var $drag = jQuery('>.jScrollPaneTrack .jScrollPaneDrag', $container);
-				
+
 				if (settings.showArrows) {
-					
+
 					var currentArrowButton;
 					var currentArrowDirection;
 					var currentArrowInterval;
@@ -338,20 +338,19 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 						whileArrowButtonDown();
 						currentArrowInterval = setInterval(whileArrowButtonDown, 100);
 					};
-					$container
-						.append(
+					$container.append(
 							jQuery('<a></a>')
 								.attr({'href':'javascript:;', 'className':'jScrollArrowLeft'})
 								.css({'width':settings.arrowSize+'px'})
 								.html('Scroll Left')
-								.bind('mousedown', function()
+							    .bind('mousedown', function()
 								{
-									currentArrowButton = jQuery(this);
-									currentArrowDirection = -1;
-									onArrowMouseDown();
-									this.blur();
-									return false;
-								}),
+								 currentArrowButton = jQuery(this);
+								 currentArrowDirection = -1;
+								 onArrowMouseDown();
+								 this.blur();
+								 return false;
+							    }),
 							jQuery('<a></a>')
 								.attr({'href':'javascript:;', 'className':'jScrollArrowRight'})
 								.css({'width':settings.arrowSize+'px'})
@@ -377,30 +376,30 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 							.css({'width': trackWidth +'px', left: leftArrowWidth+'px'})
 					}
 				}
-				
+
 				var $pane = jQuery(this).css({'position':'absolute', 'overflow':'visible'});
-				
+
 				var currentOffset;
 				var maxX;
 				var mouseWheelMultiplier;
-				
+
 				// store this in a seperate variable so we can keep track more accurately than just updating the css property..
 				var dragPosition = 0;
 				var dragMiddle = percentInView*paneWidth/2;
-				
+
 				// pos function borrowed from tooltip plugin and adapted...
 				var getPos = function (event, c) {
 					var p = c == 'X' ? 'Left' : 'Bottom';
 					return event['page' + c] || (event['client' + c] + (document.documentElement['scroll' + p] || document.body['scroll' + p])) || 0;
 				};
-				
+
 				var ignoreNativeDrag = function() {	return false; };
 				var currentInterval = 0;
 				var direction = 1;
 				var arrowUp = false;
 				var intervalMove = false;
 				_jscr_trackInt[currentId] = -1;;
-						
+
 				var initDrag = function()
 				{
 					ceaseAnimation();
@@ -409,7 +408,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					maxX = trackWidth - $drag[0].offsetWidth;
 					mouseWheelMultiplier = 2 * settings.wheelSpeed * maxX / contentWidth;
 				};
-				
+
 				var onStartDrag = function(event)
 				{
 					initDrag();
@@ -425,7 +424,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					jQuery('body').unbind('mouseup', onStopDrag).unbind('mousemove', updateScroll);
 					dragMiddle = percentInView*paneWidth/2;
 					moveIntervals();
-					
+
 					if (jQuery.browser.msie) {
 						jQuery('body').unbind('dragstart', ignoreNativeDrag).unbind('selectstart', ignoreNativeDrag);
 					}
@@ -443,82 +442,84 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					$pane.css({'left':((paneWidth-contentWidth)*p) + 'px'});
 					$this.trigger('scroll');
 				};
-				
+
 				var updateScroll = function(e)
 				{
 					positionDrag(getPos(e, 'X') - currentOffset.left - dragMiddle);
 				};
-				
-				var evaluateIntervals = function(position, destX) { 
-	
-					if((intervalMove == false) && (mouseWheelMove != true)) { 
+
+				var evaluateIntervals = function(position, destX) {
+
+					if((intervalMove == false) && (mouseWheelMove != true)) {
 							_jscr_trackInt[currentId] = -1;
 							halfInter = -1;
-							
+
 							smallInter = -1;
 							bigInter = -1;
-							
-							endDragPos = destX + $drag.width();
-							fullTrackWidth = $('.jScrollPaneTrack').width();
 
-							for(inter in trackIntervals) { 
+							endDragPos = destX + $drag.width();
+							//fullTrackWidth = $('.jScrollPaneTrack').width();
+							fullTrackWidth = jQuery('.jScrollPaneTrack').width();
+
+							for(inter in trackIntervals) {
 								if((endDragPos >= fullTrackWidth) && (endDragPos >= trackIntervals[inter])) {
 									_jscr_trackInt[currentId] = inter;
 								} else if(destX >= trackIntervals[inter]) {
 									smallInter = inter;
-								}	else { 
+								}	else {
 									bigInter = inter;
 									break;
 								}
-								
+
 							}
 
 							if(_jscr_trackInt[currentId] == -1) {
 								smallDistance = destX - trackIntervals[smallInter];
 								largeDistance = trackIntervals[bigInter] - destX;
-								
+
 								if(smallDistance <= largeDistance) {
 									_jscr_trackInt[currentId] = smallInter;
-								} else { 
+								} else {
 									_jscr_trackInt[currentId] = bigInter;
 								}
 							}
-					} else { 
+					} else {
 						intervalMove = false;
 					}
-	
+
 				}
-				
-				var moveIntervals = function() { 
-					if(_jscr_trackInt[currentId] != -1) { 
+
+				var moveIntervals = function() {
+					if(_jscr_trackInt[currentId] != -1) {
 						//Catching arrow clicks
-						if(arrowUp == true) { 
-							if((direction == -1) && (_jscr_trackInt[currentId] != 0)) { 
+						if(arrowUp == true) {
+							if((direction == -1) && (_jscr_trackInt[currentId] != 0)) {
 								_jscr_trackInt[currentId] = currentInterval - 1;
 							} else if((direction == 1) && (_jscr_trackInt[currentId] != (_jscr_intervals.length -1))) {
 								_jscr_trackInt[currentId] = parseInt(currentInterval) + 1;
 							}
 							arrowUp = false;
-						} 
-						
+						}
+
 						intervalMove = true;
 						positionDrag(trackIntervals[_jscr_trackInt[currentId]]);
 						currentInterval = _jscr_trackInt[currentId];
 					}
 				}
-				
+
 				var arrowSize = 0;
-				
+
 				if(settings.showArrows == true) {
 					arrowSize = settings.arrowSize;
-				} 
-				
+				}
+
+				//var dragH = Math.max(Math.min(percentInView*(paneWidth-arrowSize*2), settings.dragMaxWidth), settings.dragMinWidth);
 				var dragH = Math.max(Math.min(percentInView*(paneWidth-arrowSize*2), settings.dragMaxWidth), settings.dragMinWidth);
-				
+
 				$drag.css(
-					{'width':dragH+'px'}
+					{'width':'160px'}
 				).bind('mousedown', onStartDrag);
-				
+
 				var trackScrollInterval;
 				var trackScrollInc;
 				var trackScrollMousePos;
@@ -548,24 +549,24 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					trackScrollInterval = setInterval(doTrackScroll, 100);
 					doTrackScroll();
 				};
-				
+
 				$track.bind('mousedown', onTrackClick);
-				
+
 				// if the mousewheel plugin has been included then also react to the mousewheel
 				if ($container.mousewheel) {
 
 					$container.mousewheel (
 						function (event, delta) {
 							var movePos = -1;
-							
-							if($.browser.opera) {
-								delta = event.wheelDelta / 120;	
+
+							if(jQuery.browser.opera) {
+								delta = event.wheelDelta / 120;
 							}
 
 							//The following handles intervals with the mouse wheel
 							if(trackIntervals.length > 1) {
 								mouseWheelMove = true;
-										
+
 								//increase or decrease the interval we are currently on, depending
 								//on the direction of the mouse wheel
 								if(delta < 0) {
@@ -574,13 +575,13 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 									if((_jscr_trackInt[currentId]) >= trackIntervals.length - 1) {
 										_jscr_trackInt[currentId] = trackIntervals.length - 1;
 									}
-									
+
 									//If the next interval is beyond the dragWidth then recalculate.
 									if((parseInt($drag.width())+ parseInt(trackIntervals[_jscr_trackInt[currentId]])) > parseInt($('.jScrollPaneTrack').width())) {
 										movePos = parseInt($('.jScrollPaneTrack').width()) - $drag.width();
 									}
-									
-								} else { 
+
+								} else {
 									_jscr_trackInt[currentId] = parseInt(_jscr_trackInt[currentId]) - 1;
 									if(_jscr_trackInt[currentId] < 0) {
 										_jscr_trackInt[currentId] = 0;
@@ -591,7 +592,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 							initDrag();
 							ceaseAnimation();
 							var d = dragPosition;
-							
+
 							//when intervals are in use, mouseWheelMove is set to true
 							if(mouseWheelMove == true) {
 								if(movePos == -1) {
@@ -602,14 +603,14 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 							} else {
 								positionDrag(dragPosition - delta * mouseWheelMultiplier);
 							}
-							
+
 							moveIntervals();
 							var dragOccured = d != dragPosition;
 							mouseWheelMove = false;
 							return !dragOccured;
 						},
 						false
-					);					
+					);
 				}
 				var _animateToPosition;
 				var _animateToInterval;
@@ -617,7 +618,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				{
 
 					var diff = (_animateToPosition - dragPosition) / settings.animateStep;
-					
+
 					if ((diff > 1 || diff < -1) && ((dragPosition + diff + $drag.width()) < (paneWidth))) {
 						positionDrag(dragPosition + diff);
 					} else {
@@ -646,29 +647,29 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 					if (!preventAni || settings.animateTo) {
 						_animateToPosition = destDragPosition;
 						_animateToInterval = setInterval(animateToPosition, settings.animateInterval);
-		
+
 					} else {
 						positionDrag(destDragPosition);
-					}	
+					}
 				};
 				$this[0].scrollTo = scrollTo;
-				
+
 				$this[0].scrollBy = function(delta)
 				{
 					var currentPos = -parseInt($pane.css('left')) || 0;
 					scrollTo(currentPos + delta);
 				};
-				
+
 				initDrag();
-				
+
 				scrollTo(-currentScrollPosition, true);
-				
+
 				jQuery.jScrollHorizontalPane.active.push($this[0]);
 
 			} else {
 				var scrollTo = function(pos, preventAni) {}
 				$this[0].scrollTo = scrollTo;
-				
+
 				$this.css(
 					{
 						'height':paneHeight-this.originalSidePaddingTotal+'px',
@@ -678,7 +679,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 				);
 				// remove from active list?
 			}
-			
+
 		}
 	)
 };
@@ -697,76 +698,76 @@ jQuery.fn.jScrollHorizontalPane.reset = function() {
 // clean up the scrollTo expandos
 jQuery(window)
 	.bind('unload', function() {
-		var els = jQuery.jScrollHorizontalPane.active; 
+		var els = jQuery.jScrollHorizontalPane.active;
 		for (var i=0; i<els.length; i++) {
 			els[i].scrollTo = els[i].scrollBy = null;
 		}
 	}
 );
-	
-	
-/*   
-=============================================================================== 
-WResize is the jQuery plugin for fixing the IE window resize bug 
-............................................................................... 
-                                               Copyright 2007 / Andrea Ercolino 
-------------------------------------------------------------------------------- 
-LICENSE: http://www.opensource.org/licenses/mit-license.php 
-WEBSITE: http://noteslog.com/ 
 
-------------------------------------------------------------------------------- 
+
+/*
+===============================================================================
+WResize is the jQuery plugin for fixing the IE window resize bug
+...............................................................................
+                                               Copyright 2007 / Andrea Ercolino
+-------------------------------------------------------------------------------
+LICENSE: http://www.opensource.org/licenses/mit-license.php
+WEBSITE: http://noteslog.com/
+
+-------------------------------------------------------------------------------
 USAGE: (div is automatically resized when the window is resized)
-------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" style="overflow:hidden;"> 
-<head> 
-<title> test window resize </title> 
- 
-<script type="text/javascript" src="http://jquery.com/src/jquery-latest.pack.js"></script> 
-<script type="text/javascript" src="jquery.wresize.js"></script> 
- 
- 
-<script type="text/javascript"> 
-jQuery( function( $ )  
-{ 
-    function content_resize()  
-    { 
-        var w = $( window ); 
-        var H = w.height(); 
-        var W = w.width(); 
-        $( '#content' ).css( {width: W-20, height: H-20} ); 
-    } 
- 
-    $( window ).wresize( content_resize ); 
- 
-    content_resize(); 
-} ); 
-</script> 
- 
-</head> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow:hidden;">
+<head>
+<title> test window resize </title>
 
-<body> 
-  
-<div id="content" style="border: 1px dashed silver; position:absolute; overflow:auto;"> 
-test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test  
-</div> 
- 
-</body> 
+<script type="text/javascript" src="http://jquery.com/src/jquery-latest.pack.js"></script>
+<script type="text/javascript" src="jquery.wresize.js"></script>
+
+
+<script type="text/javascript">
+jQuery( function( $ )
+{
+    function content_resize()
+    {
+        var w = $( window );
+        var H = w.height();
+        var W = w.width();
+        $( '#content' ).css( {width: W-20, height: H-20} );
+    }
+
+    $( window ).wresize( content_resize );
+
+    content_resize();
+} );
+</script>
+
+</head>
+
+<body>
+
+<div id="content" style="border: 1px dashed silver; position:absolute; overflow:auto;">
+test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test
+</div>
+
+</body>
 </html>
 
-=============================================================================== 
-*/ 
- 
-( function( $ )  
-{ 
- 
+===============================================================================
+*/
+
+( function( $ )
+{
+
 	jQuery(function($) {
 		$( window ).wresize(resizeScroller);
-		
+
 		function resizeScroller() {
-		$('.scroll-pane').each(function(i, elem) { 	
-			
+		jQuery('.scroll-horizontal-pane').each(function(i, elem) {
+
 			if($(elem).attr('id') == undefined) {
 				id = $(elem).attr('class');
 			} else {
@@ -774,68 +775,68 @@ test test test test test test test test test test test test test test test test 
 			}
 			$(elem).jScrollHorizontalPane(_jscr_globalProperties[$(elem).attr('id')]);
 		});
-		}	
+		}
 	});
 
 
-    $.fn.wresize = function( f )  
-    { 
-        version = '1.1'; 
-        wresize = {fired: false, width: 0}; 
- 
-        function resizeOnce()  
-        { 
-            if ( $.browser.msie ) 
-            { 
-                if ( ! wresize.fired ) 
-                { 
-                    wresize.fired = true; 
-                } 
-                else  
-                { 
-                    var version = parseInt( $.browser.version, 10 ); 
-                    wresize.fired = false; 
-                    if ( version < 7 ) 
-                    { 
-                        return false; 
-                    } 
-                    else if ( version == 7 ) 
-                    { 
-                        //a vertical resize is fired once, an horizontal resize twice 
-                        var width = $( window ).width(); 
-                        if ( width != wresize.width ) 
-                        { 
-                            wresize.width = width; 
-                            return false; 
-                        } 
-                    } 
-                } 
+    $.fn.wresize = function( f )
+    {
+        version = '1.1';
+        wresize = {fired: false, width: 0};
+
+        function resizeOnce()
+        {
+            if ( jQuery.browser.msie )
+            {
+                if ( ! wresize.fired )
+                {
+                    wresize.fired = true;
+                }
+                else
+                {
+                    var version = parseInt( jQuery.browser.version, 10 );
+                    wresize.fired = false;
+                    if ( version < 7 )
+                    {
+                        return false;
+                    }
+                    else if ( version == 7 )
+                    {
+                        //a vertical resize is fired once, an horizontal resize twice
+                        var width = $( window ).width();
+                        if ( width != wresize.width )
+                        {
+                            wresize.width = width;
+                            return false;
+                        }
+                    }
+                }
             }
- 
-            return true; 
-        } 
- 
-        function handleWResize( e )  
-        { 
-			if ( resizeOnce() ) 
-            { 
-                return f.apply(this, [e]); 
-            } 
-        } 
- 
-        this.each( function()  
-        { 
-            if ( this == window ) 
-            { 
-                $( this ).resize( handleWResize ); 
-            } 
-            else 
-            { 
-                $( this ).resize( f ); 
-            } 
-        } ); 
- 
-        return this; 
-    }; 
- 
+
+            return true;
+        }
+
+        function handleWResize( e )
+        {
+			if ( resizeOnce() )
+            {
+                return f.apply(this, [e]);
+            }
+        }
+
+        this.each( function()
+        {
+            if ( this == window )
+            {
+                $( this ).resize( handleWResize );
+            }
+            else
+            {
+                $( this ).resize( f );
+            }
+        } );
+
+        return this;
+    };
+
 } ) ( jQuery );
