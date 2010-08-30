@@ -8,7 +8,7 @@ set :scm, :git
 # set :git_enable_submodules, 1
 set :git_shallow_clone, 1
 set :scm_user, 'ubuntu'
-set :repository,  "git@github.com:jatorre/AFG.git"
+set :repository, "git://github.com/jatorre/AFG.git"
 ssh_options[:forward_agent] = true
 set :keep_releases, 5
 set :branch, "production"
