@@ -425,9 +425,6 @@ div.right div.feature p.info {float:left; width:261px; margin:18px 0 0 0; font:n
 div.right div.feature p.info a {color:#0099CC; text-decoration:none; border-bottom:1px solid #0099CC !important; display:inline-block; vertical-align:top;}
 div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !important;}
 
-
-
-
 /* SPECIE */
 
 div.specie_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 bottom #008CB9;}
