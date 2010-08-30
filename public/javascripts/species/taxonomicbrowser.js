@@ -1,3 +1,4 @@
+var widthContent = "886px"
 var maxColumn = 1;
 var initDataLoaded = 0;
 var numBreadCrumbs = 0;
@@ -68,116 +69,137 @@ var columnWidth = 292;
 		
 		//add column or change data column
 		function addColumn(noColumn,data,taxonID) {
-
+			
 			var nextColumn = parseInt(noColumn)+1;
-
-			if (noColumn == 0){
-				makeHtmlList(nextColumn,data);
-				elementClicked = $('div.taxon_content div.in ul#column1 li').first();
-				clickColumnFunction(null,elementClicked);
-			}
-			else {
-				if ($('div.taxon_content div.in ul#column'+nextColumn).length==0) {					
-					maxColumn = nextColumn;
-					var posNextColumn = columnWidth*(nextColumn-1);
-					$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+			
+			// if (data.rank != "species"){
+				if (noColumn == 0){
 					makeHtmlList(nextColumn,data);
-				} else {					
-					clearColumn(nextColumn);
-					makeHtmlList(nextColumn,data);
-				}
-
-				// All the init data is not loaded 
-				if (initDataLoaded == 0) {
-					initDataLoaded = 1;
-					elementClicked = $('div.taxon_content div.in ul#column2 li').first();
+					elementClicked = $('div.taxon_content div.in ul#column1 li').first();
 					clickColumnFunction(null,elementClicked);
 				}
-			}
-		}
-		
-		function clickColumnFunction(event,element) {
-			// event.stopPropagation();
-			// event.preventDefault();
+				else {
+					if ($('div.taxon_content div.in ul#column'+nextColumn).length==0) {					
+						maxColumn = nextColumn;
+						var posNextColumn = columnWidth*(nextColumn-1);
 
-			var selectedColumn = getColumnID(element.parent().attr('id'));
-			var nextColumn = parseInt(selectedColumn) + 1;
-
-			var actual_index = element.index();
-
-			if (nextColumn > 3){
+						if (nextColumn > 3){
 							$('div.taxon_content div.in').css("width",(nextColumn*columnWidth)+10);
 						}
 						else {
-							$('div.taxon_content div.in').css("width","886px");
+							$('div.taxon_content div.in').css("width",widthContent);
 						}
-			
-			
-			var specie_selected = element.find('a.specie').text();
 
-			// If is necessary to delete the rest of elements
-			if (selectedColumn <= numBreadCrumbs) {
+						$('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
 
-				var numElementsToDelete = numBreadCrumbs - (selectedColumn - 1);
-				for (var i=0; i<numElementsToDelete; i++) {
-					$('div.taxon_content div.breadcrumbs ul li').last().remove();
-					numBreadCrumbs -= 1;
-				}
-			}
+						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+						makeHtmlList(nextColumn,data);
+					} else {					
+						clearColumn(nextColumn);
+						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+						makeHtmlList(nextColumn,data);
+					}
 
-			$('div.taxon_content div.breadcrumbs ul li').each(function(index) {
-
-				if ((parseInt($(this).index()) + 2 ==  selectedColumn)&&(selectedColumn != 1)) {
-					$(this).removeClass('actual');
-					var finalPosition = $(this).position().left + $(this).width() - 13;
-					var htmlBreadCrumbs = '<li class="actual" style="left:'+ finalPosition + 'px"><p><a id="bread'+ selectedColumn +'">' + specie_selected + '</a></p></li>';
-					$(this).parent().append(htmlBreadCrumbs);					
-					numBreadCrumbs += 1;
-				}
-
-		  	});
-
-			if (numBreadCrumbs == 0) {				
-				var htmlBreadCrumbs = '<li class="first actual" style="left:0px"><p><a id="bread0">' + specie_selected + '</a></p></li>';
-				$('div.taxon_content div.breadcrumbs ul').append(htmlBreadCrumbs);					
-				numBreadCrumbs += 1;	
-			}
-
-			// To show the line to divide each li
-			$('div.taxon_content div.in ul#column'+selectedColumn+' li').each(function(index) {
-			    if (index != actual_index) {
-					element.children('div.line').show();
+					// All the init data is not loaded 
+					if (initDataLoaded == 0) {
+						initDataLoaded = 1;
+						elementClicked = $('div.taxon_content div.in ul#column2 li').first();
+						clickColumnFunction(null,elementClicked);
+					}
 				}	
-		  	});
+			//}
+		}
+		
+		function clickColumnFunction(event,element) {			
+			// event.stopPropagation();
+			// event.preventDefault();
+			if (!element.hasClass('specie')){
+				var selectedColumn = getColumnID(element.parent().attr('id'));
+				var nextColumn = parseInt(selectedColumn) + 1;
 
-			// Hide the previous and actual line to divide
-			if (actual_index != 0) {
-				$('ul#column'+selectedColumn+' li').eq(actual_index-1).children('div.line').hide();
-				$('ul#column'+selectedColumn+' li').eq(actual_index).children('div.line').hide();
-			}
+				var actual_index = element.index();
 
-			if (!element.hasClass('active'+selectedColumn)) {
-				removePreviousSelected(selectedColumn);
+				var specie_selected = element.find('a.specie').text();
 
-				element.addClass('active');
-				
-				showActiveBkgBar(selectedColumn,actual_index,element);
-				
-				element.find('a.bttn_add').css('display','none');
+				// If is necessary to delete the rest of elements
+				if (selectedColumn <= numBreadCrumbs) {
 
-				element.children().children('h3').css("color","#0099CC");
-				getData(element.attr('id'),selectedColumn);
+					var numElementsToDelete = numBreadCrumbs - (selectedColumn - 1);
+					for (var i=0; i<numElementsToDelete; i++) {
+						$('div#taxon_browser div.breadcrumbs ul li').last().remove();
+						numBreadCrumbs -= 1;
+					}
+				}
+
+				$('div#taxon_browser div.breadcrumbs ul li').each(function(index) {
+
+					if ((parseInt($(this).index()) + 2 ==  selectedColumn)&&(selectedColumn != 1)) {
+
+						$(this).removeClass('actual');
+						var finalPosition = $(this).position().left + $(this).width() - 13;
+						var htmlBreadCrumbs = '<li class="actual" style="left:'+ finalPosition + 'px"><p><a id="bread'+ selectedColumn +'">' + specie_selected + '</a></p></li>';					
+						$(this).parent().append(htmlBreadCrumbs);					
+						numBreadCrumbs += 1;
+					}
+
+			  	});
+
+				if (numBreadCrumbs == 0) {				
+					var htmlBreadCrumbs = '<li class="first actual" style="left:0px"><p><a id="bread0">' + specie_selected + '</a></p></li>';
+					$('#taxon_browser div.breadcrumbs ul').append(htmlBreadCrumbs);					
+					numBreadCrumbs += 1;	
+				}
+
+				// To show the line to divide each li
+				$('div.taxon_content div.in ul#column'+selectedColumn+' li').each(function(index) {
+				    if (index != actual_index) {
+						element.children('div.line').show();
+					}	
+			  	});
+
+				// Hide the previous and actual line to divide
+				if (actual_index != 0) {
+					$('ul#column'+selectedColumn+' li').eq(actual_index-1).children('div.line').hide();
+					$('ul#column'+selectedColumn+' li').eq(actual_index).children('div.line').hide();
+				}
+
+				if (!element.hasClass('active'+selectedColumn)) {
+					removePreviousSelected(selectedColumn);
+
+					element.addClass('active');
+
+					showActiveBkgBar(selectedColumn,actual_index);
+
+					element.find('a.bttn_add').css('display','none');
+
+					element.children().children('h3').css("color","#0099CC");
+					getData(element.attr('id'),selectedColumn);
+				}
 			}
 		}
 		
 		// end clickColumnFunction
 		//clear all previous column
 		function clearColumn(actualColumn) {
-			for (var i=actualColumn; i<=maxColumn; i++) {
-				$('ul#column'+i).html('');
-				// $('ul#column'+i).jScrollPaneRemove();
+		
+			for (var i=maxColumn; i>=actualColumn; i--) {
+				$('div.taxon_content div.in ul').last().remove();
 			}
+			
+			// Cleaning the actives bar
+			for (var i=maxColumn; i>=actualColumn; i--) {
+				$('#bkg_column'+i).css("display","none");
+			}
+			
 			maxColumn = actualColumn;
+			
+			if (maxColumn > 3){
+				$('div.taxon_content div.in').css("width",(maxColumn*columnWidth)+10);
+			}
+			else {
+				$('div.taxon_content div.in').css("width",widthContent);
+			}
+
 		}
 		
 		//get column id
@@ -195,7 +217,8 @@ var columnWidth = 292;
 		
 		//create html for the new column
 		function makeHtmlList(column,result) {
-			var list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a href="#" class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line"></div>';
+			
+			var list_item = '';
 			var html = '';
 
 			// Is the first column -> We have kingdoms
@@ -207,35 +230,76 @@ var columnWidth = 292;
 			else {
 				
 				for(var i=0; i<result.length; i++) {
-					if ((result[i].common_name!= null) && (result[i].picture != null)) {
-						// alert('llega al último');
-					} 
+					
+					var isSpecie = 0;
+					
 					var li = document.createElement("li");
-
+					
+					if (result[i].picture != null) {						
+						isSpecie = 1;
+						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p><a href="#" class="add">add</a></p></div> <div class="line"></div>';
+					}else {
+						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a href="#" class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line"></div>';
+					}
+					
 					$(li).append(list_item);
-
+					
+					if (isSpecie == 1){
+						$(li).children('div.image').css("display","inline");
+						$(li).children('div.image').children('img').attr("src",result[i].picture);
+					}
+					
 					if (result[i].name.length > 28) {
 						result[i].name = result[i].name.substring(0,25) + "...";
 					}
 
 					$(li).children('div.text').children('h3').children('a').text(result[i].name);
-					// URL del TAXON?
-
+					
 					if (result[i].url != null) {
 						$(li).children('div.text').children('h3').children('a').attr("href",result[i].url);	
 					}
 					else {
 						$(li).children('div.text').children('h3').children('a').attr("href","/");	
 					}
-
+					var htmlText = "";
+					// If is not added
 					if (result[i].add_url != null) {
-						$(li).children('div.text').children('p').children('a.add').attr("href", result[i].add_url); 
+						
+						if (isSpecie == 1){
+							if (result[i].common_name != null){
+								htmlText = result[i].common_name;
+							}
+							else {
+								htmlText = result[i].name;
+							}
+							htmlText = htmlText + ', <a class="add" href="'+ result[i].add_url+'">add</a>'; 
+							$(li).children('div.text').children('p').html(htmlText);
+						}
+						else {
+							$(li).children('div.text').children('p').children('strong').text(result[i].count);
+							$(li).children('div.text').children('p').children('a.add').attr("href", result[i].add_url); 
+						}
+
 					}
 					else {
-						$(li).children('div.text').children('p').children('a.add').attr("href", "/"); 
+						$(li).children('div.text').children('p').children('a.add').text("");
+						$(li).children('div.text').children('p').children('a.add').css("display","none");
+						
+						if (isSpecie == 1){
+							if (result[i].common_name != null){
+								htmlText = result[i].common_name + ', added';
+							}else {
+								htmlText = result[i].name + ', added';
+							}
+							
+						}else {
+							htmlText = '<strong>'+ result[i].count + '</strong> species, added';  
+						}
+						
+						$(li).children('div.text').children('p').html(htmlText);
 					}
 
-					$(li).children('div.text').children('p').children('strong').text(result[i].count);
+					
 					$(li).attr('id',result[i].id);
 
 					// if (i == 0) {
@@ -243,12 +307,15 @@ var columnWidth = 292;
 					// }else if (i+1 == result.length){
 					// 	$(li).attr('class','last_column'+column);
 					// }
+					if (isSpecie == 1){
+						html = html+'<li id="'+$(li).attr('id')+'" class="specie">'+$(li).html()+'</li>';
+					}else {
+						html = html+'<li id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
+					}
 					
-					html = html+'<li id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
 				}			
 			}
 			
-			console.log(html);
 			if (column > 2){
 				$('ul#column'+ column).addClass('any_column');
 			}
@@ -262,29 +329,33 @@ var columnWidth = 292;
 
 		}
 		
-		function showActiveBkgBar (column,row,element){
+		function showActiveBkgBar (column,row,element){			
 			
+			$('div.taxon_content div.in').append('<div id="bkg_column'+ column +'" class="active_column"></div>');
 			
+			var posColumn = (292 * column);
+			$('#bkg_column'+column).css("left", posColumn +'px')
+			$('#bkg_column'+column).css("display","inline");			
 			
-			console.log('columna ' +column+ 'row '+ row + 'element ' + element.html());
 			var posRow = (60 * row) + 1;
 			$('#bkg_column'+column).css("top", posRow +'px')
 			$('#bkg_column'+column).css("display","inline");
 			
 			var nextColumnToDelete = parseInt(column) + 1;
 			$('#bkg_column'+nextColumnToDelete).css("display","none");
-			// Para el left:
-			// left: 292px no de columna 
 		}
 		
-		$('div.breadcrumbs ul li p a').live('click',function(event){
-
+		$('div#taxon_browser div.breadcrumbs ul li p a').live('click',function(event){
 			var id_Element = $(this).attr('id');
 			var numOfBread = parseInt($(this).attr('id').substring(5,id_Element.length));
+
+			if (numOfBread != 0) {
+				numOfBread--;
+			} 
 			var offset = numOfBread * columnWidth;
 			offset += 'px';
-
-			$('div.in').delay(250).scrollTo(offset,{axis:'x'});
+			
+			$('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 		}); // end click function
 
 	}
