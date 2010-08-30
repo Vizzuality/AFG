@@ -1006,8 +1006,8 @@ div.main.error form.report input[type="submit"]:hover {background-position:0 -34
 
 
 /*NO IE SUPPORTED */
-div.main.error div.noie {float:left; background:url(../images/noie/bkg_noie.jpg) no-repeat 0 0; width:409px; height:372px; margin:0; padding:0;}
-
+div.main.noie {float:left; background-color:white; width:896px; height:372px; margin:0; padding:0;}
+div.main.noie 
 /*div.main.error.noie {}
 div.main.error.noie div.bkg_header {float:left; width:409px; height:372px;  }
 div.main.error.noie div.info {position:absolute; top:50px; left:409px; width:525px; height:220px;}
