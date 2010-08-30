@@ -18,8 +18,10 @@
   <div class="field">
     <%= f.label :name, "Scientific name" %><br />
     <%= f.text_field :name, :size => 50, :value => @species.full_name %>
-    <p><em>Imported name from data files</em></p>
-    <p><a href="javascript:void(null)" onclick="window.location.href='<%= url_for(:action => 'update_uid_and_taxon', :id => @species.id) %>'+'?name='+$('#species_name').val();">update gbifKey and taxonomy</a></p>
+    <% unless @species.new_record? %>
+      <p><em>Imported name from data files</em></p>
+      <p><a href="javascript:void(null)" onclick="window.location.href='<%= url_for(:action => 'update_uid_and_taxon', :id => @species.id) %>'+'?name='+$('#species_name').val();">update gbifKey and taxonomy</a></p>
+    <% end -%>
   </div>  
   <div class="field">
     <%= f.label :highlighted %>
