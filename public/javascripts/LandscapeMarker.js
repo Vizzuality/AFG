@@ -46,7 +46,7 @@ LandscapeMarker = OpenLayers.Class({
 				
 				$(this.icon.imageDiv).css('background','url(../images/map/landscape_bkg.png) no-repeat 0 0');
 				$(this.icon.imageDiv).children().hide();
-				$(this.icon.imageDiv).append('<a href="#" class="open" style="position:relative; float:left; width:100%; height:57px; "><img src="'+this.icon.url+'" style="position:relative; margin:5px 0 0 6px; width:70px; height:47px" /></a><div class="infowindow"><a href="#" class="close"></a><h1>'+this.info.name+'</h1><p class="star zero"><span><img alt="star" src="/images/common/gray_star.png" />'+ this.info.guides_count+'</span></p> <a href="'+ this.info.add_url +'" class="add">Add this guide</a></div>');
+				$(this.icon.imageDiv).append('<a href="#" class="open" style="position:relative; float:left; width:100%; height:57px; "><img src="'+this.icon.url+'" style="position:relative; margin:5px 0 0 6px; width:70px; height:47px" /></a><div class="infowindow"><a href="#" class="close"></a><h1>'+this.info.name+'</h1><p class="star zero"><span><img alt="star" src="/images/common/gray_star.png" />'+ this.info.guides_count+'</span></p> <a href="'+ this.info.add_url +'" class="add">Add to your guide</a></div>');
 				
 				if (this.info.guides_count!=0) {
 					$(this.icon.imageDiv).find('p.star span img').attr('src','/images/common/pink_star.png');
@@ -57,7 +57,7 @@ LandscapeMarker = OpenLayers.Class({
 				if (this.info.add_url == null || this.info.add_url == "") {
 					$(this.icon.imageDiv).find('a.add').addClass('src','disabled');
 					$(this.icon.imageDiv).find('a.add').removeAttr('href');
-					$(this.icon.imageDiv).find('a.add').text('Already added');
+					$(this.icon.imageDiv).find('a.add').text('Already added to your guide');
 				}
 				
 				

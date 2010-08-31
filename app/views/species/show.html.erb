@@ -50,7 +50,7 @@
   <div class="left"> 
 		<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
     <h3>Species information</h3> 
-    <p class="subtitle">More information that maybe could be useful for you</p> 
+    <!-- <p class="subtitle">More information that maybe could be useful for you</p>  -->
     <% unless @species.size.blank? %>
       <label>Size</label> 
       <p><%= @species.size %></p> 
@@ -62,7 +62,7 @@
   </div> 
   <% unless @species.pictures.empty? %>
   <div class="right"> 
-    <h3>Photos & Videos</h3> 
+    <h3>Photos</h3> 
     <ul>
       <% @species.pictures.each do |picture| %>
       <li><a href="javascript: void openBigImage()"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a></li> 
@@ -71,7 +71,7 @@
   </div>
   <% else %>
   <div class="right">
-    <h3>Photos & Videos</h3> 
+    <h3>Photos</h3> 
   </div>
   <% end -%>
 </div>
