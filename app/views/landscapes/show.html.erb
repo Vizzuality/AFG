@@ -44,7 +44,6 @@
 <% unless @landscape.pictures.empty? %>
 <div class="main landscape_pictures">
   <h3>Pictures</h3> 
-  <p class="subtitle">Here are some pictures taken from <%= link_to('panoramio', "http://www.panoramio.com/") %></p>
   <ul>
     <% @landscape.pictures.each do |picture| %>
     <li><a href="javascript: void openBigImage()"><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>" id="<%= picture.id %>" /></a></li>
