@@ -67,7 +67,7 @@
       </div>
 		</a>
       <p class="info">
-        <%= truncate(@featured_species.description, :length => 200, :omission => "...#{link_to('Learn more', species_path(@featured_species))}") %>
+        <%= truncate(@featured_species.description, :length => 200, :omission => raw("...#{link_to('Learn more', species_path(@featured_species))}")) %>
       </p>
     </div> <!-- .feature -->
     <% end -%>

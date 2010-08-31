@@ -44,7 +44,7 @@
 		</a>
         <span class="shadow"></span>
       </div>
-      <p class="info"><%= truncate(@featured_landscape.description, :length => 200, :omission => "...#{link_to('Learn more', landscape_path(@featured_landscape))}") %></p>
+      <p class="info"><%= truncate(@featured_landscape.description, :length => 200, :omission => raw("...#{link_to('Learn more', landscape_path(@featured_landscape))}")) %></p>
     </div> 
   </div>
 </div>
