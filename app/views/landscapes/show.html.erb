@@ -35,7 +35,7 @@
         <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@landscape) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@landscape) %>"></a> 
       </div>
       <div class="img_specie">
-        <img src="<%= @landscape.picture ? @landscape.picture.image.url(:large) : @landscape.default_picture(:large) %>" alt="<%= @landscape.name %>" title="<%= @landscape.name %>" id="<%= @landscape.picture ? @landscape.picture.id : nil %>">
+		<img src="/api/maps/static_map?landscape_id=<%=@landscape.id%>">
       </div> 
     </div>
   </div>
