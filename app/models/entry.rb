@@ -64,13 +64,13 @@ class Entry < ActiveRecord::Base
       case element_type
         when 'Species'
           Species.increment_counter(:guides_count, element_id.to_i)
-          Guide.increment_counter(:species_count, guide_id)
+          guide.update_attribute(:species_count, guide.species.size)
         when 'Landscape'
           Landscape.increment_counter(:guides_count, element_id.to_i)
           Guide.increment_counter(:landscapes_count, guide_id)
         when 'Kingdom'
           species = Species.complete.find_all_by_kingdom(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -82,7 +82,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Phylum'
           species = Species.complete.find_all_by_phylum(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -94,7 +94,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Class'
           species = Species.complete.find_all_by_t_class(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -106,7 +106,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Order'
           species = Species.complete.find_all_by_t_order(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -118,7 +118,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Family'
           species = Species.complete.find_all_by_family(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -130,7 +130,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Genus'
           species = Species.complete.find_all_by_genus(element_id)
-          guide.update_attribute(:species_count, guide.species_count + species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.increment(:guides_count)
             s.save
@@ -147,13 +147,13 @@ class Entry < ActiveRecord::Base
       case element_type
         when 'Species'
           Species.decrement_counter(:guides_count, element_id.to_i)
-          Guide.decrement_counter(:species_count, guide_id)
+          guide.update_attribute(:species_count, guide.species.size)
         when 'Landscape'
           Landscape.decrement_counter(:guides_count, element_id.to_i)
           Guide.decrement_counter(:landscapes_count, guide_id)
         when 'Kingdom'
           species = Species.complete.find_all_by_kingdom(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
@@ -164,7 +164,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Phylum'
           species = Species.complete.find_all_by_phylum(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
@@ -175,7 +175,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Class'
           species = Species.complete.find_all_by_t_class(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
@@ -186,7 +186,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Order'
           species = Species.complete.find_all_by_t_order(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
@@ -197,7 +197,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Family'
           species = Species.complete.find_all_by_family(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save
@@ -208,7 +208,7 @@ class Entry < ActiveRecord::Base
           end
         when 'Genus'
           species = Species.complete.find_all_by_genus(element_id)
-          guide.update_attribute(:species_count, guide.species_count - species.size)
+          guide.update_attribute(:species_count, guide.species.size)
           species.each do |s|
             s.decrement(:guides_count)
             s.save

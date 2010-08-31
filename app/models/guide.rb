@@ -25,7 +25,7 @@ class Guide < ActiveRecord::Base
   validates_presence_of :author, :if => Proc.new{ |guide| guide.published? }
   validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
 
-  has_many :entries, :order => 'created_at DESC'
+  has_many :entries, :order => 'created_at DESC', :dependent => :destroy
   
   scope :published,       where("published = ?", true)
   scope :highlighted,     published.where("highlighted = ?", true)
@@ -101,7 +101,7 @@ class Guide < ActiveRecord::Base
         guide.entries.map do |entry|
           entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
         end.compact
-    end
+    end    
     update_attribute(:last_action, "#{element_type}##{element_id}")
     entry
   end

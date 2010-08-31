@@ -28,6 +28,7 @@ class Landscape < ActiveRecord::Base
   before_validation :set_permalink, :set_the_geom
   
   before_save :expire_cache
+  after_destroy :remove_entries
   
   attr_accessor :latitude, :longitude
   
@@ -172,4 +173,9 @@ class Landscape < ActiveRecord::Base
         self.permalink = temporal_permalink
       end
     end
+    
+    def remove_entries
+      Entry.where(:element_type => self.class.name, :element_id => self.id.to_s).all.each{ |e| e.destroy }
+    end
+    
 end

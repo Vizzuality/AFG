@@ -64,6 +64,7 @@ class Species < ActiveRecord::Base
   
   before_create :set_uid, :get_taxon, :set_complete 
   after_create :get_occurrences
+  after_destroy :remove_entries
   
   before_save :set_complete, :propagate_taxon
 
@@ -317,6 +318,10 @@ class Species < ActiveRecord::Base
           taxonomy.update_attribute(:parents, parents.to_yaml)
         end
       end
+    end
+    
+    def remove_entries
+      Entry.where(:element_type => self.class.name, :element_id => self.id.to_s).all.each{ |e| e.destroy }
     end
   
 end
