@@ -482,9 +482,9 @@ div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
 div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
-div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 0px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
-div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:0 0 4px 0;}
+div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; margin:24px 0 0 0; padding:0 0 4px 0;}
 div.main.specie div label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:30px 0 4px 0;}
 div.main.specie div p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
 
@@ -597,7 +597,7 @@ div.landscape_header div.right div.img_specie {float:right; background:url(../im
 div.landscape_header div.right div.img_specie img {width:260px; height:190px;}
 
 div.main.landscape_pictures {position:relative; background:white; padding:21px 21px 30px; width:894px;}
-div.main.landscape_pictures h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.main.landscape_pictures h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 24px;}
 div.main.landscape_pictures p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.landscape_pictures p.subtitle a {color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 1px 0; border-bottom:1px solid white;}
 div.main.landscape_pictures p.subtitle a:hover {border-bottom:1px solid #0099CC;}
@@ -608,6 +608,7 @@ div.main.landscape_pictures span.line {position:absolute; width:960px; height:1p
 
 div.main.landscape_species {background:white; padding:21px 21px 50px; width:894px;}
 div.main.landscape_species h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
+div.main.landscape_species p.no_info{color: #666; float: left; font: normal normal normal 13px/normal 'Lucida Grande'; line-height: 17px; padding: 0px 0px 13px; width: 100%;}
 div.main.landscape_species p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.landscape_species p.subtitle a {color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 1px 0; border-bottom:1px solid white;}
 div.main.landscape_species p.subtitle a:hover {border-bottom:1px solid #0099CC;}

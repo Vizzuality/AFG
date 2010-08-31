@@ -44,6 +44,7 @@
 <% unless @landscape.pictures.empty? %>
 <div class="main landscape_pictures">
   <h3>Pictures</h3> 
+
   <ul>
     <% @landscape.pictures.each do |picture| %>
     <li><a href="javascript: void openBigImage()"><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>" id="<%= picture.id %>" /></a></li>
@@ -56,8 +57,10 @@
 <div class="main landscape_species">
   <h3>Species near this place</h3> 
   <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p>
-  
-  <% @landscape.species_kingdoms.each do |k, count| %>
+  <% if @landscape.species.empty? %>
+	<p class="no_info">Sorry, we did not find any kind of species around 50 square kilometers</p>
+  <%else%>
+	<% @landscape.species_kingdoms.each do |k, count| %>
   <h5><%= k.upcase %></h5>
   <ul>
     <% @landscape.species(:conditions => ["kingdom = '#{k}'"]).each do |species| %>
@@ -83,6 +86,8 @@
     <p>viewing from <strong>1 to 8 of 32</strong></p>
   </div>
   <% end -%>
+  <% end -%>	
+
   
 </div>
 
