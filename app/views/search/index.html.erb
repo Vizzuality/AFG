@@ -14,13 +14,12 @@
   
   <div class="left"> 
     <div class="results"> 
-      <% if params[:q].blank? %>
-      <% else %>
         <h1>
         <% if params[:type] %>
         <%= pluralize(@results.total_entries, params[:type]) %> found for "<%= params[:q] %>"        
         <% else %>
-        <%= pluralize(@results.total_entries, 'result', 'results') %> found for "<%= params[:q] %>"
+        <% if params[:q].blank? %><% else %><%= pluralize(@results.total_entries, 'result', 'results') %> found 
+      for "<%= params[:q] %>"<% end -%>
         <% end -%>
         </h1>
         <ul>
@@ -85,7 +84,6 @@
           <p>viewing from <strong><%= @results.current_page*@results.per_page - @results.per_page + 1 %> to <%= (@results.current_page*@results.per_page < @results.total_entries ? @results.current_page*@results.per_page : @results.total_entries) %> of <%= @results.total_entries %></strong></p>
         </div><!-- .pagination -->
         <% end -%>
-      <% end -%>
     </div> 
   </div> 
 
