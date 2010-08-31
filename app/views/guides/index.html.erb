@@ -1,8 +1,8 @@
 <div class="outer_layout"> 
   <div class="guides_header"> 
     <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-    <p class="title">Most popular Antarctic Field Guides</p> 
-    <p class="by">choose one of this guides if you don't want to create yours from scratch</p> 
+    <p class="title">Featured Antarctic Field Guides</p> 
+    <p class="by">we have prepared some special guides that you can download directly or use as a template</p> 
     <ul>
       <% Guide.highlighted.limit(4).each_with_index do |guide,index| %>
         <li class="<%= index==3 ? 'last' : ''  %> highlighted"><%= render guide %></li>

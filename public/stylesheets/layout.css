@@ -1032,6 +1032,7 @@ div.footer div.in p.source_image {float:right; font:bold 12px Arial; color:#9999
  
 
 /* STATS */
+div.stats.white {float:left; margin:15px 0 0 0;}
 div.stats.white p.species_rank {color:white;}
 div.stats.white p.landscapes_rank {color:white;}
 div.stats span {float:left; width:10px; height:40px; background:none;}

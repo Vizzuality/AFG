@@ -27,7 +27,7 @@
       <div class="right"> 
         <div class="data_info"> 
           <p class="downloads_data"><span><%=pluralize(@guide.downloads_count,"DOWNLOADS")%></span></p>
-          <p class="download"><a href="<%= download_pdf_guide_url(@guide) %>">or download it</a></p>
+
         </div> 
 				<div class="stats white">
 					<span class="<%= @guide.species_count %>" title="specie"></span>
@@ -36,7 +36,6 @@
 				  <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'LANDSCAPE') %></p>
 				</div>
         <%= simple_format(@guide.description, :class => 'info_guide') %>
-      
         <a class="download_guide" href="<%= download_pdf_guide_url(@guide) %>"> 
           <p class="title">download this guide</p> 
           <p class="size">(<%= @guide.pages_count %> pages, <%= number_to_human_size(@guide.size_in_bytes) %> approx.)</p>
