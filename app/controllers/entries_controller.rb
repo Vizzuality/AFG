@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
   
   def create
     @entry = @current_guide.add_entry(params[:type], params[:id])
-    flash[:notice] = if @entry.is_a?(Array)
+    notice = if @entry.is_a?(Array)
       "#{@entry.size} entries added to your guide <a class=\"undo\" href=\"#{undo_guide_path(@current_guide)}\">(undo)</a>"
     else
       case @entry.element_type
@@ -30,6 +30,7 @@ class EntriesController < ApplicationController
   ensure
     respond_to do |format|
       format.html do
+        flash[:notice] = notice
         url = if @entry.is_a?(Array)
           guide_path(Guide.find_by_id(params[:id]))
         else
@@ -44,7 +45,24 @@ class EntriesController < ApplicationController
         end
         redirect_to url
       end
-      format.js
+      format.js do
+        flash.now[:notice] = notice
+        set_current_guide
+        render :update do |page|
+          page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
+          page << "$('#add_to_guide').html('<span class=\"included\"></span>');"
+          page << "$('#pop_up').html('#{render :inline => '<%= pop_up_flash %>'}')";
+          if !@entry.is_a?(Array) && @entry.element.respond_to?(:guides_count)
+            page << "$('#times_added').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
+          end
+          page << <<-JS
+          var pop_up_width = parseInt($('div.pop_up').width())/2;
+        	$('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
+        	$('#pop_up').show();
+        	$('#pop_up').delay(3000).fadeOut();
+JS
+        end
+      end
     end
   end
 

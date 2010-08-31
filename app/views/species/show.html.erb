@@ -23,13 +23,15 @@
       <%= simple_format(@species.distinguishing_characters) %>
       
 			<div class="added_cont">
+			  <div id="add_to_guide">
 	      <% if !@current_guide.include_species?(@species) %>
-	        <%= link_to('Add to your guide', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide') %>
+	        <%= link_to('Add to your guide', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide ajax') %>
 	      <% else %>
 	        <span class="included"></span>
 	      <% end %>
+	      </div>
 	      <% if @species.guides_count > 0 %>
-	        <p class="times_added <%= @current_guide.include_species?(@species) ? 'included' : 'waiting'%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
+	        <p id="times_added" class="times_added <%= @current_guide.include_species?(@species) ? 'included' : 'waiting'%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
 	      <% end -%>
 			</div>
     </div> 

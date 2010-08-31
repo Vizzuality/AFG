@@ -23,12 +23,14 @@
       <% end -%>
       <h3>Description</h3> 
       <%= simple_format(@landscape.description) %>
+      <div id="add_to_guide">
       <% if !@current_guide.include_landscape?(@landscape) %>
-        <%= link_to('Add to your guide', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'add_guide') %>
+        <%= link_to('Add to your guide', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'add_guide ajax') %>
       <% else %>
         <span class="included"></span>
       <% end %>
-      <p class="times_added <%= @current_guide.include_landscape?(@landscape) ? 'included' : ''%>"><%= pluralize(@landscape.guides_count, 'time', 'times') %> added</p> 
+      </div>
+      <p id="times_added" class="times_added <%= @current_guide.include_landscape?(@landscape) ? 'included' : ''%>"><%= pluralize(@landscape.guides_count, 'time', 'times') %> added</p> 
     </div> 
     <div class="right"> 
       <div class="share_this"> 
@@ -85,8 +87,7 @@
     <p>viewing from <strong>1 to 8 of 32</strong></p>
   </div>
   <% end -%>
-  <% end -%>	
-
+  <% end -%>
   
 </div>
 
