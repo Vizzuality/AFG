@@ -1,7 +1,7 @@
 <% unless params[:q] %>
-<h1>Listing Guides</h1>
+<h1>Listing Published Guides</h1>
 <% else %>
-<h1>Listing Guides related to '<%= params[:q] %>'</h1>
+<h1>Listing Published Guides related to '<%= params[:q] %>'</h1>
 <p>Found <%= pluralize(@guides.size, 'result', 'results') %></p>
 <% end -%>
 
