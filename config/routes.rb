@@ -34,6 +34,7 @@ AFG::Application.routes.draw do |map|
   namespace :admin do
     resources :landscapes
     resources :taxonomies
+    resources :guides
     resources :species, :except => [:show] do
       member do
         get :update_uid_and_taxon

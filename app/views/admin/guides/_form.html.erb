@@ -1,0 +1,36 @@
+<%= form_for(@guide, :url => (@guide.new_record? ? admin_guides_path : admin_guide_path(@guide.id))) do |f| %>
+  <% if @guide.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guide.errors.count, "error") %> prohibited this guide from being saved:</h2>
+
+      <ul>
+      <% @guide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.text_field :author, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 8, :cols => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :highlighted %>
+    <%= f.check_box :highlighted  %>
+    <p><em><small>If a guide is highlighted it will appear on the home page</small></em></p>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

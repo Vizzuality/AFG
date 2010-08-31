@@ -1,0 +1,39 @@
+<% unless params[:q] %>
+<h1>Listing Guides</h1>
+<% else %>
+<h1>Listing Guides related to '<%= params[:q] %>'</h1>
+<p>Found <%= pluralize(@guides.size, 'result', 'results') %></p>
+<% end -%>
+
+<ul class="families">
+  <% if params[:q] %>
+  <li><%= link_to('Back to index', admin_guides_path) %></li>
+  <% end -%>
+</ul>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th class="long">Name</th>
+	<th>Author</th>
+    <th class="long">Description</th>
+    <th class="long"></th>
+  </tr>
+
+<% @guides.each do |guide| %>
+  <tr class="<%= cycle('', 'even') %>">
+    <td><%= guide.id %></td>
+    <td><%= link_to "#{guide.name}", edit_admin_guide_path(guide.id) %></td>
+    <td class="long"><%= truncate(guide.author, :length => 100) %></td>
+	<td class="long"><%= truncate(guide.description, :length => 100) %></td>
+    <td>
+    <%= link_to 'Show', guide_path(guide) %> · 
+    <%= link_to 'Edit', edit_admin_guide_path(guide.id) %> · 
+    <%= link_to 'Destroy', admin_guide_path(guide), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate(@guides) %>
+
+<br />
