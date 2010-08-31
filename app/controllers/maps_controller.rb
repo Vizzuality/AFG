@@ -87,7 +87,7 @@ class MapsController < ApplicationController
       end
     end
     img = rvg.draw
-    img.format = 'jpg'#IMAGE_FORMAT
+    img.format = IMAGE_FORMAT
     return img
   end
   

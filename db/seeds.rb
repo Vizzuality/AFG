@@ -89,7 +89,7 @@ s.save
 
 # Point 1
 p = Point.from_x_y(0, -77)
-l = Landscape.new :name => 'Antartic Zone'
+l = Landscape.new :name => 'Antarctic Zone'
 l.description = "All the antartic, just for tests"
 l.featured = true
 l.the_geom = p

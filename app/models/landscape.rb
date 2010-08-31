@@ -80,16 +80,25 @@ class Landscape < ActiveRecord::Base
   1.upto(4) do |i|
     define_method "image#{i}_url=".to_sym do |*args|
       value = args.first
-      return if value.blank?
+      return if new_record?
       original_image_url = read_attribute("image#{i}_url".to_sym)
       write_attribute("image#{i}_url".to_sym, value)
-      LandscapePicture.transaction do
+      if value.blank?
         if picture = pictures.find_by_original_image_url(original_image_url)
           picture.destroy
         end
-        picture = pictures.new :original_image_url => value
-        picture.image = open(value)
-        picture.save
+        return
+      end
+      LandscapePicture.transaction do
+        begin
+          if picture = pictures.find_by_original_image_url(original_image_url)
+            picture.destroy
+          end
+          picture = pictures.new :original_image_url => value
+          picture.image = open(value)
+          picture.save
+        rescue
+        end
       end
     end
   end

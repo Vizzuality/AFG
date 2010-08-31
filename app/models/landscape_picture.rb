@@ -18,6 +18,15 @@ class LandscapePicture < ActiveRecord::Base
   
   belongs_to :landscape
   
-  has_attached_file :image, :styles => { :small => "70x47#", :medium => "168x110#", :large => "247x158#", :huge => "896x381#" }  
+  has_attached_file :image, :styles => { :small => "70x47#", :medium => "168x110#", :large => "247x158#", :huge => "896x381#" },
+      :path => ":rails_root/public/system/:attachment/:id/:style/:normalized_file_name",
+      :url => "/system/:attachment/:id/:style/:normalized_file_name"  
   
+  Paperclip.interpolates :normalized_file_name do |attachment, style|
+    attachment.instance.normalized_file_name
+  end
+
+  def normalized_file_name
+    "#{self.id}-#{self.landscape_id}.jpg"
+  end
 end

@@ -1,0 +1,22 @@
+#test_absolute_single_quotes {
+  /* test absolute path single quotes */
+  background: url(/images/test.png?<%= abs_time %>);
+  /* test absolute path no quotes */
+  background: url(/images/test.png?<%= abs_time %>);
+  /* test absolute path double quotes */
+  background: url(/images/test.png?<%= abs_time %>);
+  /* test missing file  */
+  background: url(/images/noimage.png);
+  /* test relative path no quotes */
+  background: url(images/test.png?<%= rel_time %>);
+  /* test relative path single quotes quotes */
+  background: url(images/test.png?<%= rel_time %>);
+  /* test relative path with existing query string */
+  background: url(images/test.png?1234567890);
+  /* test relative path with existing query string (multiple) */
+  background: url(images/test.png?1234567890&test=1);
+  /* test remote asset quotes */
+  background: url(http://test.com/images/test.png);
+  /* test remote asset no quotes */
+  background: url(http://test.com/images/test.png);
+}

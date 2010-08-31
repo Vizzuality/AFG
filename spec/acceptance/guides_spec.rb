@@ -97,14 +97,14 @@ feature "Guides of species" do
     page.find(:css, "a#publish_and_download").click
 
     fill_in('Author', :with => 'Fernando Blat')
-    fill_in('Description', :with => "In this guide I have planned my trip to the Antartic")
+    fill_in('Description', :with => "In this guide I have planned my trip to the Antarctic")
     click("Publish and download")
     
     page.should have_css("li", :text => "Name can't be blank")
     
     fill_in('Name', :with => 'Macanudo penguins')
     fill_in('Author', :with => 'Fernando Blat')
-    fill_in('Description', :with => "In this guide I have planned my trip to the Antartic")
+    fill_in('Description', :with => "In this guide I have planned my trip to the Antarctic")
     click("Publish and download")
     
     assert_equal 1, Guide.count
