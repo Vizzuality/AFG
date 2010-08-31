@@ -21,4 +21,4 @@ AFG::Application.configure do
   config.active_support.deprecation = :log 
 end
 
-DOMAIN = 'http://localhost:3001'
+DOMAIN = 'http://localhost:3000'
