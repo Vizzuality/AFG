@@ -181,7 +181,9 @@
           </div>
   
           <div class="right">
-            <div class="map" style="background:url(/api/maps/static_map?species_id=<%= species.id %>) no-repeat center center"></div>
+            <div class="map">
+              <img src="<%= DOMAIN %>/api/maps/static_map?species_id=<%= species.id %>" />
+            </div>
             <div class="info">
               <h3>Size</h3>
               <%= simple_format(species.size) %>
@@ -224,7 +226,9 @@
           </div>
   
           <div class="right">
-            <div class="map" style="background:url(/api/maps/static_map?landscape_id=<%= lanscape.id %>) no-repeat center center"></div>
+            <div class="map">
+              <img src="<%= DOMAIN %>/api/maps/static_map?landscape_id=<%= lanscape.id %>"></div>
+            </div>
             <div class="info">
               <h3>Species near this place</h3>
               <ul>
