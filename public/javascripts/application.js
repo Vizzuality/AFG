@@ -202,28 +202,28 @@ function openPublish() {
 // Showing the image
 function openBigImage() {
 	alert('open Big Image');
-	$.get("/guides/update/current", { reset: "true"} );
-		$('#publish_container').html(modal_publish);
-		$('#publish_container').modal(
-			{closeHTML: '<a class="modalCloseImg" title="Close"></a>',
-				onOpen: function (dialog) {
-							 	dialog.overlay.fadeIn('slow', function () {
-									dialog.data.hide();
-									dialog.container.fadeIn('slow', function () {
-										dialog.data.fadeIn('slow');
-									});
-								});
-							 },
-			onClose: 	function (dialog) {
-									dialog.data.fadeOut('fast', function () {
-										dialog.container.hide('fast', function () {
-											dialog.overlay.fadeOut('fast', function () {
-												$.modal.close();
-											});
-										});
-									});
-								}
-		});
+	// $.get("/guides/update/current", { reset: "true"} );
+	// 	$('#publish_container').html(modal_publish);
+	// 	$('#publish_container').modal(
+	// 		{closeHTML: '<a class="modalCloseImg" title="Close"></a>',
+	// 			onOpen: function (dialog) {
+	// 						 	dialog.overlay.fadeIn('slow', function () {
+	// 								dialog.data.hide();
+	// 								dialog.container.fadeIn('slow', function () {
+	// 									dialog.data.fadeIn('slow');
+	// 								});
+	// 							});
+	// 						 },
+	// 		onClose: 	function (dialog) {
+	// 								dialog.data.fadeOut('fast', function () {
+	// 									dialog.container.hide('fast', function () {
+	// 										dialog.overlay.fadeOut('fast', function () {
+	// 											$.modal.close();
+	// 										});
+	// 									});
+	// 								});
+	// 							}
+	// 	});
 }
 
 function firstStep(type) {
@@ -311,8 +311,8 @@ function secondStep() {
 			$('div.choice div.type').addClass('finished');
 			$('div.choice div.type img').remove();
 			$('div.choice div.type').append('<img class="image" src="" /><img class="ok" src="/images/modal/ok.png" />');
-			$('div.choice div.info h5').text('Your Anctartic Field Guide is ready to download');
-			$('div.choice div.info p').text('If your download doesn’t start in five seconds, click the download button');
+			$('div.choice div.info h5').text('Your Anctartic Field Guide is ready');
+			$('div.choice div.info p').text("The file you are about to download is a PDF. If you dont't have a reader, use this one.");
 			$('div.choice div.info a').removeClass('disabled');
 	  }
    });
