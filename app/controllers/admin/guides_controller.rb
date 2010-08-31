@@ -6,9 +6,9 @@ class Admin::GuidesController < ApplicationController
   
   def index    
     @guides = if params[:q]
-      Guide.find_by_term(params[:q])
+      Guide.find_by_term(params[:q]).where(:published =>true)
     else
-      Guide
+      Guide.where(:published =>true)
     end
     @guides = @guides.paginate(:per_page => 20, :page => params[:page])
     respond_to do |format|
