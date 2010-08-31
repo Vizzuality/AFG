@@ -36,7 +36,7 @@
                 <% unless result.common_name.blank? %>
                 <p class="subtitle">Common name - <%= result.common_name %></p>
                 <% end -%>
-                <p class="description"><%= truncate(result.description, :length => 50, :omission => raw("...#{link_to('View more', species_path(result))}")) %></p>
+                <p class="description"><%= raw(truncate(result.description, :length => 50, :omission => "...#{link_to('View more', species_path(result))}")) %></p>
               </div>
             </li>
             <% elsif result.is_a?(Guide) %>
@@ -52,7 +52,7 @@
               <div class="information">
                 <h2><%= link_to(result.name, guide_path(result)) %></h2>
                 <p class="subtitle">by <%= result.author %>, <%= result.updated_at.strftime("%dth %B %Y") %></p>
-                <p class="description"><%= truncate(result.description, :length => 50, :omission => raw("...#{link_to('View more', guide_path(result))}")) %></p>
+                <p class="description"><%= raw(truncate(result.description, :length => 50, :omission => "...#{link_to('View more', guide_path(result))}")) %></p>
               </div>
             </li>
             <% elsif result.is_a?(Landscape) %>
@@ -67,7 +67,7 @@
               </div>
               <div class="information">
                 <h2><%= link_to(result.name, landscape_path(result)) %></h2>
-                <p class="description"><%= truncate(result.description, :length => 50, :omission => raw("...#{link_to('View more', landscape_path(result))}")) %></p>
+                <p class="description"><%= raw(truncate(result.description, :length => 50, :omission => "...#{link_to('View more', landscape_path(result))}")) %></p>
               </div>
             </li>
             <% end -%>
