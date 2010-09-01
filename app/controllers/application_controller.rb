@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'application'
@@ -13,7 +15,8 @@ class ApplicationController < ActionController::Base
   protected
   
     def set_current_guide
-      @current_guide = Guide.find_or_create_by_session_id(session['session_id'])
+      session['afg_session_id'] ||= Digest::SHA1.hexdigest(Time.now.to_s + rand(9999).to_s + request.remote_ip.to_s)
+      @current_guide = Guide.find_or_create_by_session_id(session['afg_session_id'])
       @entries = @current_guide.entries.paginate :page => params[:entry_page], :per_page => 5
     end
     
