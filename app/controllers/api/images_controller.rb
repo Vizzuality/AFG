@@ -2,6 +2,8 @@ class Api::ImagesController < ApplicationController
   
   def show
     pictures = nil
+    species = nil
+    landscape = nil
     if params[:species_id]
       species = Species.find_by_id(params[:species_id])
       render :text => "Species not found with id #{params[:species_id]}" and return unless species
@@ -19,7 +21,7 @@ class Api::ImagesController < ApplicationController
       {
         :id => picture.id,
         :url => picture.image.url(:huge),
-        :description => picture.description
+        :description => params[:species_id] ? picture.description : landscape.description_for_picture(picture.original_image_url)
       }
     end
     

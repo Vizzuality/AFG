@@ -11,7 +11,6 @@
 #  image_updated_at   :datetime        
 #  created_at         :datetime        
 #  updated_at         :datetime        
-#  description        :text            
 #
 
 class LandscapePicture < ActiveRecord::Base
@@ -29,4 +28,13 @@ class LandscapePicture < ActiveRecord::Base
   def normalized_file_name
     "#{self.id}-#{self.landscape_id}.jpg"
   end
+  
+  after_create :propagate_image_descriptions
+  
+  def propagate_image_descriptions
+    debugger
+    puts
+  end
+  
+  
 end

@@ -10,7 +10,7 @@ gem 'nofxx-georuby', :require => 'geo_ruby'
 gem 'ruby-debug'
 # ruby-debug para Ruby 1.9.2, cambiar por gem 'ruby-debug' si se utiliza Ruby 1.8.x
 # gem 'ruby-debug19', :require => 'ruby-debug'
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
+gem "will_paginate", "~> 3.0.pre2"
 gem 'fastercsv'
 gem 'pdfkit'
 gem 'nokogiri'
@@ -26,5 +26,5 @@ group :test do
   gem 'launchy'
   gem 'capybara'
   gem 'webrat'
-  gem 'database_cleaner', :git => "http://github.com/bmabey/database_cleaner.git"
+  gem 'database_cleaner', :tag => 'v0.5.2'
 end

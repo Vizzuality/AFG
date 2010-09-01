@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830161414) do
+ActiveRecord::Schema.define(:version => 20100901174840) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20100830161414) do
     t.column "image_updated_at", :datetime
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
-    t.column "description", :text
   end
 
   add_index "landscape_pictures", ["landscape_id"], :name => "index_landscape_pictures_on_landscape_id"
@@ -86,6 +85,10 @@ ActiveRecord::Schema.define(:version => 20100830161414) do
     t.column "source_link", :string
     t.column "source_name", :string
     t.column "the_geom", :point, :srid => 4326, :null => false
+    t.column "image1_description", :text
+    t.column "image2_description", :text
+    t.column "image3_description", :text
+    t.column "image4_description", :text
   end
 
   add_index "landscapes", ["featured"], :name => "index_landscapes_on_featured"
