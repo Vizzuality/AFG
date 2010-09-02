@@ -35,7 +35,12 @@ var clickOnHref = 0;
 		// To get the event and redirect correctly to new page
 		$('div.taxon_content div.in ul li div.text a.specie').live('click', function (event) {
 			clickOnHref = 1;
-		});	
+		});
+		// To get the event and redirect correctly to new page
+		$('div.taxon_content div.in ul li div.text a.add').live('click', function (event) {
+			clickOnHref = 2;
+		});
+		
 		
 		// Call for data
 		function getData(taxonID,columnID) {
@@ -182,6 +187,10 @@ var clickOnHref = 0;
 					element.children().children('h3').css("color","#0099CC");
 					getData(element.attr('id'),selectedColumn);
 				}
+			}
+			else if (clickOnHref == 2){ 
+				clickOnHref = 0;
+				setTimeout (clickColumnFunction(event,element),2500);
 			}
 		}
 		
