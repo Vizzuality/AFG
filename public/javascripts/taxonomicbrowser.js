@@ -247,9 +247,9 @@ var clickOnHref = 0;
 					
 					if (result[i].picture != null) {						
 						isSpecie = 1;
-						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p><a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
+						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p id="species_'+result[i].id+'"><a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
 					}else {
-						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
+						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a class="bttn_add"></a><p id="taxonomy_'+result[i].id+'"><strong></strong> species, <a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
 					}
 					
 					$(li).append(list_item);

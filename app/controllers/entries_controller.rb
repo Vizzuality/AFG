@@ -72,6 +72,20 @@ class EntriesController < ApplicationController
         	$('#pop_up').show();
         	$('#pop_up').delay(3000).fadeOut();
 JS
+          if @taxonomy
+            page << <<-JS
+            if(document.getElementById("taxonomy_#{@taxonomy.id}")) {
+              $('#taxonomy_#{@taxonomy.id}').html('<strong>#{@taxonomy.species_count}</strong> species, added');
+            }
+JS
+          end
+          if @species
+            page << <<-JS
+            if(document.getElementById("species_#{@species.id}")) {
+              $('#species_#{@species.id}').html('added');
+            }
+JS
+          end
         end
       end
     end
@@ -125,6 +139,21 @@ $('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
 $('#pop_up').show();
 $('#pop_up').delay(3000).fadeOut();
 JS
+
+          if @taxonomy
+            page << <<-JS
+            if(document.getElementById("taxonomy_#{@taxonomy.id}")) {
+              $('#taxonomy_#{@taxonomy.id}').html('<strong>#{@taxonomy.species_count}</strong> species, <a href="#{create_entry_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name)}" class="add" data-remote="true">add</a>');
+            }
+JS
+          end
+          if @species
+            page << <<-JS
+            if(document.getElementById("species_#{@species.id}")) {
+              $('#species_#{@species.id}').html('<a href="#{create_entry_path(:type => 'Species', :id => @species.id)}" class="add" data-remote="true">add</a>');
+            }
+JS
+          end
         end
       end
     end
