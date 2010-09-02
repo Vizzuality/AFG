@@ -49,11 +49,22 @@ class EntriesController < ApplicationController
         flash.now[:notice] = notice
         set_current_guide
         render :update do |page|
+          partial = case @entry.element_type
+            when 'Species'
+              @species = @entry.element
+              'species/add_to_guide'
+            when 'Landscape'
+              @landscape = @entry.element
+              'landscapes/add_to_guide'
+            else
+              @taxonomy = @entry.element
+              'species/add_taxonomy_to_guide'
+          end
           page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
-          page << "$('#add_to_guide').html('<span class=\"included\"></span>');"
+          page << "$('#add_to_guide_#{@entry.element.class.name.downcase}').html('#{escape_javascript(render(:partial => partial))}');"
           page << "$('#pop_up').html('#{render :inline => '<%= pop_up_flash %>'}')";
           if !@entry.is_a?(Array) && @entry.element.respond_to?(:guides_count)
-            page << "$('#times_added').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
+            page << "$('#times_added_#{@entry.element.class.name.downcase}').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
           end
           page << <<-JS
           var pop_up_width = parseInt($('div.pop_up').width())/2;
@@ -69,7 +80,7 @@ JS
   def destroy
     @entry = @current_guide.entries.find(params[:id])
     @entry.destroy
-    flash[:notice] = case @entry.element_type
+    notice = case @entry.element_type
       when 'Species'
         "#{@entry.element.name} removed successfully"
       when 'Landscape'
@@ -82,10 +93,39 @@ JS
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'The entry you are trying to remove does not exist'
   ensure
-    @entries = @current_guide.entries.paginate :page => params[:entry_page]
     respond_to do |format|
       format.html do
+        flash[:notice] = notice
         redirect_to :back
+      end
+      format.js do
+        flash.now[:notice] = notice
+        set_current_guide
+        render :update do |page|
+          partial = case @entry.element_type
+            when 'Species'
+              @species = @entry.element
+              'species/add_to_guide'
+            when 'Landscape'
+              @landscape = @entry.element
+              'landscapes/add_to_guide'
+            else
+              @taxonomy = @entry.element
+              'species/add_taxonomy_to_guide'
+          end
+          page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
+          page << "$('#add_to_guide_#{@entry.element.class.name.downcase}').html('#{escape_javascript(render(:partial => partial))}');"
+          page << "$('#pop_up').html('#{render :inline => '<%= pop_up_flash %>'}')";
+          if !@entry.is_a?(Array) && @entry.element.respond_to?(:guides_count)
+            page << "$('#times_added_#{@entry.element.class.name.downcase}').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
+          end
+          page << <<-JS
+var pop_up_width = parseInt($('div.pop_up').width())/2;
+$('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
+$('#pop_up').show();
+$('#pop_up').delay(3000).fadeOut();
+JS
+        end
       end
     end
   end

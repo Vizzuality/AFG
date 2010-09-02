@@ -1,0 +1,5 @@
+<% if !@current_guide.include_landscape?(@landscape) %>
+  <%= link_to('Add to your guide', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'add_guide ajax') %>
+<% else %>
+  <span class="included"></span>
+<% end %>

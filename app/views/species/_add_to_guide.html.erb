@@ -1,0 +1,5 @@
+<% if !@current_guide.include_species?(@species) %>
+  <%= link_to('Add to your guide', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'add_guide ajax') %>
+<% else %>
+  <span class="included"></span>
+<% end %>

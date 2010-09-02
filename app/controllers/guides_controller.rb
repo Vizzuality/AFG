@@ -91,7 +91,7 @@ class GuidesController < ApplicationController
         @current_guide.update_attribute(:session_id, nil)
       end
       
-      pdf_path = @current_guide.generate_pdf!(session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
+      pdf_path = @current_guide.generate_pdf!(request.fullpath, session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
       
       render :text => {:href => pdf_path, :url => guide_path(@current_guide)}.to_json, :status => 200 and return
     end

@@ -164,7 +164,7 @@ class Guide < ActiveRecord::Base
     end
   end
   
-  def generate_pdf!(checklist = false)
+  def generate_pdf!(request_fullpath, checklist = false)
     dir = "#{Rails.root}/public/pdfs"
     FileUtils.mkdir(dir) unless File.directory?(dir)
     filename = if self.published?
@@ -176,7 +176,7 @@ class Guide < ActiveRecord::Base
       checklist = "?checklist=true"
     end
     if !File.file?("#{dir}/#{filename}") || !self.published?
-      url = URI.parse(DOMAIN)
+      url = URI.parse(request_fullpath)
       Net::HTTP.start(url.host, url.port) { |http|
         resp = http.get("/guides/pdf/#{self.to_param}.pdf#{checklist}")
         open("#{dir}/#{filename}", "wb") { |file|

@@ -247,9 +247,9 @@ var clickOnHref = 0;
 					
 					if (result[i].picture != null) {						
 						isSpecie = 1;
-						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p><a href="#" class="add">add</a></p></div> <div class="line"></div>';
+						list_item = '<div class="image"><img src=""/></div><div class="text image"><h3><a class="specie" href="#"></a></h3><p><a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
 					}else {
-						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add">add</a></p></div> <div class="line"></div>';
+						list_item = '<div class="text"><h3><a class="specie" href="#"></a></h3><a class="bttn_add"></a><p><strong></strong> species, <a href="#" class="add" data-remote="true">add</a></p></div> <div class="line"></div>';
 					}
 					
 					$(li).append(list_item);
@@ -282,7 +282,7 @@ var clickOnHref = 0;
 							else {
 								htmlText = result[i].name;
 							}
-							htmlText = htmlText + ', <a class="add" href="'+ result[i].add_url+'">add</a>'; 
+							htmlText = htmlText + ', <a class="add" data-remote="true" href="'+ result[i].add_url+'">add</a>'; 
 							$(li).children('div.text').children('p').html(htmlText);
 						}
 						else {
@@ -367,6 +367,6 @@ var clickOnHref = 0;
 			
 			$('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 		}); // end click function
-
+		
 	}
 })(jQuery);

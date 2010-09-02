@@ -1,0 +1,11 @@
+<% unless @current_guide.include_taxonomy?(@taxonomy) %>
+	<%= link_to create_entry_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add ajax' do %>
+	  <% if @species && @species.respond_to?(:total_entries) %>
+	  <span>Add <%=@species.total_entries%> species to your guide</span>
+	  <% else %>
+	  <span>Add <%=@taxonomy.species_count%> species to your guide</span>
+	  <% end -%>
+	<% end %>
+<% else %>
+<span class="included"></span>
+<% end -%>

@@ -28,7 +28,7 @@
             <% elsif entry.element_type == 'Order' || entry.element_type == 'Kingdom' || entry.element_type == 'Class' || entry.element_type == 'Family' || entry.element_type == 'Phylum' %>
             <a href="<%= expand_taxonomy_path(entry.element) %>" title="view" class="view"></a>
             <% end -%>
-            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete') %>
+            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete', :remote => true) %>
           </div>
         </li> 
       <% end -%>

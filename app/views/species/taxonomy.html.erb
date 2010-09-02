@@ -18,17 +18,11 @@
       <%= simple_format(@taxonomy.distinguishing_characters) %> -->
       
 			<div class="added_cont">			
-			  <div id="add_to_guide">
-      	<% unless @current_guide.include_taxonomy?(@taxonomy) %>
-					<%= link_to create_entry_path(:type => @taxonomy.hierarchy.humanize, :id => @taxonomy.name), :method => :post, :class => 'special_add ajax' do %>
-					  <span>Add <%=@species.total_entries%> species to your guide</span>
-					<% end %>
-	      <% else %>
-	      <span class="included"></span>
-	      <% end -%>
+			  <div id="add_to_guide_taxonomy">
+          <%= render :partial => 'species/add_taxonomy_to_guide' %>
 	      </div>
 	      <% if @taxonomy.downloads_count > 0 %>
-	      	<p class="times_added <%= (@current_guide.include_taxonomy?(@taxonomy))? 'included':'taxonomy' %>"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
+	      	<p class="times_added_taxonomy <%= (@current_guide.include_taxonomy?(@taxonomy))? 'included':'taxonomy' %>"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
 	      <% end -%>
 			</div>
     </div> 
