@@ -28,18 +28,14 @@ var clickOnHref = 0;
 		
 		// li is clicked
 		$('div.taxon_content div.in ul li').live('click',function(event){			
+			
 			clickColumnFunction(event,$(this));
 		}); // end click function
 		
 		// To get the event and redirect correctly to new page
 		$('div.taxon_content div.in ul li div.text a.specie').live('click', function (event) {
 			clickOnHref = 1;
-		});
-		// To get the event and redirect correctly to new page
-		$('div.taxon_content div.in ul li div.text a.add').live('click', function (event) {
-			clickOnHref = 1;
-		});
-		
+		});	
 		
 		// Call for data
 		function getData(taxonID,columnID) {
@@ -123,6 +119,7 @@ var clickOnHref = 0;
 		function clickColumnFunction(event,element) {			
 			// event.stopPropagation();
 			// event.preventDefault();
+			
 			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
 				var selectedColumn = getColumnID(element.parent().attr('id'));
 				var nextColumn = parseInt(selectedColumn) + 1;
