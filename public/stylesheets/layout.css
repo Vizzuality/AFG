@@ -751,10 +751,10 @@ div.left div.information_about ul li {float:left; width:178px; height:auto; marg
 div.left div.information_about ul li.last {margin:0;}
 div.left div.information_about ul li a {text-decoration:none;}
 div.left div.information_about ul li img {float:left; }
-div.left div.information_about ul li img.scar {width:36px; height:36px;}
+div.left div.information_about ul li img.scar {width:36px; height:36px; margin:7px 0 0 0;}
 div.left div.information_about ul li img.wikipedia {width:84px; height:41px;}
-div.left div.information_about ul li img.panoramio {width:93px; height:31px;}
-div.left div.information_about ul li p {float:left; font:normal 13px Arial; color:#8C8C8C; width:100%; margin:5px;}
+div.left div.information_about ul li img.panoramio {width:93px; height:31px; margin:3px 0 0 0;}
+div.left div.information_about ul li p {float:left; font:normal 13px Arial; color:#8C8C8C; width:100%; margin:5px 0 0 0;}
 div.left div.information_about ul li p.source_name { font:bold 15px "Lucida Grande"; color:#666666; margin:10px 0 0 0;}
 
 div.right div.questions {float:right; padding:21px; width:269px; height:auto; position:relative;}
