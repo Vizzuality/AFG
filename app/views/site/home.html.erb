@@ -8,13 +8,13 @@
 		  </div><!-- #slider -->
 		</div>
 	  <% end -%>
-	  <h2>Meet incredible <%= link_to('species', species_index_path) %>, find amazing <%= link_to('landscapes', landscapes_path) %><br/> 
-	    and create your <a href="<%= guides_path %>">antarctic field guide</a>.</h2> 
+	  <h2><strong style="color:red">XXXX</strong> Create text with links to... <br><%= link_to('species', species_index_path) %> - <%= link_to('landscapes', landscapes_path) %> -
+	    <a href="<%= guides_path %>">antarctic field guide</a>.</h2> 
 	</div><!-- .images_gallery -->
 
 	<div class="left"> 
 	  <div class="information"> 
-	    <h3>Species that you can find in the Antarctic</h3> 
+	    <h3>Species found in the Antarctic</h3> 
 	    <p class="subtitle">you can find <%= link_to("#{Species.complete.count} species", species_index_path) %></p> 
 	    <div class="species_list"> 
 	      <ul class="published_afg">

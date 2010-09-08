@@ -19,9 +19,11 @@
       <h1><%= @species.full_name %></h1> 
       <h3>Description</h3> 
       <%= simple_format(@species.description) %>
-      <h3>Distinguishing Characters</h3> 
-      <%= simple_format(@species.distinguishing_characters) %>
-      
+	
+	   <% if !(@species.distinguishing_characters.empty?) %>
+	      <h3>Distinguishing Characters</h3> 
+	      <%= simple_format(@species.distinguishing_characters) %>
+      <% end %>
 			<div class="added_cont">
 			  <div id="add_to_guide_species">
           <%= render :partial => 'species/add_to_guide' %>

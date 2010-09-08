@@ -51,41 +51,42 @@
 </div>
 <% end -%>
 
-<div class="main landscape_species">
-  <h3>Species near this place</h3> 
-  <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p>
-  <% if @landscape.species.empty? %>
-	<p class="no_info">Sorry, we did not find any kind of species around 50 square kilometers</p>
-  <%else%>
-	<% @landscape.species_kingdoms.each do |k, count| %>
-  <h5><%= k.upcase %></h5>
-  <ul>
-    <% @landscape.species(:conditions => ["kingdom = '#{k}'"]).each do |species| %>
-    <li class="<%= cycle('','','last_item') %>">
-      <div class="image">
-        <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.name %>" title="<%= species.name %>">
-      </div>
-      <div class="info">
-        <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
-        <% if species.common_name? %>
-        <p class="common_name"><%= species.common_name %></p>
-        <% end -%>
-      </div>
-    </li>
-    <% end -%>
-  </ul>
-  <% end %>  
+	
+<% if !(@landscape.species.empty?) %>
 
-  <% if false %>
-  <div class="pagination">
-    <a href="#" class="right"></a> 
-    <a href="#" class="left disabled"></a> 
-    <p>viewing from <strong>1 to 8 of 32</strong></p>
+  <div class="main landscape_species">
+	  <h3>Species near this place</h3> 
+	  <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p>
+		<% @landscape.species_kingdoms.each do |k, count| %>
+	  <h5><%= k.upcase %></h5>
+	  <ul>
+	    <% @landscape.species(:conditions => ["kingdom = '#{k}'"]).each do |species| %>
+	    <li class="<%= cycle('','','last_item') %>">
+	      <div class="image">
+	        <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.name %>" title="<%= species.name %>">
+	      </div>
+	      <div class="info">
+	        <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
+	        <% if species.common_name? %>
+	        <p class="common_name"><%= species.common_name %></p>
+	        <% end -%>
+	      </div>
+	    </li>
+	    <% end -%>
+	  </ul>
+	  <% end %>  
+
+	  <% if false %>
+	  <div class="pagination">
+	    <a href="#" class="right"></a> 
+	    <a href="#" class="left disabled"></a> 
+	    <p>viewing from <strong>1 to 8 of 32</strong></p>
+	  </div>	
+  <% end -%>
   </div>
   <% end -%>
-  <% end -%>
   
-</div>
+
 
 <div id="your_guide">
   <%= render 'guides/your_guide' %>
