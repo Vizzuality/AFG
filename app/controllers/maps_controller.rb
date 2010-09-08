@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  include ActionView::Helpers::TextHelper
   
   skip_before_filter :set_current_guide, :only => [:static_map,:tiles,:create_static_map]
   
@@ -141,7 +142,7 @@ class MapsController < ApplicationController
         :url => landscape_url(l), 
         :add_url => (@current_guide.include_landscape?(l) ? nil : create_entry_url(:type => 'Landscape', :id => l.id)),
         :name => l.name,
-        :description => l.description,
+        :description => truncate(l.description, :length=> 170),
         :guides_count => l.guides_count,
         :picture => l.picture? ? l.picture.image.url(:small) : nil,
         :picture_large => l.picture? ? l.picture.image.url(:large) : nil,

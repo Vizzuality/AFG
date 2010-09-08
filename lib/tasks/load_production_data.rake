@@ -1,10 +1,5 @@
 namespace :afg do
   
-  def from_file(filepath)
-    return '' unless File.file?(filepath)
-    File.open(filepath).read.split(':')[1..-1].join(':')
-  end
-  
   desc 'Load production data'
   task :load_production_data do
     system "rm #{RAILS_ROOT}/tmp/afg_production.sql"
