@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   
-  def home
+  def home    
     @pictures = if Species.highlighted.count > 0 
       Species.complete.highlighted.limit(5).map{|s| s.picture}.compact.flatten
     end

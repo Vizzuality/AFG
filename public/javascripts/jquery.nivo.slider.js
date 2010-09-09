@@ -100,13 +100,20 @@
 			
 			//Create caption
 			slider.append(
-				$('<div class="nivo-caption"><h2></h2><p class="common_name"></p><p class="downloads"><span></span></p></div>').css({ display:'none', opacity:settings.captionOpacity })
+				$('<div class="nivo-caption"><a class="specie"></a><p class="common_name"></p><p class="downloads"><span></span></p></div>').css({ display:'none', opacity:settings.captionOpacity })
 			);			
 			//Process initial  caption
 			if(vars.currentImage.attr('title') != ''){
-				$('.nivo-caption h2', slider).html(vars.currentImage.attr('title'));			
-				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('alt'));	
-				$('.nivo-caption p.downloads span', slider).html(vars.currentImage.attr('class') + ' DOWNLOADS');
+				$('.nivo-caption a.specie', slider).html(vars.currentImage.attr('title'));
+				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('alt'));
+				
+				var array_params = new Array();				
+				var string_params = vars.currentImage.attr('class');
+				array_params = string_params.split(' ');
+				
+				var href = vars.currentImage.attr('class');
+				$('.nivo-caption p.downloads span', slider).html(array_params[0] + ' DOWNLOADS'); // array_params[0] is count
+				$('.nivo-caption a.specie', slider).attr('href',array_params[1]);
 				$('.nivo-caption', slider).fadeIn(settings.animSpeed);
 			}
 			
@@ -278,12 +285,19 @@
 								
 				if($('.nivo-caption', slider).css('display') == 'block'){
 					$('.nivo-caption').fadeOut(settings.animSpeed, function(){
-							$('.nivo-caption p.downloads span').html(vars.currentImage.attr('class') + ' DOWNLOADS');
+							
+							var array_params = new Array();				
+							var string_params = vars.currentImage.attr('class');
+							array_params = string_params.split(' ');
+							
+							$('.nivo-caption p.downloads span').html(array_params[0] + ' DOWNLOADS'); // array_params[0] is count
 							$('.nivo-caption p.downloads span').fadeIn(settings.animSpeed);
 							$('.nivo-caption p.common_name').html(vars.currentImage.attr('alt'));
 							$('.nivo-caption p.common_name').fadeIn(settings.animSpeed);
-							$('.nivo-caption h2').html(vars.currentImage.attr('title'));
-							$('.nivo-caption h2').fadeIn(settings.animSpeed);
+							$('.nivo-caption a.specie').html(vars.currentImage.attr('title'));
+							$('.nivo-caption a.specie').attr('href',array_params[1]);
+							$('.nivo-caption a.specie').fadeIn(settings.animSpeed);
+							
 					});
 					// $('.nivo-caption p', slider).fadeOut(settings.animSpeed, function(){
 					// 	$(this).html(vars.currentImage.attr('title'));

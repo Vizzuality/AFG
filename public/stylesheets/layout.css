@@ -165,8 +165,9 @@ div.images_gallery .nivoSlider {position:relative;}
 div.images_gallery .nivoSlider img {position:absolute; top:0px; left:0px;}
 div.images_gallery .nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:60; display:none;}
 div.images_gallery .nivo-slice { display:block; position:absolute; z-index:50; height:100%;}
-div.images_gallery .nivo-caption { position:absolute; left:285px; bottom:130px; height:90px; width:325px; background:url(../images/home/caption_bkg.png) no-repeat 0 0; color:#fff; z-index:89;}
-div.images_gallery .nivo-caption h2 {float:left; margin:12px 0 0 95px; padding:0; width:190px; font:bold 24px Arial; color:white; padding:0; text-align:left; line-height:28px;}
+div.images_gallery .nivo-caption { position:absolute; left:285px; bottom:130px; height:90px; width:325px; background:url(../images/home/caption_bkg.png) no-repeat 0 0; color:#fff; z-index:89; }
+/*div.images_gallery .nivo-caption span { }*/
+div.images_gallery .nivo-caption a.specie {float:left; margin:12px 0 0 95px; padding:0; width:190px; font:bold 24px Arial; color:white; padding:0; text-align:left; line-height:28px; text-decoration:none; letter-spacing:-2px;}
 div.images_gallery .nivo-caption p.common_name {float:left; margin:0 0 0 95px; width:190px; font:normal 13px Arial; color:#B6B6B5; padding:0; line-height:8px;}
 div.images_gallery .nivo-caption p.downloads {float:left; margin:12px 0 0 95px; width:auto; padding:0 0 0 17px; background:url(../images/common/downloads_left.png) no-repeat 0 0; height:15px;}
 div.images_gallery .nivo-caption p.downloads span {float:left; height:15px; width:auto; background:url(../images/common/downloads_right.png) no-repeat right 0; font:bold 9px Arial; line-height:9px; color:#FF0066; padding:3px 8px 3px 0;}

@@ -3,7 +3,7 @@
 		<div class="slider_outer">
 		  <div id="slider"> 
 		    <% @pictures.each do |picture| %>
-		    <img src="<%= picture.image.url(:huge) %>" title="<%= picture.species.full_name %>" alt="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %>"/> 
+		    <img src="<%= picture.image.url(:huge) %>" title="<%= picture.species.full_name %>" alt="<%= picture.species.common_name %>" class="<%= picture.species.guides_count %> <%= species_path(picture.species) %>"/> 
 		    <% end -%>
 		  </div><!-- #slider -->
 		</div>
