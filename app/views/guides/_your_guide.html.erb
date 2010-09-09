@@ -66,7 +66,7 @@
     <div class="right_side">
 			<% if !@entries.empty? %>
 				<% href_publish = "href='javascript: void openPublish()'"%>
-				<% href_preview = "href='" +pdf_guide_path(@current_guide) + "'"%>
+				<% href_preview = "href='" +pdf_guide_path(:permalink => "#{@current_guide.id}-temporal") + "'"%>
 			<% else %>
 				<% disabled = "disabled" %>
 			<% end %>

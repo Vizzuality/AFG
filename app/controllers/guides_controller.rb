@@ -40,7 +40,7 @@ class GuidesController < ApplicationController
   end
   
   def pdf
-    @guide = Guide.find(params[:id])
+    @guide = Guide.find_by_permalink(params[:permalink]) || Guide.find(params[:permalink])
     @guide.increment(:downloads_count)
     @guide.save
     # Current page number

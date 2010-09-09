@@ -128,7 +128,7 @@ module ApplicationHelper
   
   def download_pdf_guide_url(guide)
     if guide.pdf_file.blank?
-      pdf_guide_path(guide) + '.pdf'
+      pdf_guide_path(:permalink => guide.permalink) + '.pdf'
     else
       guide.pdf_file
     end
