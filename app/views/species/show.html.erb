@@ -8,7 +8,8 @@
   <div class="specie_header" id="species-<%= @species.uid %>"> 
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <ul class="breadcrumb"> 
-      <li class="first"><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
+	  <li class="first"><%= link_to('All', species_index_path) %></li>
+      <li><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
       <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
       <li><%= link_to(@species.t_class, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class)) %></li>
       <li><%= link_to(@species.t_order, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order)) %></li>
@@ -26,7 +27,7 @@
       <% end %>
 			<div class="added_cont">
 			  <div id="add_to_guide_species">
-          <%= render :partial => 'species/add_to_guide' %>
+          		<%= render :partial => 'species/add_to_guide' %>
 	      </div>
 	      <% if @species.guides_count > 0 %>
 	        <p id="times_added_species" class="times_added <%= @current_guide.include_species?(@species) ? 'included' : 'waiting'%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 

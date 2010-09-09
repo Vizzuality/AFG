@@ -34,9 +34,18 @@
       <% end -%>
       <% if !current_page?('/') && params[:action] == 'show' && ((@landscape && !@current_guide.include_landscape?(@landscape)) || (@species && !@current_guide.include_species?(@species))) %>
 
-
-
-      	<li class="dragg_here"><a ><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></a></li>
+		<li class="dragg_here">
+			<%if controller_name == 'species' %>
+				<%= link_to('Add the species', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'ajax') %>
+			<%elsif controller_name == 'landscapes' %>
+			  <%= link_to('Add the landscape', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'ajax') %>
+			<%else%>
+				<a>Add to the guide</a>
+			<% end %>
+	
+		</li>
+	
+      
 		  <% end %>
     </ul> 
 		<% if @entries.empty? && params[:action] != 'show' %>

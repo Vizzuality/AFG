@@ -415,9 +415,9 @@ div.left div.species ul li div.specie p.star.zero span {color:#999999; backgroun
 div.left div.species ul li div.specie p.star span img {position:absolute; top:3px; left:0; z-index:40;}
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
-div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7;}
-div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
+div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0; width:250px;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7; width:auto;}
+div.right div.feature h3 a:hover {text-decoration:underline; /*border-bottom:1px solid #666666;*/}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
 div.right div.feature p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
@@ -519,9 +519,6 @@ div.main.family div.pagination a.left.disabled {background-position:0 -60px; cur
 div.main.family div.pagination a.right.disabled {background-position:0 -60px; cursor:default;}
 div.main.family div.pagination a:hover {background-position:0 -30px;}
 
-
-
-
 /*LANDSCAPES*/
 
 div.landscapes_map {float:left; width:912px; padding:0 12px 20px; background:url(../images/common/area_bkg.jpg) no-repeat 0 0 #008CB9;}
@@ -539,7 +536,7 @@ div.left div.landscapes h3 {float:left; font:bold 25px Helvetica; color:#666666;
 div.left div.landscapes p.subtitle {float:left; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:4px 0 0 0;}
 div.left div.landscapes p.subtitle a {text-decoration:none; color:#0099CC; border-bottom:1px solid #0099CC; display:inline-block; vertical-align:top; padding:0 0 2px 0;}
 div.left div.landscapes p.subtitle a:hover {border-bottom:1px dotted #0099CC;}
-div.left div.landscapes ul {float:left; width:582px; padding:16px 0 5px; margin:0;}
+div.left div.landscapes ul {float:left; width:582px; padding:38px 0 5px; margin:0;}
 div.left div.landscapes ul li {position:relative; float:left; margin:8px 15px 0 0;}
 div.left div.landscapes ul li.last {margin:8px 0 0 0;}
 div.left div.landscapes ul li div.specie {position:relative; float:left; padding:8px; width:168px; height:155px; background:url(../images/common/specie_bkg.png) no-repeat -4px -4px;}
@@ -556,7 +553,7 @@ div.left div.landscapes ul li div.specie p.star span img {position:absolute; top
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0;}
 div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7;}
-div.right div.feature h3 a:hover {border-bottom:1px solid #666666;}
+div.right div.feature h3 a:hover {text-decoration:underline; /*border-bottom:1px solid #666666;*/}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
 div.right div.feature p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
