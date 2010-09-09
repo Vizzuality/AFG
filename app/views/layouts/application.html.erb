@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= title %></title>
-	<link rel="shortcut icon" href="../images/favicon.ico"/>
+  <link rel="shortcut icon" href="../images/favicon.ico"/>
   <%= raw stylesheet_link_merged :base %>
   <%= raw javascript_include_merged :base %>
   <%= yield :post_js %>
@@ -99,6 +99,32 @@
 
 
 <script type="text/javascript">
+
+
+  var uservoiceOptions = {
+	  /* required */
+	  key: 'afg',
+	  host: 'afg.uservoice.com', 
+	  forum: '75675',
+	  showTab: true,  
+	  /* optional */
+	  alignment: 'left',
+	  background_color:'#333333', 
+	  text_color: 'white',
+	  hover_color: '#00AEE8',
+	  lang: 'en'
+  };
+  function _loadUserVoice() {
+    var s = document.createElement('script');
+    s.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js";
+    document.getElementsByTagName('head')[0].appendChild(s);
+  }
+  _loadSuper = window.onload;
+  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+
+</script>
+
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18319624-1']);
   _gaq.push(['_trackPageview']);
@@ -111,4 +137,5 @@
 </script>
 
 </body>
+
 </html>
