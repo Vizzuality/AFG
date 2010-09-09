@@ -1,7 +1,7 @@
 <div class="outer_layout"> 
   <div class="search_container">
     <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-    <h2>Search for species, landscapes, guides...</h2> 
+    <h2>Search for species, places, guides...</h2> 
     <form action="<%= search_path %>" method="get">
       <input type="text" value="<%= params[:q] %>" name="q" />
       <input type="submit" value="Search" />
@@ -93,7 +93,7 @@
       <h4>FILTER YOUR RESULTS</h4>
       <ul class="<%= @results.total_entries %>">
         <li class="<%= @total_species.size %>"><a href="<%= search_path(:q => params[:q], :type => 'species') %>"><span><%= @total_species.size %> Species</span></a></li>
-        <li class="<%= @total_landscapes.size %>"><a href="<%= search_path(:q => params[:q], :type => 'landscapes') %>"><span><%= pluralize(@total_landscapes.size, 'Landscape', 'Landscapes') %></span></a></li>
+        <li class="<%= @total_landscapes.size %>"><a href="<%= search_path(:q => params[:q], :type => 'landscapes') %>"><span><%= pluralize(@total_landscapes.size, 'Place', 'Places') %></span></a></li>
         <li class="<%= @total_guides.size %>"><a href="<%= search_path(:q => params[:q], :type => 'guides') %>"><span><%= pluralize(@total_guides.size, 'Guide', 'Guides') %></span></a></li>
         <li><a href="<%= search_path(:q => params[:q]) %>" class="all"><span>All results</span></a></li>
       </ul>

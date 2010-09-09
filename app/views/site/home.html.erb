@@ -8,7 +8,7 @@
 		  </div><!-- #slider -->
 		</div>
 	  <% end -%>
-	  <h2><strong style="color:red">XXXX</strong> Create text with links to... <br><%= link_to('species', species_index_path) %> - <%= link_to('landscapes', landscapes_path) %> -
+	  <h2><strong style="color:red">XXXX</strong> Create text with links to... <br><%= link_to('species', species_index_path) %> - <%= link_to('places', landscapes_path) %> -
 	    <a href="<%= guides_path %>">antarctic field guide</a>.</h2> 
 	</div><!-- .images_gallery -->
 
@@ -31,7 +31,7 @@
 	  </div> 
 	  <div class="create"> 
 	    <h3>Some of the already created Antarctic Field Guides</h3> 
-	    <p class="subtitle">create your AFG with species and landscapes, and enjoy your trip</p> 
+	    <p class="subtitle">create your AFG with species and places, and enjoy your trip</p> 
 	    <ul class="published_afg"> 
 	      <% @guides.each do |guide| %>
 	      <li class="<%= cycle('', '', 'last') %>"> 
@@ -49,7 +49,7 @@
 	  <div class="latest_"> 
 			<h3>Latest activity</h3> 
 	    <% unless @activities.empty? %>
-	    <p class="subtitle">species, guides and landscapes added...</p> 
+	    <p class="subtitle">species, guides and places added...</p> 
 	    <ul>
 				<% @activities.each_with_index do |entry, i| %>
 		      <li> 
@@ -75,7 +75,7 @@
 	        </div> 
 	        <div class="data">
 	          <h5>Browse our site</h5> 
-	          <p>Explore our database of species, and landscapes</p> 
+	          <p>Explore our database of species, and places</p> 
 	        </div> 
 	      </li> 
 	      <li> 

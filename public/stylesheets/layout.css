@@ -331,7 +331,7 @@ div.long div.bottom div.right_side a.publish.disabled:hover {background-position
 
 /*SPECIES*/
 div.species_explore {position:relative; float:left; width:912px; padding:27px 12px 20px; height:442px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 0 #008CB9;}
-div.species_explore img.arrow {position:absolute; top:0; left:225px;}
+div.species_explore img.arrow {position:absolute; top:0; left:188px;}
 div.species_explore h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.species_explore p.subtitle {float:left; width:892px; padding:4px 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.species_explore p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
@@ -433,7 +433,7 @@ div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !importan
 /* SPECIE */
 
 div.specie_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.specie_header img.arrow {position:absolute; top:0; left:225px; z-index:10;}
+div.specie_header img.arrow {position:absolute; top:0; left:188px; z-index:10;}
 div.specie_header ul.breadcrumb {float:left; width:888px; padding: 0 0 1px 0;}
 div.specie_header ul.breadcrumb li {float:left; width:auto; background:url(../images/common/breadcrumb_arrow.png) no-repeat 0 5px; padding:0 0 0 11px; margin:0 7px 0 0; font:normal 13px "Lucida Grande"; color:#FFFFFF; line-height:13px;}
 div.specie_header ul.breadcrumb li.first {background:none; padding:0;}
@@ -522,7 +522,7 @@ div.main.family div.pagination a:hover {background-position:0 -30px;}
 /*LANDSCAPES*/
 
 div.landscapes_map {float:left; width:912px; padding:0 12px 20px; background:url(../images/common/area_bkg.jpg) no-repeat 0 0 #008CB9;}
-div.landscapes_map img.arrow {position:relative; margin:0 0 0 112px; padding:0 0 10px;}
+div.landscapes_map img.arrow {position:relative; margin:0 0 0 92px; padding:0 0 10px;}
 div.landscapes_map h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.landscapes_map p.subtitle {float:left; width:892px; padding:4px 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.landscapes_map p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
@@ -643,7 +643,7 @@ div.main.landscape_species div.pagination a:hover {background-position:0 -30px;}
 /*GUIDES*/
 
 div.guides_header {position:relative; float:left; width:896px; padding:27px 20px 20px 20px; background:url(../images/common/bkg_head_repeatx.png) repeat-x 0 0;}
-div.guides_header img.arrow {position:absolute; top:0; left:309px; z-index:10;}
+div.guides_header img.arrow {position:absolute; top:0; left:271px; z-index:10;}
 div.guides_header div.content_left {float:left; width:560px;}
 div.guides_header div.content_right {float:right; width:320px;} 
 div.guides_header p.info_guide {float:left; font-weight:normal; font-size:13px; font-family:"Lucida Grande";color:#FFFFFF; width:100%; margin:13px 0 5px 0; letter-spacing:-1.0px; margin:20px 0 0 0;}
@@ -716,7 +716,7 @@ div.right div.about_afg a.start:hover {background-position:0 -32px;}
 /*ABOUT*/
 
 div.about_header {position:relative; float:left; width:912px; padding:27px 12px 20px; height:207px; background:url(../images/about/bkg_about_header.jpg) no-repeat 0 0 #008CB9;}
-div.about_header img.arrow {position:absolute; top:0; left:388px;}
+div.about_header img.arrow {position:absolute; top:0; left:351px;}
 div.about_header h2 {float:left; width:580px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.about_header p.subtitle {float:left; width:580px; padding:4px 0 0 7px; text-align:left; font:normal 15px Arial; color:#A8DDEF; line-height:17px; margin:25px 0 0 0;}
 div.about_header p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}

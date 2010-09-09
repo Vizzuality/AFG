@@ -63,7 +63,7 @@
       <div class="header_menu"> 
         <ul> 
           <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
-          <li><%= link_to('LANDSCAPES', landscapes_path, :class => (controller_name == 'landscapes' ? 'current' : nil)) %></li>
+          <li><%= link_to('PLACES', landscapes_path, :class => (controller_name == 'landscapes' ? 'current' : nil)) %></li>
           <li><%= link_to('SPECIES', species_index_path, :class => (controller_name == 'species' ? 'current' : nil)) %></li>
           <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
           <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
@@ -86,7 +86,7 @@
             <ul> 
               <li><%= link_to('Home', root_path) %></li>
               <li><%= link_to('Species', species_index_path) %></li>
-              <li><%= link_to('Landscapes', landscapes_path) %></li>
+              <li><%= link_to('Places', landscapes_path) %></li>
               <li><%= link_to('Guides', guides_path) %></li>
               <li class="last"><%= link_to('About', about_path) %></li>
 						</ul> 
