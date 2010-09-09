@@ -20,8 +20,8 @@
 <div class="main landscapes">
   <div class="left"> 
     <div class="landscapes"> 
-      <h3>Most popular landscapes</h3> 
-      <p class="subtitle">Also you can <%= link_to('search landscapes', search_path) %> by name</p> 
+      <h3>Most popular places</h3> 
+      <p class="subtitle">Also you can <%= link_to('search places', search_path) %> by name</p> 
       <div class="species_list"> 
         <ul class="published_afg">
           <% @landscapes.each do |landscape| %>
@@ -36,7 +36,7 @@
 
   <div class="right"> 
     <div class="feature"> 
-      <p class="subtitle">Featured landscape</p> 
+      <p class="subtitle">Featured place</p> 
       <h3><a href="<%= landscape_path(@featured_landscape) %>"><%= @featured_landscape.name %></a></h3>
       <%= stars(@featured_landscape) %>
       <div class="image">
