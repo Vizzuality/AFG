@@ -17,7 +17,7 @@ AFG::Application.routes.draw do |map|
 
   get 'taxonomy' => 'species#index', :as => 'species_taxonomy', :defaults => { :taxonomy => true }
 
-  resources :landscapes, :only => [:index, :show]
+  resources :landscapes, :path => 'places', :only => [:index, :show]
   resources :species
   
   match 'entries/create' => 'entries#create', :as => 'create_entry'
