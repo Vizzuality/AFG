@@ -52,7 +52,14 @@ $(document).ready(function() {
 	$('#pop_up').delay(3000).fadeOut();
 	
 	
-
+	$('div.long div.long_in ul li.dragg_here a').hover(function(ev){
+		$(this).parent().css('background-position','0 -127px');
+	},
+	function(ev){
+		$(this).parent().css('background-position','0 0');
+	});
+	
+	
 	//Landscapes and species count bars
 	$('li div.stats span').each(function(index){
 		var kind = $(this).attr('title');

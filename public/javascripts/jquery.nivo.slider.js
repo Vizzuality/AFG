@@ -83,6 +83,12 @@
 			
 			//Set first background
 			slider.css('background','url('+ vars.currentImage.attr('src') +') no-repeat');
+
+			var array_params = new Array();				
+			var string_params = vars.currentImage.attr('class');
+			array_params = string_params.split(' ');
+			
+			var href = vars.currentImage.attr('class');
 			
 			//Add initial slices
 			for(var i = 0; i < settings.slices; i++){
@@ -107,11 +113,7 @@
 				$('.nivo-caption a.specie', slider).html(vars.currentImage.attr('title'));
 				$('.nivo-caption p.common_name', slider).html(vars.currentImage.attr('alt'));
 				
-				var array_params = new Array();				
-				var string_params = vars.currentImage.attr('class');
-				array_params = string_params.split(' ');
 				
-				var href = vars.currentImage.attr('class');
 				$('.nivo-caption p.downloads span', slider).html(array_params[0] + ' DOWNLOADS'); // array_params[0] is count
 				$('.nivo-caption a.specie', slider).attr('href',array_params[1]);
 				$('.nivo-caption', slider).fadeIn(settings.animSpeed);

@@ -33,7 +33,10 @@
         </li> 
       <% end -%>
       <% if !current_page?('/') && params[:action] == 'show' && ((@landscape && !@current_guide.include_landscape?(@landscape)) || (@species && !@current_guide.include_species?(@species))) %>
-      	<li class="dragg_here"><p><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></p></li>
+
+
+
+      	<li class="dragg_here"><a ><%= controller_name == 'species' ? 'Add the species' : (controller_name == 'landscapes' ? 'Add the landscape' : 'Add to the guide') %></a></li>
 		  <% end %>
     </ul> 
 		<% if @entries.empty? && params[:action] != 'show' %>

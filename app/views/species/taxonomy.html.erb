@@ -22,7 +22,7 @@
           <%= render :partial => 'species/add_taxonomy_to_guide' %>
 	      </div>
 	      <% if @taxonomy.downloads_count > 0 %>
-	      	<p class="times_added_taxonomy <%= (@current_guide.include_taxonomy?(@taxonomy))? 'included':'taxonomy' %>"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
+	      	<p class="times_added <%= (@current_guide.include_taxonomy?(@taxonomy))? 'included':'taxonomy' %>"><%= pluralize(@taxonomy.downloads_count, 'time', 'times') %> added</p> 
 	      <% end -%>
 			</div>
     </div> 
