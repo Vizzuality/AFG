@@ -416,7 +416,7 @@ div.left div.species ul li div.specie p.star span img {position:absolute; top:3p
 
 div.right div.feature {position:relative; float:left; padding:21px; width:269px;}
 div.right div.feature h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px; padding:6px 0 0 0; width:250px;}
-div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7; width:auto;}
+div.right div.feature h3 a {font:bold 25px Helvetica; color:#666666; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid #F7f7f7; width:auto; height:51px;}
 div.right div.feature h3 a:hover {text-decoration:underline; /*border-bottom:1px solid #666666;*/}
 div.right div.feature p.subtitle {font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; }
 div.right div.feature p.star {position:absolute; right:21px; top:44px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
@@ -569,7 +569,7 @@ div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !importan
 /*LANDSCAPE*/
 
 div.landscape_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.landscape_header img.arrow {position:absolute; top:0; left:125px; z-index:10;}
+div.landscape_header img.arrow {position:absolute; top:0; left:105px; z-index:10;}
 div.landscape_header ul.breadcrumb {float:left; width:888px; padding: 0 0 1px 0;}
 div.landscape_header ul.breadcrumb li {float:left; width:auto; background:url(../images/common/breadcrumb_arrow.png) no-repeat right 5px; padding:0 7px 0 0; margin:0 7px 0 0; font:normal 13px "Lucida Grande"; color:#FFFFFF; line-height:13px;}
 div.landscape_header ul.breadcrumb li.first {background:none; padding:0;}
