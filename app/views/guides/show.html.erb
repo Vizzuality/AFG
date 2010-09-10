@@ -73,6 +73,13 @@
           <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.full_name %>" />
         </div>
         <div class="info">
+		  
+ 			<%if !@current_guide.include_species?(species)%>
+				<%= link_to('', create_entry_path(:type => 'Species', :id => species.id), :method => :post, :class => 'add ajax') %>
+			<%else%>
+		  		<a class="add added ajax"></a>
+			<%end%>
+		
           <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
           <% if species.common_name? %>
           <p class="common_name"><%= species.common_name %></p>
