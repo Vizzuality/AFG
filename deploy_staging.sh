@@ -1,7 +1,7 @@
 #!/bin/sh
 git pull
-git checkout production
+git checkout staging
 git merge master
 git push
 git checkout master
-cap deploy
+cap staging deploy
