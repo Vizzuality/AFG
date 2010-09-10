@@ -60,6 +60,7 @@ class EntriesController < ApplicationController
               @taxonomy = @entry.element
               'species/add_taxonomy_to_guide'
           end
+          
           page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
           page << "$('#add_to_guide_#{@entry.element.class.name.downcase}').html('#{escape_javascript(render(:partial => partial))}');"
           page << "$('#pop_up').html('#{render :inline => '<%= pop_up_flash %>'}')";
@@ -71,6 +72,8 @@ class EntriesController < ApplicationController
         	$('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
         	$('#pop_up').show();
         	$('#pop_up').delay(3000).fadeOut();
+
+
 JS
           if @taxonomy
             page << <<-JS
@@ -82,7 +85,12 @@ JS
           if @species
             page << <<-JS
             if(document.getElementById("species_#{@species.id}")) {
+              
               $('#species_#{@species.id}').html('added');
+            }
+            
+            if(document.getElementById("li_species_#{@species.id}")) {
+              $('li#li_species_#{@species.id}').children('div.info').children('a').addClass('added');
             }
 JS
           end
@@ -151,6 +159,10 @@ JS
             page << <<-JS
             if(document.getElementById("species_#{@species.id}")) {
               $('#species_#{@species.id}').html('<a href="#{create_entry_path(:type => 'Species', :id => @species.id)}" class="add" data-remote="true">add</a>');
+            }
+            
+            if(document.getElementById("li_species_#{@species.id}")) {
+              $('li#li_species_#{@species.id}').children('div.info').children('a').removeClass('added');
             }
 JS
           end

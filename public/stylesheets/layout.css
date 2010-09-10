@@ -684,7 +684,7 @@ div.left div.create div.sorted_by p.kind_sorted  {float:left; width:300px; margi
 div.left div.create div.sorted_by p.kind_sorted a {float:left; font-weight:bold; text-decoration:none; color:#666666; margin:0 12px;}
 div.left div.create div.sorted_by p.kind_sorted a:hover {border-bottom:1px dotted #666666;}
 div.left div.create div.sorted_by p.kind_sorted span.vertical_line {float:left; width:1px; height:19px; background-color:#CCCCCC;}
-div.left div.create div.sorted_by p.kind_sorted a.activated {color:#0099CC; }
+div.left div.create div.sorted_by p.kind_sorted a.activated {color:#0099CC;}
 div.left div.create div.sorted_by p.kind_sorted a.activated:hover {border-bottom:1px dotted #0099CC;}
 
 div.left div.create div.sorted_by a {text-decoration:none;}

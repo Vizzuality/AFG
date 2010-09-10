@@ -68,7 +68,7 @@
     <h3><%= count %> <%= k.upcase %></h3>
     <ul>
       <% @guide.species.select{|s| s.kingdom == k }.each do |species| %>
-      <li class="<%= cycle('','','last_item') %>">
+      <li id="li_species_<%=species.id%>" class="<%= cycle('','','last_item') %>">
         <div class="image">
           <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.full_name %>" />
         </div>
@@ -77,7 +77,7 @@
  			<%if !@current_guide.include_species?(species)%>
 				<%= link_to('', create_entry_path(:type => 'Species', :id => species.id), :method => :post, :class => 'add ajax') %>
 			<%else%>
-		  		<a class="add added ajax"></a>
+				<a class="add added ajax"></a>
 			<%end%>
 		
           <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
