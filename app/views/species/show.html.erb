@@ -19,7 +19,10 @@
     <div class="left"> 
       <h1><%= @species.full_name %></h1> 
       <h3>Description</h3> 
-      <%= simple_format(@species.description) %>
+      
+	  <% pre_text = @species.description.split('.')[0..3].join('.')+'.' %>
+	
+	  <%= simple_format(pre_text) %>
 	
 	   <% if !(@species.distinguishing_characters.empty?) %>
 	      <h3>Distinguishing Characters</h3> 
@@ -49,8 +52,13 @@
 
 <div class="main specie"> 
   <div class="left"> 
-		<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
-    <h3>Species information</h3> 
+	<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
+	
+    <h3>Species details</h3> 
+	<% pre_text = @species.description.split('.')[4..@species.description.size].join('.') %>
+
+	
+	  <%= simple_format(pre_text) %>
     <!-- <p class="subtitle">More information that maybe could be useful for you</p>  -->
     <% unless @species.size.blank? %>
       <label>Size</label> 

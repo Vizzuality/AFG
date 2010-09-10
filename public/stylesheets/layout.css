@@ -473,7 +473,7 @@ div.main.specie div.left {position:relative; float:left; width:576px; padding:24
 div.main.specie div.left img {position:absolute; right:-2px; top:26px; z-index:100;}
 
 div.main.specie div.right {padding:24px; width:264px;}
-div.main.specie div.right ul {float:left; width:264px; margin:24px 0 0 0; padding:0 0 6px 0;}
+div.main.specie div.right ul {float:left; width:264px; margin:0px 0 0 0; padding:0 0 6px 0;}
 div.main.specie div.right ul li {float:left; padding:3px; border:1px solid #CCCCCC; width:76px; height:76px; margin:5px 4px 0 0;}
 div.main.specie div.right ul li:hover {border:1px solid #BCBCBC;}
 div.main.specie div.right ul li img {float:left; margin:0; padding:0; height:76px; width:76px;}
@@ -485,9 +485,9 @@ div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
 div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
-div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 0px;}
+div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 20px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
-div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; margin:24px 0 0 0; padding:0 0 4px 0;}
+div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; margin:12px 0 0 0; padding:0 0 4px 0;}
 div.main.specie div label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:30px 0 4px 0;}
 div.main.specie div p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
 
