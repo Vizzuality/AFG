@@ -39,8 +39,8 @@ div#map div.infowindow p.star.zero span {color:#999999; background:url(../images
 div#map div.infowindow p.star span img {position:absolute; top:3px; left:0; z-index:40;}
 div#map div.infowindow a.add {float:left; margin:7px 0 0 10px; font:normal 11px Arial; color:#0099CC;}
 div#map div.infowindow a.add:hover {color:#007DA6;}
-div#map div.infowindow a.add.disabled {color:#CCCCCC;}
-div#map div.infowindow a.add.disabled:hover {color:#CCCCCC;}
+div#map div.infowindow a.add.disabled {color:#999999;}
+div#map div.infowindow a.add.disabled:hover {color:#999999;}
 div#map div.infowindow div.info {position:relative; float:left; width:247px; height:165px; margin:9px 0 0 0;}
 div#map div.infowindow div.info img.background {position:absolute; top:0; left:0; width:247px; height:165px; z-index:10;}
 div#map div.infowindow div.info span {position:absolute; top:0; left:0; z-index:100; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
