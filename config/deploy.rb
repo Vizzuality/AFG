@@ -16,7 +16,6 @@ set :scm_user, 'ubuntu'
 set :repository, "git://github.com/jatorre/AFG.git"
 ssh_options[:forward_agent] = true
 set :keep_releases, 5
-set :branch, "production"
 
 set :linode_staging, '178.79.131.104'
 set :linode_production, '178.79.142.149'
