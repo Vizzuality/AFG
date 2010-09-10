@@ -303,16 +303,23 @@ function secondStep() {
     type: "POST",
     url: "/guides/update/current",
     data: dataString,
+		error:function(xhr, ajaxOptions, thrownError){
+			$('div.choice div.info a').click(function(){
+				$.modal.close();
+			});
+			$('div.choice div.type').removeClass('loading');
+			$('div.choice div.type').addClass('finished');
+			$('div.choice div.type img').remove();
+			$('div.choice div.info h5').text('Your Anctartic Field Guide couldn\'t be generated due to an error');
+			$('div.choice div.info p').text("Please try again or contact with the administrators");
+			$('div.choice div.info a').html('Close');
+			$('div.choice div.info a').removeClass('disabled');
+		},
 	  success: function(res) {
 			var object = JSON.parse(res);
 			$('#pdf_path').attr('href',object['href']);
 			$('#pdf_path').click(function(){
 				$.modal.close();
-				// TODO: redirect to the generated guide
-				// if(publish == true) {
-				// 	window.location.href=object['url'];
-				// }
-				// return false;
 			});
 			$('div.choice div.type').removeClass('loading');
 			$('div.choice div.type').addClass('finished');

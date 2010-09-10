@@ -97,9 +97,14 @@ class GuidesController < ApplicationController
         "http://#{request.host_with_port}#{request.fullpath}"
       end
       
-      pdf_path = @current_guide.generate_pdf!(request_full_path, session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
+      begin
+        pdf_path = @current_guide.generate_pdf!(request_full_path, session[:current_guide_print][:guide_format] && (session[:current_guide_print][:guide_format] == 'checklist') ? true : nil )
       
-      render :text => {:href => pdf_path, :url => guide_path(@current_guide)}.to_json, :status => 200 and return
+        render :text => {:href => pdf_path, :url => guide_path(@current_guide)}.to_json, :status => 200 and return
+      rescue
+        sleep 1
+        render :text => '', :status => 500 and return
+      end
     end
         
     respond_to do |format|
