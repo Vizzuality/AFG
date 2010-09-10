@@ -20,8 +20,8 @@
       <h1><%= @species.full_name %></h1> 
       <h3>Description</h3> 
       
-	  <% pre_text = @species.description.split('.')[0..3].join('.')+'.' %>
-	
+	  <% pre_text = @species.description.split('. ')[0..3].join('. ')+'. ' %>
+
 	  <%= simple_format(pre_text) %>
 	
 	   <% if !(@species.distinguishing_characters.empty?) %>
@@ -55,7 +55,7 @@
 	<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
 	
     <h3>Species details</h3> 
-	<% pre_text = @species.description.split('.')[4..@species.description.size].join('.') %>
+	<% pre_text = @species.description.split('. ')[4..@species.description.size].join('. ') %>
 
 	
 	  <%= simple_format(pre_text) %>
