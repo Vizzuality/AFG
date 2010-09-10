@@ -1,3 +1,8 @@
+require 'capistrano/ext/multistage'
+
+set :stages, %w(staging production)
+set :default_stage, "production"
+
 require "bundler/capistrano"
 
 default_run_options[:pty] = true
@@ -13,14 +18,11 @@ ssh_options[:forward_agent] = true
 set :keep_releases, 5
 set :branch, "production"
 
-set :slice, '178.79.131.104'
+set :linode_staging, '178.79.131.104'
+set :linode_production, '178.79.142.149'
 set :user,  'ubuntu'
 
 set :deploy_to, "/home/ubuntu/www/#{application}"
-
-role :app, slice
-role :web, slice
-role :db,  slice, :primary => true
 
 after  "deploy:update_code", :run_migrations, :symlinks, :asset_packages
 

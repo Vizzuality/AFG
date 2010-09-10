@@ -18,6 +18,7 @@ gem 'paperclip', :tag => 'v2.3.3'
 gem 'rmagick', :require => 'RMagick'
 gem 'rack-noie', :require => 'noie'
 gem 'capistrano'
+gem 'capistrano-ext'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'

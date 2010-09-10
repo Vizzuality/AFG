@@ -21,4 +21,3 @@ production:
   database: afg_production
   username: postgres
   password:
-  
