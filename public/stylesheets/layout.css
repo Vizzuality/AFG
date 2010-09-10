@@ -801,7 +801,7 @@ div.right div.contact a:hover {border-bottom:1px dotted white;}
 /*GUIDE*/
 
 div.guide_header {float:left; width:899px; padding:0 20px 20px 17px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.guide_header img.arrow {float:left; padding:0; margin:0 0 0 292px; padding:0 0 17px 0;}
+div.guide_header img.arrow {float:left; padding:0; margin:0 0 0 254px; padding:0 0 17px 0;}
 div.guide_header div.large {float:left; width:100%;}
 div.guide_header div.left {float:left; width:580px; padding:0 0 10px 0;}
 div.guide_header div.left ul.breadcrumb {float:left; width:577px; margin:0 0 0 3px; padding:0;}
@@ -875,7 +875,7 @@ div.search_container img.arrow {position:absolute; top:0; left:388px; display:no
 div.search_container h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.search_container form {float:left; width:892px; padding:0 0 0 7px; margin:15px 0 0 0;}
 div.search_container form input[type="text"] {float:left; width:474px; height:16px; padding:10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
-div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:8px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
+div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:5px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
 div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer; color:#0083AE;}
 div.search_container form p {float:left; margin:8px 0 0 15px; font:normal 15px Arial; color:white;}
 div.search_container form p a {text-decoration:none; color:white; display:inline-block; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid white;}
@@ -897,7 +897,7 @@ div.left div.results ul li div.image img {float:left; width:117px; height:88px;}
 div.left div.results ul li.landscape div.image {background-image:url(../images/search/landscape_bkg.png);}
 div.left div.results ul li.landscape div.image img {float:left; margin:21px 0 0 29px; width:70px; height:48px;}
 div.left div.results ul li div.information {float:left; width:445px; margin:0; padding:0;}
-div.left div.results ul li div.information h2 {float:left; width:445px; padding:12px 0 0 0; font:bold 17px "Lucida Grande"; color:#0099CC;}
+div.left div.results ul li div.information h2 {float:left; width:445px; padding:0; font:bold 17px "Lucida Grande"; color:#0099CC;}
 div.left div.results ul li div.information h2 a {text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 1px 0; color:#0099CC;}
 div.left div.results ul li div.information h2 a:hover {border-bottom:1px solid #0099CC; padding:0;}
 div.left div.results ul li div.information p.subtitle {float:left; width:445px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic;}
