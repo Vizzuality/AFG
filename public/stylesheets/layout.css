@@ -30,7 +30,6 @@ div.map a.full_screen.back:hover {background-position:0 -26px;}
 div.map a.vizzuality {position:absolute; z-index:1000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
 
 
-
 /* MAP INFOWINDOW */
 div#map div.infowindow {display:none; position:absolute; z-index:100000; width:247px; height:237px; padding:15px 14px 0 14px; left:-97px; bottom:30px; background:url(../images/map/infowindow.png) no-repeat 0 0}
 div#map div.infowindow h1 {float:left; width:100%; font:bold 19px Arial; color:#666666; margin:0; padding:0;}
@@ -40,8 +39,8 @@ div#map div.infowindow p.star.zero span {color:#999999; background:url(../images
 div#map div.infowindow p.star span img {position:absolute; top:3px; left:0; z-index:40;}
 div#map div.infowindow a.add {float:left; margin:7px 0 0 10px; font:normal 11px Arial; color:#0099CC;}
 div#map div.infowindow a.add:hover {color:#007DA6;}
-div#map div.infowindow a.add.disabled {color:#CCCCCC;}
-div#map div.infowindow a.add.disabled:hover {color:#CCCCCC;}
+div#map div.infowindow a.add.disabled {color:#999999;}
+div#map div.infowindow a.add.disabled:hover {color:#999999;}
 div#map div.infowindow div.info {position:relative; float:left; width:247px; height:165px; margin:9px 0 0 0;}
 div#map div.infowindow div.info img.background {position:absolute; top:0; left:0; width:247px; height:165px; z-index:10;}
 div#map div.infowindow div.info span {position:absolute; top:0; left:0; z-index:100; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
@@ -298,12 +297,13 @@ div.long div.long_in ul li.landscape p.title {float:left; margin:17px 0 0 12px; 
 div.long div.long_in ul li.dragg_here {float:left; width:136px; height:127px; background:url(../images/common/add_bkg.png) no-repeat 0 0;}
 
 div.long div.long_in ul.place_draggable {float:left; width:127px; height:137px; background:url(../images/common/bkg_place_draggable.png) no-repeat 0 0;}
-div.long div.long_in ul li.dragg_here a {float:left; margin:51px 0 0 35px; font:bold 11px "Lucida Grande"; color:#006789; text-transform:uppercase; text-align:center; width:96px; text-decoration:none; cursor:pointer;}
+div.long div.long_in ul li.dragg_here a {float:left; margin:49px 0 0 35px; font:bold 11px "Lucida Grande"; color:#006789; text-transform:uppercase; text-align:center; width:90px; text-decoration:none; cursor:pointer;}
 div.long div.long_in ul li.dragg_here a:hover {color:white;}
 
-div.long div.long_in p.empty {float:left; padding:110px 0 0 0; font:normal 17px "Lucida Grande"; color:#666666;}
-div.long div.long_in p.empty a {color:white; text-decoration:none; border-bottom:1px dotted #FFFFFF; display:inline-block; vertical-align:top; background:none;}
-div.long div.long_in p.empty a:hover {border-bottom:1px solid #FFFFFF;}
+div.long div.long_in p.empty {padding:73px 0 0 0; font:bold 25px Helvetica; color:white; text-align:center;}
+div.long div.long_in p.message {font:normal 15px "Lucida Grande"; color:#666666; text-align:center;  padding:5px 0 72px 0;}
+div.long div.long_in p.message a {color:white; text-decoration:none; border-bottom:1px dotted #FFFFFF; display:inline-block; vertical-align:top; background:none;}
+div.long div.long_in p.message a:hover {border-bottom:1px solid #FFFFFF;}
 
 
 div.long div.bottom {float:left; background:url(../images/common/your_guide_bottom_bkg.jpg) repeat-x 0 0; height:66px; width:936px; margin:0; padding:0;}
@@ -436,11 +436,20 @@ div.specie_header ul.breadcrumb li {float:left; width:auto; background:url(../im
 div.specie_header ul.breadcrumb li.first {background:none; padding:0;}
 div.specie_header ul.breadcrumb li a {text-decoration:none; display:inline-block; font:normal 13px "Lucida Grande"; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid #0091BC; color:white;}
 div.specie_header ul.breadcrumb li a:hover {border-bottom:1px solid white;}
-div.specie_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0 0 15px 0;}
+div.specie_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0;}
 div.specie_header h1 small {font:normal 15px Helvetica; color:white; font-style:italic; padding:0 0 0 5px; letter-spacing:0px;}
+div.specie_header p.gbif {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
 div.specie_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0;}
+div.specie_header p.gbif {padding:0;}
+div.specie_header p.gbif a {width:auto; text-decoration:underline; font:normal 12px 'Lucida Grande'; color:#B7E7F3;}
+div.specie_header p.gbif a:hover {color:white;}
 div.specie_header p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
+
 div.specie_header div.left {padding:5px 0 0 0; width:576px;}
+div.specie_header div.left p.subtitle {float:left; width:576px; padding:0 0 15px 0; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
+div.specie_header div.left p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
+div.specie_header div.left p.subtitle a:hover {border-bottom:1px dotted white;}
+
 div.specie_header div.left div.added_cont {float:left; width:300px; margin:0; padding:0;}
 div.specie_header div.left a.add_guide {float:left; background:url(../images/common/bkg_add_guide_bttn.png) no-repeat 0 0; width:129px; height:31px; font:bold 15px Arial; color:#0099CC; text-decoration:none; line-height:15px; margin:20px 0 0 0;  padding:11px 7px 0 40px;}
 div.specie_header div.left a.add_guide:hover {background-position:0 -42px; color:#006D91;}
@@ -473,7 +482,9 @@ div.main.specie div.left {position:relative; float:left; width:576px; padding:24
 div.main.specie div.left img {position:absolute; right:-2px; top:26px; z-index:100;}
 
 div.main.specie div.right {padding:24px; width:264px;}
-div.main.specie div.right ul {float:left; width:264px; margin:24px 0 0 0; padding:0 0 6px 0;}
+div.main.specie div.right a.view_more {float:right; color:#0099CC; text-decoration:none; border-bottom:1px solid #0099CC !important; display:inline-block; vertical-align:top; margin:5px 0 0 0;}
+div.main.specie div.right a.view_more:hover {border-bottom:1px dotted #0099CC !important;}
+div.main.specie div.right ul {float:left; width:264px; margin:0px 0 0 0; padding:0 0 6px 0;}
 div.main.specie div.right ul li {float:left; padding:3px; border:1px solid #CCCCCC; width:76px; height:76px; margin:5px 4px 0 0;}
 div.main.specie div.right ul li:hover {border:1px solid #BCBCBC;}
 div.main.specie div.right ul li img {float:left; margin:0; padding:0; height:76px; width:76px;}
@@ -485,9 +496,9 @@ div.main.specie div.right div.map a.full_screen {right:11px; top:11px;}
 div.main.specie div.right div.map a.zoomIn {left:11px; display:none;}
 div.main.specie div.right div.map a.zoomOut {left:11px; display:none;}
 div.main.specie div.right div.map a.vizzuality {left:11px; bottom:11px; display:none;}
-div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 0px;}
+div.main.specie div h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px; padding:0 0 20px;}
 div.main.specie div p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
-div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; margin:24px 0 0 0; padding:0 0 4px 0;}
+div.main.specie div label {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; margin:12px 0 0 0; padding:0 0 4px 0;}
 div.main.specie div label.right {float:left; width:100%; font:bold 15px "Lucida Grande"; color:#666666; line-height:15px; padding:30px 0 4px 0;}
 div.main.specie div p {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:17px; padding:0 0 13px;}
 
@@ -790,7 +801,7 @@ div.right div.contact a:hover {border-bottom:1px dotted white;}
 /*GUIDE*/
 
 div.guide_header {float:left; width:899px; padding:0 20px 20px 17px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.guide_header img.arrow {float:left; padding:0; margin:0 0 0 292px; padding:0 0 17px 0;}
+div.guide_header img.arrow {float:left; padding:0; margin:0 0 0 254px; padding:0 0 17px 0;}
 div.guide_header div.large {float:left; width:100%;}
 div.guide_header div.left {float:left; width:580px; padding:0 0 10px 0;}
 div.guide_header div.left ul.breadcrumb {float:left; width:577px; margin:0 0 0 3px; padding:0;}
@@ -842,17 +853,27 @@ div.main.guide div.top div.right ul li a:hover span {background-position:right -
 div.main.guide div.family {float:left; width:100%; margin:35px 0 0 0;}
 div.main.guide div.family h3 {float:left; width:100%; font:normal 11px Arial; color:#666666; padding:0 0 8px;}
 div.main.guide div.family ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
-div.main.guide div.family ul li {position:relative; float:left; width:279px; border-bottom:1px solid #E5E5E5; margin:0 28px 0 0; padding:12px 0 9px;}
-div.main.guide div.family ul li:hover {cursor:pointer; background:url(../images/guides/li_over.png) no-repeat 250px 20px;}
+div.main.guide div.family ul li {position:relative; float:left; width:283px; border-bottom:1px solid #E5E5E5; margin:0 15px 0 0; height:75px;}
+div.main.guide div.family ul li:hover {background-color:#F4F4F4; border:1px solid #E5E5E5; height:75px; width:281px; border-top:none;}
+
+
 div.main.guide div.family ul li.last_item {margin:0;}
 div.main.guide div.family ul li.last_row {border-bottom:1px solid white;}
-div.main.guide div.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:0 8px 0 0;}
+div.main.guide div.family ul li:hover div.image {margin:14px 8px 0 7px;}
+div.main.guide div.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:14px 8px 0 8px;}
 div.main.guide div.family ul li div.image img {float:left; width:40px; height:40px;}
-div.main.guide div.family ul li div.info {float:left; width:210px; padding:4px 0 0 0;}
-div.main.guide div.family ul li div.info h4 {float:left; width:210px;}
+div.main.guide div.family ul li div.info {float:left; width:215px; padding:0; margin:12px 0 0 0; position:relative;}
+div.main.guide div.family ul li div.info a.add {background:url(../images/guides/li_over.png) no-repeat 0 0; position:absolute; top:3px; right:3px; cursor:pointer; width:16px; height:16px; display:none;}
+div.main.guide div.family ul li div.info a.add.added{background:url(../images/guides/li_over_added.png) no-repeat 0 0; cursor:default;}
+
+div.main.guide div.family ul li:hover div.info a.add.added:hover {background-position:0 0;}
+div.main.guide div.family ul li:hover div.info a.add {display:inline;}
+
+div.main.guide div.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
+div.main.guide div.family ul li div.info h4 {float:left; width:215px;}
 div.main.guide div.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
 div.main.guide div.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
-div.main.guide div.family ul li div.info p.common_name {float:left; width:210px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
+div.main.guide div.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
 
 
 
@@ -864,7 +885,7 @@ div.search_container img.arrow {position:absolute; top:0; left:388px; display:no
 div.search_container h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.search_container form {float:left; width:892px; padding:0 0 0 7px; margin:15px 0 0 0;}
 div.search_container form input[type="text"] {float:left; width:474px; height:16px; padding:10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
-div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:8px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
+div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:5px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
 div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer; color:#0083AE;}
 div.search_container form p {float:left; margin:8px 0 0 15px; font:normal 15px Arial; color:white;}
 div.search_container form p a {text-decoration:none; color:white; display:inline-block; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid white;}
@@ -886,7 +907,7 @@ div.left div.results ul li div.image img {float:left; width:117px; height:88px;}
 div.left div.results ul li.landscape div.image {background-image:url(../images/search/landscape_bkg.png);}
 div.left div.results ul li.landscape div.image img {float:left; margin:21px 0 0 29px; width:70px; height:48px;}
 div.left div.results ul li div.information {float:left; width:445px; margin:0; padding:0;}
-div.left div.results ul li div.information h2 {float:left; width:445px; padding:12px 0 0 0; font:bold 17px "Lucida Grande"; color:#0099CC;}
+div.left div.results ul li div.information h2 {float:left; width:445px; padding:0; font:bold 17px "Lucida Grande"; color:#0099CC;}
 div.left div.results ul li div.information h2 a {text-decoration:none; display:inline-block; vertical-align:top; padding:0 0 1px 0; color:#0099CC;}
 div.left div.results ul li div.information h2 a:hover {border-bottom:1px solid #0099CC; padding:0;}
 div.left div.results ul li div.information p.subtitle {float:left; width:445px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic;}

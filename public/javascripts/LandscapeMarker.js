@@ -55,7 +55,8 @@ LandscapeMarker = OpenLayers.Class({
 				
 
 				if (this.info.add_url == null || this.info.add_url == "") {
-					$(this.icon.imageDiv).find('a.add').addClass('src','disabled');
+					// $(this.icon.imageDiv).find('a.add').addClass('src','disabled');
+					$(this.icon.imageDiv).find('a.add').addClass('disabled');
 					$(this.icon.imageDiv).find('a.add').removeAttr('href');
 					$(this.icon.imageDiv).find('a.add').text('Already added to your guide');
 				}

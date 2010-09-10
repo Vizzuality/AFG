@@ -3,54 +3,67 @@
     <%= image_tag('common/blue_arrow.png', :class=> 'arrow') %>
   <% end %>
   <div class="long_in">
-    <div class="title">
-      <h3>Your Antarctic Field Guide</h3> 
-      <p class="subtitle">You will be able to choose between checklist or complete guide before publishing it</p> 
-    </div>
-    <ul id="your_guide">
-      <% @entries.each do |entry| %>
-        <!--<%= entry.element_type %> -->
-        <li class="<%= entry_css_class(entry) %>">
-          <p class="title" title="<%= entry.full_name %>"><%= truncate(entry.full_name, :length => 15) %></p>
-          <% if entry.element_type == 'Landscape' %>
-          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:small) %>" alt="<%= entry.element.name %>" title="<%= entry.element.name %>" />
-          <% elsif entry.element_type == 'Species' %>
-          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
-          <% else %>
-          <p class="page_title"><%= entry.elements_count %> SPECIES</p>
-          <% end -%>
-          <!-- <p class="page_title">PAGE</p> -->
-          <div class="over_state">
-            <% if entry.element_type == 'Landscape' %>
-            <a href="<%= landscape_path(entry.element) %>" title="view" class="view"></a>
-            <% elsif entry.element_type == 'Species' %>
-            <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
-            <% elsif entry.element_type == 'Order' || entry.element_type == 'Kingdom' || entry.element_type == 'Class' || entry.element_type == 'Family' || entry.element_type == 'Phylum' %>
-            <a href="<%= expand_taxonomy_path(entry.element) %>" title="view" class="view"></a>
-            <% end -%>
-            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete', :remote => true) %>
-          </div>
-        </li> 
-      <% end -%>
-      <% if !current_page?('/') && params[:action] == 'show' && ((@landscape && !@current_guide.include_landscape?(@landscape)) || (@species && !@current_guide.include_species?(@species))) %>
+		
+		<% if !@entries.empty? %>
+	   		<div class="title">
+		      <h3>Your Antarctic Field Guide</h3> 
+		      <p class="subtitle">You will be able to choose between checklist or complete guide before publishing it</p> 
+		    </div>
 
-		<li class="dragg_here">
-			<%if controller_name == 'species' %>
-				<%= link_to('Add the species', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'ajax') %>
-			<%elsif controller_name == 'landscapes' %>
-			  <%= link_to('Add the landscape', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'ajax') %>
-			<%else%>
-				<a>Add to the guide</a>
-			<% end %>
-	
-		</li>
-	
-      
-		  <% end %>
-    </ul> 
-		<% if @entries.empty? && params[:action] != 'show' %>
-			<p class="empty">There are no items yet! Start exploring <%= link_to 'species', species_index_path %> and <%= link_to 'places', landscapes_path %> now.</p>
-		<% end %>
+		    <ul id="your_guide">
+		      <% @entries.each do |entry| %>
+		        <!--<%= entry.element_type %> -->
+		        <li class="<%= entry_css_class(entry) %>">
+		          <p class="title" title="<%= entry.full_name %>"><%= truncate(entry.full_name, :length => 15) %></p>
+		          <% if entry.element_type == 'Landscape' %>
+		          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:small) %>" alt="<%= entry.element.name %>" title="<%= entry.element.name %>" />
+		          <% elsif entry.element_type == 'Species' %>
+		          <img src="<%= entry.element.picture ? entry.element.picture.image.url(:small) : entry.element.default_picture(:medium) %>" alt="specie" title="specie" />
+		          <% else %>
+		          <p class="page_title"><%= entry.elements_count %> SPECIES</p>
+		          <% end -%>
+		          <!-- <p class="page_title">PAGE</p> -->
+		          <div class="over_state">
+		            <% if entry.element_type == 'Landscape' %>
+		            <a href="<%= landscape_path(entry.element) %>" title="view" class="view"></a>
+		            <% elsif entry.element_type == 'Species' %>
+		            <a href="<%= species_path(entry.element) %>" title="view" class="view"></a>
+		            <% elsif entry.element_type == 'Order' || entry.element_type == 'Kingdom' || entry.element_type == 'Class' || entry.element_type == 'Family' || entry.element_type == 'Phylum' %>
+		            <a href="<%= expand_taxonomy_path(entry.element) %>" title="view" class="view"></a>
+		            <% end -%>
+		            <%= link_to('', entry_path(entry), :method => :delete, :title => 'delete', :class => 'delete', :remote => true) %>
+		          </div>
+		        </li> 
+		      <% end -%>
+
+		      <% if !current_page?('/') && params[:action] == 'show' && ((@landscape && !@current_guide.include_landscape?(@landscape)) || (@species && !@current_guide.include_species?(@species))) %>
+				<li class="dragg_here">
+					<%if controller_name == 'species' %>
+						<%= link_to('Add the species', create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'ajax') %>
+					<%elsif controller_name == 'landscapes' %>
+					  <%= link_to('Add the place', create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'ajax') %>
+					<%else%>
+						<a>Add to the guide</a>
+					<% end %>	
+				</li>
+	  		    <% end %>
+		    </ul> 
+   		<%else%>
+			<% if (current_page?('/') || current_page?('/species') || current_page?('/places'))%>
+				<p class="empty">There are no items on your guide yet!</p>
+				<p class="message">Start exploring <%= link_to 'species', species_index_path %> and <%= link_to 'places', landscapes_path %></p>				
+			<%else %>
+				<p class="empty">There are no items on your guide yet!</p>
+				<%if @species %>
+					<p class="message">Start <%= link_to('adding '+@species.full_name, create_entry_path(:type => 'Species', :id => @species.id), :method => :post, :class => 'ajax') %></p>
+				<%elsif @landscape %>
+					<p class="message">Start <%= link_to('adding ' +@landscape.name, create_entry_path(:type => 'Landscape', :id => @landscape.id), :method => :post, :class => 'ajax') %></p>
+				<%else%>
+					<p class="message">Start exploring <%= link_to 'species', species_index_path %> and <%= link_to 'places', landscapes_path %></p>				
+				<%end%>
+				
+			<%end%>
+		<%end%>
   </div> 
   <div class="bottom"> 
     <% if @entries.total_pages > 1 %>
