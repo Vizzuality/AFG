@@ -49,7 +49,7 @@
         
           <% unless @guide.landscapes.empty? %>
           <% landscape_page = species_page + 1 %>
-          <li>Landscapes <strong>/ <%= landscape_page %></strong>
+          <li>Places <strong>/ <%= landscape_page %></strong>
             <ul>
               <% @guide.landscapes.each_with_index do |landscape, i| %>
                 <% landscape_page += 1 if i%4 == 0 && i > 1%>
@@ -73,7 +73,7 @@
         
           <% unless @guide.landscapes.empty? %>
           <% landscape_page = species_page %>
-          <li>Landscapes <strong>/ <%= landscape_page %></strong>
+          <li>Places <strong>/ <%= landscape_page %></strong>
             <ul>
               <% @guide.landscapes.each do |landscape| %>
               <li><%= landscape.name %> - <%= landscape_page %></li>

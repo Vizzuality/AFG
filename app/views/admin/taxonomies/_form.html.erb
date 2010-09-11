@@ -1,7 +1,7 @@
 <%= form_for(@taxonomy, :url => (@taxonomy.new_record? ? admin_taxonomies_path : admin_taxonomy_path(@taxonomy.id))) do |f| %>
   <% if @taxonomy.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@taxonomy.errors.count, "error") %> prohibited this landscape from being saved:</h2>
+      <h2><%= pluralize(@taxonomy.errors.count, "error") %> prohibited this place from being saved:</h2>
 
       <ul>
       <% @taxonomy.errors.full_messages.each do |msg| %>

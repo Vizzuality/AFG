@@ -4,7 +4,7 @@ module ApplicationHelper
     page_title = ["Antarctic Field Guides"]
     page_title << "Guides" if controller_name == 'guides'
     page_title << @guide.name if @guide
-    page_title << "Landscapes" if controller_name == 'landscapes'
+    page_title << "Places" if controller_name == 'landscapes'
     page_title << @landscape.name if @landscape
     page_title << "Species" if controller_name == 'species'
     page_title << "#{@taxonomy.name} (#{@taxonomy.hierarchy})" if @taxonomy
