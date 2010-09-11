@@ -1,5 +1,5 @@
 <div class="outer_layout"> 
-  <div class="specie_header" id="family-<%= @species.id %>"> 
+  <div class="specie_header" id="family-<%= @speciesInTaxonomy.id %>"> 
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
     <ul class="breadcrumb"> 
       <li class="first"><%= link_to('All', species_index_path) %></li>
@@ -36,9 +36,9 @@
 
 <div class="main family">
   <h3>Descendant species</h3> 
-  <p class="subtitle"><%= @species.total_entries %> total species belonging to the <%= @taxonomy.name %> <%= @taxonomy.hierarchy %></p>
+  <p class="subtitle"><%= @speciesInTaxonomy.total_entries %> total species belonging to the <%= @taxonomy.name %> <%= @taxonomy.hierarchy %></p>
   <ul>
-    <% @species.each do |species| %>
+    <% @speciesInTaxonomy.each do |species| %>
     <li class="<%= cycle('', '', 'last_item') %>">
 	  <a href="<%= species_path(species) %>">
       <div class="image">
@@ -54,15 +54,15 @@
     </li>
     <% end -%>
   </ul>
-  <% if @species.total_pages > 1 %>
+  <% if @speciesInTaxonomy.total_pages > 1 %>
   <div class="pagination">
-    <% unless @species.current_page == @species.total_pages %>
-    <a href="<%= species_taxonomy_path(params.merge(:page => @species.current_page + 1)) %>" class="right"></a> 
+    <% unless @speciesInTaxonomy.current_page == @speciesInTaxonomy.total_pages %>
+    <a href="<%= species_taxonomy_path(params.merge(:page => @speciesInTaxonomy.current_page + 1)) %>" class="right"></a> 
     <% end -%>
-    <% unless @species.current_page == 1 %>
-    <a href="<%= species_taxonomy_path(params.merge(:page => @species.current_page - 1)) %>" class="left"></a> 
+    <% unless @speciesInTaxonomy.current_page == 1 %>
+    <a href="<%= species_taxonomy_path(params.merge(:page => @speciesInTaxonomy.current_page - 1)) %>" class="left"></a> 
     <% end -%>
-    <p>viewing from <strong><%= @species.current_page*@species.per_page - @species.per_page + 1 %> to <%= (@species.current_page*@species.per_page < @species.total_entries ? @species.current_page*@species.per_page : @species.total_entries) %> of <%= @species.total_entries %></strong></p>
+    <p>viewing from <strong><%= @speciesInTaxonomy.current_page*@speciesInTaxonomy.per_page - @speciesInTaxonomy.per_page + 1 %> to <%= (@speciesInTaxonomy.current_page*@speciesInTaxonomy.per_page < @speciesInTaxonomy.total_entries ? @speciesInTaxonomy.current_page*@speciesInTaxonomy.per_page : @speciesInTaxonomy.total_entries) %> of <%= @speciesInTaxonomy.total_entries %></strong></p>
   </div>
   <% end -%>
 </div>

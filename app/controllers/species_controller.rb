@@ -40,8 +40,8 @@ class SpeciesController < ApplicationController
         @taxonomy = Taxonomy.find_by_hierarchy_and_name('genus', params[:genus])
         Species.complete.where(:kingdom => params[:kingdom], :phylum => params[:phylum], :t_class => params[:t_class], :t_order => params[:t_order], :family => params[:family], :genus => params[:genus])
       end
-      @species = species.order("species DESC").paginate :page => params[:page], :per_page => 12
-      raise "Invalid values" if @species.total_entries == 0
+      @speciesInTaxonomy = species.order("species DESC").paginate :page => params[:page], :per_page => 12
+      raise "Invalid values" if @speciesInTaxonomy.total_entries == 0
       render :action => 'taxonomy'
     end
   end
