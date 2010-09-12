@@ -59,9 +59,36 @@ $(document).ready(function() {
 		$(this).parent().css('background-position','0 0');
 	});
 	
-	
+
+	//Landscapes and species count bars in Species pages
+	$('div.right div.stats span').each(function(index){
+		var kind = $(this).attr('title');
+		if (kind=='specie') {
+			var color = '#FFFFFF';
+		} else {
+			var color = '#FFFFFF';
+		}
+		var count = $(this).attr('class');
+		var x10 = parseInt((count)/10).toFixed(0);
+		var mod = parseInt((count) % 10);
+		$(this).html('<ul class="stats none" style="clear:both; width:10px; overflow:hidden"><li></li><li></li><li></li><li></li><li></li></ul>');
+		for (var i=4; i>=0; i--) {
+			if (x10>0) {
+				$(this).find('li:eq('+i+')').html('<span style="float:left; width:10px; height:2px; background:'+color+'"></span>');
+				x10--;
+			} else {
+				if (mod!=0) {
+					$(this).find('li:eq('+i+')').html('<span style="float:left; width:'+mod+'px; height:2px; background:'+color+'"></span>');
+					mod=0;
+				}
+			}
+		}
+	});
+
 	//Landscapes and species count bars
 	$('li div.stats span').each(function(index){
+		
+		
 		var kind = $(this).attr('title');
 		if (kind=='specie') {
 			var color = '#FFB498';

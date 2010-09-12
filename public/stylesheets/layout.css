@@ -1061,9 +1061,10 @@ div.stats.white p.species_rank {color:white;}
 div.stats.white p.landscapes_rank {color:white;}
 div.stats span {float:left; width:10px; height:40px; background:none;}
 div.stats span ul.stats {float:left; width:10px; height:24px; background:white; margin:0; padding:24px 0 0 0; border:none;}
+div.stats span ul.stats.none {background:none;}
 div.stats span ul.stats li {float:left; width:10px!important; height:2px!important; background:none!important; background-image:none; background-color:white; margin:1px 0!important; padding:0!important; border:none;}
 p.species_rank {float:left; width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:23px;}
-p.landscapes_rank {float:left; width:55px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:0;}
+p.landscapes_rank {float:left; width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:0;}
 .highlighted p.species_rank {padding:11px 0 0 5px;}
 .highlighted p.landscapes_rank {padding:11px 0 0 5px;}
 
