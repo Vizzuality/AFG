@@ -2,6 +2,7 @@
 javascripts: 
 - base: 
   - jquery.min
+  - jquery.lightbox-0.5
   - jScrollPane
   - jScrollHorizontalPane
   - jquery.textshadow
@@ -37,6 +38,7 @@ javascripts:
   
 stylesheets: 
 - base: 
+  - jquery.lightbox-0.5
   - jScrollPane
   - layout
   - scrollbars

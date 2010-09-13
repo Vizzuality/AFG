@@ -479,7 +479,7 @@ div.specie_header div.right div.img_specie img {width:260px; height:190px;}
 /*if there is info of the specie*/
 div.main.specie {border-bottom:1px solid #CCCCCC; background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.main.specie div.left {position:relative; float:left; width:576px; padding:24px; background:none;}
-div.main.specie div.left img {position:absolute; right:-2px; top:26px; z-index:100;}
+div.main.specie div.left img {position:absolute; right:-2px; top:26px; z-index:50;}
 
 div.main.specie div.right {padding:24px; width:264px;}
 div.main.specie div.right a.view_more {float:right; color:#0099CC; text-decoration:none; border-bottom:1px solid #0099CC !important; display:inline-block; vertical-align:top; margin:5px 0 0 0;}

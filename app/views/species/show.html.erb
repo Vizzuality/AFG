@@ -91,14 +91,19 @@
   <div class="right"> 
     <h3>Photos</h3> 
     <ul>
-      <% @species.pictures.limit(6).each do |picture| %>
-      	<li>
-			<a href="javascript: void openBigImage()"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>
-		</li> 
+
+      <% @species.pictures.each_with_index do |picture,count|  %>		
+		<% if count >= 6 %>
+			<li style="display:none">
+		<%else%>
+      		<li>
+		<%end%>
+				<a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:huge) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>			
+			</li>
       <% end -%>
 	</ul> 
 	<% if @species.pictures.size > 6 %>
-		<a href="javascript: void openBigImage()" class="view_more">view more images</a>
+		<a class="view_more lightbox" href="<%= @species.pictures[6].image.url(:huge) %>">view more images</a>
 	<%end%>
   </div>
   <% else %>

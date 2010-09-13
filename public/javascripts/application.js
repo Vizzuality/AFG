@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 	$('#search_term').example('Search species, guides,...');
 
+	// To show the images
+	$('a.lightbox').lightBox();
 	
 	//Search choices
 	$('div.right div.results ul li').each(function(index){
@@ -232,32 +234,6 @@ function openPublish() {
 								});
 							}
 	});
-}
-// Showing the image
-function openBigImage() {
-	alert('open Big Image');
-	// $.get("/guides/update/current", { reset: "true"} );
-	// 	$('#publish_container').html(modal_publish);
-	// 	$('#publish_container').modal(
-	// 		{closeHTML: '<a class="modalCloseImg" title="Close"></a>',
-	// 			onOpen: function (dialog) {
-	// 						 	dialog.overlay.fadeIn('slow', function () {
-	// 								dialog.data.hide();
-	// 								dialog.container.fadeIn('slow', function () {
-	// 									dialog.data.fadeIn('slow');
-	// 								});
-	// 							});
-	// 						 },
-	// 		onClose: 	function (dialog) {
-	// 								dialog.data.fadeOut('fast', function () {
-	// 									dialog.container.hide('fast', function () {
-	// 										dialog.overlay.fadeOut('fast', function () {
-	// 											$.modal.close();
-	// 										});
-	// 									});
-	// 								});
-	// 							}
-	// 	});
 }
 
 function firstStep(type) {
