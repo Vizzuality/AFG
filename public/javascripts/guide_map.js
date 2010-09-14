@@ -37,8 +37,6 @@ var map, popup;
 	    dblclick.setMap(map);
 	    dblclick.activate();
 			
-			
-			
 			var markers = new OpenLayers.Layer.Markers( "Markers" );
 			map.addLayer(markers);
 			
@@ -60,7 +58,7 @@ var map, popup;
 				var landscape_marker = new LandscapeMarker(new OpenLayers.LonLat(data.landscapes[i].lon,data.landscapes[i].lat),landscape_image, data.landscapes[i]); // data.landscapes[i].picture, size, offset
 				markers.addMarker(landscape_marker);
 			}	
-
+			
 		});
 	});
 	

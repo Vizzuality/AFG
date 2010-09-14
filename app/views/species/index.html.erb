@@ -60,7 +60,7 @@
       <p class="subtitle">Featured species</p> 
       <h3><%= link_to(@featured_species.full_name, species_path(@featured_species)) %></h3>
       <%= stars(@featured_species) %>
-		<a class="lightbox" title="<%= @featured_species.full_name %>" href="<%= @featured_species.picture.image.url(:large) %>">
+		<a class="lightbox" title="<%= @featured_species.full_name %>" href="<%= @featured_species.picture.image.url(:gallery) %>">
         <div class="image">
         <img src="<%= @featured_species.picture ? @featured_species.picture.image.url(:large) : @featured_species.default_picture(:medium) %>" alt="<%= @featured_species.full_name %>" title="<%= @featured_species.full_name %>" />
         <span class="shadow"></span>

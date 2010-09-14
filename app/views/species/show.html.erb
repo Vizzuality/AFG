@@ -98,12 +98,12 @@
 		<%else%>
       		<li>
 		<%end%>
-				<a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:huge) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>			
+				<a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:gallery) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>			
 			</li>
       <% end -%>
 	</ul> 
 	<% if @species.pictures.size > 6 %>
-		<a class="view_more lightbox" href="<%= @species.pictures[6].image.url(:huge) %>">view more images</a>
+		<a class="view_more lightbox" href="<%= @species.pictures[6].image.url(:gallery) %>">view more images</a>
 	<%end%>
   </div>
   <% else %>
@@ -134,7 +134,8 @@
     <h3>Distribution map</h3> 
     <div class="map"> 
       <div id="map"></div> 
-			<a href="javascript: void toggleFullScreen()" class="full_screen"></a>
+ 		<%= image_tag('map/map-loading.gif', :class=> 'loading') %>
+		<a href="javascript: void toggleFullScreen()" class="full_screen"></a>
       <a href="javascript: void zoomIn()" class="zoomIn"></a>
       <a href="javascript: void zoomOut()" class="zoomOut"></a>
 			<a href="http://www.vizzuality.com" target="_blank" class="vizzuality"></a>

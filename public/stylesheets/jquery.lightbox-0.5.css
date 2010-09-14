@@ -16,7 +16,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 90;
+	z-index: 999;
 	width: 100%;
 	height: 500px;
 }
@@ -25,7 +25,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 1000;
 	text-align: center;
 	line-height: 0;
 }
@@ -55,7 +55,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 10;
+	z-index: 1000;
 }
 #lightbox-container-image-box > #lightbox-nav { left: 0; }
 #lightbox-nav a { outline: none;}
@@ -82,12 +82,12 @@
 	margin: 0 auto;
 	line-height: 1.4em;
 	/*overflow: auto;*/
-	height:34px;
+	height:31px;
 	width: 100%;
 	position:absolute;
 	left:5px;
 	bottom:5px;
-	padding: 10px 0 0;
+	padding: 13px 0 0;
 }
 
 #vertex_bkg {
@@ -101,7 +101,7 @@
 }
 
 #lightbox-container-image-data {
-	padding: 0 10px; 
+	padding: 0 15px; 
 	color: white; 
 }
 #lightbox-container-image-data #lightbox-image-details { 

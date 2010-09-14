@@ -223,6 +223,10 @@
 					___pause(100);	
 				}
 			} 
+			
+			$('#lightbox-nav-btnPrev').css('margin-top',intImageHeight/2);
+			$('#lightbox-nav-btnNext').css('margin-top',intImageHeight/2);
+			
 			$('#lightbox-container-image-data-box').css({ width: intImageWidth });
 			$('#lightbox-nav-btnPrev,#lightbox-nav-btnNext').css({ height: 35 });
 		};

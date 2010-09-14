@@ -19,15 +19,16 @@ div.demo_map div.map div#map {width:100%; height:100%;}
 /*MAP CONTROLS*/
 
 div.map div#map {float:left; padding:0; margin:0; width:100%; height:100%;}
-div.map a.zoomIn {position:absolute; top:17px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_in.png) no-repeat 0 0; z-index:1000;}
+div.map a.zoomIn {position:absolute; top:17px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_in.png) no-repeat 0 0; z-index:750;}
 div.map a.zoomIn:hover {background-position:0 -26px;}
-div.map a.zoomOut {position:absolute; top:47px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_out.png) no-repeat 0 0; z-index:1000;}
+div.map a.zoomOut {position:absolute; top:47px; left:23px; height:26px; width:26px; background:url(../images/common/zoom_out.png) no-repeat 0 0; z-index:750;}
 div.map a.zoomOut:hover {background-position:0 -26px;}
-div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:1000;}
+div.map a.full_screen {position:absolute; right:23px; top:17px; height:26px; width:26px; background:url(../images/common/full_screen.png) no-repeat 0 0; z-index:750;}
 div.map a.full_screen:hover {background-position:0 -26px;}
 div.map a.full_screen.back {background:url(../images/common/back_full_screen.png) no-repeat 0 0;}
 div.map a.full_screen.back:hover {background-position:0 -26px;}
 div.map a.vizzuality {position:absolute; z-index:1000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
+div.map img.loading {position:absolute; z-index:500; height:32px; width:32px; bottom:200px; left:433px; display:none;}
 
 
 /* MAP INFOWINDOW */
