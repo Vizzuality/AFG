@@ -51,6 +51,7 @@
 
   <div class="outer_layout"> 
     <div class="header"> 
+	  <div id="pop_up"><%= pop_up_flash %></div>	
       <div class="logo"> 
         <a href="/"></a> 
         <span class="search"> 
@@ -74,11 +75,12 @@
 
   <div class="outer_layout"> 
     
-    <div id="pop_up"><%= pop_up_flash %>	</div>
+    
     
     <%= yield %>
     
     <div class="footer"> 
+	
       <div class="in"> 
         <div class="logo"> 
           <a href="/" class="logo"></a> 

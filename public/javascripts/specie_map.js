@@ -6,7 +6,7 @@ var map, popup;
 	$(document).ready(function() {
 		
 		$('div.map img.loading').css('top','82px');
-		$('div.map img.loading').css('left','120px');
+		$('div.map img.loading').css('left','115px');
 		
 		$('div.map img.loading').css('display','inline');	
 		

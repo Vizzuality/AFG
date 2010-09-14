@@ -47,11 +47,8 @@ $(document).ready(function() {
 	});
 	
 	
-	
 	//Show pop_up
-	var pop_up_width = parseInt($('div.pop_up').width())/2;
-	$('#pop_up').css('margin-left','-'+ pop_up_width + 'px');
-	$('#pop_up').delay(3000).fadeOut();
+	 $('#pop_up').delay(3000).fadeOut();
 	
 	
 	$('div.long div.long_in ul li.dragg_here a').hover(function(ev){

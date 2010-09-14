@@ -55,7 +55,7 @@ div#map div.infowindow a.close:hover {background-position:0 -28px;}
 
 
 /* COMMON */
-div.pop_up {position:absolute; z-index:1000000; top:200px; left:50%; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
+div.pop_up {position:absolute; z-index:1000000; top:55px; right:21px; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
 div.pop_up p {position:relative; float:left; height:59px; width:auto; margin:0; padding:0 0 0 10px; background:url(../images/common/pop_up_left.png) no-repeat 0 0;}
 div.pop_up p span {float:left; width:auto; font:bold 18px Helvetica; color:white; letter-spacing:-1px; padding:19px 40px 19px 10px; height:21px; background:url(../images/common/pop_up_right.png) no-repeat right 0;}
 div.pop_up p span a {padding:0 0 0 4px; font:bold 12px Helvetica; color:#999999; text-decoration:underline;}
@@ -131,7 +131,7 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 
 
 /*HEADER*/
-div.header {float:left; width:896px; margin:23px 0 0 0; padding:23px 20px 0 20px; background:white;}
+div.header {float:left; width:896px; margin:23px 0 0 0; padding:23px 20px 0 20px; background:white; position:relative;}
 div.header div.logo {float:left; width:894px; }
 div.header div.logo a {float:left; width:191px; height:38px; background:url(../images/common/logo.png) no-repeat 0 0;}
 div.header div.logo span.search {float:right; width:auto;}
