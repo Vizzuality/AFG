@@ -5,6 +5,12 @@ GIT
     steak (0.4.0.beta.1)
       rspec-core (>= 2.0.0.beta.19)
 
+GIT
+  remote: http://github.com/rails/exception_notification.git
+  revision: 192a49a
+  specs:
+    exception_notification (1.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -149,6 +155,7 @@ DEPENDENCIES
   capistrano-ext
   capybara
   database_cleaner
+  exception_notification!
   fastercsv
   launchy
   nofxx-georuby

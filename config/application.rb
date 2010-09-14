@@ -44,11 +44,16 @@ module AFG
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
+
     # PDF kit
     config.middleware.use PDFKit::Middleware
     config.middleware.use Rack::NoIE, :redirect => '/noie.html'
-    
+
+    # Exception Notification
+    config.middleware.use ExceptionNotifier,
+        :email_prefix => "[AFG] ",
+        :sender_address => %{"ubuntu" <ubuntu@li187-104.members.linode.com>},
+        :exception_recipients => %w{ferblape@gmail.com}
   end
 end
 
