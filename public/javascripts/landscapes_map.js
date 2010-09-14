@@ -4,6 +4,9 @@ var map, popup;
 
 
 	$(document).ready(function() {
+
+		$('div.map img.loading').css('display','inline');
+		$('div.map img.loading').css('z-index','5000');
 		
 		$.getJSON('/api/maps/features', function(data){
 			
@@ -61,8 +64,8 @@ var map, popup;
 				var landscape_marker = new LandscapeMarker(new OpenLayers.LonLat(data.landscapes[i].lon,data.landscapes[i].lat),landscape_image, data.landscapes[i]); // data.landscapes[i].picture, size, offset
 				markers.addMarker(landscape_marker);
 			}
-
 		});
+		$('div.map img.loading').delay(2000).fadeOut();
 	});
 	
 	

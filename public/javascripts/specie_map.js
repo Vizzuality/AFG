@@ -5,6 +5,10 @@ var map, popup;
 
 	$(document).ready(function() {
 		
+		$('div.map img.loading').css('top','82px');
+		$('div.map img.loading').css('left','120px');
+		
+		$('div.map img.loading').css('display','inline');	
 		
 		$.getJSON('/api/maps/features?species_id='+$('span#specie_id').text(), function(data){
 			
@@ -55,6 +59,7 @@ var map, popup;
 			map.zoomOut();
 
 		});
+		$('div.map img.loading').delay(1500).fadeOut();
 	});
 	
 

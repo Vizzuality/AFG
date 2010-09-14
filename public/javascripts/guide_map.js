@@ -4,6 +4,10 @@ var map, popup;
 
 
 	$(document).ready(function() {
+
+		$('div.map img.loading').css('top','135px');
+		$('div.map img.loading').css('left','275px');
+		$('div.map img.loading').css('display','inline');
 		
 		$.getJSON('/api/maps/features?guide_id='+$('span#guide_id').text(), function(data){
 						
@@ -60,6 +64,7 @@ var map, popup;
 			}	
 			
 		});
+		$('div.map img.loading').delay(2000).fadeOut();
 	});
 	
 	
