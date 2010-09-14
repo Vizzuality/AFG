@@ -9,6 +9,10 @@ class SpeciesController < ApplicationController
     if params[:taxonomy].blank?
       @featured_species = Species.complete.featured.first
       @species = Species.complete.not_featured.limit(6).order("guides_count DESC")
+      @species_to_add = 0;
+      Taxonomy.kingdoms.each do |taxonomy|
+        @species_to_add += taxonomy.species_count
+      end
       render :action => 'index'
     else
       species = if (params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).size > 0

@@ -31,7 +31,7 @@
 	    <p><%= number_with_delimiter(Species.complete.count, :separator => ",")  %> species in our <%= link_to('species list', species_index_path) %></p> 
 	  </div> 
 	  <div class="create"> 
-	    <h3>Some of the already created Antarctic Field Guides</h3> 
+	    <h3>Published Antarctic Field Guides</h3> 
 	    <p class="subtitle">create your AFG with species and places, and enjoy your trip</p> 
 	    <ul class="published_afg"> 
 	      <% @guides.each do |guide| %>
