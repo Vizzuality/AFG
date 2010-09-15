@@ -28,7 +28,7 @@ div.map a.full_screen:hover {background-position:0 -26px;}
 div.map a.full_screen.back {background:url(../images/common/back_full_screen.png) no-repeat 0 0;}
 div.map a.full_screen.back:hover {background-position:0 -26px;}
 div.map a.vizzuality {position:absolute; z-index:1000; left:20px; bottom:20px; width:75px; height:40px; background:url(../images/common/map_logo.png) no-repeat 0 0;}
-div.map img.loading {position:absolute; z-index:500; height:32px; width:32px; bottom:200px; left:433px; display:none;}
+div.map img.loading {position:absolute; z-index:500; height:32px; width:32px; bottom:200px; left:427px; display:none;}
 
 
 /* MAP INFOWINDOW */
@@ -43,8 +43,10 @@ div#map div.infowindow a.add:hover {color:#007DA6;}
 div#map div.infowindow a.add.disabled {color:#999999;}
 div#map div.infowindow a.add.disabled:hover {color:#999999;}
 div#map div.infowindow div.info {position:relative; float:left; width:247px; height:165px; margin:9px 0 0 0;}
+div#map div.infowindow div.info:hover {cursor:pointer;}
+div#map div.infowindow div.info:hover span{display:inline;}
 div#map div.infowindow div.info img.background {position:absolute; top:0; left:0; width:247px; height:165px; z-index:10;}
-div#map div.infowindow div.info span {position:absolute; top:0; left:0; z-index:100; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0;}
+div#map div.infowindow div.info span {position:absolute; top:0; left:0; z-index:100; height:115px; width:221px; padding:50px 13px 0 13px; background:url(../images/map/opacity.png) repeat 0 0; display:none;}
 div#map div.infowindow div.info span p {font:left; width:100%; font:normal 13px Arial; color:white;}
 div#map div.infowindow div.info span a.more {float:right; width:auto; font:normal 13px Arial; color:white; margin:10px 0 0 0; padding:0 0 0 18px; background:url(../images/map/eye.png) no-repeat 0 3px; display:inline-block; vertical-align:top; border-bottom:1px solid white; text-decoration:none;}
 div#map div.infowindow div.info span a.more:hover {border-bottom:1px dotted white;}
@@ -445,14 +447,14 @@ div.specie_header ul.breadcrumb li a:hover {border-bottom:1px solid white;}
 div.specie_header h1 {float:left; width:100%; text-align:left; font:bold 25px Helvetica; color:white; letter-spacing:-1px; line-height:25px; padding:0;}
 div.specie_header h1 small {font:normal 15px Helvetica; color:white; font-style:italic; padding:0 0 0 5px; letter-spacing:0px;}
 div.specie_header p.gbif {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
-div.specie_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0;}
+div.specie_header h3 {float:left; width:100%; font:bold 15px "Lucida Grande"; color:white; line-height:15px; padding:0 0 6px 0; margin:15px 0 0 0;}
 div.specie_header p.gbif {padding:0;}
 div.specie_header p.gbif a {width:auto; text-decoration:underline; font:normal 12px 'Lucida Grande'; color:#B7E7F3;}
 div.specie_header p.gbif a:hover {color:white;}
 div.specie_header p {float:left; width:100%; text-align:left; font:normal 13px 'Lucida Grande'; color:#B7E7F3; line-height:16px; padding:0 0 13px 0;}
 
 div.specie_header div.left {padding:5px 0 0 0; width:576px;}
-div.specie_header div.left p.subtitle {float:left; width:576px; padding:0 0 15px 0; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
+div.specie_header div.left p.subtitle {float:left; width:576px; padding:0; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.specie_header div.left p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
 div.specie_header div.left p.subtitle a:hover {border-bottom:1px dotted white;}
 

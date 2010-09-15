@@ -13,7 +13,7 @@ $(document).ready(function() {
 	modal_publish = $('#publish_container').html();
 
 	$('#search_term').example('Search species, guides,...');
-
+	
 	// To show the images
 	$('a.lightbox').lightBox();
 	
@@ -392,7 +392,9 @@ function secondStep() {
 			$.modal.close();
 		});
 	});
+	
 }
+
 
 
 
