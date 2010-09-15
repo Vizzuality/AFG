@@ -260,8 +260,8 @@ function firstStep(type) {
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
 		'<label>DESCRIPTION</label>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
-		'<div class="errors"><div id="error_invalid_name" style="display:none"><p>The name of the guide can\'t be blank</p></div></div>' +
-		'<div class="errors"><div id="error_invalid_author" style="display:none"><p>The author of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><div id="error_invalid_author"><p>The author of the guide can\'t be blank</p></div></div>' +
 		'<a href="javascript:void secondStep()" class="download">Procced to download</a>';
 
     $('div.choice').html(first_step);
@@ -281,6 +281,9 @@ $('input#no_publish').live('click',function(ev){
 	$(this).parent().parent().addClass('active');		
 	$(this).parent().parent().parent().children('div.want_publish').removeClass('active');	
 	$(this).parent().parent().parent().children('div.want_publish').children('div.fill').css('display','none');	
+
+	$('#error_invalid_name').hide();
+	$('#error_invalid_author').hide();
 	
 	$('div.choice').animate({
 	    height: '140px'
@@ -321,16 +324,19 @@ function secondStep() {
 	
 	var author = $('#author').val();
 	var name = $('#name').val();
+
 	if(publish == true) {
+		var error = 0;
 		
 		if(author == "") {
-			$('#error_invalid_author').show();
-			return false;
+			$('#error_invalid_author').fadeIn();
+			error = 1;
 		}
 		if(name == "") {
-			$('#error_invalid_name').show();
-			return false;			
+			$('#error_invalid_name').fadeIn();
+			error = 1;
 		}
+		if (error == 1) return false;
 	}
 	
 	var dataString = 'description='+ $('#description').val() + '&author=' + author + '&name=' + name + '&publish=' + publish+'&print=true';
@@ -366,7 +372,7 @@ function secondStep() {
 			$('div.choice div.info h5').text('Your Anctartic Field Guide is ready');
 			$('div.choice div.info p').text("The file you are about to download is a PDF. If you dont't have a reader, use this one.");
 			$('div.choice div.info a').removeClass('disabled');
-	  }
+		}
    });
 
 	$('div#publish_container ul li').each(function(index,element){
@@ -392,11 +398,7 @@ function secondStep() {
 			$.modal.close();
 		});
 	});
-	
 }
-
-
-
 
 function getUrlVars() {
 	var vars = {};

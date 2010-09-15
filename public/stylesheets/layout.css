@@ -101,7 +101,10 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 
 
 #publish_container div.repeat div.choice div.errors {float:left; width:auto; color:#990000; font:bold 14px Arial; padding:10px 0 0 0;}
-
+#publish_container div.repeat div.choice div.errors div#error_invalid_name {position:absolute; background:url('../images/modal/bkg_author_guide.png') no-repeat 0 0; width:271px; height:36px; top:239px; right:97px; display:none;}
+#publish_container div.repeat div.choice div.errors div#error_invalid_author {position:absolute; background:url('../images/modal/bkg_name_guide.png') no-repeat 0 0; width:268px; height:36px; top:169px; right:101px; display:none;}
+#publish_container div.repeat div.choice div.errors div#error_invalid_name p {float:left; font:bold 13px Arial; color:white; margin:10px 0 0 28px;}
+#publish_container div.repeat div.choice div.errors div#error_invalid_author p {float:left; font:bold 13px Arial; color:white; margin:10px 0 0 22px;}
 #publish_container div.repeat div.choice div.dont_want_publish {float:left; width:649px; height:25px; padding:14px; margin:0 0 0 0;}
 #publish_container div.repeat div.choice div.dont_want_publish.active {background:url(../images/modal/blue_area_simple_line.png) no-repeat 0 0;}
 #publish_container div.repeat div.choice div.dont_want_publish input[type="radio"] {float:left; margin:3px 8px 0 0; padding:0;}
