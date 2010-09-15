@@ -985,7 +985,7 @@ div.main_pdf div.left div.images {float:left; width:100%; margin:50px 0 0 0;}
 div.main_pdf div.left div.images ul {float:left; width:100%;}
 div.main_pdf div.left div.images ul li {float:left; width:129px; height:107px; background:url(../images/pdf/images_bkg.png) no-repeat 0 0; margin:0 10px 0 0;}
 div.main_pdf div.left div.images ul li img {float:left; width:117px; height:86px; margin:6px 0 0 6px;}
-div.main_pdf div.left div.info {float:left; width:600px;}
+div.main_pdf div.left div.info {float:left; width:585px;}
 div.main_pdf div.left div.info h2 {float:left; width:100%; font:normal 25px "Aller"; color:#333333; padding:40px 0 0 0;}
 div.main_pdf div.left div.info p {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#666666; padding:14px 0 0 0;}
 div.main_pdf div.right {float:right; width:390px; padding:0; background:none;}
@@ -998,10 +998,10 @@ div.main_pdf div.right ul li {font:normal 15px "Bitstream Vera Serif"; color:#66
 div.main_pdf div.right ul li i {font:normal 12px "Bitstream Vera Serif"; color:#666666; font-style:italic;}
 
 div.main_pdf div.footer {position:absolute; left:90px; bottom:50px; width:935px;}
-div.main_pdf div.footer span {float:left; width:100%; padding:0 0 13px 0;}
+div.main_pdf div.footer span {float:left; width:100%; padding:0 0 15px 0;}
 div.main_pdf div.footer span img {float:left; width:auto;}
-div.main_pdf div.footer p.left {float:left; width:auto; font:normal 12px Arial; color:#999999;}
-div.main_pdf div.footer p.right {float:right; width:auto; font:normal 12px Arial; color:#999999;}
+div.main_pdf div.footer p.left {float:left; width:auto; font:normal 12px Arial; color:#999999; margin:0;}
+div.main_pdf div.footer p.right {float:right; width:auto; font:normal 12px Arial; color:#999999; margin:0;}
 
 /*ERRORS PAGES*/
 

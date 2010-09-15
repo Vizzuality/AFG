@@ -172,18 +172,24 @@
             </div>
     		
             <div class="info">
+			<% if !(species.description.empty?) %>
               <h2>Description</h2>
               <%= simple_format(species.description) %>
-			  <%= page_break %>	
+			<%end%>			 
+
+			<% if !(species.distinguishing_characters.empty?) %>
 			  <h2>Distinguishing Characters</h2>
               <%= simple_format(species.distinguishing_characters) %>
-			  <%= page_break %>	
+			<%end%>			 
+			
+			<% if !(species.distribution.empty?) %>
               <h2>Distribution info</h2>
               <%= simple_format(species.distribution) %>
-			  <%= page_break %>	
+			<%end%>	
+			<% if !(species.ecology.empty?) %>
               <h2>Ecology</h2>
               <%= simple_format(species.ecology) %>
-			  <%= page_break %>	
+			<%end%>	
             </div>
           </div>
   
@@ -192,22 +198,27 @@
 				<img src="/api/maps/static_map?species_id=<%= species.id %>" />
             </div>
             <div class="info">
-              <h3>Size</h3>
-              <%= simple_format(species.size) %>
-              <h3>Habitat</h3>
-              <%= simple_format(species.habitat) %>
-              <h3>Depth of the distribution</h3>
-              <%= simple_format(species.distribution) %>
+		      <% unless species.size.blank? %>
+              	<h3>Size</h3>
+                <%= simple_format(species.size) %>
+			  <%end%>
+		      <% unless species.habitat.blank? %>
+	              <h3>Habitat</h3>
+	              <%= simple_format(species.habitat) %>
+			  <%end%>
+		      <% unless species.distribution.blank? %>
+	              <h3>Depth of the distribution</h3>
+	              <%= simple_format(species.distribution) %>
+			  <%end%>
             </div>
           </div>
         
           <%= render :partial => 'footer' %>
-
         </div>
       </div>
       <%= page_break %>
     <% end %>
-  
+	
     <!-- LANDSCAPE -->
     <% @guide.landscapes.each do |lanscape| %>
       <div class="outer_pdf">
@@ -234,7 +245,8 @@
   
           <div class="right">
             <div class="map">
-				<img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>"></div>
+				<img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>">
+			</div>
             </div>
             <div class="info">
               <h3>Species near this place</h3>
@@ -250,6 +262,7 @@
       </div>
       <%= page_break %>
     <% end %>
+
   <% end %>
 
 </body>
