@@ -81,7 +81,7 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat ul li span {float:left; background:url(../images/modal/right_list.png) no-repeat right 0; padding:9px 10px 7px 8px; height:15px; color:#85D2ED; font:bold 13px Arial;}
 #publish_container div.repeat ul li.active {background-image:url(../images/modal/left_active.png);}
 #publish_container div.repeat ul li.active span {background-image:url(../images/modal/right_active.png); color:white; text-shadow:#004D67 0 -1px;}
-#publish_container div.repeat div.choice {float:left; background:url(../images/modal/repeat_x_1.png) repeat-x 0 0; padding:30px; width:672px;}
+#publish_container div.repeat div.choice {float:left; background:url(../images/modal/repeat_x_1.png) repeat-x 0 0; padding:30px 30px 20px 30px; width:672px; height:auto; position:relative;}
 #publish_container div.repeat div.choice div.alternative {float:left; width:321px; height:167px; background:url(../images/modal/dark_area.png) no-repeat 0 0; margin:0 30px 0 0;}
 #publish_container div.repeat div.choice div.alternative.last {margin:0;}
 #publish_container div.repeat div.choice div.alternative div.type {position:relative; float:left; margin:15px 15px 0 15px; width:128px; height:138px;}
@@ -99,18 +99,23 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 
 
 #publish_container div.repeat div.choice div.errors {float:left; width:auto; color:#990000; font:bold 14px Arial; padding:10px 0 0 0;}
-#publish_container div.repeat div.choice input[type="radio"] {float:left; margin:3px 8px 0 14px; padding:0;}
-#publish_container div.repeat div.choice label {float:left; font:bold 15px Arial; color:white;}
-#publish_container div.repeat div.choice div.blue_area {float:left; width:644px; height:347px; padding:14px; background:url(../images/modal/blue_area.png) no-repeat -7px -1px; margin:15px 0 0 0;}
-#publish_container div.repeat div.choice div.blue_area label[for="publish"] {float:left; margin:0; font:bold 15px Arial; color:white;}
-#publish_container div.repeat div.choice div.blue_area input[type="radio"] {float:left; margin:2px 8px 0 0; padding:0;}
-#publish_container div.repeat div.choice div.blue_area p.subtitle {float:left; width:auto; margin:4px 0 0 20px; font:normal 13px Arial; color:#80ADBD;}
-#publish_container div.repeat div.choice div.blue_area label {float:left; width:500px; font:bold 11px Arial; color:white; margin:15px 0 0 20px;}
-#publish_container div.repeat div.choice div.blue_area input[type="text"] {float:left; margin:6px 8px 0 20px; width:280px; height:24px; padding:6px 10px 6px 10px; background:url(../images/modal/input_2.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
-#publish_container div.repeat div.choice div.blue_area textarea {float:left; margin:6px 0 0 20px; width:585px; height:84px; padding:6px 10px 6px 10px; background:url(../images/modal/textarea_bkg.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
-#publish_container div.repeat div.choice div.blue_area textarea:focus {outline:none;}
 
-#publish_container div.repeat div.choice a.download {float:right; width:232px; height:20px; padding:10px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px;}
+#publish_container div.repeat div.choice div.dont_want_publish {float:left; width:649px; height:25px; padding:14px; margin:0 0 0 0;}
+#publish_container div.repeat div.choice div.dont_want_publish.active {background:url(../images/modal/blue_area_simple_line.png) no-repeat 0 0;}
+#publish_container div.repeat div.choice div.dont_want_publish input[type="radio"] {float:left; margin:3px 8px 0 0; padding:0;}
+#publish_container div.repeat div.choice div.dont_want_publish label {float:left; font:bold 15px Arial; color:white;}
+
+#publish_container div.repeat div.choice div.want_publish {float:left; width:649px; height:323px; padding:14px; margin:0;}
+#publish_container div.repeat div.choice div.want_publish.active {background:url(../images/modal/blue_area.png) no-repeat 0 0;}
+#publish_container div.repeat div.choice div.want_publish label[for="publish"] {float:left; margin:0; font:bold 15px Arial; color:white;}
+#publish_container div.repeat div.choice div.want_publish input[type="radio"] {float:left; margin:2px 8px 0 0; padding:0;}
+#publish_container div.repeat div.choice div.want_publish p.subtitle {float:left; width:auto; margin:4px 0 0 20px; font:normal 13px Arial; color:#80ADBD;}
+#publish_container div.repeat div.choice div.want_publish label {float:left; width:500px; font:bold 11px Arial; color:white; margin:15px 0 0 20px;}
+#publish_container div.repeat div.choice div.want_publish input[type="text"] {float:left; margin:6px 8px 0 20px; width:280px; height:24px; padding:6px 10px 6px 10px; background:url(../images/modal/input_2.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.want_publish textarea {float:left; margin:6px 0 0 20px; width:585px; height:84px; padding:6px 10px 6px 10px; background:url(../images/modal/textarea_bkg.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.want_publish textarea:focus {outline:none;}
+
+#publish_container div.repeat div.choice a.download {width:232px; height:20px; padding:10px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px; position:absolute; bottom:15px; right:28px;}
 #publish_container div.repeat div.choice a.download:hover {color:#1F628F; background-position:0 -36px;}
 
 

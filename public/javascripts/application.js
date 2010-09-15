@@ -253,8 +253,8 @@ function firstStep(type) {
 	    height: 'toggle'
 	  }, 500, function() {
 		
-		var first_step = '<form id="publish_current_guide" action="/guides/update/current"><label for="no_publish"><input id="no_publish" type="radio" name="publish" value="no" />I don’t want to publish my Field Guide</label>'+
-		'<div class="blue_area"><label for="publish"><input id="publish" type="radio" name="publish" value="yes" checked="checked"/>I want to publish my Antarctic Field Guide</label>'+
+		var first_step = '<form id="publish_current_guide" action="/guides/update/current"><div class="dont_want_publish"><label for="no_publish"><input id="no_publish" type="radio" name="publish" value="no" />I don’t want to publish my Field Guide</label></div>'+
+		'<div class="want_publish active"><label for="publish"><input id="publish" type="radio" name="publish" value="yes" checked="checked"/>I want to publish my Antarctic Field Guide</label>'+
 		'<div class="fill"><p class="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>' +
 		'<span><label>YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
@@ -265,11 +265,46 @@ function firstStep(type) {
 		'<a href="javascript:void secondStep()" class="download">Procced to download</a>';
 
     $('div.choice').html(first_step);
-		$('div.choice').animate({
-		    height: 'toggle'
-		  }, 500);
-  });
+	$('div.choice').find('a.download').css('display','none');
+	$('div.choice').css('height','445px');
+	$('div.choice').animate({
+		height:'toggle'
+		}, 500, function(){
+			$(this).find('a.download').fadeIn('fast');
+		});  
+	});
+
 }
+
+// Changing the effects 
+$('input#no_publish').live('click',function(ev){
+	$(this).parent().parent().addClass('active');		
+	$(this).parent().parent().parent().children('div.want_publish').removeClass('active');	
+	$(this).parent().parent().parent().children('div.want_publish').children('div.fill').css('display','none');	
+	
+	$('div.choice').animate({
+	    height: '140px'
+	  }, 500);
+});
+
+// Changing the effects 
+$('input#publish').live('click',function(ev){
+	
+	$('div.choice').find('a.download').css('display','none');
+	$(this).parent().parent().addClass('active');	
+	$(this).parent().parent().children('div.fill').css('display','inline');
+	$(this).parent().parent().parent().children('div.dont_want_publish').removeClass('active');
+
+	
+	$('div.choice').animate({
+		height:'445px'
+		}, 500, function(){
+			$(this).parent().parent().addClass('active');	
+			$(this).parent().parent().children('div.fill').css('display','inline');
+			$(this).parent().parent().parent().children('div.dont_want_publish').removeClass('active');			
+			$(this).find('a.download').fadeIn('fast');
+		});
+});
 
 function secondStep() {
 	
@@ -279,12 +314,15 @@ function secondStep() {
 	var publish = true;
 	
 	if($('#no_publish').attr('checked') == true) {
+		$('div.choice').find('a.download').fadeOut('fast');
+		$('div.choice').css('height','180px');
 		publish = false;
 	}
 	
 	var author = $('#author').val();
 	var name = $('#name').val();
 	if(publish == true) {
+		
 		if(author == "") {
 			$('#error_invalid_author').show();
 			return false;
