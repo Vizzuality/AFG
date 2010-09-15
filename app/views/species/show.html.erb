@@ -31,16 +31,19 @@
     	</p>
     	<% end -%>
 
-      <h3>Description</h3> 
-      
-	  <% pre_text = @species.description.split('. ')[0..2].join('. ')+'. ' %>
 
-	  <%= simple_format(pre_text) %>
-	
+      <h3>Description</h3> 
+     
+	  <% if !(@species.description.nil?) %>	
+			<% num_dots = @species.description.split('. ').size - 1 %>
+	  		<% pre_text = @species.description.split('. ')[0..2].try(:join, '. ')+'. ' %>
+	  		<%= simple_format(pre_text) %>
+	  <%else%>
+		<p>No description</p>
+	  <%end%>	
 		<% if !@species.uid.nil? %>
 			<p class="gbif">More information at <a href="http://data.gbif.org/species/<%=@species.uid%>/" target="_blank">GBIF</a></p>
 		<%end%>
-
 		
 	   <% if !(@species.distinguishing_characters.empty?) %>
 	      <h3>Distinguishing Characters</h3> 
@@ -70,13 +73,17 @@
 
 <div class="main specie"> 
   <div class="left"> 
+
 	<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
 	
     <h3>Species details</h3> 
-	<% pre_text = @species.description.split('. ')[3..@species.description.size].join('. ') %>
 
-	
-	  <%= simple_format(pre_text) %>
+	<% if !(@species.description.nil?) && (num_dots > 2) %>	
+		<% pre_text = @species.description.try(:split,'. ')[3..num_dots].try(:join, '. ')+'. ' %>
+		<%= simple_format(pre_text) %>
+	<%end%>
+ 	
+	  
     <!-- <p class="subtitle">More information that maybe could be useful for you</p>  -->
     <% unless @species.size.blank? %>
       <label>Size</label> 
