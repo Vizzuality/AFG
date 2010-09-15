@@ -3,13 +3,9 @@ source 'http://rubygems.org'
 gem 'rails'
 # PostgreSQL
 gem "pg", "0.9.0"
-# SQLite
-# gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'nofxx-georuby', :require => 'geo_ruby'
 
 gem 'ruby-debug'
-# ruby-debug para Ruby 1.9.2, cambiar por gem 'ruby-debug' si se utiliza Ruby 1.8.x
-# gem 'ruby-debug19', :require => 'ruby-debug'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'fastercsv'
 gem 'pdfkit'
@@ -20,6 +16,7 @@ gem 'rack-noie', :require => 'noie'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'exception_notification', :require => 'exception_notifier', :git => 'http://github.com/rails/exception_notification.git'
+gem 'ppe-postgis-adapter', :git => 'git://github.com/ferblape/postgis_adapter.git', :require => 'postgis_adapter'
 
 group :test do
   gem 'steak', :git => 'git://github.com/cavalle/steak.git'

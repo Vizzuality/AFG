@@ -59,4 +59,3 @@ end
 
 require 'open-uri'
 require 'fileutils'
-require 'core_ext/arel'

@@ -6,6 +6,12 @@ GIT
       rspec-core (>= 2.0.0.beta.19)
 
 GIT
+  remote: git://github.com/ferblape/postgis_adapter.git
+  revision: d2240d7
+  specs:
+    ppe-postgis-adapter (0.7.8)
+
+GIT
   remote: http://github.com/rails/exception_notification.git
   revision: 192a49a
   specs:
@@ -163,6 +169,7 @@ DEPENDENCIES
   paperclip
   pdfkit
   pg (= 0.9.0)
+  ppe-postgis-adapter!
   rack-noie
   rails
   rmagick
