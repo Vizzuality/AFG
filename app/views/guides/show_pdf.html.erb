@@ -95,9 +95,12 @@
     <div class="main_pdf about">
       <h1>About Antarctic Field Guides</h1>
       <h2>About the project</h2>
-      <p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+      <p>The Antarctic Field Guides is a collaborative tool offering free access to information that can help you identify Antarctic organisms. Thanks to the initial efforts from Prof. Andrew Clarke (British Antarctic Survey) and Dr Stefano Schiaparelli (University of Genoa), it allows users to build a tailor-made, customized guide, to be taken in the field or simply browsed. The pages are generated on-the-fly from the contents of authoritative, quality controlled data resources (<a href="http://www.scarmarbin.be" target="_blank">SCAR-MarBIN</a> and <a href="http://www.biodiversity.aq" target="_blank">ANTABIF</a>), and ensures the user to access up-to-date information about the group of organisms he/she is particularly interested in. Even if the primary focus is for scientists, the AFGs are open and free for all to enjoy.</p>
+
       <h2>About the data and its usage</h2>
-      <p>Nacella concinna is the largest Antarctic intertidal invertebrate and is very abundant, sometimes with up to 100 individuals per square metre. Individuals are very mobile and do not return to a home base. There are two populations of Nacella concinna, which can be distinguished by shell shape, however they do not appear to be genetically distinct, so are not considered to be two subspecies. The shells of individuals of the vvvlittoral population are robust and heavy to withstand predation and sea-ice scouring, while the sublittoral morph (living permanently below 4m) has a flatter, thin and lightweight shell. In winter the littoral population migrates downwards to avoid scouring by sea ice, and mixes with the sublittoral population, while in summer they are separate and form two distinct groups. Nacella concinna is well adapted to its nearshore coldwater environment, as in addition to seasonal migration it has the ability to surround itself in a cocoon of highly viscous mucus which enables it to withstand temperatures of -20oC for up to 2 hours, if trapped in ice.</p>
+      <p>The content of the AFGs is under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CCBY licence</a>.  You are welcome to share or remix the content of the AFGs. For the moment, we kindly ask you to cite the source as "The SCAR Antarctic Field Guides. World Wide Web publication, available online at <a href="http://afg.biodiversity.aq">http://afg.biodiversity.aq</a>"</p>
+
+	<p>Some media content is under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en" target="_blank">Creative Commons Attribution - Noncommercial - Share Alike 3.0 License</a>.</p>
       <%= render :partial => 'footer' %>
     </div>
   </div>
@@ -167,23 +170,26 @@
                 <% end -%>
               </ul>
             </div>
-    
+    		
             <div class="info">
               <h2>Description</h2>
               <%= simple_format(species.description) %>
-              
+			  <%= page_break %>	
 			  <h2>Distinguishing Characters</h2>
               <%= simple_format(species.distinguishing_characters) %>
+			  <%= page_break %>	
               <h2>Distribution info</h2>
               <%= simple_format(species.distribution) %>
+			  <%= page_break %>	
               <h2>Ecology</h2>
               <%= simple_format(species.ecology) %>
+			  <%= page_break %>	
             </div>
           </div>
   
           <div class="right">
             <div class="map">
-              <img src="/api/maps/static_map?species_id=<%= species.id %>" />
+				<img src="/api/maps/static_map?species_id=<%= species.id %>" />
             </div>
             <div class="info">
               <h3>Size</h3>
@@ -228,7 +234,7 @@
   
           <div class="right">
             <div class="map">
-              <img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>"></div>
+				<img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>"></div>
             </div>
             <div class="info">
               <h3>Species near this place</h3>

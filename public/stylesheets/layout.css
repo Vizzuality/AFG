@@ -117,7 +117,7 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
 #publish_container div.repeat div.choice div.long div.type {position:relative; float:left; margin:16px 0 0 18px; width:128px; height:138px;}
 #publish_container div.repeat div.choice div.long div.type img.loading {float:left; margin:51px 0 0 49px;}
-#publish_container div.repeat div.choice div.long div.type img.ok {position:absolute; right:-13px; top:-13px;}
+#publish_container div.repeat div.choice div.long div.type img.ok {position:absolute; right:-13px; top:-8px;}
 #publish_container div.repeat div.choice div.long div.type img.image {position:relative; float:left; margin:29px 0 0 17px; width:32px; height:32px;}
 #publish_container div.repeat div.choice div.long div.type.loading {background:url(../images/modal/list_loading.png) no-repeat center center;}
 #publish_container div.repeat div.choice div.long div.type.finished {background:url(../images/modal/list_finish.png) no-repeat center center;}
@@ -758,14 +758,15 @@ div.main.content_about {background:url(../images/about/main_bkg.png) repeat-y ri
 div.left div.information_about {float:left; padding:21px; width:582px; background:white; margin:0;}
 div.left div.information_about h3 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
 div.left div.information_about p {float:left; font:normal 13px Arial; color:#999999; margin:15px 0 0 0;}
-div.left div.information_about ul {float:left; width:100%; margin:20px 0 0 0;}
+div.left div.information_about ul {float:left; width:100%; margin:15px 0 0 0;}
 div.left div.information_about ul li {float:left; width:178px; height:auto; margin:0 20px 0 0;}
 div.left div.information_about ul li.last {margin:0;}
 div.left div.information_about ul li a {text-decoration:none;}
 div.left div.information_about ul li img {float:left; }
-div.left div.information_about ul li img.scar {width:36px; height:36px; margin:7px 0 0 0;}
+div.left div.information_about ul li img.scar {width:36px; height:36px; margin:17px 0 0 0; padding:0 0 5px 0;}
 div.left div.information_about ul li img.wikipedia {width:84px; height:41px;}
-div.left div.information_about ul li img.panoramio {width:93px; height:31px; margin:3px 0 0 0;}
+div.left div.information_about ul li img.panoramio {width:93px; height:31px; margin:15px 0 0 0; padding:0 0 9px 0;}
+div.left div.information_about ul li img.antabif {width:74px; height:55px; margin:0;}
 div.left div.information_about ul li p {float:left; font:normal 13px Arial; color:#8C8C8C; width:100%; margin:5px 0 0 0;}
 div.left div.information_about ul li p.source_name { font:bold 15px "Lucida Grande"; color:#666666; margin:10px 0 0 0;}
 
@@ -774,6 +775,8 @@ div.right div.questions img {position:absolute; top:25px; left:-26px; z-index:40
 
 div.right div.questions h3 {font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; line-height:25px;}
 div.right div.questions p {float:left; font:normal 13px Arial; color:#999999; margin:15px 0 0 0;}
+div.right div.questions p a {font:normal 13px Arial; color:#999999; text-decoration:underline;}
+div.right div.questions p a:hover {color:#666666;}
 
 div.main.footer_about {background:url(../images/about/footer_bkg.png) repeat-y right 0 white;}
 
@@ -959,15 +962,17 @@ div.outer_pdf div.main_pdf.about {background:white;}
 div.outer_pdf div.main_pdf.about h1 {float:left; margin:90px 0 0 100px; width:900px; font:normal 48px "Aller"; color:#0099CC;}
 div.outer_pdf div.main_pdf.about h2 {float:left; margin:40px 0 0 140px; width:583px; font:normal 25px "Aller"; color:#333333;}
 div.outer_pdf div.main_pdf.about p {float:left; margin:15px 0 0 140px; width:583px; font:normal 15px "Bitstream Vera Serif"; color:#666666;}
+div.outer_pdf div.main_pdf.about a {color:#666666; text-decoration:underline;}
 
 div.outer_pdf div.main_pdf p.page {position:absolute; z-index:10000; right:0; width:43px; height:21px; top:98px; font:normal 21px "Bitstream Vera Serif"; color:white; background:#333333; padding:8px 0; text-align:center;}
 
 div.outer_pdf div.main_pdf.checklist {background:white;}
+
 div.main_pdf.checklist h1 {float:left; margin:90px 0 0 100px; width:900px; font:normal 41px "Aller"; color:#0099CC;}
 div.main_pdf.checklist div.check_specie {float:left; margin:80px 0 0 140px; width:900px; height:205px; font:normal 48px "Aller"; color:#0099CC; background:url(../images/pdf/notes_lines.png) no-repeat 0 bottom;}
 div.main_pdf.checklist div.check_specie p {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#666666;}
 div.main_pdf.checklist div.check_specie h3 {float:left; width:100%; font:normal 25px "Aller"; color:#333333;}
-
+/*div.main_pdf hr.break {float:left; width:100%; height:1px; background-color:red;}*/
 div.main_pdf div.left {float:left; width:620px; background:none; padding:75px 0 0 90px; margin:0;}
 div.main_pdf div.left div.header {float:left; margin:0; padding:0; width:100%;}
 div.main_pdf div.left div.header p.common_name {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#0099CC;}
@@ -980,7 +985,7 @@ div.main_pdf div.left div.images {float:left; width:100%; margin:50px 0 0 0;}
 div.main_pdf div.left div.images ul {float:left; width:100%;}
 div.main_pdf div.left div.images ul li {float:left; width:129px; height:107px; background:url(../images/pdf/images_bkg.png) no-repeat 0 0; margin:0 10px 0 0;}
 div.main_pdf div.left div.images ul li img {float:left; width:117px; height:86px; margin:6px 0 0 6px;}
-div.main_pdf div.left div.info {float:left; width:100%;}
+div.main_pdf div.left div.info {float:left; width:600px;}
 div.main_pdf div.left div.info h2 {float:left; width:100%; font:normal 25px "Aller"; color:#333333; padding:40px 0 0 0;}
 div.main_pdf div.left div.info p {float:left; width:100%; font:normal 15px "Bitstream Vera Serif"; color:#666666; padding:14px 0 0 0;}
 div.main_pdf div.right {float:right; width:390px; padding:0; background:none;}
@@ -997,9 +1002,6 @@ div.main_pdf div.footer span {float:left; width:100%; padding:0 0 13px 0;}
 div.main_pdf div.footer span img {float:left; width:auto;}
 div.main_pdf div.footer p.left {float:left; width:auto; font:normal 12px Arial; color:#999999;}
 div.main_pdf div.footer p.right {float:right; width:auto; font:normal 12px Arial; color:#999999;}
-
-
-
 
 /*ERRORS PAGES*/
 
