@@ -16,9 +16,9 @@
 #  featured           :boolean         
 #  created_at         :datetime        
 #  updated_at         :datetime        
+#  the_geom           :geometry        not null
 #  source_link        :string(255)     
 #  source_name        :string(255)     
-#  the_geom           :geometry        not null
 #  image1_description :text            
 #  image2_description :text            
 #  image3_description :text            

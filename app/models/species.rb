@@ -12,7 +12,7 @@
 #  family                    :string(255)     
 #  common_name               :string(255)     
 #  description               :text            
-#  identification            :string(255)     
+#  identification            :text            
 #  distribution              :text            
 #  ecology                   :text            
 #  size                      :text            
@@ -28,7 +28,7 @@
 #  featured                  :boolean         
 #  imported_file             :string(255)     
 #  species                   :string(255)     
-#  habitat                   :string(255)     
+#  habitat                   :text            
 #  distinguishing_characters :text            
 #  source_link               :string(255)     
 #  source_name               :string(255)     
