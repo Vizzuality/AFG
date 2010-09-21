@@ -22,7 +22,7 @@
       <p><em>Imported name from data files</em></p>
       <p><a href="javascript:void(null)" onclick="window.location.href='<%= url_for(:action => 'update_uid_and_taxon', :id => @species.id) %>'+'?name='+$('#species_name').val();">update gbifKey and taxonomy</a></p>
     <% end -%>
-  </div>  
+  </div>
   <div class="field">
     <%= f.label :highlighted %>
     <%= f.check_box :highlighted  %>
@@ -43,7 +43,7 @@
   </div>
   <div class="field">
     <%= f.label :identification %><br />
-    <%= f.text_field :identification, :size => 50 %>
+    <%= f.text_area :identification, :rows => 8, :cols => 50 %>
   </div>
   <div class="field">
     <%= f.label :distribution %><br />
@@ -67,7 +67,7 @@
   </div>
   <div class="field">
     <%= f.label :habitat %><br />
-    <%= f.text_field :habitat, :size => 50 %>
+    <%= f.text_area :habitat, :rows => 8, :cols => 50 %>
   </div>
   <div class="field">
     <%= f.label :distinguishing_characters %><br />
@@ -81,10 +81,10 @@
     <%= f.label :source_link %><br />
     <%= f.text_field :source_link, :size => 50 %>
   </div>
-  
+
   <h2>Taxonomy</h2>
   <p>Taken from <a href="http://www.gbif.org/">GBIF</a></p>
-  
+
   <div class="field">
     <%= f.label :kingdom %><br />
     <%= f.text_field :kingdom, :size => 50, :disabled => true %>
@@ -113,7 +113,7 @@
     <%= f.label :species %><br />
     <%= f.text_field :species, :size => 50, :disabled => true %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
