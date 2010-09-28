@@ -32,6 +32,9 @@
 #  distinguishing_characters :text            
 #  source_link               :string(255)     
 #  source_name               :string(255)     
+#  behaviour                 :text            
+#  reproductive              :text            
+#  feeding_behaviour         :text            
 #
 
 # Taxonomy sample:
