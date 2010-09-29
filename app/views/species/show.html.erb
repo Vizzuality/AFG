@@ -41,9 +41,6 @@
     <%else%>
     <p>No description</p>
     <%end%>
-    <% if !@species.uid.nil? %>
-      <p class="gbif">More information at <a href="http://data.gbif.org/species/<%=@species.uid%>/" target="_blank">GBIF</a></p>
-    <%end%>
 
      <% if !(@species.distinguishing_characters.empty?) %>
         <h3>Distinguishing Characters</h3>
