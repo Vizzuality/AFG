@@ -1,7 +1,7 @@
 <% unless params[:q] %>
-<h1>Listing species</h1>
+<h2>Listing species</h2>
 <% else %>
-<h1>Listing species related to '<%= params[:q] %>'</h1>
+<h2>Listing species related to '<%= params[:q] %>'</h2>
 <p>Found <%= pluralize(@species.size, 'result', 'results') %></p>
 <% end -%>
 
@@ -9,8 +9,9 @@
   <% if params[:q] %>
   <li><%= link_to('Back to index', admin_species_index_path) %></li>
   <% else %>
-  <li><%= link_to_unless(params[:complete] && params[:complete] == 'true', "Complete (#{Species.complete.count})", admin_species_index_path(:complete => true)) %></li>
-  <li><%= link_to_unless(params[:complete] && params[:complete] != 'true', "Pending (#{Species.count - Species.complete.count})", admin_species_index_path(:complete => false)) %></li>
+  <li><%= link_to_unless(params[:complete].nil?, "All (#{Species.count})", admin_species_index_path) %></li>
+  <li><%= link_to_unless(params[:complete] && params[:complete] == 'true', "Complete (#{Species.complete.count})", admin_species_index_path(:complete => 'true')) %></li>
+  <li><%= link_to_unless(params[:complete] && params[:complete] != 'true', "Pending (#{Species.count - Species.complete.count})", admin_species_index_path(:complete => 'pending')) %></li>
   <% end -%>
 </ul>
 
@@ -30,8 +31,8 @@
     <td class="long"><%= truncate(species.description, :length => 100) %></td>
     <td><%= species.pictures.count %></td>
     <td>
-    <%= link_to 'Show', species_path(species) %> · 
-    <%= link_to 'Edit', edit_admin_species_path(species.id) %> · 
+    <%= link_to 'Show', species_path(species) %> ·
+    <%= link_to 'Edit', edit_admin_species_path(species.id) %> ·
     <%= link_to 'Destroy', admin_species_path(species), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -6,10 +6,6 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-h1 {
-	margin: 20px 0;
-}
-
 pre {
   background-color: #eee;
   padding: 10px;
@@ -89,8 +85,8 @@ div.field, div.actions {
 }
 
 .pagination em {
-	background-color: #ccc;
-	padding: 2px 2px;
+  background-color: #ccc;
+  padding: 2px 2px;
 }
 
 .pagination span.disabled {
@@ -100,37 +96,78 @@ div.field, div.actions {
 }
 
 ul.families {
-	margin: 0;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
+  margin: 0;
+  padding-left: 0;
+  padding-top: 1.5em;
+  padding-bottom: 0.4em;
+  margin-bottom: 20px;
 }
 
 ul.families li {
-	padding: 0.2em;
+  padding: 0.5em 2em;
+  margin-left: 0;
+  margin-right: 0.5em;
   line-height: 1.6em;
   display: inline;
-	font-weight: bold;
+  font-weight: bold;
+  background: #DDF;
+}
+
+ul.families li.selected {
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  background: #AAA;
 }
 
 ul.families li a {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 table tr td,
 table tr th {
-	width: 130px;
-	text-align: center;
-	height: 30px;
+  width: 130px;
+  text-align: center;
+  height: 30px;
 }
 table tr th {
-	background: black;
-	color: white;
+  background: black;
+  color: white;
 }
 
 table tr td.long,
 table tr th.long {
-	width: 260px;
+  width: 260px;
 }
 table tr.even {
-	background: #eee;
+  background: #eee;
+}
+
+.message{
+  margin: 30px 0px;
+  overflow: hidden;
+}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+
+div.content {
+  margin-left: 2em;
+}
+
+div.logo {
+  font: #000;
+  float: left;
+  padding: 3em 1em;
+  width: 800px;
+}
+
+div.search {
+  overflow: hidden;
+  height: 1%;
+/*  border: 1px solid;*/
+  padding: 3em;
 }

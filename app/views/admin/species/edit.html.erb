@@ -1,6 +1,6 @@
 <%= link_to 'Back to index', admin_species_index_path %>
 
-<h1>Editing species <%= @species.name %></h1>
+<h2>Editing species <%= @species.name %></h2>
 
 <% unless @species.complete? %>
 <div class="message">
@@ -8,20 +8,20 @@
 </div>
 <% end -%>
 
-<div class="wide_container"> 
+<div class="wide_container">
 
-  <div class="left"> 
+  <div class="left">
 
     <%= render 'form' %>
 
   </div>
-  
+
   <div class="right">
-        
+
     <%= render 'pictures' %>
-    
+
   </div>
-  
+
 </div>
 
 <%= link_to 'Back to index', admin_species_index_path %>

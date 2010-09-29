@@ -1,13 +1,17 @@
 class Admin::SpeciesController < ApplicationController
-  
+
   layout 'admin'
-  
+
   before_filter :admin_authenticated
-  
+
   # GET /admin_species
-  def index    
-    @species = if params[:complete] && params[:complete] == 'true'
-      Species.complete
+  def index
+    @species = if params[:complete]
+      if params[:complete] == 'true'
+        Species.complete
+      else
+        Species.pending
+      end
     else
       Species
     end
@@ -46,7 +50,7 @@ class Admin::SpeciesController < ApplicationController
       end
     end
   end
-  
+
   def update_uid_and_taxon
     @species = Species.find(params[:id])
     if @species.uid = Species.get_uid(params[:name])
@@ -85,5 +89,5 @@ class Admin::SpeciesController < ApplicationController
       format.html { redirect_to(admin_species_index_path, :notice => 'Species removed successfully') }
     end
   end
-  
+
 end

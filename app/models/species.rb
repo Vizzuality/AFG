@@ -3,38 +3,38 @@
 # Table name: species
 #
 #  id                        :integer         not null, primary key
-#  uid                       :integer         
-#  permalink                 :string(255)     
-#  name                      :string(255)     
+#  uid                       :integer
+#  permalink                 :string(255)
+#  name                      :string(255)
 #  guides_count              :integer         default(0)
-#  highlighted               :boolean         
-#  genus                     :string(255)     
-#  family                    :string(255)     
-#  common_name               :string(255)     
-#  description               :text            
-#  identification            :text            
-#  distribution              :text            
-#  ecology                   :text            
-#  size                      :text            
-#  depth                     :text            
-#  reference                 :text            
-#  complete                  :boolean         
-#  created_at                :datetime        
-#  updated_at                :datetime        
-#  kingdom                   :string(255)     
-#  phylum                    :string(255)     
-#  t_class                   :string(255)     
-#  t_order                   :string(255)     
-#  featured                  :boolean         
-#  imported_file             :string(255)     
-#  species                   :string(255)     
-#  habitat                   :text            
-#  distinguishing_characters :text            
-#  source_link               :string(255)     
-#  source_name               :string(255)     
-#  behaviour                 :text            
-#  reproductive              :text            
-#  feeding_behaviour         :text            
+#  highlighted               :boolean
+#  genus                     :string(255)
+#  family                    :string(255)
+#  common_name               :string(255)
+#  description               :text
+#  identification            :text
+#  distribution              :text
+#  ecology                   :text
+#  size                      :text
+#  depth                     :text
+#  reference                 :text
+#  complete                  :boolean
+#  created_at                :datetime
+#  updated_at                :datetime
+#  kingdom                   :string(255)
+#  phylum                    :string(255)
+#  t_class                   :string(255)
+#  t_order                   :string(255)
+#  featured                  :boolean
+#  imported_file             :string(255)
+#  species                   :string(255)
+#  habitat                   :text
+#  distinguishing_characters :text
+#  source_link               :string(255)
+#  source_name               :string(255)
+#  behaviour                 :text
+#  reproductive              :text
+#  feeding_behaviour         :text
 #
 
 # Taxonomy sample:
@@ -48,67 +48,68 @@
 
 
 class Species < ActiveRecord::Base
-    
+
   has_many :entries
   has_many :guides, :through => :entries
   has_many :pictures
   has_many :occurrences
-  
+
   validates_presence_of :name
-  
+
   validates_uniqueness_of :uid, :allow_nil => true, :allow_blank => true
-  
+
   before_validation :set_permalink
-  
+
   scope :highlighted,   where(:highlighted => true)
   scope :not_featured,  where(:featured => false)
   scope :featured,      where(:featured => true)
   scope :complete,      where(:complete => true)
-  
-  before_create :set_uid, :get_taxon, :set_complete 
+  scope :pending,       where(:complete => false)
+
+  before_create :set_uid, :get_taxon, :set_complete
   after_create :get_occurrences
   after_destroy :remove_entries
-  
+
   before_save :set_complete, :propagate_taxon
 
   def to_param
     "#{id}-#{permalink}"
   end
-  
+
   def self.default_picture(style)
     "/images/defaults/#{style}_specie.jpg"
   end
-  
+
   def default_picture(style)
     self.class.default_picture(style)
   end
-  
+
   def taxon
     return nil if self.kingdom.blank?
     "#{self.kingdom} > #{self.phylum} > #{self.t_class} > #{self.t_order} > #{self.family} > #{self.genus}"
   end
-  
+
   def picture
     pictures.try(:last)
   end
-  
+
   def name
     species.blank? ? read_attribute(:name) : species
   end
-  
+
   def full_name
     species.blank? ? "#{self.genus} #{name}".strip : species
   end
-  
+
   def self.find_by_term(q)
     q = "%#{q}%"
     where(["species ilike ? OR name ilike ? OR genus ilike ? OR description ilike ?", q, q, q, q]).order("guides_count DESC")
   end
-  
+
   def sort_by_attribute
     :guides_count
   end
-  
+
   def self.get_taxon(uid)
     response = open("http://es.mirror.gbif.org/ws/rest/taxon/get?key="+uid.to_s).read
     doc = Nokogiri::XML(response)
@@ -160,7 +161,7 @@ class Species < ActiveRecord::Base
   rescue
     {}
   end
-  
+
   def get_taxon
     return if self.uid.blank?
     atts = self.class.get_taxon(self.uid)
@@ -175,7 +176,7 @@ class Species < ActiveRecord::Base
     end
     propagate_taxon
   end
-  
+
   def self.get_uid(name)
     response = open("http://es.mirror.gbif.org/ws/rest/taxon/list?rank=species&scientificname="+URI.escape(name)).read
     doc = Nokogiri::XML(response)
@@ -191,18 +192,18 @@ class Species < ActiveRecord::Base
   rescue
     nil
   end
-  
+
   def set_uid
     self.uid = self.class.get_uid(self.full_name)
   end
-  
+
   def self.get_occurrences(uid)
     return [] if uid.blank?
     response = open("http://es.mirror.gbif.org/ws/rest/occurrence/list?taxonconceptkey=#{uid}&minlatitude=-90&maxlatitude=-65&minlongitude=-180&maxlongitude=180&georeferencedonly=true&coordinateissues=false").read
     doc = Nokogiri::XML(response)
     total_returned = doc.xpath("//gbif:summary")[0].attr('totalReturned').to_i
     (0...total_returned).map do |node|
-      latitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLatitude")[node].text.to_f            
+      latitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLatitude")[node].text.to_f
       longitude = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:decimalLongitude")[node].text.to_f
       date = if node_date = doc.xpath("//gbif:occurrenceRecords/to:TaxonOccurrence/to:latestDateCollected")[node]
         Date.parse(node_date.text)
@@ -212,7 +213,7 @@ class Species < ActiveRecord::Base
       {:date => date, :lon => longitude, :lat => latitude}
     end
   end
-  
+
   def get_occurrences
     return if self.uid.blank?
     response_occurrences = self.class.get_occurrences(self.uid)
@@ -220,17 +221,17 @@ class Species < ActiveRecord::Base
       occurrences.create :date => occurrence[:date], :the_geom => Point.from_lon_lat(occurrence[:lon], occurrence[:lat])
     end
   end
-  
+
   def landscapes
     Landscape.select("distinct(l.*)").from("occurrences AS o, landscapes AS l").where("st_dwithin(o.the_geom,l.the_geom, l.radius) AND o.species_id=#{self.id}")
   end
-  
+
   def self.maps_cache_path(key)
     dir = "#{Rails.root}/public/cache/#{key.split('/').first}"
     FileUtils.mkdir_p(dir) unless File.directory?(dir)
     "#{dir}/#{key.split('/').last}"
   end
-  
+
   def self.maps_cache_get(id)
     key = "species/#{id}"
     if File.file?(maps_cache_path(key))
@@ -239,21 +240,21 @@ class Species < ActiveRecord::Base
       nil
     end
   end
-  
+
   def self.maps_cache_set(id, value)
     key = "species/#{id}"
     File.open(maps_cache_path(key), "w").write(value)
   end
-  
+
   def self.maps_cache_delete(id)
     key = "species/#{id}"
     if File.file?(maps_cache_path(key))
       FileUtils.rm(maps_cache_path(key))
     end
   end
-  
+
   private
-  
+
     def set_permalink
       return unless self.permalink.blank?
       self.permalink = name.sanitize unless name.blank?
@@ -268,12 +269,12 @@ class Species < ActiveRecord::Base
         self.permalink = temporal_permalink
       end
     end
-    
+
     def set_complete
       self.complete = (!self.uid.blank? && !self.kingdom.blank? && !self.t_order.blank? && !self.t_class.blank? && !self.genus.blank? && !self.phylum.blank? && !self.family.blank? && !self.species.blank?)
       return true
     end
-    
+
     def propagate_taxon
       unless self.kingdom.blank?
         unless taxonomy = Taxonomy.find_by_name_and_hierarchy(self.kingdom, 'kingdom')
@@ -322,9 +323,9 @@ class Species < ActiveRecord::Base
         end
       end
     end
-    
+
     def remove_entries
       Entry.where(:element_type => self.class.name, :element_id => self.id.to_s).all.each{ |e| e.destroy }
     end
-  
+
 end
