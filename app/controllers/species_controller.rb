@@ -1,10 +1,10 @@
 class SpeciesController < ApplicationController
-  
+
   before_filter :validate_id_param, :only => [:show]
-  
+
   DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page']
   AVAILABLE_PARAMS = ['kingdom', 'phylum', 't_class', 't_order', 'family', 'genus']
-  
+
   def index
     if params[:taxonomy].blank?
       @featured_species = Species.complete.featured.first
@@ -49,10 +49,68 @@ class SpeciesController < ApplicationController
       render :action => 'taxonomy'
     end
   end
-  
+
   def show
     @species = Species.complete.find(params[:id])
     validate_permalink(@species)
   end
-  
+
+  def get_uid
+    callback = params.delete('callback') # jsonp
+
+    data = nil
+    response = open("http://data.scarmarbin.be/search/searchTaxonAjax?query="+URI.escape(params[:query])).read
+    doc = Nokogiri::XML(response)
+    if doc.xpath("//result").size > 0
+      data = doc.xpath("//result").map do |result|
+        {:name => result.xpath("name").text, :id => result.xpath("id").text}
+      end
+    end
+    json = data.to_json
+
+    if callback
+      render :text => "#{callback}(#{json})"
+    else
+      render :text => json
+    end
+  end
+
+  def get_taxon
+    callback = params.delete('callback') # jsonp
+
+    response = open("http://data.scarmarbin.be/taxon/#{params[:query]}?format=xml").read
+    doc = Nokogiri::XML(response)
+    data = {}
+    if doc.xpath("//taxon").size > 0 && doc.xpath("response")[0].attr('status') == 'ok'
+      if doc.xpath("//parents").size > 0
+        doc.xpath("//parents/taxon").each_with_index do |taxon, i|
+          if i == 0
+            data['kingdom'] = taxon.xpath("name").text
+          elsif i == 1
+            data['phylum'] = taxon.xpath("name").text
+          elsif i == 2
+            data['class'] = taxon.xpath("name").text
+          elsif i == 3
+            data['order'] = taxon.xpath("name").text
+          elsif i == 4
+            data['family'] = taxon.xpath("name").text
+          elsif i == 5
+            data['genus'] = taxon.xpath("name").text
+          elsif i == 6
+            data['species'] = taxon.xpath("name").text
+          end
+        end
+      end
+    end
+    json = data.to_json
+
+    puts json
+
+    if callback
+      render :text => "#{callback}(#{json})"
+    else
+      render :text => json
+    end
+  end
+
 end
