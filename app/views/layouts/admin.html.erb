@@ -3,54 +3,45 @@
 <head>
   <title><%= title %></title>
   <%= stylesheet_link_tag 'scaffold' %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script> 
-  <%= javascript_include_tag 'rails', 'application' %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <%= javascript_include_tag 'jquery.ui.core','jquery.ui.widget', 'jquery.ui.position', 'jquery.ui.autocomplete','rails' %>
   <%= csrf_meta_tag %>
-  <style>
-  .message{
-    margin: 30px 0px;
-    overflow: hidden;
-  }
-  .error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
-  .error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
-  .notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
-  .success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
-  .error a {color:#8a1f11;}
-  .notice a {color:#514721;}
-  .success a {color:#264409;}
-  </style>
 </head>
 <body>
 
-  <div class="outer_layout"> 
-    <div class="header"> 
-      <div class="logo"> 
-        <h1><a href="/">Antarctic Field Guides</a></h1> 
-        <span class="search"> 
-          <form method="get" action="<%= url_for(:action => 'index', :controller => (params[:controller] == 'admin/pictures' ? 'admin/species' : params[:controller])) %>"> 
-            <input type="text" name="q" size="50" />
-            <input type="submit" value="Search" /> 
-          </form> 
-        </span> 
-      </div> 
+  <div class="outer_layout">
+    <div class="header">
+      <div class="logo">
+        <h1><a href="/">Antarctic Field Guides</a></h1>
+      </div>
+      <div class="search">
+        <form method="get" action="<%= url_for(:action => 'index', :controller => (params[:controller] == 'admin/pictures' ? 'admin/species' : params[:controller])) %>">
+          <input type="text" name="q" size="50" />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
     </div> <!-- .header -->
   </div><!-- .outer_layout -->
-  
-  <div class="outer_layout"> 
-      
+
+  <div class="outer_layout">
+
     <ul class="families">
-      <li><%= link_to_unless(controller_name == 'species', 'Species', admin_species_index_path) %></li>
-      <li><%= link_to_unless(controller_name == 'landscapes', 'Places', admin_landscapes_path) %></li>
-      <li><%= link_to_unless(controller_name == 'guides', 'Guides', admin_guides_path) %></li>
+      <li <%=raw "class=\"#{(controller_name == 'species' ? 'selected' : '')}\"" %>><%= link_to_unless(controller_name == 'species', 'Species', admin_species_index_path) %></li>
+      <li <%=raw "class=\"#{(controller_name == 'landscapes' ? 'selected' : '')}\"" %>><%= link_to_unless(controller_name == 'landscapes', 'Places', admin_landscapes_path) %></li>
+      <li <%=raw "class=\"#{(controller_name == 'guides' ? 'selected' : '')}\"" %>><%= link_to_unless(controller_name == 'guides', 'Guides', admin_guides_path) %></li>
     </ul>
-    
+
     <div class="message">
       <%= flush_the_flash %>
     </div>
-  
-    <%= yield %>
-              
+
+    <div class="content">
+
+      <%= yield %>
+
+    </div>
+
   </div><!-- .outer_layout -->
-  
+
 </body>
 </html>

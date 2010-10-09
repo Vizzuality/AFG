@@ -4,11 +4,11 @@
 
 <span style="display:none" id="specie_id"><%= @species.id %></span>
 
-<div class="outer_layout"> 
-  <div class="specie_header" id="species-<%= @species.uid %>"> 
+<div class="outer_layout">
+  <div class="specie_header" id="species-<%= @species.uid %>">
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
-    <ul class="breadcrumb"> 
-	  <li class="first"><%= link_to('All', species_index_path) %></li>
+    <ul class="breadcrumb">
+    <li class="first"><%= link_to('All', species_index_path) %></li>
       <li><%= link_to(@species.kingdom, species_taxonomy_path(:kingdom => @species.kingdom)) %></li>
       <li><%= link_to(@species.phylum, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum)) %></li>
       <li><%= link_to(@species.t_class, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class)) %></li>
@@ -16,11 +16,11 @@
       <li><%= link_to(@species.family, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order, :family => @species.family)) %></li>
       <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
     </ul>
-    <div class="left"> 
-      <h1><%= @species.full_name %></h1> 
+    <div class="left">
+      <h1><%= @species.full_name %></h1>
 
-	  <% if !@species.source_name.blank? || !@species.source_link.blank? %>
-      	<p class="subtitle">
+    <% if !@species.source_name.blank? || !@species.source_link.blank? %>
+        <p class="subtitle">
         provided by <% if @species.source_name.blank? %>
           <%= link_to(@species.source_link, @species.source_link) %>
         <% elsif @species.source_link.blank? %>
@@ -28,133 +28,143 @@
         <% else %>
         <%= link_to(@species.source_name, @species.source_link) %>
         <% end -%>
-    	</p>
-    	<% end -%>
+      </p>
+      <% end -%>
 
 
-      <h3>Description</h3> 
-     
-	  <% if !(@species.description.nil?) %>	
-			<% num_dots = @species.description.split('. ').size - 1 %>
-	  		<% pre_text = @species.description.split('. ')[0..2].try(:join, '. ')+'. ' %>
-	  		<%= simple_format(pre_text) %>
-	  <%else%>
-		<p>No description</p>
-	  <%end%>	
-		<% if !@species.uid.nil? %>
-			<p class="gbif">More information at <a href="http://data.gbif.org/species/<%=@species.uid%>/" target="_blank">GBIF</a></p>
-		<%end%>
-		
-	   <% if !(@species.distinguishing_characters.empty?) %>
-	      <h3>Distinguishing Characters</h3> 
-	      <%= simple_format(@species.distinguishing_characters) %>
+      <h3>Description</h3>
+
+    <% if !(@species.description.nil?) %>
+      <% num_dots = @species.description.split('. ').size - 1 %>
+        <% pre_text = @species.description.split('. ')[0..2].try(:join, '. ')+'. ' %>
+        <%= simple_format(pre_text) %>
+    <%else%>
+    <p>No description</p>
+    <%end%>
+
+     <% if !(@species.distinguishing_characters.empty?) %>
+        <h3>Distinguishing Characters</h3>
+        <%= simple_format(@species.distinguishing_characters) %>
       <% end %>
-			<div class="added_cont">
-			  <div id="add_to_guide_species">
-          		<%= render :partial => 'species/add_to_guide' %>
-	      </div>
-	      <% if @species.guides_count > 0 %>
-	        <p id="times_added_species" class="times_added <%= @current_guide.include_species?(@species) ? 'included' : 'waiting'%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p> 
-	      <% end -%>
-			</div>
-    </div> 
-    <div class="right"> 
-      <div class="share_this"> 
-        <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a> 
+      <div class="added_cont">
+        <div id="add_to_guide_species">
+              <%= render :partial => 'species/add_to_guide' %>
+        </div>
+        <% if @species.guides_count > 0 %>
+          <p id="times_added_species" class="times_added <%= @current_guide.include_species?(@species) ? 'included' : 'waiting'%>"><%= pluralize(@species.guides_count, 'time', 'times') %> added</p>
+        <% end -%>
+      </div>
+    </div>
+    <div class="right">
+      <div class="share_this">
+        <p class="share">share this on</p><a class="share_twitter" href="<%= share_in_twitter(@species) %>"></a><a class="share_facebook" href="<%= share_in_facebook(@species) %>"></a>
       </div>
       <% if @species.picture %>
       <div class="img_specie">
         <img src="<%= @species.picture.image.url(:medium) %>" id="<%= @species.picture.id %>"/>
-      </div> 
-      <% end -%>    
+      </div>
+      <% end -%>
     </div>
   </div>
 </div>
 
-<div class="main specie"> 
-  <div class="left"> 
+<div class="main specie">
+  <div class="left">
 
-	<%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
-	
-    <h3>Species details</h3> 
+  <%= image_tag('species/arrow_long.png', :class=> 'arrow') %>
 
-	<% if !(@species.description.nil?) && (num_dots > 2) %>	
-		<% pre_text = @species.description.try(:split,'. ')[3..num_dots].try(:join, '. ')+'. ' %>
-		<%= simple_format(pre_text) %>
-	<%end%>
- 	
-	  
+    <h3>Species details</h3>
+
+  <% if !(@species.description.nil?) && (num_dots > 2) %>
+    <% pre_text = @species.description.try(:split,'. ')[3..num_dots].try(:join, '. ')+'. ' %>
+    <%= simple_format(pre_text) %>
+  <%end%>
+
+
     <!-- <p class="subtitle">More information that maybe could be useful for you</p>  -->
     <% unless @species.size.blank? %>
-      <label>Size</label> 
-      <p><%= @species.size %></p> 
+      <label>Size</label>
+      <p><%= @species.size %></p>
     <% end %>
     <% unless @species.reference.blank? %>
-      <label>Reference</label> 
+      <label>Reference</label>
       <p><%= @species.reference %></p>
     <% end %>
-  </div> 
+  </div>
   <% unless @species.pictures.empty? %>
-  <div class="right"> 
-    <h3>Photos</h3> 
+  <div class="right">
+    <h3>Photos</h3>
     <ul>
 
-      <% @species.pictures.each_with_index do |picture,count|  %>		
-		<% if count >= 6 %>
-			<li style="display:none">
-		<%else%>
-      		<li>
-		<%end%>
-				<a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:gallery) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>			
-			</li>
+      <% @species.pictures.each_with_index do |picture,count|  %>
+    <% if count >= 6 %>
+      <li style="display:none">
+    <%else%>
+          <li>
+    <%end%>
+        <a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:gallery) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>
+      </li>
       <% end -%>
-	</ul> 
-	<% if @species.pictures.size > 6 %>
-		<a class="view_more lightbox" href="<%= @species.pictures[6].image.url(:gallery) %>">view more images</a>
-	<%end%>
+  </ul>
+  <% if @species.pictures.size > 6 %>
+    <a class="view_more lightbox" href="<%= @species.pictures[6].image.url(:gallery) %>">view more images</a>
+  <%end%>
   </d
   <% else %>
   <div class="right">
-    <h3>Photos</h3> 
+    <h3>Photos</h3>
   </div>
   <% end -%>
 </div>
 
-<div class="main specie"> 
-  <div class="left"> 
-    <%= image_tag('species/arrow_long.png', :class=> 'arrow') %>		
+<div class="main specie">
+  <div class="left">
+    <%= image_tag('species/arrow_long.png', :class=> 'arrow') %>
 
     <% unless @species.distribution.blank? && @species.ecology.blank? && @species.habitat.blank? %>
-      <h3>Species distribution</h3> 
-	<% end %> 
+      <h3>Species distribution</h3>
+  <% end %>
 
-	<% unless @species.distribution.blank? %>
-      <label>Distribution info</label> 
+  <% unless @species.distribution.blank? %>
+      <label>Distribution info</label>
       <p><%= @species.distribution %></p>
     <% end %>
     <% unless @species.ecology.blank? %>
-      <label>Ecology</label> 
+      <label>Ecology</label>
       <%= simple_format(@species.ecology) %>
     <% end %>
     <% unless @species.habitat.blank? %>
-      <label>Habitat</label> 
+      <label>Habitat</label>
       <%= simple_format(@species.habitat) %>
     <% end -%>
-  </div> 
-  <div class="right"> 
-    <h3>Distribution map</h3> 
-    <div class="map"> 
-      <div id="map"></div> 
- 		<%= image_tag('map/map-loading.gif', :class=> 'loading') %>
-		<a href="javascript: void toggleFullScreen()" class="full_screen"></a>
+    <% unless @species.behaviour.blank? %>
+      <label>Behaviour</label>
+      <%= simple_format(@species.behaviour) %>
+    <% end -%>
+    <% unless @species.feeding_behaviour.blank? %>
+      <label>Feeding Behaviour</label>
+      <%= simple_format(@species.feeding_behaviour) %>
+    <% end -%>
+    <% unless @species.reproductive.blank? %>
+      <label>Reproductive</label>
+      <%= simple_format(@species.reproductive) %>
+    <% end -%>
+
+  </div>
+  <div class="right">
+    <h3>Distribution map</h3>
+    <div class="map">
+      <div id="map"></div>
+     <%= image_tag('map/map-loading.gif', :class=> 'loading') %>
+    <a href="javascript: void toggleFullScreen()" class="full_screen"></a>
       <a href="javascript: void zoomIn()" class="zoomIn"></a>
       <a href="javascript: void zoomOut()" class="zoomOut"></a>
-			<a href="http://www.vizzuality.com" target="_blank" class="vizzuality"></a>
-      <span class="shadow"></span> 
-    </div> 
+      <a href="http://www.vizzuality.com" target="_blank" class="vizzuality"></a>
+      <span class="shadow"></span>
+    </div>
     <!-- <label class="right">Depth of the distribution</label>  -->
 
-  </div> 
+  </div>
 </div>
 
 <div id="your_guide">

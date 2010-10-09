@@ -1,7 +1,7 @@
 <% unless params[:q] %>
-<h1>Listing places</h1>
+<h2>Listing places</h2>
 <% else %>
-<h1>Listing places related to '<%= params[:q] %>'</h1>
+<h2>Listing places related to '<%= params[:q] %>'</h2>
 <p>Found <%= pluralize(@landscapes.size, 'result', 'results') %></p>
 <% end -%>
 
@@ -27,8 +27,8 @@
     <td class="long"><%= truncate(landscape.description, :length => 100) %></td>
     <td><%= landscape.pictures.count %></td>
     <td>
-    <%= link_to 'Show', landscape_path(landscape) %> · 
-    <%= link_to 'Edit', edit_admin_landscape_path(landscape.id) %> · 
+    <%= link_to 'Show', landscape_path(landscape) %> ·
+    <%= link_to 'Edit', edit_admin_landscape_path(landscape.id) %> ·
     <%= link_to 'Destroy', admin_landscape_path(landscape), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

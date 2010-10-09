@@ -11,110 +11,165 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :uid %><br />
-    <%= f.text_field :uid, :size => 50, :disabled => true %>
-  </div>
+  <%= f.hidden_field :uid, :value => @species.uid %>
+
   <div class="field">
     <%= f.label :name, "Scientific name" %><br />
     <%= f.text_field :name, :size => 50, :value => @species.full_name %>
-    <% unless @species.new_record? %>
-      <p><em>Imported name from data files</em></p>
-      <p><a href="javascript:void(null)" onclick="window.location.href='<%= url_for(:action => 'update_uid_and_taxon', :id => @species.id) %>'+'?name='+$('#species_name').val();">update gbifKey and taxonomy</a></p>
-    <% end -%>
   </div>
-  <div class="field">
-    <%= f.label :highlighted %>
-    <%= f.check_box :highlighted  %>
-    <p><em><small>If a species is highlighted it can appear in the home images carrousel</small></em></p>
-  </div>
-  <div class="field">
-    <%= f.label :featured %>
-    <%= f.check_box :featured  %>
-    <p><em><small>If a species is featured it can appear in the home of species</small></em></p>
-  </div>
-  <div class="field">
-    <%= f.label :common_name %><br />
-    <%= f.text_field :common_name, :size => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :identification %><br />
-    <%= f.text_area :identification, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :distribution %><br />
-    <%= f.text_area :distribution, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :ecology %><br />
-    <%= f.text_area :ecology, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br />
-    <%= f.text_area :size, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :depth %><br />
-    <%= f.text_area :depth, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :reference %><br />
-    <%= f.text_area :reference, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :habitat %><br />
-    <%= f.text_area :habitat, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :distinguishing_characters %><br />
-    <%= f.text_area :distinguishing_characters, :rows => 8, :cols => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :source_name %><br />
-    <%= f.text_field :source_name, :size => 50 %>
-  </div>
-  <div class="field">
-    <%= f.label :source_link %><br />
-    <%= f.text_field :source_link, :size => 50 %>
-  </div>
+  <div id="all_data" <%=raw 'style="display:none"' if (@species.new_record? && @species.errors.empty?) %>>
+    <div class="field">
+      <%= f.label :highlighted %>
+      <%= f.check_box :highlighted  %>
+      <p><em><small>If a species is highlighted it can appear in the home images carrousel</small></em></p>
+    </div>
+    <div class="field">
+      <%= f.label :featured %>
+      <%= f.check_box :featured  %>
+      <p><em><small>If a species is featured it can appear in the home of species</small></em></p>
+    </div>
+    <div class="field">
+      <%= f.label :common_name %><br />
+      <%= f.text_field :common_name, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :identification %><br />
+      <%= f.text_area :identification, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :distribution %><br />
+      <%= f.text_area :distribution, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :ecology %><br />
+      <%= f.text_area :ecology, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :size %><br />
+      <%= f.text_area :size, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :depth %><br />
+      <%= f.text_area :depth, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :reference %><br />
+      <%= f.text_area :reference, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :habitat %><br />
+      <%= f.text_area :habitat, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :distinguishing_characters %><br />
+      <%= f.text_area :distinguishing_characters, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :source_name %><br />
+      <%= f.text_field :source_name, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :source_link %><br />
+      <%= f.text_field :source_link, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :behaviour %><br />
+      <%= f.text_area :behaviour, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :feeding_behaviour %><br />
+      <%= f.text_area :feeding_behaviour, :rows => 8, :cols => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :reproductive %><br />
+      <%= f.text_area :reproductive, :rows => 8, :cols => 50 %>
+    </div>
 
-  <h2>Taxonomy</h2>
-  <p>Taken from <a href="http://www.gbif.org/">GBIF</a></p>
+    <h2>Taxonomy</h2>
 
-  <div class="field">
-    <%= f.label :kingdom %><br />
-    <%= f.text_field :kingdom, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :phylum %><br />
-    <%= f.text_field :phylum, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :t_class, 'Class' %><br />
-    <%= f.text_field :t_class, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :t_order, 'Order' %><br />
-    <%= f.text_field :t_order, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :family %><br />
-    <%= f.text_field :family, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :genus %><br />
-    <%= f.text_field :genus, :size => 50, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :species %><br />
-    <%= f.text_field :species, :size => 50, :disabled => true %>
-  </div>
+    <div class="field">
+      <%= f.label :kingdom %><br />
+      <%= f.text_field :kingdom, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :phylum %><br />
+      <%= f.text_field :phylum, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :t_class, 'Class' %><br />
+      <%= f.text_field :t_class, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :t_order, 'Order' %><br />
+      <%= f.text_field :t_order, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :family %><br />
+      <%= f.text_field :family, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :genus %><br />
+      <%= f.text_field :genus, :size => 50 %>
+    </div>
+    <div class="field">
+      <%= f.label :species %><br />
+      <%= f.text_field :species, :size => 50 %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div><!-- #all_data -->
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#species_name").autocomplete({
+    minLength: 3,
+    resultsClass: "ac_results",
+    source: function( request, response ) {
+      $.ajax({
+        url: "/species/get_uid/"+$('#species_name').val(),
+        dataType: "jsonp",
+        success: function( data ) {
+          if(data != null) {
+            response($.map(data, function(item) {
+              return {
+                label: item.name,
+                value: item.name,
+                species_id: item.id
+              }
+            }));
+          }
+        }
+      });
+    },
+    select: function( event, ui ) {
+      $('#all_data').show();
+      $('#species_uid').val(ui.item.species_id);
+      $.ajax({
+        url: "/species/get_taxon/"+$('#species_uid').val(),
+        dataType: "jsonp",
+        success: function( data ) {
+          if(data != null) {
+            $('#species_kingdom').val(data['kingdom']);
+            $('#species_phylum').val(data['phylum']);
+            $('#species_t_class').val(data['class']);
+            $('#species_t_order').val(data['order']);
+            $('#species_family').val(data['family']);
+            $('#species_genus').val(data['genus']);
+            $('#species_species').val(data['species']);
+          }
+        }
+      });
+    },
+    refresh: function(){
+       this.element.children("li.ui-menu-item:odd a").addClass("ui-menu-item-alternate");
+    }
+  });
+});
+</script>

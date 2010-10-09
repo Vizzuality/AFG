@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100921082035) do
+ActiveRecord::Schema.define(:version => 20100928141006) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -153,6 +153,9 @@ ActiveRecord::Schema.define(:version => 20100921082035) do
     t.column "distinguishing_characters", :text
     t.column "source_link", :string
     t.column "source_name", :string
+    t.column "behaviour", :text
+    t.column "reproductive", :text
+    t.column "feeding_behaviour", :text
   end
 
   add_index "species", ["complete"], :name => "index_species_on_complete"

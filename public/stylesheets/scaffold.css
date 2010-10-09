@@ -6,10 +6,6 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-h1 {
-	margin: 20px 0;
-}
-
 pre {
   background-color: #eee;
   padding: 10px;
@@ -89,8 +85,8 @@ div.field, div.actions {
 }
 
 .pagination em {
-	background-color: #ccc;
-	padding: 2px 2px;
+  background-color: #ccc;
+  padding: 2px 2px;
 }
 
 .pagination span.disabled {
@@ -100,37 +96,131 @@ div.field, div.actions {
 }
 
 ul.families {
-	margin: 0;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
+  margin: 0;
+  padding-left: 0;
+  padding-top: 1.5em;
+  padding-bottom: 0.4em;
+  margin-bottom: 20px;
 }
 
 ul.families li {
-	padding: 0.2em;
+  padding: 0.5em 2em;
+  margin-left: 0;
+  margin-right: 0.5em;
   line-height: 1.6em;
   display: inline;
-	font-weight: bold;
+  font-weight: bold;
+  background: #DDF;
+}
+
+ul.families li.selected {
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  background: #AAA;
 }
 
 ul.families li a {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 table tr td,
 table tr th {
-	width: 130px;
-	text-align: center;
-	height: 30px;
+  width: 130px;
+  text-align: center;
+  height: 30px;
 }
 table tr th {
-	background: black;
-	color: white;
+  background: black;
+  color: white;
 }
 
 table tr td.long,
 table tr th.long {
-	width: 260px;
+  width: 260px;
 }
 table tr.even {
-	background: #eee;
+  background: #eee;
+}
+
+.message{
+  margin: 30px 0px;
+  overflow: hidden;
+}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+
+div.content {
+  margin-left: 2em;
+}
+
+div.content div.left {
+  padding: 0em 0em;
+  float: left;
+  margin: 0 0 0 0.1em;
+  width: 600px;
+}
+
+div.content div.right {
+  text-align: left;
+  overflow: hidden;
+  height: 1%;
+  padding-left: 1em;
+  padding-top: 0;
+}
+
+div.logo {
+  font: #000;
+  float: left;
+  padding: 3em 1em;
+  width: 800px;
+}
+
+div.search {
+  overflow: hidden;
+  height: 1%;
+/*  border: 1px solid;*/
+  padding: 3em;
+}
+
+/* Autocomplete
+----------------------------------*/
+.ui-autocomplete { position: absolute; cursor: default; }
+.ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/* Menu
+----------------------------------*/
+.ui-menu {
+        list-style:none;
+        padding: 2px;
+        margin: 0;
+        display:block;
+}
+.ui-menu .ui-menu {
+        margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+        margin:0;
+        padding: 0;
+        width: 100%;
+        background: #CCC;
+}
+.ui-menu .ui-menu-item a {
+        text-decoration:none;
+        display:block;
+        padding:.2em .4em;
+        line-height:1.5;
+        zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+        margin: 2px;
+
 }

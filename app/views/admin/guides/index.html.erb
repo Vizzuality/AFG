@@ -1,7 +1,7 @@
 <% unless params[:q] %>
-<h1>Listing Published Guides</h1>
+<h2>Listing Published Guides</h2>
 <% else %>
-<h1>Listing Published Guides related to '<%= params[:q] %>'</h1>
+<h2>Listing Published Guides related to '<%= params[:q] %>'</h2>
 <p>Found <%= pluralize(@guides.size, 'result', 'results') %></p>
 <% end -%>
 
@@ -15,7 +15,7 @@
   <tr>
     <th>Id</th>
     <th class="long">Name</th>
-	<th>Author</th>
+  <th>Author</th>
     <th class="long">Description</th>
     <th class="long"></th>
   </tr>
@@ -25,10 +25,10 @@
     <td><%= guide.id %></td>
     <td><%= link_to "#{guide.name}", edit_admin_guide_path(guide.id) %></td>
     <td class="long"><%= truncate(guide.author, :length => 100) %></td>
-	<td class="long"><%= truncate(guide.description, :length => 100) %></td>
+  <td class="long"><%= truncate(guide.description, :length => 100) %></td>
     <td>
-    <%= link_to 'Show', guide_path(guide) %> · 
-    <%= link_to 'Edit', edit_admin_guide_path(guide.id) %> · 
+    <%= link_to 'Show', guide_path(guide) %> ·
+    <%= link_to 'Edit', edit_admin_guide_path(guide.id) %> ·
     <%= link_to 'Destroy', admin_guide_path(guide), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
