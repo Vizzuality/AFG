@@ -55,3 +55,6 @@ task :asset_packages, :roles => [:app] do
    rake asset:packager:build_all
  CMD
 end
+
+        require 'config/boot'
+        require 'hoptoad_notifier/capistrano'

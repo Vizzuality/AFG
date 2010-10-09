@@ -4,6 +4,7 @@ gem 'rails'
 # PostgreSQL
 gem "pg", "0.9.0"
 gem 'nofxx-georuby', :require => 'geo_ruby'
+gem 'hoptoad_notifier'
 
 gem 'ruby-debug'
 gem "will_paginate", "~> 3.0.pre2"

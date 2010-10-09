@@ -262,7 +262,7 @@ function firstStep(type) {
 		'<textarea name="description" id="description"></textarea></div></div>'+
 		'<div class="errors"><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
 		'<div class="errors"><div id="error_invalid_author"><p>The author of the guide can\'t be blank</p></div></div>' +
-		'<a href="javascript:void secondStep()" class="download">Procced to download</a>';
+		'<a href="javascript:void secondStep()" class="download">Proceed to download</a>';
 
     $('div.choice').html(first_step);
 	$('div.choice').find('a.download').css('display','none');

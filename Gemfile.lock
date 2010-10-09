@@ -76,6 +76,8 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     highline (1.6.1)
+    hoptoad_notifier (2.3.8)
+      activesupport
     i18n (0.4.1)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -163,6 +165,7 @@ DEPENDENCIES
   database_cleaner
   exception_notification!
   fastercsv
+  hoptoad_notifier
   launchy
   nofxx-georuby
   nokogiri
