@@ -266,7 +266,7 @@ function firstStep(type) {
 
     $('div.choice').html(first_step);
 	$('div.choice').find('a.download').css('display','none');
-	$('div.choice').css('height','445px');
+	$('div.choice').css('height','440px');
 	$('div.choice').animate({
 		height:'toggle'
 		}, 500, function(){
@@ -300,7 +300,7 @@ $('input#publish').live('click',function(ev){
 
 	
 	$('div.choice').animate({
-		height:'445px'
+		height:'440px'
 		}, 500, function(){
 			$(this).parent().parent().addClass('active');	
 			$(this).parent().parent().children('div.fill').css('display','inline');
