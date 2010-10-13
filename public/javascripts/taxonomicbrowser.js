@@ -101,8 +101,6 @@ var clickOnHref = 0;
 							$('div.taxon_content div.in').css("width",widthContent);
 						}
 
-						$('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
-
 						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
 						makeHtmlList(nextColumn,data);
 					} else {					
@@ -110,7 +108,9 @@ var clickOnHref = 0;
 						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
 						makeHtmlList(nextColumn,data);
 					}
-
+					
+					$('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
+					
 					// All the init data is not loaded 
 					if (initDataLoaded == 0) {
 						initDataLoaded = 1;
@@ -190,7 +190,7 @@ var clickOnHref = 0;
 			}
 			else if (clickOnHref == 2){ 
 				clickOnHref = 0;
-				setTimeout (clickColumnFunction(event,element),2500);
+				setTimeout(clickColumnFunction(event,element),2500);
 			}
 		}
 		
@@ -340,9 +340,6 @@ var clickOnHref = 0;
 			// If we've results
 
 			var columnScroll = '+=' + columnWidth + 'px'
-			// TODO -> delay is necessary?
-			$('div.in').delay(250).scrollTo(10000,{axis:'x'});
-
 		}
 		
 		function showActiveBkgBar (column,row,element){			
@@ -363,14 +360,16 @@ var clickOnHref = 0;
 		
 		$('div#taxon_browser div.breadcrumbs ul li p a').live('click',function(event){
 			var id_Element = $(this).attr('id');
-			var numOfBread = parseInt($(this).attr('id').substring(5,id_Element.length));
+			var numOfBread = parseInt($(this).attr('id').substring(5,id_Element.length));	
 
-			if (numOfBread != 0) {
-				numOfBread--;
-			} 
-			var offset = numOfBread * columnWidth;
+			var offset = (numOfBread - 2)  * columnWidth;
+						
+			if (numOfBread == 0){
+				offset = 0;
+			}
+					
 			offset += 'px';
-			
+						
 			$('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 		}); // end click function
 		
