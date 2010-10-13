@@ -260,13 +260,13 @@ function firstStep(type) {
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
 		'<label>DESCRIPTION</label>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
-		'<div class="errors"><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
-		'<div class="errors"><div id="error_invalid_author"><p>The author of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><span id="alert_name" class="alert"></span><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
+		'<div class="errors"><span id="alert_author" class="alert"></span><div id="error_invalid_author"><p>The author of the guide can\'t be blank</p></div></div>' +
 		'<a href="javascript:void secondStep()" class="download">Proceed to download</a>';
 
     $('div.choice').html(first_step);
 	$('div.choice').find('a.download').css('display','none');
-	$('div.choice').css('height','445px');
+	$('div.choice').css('height','440px');
 	$('div.choice').animate({
 		height:'toggle'
 		}, 500, function(){
@@ -281,7 +281,8 @@ $('input#no_publish').live('click',function(ev){
 	$(this).parent().parent().addClass('active');		
 	$(this).parent().parent().parent().children('div.want_publish').removeClass('active');	
 	$(this).parent().parent().parent().children('div.want_publish').children('div.fill').css('display','none');	
-
+	$('#alert_name').hide();
+	$('#alert_author').hide();
 	$('#error_invalid_name').hide();
 	$('#error_invalid_author').hide();
 	
@@ -300,7 +301,7 @@ $('input#publish').live('click',function(ev){
 
 	
 	$('div.choice').animate({
-		height:'445px'
+		height:'440px'
 		}, 500, function(){
 			$(this).parent().parent().addClass('active');	
 			$(this).parent().parent().children('div.fill').css('display','inline');
@@ -310,7 +311,8 @@ $('input#publish').live('click',function(ev){
 });
 
 function secondStep() {
-	
+	$('#alert_name').hide();
+	$('#alert_author').hide();
 	$('#error_invalid_name').hide();
 	$('#error_invalid_author').hide();
 	
@@ -329,10 +331,12 @@ function secondStep() {
 		var error = 0;
 		
 		if(author == "") {
+  			$('#alert_author').fadeIn();
 			$('#error_invalid_author').fadeIn();
 			error = 1;
 		}
 		if(name == "") {
+  			$('#alert_name').fadeIn();
 			$('#error_invalid_name').fadeIn();
 			error = 1;
 		}
