@@ -78,6 +78,35 @@ var clickOnHref = 0;
 			}		
 		}
 		
+		function cleanColumnStyles() {
+			for (var indexColumn = 1; indexColumn <= maxColumn; indexColumn++){
+				$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column'+indexColumn);
+				$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('other');
+				$('div.taxon_content div.in ul#column'+indexColumn).find('div.text').removeClass('other');
+			}
+		}
+		
+		function updateColumnStyles(column) {
+			
+			for (var indexColumn = column; indexColumn > 0; indexColumn--){
+					if (indexColumn == column) {
+						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column'+indexColumn);
+						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column3');
+					}else if (indexColumn == column-1) {
+						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column3');
+						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column2');
+					}else if (indexColumn == column-2){
+						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column2');
+						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column1');
+					}else {
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column'+indexColumn);
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('other');
+						$('div.taxon_content div.in ul#column'+indexColumn).find('div.text').addClass('other');
+					} 
+				}
+			
+		}
+		
 		//add column or change data column
 		function addColumn(noColumn,data,taxonID) {
 			
@@ -127,15 +156,24 @@ var clickOnHref = 0;
 			
 			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
 				var selectedColumn = getColumnID(element.parent().attr('id'));
+				
 				var nextColumn = parseInt(selectedColumn) + 1;
-
+				
 				var actual_index = element.index();
 
 				var specie_selected = element.find('a.specie').text();
 
 				// If is necessary to delete the rest of elements
 				if (selectedColumn <= numBreadCrumbs) {
-
+					
+					cleanColumnStyles(selectedColumn);
+					// 	$('div.taxon_content div.in ul#column1').find('div.text').removeClass('other');
+					// 	$('div.taxon_content div.in').find('div#bkg_column1').removeClass('other');
+					// 	$('div.taxon_content div.in').find('div#bkg_column1').addClass('column1');
+					// 	$('div.taxon_content div.in ul#column2').find('div.text').removeClass('other');
+					// 	$('div.taxon_content div.in').find('div#bkg_column2').removeClass('other');
+					// 	$('div.taxon_content div.in').find('div#bkg_column2').addClass('column2');
+					
 					var numElementsToDelete = numBreadCrumbs - (selectedColumn - 1);
 					for (var i=0; i<numElementsToDelete; i++) {
 						$('div#taxon_browser div.breadcrumbs ul li').last().remove();
@@ -146,7 +184,6 @@ var clickOnHref = 0;
 				$('div#taxon_browser div.breadcrumbs ul li').each(function(index) {
 
 					if ((parseInt($(this).index()) + 2 ==  selectedColumn)&&(selectedColumn != 1)) {
-
 						$(this).removeClass('actual');
 						var finalPosition = $(this).position().left + $(this).width() - 13;
 						var htmlBreadCrumbs = '<li class="actual" style="left:'+ finalPosition + 'px"><p><a id="bread'+ selectedColumn +'">' + specie_selected + '</a></p></li>';					
@@ -314,7 +351,6 @@ var clickOnHref = 0;
 						
 						$(li).children('div.text').children('p').html(htmlText);
 					}
-
 					
 					$(li).attr('id',result[i].id);
 
@@ -328,23 +364,23 @@ var clickOnHref = 0;
 					}else {
 						html = html+'<li id="'+$(li).attr('id')+'">'+$(li).html()+'</li>';
 					}
-					
-				}			
+				}
 			}
 			
+			$('ul#column'+ column).addClass('column'+column);
+
 			if (column > 2){
 				$('ul#column'+ column).addClass('any_column');
+				updateColumnStyles(column);
 			}
+								
 			$('ul#column'+ column).append(html);
-			
-			// If we've results
-
 			var columnScroll = '+=' + columnWidth + 'px'
 		}
 		
-		function showActiveBkgBar (column,row,element){			
+		function showActiveBkgBar (column,row,element){
 			
-			$('div.taxon_content div.in').append('<div id="bkg_column'+ column +'" class="active_column"></div>');
+			$('div.taxon_content div.in').append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
 			
 			var posColumn = (292 * column);
 			$('#bkg_column'+column).css("left", posColumn +'px')
