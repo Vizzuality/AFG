@@ -8,6 +8,7 @@ AFG::Application.routes.draw do |map|
   match 'maps/tiles' => 'maps#tiles', :as => 'tiles'
 
   match 'about' => 'site#about', :as => 'about'
+  match 'raise_exception' => 'site#raise_exception'
 
   resources :guides, :only => [:index, :show] do
     get :undo, :on => :member

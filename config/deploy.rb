@@ -1,4 +1,6 @@
 require 'capistrano/ext/multistage'
+require 'config/boot'
+require 'hoptoad_notifier/capistrano'
 
 set :stages, %w(staging production)
 set :default_stage, "production"
@@ -23,7 +25,7 @@ set :user,  'ubuntu'
 
 set :deploy_to, "/home/ubuntu/www/#{application}"
 
-after  "deploy:update_code", :run_migrations, :symlinks, :asset_packages
+after  "deploy:update_code", :run_migrations, :symlinks, :asset_packages, :set_staging_flag
 
 desc "Restart Application"
 deploy.task :restart, :roles => [:app] do
@@ -38,7 +40,7 @@ task :run_migrations, :roles => [:app] do
     rake db:migrate
   CMD
 end
- 
+
 task :symlinks, :roles => [:app] do
   run <<-CMD
     ln -s #{shared_path}/system #{release_path}/public/system;
@@ -55,6 +57,3 @@ task :asset_packages, :roles => [:app] do
    rake asset:packager:build_all
  CMD
 end
-
-        require 'config/boot'
-        require 'hoptoad_notifier/capistrano'
