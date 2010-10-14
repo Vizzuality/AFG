@@ -1,71 +1,73 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
-		// var $j = jQuery.noConflict();
-		// 				// $j(function(){
-		// 				//     jQuery('.scroll-pane').jScrollPane({scrollbarWidth:10});
-		// 				// });
-		// 			
-		// 				$j(function(){
-		// 				 	jQuery('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
-		// 				});
-		
-		$('.scroll-vertical-pane').jScrollPane({showArrows:false, scrollbarWidth: 15, topCapHeight:7, bottomCapHeight:7});
-		$('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
-		$('#taxon_browser').taxonomicbrowser();
-	});
+    // var $j = jQuery.noConflict();
+    //         // $j(function(){
+    //         //     jQuery('.scroll-pane').jScrollPane({scrollbarWidth:10});
+    //         // });
+    //
+    //         $j(function(){
+    //            jQuery('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
+    //         });
+
+    $('.scroll-vertical-pane').jScrollPane({showArrows:false, scrollbarWidth: 15, topCapHeight:7, bottomCapHeight:7});
+    $('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
+    $('#taxon_browser').taxonomicbrowser();
+  });
 </script>
 
-<div class="outer_layout"> 
-  <div class="species_explore"> 
+<div class="outer_layout">
+  <div class="species_explore">
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
-    <h2>Taxonomy browser</h2> 
+    <h2>Taxonomy browser</h2>
     <p class="subtitle">Add <%= @species_to_add %> species to your Field Guide using the browser</p>
-	
-	<div id="taxon_browser" class="taxonomic_browser">
-		<div class="breadcrumbs">
-			<ul></ul>
-		</div>
-		<div class="taxon_content scroll-horizontal-pane" >
-			<div class="in">
-							
-				<ul id="column1" class="jScrollVPaneContainer">
-				</ul>	
-			</div>
-		</div>
-	</div>
+
+  <div id="taxon_browser" class="taxonomic_browser">
+    <div class="breadcrumbs">
+      <ul></ul>
+    </div>
+    <div class="taxon_content scroll-horizontal-pane" >
+      <div class="in">
+
+        <ul id="column1" class="jScrollVPaneContainer">
+        </ul>
+      </div>
+    </div>
+  </div>
 
   </div>
 </div>
 
 <div class="main species">
-  <div class="left"> 
-    <div class="landscapes"> 
-      <h3>Most popular species</h3> 
-      <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p> 
-      <div class="species_list"> 
+  <div class="left">
+    <div class="landscapes">
+      <h3>Most popular species</h3>
+      <p class="subtitle">You can also <%= link_to('search species', search_path) %> by name</p>
+      <div class="species_list">
         <ul class="published_afg">
           <% @species.each do |species| %>
-          <li class="<%= cycle('', '', 'last', '', '', 'last') %>"> 
+          <li class="<%= cycle('', '', 'last', '', '', 'last') %>">
             <%= render species %>
-          </li> 
+          </li>
           <% end %>
-        </ul> 
-      </div> 
-    </div> 
+        </ul>
+      </div>
+    </div>
   </div><!-- .left -->
 
-  <div class="right"> 
+  <div class="right">
     <% if @featured_species %>
-    <div class="feature"> 
-      <p class="subtitle">Featured species</p> 
+    <div class="feature">
+      <p class="subtitle">Featured species</p>
       <h3><%= link_to(@featured_species.full_name, species_path(@featured_species)) %></h3>
       <%= stars(@featured_species) %>
-		<a class="lightbox" title="<%= @featured_species.full_name %>" href="<%= @featured_species.picture.image.url(:gallery) %>">
-        <div class="image">
+      <% if @featured_species.picture%>
+      <a class="lightbox" title="<%= @featured_species.full_name %>" href="<%= @featured_species.picture.image.url(:gallery) %>">
+      <% end -%>
+      <div class="image">
         <img src="<%= @featured_species.picture ? @featured_species.picture.image.url(:large) : @featured_species.default_picture(:medium) %>" alt="<%= @featured_species.full_name %>" title="<%= @featured_species.full_name %>" />
         <span class="shadow"></span>
       </div>
-		</a>
+    </a>
       <p class="info">
         <%= raw(truncate(@featured_species.description, :length => 200, :omission => "...#{link_to('Learn more', species_path(@featured_species))}")) %>
       </p>
@@ -75,5 +77,5 @@
 </div>
 
 <div id="your_guide">
-	<%= render 'guides/your_guide' %>
+  <%= render 'guides/your_guide' %>
 </div>
