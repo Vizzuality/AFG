@@ -1,5 +1,5 @@
 # Specie 1
-s = Species.new :name => 'cristata', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
+s = Species.new :name => 'cristata', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata',
                 :identification => 'Kathy Conlan (Canadian Museum of Nature)', :uid => '13776449', :family => 'Polynoidae', :genus => 'Barrukia',
                 :species => 'Barrukia cristata', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
                 :distinguishing_characters=>'lorem ipsum dolor sit amet'
@@ -11,10 +11,10 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Ammothea1
 picture.save
 
 # Specie 2
-s = Species.new :name => 'gigantea', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
+s = Species.new :name => 'gigantea', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata',
                 :identification => 'Myriam Schuller', :uid => '13783975', :family => 'Polynoidae', :genus => 'Eulagisca',
                 :species => 'Eulagisca gigantea', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
-                :distinguishing_characters=>'lorem ipsum dolor sit amet'                
+                :distinguishing_characters=>'lorem ipsum dolor sit amet'
 s.save
 
 # Picture asociated
@@ -23,10 +23,10 @@ picture.image = File.open("#{Rails.root}/public/images/data/Arthropods/Austropal
 picture.save
 
 # Specie 3
-s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata', 
+s = Species.new :name => 'producta', :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata',
                 :identification => 'Myriam Schuller', :uid => '13783975', :family => 'Aphroditidae', :genus => 'Laetmonice',
                 :species => 'Laetmonice producta', :featured => true, :highlighted => true, :description=>'lorem ipsum dolor sit amet', :distribution=>'lorem ipsum dolor sit amet',
-                :distinguishing_characters=>'lorem ipsum dolor sit amet'                
+                :distinguishing_characters=>'lorem ipsum dolor sit amet'
 
 s.save
 
@@ -120,3 +120,15 @@ end
 
 g.add_entry('Landscape', l.id.to_s)
 g.add_entry('Class', 'Malacostraca')
+
+
+
+
+1.upto(100) do |i|
+s = Species.new :name => "producta #{i}", :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata',
+                :identification => 'Myriam Schuller', :uid => "137835#{i}", :family => 'Aphroditidae', :genus => 'Laetmonice',
+                :species => "Laetmonice producta #{i}", :featured => true, :highlighted => true, :description=>"lorem ipsum dolor sit amet #{i}", :distribution=>"lorem ipsum dolor sit amet #{i}",
+                :distinguishing_characters=>"lorem ipsum dolor sit amet #{i}"
+
+s.save
+end
