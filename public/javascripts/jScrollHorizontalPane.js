@@ -91,7 +91,7 @@ jQuery.fn.jScrollHorizontalPane = function(settings)
 			animateStep: 3,
 			maintainPosition: true,
 			resize: true,
-			minimumWidth: 137,
+			minimumWidth: 886,
 			reset: false
 		}, settings
 	);
@@ -764,10 +764,9 @@ test test test test test test test test test test test test test test test test 
 
 	jQuery(function($) {
 		$( window ).wresize(resizeScroller);
-
 		function resizeScroller() {
 		jQuery('.scroll-horizontal-pane').each(function(i, elem) {
-
+				
 			if($(elem).attr('id') == undefined) {
 				id = $(elem).attr('class');
 			} else {
