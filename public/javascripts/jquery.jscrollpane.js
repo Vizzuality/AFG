@@ -734,7 +734,7 @@
 			}
 
 			function scrollToX(destX, animate)
-			{
+			{				
 				var percentScrolled = destX / (contentWidth - paneWidth);
 				positionDragX(percentScrolled * dragMaxX, animate);
 			}

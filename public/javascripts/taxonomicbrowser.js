@@ -5,8 +5,7 @@ var initDataLoaded = 0;
 var numBreadCrumbs = 0;
 var columnWidth = 292;
 var clickOnHref = 0;
-var api;
-var settings;
+
 $(document).ready(function() {
 
 });
@@ -15,10 +14,13 @@ $(document).ready(function() {
 	
 	$.fn.taxonomicbrowser = function(){
 		
-		settings = {
-			animateScroll: true
+		var settings = {
 		};
-
+		
+		var pane = $('.scroll_pane');
+		pane.jScrollPane(settings);
+		var api = pane.data('jsp');
+		
 		// Simulate first row clicked, to the first and the second column
 		createFirstColumn();
 		
@@ -141,34 +143,22 @@ $(document).ready(function() {
 							$('div.taxon_content div.in').css("width",widthContent);
 						}
 						
-						var pane = $('.scroll_pane');
-						pane.jScrollPane(settings);
-						var contentPane = pane.data('jsp').getContentPane().find('div.in');
-						contentPane.append('<ul id="column'+ nextColumn +'"></ul>');
-
-						// if (nextColumn == 4) {
-						// 	api = pane.data('jsp');
-						// 	api.reinitialise();
-						// }
-						
-						
-						makeHtmlList(nextColumn,data);
 					} else {					
 						clearColumn(nextColumn);
-						contentPane = pane.data('jsp').getContentPane().children('div.in');
-						contentPane.append('<ul id="column'+ nextColumn +'"></ul>');
-						makeHtmlList(nextColumn,data);
 					}
+					
+					api.getContentPane().children('div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+					api.reinitialise();
+					makeHtmlList(nextColumn,data);
 					
 					// console.log($('div.jspDrag').html());
 					// $('div.jspDrag').delay(250).css('right','0px');
 					
 					// $('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
-				
 					
-					api = pane.data('jsp');
-					api.scrollToX((nextColumn)*columnWidth,0);
-					
+					if (nextColumn > 3){
+						api.scrollToX((nextColumn)*columnWidth,500);
+					}
 					
 					if ($('ul#column'+nextColumn+' li').size() > 5){
 						var settingsOther = {
@@ -414,12 +404,9 @@ $(document).ready(function() {
 		}
 		
 		function showActiveBkgBar (column,row,element){
-			var pane = $('.scroll_pane');
-			pane.jScrollPane(settings);
-			
-			var contentPane = pane.data('jsp').getContentPane().find('div.in');
-			
-			contentPane.append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
+
+			api.getContentPane().children('div.in').append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
+			api.reinitialise();
 			
 			var posColumn = (292 * column);
 			$('#bkg_column'+column).css("left", posColumn +'px')
@@ -444,9 +431,7 @@ $(document).ready(function() {
 			}
 					
 			offset += 'px';
-
 			// $('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
-			api = pane.data('jsp');
 			api.scrollToX(offset,500);
 		}); // end click function
 		
