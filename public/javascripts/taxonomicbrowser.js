@@ -430,7 +430,6 @@ $(document).ready(function() {
 				offset = 0;
 			}
 					
-			offset += 'px';
 			// $('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 			api.scrollToX(offset,500);
 		}); // end click function
