@@ -97,16 +97,27 @@ var clickOnHref = 0;
 		
 		function updateColumnStyles(column) {
 			
-			for (var indexColumn = column; indexColumn > 0; indexColumn--){
+			for (var indexColumn = column; indexColumn >= 0; indexColumn--){
 					if (indexColumn == column) {
 						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column'+indexColumn);
 						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column3');
+
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column1');
+						
 					}else if (indexColumn == column-1) {
 						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column3');
 						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column2');
+
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column3');
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column2');
+						
 					}else if (indexColumn == column-2){
 						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column2');
 						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column1');
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
+						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column1');
+						
 					}else {
 						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column'+indexColumn);
 						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('other');
@@ -140,7 +151,7 @@ var clickOnHref = 0;
 							$('div.taxon_content div.in').css("width",widthContent);
 						}
 						
-					} else {					
+					} else {
 						clearColumn(nextColumn);
 					}
 					
@@ -148,10 +159,6 @@ var clickOnHref = 0;
 					api.reinitialise();
 					makeHtmlList(nextColumn,data);
 					
-					// console.log($('div.jspDrag').html());
-					// $('div.jspDrag').delay(250).css('right','0px');
-					
-					// $('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
 					
 					if (nextColumn > 3){
 						api.scrollToX((nextColumn)*columnWidth,500);
@@ -427,7 +434,6 @@ var clickOnHref = 0;
 				offset = 0;
 			}
 					
-			offset += 'px';
 			// $('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 			api.scrollToX(offset,500);
 		}); // end click function
