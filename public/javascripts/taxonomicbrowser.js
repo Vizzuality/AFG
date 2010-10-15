@@ -6,9 +6,6 @@ var numBreadCrumbs = 0;
 var columnWidth = 292;
 var clickOnHref = 0;
 
-$(document).ready(function() {
-
-});
 
 (function($){
 	

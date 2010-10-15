@@ -362,10 +362,10 @@ div.taxonomic_browser div.breadcrumbs ul li.actual p a {float:left; margin:0 0 0
 div.taxonomic_browser div.breadcrumbs ul li.actual.first p{float:left; background:url(../images/species/taxonomy_browser/left_breadcrumbs_first_actual.png) no-repeat left 0; width:auto; height:29px;}
 div.taxonomic_browser div.breadcrumbs ul li.actual.first p a {float:left; margin:0 0 0 6px; background:url(../images/species/taxonomy_browser/right_breadcrumbs_actual.png) right 0; width:auto; height:24px; padding:5px 19px 0 4px; line-height:15px;}
 
-div.taxonomic_browser div.taxon_content {float:left; width:886px; height:328px; margin:5px 0 0 0; position:relative; }
+div.taxonomic_browser div.taxon_content {float:left; width:886px; height:328px; margin:5px 0 0 0; position:relative;}
 
 
-div.taxonomic_browser div.taxon_content div.in {float:left; width:886px; max-height:328px; position:relative; }
+div.taxonomic_browser div.taxon_content div.in {float:left; width:886px; max-height:328px; position:relative;}
 
 div.taxonomic_browser div.taxon_content ul {float:left; width:302px; height:304px; margin:0; padding:0; overflow-x:hidden; overflow-y:auto; position:relative;}
 div.taxonomic_browser div.taxon_content ul#column1 {/*background:url(../images/species/taxonomy_browser/bkg_ul_first.png) no-repeat 0 0;*/ z-index:1;}

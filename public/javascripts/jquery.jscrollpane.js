@@ -452,7 +452,7 @@
 					} else if (horizontalDragWidth < settings.horizontalDragMinWidth) {
 						horizontalDragWidth = settings.horizontalDragMinWidth;
 					}
-					horizontalDrag.width(horizontalDragWidth + 'px');
+					horizontalDrag.width(horizontalDragWidth-12 + 'px');
 					dragMaxX = horizontalTrackWidth - horizontalDragWidth;
 					_positionDragX(horizontalDragPosition); // To update the state for the arrow buttons
 				}
