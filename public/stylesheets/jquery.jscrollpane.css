@@ -19,12 +19,24 @@
 .jspVerticalBar
 {
 	position: absolute;
-	top: 0;
+	top: 5px;
 	right: 7px;
 	width: 16px;
 	height: 98%;
 }
 
+.jspVerticalBar .jspDrag {
+	min-height:15px;
+	background-color: #999999;
+}
+
+.jspVerticalBar .jspDrag .jspHover {
+	background-color: #666666;
+}
+
+.jspVerticalBar .jspDrag:hover {
+	background-color: #666666;
+}
 .jspHorizontalBar
 {
 	position: absolute;
@@ -75,13 +87,13 @@
 
 .jspTrack:hover
 {
-	background-color: #BEBEBE;
+/*	background-color: #BEBEBE;*/
 }
 
 
 .jspDrag:hover
 {
-	background-color: #B6B6B6;
+/*	background-color: #B6B6B6;*/
 }
 
 .jspHorizontalBar .jspTrack {
@@ -125,6 +137,17 @@
 	height: 16px;
 }
 
+.jspVerticalBar .jspTrack {
+	background-color: #D3D3D3; 
+	opacity:0.70; -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)'; filter: alpha(opacity=70); 
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+/*.jspVerticalBar .jspTrack:hover {
+	opacity:0.30; -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=30)'; filter: alpha(opacity=30); 
+}
+*/
 .jspHorizontalBar .jspArrow
 {
 	width: 16px;

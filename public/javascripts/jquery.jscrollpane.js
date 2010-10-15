@@ -272,7 +272,7 @@
 						appendArrows(verticalTrack, settings.verticalArrowPositions, arrowUp, arrowDown);
 					}
 
-					verticalTrackHeight = paneHeight;
+					verticalTrackHeight = paneHeight - 10;
 					container.find('>.jspVerticalBar>.jspCap:visible,>.jspVerticalBar>.jspArrow').each(
 						function()
 						{
@@ -282,41 +282,42 @@
 
 
 					verticalDrag.hover(
-						function()
-						{
-							verticalDrag.addClass('jspHover');
-						},
-						function()
-						{
-							verticalDrag.removeClass('jspHover');
-						}
-					).bind(
-						'mousedown.jsp',
-						function(e)
-						{
-							// Stop IE from allowing text selection
-							$('html').bind('dragstart.jsp selectstart.jsp', function() { return false; });
-
-							verticalDrag.addClass('jspActive');
-
-							var startY = e.pageY - verticalDrag.position().top;
-
-							$('html').bind(
-								'mousemove.jsp',
-								function(e)
-								{
-									positionDragY(e.pageY - startY, false);
-								}
-							).bind('mouseup.jsp mouseleave.jsp', cancelDrag);
-							return false;
-						}
-					);
+										function()
+										{
+											verticalDrag.addClass('jspHover');
+										},
+										function()
+										{
+											verticalDrag.removeClass('jspHover');
+										}
+									).bind(
+										'mousedown.jsp',
+										function(e)
+										{
+											// Stop IE from allowing text selection
+											$('html').bind('dragstart.jsp selectstart.jsp', function() { return false; });
+									
+											verticalDrag.addClass('jspActive');
+									
+											var startY = e.pageY - verticalDrag.position().top;
+									
+											$('html').bind(
+												'mousemove.jsp',
+												function(e)
+												{
+													positionDragY(e.pageY - startY, false);
+												}
+											).bind('mouseup.jsp mouseleave.jsp', cancelDrag);
+											return false;
+										}
+									);
 					sizeVerticalScrollbar();
 				}
 			}
 
 			function sizeVerticalScrollbar()
 			{
+				//alert('entra');
 				verticalTrack.height(verticalTrackHeight + 'px');
 				verticalDragPosition = 0;
 				scrollbarWidth = settings.verticalGutter + verticalTrack.outerWidth();
@@ -734,7 +735,8 @@
 			}
 
 			function scrollToX(destX, animate)
-			{				
+			{
+
 				var percentScrolled = destX / (contentWidth - paneWidth);
 				positionDragX(percentScrolled * dragMaxX, animate);
 			}
