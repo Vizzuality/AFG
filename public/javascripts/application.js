@@ -9,6 +9,7 @@ AFG = {
 }
 
 $(document).ready(function() {
+
 	
 	modal_publish = $('#publish_container').html();
 

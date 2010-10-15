@@ -3,13 +3,13 @@ javascripts:
 - base: 
   - jquery.min
   - jquery.lightbox-0.5
-  - jScrollPane
-  - jScrollHorizontalPane
   - jquery.textshadow
   - jquery.simplemodal-1.3.5
   - jquery.scrollTo-1.4.2-min
   - jquery.nivo.slider
   - jquery.mousewheel
+  - mwheelIntent
+  - jquery.jscrollpane
   - jquery.example.min
   - jquery.em
   - jquery.dimensions
@@ -38,7 +38,7 @@ javascripts:
   
 stylesheets: 
 - base: 
+  - jquery.jscrollpane
   - jquery.lightbox-0.5
-  - jScrollPane
   - layout
-  - scrollbars
+

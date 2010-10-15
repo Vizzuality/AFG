@@ -122,8 +122,6 @@ g.add_entry('Landscape', l.id.to_s)
 g.add_entry('Class', 'Malacostraca')
 
 
-
-
 1.upto(100) do |i|
 s = Species.new :name => "producta #{i}", :phylum => 'Annelida', :kingdom => 'Animalia', :t_class => 'Polychaeta', :t_order => 'Aciculata',
                 :identification => 'Myriam Schuller', :uid => "137835#{i}", :family => 'Aphroditidae', :genus => 'Laetmonice',

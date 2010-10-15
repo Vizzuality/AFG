@@ -1,13 +1,24 @@
-var widthContent = "886px"
+var widthContent = "886px";
+//var widthContent = "886px";
 var maxColumn = 1;
 var initDataLoaded = 0;
 var numBreadCrumbs = 0;
 var columnWidth = 292;
 var clickOnHref = 0;
+var api;
+var settings;
+$(document).ready(function() {
+
+});
+
 (function($){
 	
 	$.fn.taxonomicbrowser = function(){
 		
+		settings = {
+			animateScroll: true
+		};
+
 		// Simulate first row clicked, to the first and the second column
 		createFirstColumn();
 		
@@ -27,8 +38,7 @@ var clickOnHref = 0;
 		            }});
 		
 		// li is clicked
-		$('div.taxon_content div.in ul li').live('click',function(event){			
-			
+		$('div.taxon_content div.in ul li').live('click',function(event){
 			clickColumnFunction(event,$(this));
 		}); // end click function
 		
@@ -119,26 +129,55 @@ var clickOnHref = 0;
 					clickColumnFunction(null,elementClicked);
 				}
 				else {
-					if ($('div.taxon_content div.in ul#column'+nextColumn).length==0) {					
+					if ($('div.taxon_content div.in ul#column'+nextColumn).length==0) {
 						maxColumn = nextColumn;
 						var posNextColumn = columnWidth*(nextColumn-1);
-
+						
+						
 						if (nextColumn > 3){
 							$('div.taxon_content div.in').css("width",(nextColumn*columnWidth)+10);
 						}
 						else {
 							$('div.taxon_content div.in').css("width",widthContent);
 						}
+						
+						var pane = $('.scroll_pane');
+						pane.jScrollPane(settings);
+						var contentPane = pane.data('jsp').getContentPane().find('div.in');
+						contentPane.append('<ul id="column'+ nextColumn +'"></ul>');
 
-						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+						// if (nextColumn == 4) {
+						// 	api = pane.data('jsp');
+						// 	api.reinitialise();
+						// }
+						
+						
 						makeHtmlList(nextColumn,data);
 					} else {					
 						clearColumn(nextColumn);
-						$('div.taxon_content div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+						contentPane = pane.data('jsp').getContentPane().children('div.in');
+						contentPane.append('<ul id="column'+ nextColumn +'"></ul>');
 						makeHtmlList(nextColumn,data);
 					}
 					
-					$('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
+					// console.log($('div.jspDrag').html());
+					// $('div.jspDrag').delay(250).css('right','0px');
+					
+					// $('div.taxon_content').delay(250).scrollTo((nextColumn)*columnWidth,{axis:'x'});
+				
+					
+					api = pane.data('jsp');
+					api.scrollToX((nextColumn)*columnWidth,0);
+					
+					
+					if ($('ul#column'+nextColumn+' li').size() > 5){
+						var settingsOther = {
+							autoReinitialise: true
+						};
+						var paneOther = $('ul#column' + nextColumn);
+						paneOther.jScrollPane(settingsOther);
+					} 
+					
 					
 					// All the init data is not loaded 
 					if (initDataLoaded == 0) {
@@ -167,13 +206,7 @@ var clickOnHref = 0;
 				if (selectedColumn <= numBreadCrumbs) {
 					
 					cleanColumnStyles(selectedColumn);
-					// 	$('div.taxon_content div.in ul#column1').find('div.text').removeClass('other');
-					// 	$('div.taxon_content div.in').find('div#bkg_column1').removeClass('other');
-					// 	$('div.taxon_content div.in').find('div#bkg_column1').addClass('column1');
-					// 	$('div.taxon_content div.in ul#column2').find('div.text').removeClass('other');
-					// 	$('div.taxon_content div.in').find('div#bkg_column2').removeClass('other');
-					// 	$('div.taxon_content div.in').find('div#bkg_column2').addClass('column2');
-					
+
 					var numElementsToDelete = numBreadCrumbs - (selectedColumn - 1);
 					for (var i=0; i<numElementsToDelete; i++) {
 						$('div#taxon_browser div.breadcrumbs ul li').last().remove();
@@ -373,14 +406,20 @@ var clickOnHref = 0;
 				$('ul#column'+ column).addClass('any_column');
 				updateColumnStyles(column);
 			}
-								
+			
+			// 	addhtmlcolumn
 			$('ul#column'+ column).append(html);
+
 			var columnScroll = '+=' + columnWidth + 'px'
 		}
 		
 		function showActiveBkgBar (column,row,element){
+			var pane = $('.scroll_pane');
+			pane.jScrollPane(settings);
 			
-			$('div.taxon_content div.in').append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
+			var contentPane = pane.data('jsp').getContentPane().find('div.in');
+			
+			contentPane.append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
 			
 			var posColumn = (292 * column);
 			$('#bkg_column'+column).css("left", posColumn +'px')
@@ -405,8 +444,10 @@ var clickOnHref = 0;
 			}
 					
 			offset += 'px';
-						
-			$('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
+
+			// $('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
+			api = pane.data('jsp');
+			api.scrollToX(offset,500);
 		}); // end click function
 		
 	}
