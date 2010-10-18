@@ -1,0 +1,218 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <title>/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif - symfony - Trac</title><link rel="start" href="/wiki" /><link rel="search" href="/search" /><link rel="help" href="/wiki/TracGuide" /><link rel="stylesheet" href="/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/chrome/common/css/code.css" type="text/css" /><link rel="stylesheet" href="/chrome/common/css/browser.css" type="text/css" /><link rel="icon" href="/chrome/site/favicon.ico" type="image/x-icon" /><link rel="shortcut icon" href="/chrome/site/favicon.ico" type="image/x-icon" /><link rel="up" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images?rev=30370" title="Parent directory" /><link rel="alternate" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif?rev=30370&amp;format=raw" title="Original Format" type="image/gif; charset=utf-8" /><style type="text/css"></style>
+<link rel="stylesheet" type="text/css" media="all" href="http://www.symfony-project.com/css/trac.css" />
+<style type="text/css">
+</style>
+ <script type="text/javascript" src="/chrome/common/js/trac.js"></script>
+</head>
+<body>
+
+<table id="topbar" cellspacing="0" cellpadding="0" width="100%">
+  <tr>
+    <td width="176" height="37" bgcolor="#000"><a href="http://www.symfony-project.com" style="border-bottom:none;"><img src="http://www.symfony-project.com/images/symfony_logo.gif" width="176" height="37" border="0"></a></td>
+    <td width="100%" id="navig" align="right" valign="middle" height="37">
+        <ul>
+          <li><a href="http://www.symfony-project.org/about">About</a></li>
+          <li><a href="http://www.symfony-project.org/installation">Installation</a></li>
+          <li><a href="http://www.symfony-project.org/doc">Documentation</a></li>
+          <li><a href="http://www.symfony-project.org/plugins/">Plugins</a></li>
+          <li><a href="http://www.symfony-project.org/community">Community</a></li>
+          <li><a href="http://www.symfony-project.org/blog">Blog</a></li>
+          <li class="last"><a href="http://trac.symfony-project.com/timeline">Development</a></li>
+        </ul>
+    </td>
+  </tr>
+  <tr><td id="topseparator" colspan="2"></td></tr>
+  <tr>
+    <td colspan="2">
+      <h1>Development</h1>
+      
+        <h2>/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif</h2>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2" style="background: #fdf2ab">
+      <center><p><strong>
+You must first <a href="http://www.symfony-project.com/user/new">sign up</a> to be able to contribute.
+</strong></p></center>
+    </td>
+  </tr>
+
+</table>
+
+
+
+<div id="banner">
+
+<form id="search" action="/search" method="get">
+ <div>
+  <label for="proj-search">Search:</label>
+  <input type="text" id="proj-search" name="q" size="10" accesskey="f" value="" />
+  <input type="submit" value="Search" />
+  <input type="hidden" name="wiki" value="on" />
+  <input type="hidden" name="changeset" value="on" />
+  <input type="hidden" name="ticket" value="on" />
+ </div>
+</form>
+
+
+
+<div id="metanav" class="nav"><ul><li class="first"><a href="/login">Login</a></li><li><a href="/settings">Settings</a></li><li><a accesskey="6" href="/wiki/TracGuide">Help/Guide</a></li><li class="last"><a href="/about">About Trac</a></li></ul></div>
+</div>
+
+<div id="mainnav" class="nav"><ul><li class="first"><a accesskey="1" href="/wiki">Wiki</a></li><li><a accesskey="2" href="/timeline">Timeline</a></li><li><a accesskey="3" href="/roadmap">Roadmap</a></li><li class="active"><a href="/browser">Browse Source</a></li><li><a href="/report">View Tickets</a></li><li class="last"><a accesskey="4" href="/search">Search</a></li></ul></div>
+<div id="main">
+
+
+
+
+<div id="ctxtnav" class="nav">
+ <ul>
+  <li class="first"><a href="/changeset/30370/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif">
+   Last Change</a></li>
+  <li class="last"><a href="/log/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif?rev=30370">
+   Revision Log</a></li>
+ </ul>
+</div>
+
+
+<div id="searchable">
+<div id="content" class="browser">
+ <h1><a class="first" title="Go to root directory" href="/browser?rev=30370">root</a><span class="sep">/</span><a title="View plugins" href="/browser/plugins?rev=30370">plugins</a><span class="sep">/</span><a title="View sfJqueryReloadedPlugin" href="/browser/plugins/sfJqueryReloadedPlugin?rev=30370">sfJqueryReloadedPlugin</a><span class="sep">/</span><a title="View 1.2" href="/browser/plugins/sfJqueryReloadedPlugin/1.2?rev=30370">1.2</a><span class="sep">/</span><a title="View trunk" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk?rev=30370">trunk</a><span class="sep">/</span><a title="View web" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web?rev=30370">web</a><span class="sep">/</span><a title="View css" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css?rev=30370">css</a><span class="sep">/</span><a title="View ui-lightness" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness?rev=30370">ui-lightness</a><span class="sep">/</span><a title="View images" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images?rev=30370">images</a><span class="sep">/</span><a title="View ui-anim_basic_16x16.gif" href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif?rev=30370">ui-anim_basic_16x16.gif</a></h1>
+
+ <div id="jumprev">
+  <form action="" method="get">
+   <div>
+    <label for="rev">View revision:</label>
+    <input type="text" id="rev" name="rev" value="30370" size="4" />
+   </div>
+  </form>
+ </div>
+
+ 
+
+ 
+  <table id="info" summary="Revision info"><tr>
+    <th scope="col">
+     Revision <a href="/changeset/30370">30370</a>, 1.5 kB
+     (checked in by johnnyoffline, 3 months ago)
+    </th></tr><tr>
+    <td class="message"><p>
+updated sfJqueryReloadedPlugin to have the last version of jquery ui that was released for 1.3.2. I also added the jquery ui version that is needed to function properly with 1.4.2. If anyone was using jq1.4.2 with this plugin they probably needed to add that file manually anyway. This was a very minor update, just good house keeping <br />
+</p>
+</td>
+   </tr><tr>
+    <td colspan="2"><ul class="props">
+      <li>Property <strong>svn:mime-type</strong> set to <em><code>application/octet-stream</code></em></li>
+      <li>Property <strong>svn:executable</strong> set to <em><code>*</code></em></li>
+    </ul></td></tr>
+  </table>
+  <div id="preview"><div class="image-file"><img src="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif?rev=30370&amp;format=raw" alt="plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif" /></div>
+  </div>
+
+ <div id="help">
+  <strong>Note:</strong> See <a href="/wiki/TracBrowser">TracBrowser</a> for help on using the browser.
+ </div>
+
+  <div id="anydiff">
+   <form action="/anydiff" method="get">
+    <div class="buttons">
+     <input type="hidden" name="new_path" value="/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif" />
+     <input type="hidden" name="old_path" value="/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif" />
+     <input type="hidden" name="new_rev" value="30370" />
+     <input type="hidden" name="old_rev" value="30370" />
+     <input type="submit" value="View changes..." title="Prepare an Arbitrary Diff" />
+    </div>
+   </form>
+  </div>
+
+</div>
+</div>
+<script type="text/javascript">searchHighlight()</script>
+<div id="altlinks"><h3>Download in other formats:</h3><ul><li class="first last"><a href="/browser/plugins/sfJqueryReloadedPlugin/1.2/trunk/web/css/ui-lightness/images/ui-anim_basic_16x16.gif?rev=30370&amp;format=raw">Original Format</a></li></ul></div>
+
+</div>
+
+<div id="footer">
+ <hr />
+ <a id="tracpowered" href="http://trac.edgewall.com/"><img src="/chrome/common/trac_logo_mini.png" height="30" width="107"
+   alt="Trac Powered"/></a>
+ <p class="left">
+  Powered by <a href="/about"><strong>Trac
+</strong></a><br />
+  By <a href="http://www.edgewall.com/">Edgewall Software</a>.
+ </p>
+ <p class="right">
+  
+ </p>
+</div>
+
+<div style="padding-bottom: 30px"></div>
+
+<link rel="stylesheet" type="text/css" media="all" href="http://www.sensiolabs.com/network/sensiolabs.css" />
+<div class="sensiolabs">
+  <div class="id_content">
+    <div class="clearfix">
+      <div class="column column_01">
+        <h2><img src="http://www.sensiolabs.com/network/network.gif" alt="The Sensio Labs Network" /></h2>
+        <div class="introduction">
+
+          Since 1998, Sensio Labs has been promoting the Open-Source software
+          movement by providing quality web application development, training,
+          consulting.<br /> Sensio Labs also supports several large
+          Open-Source projects.
+
+        </div>
+      </div>
+      <div class="column column_02">
+        <div class="box">
+          <h3>Open-Source Products</h3>
+          <ul>
+            <li><a href="http://www.symfony-project.org/">Symfony - MVC framework</a></li>
+            <li><a href="http://components.symfony-project.org/">Symfony Components</a></li>
+            <li><a href="http://www.doctrine-project.org/">Doctrine - ORM</a></li>
+            <li><a href="http://www.swiftmailer.org/">Swift Mailer - Mailing library</a></li>
+            <li><a href="http://www.twig-project.org/">Twig - Template library</a></li>
+            <li><a href="http://www.pirum-project.org/">Pirum - PEAR channel server</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="column column_03">
+        <div class="box">
+        <h3>Services</h3>
+          <ul>
+            <li><a href="http://trainings.sensiolabs.com/">Trainings - Be Trained by experts</a></li>
+            <li><a href="http://guru.sensiolabs.com/">Guru - Get a guru for a day</a></li>
+            <li><a href="http://partners.sensiolabs.com/">Partners - Specialists around the world</a></li>
+            <li><a href="http://books.sensiolabs.com/">Books - Read Open-Source books</a></li>
+            <li><a href="http://www.symfony-live.com/">Conferences - The Symfony Live Conference</a></li>
+          </ul>
+          <p class="more"><a href="http://www.sensiolabs.com/">&gt; More</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="logo"><a href="http://www.sensiolabs.com/"><img src="http://www.sensiolabs.com/network/sensiolabs.gif" alt="Sensio Labs" /></a></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-89393-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+ </body>
+</html>
+

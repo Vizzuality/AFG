@@ -59,7 +59,8 @@ class SpeciesController < ApplicationController
     callback = params.delete('callback') # jsonp
 
     data = nil
-    response = open("http://data.scarmarbin.be/search/searchTaxonAjax?query="+URI.escape(params[:query])).read
+    @resp = open("http://data.scarmarbin.be/search/searchTaxonAjax?query="+URI.escape(params[:query]))
+    response = @resp.read
     doc = Nokogiri::XML(response)
     if doc.xpath("//result").size > 0
       data = doc.xpath("//result").map do |result|
@@ -73,6 +74,8 @@ class SpeciesController < ApplicationController
     else
       render :text => json
     end
+  rescue
+    render :text => 'ERROR: server is unavailable or responded with an error', :status => 500
   end
 
   def get_taxon
@@ -111,6 +114,8 @@ class SpeciesController < ApplicationController
     else
       render :text => json
     end
+  rescue
+    render :text => 'ERROR: server is unavailable or responded with an error', :status => 500
   end
 
 end

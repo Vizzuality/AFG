@@ -1,3 +1,6 @@
+<div id="loading" style="display:none">loading...</div>
+<div id="error" style="color:red;"></div>
+
 <%= form_for(@species, :url => (@species.new_record? ? admin_species_index_path : admin_species_path(@species.id))) do |f| %>
   <% if @species.errors.any? %>
     <div id="error_explanation">
@@ -135,7 +138,12 @@ $(document).ready(function() {
       $.ajax({
         url: "/species/get_uid/"+$('#species_name').val(),
         dataType: "jsonp",
+        beforeSend: function() {
+          $('#loading').show();
+          $('#error').hide();
+        },
         success: function( data ) {
+          $('#loading').hide();
           if(data != null) {
             response($.map(data, function(item) {
               return {
@@ -145,6 +153,10 @@ $(document).ready(function() {
               }
             }));
           }
+        },
+        error: function(req, textStatus, e) {
+          $('#loading').hide();
+          $('#error').html(req.responseText).show();
         }
       });
     },
