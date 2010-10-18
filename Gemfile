@@ -16,7 +16,6 @@ gem 'rmagick', :require => 'RMagick'
 gem 'rack-noie', :require => 'noie'
 gem 'capistrano'
 gem 'capistrano-ext'
-gem 'exception_notification', :require => 'exception_notifier', :git => 'http://github.com/rails/exception_notification.git'
 gem 'ppe-postgis-adapter', :git => 'git://github.com/ferblape/postgis_adapter.git', :require => 'postgis_adapter'
 
 group :test do

@@ -3,5 +3,5 @@ HoptoadNotifier.configure do |config|
   config.js_notifier = true
   # Hide staging errors or not
   # config.development_environments = File.file?(Rails.root+'STAGING') ? %w(development test cucumber production) : %w(development test cucumber)
-  config.environment_name = File.file?(Rails.root+'STAGING') ? 'staging' : 'production'
+  config.environment_name = Rails.env.production? ? (File.file?(Rails.root+'STAGING') ? 'staging' : 'production') : Rails.env
 end

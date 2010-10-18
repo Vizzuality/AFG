@@ -11,12 +11,6 @@ GIT
   specs:
     ppe-postgis-adapter (0.7.8)
 
-GIT
-  remote: http://github.com/rails/exception_notification.git
-  revision: 192a49a
-  specs:
-    exception_notification (1.0.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -163,7 +157,6 @@ DEPENDENCIES
   capistrano-ext
   capybara
   database_cleaner
-  exception_notification!
   fastercsv
   hoptoad_notifier
   launchy

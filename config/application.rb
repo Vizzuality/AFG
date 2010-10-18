@@ -49,11 +49,6 @@ module AFG
     config.middleware.use PDFKit::Middleware
     config.middleware.use Rack::NoIE, :redirect => '/noie.html'
 
-    # Exception Notification
-    config.middleware.use ExceptionNotifier,
-        :email_prefix => "[AFG] ",
-        :sender_address => %{"ubuntu" <ubuntu@li187-104.members.linode.com>},
-        :exception_recipients => %w{ferblape@gmail.com}
   end
 end
 
