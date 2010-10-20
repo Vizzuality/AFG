@@ -175,6 +175,7 @@ class Landscape < ActiveRecord::Base
     def expire_cache
       if radius_changed? && !self.new_record?
         self.class.maps_cache_delete(self.id)
+        self.class.maps_cache_set(self.id, StaticMap.generate_typed_map(:landscapes, self.id))
       end
     end
 

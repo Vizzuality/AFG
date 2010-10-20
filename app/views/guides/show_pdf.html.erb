@@ -4,7 +4,7 @@
   <title><%= title %></title>
   <%= stylesheet_link_tag 'layout' %>
 </head>
-<body>  
+<body>
   <!-- FRONT -->
   <div class="outer_pdf">
     <div class="main_pdf front">
@@ -19,13 +19,13 @@
           <h1><%= @guide.name %></h1>
         <% end %>
         <% unless @guide.author.blank? %>
-          <h2>by <%= @guide.author %></h2>        
+          <h2>by <%= @guide.author %></h2>
         <% end %>
       <% end %>
     </div>
   </div>
   <%= page_break %>
-  
+
   <!-- INDEX -->
   <div class="outer_pdf">
     <div class="main_pdf index">
@@ -33,7 +33,7 @@
       <ul>
         <li>Index <strong>/ 2</strong></li>
         <li>About Antarctic Field Guides <strong>/ 3</strong></li>
-        
+
         <% if params[:checklist] %>
           <% species_page = 4; landscape_page = species_page %>
           <% unless @guide.species.empty? %>
@@ -46,7 +46,7 @@
             </ul>
           </li>
           <% end %>
-        
+
           <% unless @guide.landscapes.empty? %>
           <% landscape_page = species_page + 1 %>
           <li>Places <strong>/ <%= landscape_page %></strong>
@@ -70,7 +70,7 @@
             </ul>
           </li>
           <% end %>
-        
+
           <% unless @guide.landscapes.empty? %>
           <% landscape_page = species_page %>
           <li>Places <strong>/ <%= landscape_page %></strong>
@@ -88,8 +88,8 @@
     </div>
   </div>
   <%= page_break %>
-  
-  
+
+
   <!-- ABOUT -->
   <div class="outer_pdf">
     <div class="main_pdf about">
@@ -100,12 +100,12 @@
       <h2>About the data and its usage</h2>
       <p>The content of the AFGs is under the <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CCBY licence</a>.  You are welcome to share or remix the content of the AFGs. For the moment, we kindly ask you to cite the source as "The SCAR Antarctic Field Guides. World Wide Web publication, available online at <a href="http://afg.biodiversity.aq">http://afg.biodiversity.aq</a>"</p>
 
-	<p>Some media content is under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en" target="_blank">Creative Commons Attribution - Noncommercial - Share Alike 3.0 License</a>.</p>
+  <p>Some media content is under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en" target="_blank">Creative Commons Attribution - Noncommercial - Share Alike 3.0 License</a>.</p>
       <%= render :partial => 'footer' %>
     </div>
   </div>
   <%= page_break %>
-  
+
   <% if params[:checklist] %>
     <!-- SPECIES CHECKLIST-->
     <% @guide.species.in_groups_of(4) do |group| %>
@@ -119,13 +119,13 @@
             <p class="common_name"><%= species.common_name %></p>
             <h3><%= species.full_name %></h3>
           </div>
-        <% end %>      
+        <% end %>
         <%= render :partial => 'footer' %>
       </div>
     </div>
     <%= page_break %>
     <% end %>
-  
+
     <% @guide.landscapes.in_groups_of(4) do |group| %>
     <div class="outer_pdf">
       <div class="main_pdf checklist">
@@ -136,15 +136,15 @@
           <div class="check_specie">
             <h3><%= landscape.name %></h3>
           </div>
-        <% end %>      
+        <% end %>
         <%= render :partial => 'footer' %>
       </div>
     </div>
     <%= page_break %>
     <% end %>
-    
+
   <% else %>
-  
+
     <!-- SPECIES -->
     <% @guide.species.each do |species| %>
       <div class="outer_pdf">
@@ -166,59 +166,59 @@
             <div class="images">
               <ul>
                 <% species.pictures.each do |picture| %>
-                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li> 
+                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= "#{species.full_name} - #{picture.title} - #{picture.photographer}" %>" /></li>
                 <% end -%>
               </ul>
             </div>
-    		
+
             <div class="info">
-			<% if !(species.description.empty?) %>
+      <% if !(species.description.empty?) %>
               <h2>Description</h2>
               <%= simple_format(species.description) %>
-			<%end%>			 
+      <%end%>
 
-			<% if !(species.distinguishing_characters.empty?) %>
-			  <h2>Distinguishing Characters</h2>
+      <% if !(species.distinguishing_characters.empty?) %>
+        <h2>Distinguishing Characters</h2>
               <%= simple_format(species.distinguishing_characters) %>
-			<%end%>			 
-			
-			<% if !(species.distribution.empty?) %>
+      <%end%>
+
+      <% if !(species.distribution.empty?) %>
               <h2>Distribution info</h2>
               <%= simple_format(species.distribution) %>
-			<%end%>	
-			<% if !(species.ecology.empty?) %>
+      <%end%>
+      <% if species.ecology && !species.ecology.empty? %>
               <h2>Ecology</h2>
               <%= simple_format(species.ecology) %>
-			<%end%>	
+      <%end%>
             </div>
           </div>
-  
+
           <div class="right">
             <div class="map">
-				<img src="/api/maps/static_map?species_id=<%= species.id %>" />
+              <img src="/api/maps/static_map?species_id=<%= species.id %>" />
             </div>
             <div class="info">
-		      <% unless species.size.blank? %>
-              	<h3>Size</h3>
+          <% unless species.size.blank? %>
+                <h3>Size</h3>
                 <%= simple_format(species.size) %>
-			  <%end%>
-		      <% unless species.habitat.blank? %>
-	              <h3>Habitat</h3>
-	              <%= simple_format(species.habitat) %>
-			  <%end%>
-		      <% unless species.distribution.blank? %>
-	              <h3>Depth of the distribution</h3>
-	              <%= simple_format(species.distribution) %>
-			  <%end%>
+          <%end%>
+          <% unless species.habitat.blank? %>
+                <h3>Habitat</h3>
+                <%= simple_format(species.habitat) %>
+          <%end%>
+          <% unless species.distribution.blank? %>
+                <h3>Depth of the distribution</h3>
+                <%= simple_format(species.distribution) %>
+          <%end%>
             </div>
           </div>
-        
+
           <%= render :partial => 'footer' %>
         </div>
       </div>
       <%= page_break %>
     <% end %>
-	
+
     <!-- LANDSCAPE -->
     <% @guide.landscapes.each do |lanscape| %>
       <div class="outer_pdf">
@@ -231,22 +231,22 @@
             <div class="images">
               <ul>
                 <% lanscape.pictures.each do |picture| %>
-                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= lanscape.name %>" /></li> 
+                  <li><img src="<%= picture.image.url(:medium) %>" alt="<%= lanscape.name %>" /></li>
                 <% end -%>
               </ul>
             </div>
-    
+
             <div class="info">
               <h2>Description</h2>
               <%= simple_format(lanscape.description) %>
               <h2>Notes</h2>
             </div>
           </div>
-  
+
           <div class="right">
             <div class="map">
-				<img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>">
-			</div>
+              <img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>">
+            </div>
             </div>
             <div class="info">
               <h3>Species near this place</h3>
