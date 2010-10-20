@@ -34,7 +34,7 @@
             </div>
             <div class="alternative last">
               <div class="type complete">
-                <img src="<%= @current_guide.picture? ? @current_guide.picture.image.url(:small) : '' %>" title="" alt=""/>
+                <%= @current_guide.picture? ? image_tag(@current_guide.picture.image.url(:small)) : nil %>
                 <a href="#"></a>
                 <p><%= @current_guide.pages_count(:complete) %> PAGES</p>
               </div>
@@ -89,11 +89,11 @@
               <li><%= link_to('Places', landscapes_path) %></li>
               <li><%= link_to('Guides', guides_path) %></li>
               <li class="last"><%= link_to('About', about_path) %></li>
-			</ul> 
-          </span> 
-        </div> 
-        <p>Project implemented by <a href="http://www.scarmarbin.be/" target="_blank">SCAR-MarBIN</a> and <a href="http://www.biodiversity.aq" target="_blank">ANTABIF</a> - <a href="http://www.biodiversity.aq/BIODIVERSITY.AQ/contact.html" target="_blank">Contact</a></p> 
-      </div> 
+      </ul>
+          </span>
+        </div>
+        <p>Project implemented by <a href="http://www.scarmarbin.be/" target="_blank">SCAR-MarBIN</a> and <a href="http://www.biodiversity.aq" target="_blank">ANTABIF</a> - <a href="http://www.biodiversity.aq/BIODIVERSITY.AQ/contact.html" target="_blank">Contact</a></p>
+      </div>
     </div>
   </div>
 
