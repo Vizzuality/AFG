@@ -183,7 +183,8 @@ class Landscape < ActiveRecord::Base
       return if self.longitude.nil? || self.latitude.nil?
       self.the_geom = Point.from_lon_lat(self.longitude, self.latitude)
       return if new_record?
-      self.class.maps_cache_delete(self.id) unless self.new_record?
+      self.class.maps_cache_delete(self.id)
+      self.class.maps_cache_set(self.id, StaticMap.generate_typed_map(:landscapes, self.id))
     end
 
     def set_permalink
