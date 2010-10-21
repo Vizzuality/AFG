@@ -1,7 +1,6 @@
+var zActualIndex = 999;
 
 LandscapeMarker = OpenLayers.Class({
-    
-
     icon: null,
     lonlat: null,
     events: null,
@@ -23,7 +22,6 @@ LandscapeMarker = OpenLayers.Class({
         this.events = new OpenLayers.Events(this, this.icon.imageDiv, null);
     },
     
-
     destroy: function() {
         // erase any drawn features
         this.erase();
@@ -67,7 +65,17 @@ LandscapeMarker = OpenLayers.Class({
 				} else {
 					$(this.icon.imageDiv).find('div.infowindow').append('<img class="landscape" src="'+ this.icon.url +'" alt="'+this.info.name+'"/>');
 				}
+				
+				$(this.icon.imageDiv).find('a.open').hover(
+		                function () {
+	                        $(this).css('z-index',zActualIndex+=1);
+							$(this).parent().css('z-index',zActualIndex);	
+		                },
+		                function () {}
+			        );
 
+				
+				
 				
 				$(this.icon.imageDiv).find('a.open').click(function(ev){
 					ev.stopPropagation();

@@ -191,7 +191,6 @@ var paneOther;
 				
 				var selectedColumn = getColumnID(element.parent().parent().parent().attr('id'));
 					
-				// alert('selectedColumn '+selectedColumn);
 				var nextColumn = parseInt(selectedColumn) + 1;
 				var actual_index = element.index();
 				var specie_selected = element.find('a.specie').text();
