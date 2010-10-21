@@ -143,22 +143,26 @@ var paneOther;
 					if ($('div.taxon_content').find('div.in ul#column'+nextColumn).length==0) {
 						maxColumn = nextColumn;
 						var posNextColumn = columnWidth*(nextColumn-1);
-												
+						
 						if (nextColumn > 3){
 								$('div.taxon_content').find('div.in').css("width",(nextColumn*columnWidth)+10);
 							}
-							else {
+							else {								
 								$('div.taxon_content').find('div.in').css("width",widthContent);
 							}
 					} 
 					// the column clicked is a previous column to the last
 					else {
 						clearColumn(nextColumn);
+						if (noColumn == 2){
+							 $('div.taxon_content').find('div.in').parent().animate({left:'0'},500);
+						}						
 					}
 					
 					contentPane.children('div.in').append('<ul id="column'+ nextColumn +'"></ul>');
-					
+
 					api.reinitialise();
+				
 					makeHtmlList(nextColumn,data);
 					
 					if (nextColumn > 3){
@@ -336,13 +340,10 @@ var paneOther;
 					// If is not added
 					if (result[i].add_url != null) {
 						if (isSpecie == 1){
-							if (result[i].common_name != null){
-								htmlText = result[i].common_name;
+							if ((result[i].common_name != null)&&(result[i].common_name != '')){
+								htmlText = result[i].common_name + ', ';
 							}
-							else {
-								htmlText = result[i].name;
-							}
-							htmlText = htmlText + ', <a class="add" data-remote="true" href="'+ result[i].add_url+'">add</a>'; 
+							htmlText = htmlText + '<a class="add" data-remote="true" href="'+ result[i].add_url+'">add</a>'; 
 							$(li).children('div.text').children('p').html(htmlText);
 						}
 						else {

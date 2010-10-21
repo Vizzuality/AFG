@@ -5,6 +5,7 @@ span.clear{clear:both;}
 a:focus{outline:none}
 input:focus{outline:none;}
 ul {list-style:none;}
+ul:focus {outline:none}
 div.left {float:left; width:624px;}
 div.right {float:right; width:312px;}
 div.outer_layout{margin:0 auto; width:936px;}
