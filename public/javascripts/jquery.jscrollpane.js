@@ -974,6 +974,7 @@
 					// initialisation will be used.
 					reinitialise: function(s)
 					{
+						// console.log(s);
 						s = $.extend({}, s, settings);
 						initialise(s);
 					},

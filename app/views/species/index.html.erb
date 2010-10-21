@@ -1,42 +1,39 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
-    // var $j = jQuery.noConflict();
-    //         // $j(function(){
-    //         //     jQuery('.scroll-pane').jScrollPane({scrollbarWidth:10});
-    //         // });
-    //
-    //         $j(function(){
-    //            jQuery('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
-    //         });
-
-//    $('.scroll-vertical-pane').jScrollPane({showArrows:false, scrollbarWidth: 15, topCapHeight:7, bottomCapHeight:7});
-    // $('.scroll-horizontal-pane').jScrollHorizontalPane({scrollbarHeight:15});
-    $('#taxon_browser').taxonomicbrowser();
+		var settings = {
+		};
+		
+		var pane = $('.scroll_pane');
+		pane.jScrollPane(settings);
+	
+    	$('#taxon_browser').taxonomicbrowser();
   });
 </script>
 
 <div class="outer_layout">
-  <div class="species_explore">
-    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
-    <h2>Taxonomy browser</h2>
-    <p class="subtitle">Add <%= @species_to_add %> species to your Field Guide using the browser</p>
-  <div id="taxon_browser" class="taxonomic_browser">
-    <div class="breadcrumbs">
-      <ul></ul>
-    </div>
-	<!-- <div class="scroll-pane" style="width:886px; height:371px; overflow:auto;"> -->
-	    <div  class="taxon_content scroll_pane">
-	      <div class="in">
-	        <ul id="column1">
-	        </ul>
-	      </div>
-	    </div>
-	<!-- </div> -->
-  </div>
+	<div class="species_explore">
+	    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
+	    <h2>Taxonomy browser</h2>
+	    <p class="subtitle">Add <%= @species_to_add %> species to your Field Guide using the browser</p>
+  	
+		
 
+		<div id="taxon_browser" class="taxonomic_browser">			
+		    <div class="breadcrumbs">
+		      <ul>>
+		      </ul>
+		    </div>
 
-  </div>
-</div>
+		    <div class="taxon_content scroll_pane">
+		      <div class="in">
+		        <ul id="column1" class="column1 scroll_pane">
+		        </ul>
+		      </div>
+		    </div>	
+			<!-- end taxon_content -->
+		</div>	<!-- end #taxon_browser -->
+	</div> <!-- end species_explore -->
+</div> <!-- end outer_layout -->
 
 <div class="main species">
   <div class="left">

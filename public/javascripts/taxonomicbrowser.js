@@ -1,21 +1,23 @@
 var widthContent = "886px";
-//var widthContent = "886px";
 var maxColumn = 1;
 var initDataLoaded = 0;
 var numBreadCrumbs = 0;
 var columnWidth = 292;
 var clickOnHref = 0;
-
+var paneOther;
 
 (function($){
 	
 	$.fn.taxonomicbrowser = function(){
 		
 		var settings = {
+			autoReinitialise:false
 		};
-		
+			
 		var pane = $('.scroll_pane');
 		pane.jScrollPane(settings);
+		
+		var contentPane = pane.data('jsp').getContentPane();		
 		var api = pane.data('jsp');
 		
 		// Simulate first row clicked, to the first and the second column
@@ -26,7 +28,7 @@ var clickOnHref = 0;
 		}
 		
 		// hOver each li (showing the action to do it)
-		$("div.taxon_content div.in ul li").live(
+		$('div.taxon_content').find('div.in ul').find("li").live(
 		        'hover',
 		        function (ev) {
 		            if (ev.type == 'mouseover') {
@@ -37,19 +39,18 @@ var clickOnHref = 0;
 		            }});
 		
 		// li is clicked
-		$('div.taxon_content div.in ul li').live('click',function(event){
+		$('div.taxon_content').find('div.in ul').find('li').live('click',function(event){
 			clickColumnFunction(event,$(this));
 		}); // end click function
 		
 		// To get the event and redirect correctly to new page
-		$('div.taxon_content div.in ul li div.text a.specie').live('click', function (event) {
+		$('div.taxon_content').find('div.in ul').find('li div.text a.specie').live('click', function (event) {
 			clickOnHref = 1;
 		});
 		// To get the event and redirect correctly to new page
-		$('div.taxon_content div.in ul li div.text a.add').live('click', function (event) {
+		$('div.taxon_content').find('div.in ul').find('li div.text a.add').live('click', function (event) {
 			clickOnHref = 2;
 		});
-		
 		
 		// Call for data
 		function getData(taxonID,columnID) {
@@ -89,113 +90,112 @@ var clickOnHref = 0;
 		
 		function cleanColumnStyles() {
 			for (var indexColumn = 1; indexColumn <= maxColumn; indexColumn++){
-				$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column'+indexColumn);
-				$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('other');
-				$('div.taxon_content div.in ul#column'+indexColumn).find('div.text').removeClass('other');
+				$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).addClass('column'+indexColumn);
+				$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).removeClass('other');
+				$('div.taxon_content').find('div.in ul#column'+indexColumn).find('div.text').removeClass('other');
 			}
 		}
 		
 		function updateColumnStyles(column) {
-			
+						
 			for (var indexColumn = column; indexColumn >= 0; indexColumn--){
 					if (indexColumn == column) {
-						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column'+indexColumn);
-						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column3');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).removeClass('column'+indexColumn);
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).addClass('column3');
 
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column1');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).addClass('column1');
 						
 					}else if (indexColumn == column-1) {
-						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column3');
-						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column2');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).removeClass('column3');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).addClass('column2');
 
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column3');
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column2');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).removeClass('column3');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).addClass('column2');
 						
 					}else if (indexColumn == column-2){
-						$('div.taxon_content div.in ul#column'+indexColumn).removeClass('column2');
-						$('div.taxon_content div.in ul#column'+indexColumn).addClass('column1');
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('column1');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).removeClass('column2');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).addClass('column1');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).removeClass('column2');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).addClass('column1');
 						
 					}else {
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).removeClass('column'+indexColumn);
-						$('div.taxon_content div.in').find('div#bkg_column'+indexColumn).addClass('other');
-						$('div.taxon_content div.in ul#column'+indexColumn).find('div.text').addClass('other');
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).removeClass('column'+indexColumn);
+						$('div.taxon_content').find('div.in').find('div#bkg_column'+indexColumn).addClass('other');
+						$('div.taxon_content').find('div.in ul#column'+indexColumn).find('div.text').addClass('other');
 					} 
 				}
-			
 		}
 		
 		//add column or change data column
 		function addColumn(noColumn,data,taxonID) {
 			
 			var nextColumn = parseInt(noColumn)+1;
-			
-			// if (data.rank != "species"){
+				
+				// To the first time
 				if (noColumn == 0){
 					makeHtmlList(nextColumn,data);
-					elementClicked = $('div.taxon_content div.in ul#column1 li').first();
+					elementClicked = $('div.taxon_content').find('div.in ul#column1').find('li').first();
 					clickColumnFunction(null,elementClicked);
 				}
 				else {
-					if ($('div.taxon_content div.in ul#column'+nextColumn).length==0) {
+					// If the next level is empty
+					if ($('div.taxon_content').find('div.in ul#column'+nextColumn).length==0) {
 						maxColumn = nextColumn;
 						var posNextColumn = columnWidth*(nextColumn-1);
-						
-						
+												
 						if (nextColumn > 3){
-							$('div.taxon_content div.in').css("width",(nextColumn*columnWidth)+10);
-						}
-						else {
-							$('div.taxon_content div.in').css("width",widthContent);
-						}
-						
-					} else {
+								$('div.taxon_content').find('div.in').css("width",(nextColumn*columnWidth)+10);
+							}
+							else {
+								$('div.taxon_content').find('div.in').css("width",widthContent);
+							}
+							pane = $('.scroll_pane');
+							pane.jScrollPane(settings);
+
+							contentPane = pane.data('jsp').getContentPane();		
+							api = pane.data('jsp');
+					} 
+					// the column clicked is a previous column to the last
+					else {
 						clearColumn(nextColumn);
 					}
 					
-					api.getContentPane().children('div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+					contentPane.children('div.in').append('<ul id="column'+ nextColumn +'"></ul>');
 					api.reinitialise();
 					makeHtmlList(nextColumn,data);
-					
 					
 					if (nextColumn > 3){
 						api.scrollToX((nextColumn)*columnWidth,500);
 					}
-					
-					if ($('ul#column'+nextColumn+' li').size() > 5){
-						var settingsOther = {
-							autoReinitialise: true
-						};
-						var paneOther = $('ul#column' + nextColumn);
-						paneOther.jScrollPane(settingsOther);
-					} 
-					
-					
+										
 					// All the init data is not loaded 
 					if (initDataLoaded == 0) {
 						initDataLoaded = 1;
-						elementClicked = $('div.taxon_content div.in ul#column2 li').first();
+						elementClicked = $('div.taxon_content').find('div.in ul#column2').find('li').first();
 						clickColumnFunction(null,elementClicked);
 					}
 				}	
-			//}
 		}
 		
-		function clickColumnFunction(event,element) {			
-			// event.stopPropagation();
-			// event.preventDefault();
-			
+		// Make the action click
+		function clickColumnFunction(event,element) {
+
+			if (event != null){
+				event.stopPropagation();
+				event.preventDefault();				
+			}
+
 			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
-				var selectedColumn = getColumnID(element.parent().attr('id'));
 				
+				var selectedColumn = getColumnID(element.parent().parent().parent().attr('id'));
+					
+				// alert('selectedColumn '+selectedColumn);
 				var nextColumn = parseInt(selectedColumn) + 1;
-				
 				var actual_index = element.index();
-
 				var specie_selected = element.find('a.specie').text();
-
+				
+				// BREADCRUMBS LOGIC
 				// If is necessary to delete the rest of elements
 				if (selectedColumn <= numBreadCrumbs) {
 					
@@ -214,20 +214,20 @@ var clickOnHref = 0;
 						$(this).removeClass('actual');
 						var finalPosition = $(this).position().left + $(this).width() - 13;
 						var htmlBreadCrumbs = '<li class="actual" style="left:'+ finalPosition + 'px"><p><a id="bread'+ selectedColumn +'">' + specie_selected + '</a></p></li>';					
-						$(this).parent().append(htmlBreadCrumbs);					
+						$(this).parent().append(htmlBreadCrumbs);
 						numBreadCrumbs += 1;
 					}
-
 			  	});
 
 				if (numBreadCrumbs == 0) {				
 					var htmlBreadCrumbs = '<li class="first actual" style="left:0px"><p><a id="bread0">' + specie_selected + '</a></p></li>';
-					$('#taxon_browser div.breadcrumbs ul').append(htmlBreadCrumbs);					
+					$('#taxon_browser div.breadcrumbs ul').append(htmlBreadCrumbs);
 					numBreadCrumbs += 1;	
 				}
-
+				// -- END BREADCRUMBS LOGIC
+				
 				// To show the line to divide each li
-				$('div.taxon_content div.in ul#column'+selectedColumn+' li').each(function(index) {
+				$('div.taxon_content').find('div.in ul#column'+selectedColumn).find('li').each(function(index) {
 				    if (index != actual_index) {
 						element.children('div.line').show();
 					}	
@@ -235,19 +235,15 @@ var clickOnHref = 0;
 
 				// Hide the previous and actual line to divide
 				if (actual_index != 0) {
-					$('ul#column'+selectedColumn+' li').eq(actual_index-1).children('div.line').hide();
-					$('ul#column'+selectedColumn+' li').eq(actual_index).children('div.line').hide();
+					$('ul#column'+selectedColumn).find('li').eq(actual_index-1).children('div.line').hide();
+					$('ul#column'+selectedColumn).find('li').eq(actual_index).children('div.line').hide();
 				}
 
 				if (!element.hasClass('active'+selectedColumn)) {
 					removePreviousSelected(selectedColumn);
-
 					element.addClass('active');
-
 					showActiveBkgBar(selectedColumn,actual_index);
-
 					element.find('a.bttn_add').css('display','none');
-
 					element.children().children('h3').css("color","#0099CC");
 					getData(element.attr('id'),selectedColumn);
 				}
@@ -263,7 +259,7 @@ var clickOnHref = 0;
 		function clearColumn(actualColumn) {
 		
 			for (var i=maxColumn; i>=actualColumn; i--) {
-				$('div.taxon_content div.in ul').last().remove();
+				$('div.taxon_content').find('div.in ul').last().remove();
 			}
 			
 			// Cleaning the actives bar
@@ -274,30 +270,29 @@ var clickOnHref = 0;
 			maxColumn = actualColumn;
 			
 			if (maxColumn > 3){
-				$('div.taxon_content div.in').css("width",(maxColumn*columnWidth)+10);
+				$('div.taxon_content').find('div.in').css("width",(maxColumn*columnWidth)+10);
 			}
 			else {
-				$('div.taxon_content div.in').css("width",widthContent);
+				$('div.taxon_content').find('div.in').css("width",widthContent);
 			}
 
 		}
 		
-		//get column id
+		// get column id
 		function getColumnID(str) {
 			return str.substr(6,str.length-1);
 		}
 		
 		function removePreviousSelected(selectedColumn) {
-			$('ul#column'+selectedColumn+' li.active').each(function(index){
+			$('ul#column'+selectedColumn).find('li.active').each(function(index){
 				$(this).removeClass('active');
 				$(this).find('a.bttn_add').css('display','inline');
 				$(this).children().children('h3').css("color","#0099CC");
 			});
 		}
 		
-		//create html for the new column
+		// Create the html and the necessaries classes are added
 		function makeHtmlList(column,result) {
-			
 			var list_item = '';
 			var html = '';
 
@@ -342,9 +337,9 @@ var clickOnHref = 0;
 						$(li).children('div.text').children('h3').children('a').attr("href","/");	
 					}
 					var htmlText = "";
+
 					// If is not added
 					if (result[i].add_url != null) {
-						
 						if (isSpecie == 1){
 							if (result[i].common_name != null){
 								htmlText = result[i].common_name;
@@ -359,7 +354,6 @@ var clickOnHref = 0;
 							$(li).children('div.text').children('p').children('strong').text(result[i].count);
 							$(li).children('div.text').children('p').children('a.add').attr("href", result[i].add_url); 
 						}
-
 					}
 					else {
 						$(li).children('div.text').children('p').children('a.add').text("");
@@ -381,11 +375,6 @@ var clickOnHref = 0;
 					
 					$(li).attr('id',result[i].id);
 
-					// if (i == 0) {
-					// 	$(li).attr('class','first_column'+column);
-					// }else if (i+1 == result.length){
-					// 	$(li).attr('class','last_column'+column);
-					// }
 					if (isSpecie == 1){
 						html = html+'<li id="'+$(li).attr('id')+'" class="specie">'+$(li).html()+'</li>';
 					}else {
@@ -401,15 +390,31 @@ var clickOnHref = 0;
 				updateColumnStyles(column);
 			}
 			
-			// 	addhtmlcolumn
-			$('ul#column'+ column).append(html);
+			
+		// AQUÍ ESTÁ EL PROBLEMA
+				var htmlScroll = '<div class="jspContainer" style="width: 302px; height: 304px;"><div class="jspPane" style="padding: 0px; top: 0px; width: 302px;"></div></div>';
 
-			var columnScroll = '+=' + columnWidth + 'px'
+				
+				if (column != 1){
+					$('ul#column'+ column).addClass('scroll_pane');
+
+					// Update content
+					pane = $('.scroll_pane');
+					pane.jScrollPane(settings);
+
+					contentPane = pane.data('jsp').getContentPane();		
+					api = pane.data('jsp');
+					
+				}
+				contentPane.find('ul#column'+ column).find('div.jspPane').append(html);
+				api.reinitialise();
+
+				var columnScroll = '+=' + columnWidth + 'px';
 		}
 		
 		function showActiveBkgBar (column,row,element){
 
-			api.getContentPane().children('div.in').append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
+			contentPane.children('div.in').append('<div id="bkg_column'+ column +'" class="active_column column'+ column +'"></div>');
 			api.reinitialise();
 			
 			var posColumn = (292 * column);
@@ -433,8 +438,6 @@ var clickOnHref = 0;
 			if (numOfBread == 0){
 				offset = 0;
 			}
-					
-			// $('div.taxon_content').delay(250).scrollTo(offset,{axis:'x'});
 			api.scrollToX(offset,500);
 		}); // end click function
 		
