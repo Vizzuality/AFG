@@ -401,6 +401,7 @@ var clickOnHref = 0;
 				updateColumnStyles(column);
 			}
 			
+ // AQUI
 			// 	addhtmlcolumn
 			$('ul#column'+ column).append(html);
 
