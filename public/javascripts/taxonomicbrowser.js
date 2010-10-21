@@ -12,7 +12,7 @@ var paneOther;
 		
 		var settings = {
 			autoReinitialise:false
-		};
+			};
 			
 		var pane = $('.scroll_pane');
 		pane.jScrollPane(settings);
@@ -40,7 +40,7 @@ var paneOther;
 		
 		// li is clicked
 		$('div.taxon_content').find('div.in ul').find('li').live('click',function(event){
-			clickColumnFunction(event,$(this));
+			clickColumnFunction(event,$(this));			
 		}); // end click function
 		
 		// To get the event and redirect correctly to new page
@@ -150,11 +150,6 @@ var paneOther;
 							else {
 								$('div.taxon_content').find('div.in').css("width",widthContent);
 							}
-							pane = $('.scroll_pane');
-							pane.jScrollPane(settings);
-
-							contentPane = pane.data('jsp').getContentPane();		
-							api = pane.data('jsp');
 					} 
 					// the column clicked is a previous column to the last
 					else {
@@ -162,6 +157,7 @@ var paneOther;
 					}
 					
 					contentPane.children('div.in').append('<ul id="column'+ nextColumn +'"></ul>');
+					
 					api.reinitialise();
 					makeHtmlList(nextColumn,data);
 					
@@ -175,12 +171,13 @@ var paneOther;
 						elementClicked = $('div.taxon_content').find('div.in ul#column2').find('li').first();
 						clickColumnFunction(null,elementClicked);
 					}
-				}	
+				}
+				
 		}
 		
 		// Make the action click
 		function clickColumnFunction(event,element) {
-
+	
 			if (event != null){
 				event.stopPropagation();
 				event.preventDefault();				
@@ -252,8 +249,7 @@ var paneOther;
 				clickOnHref = 0;
 				setTimeout(clickColumnFunction(event,element),2500);
 			}
-		}
-		
+		}		
 		// end clickColumnFunction
 		//clear all previous column
 		function clearColumn(actualColumn) {
@@ -390,26 +386,25 @@ var paneOther;
 				updateColumnStyles(column);
 			}
 			
+			$('ul#column'+ column).addClass('scroll_pane');
+
+			// Update content
+			pane = $('.scroll_pane');
+			pane.jScrollPane(settings);
+
+			contentPane = pane.data('jsp').getContentPane();		
+			api = pane.data('jsp');
 			
-		// AQUÍ ESTÁ EL PROBLEMA
-				var htmlScroll = '<div class="jspContainer" style="width: 302px; height: 304px;"><div class="jspPane" style="padding: 0px; top: 0px; width: 302px;"></div></div>';
+			contentPane.find('ul#column'+ column).find('div.jspPane').append(html);
+			setTimeout (function(){
+				pane = $('.scroll_pane');
+				pane.jScrollPane(settings);
 
-				
-				if (column != 1){
-					$('ul#column'+ column).addClass('scroll_pane');
-
-					// Update content
-					pane = $('.scroll_pane');
-					pane.jScrollPane(settings);
-
-					contentPane = pane.data('jsp').getContentPane();		
-					api = pane.data('jsp');
-					
-				}
-				contentPane.find('ul#column'+ column).find('div.jspPane').append(html);
+				contentPane = pane.data('jsp').getContentPane();		
+				api = pane.data('jsp');
 				api.reinitialise();
-
-				var columnScroll = '+=' + columnWidth + 'px';
+			},500); 
+			
 		}
 		
 		function showActiveBkgBar (column,row,element){

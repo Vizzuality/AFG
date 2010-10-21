@@ -369,9 +369,8 @@ div.taxonomic_browser div.taxon_content div.in {float:left; width:886px; max-hei
 
 div.taxonomic_browser div.taxon_content ul {float:left; width:302px; height:304px; margin:0; padding:0; overflow-x:hidden; overflow-y:auto; position:relative;}
 
-/*div.taxonomic_browser div.taxon_content ul div#wrap_column {float:left; width:302px; height:304px; margin:0; padding:0; overflow-x:hidden; overflow-y:auto; position:relative;}*/
 
-div.taxonomic_browser div.taxon_content ul#column1 {/*background:url(../images/species/taxonomy_browser/bkg_ul_first.png) no-repeat 0 0;*/ z-index:1;}
+div.taxonomic_browser div.taxon_content ul#column1 {z-index:1;}
 div.taxonomic_browser div.taxon_content ul li {float:left; width:302px; height:60px; position:relative;}
 div.taxonomic_browser div.taxon_content ul li.specie {cursor:default;}
 div.taxonomic_browser div.taxon_content ul li div.line {position:absolute; bottom:0; left:15px; background:url(../images/species/taxonomy_browser/line_to_divide.png) no-repeat 0 0; width:270px; height:1px;}
@@ -380,15 +379,15 @@ div.taxonomic_browser div.taxon_content div.active_column {position:absolute; ba
 div.taxonomic_browser div.taxon_content div.active_column.column1 {background-color:#F7F7F7; top:1px; left:292px;} 
 div.taxonomic_browser div.taxon_content div.active_column.other {background-color:#F0F0F0;}
 div.taxonomic_browser div.taxon_content div.active_column.column2 {background-color:#FFFFFF; top:1px; left:584px;} 
-
+div.taxonomic_browser div.taxon_content ul li.active {/*position:relative;*/}
 div.taxonomic_browser div.taxon_content ul.column1 li.active div.text {background:url('../images/species/taxonomy_browser/bkg_li_active_column1.png') no-repeat 0 0;}
 div.taxonomic_browser div.taxon_content ul.column1 li.active div.text.other {background:url('../images/species/taxonomy_browser/bkg_li_active_column1_other.png') no-repeat 0 0;}
 
 div.taxonomic_browser div.taxon_content ul.column2 li.active div.text {background:url('../images/species/taxonomy_browser/bkg_li_active_column2.png') no-repeat 0 0;}
 div.taxonomic_browser div.taxon_content ul li.active div.text {background:url('../images/species/taxonomy_browser/bkg_li_active_column2.png') no-repeat 0 0;}
 
-div.taxonomic_browser div.taxon_content ul#column2 {/*background:url(../images/species/taxonomy_browser/bkg_ul_second.png) no-repeat 0 0;*/ margin:0 0 0 -10px; z-index:5;}
-div.taxonomic_browser div.taxon_content ul#column3 {/*background:url(../images/species/taxonomy_browser/bkg_ul_third.png) no-repeat 0 0;*/ margin:0 0 0 -10px; z-index:10;}
+div.taxonomic_browser div.taxon_content ul#column2 {margin:0 0 0 -10px; z-index:5;}
+div.taxonomic_browser div.taxon_content ul#column3 {margin:0 0 0 -10px; z-index:10;}
 
 div.taxonomic_browser div.taxon_content ul.column1 {background:url(../images/species/taxonomy_browser/bkg_ul_first.png) no-repeat 0 0; }
 div.taxonomic_browser div.taxon_content ul.column2 {background:url(../images/species/taxonomy_browser/bkg_ul_second.png) no-repeat 0 0;}
