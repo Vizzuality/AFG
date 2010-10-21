@@ -20,7 +20,7 @@ var paneOther;
 		var contentPane = pane.data('jsp').getContentPane();		
 		var api = pane.data('jsp');
 		
-		// Simulate first row clicked, to the first and the second column
+		// Simulate first row clicked, first and second column
 		createFirstColumn();
 		
 		function createFirstColumn() {
@@ -247,7 +247,6 @@ var paneOther;
 			}
 			else if (clickOnHref == 2){ 
 				clickOnHref = 0;
-				setTimeout(clickColumnFunction(event,element),2500);
 			}
 		}		
 		// end clickColumnFunction
