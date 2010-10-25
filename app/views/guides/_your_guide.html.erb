@@ -69,10 +69,10 @@
     <% if @entries.total_pages > 1 %>
       <div class="left_side"> 
         <% unless @entries.current_page == @entries.total_pages %>
-        <a href="<%= entries_path(:entry_page => @entries.current_page + 1) %>" class="left ajax"></a> 
+        <a href="<%= entries_path(:entry_page => @entries.current_page + 1) %>" class="right ajax"></a> 
         <% end -%>
         <% unless @entries.current_page == 1 %>
-        <a href="<%= entries_path(:entry_page => @entries.current_page - 1) %>" class="right ajax"></a> 
+        <a href="<%= entries_path(:entry_page => @entries.current_page - 1) %>" class="left ajax"></a> 
         <% end -%>
       </div> 
     <% end -%>
