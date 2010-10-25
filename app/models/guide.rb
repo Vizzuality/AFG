@@ -25,7 +25,7 @@ class Guide < ActiveRecord::Base
   validates_presence_of :author, :if => Proc.new{ |guide| guide.published? }
   validates_presence_of :name, :if => Proc.new{ |guide| guide.published? }
 
-  has_many :entries, :order => 'created_at DESC', :dependent => :destroy
+  has_many :entries, :order => 'created_at ASC', :dependent => :destroy
   
   scope :published,       where("published = ?", true)
   scope :highlighted,     published.where("highlighted = ?", true)
