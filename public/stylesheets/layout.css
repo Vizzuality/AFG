@@ -96,7 +96,7 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.alternative div.type.complete p {float:none; margin:107px 0 0 13px; font:bold 9px "Lucida Grande"; color:#666666;}
 #publish_container div.repeat div.choice div.alternative div.type p {float:left; margin:107px 0 0 13px; font:bold 9px "Lucida Grande"; color:#666666;}
 #publish_container div.repeat div.choice div.alternative div.info {float:left; width:140px; padding:40px 0 0 0;}
-#publish_container div.repeat div.choice div.alternative div.info a {float:left; width:122px; height:19px; padding:10px 8px 7px 8px; margin:0; text-decoration:none; background:url(../images/modal/complete_bkg.png) no-repeat 0 0; font:bold 19px Helvetica; color:#0099CC; letter-spacing:-1px;}
+#publish_container div.repeat div.choice div.alternative div.info a {float:left; width:119px; height:21px; padding:8px 11px 7px 8px; margin:0; text-decoration:none; background:url(../images/modal/complete_bkg.png) no-repeat 0 0; font:bold 19px Helvetica; color:#0099CC; letter-spacing:-1px; line-height:21px;}
 #publish_container div.repeat div.choice div.alternative div.info a:hover {background-position:0 -36px; color:#1F628F;}
 #publish_container div.repeat div.choice div.alternative div.info p {float:left; width:100%; font:normal 13px Arial; color:white; margin:8px 0 0 0;}
 
@@ -120,13 +120,12 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.want_publish input[type="radio"] {float:left; margin:2px 8px 0 0; padding:0;}
 #publish_container div.repeat div.choice div.want_publish p.subtitle {float:left; width:auto; margin:4px 0 0 20px; font:normal 13px Arial; color:#80ADBD;}
 #publish_container div.repeat div.choice div.want_publish label {float:left; width:500px; font:bold 11px Arial; color:white; margin:13px 0 0 20px;}
-#publish_container div.repeat div.choice div.want_publish input[type="text"] {float:left; margin:6px 8px 0 20px; width:280px; height:24px; padding:6px 10px 6px 10px; background:url(../images/modal/input_2.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
-#publish_container div.repeat div.choice div.want_publish textarea {float:left; margin:6px 0 0 20px; width:585px; height:84px; padding:6px 10px 6px 10px; background:url(../images/modal/textarea_bkg.png) no-repeat 0 0; border:none; font:normal 13px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.want_publish input[type="text"] {float:left; margin:6px 8px 0 20px; width:280px; height:24px; padding:6px 10px 6px 10px; background:url(../images/modal/input_2.png) no-repeat 0 0; border:none; font:normal 15px Arial; color:#666666;}
+#publish_container div.repeat div.choice div.want_publish textarea {float:left; margin:6px 0 0 20px; width:593px; height:84px; padding:6px; background:url(../images/modal/textarea_bkg.png) no-repeat 0 0; border:none; font:normal 15px Arial; color:#666666;}
 #publish_container div.repeat div.choice div.want_publish textarea:focus {outline:none;}
 
-#publish_container div.repeat div.choice a.download {width:232px; height:20px; padding:10px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px; position:absolute; bottom:20px; right:28px;}
+#publish_container div.repeat div.choice a.download {width:232px; height:22px; padding:8px 0 6px 10px; background:url(../images/modal/proceed.png) no-repeat 0 0; font:bold 19px Helvetica; text-decoration:none; color:#0099CC; letter-spacing:-1px; position:absolute; bottom:20px; right:28px; line-height:22px;}
 #publish_container div.repeat div.choice a.download:hover {color:#1F628F; background-position:0 -36px;}
-
 
 #publish_container div.repeat div.choice div.long {float:left; background:url(../images/modal/long_dark.png) repeat-x 0 0; width:672px; height:169px;}
 #publish_container div.repeat div.choice div.long div.type {position:relative; float:left; margin:16px 0 0 18px; width:128px; height:138px;}
@@ -136,9 +135,14 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 #publish_container div.repeat div.choice div.long div.type.loading {background:url(../images/modal/list_loading.png) no-repeat center center;}
 #publish_container div.repeat div.choice div.long div.type.finished {background:url(../images/modal/list_finish.png) no-repeat center center;}
 #publish_container div.repeat div.choice div.long div.info {float:left; margin:40px 0 0 25px; width:470px;}
+#publish_container div.repeat div.choice div.long div.info.error {margin:23px 0 0 25px;}
 #publish_container div.repeat div.choice div.long div.info h5 {float:left; width:100%; font:normal 21px "Lucida Grande"; letter-spacing:-1px; color:white;}
 #publish_container div.repeat div.choice div.long div.info p {float:left; width:100%; font:normal 15px Arial; color:#80B4C5;}
 #publish_container div.repeat div.choice div.long div.info a {float:right; margin:20px 0 0 0; text-align:center; width:109px; height:20px; padding:8px 0; background:url(../images/modal/download_bkg.png) no-repeat 0 0; text-decoration:none; font:bold 19px Helvetica; letter-spacing:-1px; color:#0099CC;}
+#publish_container div.repeat div.choice div.long div.info.error a {margin:15px 0 0 0;}
+#publish_container div.repeat div.choice div.long div.info a.ready {margin:5px 0 0;}
+
+
 #publish_container div.repeat div.choice div.long div.info a:hover {background-position:0 -36px; color:#1F628F;}
 #publish_container div.repeat div.choice div.long div.info a.disabled {color:#CCCCCC;}
 #publish_container div.repeat div.choice div.long div.info a.disabled:hover {background-position:0 -36px; cursor:default;}
@@ -855,7 +859,7 @@ div.guide_header div.right div.data_info p.download {float:right; width:297px; m
 div.guide_header div.right div.data_info p.download a {float:right; text-align:right; font:normal 13px Arial; color:white; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
 div.guide_header div.right div.data_info p.download a:hover {border-bottom:1px dotted white;}
 div.guide_header div.right div.amount_info {float:left; width:100%;}
-div.guide_header div.right p.info_guide {float:left; font:normal 15px "Lucida Grande"; color:#BFE5F2; width:100%; margin:16px 0 5px 0; letter-spacing:-1px;}
+div.guide_header div.right p.info_guide {float:left; font:normal 15px "Arial"; color:#BFE5F2; width:100%; margin:16px 0 5px 0; }
 div.guide_header div.right a.download_guide {float:left; background:url(../images/guides/bkg_download_button.png) no-repeat 0 0; width:265px; height:59px; text-decoration:none; margin:20px 0 0 10px;}
 div.guide_header div.right a.download_guide p.title {float:left; font:bold 19px Arial; color:#0099CC; margin:9px 0 0 65px;}
 div.guide_header div.right a.download_guide p.size {float:left; font:normal 13px Arial; color:#0099CC; width:210px; text-align:center; padding:0 0 0 50px;}
@@ -914,7 +918,7 @@ div.search_container {position:relative; float:left; width:912px; padding:25px 1
 div.search_container img.arrow {position:absolute; top:0; left:388px; display:none;}
 div.search_container h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.search_container form {float:left; width:892px; padding:0 0 0 7px; margin:15px 0 0 0;}
-div.search_container form input[type="text"] {float:left; width:474px; height:16px; padding:10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
+div.search_container form input[type="text"] {float:left; width:474px; height:20px; padding:8px 10px 10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
 div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:5px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
 div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer; color:#0083AE;}
 div.search_container form p {float:left; margin:8px 0 0 15px; font:normal 15px Arial; color:white;}
@@ -924,7 +928,7 @@ div.search_container form p a:hover {border-bottom:1px dotted white;}
 div.main.results {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.left div.results {float:left; padding:21px; width:582px; background:white; margin:0;}
 div.left div.results h1 {float:left; font:bold 25px Helvetica; color:#666666; letter-spacing:-1px; width:582px; line-height:25px;}
-div.left div.results ul {float:left; width:582px; margin:23px 0 0 0; padding:10px 0 5px; border-top:1px solid #E5E5E5;}
+div.left div.results ul {float:left; width:582px; margin:0; padding:10px 0 5px;}
 div.left div.results ul li {position:relative; float:left; width:100%; border-bottom:1px solid #E5E5E5; padding:14px 0;}
 div.left div.results ul li p.star {position:absolute; right:0; top:29px; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0; line-height:9px;}
 div.left div.results ul li p.star span {position:relative; float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
@@ -932,7 +936,8 @@ div.left div.results ul li p.star.zero span {color:#999999; background:url(../im
 div.left div.results ul li p.star span img {position:absolute; top:3px; left:0; z-index:40;}
 div.left div.results ul li div.image {float:left; width:117px; height:88px; padding:5px 5px 13px; margin:0 10px 0 0; background:url(../images/search/image_bkg.png) no-repeat 0 0;}
 div.left div.results ul li.landscape div.image {background-image:url(../images/search/landscape_bkg.png);}
-div.left div.results ul li.guide div.image {background-image:url(../images/search/guide_bkg.png);}
+div.left div.results ul li.guide div.image {background-image:url(../images/search/guide_bkg.png); height:105px; width:127px; padding:0;}
+div.left div.results ul li.guide div.image img {width:113px; height:84px; margin:5px;}
 div.left div.results ul li div.image img {float:left; width:117px; height:88px;}
 div.left div.results ul li.landscape div.image {background-image:url(../images/search/landscape_bkg.png);}
 div.left div.results ul li.landscape div.image img {float:left; margin:21px 0 0 29px; width:70px; height:48px;}

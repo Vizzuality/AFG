@@ -1,6 +1,6 @@
 var modal_publish;
 var over_activity = false;
-
+var imageGuide;
 AFG = {
 	behaviour: function() {
 		// AJAX pagination
@@ -234,7 +234,8 @@ function openPublish() {
 	});
 }
 
-function firstStep(type) {
+function firstStep(type,argumentImageGuide) {
+	imageGuide = argumentImageGuide;
 	
 	if(type == 'simple') {
 		$.get("/guides/update/current", { guide_format: "checklist"} );
@@ -359,6 +360,7 @@ function secondStep() {
 			$('div.choice div.type').removeClass('loading');
 			$('div.choice div.type').addClass('finished');
 			$('div.choice div.type img').remove();
+			$('div.choice div.info').addClass('error');
 			$('div.choice div.info h5').text('Your Anctartic Field Guide couldn\'t be generated due to an error');
 			$('div.choice div.info p').text("Please try again or contact with the administrators");
 			$('div.choice div.info a').html('Close');
@@ -373,10 +375,16 @@ function secondStep() {
 			$('div.choice div.type').removeClass('loading');
 			$('div.choice div.type').addClass('finished');
 			$('div.choice div.type img').remove();
-			$('div.choice div.type').append('<img class="image" src="" /><img class="ok" src="/images/modal/ok.png" />');
+			if (imageGuide != "nil"){
+				$('div.choice div.type').append('<img class="image" src="' + imageGuide +'" /><img class="ok" src="/images/modal/ok.png" />');	
+			}else {
+				$('div.choice div.type').append('<img class="ok" src="/images/modal/ok.png" />');	
+			}
+			
 			$('div.choice div.info h5').text('Your Anctartic Field Guide is ready');
 			$('div.choice div.info p').text("The file you are about to download is a PDF. If you dont't have a reader, use this one.");
 			$('div.choice div.info a').removeClass('disabled');
+			$('div.choice div.info a').addClass('ready');			
 		}
    });
 

@@ -52,9 +52,9 @@ class StaticMap
           heightposspan= map_bottom.abs+lat.to_f
           yoffset = image_map_height - ((heightposspan*image_map_height)/heightspan)
 
-          if (xoffset>=0 and xoffset<=image_map_width and yoffset>=0 and yoffset<=image_map_height)
-            g.circle(marker_size, xoffset,yoffset)
-          end
+          # if (xoffset>=0 and xoffset<=image_map_width and yoffset>=0 and yoffset<=image_map_height)
+          #   g.circle(marker_size, xoffset,yoffset)
+          # end
 
         }
       end

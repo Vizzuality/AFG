@@ -39,7 +39,9 @@
                 <p><%= @current_guide.pages_count(:complete) %> PAGES</p>
               </div>
               <div class="info">
-                <a href="javascript:void firstStep('complete')">Complete</a>
+	
+	
+                <a href="javascript:void firstStep('complete','<%= @current_guide.picture? ? @current_guide.picture.image.url(:small) :  nil%>')">Complete</a>
                 <p>Provides all available information for your species</p>
               </div>
             </div>
