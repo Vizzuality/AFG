@@ -30,12 +30,12 @@
           <p class="downloads_data"><span><%=pluralize(@guide.downloads_count,"DOWNLOADS")%></span></p>
 
         </div> 
-				<div class="stats white">
-					<span class="<%= @guide.species_count %>" title="specie"></span>
-				  <p class="species_rank"><%= pluralize(@guide.species_count, 'SPECIE') %></p>
-					<span class="<%= @guide.landscapes_count %>" title="landscape"></span>
-				  <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'PLACE') %></p>
-				</div>
+		<div class="stats white">
+			<span class="<%= @guide.species_count %>" title="specie"></span>
+		  <p class="species_rank"><%= pluralize(@guide.species_count, 'SPECIE') %></p>
+			<span class="<%= @guide.landscapes_count %>" title="landscape"></span>
+		  <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'PLACE') %></p>
+		</div>
         <%= simple_format(@guide.description, :class => 'info_guide') %>
         <a class="download_guide" href="<%= download_pdf_guide_url(@guide) %>"> 
           <p class="title">download this guide</p> 

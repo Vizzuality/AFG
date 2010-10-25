@@ -4,7 +4,7 @@
     <h2>Search for species, places, guides...</h2> 
     <form action="<%= search_path %>" method="get">
       <input type="text" value="<%= params[:q] %>" name="q" />
-      <input type="submit" value="Search" />
+      <input type="submit" value="" />
       <p>or view the <%= link_to('species browser', species_index_path) %></p>
     </form>
   </div>
@@ -41,13 +41,14 @@
             <% elsif result.is_a?(Guide) %>
             <li class="guide">
               <%= stars(result) %>
-              <div class="image">
-                <% if result.picture? %>
-                <img src="<%= result.picture.image.url(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />                
-                <% else %>
-                <img src="<%= result.default_picture(:medium) %>" alt="<%= result.name %>" title="<%= result.name %>" />
-                <% end -%>
-              </div>
+			 <div class="image">
+				<div class="stats search">
+					<span class="<%= result.species_count %>" title="specie"></span>
+				  <p class="species_rank"><%= pluralize(result.species_count, 'SPECIE') %></p>
+					<span id="landscapes" class="<%= result.landscapes_count %>" title="landscape"></span>
+				  	<p class="landscapes_rank"><%= pluralize(result.landscapes_count, 'PLACE') %></p>
+				</div>
+			  </div>	
               <div class="information">
                 <h2><%= link_to(result.name, guide_path(result)) %></h2>
                 <p class="subtitle">by <%= result.author %>, <%= result.updated_at.strftime("%dth %B %Y") %></p>
