@@ -706,7 +706,7 @@ div.guides_header ul li div.information_title p.star {position:relative; float:l
 div.guides_header ul li div.information_title p.star span {float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
 div.guides_header ul li div.information_title p.star.zero span {color:#999999;}
 div.guides_header ul li div.information_title p.star span img {position:absolute; top:3px; left:3px;}
-div.guides_header ul li div.stats {float:left; width:100%; margin:7px 0 0 0;}
+div.guides_header ul li div.stats {float:left; width:100%; margin:3px 0 0 5px;}
 
 div.main.guides {background:url(../images/search/main_bkg.png) repeat-y right 0 white;}
 div.left div.create div.sorted_by {float:left; background:url(../images/guides/bkg_sorted_by.png) no-repeat 0 0; width:580px; height:43px; margin:21px 0 0px 0; position:relative;}
@@ -921,8 +921,8 @@ div.search_container img.arrow {position:absolute; top:0; left:388px; display:no
 div.search_container h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.search_container form {float:left; width:892px; padding:0 0 0 7px; margin:15px 0 0 0;}
 div.search_container form input[type="text"] {float:left; width:474px; height:20px; padding:8px 10px 10px; font:normal 17px Arial; color:#666666; background:url(../images/search/search_input_text_bkg.png) no-repeat 0 0; border:none; margin:0 5px 0 0;}
-div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:5px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; font:bold 19px Arial; color:#0099CC;}
-div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer; color:#0083AE;}
+div.search_container form input[type="submit"] {float:left; width:108px; height:36px; padding:5px 10px 12px 30px; letter-spacing:-1px; margin:0; background:url(../images/search/search_input_button.png) no-repeat 0 0; border:none; /*font:bold 19px Arial;*/ color:#0099CC;}
+div.search_container form input[type="submit"]:hover {background-position: 0 -36px; cursor:pointer;/* color:#0083AE;*/}
 div.search_container form p {float:left; margin:8px 0 0 15px; font:normal 15px Arial; color:white;}
 div.search_container form p a {text-decoration:none; color:white; display:inline-block; vertical-align:top; padding:0 0 2px 0; border-bottom:1px solid white;}
 div.search_container form p a:hover {border-bottom:1px dotted white;}
@@ -1089,20 +1089,33 @@ div.footer div.in p {float:left; padding:40px 0 0 0; font:normal 12px Arial; col
 div.footer div.in p a {font-weight:bold; text-decoration:none; color:#999999;}
 div.footer div.in p a:hover {color:#666666;}
 div.footer div.in p.source_image {float:right; font:bold 12px Arial; color:#999999;}
- 
+div#footer_space {float:left; height:45px; width:936px;}
 
 /* STATS */
+div.stats.search {float:left; width:85px; margin:0 0 0 12px;}
+div.stats.search p {padding:23px 0 0 5px;}
+div.stats.search span {margin:0; padding:0;}
+div.stats.search p.landscapes_rank {padding:13px 0 0 5px;}
+div.stats.search span#landscapes ul.stats {height:24px; padding:10px 0 0 0;}
+div.stats.search span ul.stats {padding:20px 0 0 0; margin:5px 0 0 0; height:20px;}
+
 div.stats.white {float:left; margin:15px 0 0 0;}
-div.stats.white p.species_rank {color:white;}
-div.stats.white p.landscapes_rank {color:white;}
+div.stats.white p.species_rank {color:white; }
+div.stats.white p.landscapes_rank {color:white; }
+div.stats.white p {margin-top:1px;}
 div.stats span {float:left; width:10px; height:40px; background:none;}
 div.stats span ul.stats {float:left; width:10px; height:24px; background:white; margin:0; padding:24px 0 0 0; border:none;}
 div.stats span ul.stats.none {background:none;}
 div.stats span ul.stats li {float:left; width:10px!important; height:2px!important; background:none!important; background-image:none; background-color:white; margin:1px 0!important; padding:0!important; border:none;}
+div.stats p {margin:11px 23px 0 0;}
 p.species_rank {float:left; width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:23px;}
 p.landscapes_rank {float:left; width:40px; font:normal 11px "Lucida Grande"; text-transform:uppercase; color:#999999; height:22px; padding:20px 0 0 5px; line-height:12px; margin-right:0;}
 .highlighted p.species_rank {padding:11px 0 0 5px;}
 .highlighted p.landscapes_rank {padding:11px 0 0 5px;}
+
+
+
+
 
 
 

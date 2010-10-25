@@ -61,16 +61,6 @@ $(document).ready(function() {
 		$(this).parent().css('background-position','0 0');
 	});
 	
-	// Over guides header
-	// $('div.guides_header ul li').hover(function(ev){
-	// 	$(this).css('background-position','0 -127px');
-	// },
-	// function(ev){
-	// 	$(this).css('background-position','0 0');
-	// });
-	
-	
-
 	//Landscapes and species count bars in Species pages
 	$('div.right div.stats span').each(function(index){
 		var kind = $(this).attr('title');
@@ -98,7 +88,6 @@ $(document).ready(function() {
 
 	//Landscapes and species count bars
 	$('li div.stats span').each(function(index){
-		
 		
 		var kind = $(this).attr('title');
 		if (kind=='specie') {
