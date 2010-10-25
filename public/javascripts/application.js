@@ -1,6 +1,8 @@
 var modal_publish;
 var over_activity = false;
 var imageGuide;
+var DESCRIPTION_MAX_LENGTH = 400;
+var ALLOWED_KEYS = [8, 37, 38, 39, 40, 46];
 AFG = {
 	behaviour: function() {
 		// AJAX pagination
@@ -259,12 +261,30 @@ function firstStep(type,argumentImageGuide) {
 		'<span><label>YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
 		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
 		'<label>DESCRIPTION</label>'+
+		'<p class="counter"><span>'+ DESCRIPTION_MAX_LENGTH +'</span> characters left</p>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
 		'<div class="errors"><span id="alert_name" class="alert"></span><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
 		'<div class="errors"><span id="alert_author" class="alert"></span><div id="error_invalid_author"><p>The author of the guide can\'t be blank</p></div></div>' +
 		'<a href="javascript:void secondStep()" class="download">Proceed to download</a>';
 
-    $('div.choice').html(first_step);
+  $('div.choice').html(first_step);
+  $('textarea#description')
+  .keyup(function(){
+    this.characters_left = DESCRIPTION_MAX_LENGTH - $(this).val().length;
+    $('textarea#description').prev('p.counter').find('span').text(this.characters_left);
+  })
+  .keypress(function(evt){
+    // Checks if pressed key is an allowed one
+    if ($.inArray((evt.which ? evt.which : evt.keyCode), ALLOWED_KEYS) < 0) {
+      // If description length is greater than allowed max, we truncate it
+      if ($(this).val().length > DESCRIPTION_MAX_LENGTH) {
+        $(this).val($(this).val().substr(0, DESCRIPTION_MAX_LENGTH));
+      };
+      // Can't add more characters to description if has reached max value of allowed chars.
+      if (!this.characters_left || this.characters_left == 0 ) { evt.preventDefault(); return false;};
+    };
+  });
+
 	$('div.choice').find('a.download').css('display','none');
 	$('div.choice').css('height','440px');
 	$('div.choice').animate({
