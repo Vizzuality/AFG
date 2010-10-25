@@ -347,7 +347,7 @@ div.long div.bottom div.right_side a.publish.disabled:hover {background-position
 
 /*SPECIES*/
 div.species_explore {position:relative; float:left; width:912px; padding:27px 12px 20px; height:442px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 0 #008CB9;}
-div.species_explore img.arrow {position:absolute; top:0; left:188px;}
+div.species_explore img.arrow {position:absolute; top:0; left:105px;}
 div.species_explore h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.species_explore p.subtitle {float:left; width:892px; padding:4px 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.species_explore p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
@@ -461,7 +461,7 @@ div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !importan
 /* SPECIE */
 
 div.specie_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/whale_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.specie_header img.arrow {position:absolute; top:0; left:188px; z-index:10;}
+div.specie_header img.arrow {position:absolute; top:0; left:105px; z-index:10;}
 div.specie_header ul.breadcrumb {float:left; width:888px; padding: 0 0 1px 0;}
 div.specie_header ul.breadcrumb li {float:left; width:auto; background:url(../images/common/breadcrumb_arrow.png) no-repeat 0 5px; padding:0 0 0 11px; margin:0 7px 0 0; font:normal 13px "Lucida Grande"; color:#FFFFFF; line-height:13px;}
 div.specie_header ul.breadcrumb li.first {background:none; padding:0;}
@@ -561,7 +561,7 @@ div.main.family div.pagination a:hover {background-position:0 -30px;}
 /*LANDSCAPES*/
 
 div.landscapes_map {float:left; width:912px; padding:0 12px 20px; background:url(../images/common/area_bkg.jpg) no-repeat 0 0 #008CB9;}
-div.landscapes_map img.arrow {position:relative; margin:0 0 0 92px; padding:0 0 10px;}
+div.landscapes_map img.arrow {position:relative; margin:0 0 0 178px; padding:0 0 10px;}
 div.landscapes_map h2 {float:left; width:892px; padding:0 0 0 7px; text-align:left; font:bold 25px Arial; color:white; letter-spacing:-1px; line-height:25px;}
 div.landscapes_map p.subtitle {float:left; width:892px; padding:4px 0 0 7px; text-align:left; font:normal 13px 'Lucida Grande'; color:white; line-height:13px;}
 div.landscapes_map p.subtitle a {color:white; text-decoration:none; border-bottom:1px solid white; display: inline-block; vertical-align: top; padding:0 0 2px 0;}
@@ -608,7 +608,7 @@ div.right div.feature p.info a:hover {border-bottom:1px dotted #0099CC !importan
 /*LANDSCAPE*/
 
 div.landscape_header {position:relative; float:left; width:894px; padding:27px 21px; background:url(../images/common/area_bkg.jpg) no-repeat 0 bottom #008CB9;}
-div.landscape_header img.arrow {position:absolute; top:0; left:105px; z-index:10;}
+div.landscape_header img.arrow {position:absolute; top:0; left:190px; z-index:10;}
 div.landscape_header ul.breadcrumb {float:left; width:888px; padding: 0 0 1px 0;}
 div.landscape_header ul.breadcrumb li {float:left; width:auto; background:url(../images/common/breadcrumb_arrow.png) no-repeat right 5px; padding:0 7px 0 0; margin:0 7px 0 0; font:normal 13px "Lucida Grande"; color:#FFFFFF; line-height:13px;}
 div.landscape_header ul.breadcrumb li.first {background:none; padding:0;}
@@ -694,6 +694,7 @@ div.guides_header p.by a:hover {text-decoration:none;}
 
 div.guides_header ul {float:left; width:100%; margin:35px 0 0 0;}
 div.guides_header ul li {float:left; width:181px; height:145px; padding:22px 18px 10px 9px; background:url(../images/guides/created_bkg_list.png) no-repeat 0px -2px; margin:0 20px 0 0;}
+div.guides_header ul li:hover {background-position:0 -177px;}
 div.guides_header ul li.last {margin:0;}
 div.guides_header ul li div.information_title {float:left; height:85px; border-bottom:1px solid #E0E0E0;}
 div.guides_header ul li div.information_title h4 {float:left; width:163px;}

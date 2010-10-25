@@ -15,7 +15,7 @@
   <div class="left"> 
     <div id="guides_left" class="create"> 
       <h3>Published Antarctic Field Guides</h3> 
-      <p class="subtitle"><b><%= pluralize(Guide.published.not_highlighted.count, 'AFG', 'AFGs') %> published</b></p> 
+      <p class="subtitle"><%= pluralize(Guide.published.not_highlighted.count, 'AFG', 'AFGs') %> published</p> 
       <div id="guides">
         <%= render 'guides' %>
       </div>

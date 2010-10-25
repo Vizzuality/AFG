@@ -182,11 +182,6 @@ var paneOther;
 		// Make the action click
 		function clickColumnFunction(event,element) {
 	
-			if (event != null){
-				event.stopPropagation();
-				event.preventDefault();				
-			}
-
 			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
 				
 				var selectedColumn = getColumnID(element.parent().parent().parent().attr('id'));
