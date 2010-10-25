@@ -270,18 +270,23 @@ function firstStep(type,argumentImageGuide) {
   $('div.choice').html(first_step);
   $('textarea#description')
   .keyup(function(){
+    // If description length is greater than allowed max, we truncate it
+    if ($(this).val() && $(this).val().length > DESCRIPTION_MAX_LENGTH) {
+      $(this).val($(this).val().substr(0, DESCRIPTION_MAX_LENGTH));
+    };
     this.characters_left = DESCRIPTION_MAX_LENGTH - $(this).val().length;
     $('textarea#description').prev('p.counter').find('span').text(this.characters_left);
   })
   .keypress(function(evt){
     // Checks if pressed key is an allowed one
     if ($.inArray((evt.which ? evt.which : evt.keyCode), ALLOWED_KEYS) < 0) {
-      // If description length is greater than allowed max, we truncate it
-      if ($(this).val().length > DESCRIPTION_MAX_LENGTH) {
-        $(this).val($(this).val().substr(0, DESCRIPTION_MAX_LENGTH));
-      };
       // Can't add more characters to description if has reached max value of allowed chars.
       if (!this.characters_left || this.characters_left == 0 ) { evt.preventDefault(); return false;};
+    };
+  })
+  .change(function(){
+    if ($(this).val() && $(this).val().length >= DESCRIPTION_MAX_LENGTH) {
+      $(this).val($(this).val().substr(0, DESCRIPTION_MAX_LENGTH));
     };
   });
 
