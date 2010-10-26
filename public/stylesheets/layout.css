@@ -413,7 +413,7 @@ div.taxonomic_browser div.taxon_content ul li div.text {float:left; margin:10px 
 div.taxonomic_browser div.taxon_content ul li div.text.image {margin:8px 0 0 5px; width:200px;}
 div.taxonomic_browser div.taxon_content ul li div.text h3 {float:none; letter-spacing:-1.0px; font:normal 17px "Lucida Grande"; color:#0099CC;}
 div.taxonomic_browser div.taxon_content ul li div.text p {float:left; font:italic 13px "Lucida Grande"; color:#999999; line-height:13px; letter-spacing:-1.0px; margin:5px 0 0 0;}
-div.taxonomic_browser div.taxon_content ul li div.text p strong {color:#666666;}
+div.taxonomic_browser div.taxon_content ul li div.text p strong {color:#666666; margin:0 3px 0 0;}
 div.taxonomic_browser div.taxon_content ul li div.text a.add {color:#0099CC; font-style:normal; text-decoration:none; }
 div.taxonomic_browser div.taxon_content ul li div.text a.add:hover {text-decoration:none; border-bottom:1px dotted #0099CC;}
 div.taxonomic_browser div.taxon_content ul li div.text a.specie {color:#0099CC; font-style:normal; text-decoration:none; }
