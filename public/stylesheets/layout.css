@@ -256,10 +256,11 @@ div.left div.create ul.published_afg li.multiple_last {margin:10px 0px 0px 0;}
 div.left div.create ul.published_afg li.last {margin:0;}
 
 div.left div.create ul.published_afg li div.information_title {float:left; height:80px; border-bottom:1px solid #E0E0E0;}
+
 div.left div.create ul.published_afg li div.information_title h4 {float:left; width:163px;}
-div.left div.create ul.published_afg li div.information_title h4 a {font:bold 15px "Lucida Grande"; text-decoration:none; color:#0099CC; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.left div.create ul.published_afg li div.information_title h4 a {font:bold 15px "Lucida Grande"; text-decoration:none; color:#0099CC;}
 div.left div.create ul.published_afg li div.information_title h4 a:hover {border-bottom:1px dotted #0099CC;}
-div.left div.create ul.published_afg li div.information_title p.by {float:left; width:163px; font:normal 11px "Lucida Grande"; color:#999999; margin:2px 0 0 0;}
+div.left div.create ul.published_afg li div.information_title p.by {float:left; width:163px; font:normal 11px "Lucida Grande"; color:#999999; margin:3px 0 0 0;}
 div.left div.create ul.published_afg li div.information_title p.star {position:relative; float:left;  margin:5px 0 0 0; padding:0 0 0 3px; background:url(../images/common/heart_bkg_mini.png) no-repeat 0 0;}
 div.left div.create ul.published_afg li div.information_title p.star span {float:left; width:auto; font:bold 9px Arial; color:#FF0066; line-height:9px; background:url(../images/common/heart_bkg.png) no-repeat right 0; padding:3px 3px 3px 11px;}
 div.left div.create ul.published_afg li div.information_title p.star.zero span {color:#999999;}
@@ -540,16 +541,29 @@ div.main.family {background:white; padding:21px 21px 50px; width:894px;}
 div.main.family h3 {font:bold 25px Helvetica; width:100%; float:left; letter-spacing:-1px; line-height:25px;}
 div.main.family p.subtitle {float:left; width:100%; font:normal 13px "Lucida Grande"; color:#666666; line-height:13px; padding:0 0 24px;}
 div.main.family ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
-div.main.family ul li {position:relative; float:left; width:279px; border-bottom:1px solid #E5E5E5; margin:0 28px 0 0; padding:12px 0 9px;}
-div.main.family ul li:hover {cursor:pointer; background:url(../images/guide/li_over.png) no-repeat 250px 20px;}
+div.main.family ul li {position:relative; float:left; width:283px; border-bottom:1px solid #E5E5E5; margin:0 15px 0 0; height:75px;}
+div.main.family ul li:hover {background-color:#F4F4F4; border:1px solid #E5E5E5; height:75px; width:281px; border-top:none;}
 div.main.family ul li.last_item {margin:0;}
-div.main.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:0 8px 0 0;}
+div.main.family ul li {position:relative; float:left; width:283px; border-bottom:1px solid #E5E5E5; margin:0 15px 0 0; height:75px;}
+div.main.family ul li:hover {background-color:#F4F4F4; border:1px solid #E5E5E5; height:75px; width:281px; border-top:none;}
+div.main.family ul li.last_item {margin:0;}
+div.main.family ul li.last_row {border-bottom:1px solid white;}
+div.main.family ul li:hover div.image {margin:14px 8px 0 7px;}
+div.main.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:14px 8px 0 8px;}
 div.main.family ul li div.image img {float:left; width:40px; height:40px;}
-div.main.family ul li div.info {float:left; width:210px; padding:4px 0 0 0;}
-div.main.family ul li div.info h4 {float:left; width:210px;}
+div.main.family ul li div.info {float:left; width:215px; padding:0; margin:12px 0 0 0; position:relative;}
+div.main.family ul li div.info a.add {background:url(../images/guides/li_over.png) no-repeat 0 0; position:absolute; top:3px; right:3px; cursor:pointer; width:16px; height:16px; display:none;}
+div.main.family ul li div.info a.add.added{background:url(../images/guides/li_over_added.png) no-repeat 0 0; cursor:default;}
+div.main.family ul li:hover div.info a.add.added:hover {background-position:0 0;}
+div.main.family ul li:hover div.info a.add {display:inline;}
+div.main.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
+div.main.family ul li div.info h4 {float:left; width:215px;}
 div.main.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
 div.main.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
-div.main.family ul li div.info p.common_name {float:left; width:210px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
+div.main.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
+
+
+/****************/
 
 div.main.family div.pagination {float:right; padding:20px 0 0;}
 div.main.family div.pagination p {float:right; padding:6px 0 0 0; margin:0 15px 0 0; font:normal 13px "Lucida Grande"; color:#666666;}
@@ -886,33 +900,28 @@ div.main.guide div.top div.right ul li a span {float:left; width:auto; backgroun
 div.main.guide div.top div.right ul li a:hover {background-position: 0 -24px;}
 div.main.guide div.top div.right ul li a:hover span {background-position:right -24px;}
 
-div.main.guide div.family {float:left; width:100%; margin:35px 0 0 0;}
-div.main.guide div.family h3 {float:left; width:100%; font:normal 11px Arial; color:#666666; padding:0 0 8px;}
-div.main.guide div.family ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
-div.main.guide div.family ul li {position:relative; float:left; width:283px; border-bottom:1px solid #E5E5E5; margin:0 15px 0 0; height:75px;}
-div.main.guide div.family ul li:hover {background-color:#F4F4F4; border:1px solid #E5E5E5; height:75px; width:281px; border-top:none;}
+div.main div.family {float:left; width:100%; margin:35px 0 0 0;}
+div.main div.family h3 {float:left; width:100%; font:bold 11px Arial; color:#666666; padding:0 0 8px;}
+div.main div.family ul {float:left; width:100%; border-top:1px solid #E5E5E5;}
+div.main div.family ul li {position:relative; float:left; width:283px; border-bottom:1px solid #E5E5E5; margin:0 15px 0 0; height:75px;}
+div.main div.family ul li:hover {background-color:#F4F4F4; border:1px solid #E5E5E5; height:75px; width:281px; border-top:none;}
+div.main div.family ul li.last_item {margin:0;}
+div.main div.family ul li.last_row {border-bottom:1px solid white;}
+div.main div.family ul li:hover div.image {margin:14px 8px 0 7px;}
+div.main div.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:14px 8px 0 8px;}
+div.main div.family ul li div.image img {float:left; width:40px; height:40px;}
+div.main div.family ul li div.info {float:left; width:215px; padding:0; margin:12px 0 0 0; position:relative;}
+div.main div.family ul li div.info a.add {background:url(../images/guides/li_over.png) no-repeat 0 0; position:absolute; top:3px; right:3px; cursor:pointer; width:16px; height:16px; display:none;}
+div.main div.family ul li div.info a.add.added{background:url(../images/guides/li_over_added.png) no-repeat 0 0; cursor:default;}
 
+div.main div.family ul li:hover div.info a.add.added:hover {background-position:0 0;}
+div.main div.family ul li:hover div.info a.add {display:inline;}
 
-div.main.guide div.family ul li.last_item {margin:0;}
-div.main.guide div.family ul li.last_row {border-bottom:1px solid white;}
-div.main.guide div.family ul li:hover div.image {margin:14px 8px 0 7px;}
-div.main.guide div.family ul li div.image {float:left; width:40px; height:39px; padding:4px 4px 8px 4px; background:url(../images/guides/specie_bkg.png) no-repeat 0 0; margin:14px 8px 0 8px;}
-div.main.guide div.family ul li div.image img {float:left; width:40px; height:40px;}
-div.main.guide div.family ul li div.info {float:left; width:215px; padding:0; margin:12px 0 0 0; position:relative;}
-div.main.guide div.family ul li div.info a.add {background:url(../images/guides/li_over.png) no-repeat 0 0; position:absolute; top:3px; right:3px; cursor:pointer; width:16px; height:16px; display:none;}
-div.main.guide div.family ul li div.info a.add.added{background:url(../images/guides/li_over_added.png) no-repeat 0 0; cursor:default;}
-
-div.main.guide div.family ul li:hover div.info a.add.added:hover {background-position:0 0;}
-div.main.guide div.family ul li:hover div.info a.add {display:inline;}
-
-div.main.guide div.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
-div.main.guide div.family ul li div.info h4 {float:left; width:215px;}
-div.main.guide div.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
-div.main.guide div.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
-div.main.guide div.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
-
-
-
+div.main div.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
+div.main div.family ul li div.info h4 {float:left; width:215px;}
+div.main div.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; display:inline-block; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.main div.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
+div.main div.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
 
 /* SEARCH */
 
@@ -1093,9 +1102,9 @@ div#footer_space {float:left; height:45px; width:936px;}
 
 /* STATS */
 div.stats.search {float:left; width:85px; margin:0 0 0 12px;}
-div.stats.search p {padding:23px 0 0 5px;}
+div.stats.search p {padding:12px 0 0 5px;}
 div.stats.search span {margin:0; padding:0;}
-div.stats.search p.landscapes_rank {padding:13px 0 0 5px;}
+div.stats.search p.landscapes_rank {padding:2px 0 0 5px;}
 div.stats.search span#landscapes ul.stats {height:24px; padding:10px 0 0 0;}
 div.stats.search span ul.stats {padding:20px 0 0 0; margin:5px 0 0 0; height:20px;}
 
