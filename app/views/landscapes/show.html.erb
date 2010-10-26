@@ -45,7 +45,7 @@
   <p class="subtitle">Here are some pictures from this place</p>
   <ul>
     <% @landscape.pictures.each do |picture| %>
-    <li><a class="lightbox" href="<%= picture.image.url(:gallery) %>" title="Picture from <%= @landscape.name %>"><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>" id="<%= picture.id %>" /></a></li>
+    <li><a class="lightbox" href="<%= picture.biggest_image_url %>" title="Picture from <%= @landscape.name %>"><img src="<%= picture.image.url(:medium) %>" alt="Picture from <%= @landscape.name %>" id="<%= picture.id %>" /></a></li>
     <% end -%>
 	</ul>
   <span class="line"></span>

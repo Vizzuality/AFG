@@ -35,4 +35,16 @@ class LandscapePicture < ActiveRecord::Base
     puts
   end
 
+  def all_image_urls_exists?
+    urls = image.styles.map{ |style| "#{Rails.root}/public/#{image.url(style.first, false)}" }
+    urls.each { |url| return false unless File.exists?(url) }
+    true
+  end
+  
+  def biggest_image_url
+    %w(gallery huge large medium small).each do |style|
+      return image.url(style) if File.exists?("#{Rails.root}/public/#{image.url(style, false)}")
+    end
+    image.url
+  end
 end
