@@ -1,0 +1,1 @@
+require 'attachment_extensions'

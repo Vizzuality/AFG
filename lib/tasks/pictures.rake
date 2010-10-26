@@ -15,13 +15,12 @@ namespace :afg do
       nothing_to_do = true
 
       Picture.find_each do |picture|
-        break if picture.species.nil? || picture.all_image_urls_exists?
+        break if picture.species.nil? || picture.image.all_image_urls_exists?
         nothing_to_do = false
         begin
           species_name = picture.species.common_name.present? ? picture.species.common_name : picture.species.name
 
-          puts msg = "reprocessing pictures for #{species_name}"
-          puts msg.chars.map{'-'}.join
+          puts "- reprocessing pictures for #{species_name}"
 
           picture.image.reprocess!
           errors << picture.errors if picture.errors.present?
@@ -39,13 +38,12 @@ namespace :afg do
       nothing_to_do = true
 
       LandscapePicture.find_each do |picture|
-        break if picture.landscape.nil? || picture.all_image_urls_exists?
+        break if picture.landscape.nil? || picture.image.all_image_urls_exists?
         nothing_to_do = false
         begin
           landscape_name = picture.landscape.name.present? ? picture.landscape.name : 'Unknown landscape'
 
-          puts msg = "reprocessing pictures for #{landscape_name}"
-          puts msg.chars.map{'-'}.join
+          puts "- reprocessing pictures for #{landscape_name}"
 
           picture.image.reprocess!
           errors << picture.errors if picture.errors.present?

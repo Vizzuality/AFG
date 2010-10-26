@@ -102,7 +102,7 @@
     <%else%>
           <li>
     <%end%>
-        <a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.url(:gallery) %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>
+        <a class="lightbox" title="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" href="<%= picture.image.biggest_image_url %>"><img src="<%= picture.image.url(:small) %>" alt="<%= "#{@species.full_name} - #{picture.title} - #{picture.photographer}" %>" id="<%= picture.id %>" /></a>
       </li>
       <% end -%>
   </ul>

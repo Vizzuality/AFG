@@ -23,11 +23,4 @@ class Picture < ActiveRecord::Base
   belongs_to :species
   
   has_attached_file :image, :styles => { :small => "48x48#", :medium => "168x110#", :large => "247x158#", :huge => "896x381#", :gallery => "896x896>"}
-  
-  def all_image_urls_exists?
-    urls = image.styles.map{ |style| "#{Rails.root}/public/#{image.url(style.first, false)}" }
-    urls.each { |url| return false unless File.exists?(url) }
-    true
-  end
-    
 end
