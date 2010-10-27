@@ -5,7 +5,7 @@ require "capybara/dsl"
 require 'database_cleaner'
 # require "selenium-webdriver"
 
-DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.strategy = :transaction
 Capybara.default_driver = :rack_test
 Capybara.default_host = 'www.example.com'
 Capybara.app_host = 'http://www.example.com:9887'
