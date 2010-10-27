@@ -58,8 +58,8 @@ class MapsController < ApplicationController
         render :text => "Invalid guide_id: #{params[:guide_id]}", :status => 404 and return
       end
     else
-      Occurrence.select("distinct on (SnapToGrid(the_geom,#{StaticMap::SNAP_TO_GRID_FACTOR})) id, x(ST_Transform(the_geom,3031)) as lon, y(ST_Transform(the_geom,3031)) as lat")
-    end.map{ |o| {:lat => o.lat, :lon => o.lon}}
+      ActiveRecord::Base.connection.select_all("select distinct on (SnapToGrid(the_geom,#{StaticMap::SNAP_TO_GRID_FACTOR_BIG})) id, x(ST_Transform(the_geom,3031)) as lon, y(ST_Transform(the_geom,3031)) as lat from occurrences")
+    end.map{ |o| {:lat => o["lat"], :lon => o["lon"]}}
 
     landscapes = if params[:species_id]
       if species = Species.find_by_id(params[:species_id])
