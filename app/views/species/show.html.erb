@@ -42,7 +42,7 @@
     <p>No description</p>
     <%end%>
 
-     <% if !(@species.distinguishing_characters.empty?) %>
+     <% if @species.distinguishing_characters.present? %>
         <h3>Distinguishing Characters</h3>
         <%= simple_format(@species.distinguishing_characters) %>
       <% end %>

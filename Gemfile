@@ -23,7 +23,7 @@ group :test do
   gem 'rspec', '>= 2.0.0.beta.13'
   gem "rspec-rails", ">= 2.0.0.beta.8"
   gem 'launchy'
-  gem 'capybara'
+  gem 'capybara', '~> 0.4.0'
   gem 'webrat'
   gem 'database_cleaner', :tag => 'v0.5.2'
 end
