@@ -1,10 +1,20 @@
 OpenLayers.DOTS_PER_INCH = 90.71428571428572;
 OpenLayers.Util.onImageLoadErrorColor = 'transparent';
-var map, popup;
+var map, popup, urlParams = {};
 
+// Maps the url querystring to a Javascript object
+(function () {
+  var e,
+      a = /\+/g,  // Regex for replacing addition symbol with a space
+      r = /([^&=]+)=?([^&]*)/g,
+      d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+      q = window.location.search.substring(1);
+
+  while (e = r.exec(q))
+   urlParams[d(e[1])] = d(e[2]);
+})();
 
   $(document).ready(function() {
-
     $('div.map img.loading').css('display','inline');
     $('div.map img.loading').css('z-index','5000');
     
@@ -19,7 +29,9 @@ var map, popup;
         controls: [],
         restrictedExtent: new OpenLayers.Bounds(-6267731.972,-5502339.632,4885097.951125,5270280.1801067)
       };
+      var markers = new OpenLayers.Layer.Markers( "Markers" );
 
+      loadMarkersAndPictures(markers, data);
 
       map = new OpenLayers.Map('map', mapOptions );
       map.addControl(new OpenLayers.Control.Navigation({zoomWheelEnabled : false}));
@@ -34,36 +46,7 @@ var map, popup;
             'tileSize': new OpenLayers.Size(256,256),
             'eventListeners': {
               'loadend': function(evt){
-                var markers = new OpenLayers.Layer.Markers( "Markers" );
                 map.addLayer(markers);
-
-                var size       = new OpenLayers.Size(5,5);
-                var offset     = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
-                var occurrence = new OpenLayers.Icon('../images/map/occurrence.png',size,offset);
-                var data_occurrence;
-                for (var i = data.occurrences.length - 1; i >= 0; i--){
-                  data_occurrence = data.occurrences[i];
-                  markers.addMarker(
-                    new OpenLayers.Marker(
-                      new OpenLayers.LonLat( data_occurrence.lon, data_occurrence.lat), 
-                      occurrence.clone())
-                  );
-                };
-
-                size   = new OpenLayers.Size(81,63);
-                offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
-                var data_landscape;
-                for (var i = data.landscapes.length - 1; i >= 0; i--){
-                  data_landscape = data.landscapes[i];
-                  markers.addMarker(
-                    new LandscapeMarker(
-                      new OpenLayers.LonLat(data_landscape.lon,data.landscapes[i].lat),
-                      new OpenLayers.Icon(data_landscape.picture,size,offset),
-                      data.landscapes[i]
-                    )
-                  );
-                };
-                $('div.map img.loading').fadeOut('fast');
               }
             }
           }
@@ -73,11 +56,86 @@ var map, popup;
       map.setCenter(new OpenLayers.LonLat(0,7),2);
       
       //Control double click handler
-      var dblclick = new OpenLayers.Handler.Click(this, {dblclick: function() { if (map.getZoom()<4) {map.zoomIn()} }, click: null }, {single: true, 'double': true, stopSingle: false, stopDouble: true});
+      var dblclick = new OpenLayers.Handler.Click(this, {
+        dblclick: function() { 
+          if (map.getZoom()<4) {
+            map.zoomIn()
+          } 
+        },
+        click: null 
+      }, 
+      {
+        single: true, 
+        'double': true, 
+        stopSingle: false, 
+        stopDouble: true
+      });
       dblclick.setMap(map);
       dblclick.activate();
     });
   });
+  
+  // Places markers and pictures over the map
+  function loadMarkersAndPictures(markers, data){
+    var size       = new OpenLayers.Size(5,5);
+    var offset     = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
+    var occurrence = new OpenLayers.Icon('../images/map/occurrence.png',size,offset);
+    var data_occurrence, openlayers_marker = OpenLayers.Marker, openlayers_lonlat = OpenLayers.LonLat;
+    if (console && console.time) { console.time('chunk'); };
+    if (!urlParams.m || urlParams.m == 1) {
+      // LOOP 1 - Slowest, but asynchronous (browser doesn't get blocked)
+      asyncLoop(data.occurrences, function(data_occurrence){
+        markers.addMarker(
+          new openlayers_marker(
+            new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
+            occurrence.clone())
+        );
+      }, function(){
+        $('div.map img.loading').fadeOut('fast');
+        if (console && console.timeEnd) { console.timeEnd('chunk'); };
+      }, this);
+    }else if (urlParams.m == 2){
+      // LOOP 2 - Fastest, but synchronous
+      while(data.occurrences.length > 0){
+        data_occurrence = data.occurrences.shift();
+        markers.addMarker(
+          new openlayers_marker(
+            new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
+            occurrence.clone())
+        );
+      }
+      $('div.map img.loading').fadeOut('fast');
+      if (console && console.timeEnd) { console.timeEnd('chunk'); };
+    };
+
+    size   = new OpenLayers.Size(81,63);
+    offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
+    var data_landscape;
+    asyncLoop(data.landscapes, function(data_landscape){
+      markers.addMarker(
+        new LandscapeMarker(
+          new OpenLayers.LonLat(data_landscape.lon,data_landscape.lat),
+          new OpenLayers.Icon(data_landscape.picture,size,offset),
+          data_landscape
+        )
+      );
+    }, function(){
+      
+    }, this);
+  }
+  
+  function asyncLoop(array, process, end, context){
+    setTimeout(function(){
+      var item = array.shift();
+      process.call(context, item);
+
+      if (array.length > 0){
+        setTimeout(arguments.callee, 0);
+      }else{
+        if (end) {end.call(context)};
+      }
+    }, 0);
+  }
 
   function zoomIn() {
     if (map.getZoom() < 4) {
