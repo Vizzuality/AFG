@@ -1,18 +1,6 @@
 OpenLayers.DOTS_PER_INCH = 90.71428571428572;
 OpenLayers.Util.onImageLoadErrorColor = 'transparent';
-var map, popup, urlParams = {};
-
-// Maps the url querystring to a Javascript object
-(function () {
-  var e,
-      a = /\+/g,  // Regex for replacing addition symbol with a space
-      r = /([^&=]+)=?([^&]*)/g,
-      d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
-      q = window.location.search.substring(1);
-
-  while (e = r.exec(q))
-   urlParams[d(e[1])] = d(e[2]);
-})();
+var map, popup;
 
   $(document).ready(function() {
     $('div.map img.loading').css('display','inline');
@@ -81,64 +69,32 @@ var map, popup, urlParams = {};
     var offset     = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
     var occurrence = new OpenLayers.Icon('../images/map/occurrence.png',size,offset);
     var data_occurrence, openlayers_marker = OpenLayers.Marker, openlayers_lonlat = OpenLayers.LonLat;
-    if (console && console.time) { console.time('chunk'); };
-    if (!urlParams.m || urlParams.m == 1) {
-      // LOOP 1 - Slowest, but asynchronous (browser doesn't get blocked)
-      asyncLoop(data.occurrences, function(data_occurrence){
-        markers.addMarker(
-          new openlayers_marker(
-            new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
-            occurrence.clone())
-        );
-      }, function(){
-        $('div.map img.loading').fadeOut('fast');
-        if (console && console.timeEnd) { console.timeEnd('chunk'); };
-      }, this);
-    }else if (urlParams.m == 2){
-      // LOOP 2 - Fastest, but synchronous
-      while(data.occurrences.length > 0){
-        data_occurrence = data.occurrences.shift();
-        markers.addMarker(
-          new openlayers_marker(
-            new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
-            occurrence.clone())
-        );
-      }
+
+    asyncLoop(data.occurrences, function(data_occurrence){
+      markers.addMarker(
+        new openlayers_marker(
+          new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
+          occurrence.clone())
+      );
+    }, function(){
       $('div.map img.loading').fadeOut('fast');
-      if (console && console.timeEnd) { console.timeEnd('chunk'); };
-    };
+    }, this);
 
     size   = new OpenLayers.Size(81,63);
     offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
     var data_landscape;
 
-    if (!urlParams.m || urlParams.m == 1) {
-      asyncLoop(data.landscapes, function(data_landscape){
-        markers.addMarker(
-          new LandscapeMarker(
-            new OpenLayers.LonLat(data_landscape.lon,data_landscape.lat),
-            new OpenLayers.Icon(data_landscape.picture,size,offset),
-            data_landscape
-          )
-        );
-      }, function(){
-        
-      }, this);
-    }else if(urlParams.m == 2){
-      var
-        landscapemarker   = LandscapeMarker,
-        openlayers_icon   = OpenLayers.Icon;
-      while(data.landscapes.length > 0){
-        data_landscape = data.landscapes.shift();
-        markers.addMarker(
-          new landscapemarker(
-            new openlayers_lonlat(data_landscape.lon,data_landscape.lat),
-            new openlayers_icon(data_landscape.picture,size,offset),
-            data_landscape
-          )
-        );
-      }
-    };
+    asyncLoop(data.landscapes, function(data_landscape){
+      markers.addMarker(
+        new LandscapeMarker(
+          new OpenLayers.LonLat(data_landscape.lon,data_landscape.lat),
+          new OpenLayers.Icon(data_landscape.picture,size,offset),
+          data_landscape
+        )
+      );
+    }, function(){
+      
+    }, this);
   }
   
   function asyncLoop(array, process, end, context){
