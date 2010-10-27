@@ -4,6 +4,7 @@ class StaticMap
 
   IMAGE_FORMAT = 'png'
   SNAP_TO_GRID_FACTOR = 0.1
+  SNAP_TO_GRID_FACTOR_BIG = 2
 
   def self.generate_typed_map(type, element_id)
     if type == :species
