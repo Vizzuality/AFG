@@ -111,17 +111,34 @@ var map, popup, urlParams = {};
     size   = new OpenLayers.Size(81,63);
     offset = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
     var data_landscape;
-    asyncLoop(data.landscapes, function(data_landscape){
-      markers.addMarker(
-        new LandscapeMarker(
-          new OpenLayers.LonLat(data_landscape.lon,data_landscape.lat),
-          new OpenLayers.Icon(data_landscape.picture,size,offset),
-          data_landscape
-        )
-      );
-    }, function(){
-      
-    }, this);
+
+    if (!urlParams.m || urlParams.m == 1) {
+      asyncLoop(data.landscapes, function(data_landscape){
+        markers.addMarker(
+          new LandscapeMarker(
+            new OpenLayers.LonLat(data_landscape.lon,data_landscape.lat),
+            new OpenLayers.Icon(data_landscape.picture,size,offset),
+            data_landscape
+          )
+        );
+      }, function(){
+        
+      }, this);
+    }else if(urlParams.m == 2){
+      var
+        landscapemarker   = LandscapeMarker,
+        openlayers_icon   = OpenLayers.Icon;
+      while(data.landscapes.length > 0){
+        data_landscape = data.landscapes.shift();
+        markers.addMarker(
+          new landscapemarker(
+            new openlayers_lonlat(data_landscape.lon,data_landscape.lat),
+            new openlayers_icon(data_landscape.picture,size,offset),
+            data_landscape
+          )
+        );
+      }
+    };
   }
   
   function asyncLoop(array, process, end, context){
