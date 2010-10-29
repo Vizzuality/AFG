@@ -1,3 +1,4 @@
+<%= content_for :post_js do %>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
 		var settings = {
@@ -9,7 +10,7 @@
     	$('#taxon_browser').taxonomicbrowser();
   });
 </script>
-
+<%end%>
 <div class="outer_layout">
 	<div class="species_explore">
 	    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>

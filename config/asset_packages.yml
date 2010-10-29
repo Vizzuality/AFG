@@ -34,8 +34,7 @@ javascripts:
   - LandscapeMarker
   - guide_map
   - Icon
-  - Marker  
-  
+  - Marker    
 stylesheets: 
 - base: 
   - jquery.jscrollpane

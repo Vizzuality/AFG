@@ -68,7 +68,9 @@ class EntriesController < ApplicationController
             page << "$('#times_added_#{@entry.element.class.name.downcase}').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
           end
           page << <<-JS
-
+          
+          
+          
        		var xScroll, yScroll;
        		if (self.pageYOffset) {
        			yScroll = self.pageYOffset;
