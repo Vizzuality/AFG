@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928141006) do
+ActiveRecord::Schema.define(:version => 20101102115740) do
 
   create_table "admin_passwords", :force => true do |t|
     t.column "password", :string
@@ -31,9 +31,6 @@ ActiveRecord::Schema.define(:version => 20100928141006) do
   add_index "entries", ["guide_id", "element_type"], :name => "idx_guide_id_element_type"
   add_index "entries", ["guide_id"], :name => "index_entries_on_guide_id"
 
-# Could not dump table "geography_columns" because of following StandardError
-#   Unknown type 'name' for column 'f_table_catalog' /Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/bundler/gems/postgis_adapter-d2240d7/lib/postgis_adapter/common_spatial_adapter.rb:52:in `table'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/bundler/gems/postgis_adapter-d2240d7/lib/postgis_adapter/common_spatial_adapter.rb:50:in `each'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/bundler/gems/postgis_adapter-d2240d7/lib/postgis_adapter/common_spatial_adapter.rb:50:in `table'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/schema_dumper.rb:75:in `tables'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/schema_dumper.rb:66:in `each'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/schema_dumper.rb:66:in `tables'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/schema_dumper.rb:27:in `dump'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/schema_dumper.rb:21:in `dump'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/railties/databases.rake:327/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/railties/databases.rake:326:in `open'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/railties/databases.rake:326/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:636:in `call'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:636:in `execute'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:631:in `each'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:631:in `execute'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'/Users/fernando/.rvm/rubies/ruby-1.8.7-p174/lib/ruby/1.8/monitor.rb:242:in `synchronize'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/activerecord-3.0.0/lib/active_record/railties/databases.rake:143/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:636:in `call'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:636:in `execute'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:631:in `each'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:631:in `execute'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'/Users/fernando/.rvm/rubies/ruby-1.8.7-p174/lib/ruby/1.8/monitor.rb:242:in `synchronize'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2029:in `each'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2001:in `run'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/lib/rake.rb:1998:in `run'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/gems/rake-0.8.7/bin/rake:31/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/bin/rake:19:in `load'/Users/fernando/.rvm/gems/ruby-1.8.7-p174@rails3/bin/rake:19
-
   create_table "guides", :force => true do |t|
     t.column "permalink", :string
     t.column "name", :string
@@ -50,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20100928141006) do
     t.column "updated_at", :datetime
     t.column "last_action", :string
     t.column "pdf_file", :string
+    t.column "parent_guide_id", :integer
   end
 
   add_index "guides", ["highlighted", "published"], :name => "index_guides_on_published_and_highlighted"
@@ -92,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20100928141006) do
   end
 
   add_index "landscapes", ["featured"], :name => "index_landscapes_on_featured"
-  add_index "landscapes", ["the_geom"], :name => "index_landscapes_on_the_geom", :spatial=> true 
+  add_index "landscapes", ["the_geom"], :name => "index_landscapes_on_the_geom", :spatial=> true
 
   create_table "occurrences", :force => true do |t|
     t.column "species_id", :integer
@@ -103,7 +101,7 @@ ActiveRecord::Schema.define(:version => 20100928141006) do
   end
 
   add_index "occurrences", ["species_id"], :name => "index_occurrences_on_species_id"
-  add_index "occurrences", ["the_geom"], :name => "index_occurrences_on_the_geom", :spatial=> true 
+  add_index "occurrences", ["the_geom"], :name => "index_occurrences_on_the_geom", :spatial=> true
 
   create_table "pictures", :force => true do |t|
     t.column "species_id", :integer

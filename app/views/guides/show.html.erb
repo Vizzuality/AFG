@@ -4,46 +4,48 @@
 
 <span style="display:none" id="guide_id"><%= @guide.id %></span>
 
-<div class="outer_layout"> 
-  <div class="guide_header"> 
-    <%= image_tag ('common/arrow_menu.png', :class=> 'arrow') %>
-		<div class="large">
-      <div class="left"> 
+<div class="outer_layout">
+  <div class="guide_header">
+    <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
+    <div class="large">
+      <div class="left">
         <ul class="breadcrumb">
           <li><a href="<%= guides_path %>">Guides</a></li>
         </ul>
-        <h1><%= @guide.name %></h1> 
+        <h1><%= @guide.name %></h1>
         <p class="by">created by <strong><%= @guide.author %></strong> on <%= @guide.updated_at.strftime("%B %dth, %Y") %></p>
-      
+
         <div class="map">
           <div id="map"></div>
-			  <a href="javascript: void toggleFullScreen()" class="full_screen"></a>
-		      <a href="javascript: void zoomIn()" class="zoomIn"></a>
-		      <a href="javascript: void zoomOut()" class="zoomOut"></a>
-			  <%= image_tag('map/map-loading.gif', :class=> 'loading') %>
-			  <a href="http://www.vizzuality.com" target="_blank" class="vizzuality"></a>
+        <a href="javascript: void toggleFullScreen()" class="full_screen"></a>
+          <a href="javascript: void zoomIn()" class="zoomIn"></a>
+          <a href="javascript: void zoomOut()" class="zoomOut"></a>
+        <%= image_tag('map/map-loading.gif', :class=> 'loading') %>
+        <a href="http://www.vizzuality.com" target="_blank" class="vizzuality"></a>
           </div>
-       </div>  
+       </div>
 
-      <div class="right"> 
-        <div class="data_info"> 
+      <div class="right">
+        <div class="data_info">
           <p class="downloads_data"><span><%=pluralize(@guide.downloads_count,"DOWNLOADS")%></span></p>
 
-        </div> 
-		<div class="stats white">
-			<span class="<%= @guide.species_count %>" title="specie"></span>
-		  <p class="species_rank"><%= pluralize(@guide.species_count, 'SPECIE') %></p>
-			<span class="<%= @guide.landscapes_count %>" title="landscape"></span>
-		  <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'PLACE') %></p>
-		</div>
+        </div>
+    <div class="stats white">
+      <span class="<%= @guide.species_count %>" title="specie"></span>
+      <p class="species_rank"><%= pluralize(@guide.species_count, 'SPECIE') %></p>
+      <span class="<%= @guide.landscapes_count %>" title="landscape"></span>
+      <p class="landscapes_rank"><%= pluralize(@guide.landscapes_count, 'PLACE') %></p>
+    </div>
         <%= simple_format(@guide.description, :class => 'info_guide') %>
-        <a class="download_guide" href="<%= download_pdf_guide_url(@guide) %>"> 
-          <p class="title">download this guide</p> 
+        <a class="download_guide" href="<%= download_pdf_guide_url(@guide) %>">
+          <p class="title">download this guide</p>
           <p class="size">(<%= @guide.pages_count %> pages, <%= number_to_human_size(@guide.size_in_bytes) %> approx.)</p>
-        </a> 
-        <p class="template">or <%= link_to('use it as template', create_entry_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours</p>
+        </a>
+        <% unless already_used_as_template?(@guide, @current_guide) %>
+          <p class="template">or <%= link_to('use it as template', create_entry_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours</p>
+        <% end %>
       </div>
-		</div>
+    </div>
   </div>
 </div>
 
@@ -51,7 +53,7 @@
   <div class="top">
     <div class="left">
       <h2><%= @guide.species.size %> species included in this guide</h2>
-      <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p> 
+      <p class="subtitle">you can also browse <%= link_to('all species', species_index_path) %></p>
     </div>
     <% unless @guide.species_kingdoms.empty? %>
     <div class="right">
@@ -63,7 +65,7 @@
     </div>
     <% end -%>
   </div>
-  
+
   <% @guide.species_kingdoms.each do |k, count| %>
   <div class="family" id="<%= k %>">
     <h3><%= count %> <%= k.upcase %></h3>
@@ -74,13 +76,13 @@
           <img src="<%= species.picture ? species.picture.image.url(:small) : species.default_picture(:small) %>" alt="<%= species.full_name %>" />
         </div>
         <div class="info">
-		  
- 			<%if !@current_guide.include_species?(species)%>
-				<%= link_to('', create_entry_path(:type => 'Species', :id => species.id), :method => :post, :class => 'add ajax') %>
-			<%else%>
-				<a class="add added ajax"></a>
-			<%end%>
-		
+
+       <%if !@current_guide.include_species?(species)%>
+        <%= link_to('', create_entry_path(:type => 'Species', :id => species.id), :method => :post, :class => 'add ajax') %>
+      <%else%>
+        <a class="add added ajax"></a>
+      <%end%>
+
           <h4><a href="<%= species_path(species) %>"><%= species.name %></a></h4>
           <% if species.common_name? %>
           <p class="common_name"><%= species.common_name %></p>
@@ -90,9 +92,9 @@
       <% end -%>
     </ul>
   </div>
-  <% end %>  
+  <% end %>
 </div>
 
-<div id="your_guide">  
+<div id="your_guide">
   <%= render 'guides/your_guide' %>
 </div>

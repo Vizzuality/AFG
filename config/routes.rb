@@ -1,4 +1,4 @@
-AFG::Application.routes.draw do |map|
+AFG::Application.routes.draw do
 
   resources :occurrences
 
@@ -39,9 +39,7 @@ AFG::Application.routes.draw do |map|
     resources :taxonomies
     resources :guides
     resources :species, :except => [:show] do
-      member do
-        get :update_uid_and_taxon
-      end
+      get :update_uid_and_taxon, :on => :member
       resources :pictures, :except => [:index, :show]
     end
   end
