@@ -37,7 +37,7 @@
 
         <% if params[:checklist] %>
           <% species_page = 4; landscape_page = species_page %>
-          <% unless @guide.species.empty? %>
+          <% unless @guide.species.blank? %>
           <li>Species <strong>/ 4</strong>
             <ul>
               <% @guide.species.each_with_index do |species, i| %>
@@ -48,7 +48,7 @@
           </li>
           <% end %>
 
-          <% unless @guide.landscapes.empty? %>
+          <% unless @guide.landscapes.blank? %>
           <% landscape_page = species_page + 1 %>
           <li>Places <strong>/ <%= landscape_page %></strong>
             <ul>
@@ -61,7 +61,7 @@
           <% end %>
         <% else %>
           <% species_page = 4; landscape_page = species_page %>
-          <% unless @guide.species.empty? %>
+          <% unless @guide.species.blank? %>
           <li>Species <strong>/ 4</strong>
             <ul>
               <% @guide.species.each do |species| %>
@@ -72,7 +72,7 @@
           </li>
           <% end %>
 
-          <% unless @guide.landscapes.empty? %>
+          <% unless @guide.landscapes.blank? %>
           <% landscape_page = species_page %>
           <li>Places <strong>/ <%= landscape_page %></strong>
             <ul>
@@ -173,21 +173,21 @@
             </div>
 
             <div class="info">
-      <% if !(species.description.empty?) %>
+      <% if species.description.present? %>
               <h2>Description</h2>
               <%= simple_format(species.description) %>
       <%end%>
 
-      <% if !(species.distinguishing_characters.empty?) %>
+      <% if species.distinguishing_characters.present? %>
         <h2>Distinguishing Characters</h2>
               <%= simple_format(species.distinguishing_characters) %>
       <%end%>
 
-      <% if !(species.distribution.empty?) %>
+      <% if species.distribution.present? %>
               <h2>Distribution info</h2>
               <%= simple_format(species.distribution) %>
       <%end%>
-      <% if species.ecology && !species.ecology.empty? %>
+      <% if species.ecology.present? %>
               <h2>Ecology</h2>
               <%= simple_format(species.ecology) %>
       <%end%>
@@ -196,7 +196,9 @@
 
           <div class="right">
             <div class="map">
-              <img src="/api/maps/static_map?species_id=<%= species.id %>" />
+              <% unless Rails.env.development? || Rails.env.test? %>
+                <img src="/api/maps/static_map?species_id=<%= species.id %>" />
+              <% end %>
             </div>
             <div class="info">
           <% unless species.size.blank? %>
@@ -246,7 +248,9 @@
 
           <div class="right">
             <div class="map">
-              <img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>">
+              <% unless Rails.env.development? || Rails.env.test? %>
+                <img src="/api/maps/static_map?landscape_id=<%= lanscape.id %>">
+              <% end %>
             </div>
             </div>
             <div class="info">
