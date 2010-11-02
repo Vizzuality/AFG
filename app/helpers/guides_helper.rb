@@ -12,5 +12,8 @@ module GuidesHelper
       end
     "#{left} #{connector} #{right}"
   end
-      
+
+  def already_used_as_template?(guide, current_guide)
+    guide && current_guide && guide.id == current_guide.parent_guide_id
+  end
 end

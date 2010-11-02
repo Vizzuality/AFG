@@ -3,26 +3,27 @@ require "steak"
 require 'capybara/rails'
 require "capybara/dsl"
 require 'database_cleaner'
-# require "selenium-webdriver"
 
-DatabaseCleaner.strategy = :truncation
-Capybara.default_driver = :rack_test
-Capybara.default_host = 'www.example.com'
-Capybara.app_host = 'http://www.example.com:9887'
-Capybara.default_wait_time = 5
+DatabaseCleaner.strategy   = :truncation, {:only => %w(
+  admin_passwords entries guides landscapes landscape_pictures occurrences pictures species taxonomies
+)}
+Capybara.default_driver    = :rack_test
+# Capybara.default_host    = 'www.example.com'
+# Capybara.app_host        = 'http://www.example.com:9887'
+Capybara.default_wait_time = 10
 
 # Put your acceptance spec helpers inside /spec/acceptance/support
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
   config.include Capybara
-  
+  config.include ActiveSupport::Testing::Assertions
+
   config.before(:each) do
     Rails.cache.clear
     DatabaseCleaner.clean
-    DatabaseCleaner.start
   end
-  
+
   config.after(:each) do
     case page.driver.class
     when Capybara::Driver::RackTest
@@ -35,7 +36,7 @@ RSpec.configure do |config|
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end
-  
+
 end
 
 # Put your acceptance spec helpers inside /spec/acceptance/support
