@@ -88,7 +88,7 @@ class EntriesController < ApplicationController
      			$('.pop_up').css('right','21px');
           
           $('#pop_up').show();
-          $('#pop_up').delay(3000).fadeOut();
+          $('#pop_up').delay(1000000).fadeOut();
           
 JS
           if @taxonomy

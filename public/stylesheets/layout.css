@@ -65,6 +65,8 @@ div.pop_up p span a {padding:0 0 0 4px; font:bold 12px Helvetica; color:#999999;
 div.pop_up p span a:hover {color:white;}
 div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10px; background:url(../images/common/close_pop_up.png) no-repeat 0 0; margin:7px 0 0 0;}
 
+/*TESTING GROWL*/
+
 
 /*modal window*/
 #simplemodal-overlay {background:#000000; cursor:default;}
