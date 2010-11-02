@@ -98,8 +98,7 @@ feature "Guides of species" do
       click_link "use it as template"
     end
     page.should have_css("div.guide_header div.large h1", :text => penguins_guide.name)
-    pending("'use it as template' link must dissapear after clicking it?")
-    # page.should have_no_css("p.template", :text => 'use it as template')
+    page.should have_no_link("p.template")
   end
 
   context 'With javascript enabled' do

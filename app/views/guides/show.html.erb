@@ -41,7 +41,9 @@
           <p class="title">download this guide</p>
           <p class="size">(<%= @guide.pages_count %> pages, <%= number_to_human_size(@guide.size_in_bytes) %> approx.)</p>
         </a>
-        <p class="template">or <%= link_to('use it as template', create_entry_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours</p>
+        <% unless already_used_as_template?(@guide, @current_guide) %>
+          <p class="template">or <%= link_to('use it as template', create_entry_path(:type => 'Guide', :id => @guide.id), :method => :post) %> for yours</p>
+        <% end %>
       </div>
     </div>
   </div>

@@ -93,16 +93,18 @@ class Guide < ActiveRecord::Base
   end
 
   def add_entry(element_type, element_id)
+    guide_attributes = {:last_action, "#{element_type}##{element_id}"}
     entry = case element_type
       when 'Species', 'Landscape', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus'
         entries.create(:element_type => element_type, :element_id => element_id.to_s)
       when 'Guide'
+        guide_attributes[:parent_guide_id] = element_id
         guide = Guide.find(element_id)
         guide.entries.map do |entry|
           entries.create(:element_type => entry.element_type, :element_id => entry.element_id)
         end.compact
     end
-    update_attribute(:last_action, "#{element_type}##{element_id}")
+    update_attributes(guide_attributes)
     entry
   end
 
