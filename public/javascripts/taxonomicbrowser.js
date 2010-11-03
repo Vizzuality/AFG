@@ -5,6 +5,8 @@ var numBreadCrumbs = 0;
 var columnWidth = 292;
 var clickOnHref = 0;
 var paneOther;
+var loading_state;
+var timer_is_on=0;
 
 (function($){
 	
@@ -54,7 +56,7 @@ var paneOther;
 		
 		// Call for data
 		function getData(taxonID,columnID) {
-
+						
 			if (taxonID == "all") {			
 				$.ajax({
 			        method: 'GET',
@@ -72,6 +74,12 @@ var paneOther;
 				});
 			}
 			else {
+				
+				if ((timer_is_on == 0)&&(initDataLoaded == 2)) {
+					loading_state = setTimeout( "$('div.loading_taxon').fadeIn();", 500 );
+					timer_is_on = 1;
+				}		
+				
 				$.ajax({
 					type: 'GET',
 					url: "/api/taxonomy?id="+taxonID,
@@ -174,9 +182,17 @@ var paneOther;
 						initDataLoaded = 1;
 						elementClicked = $('div.taxon_content').find('div.in ul#column2').find('li').first();
 						clickColumnFunction(null,elementClicked);
+					}else if (initDataLoaded == 1){
+						$('div.loading_taxon').fadeOut('fast');
+						initDataLoaded = 2;
 					}
 				}
 				
+				if (timer_is_on == 1){
+					clearTimeout(loading_state);	
+					timer_is_on = 0;
+					$('div.loading_taxon').fadeOut('fast');
+				}
 		}
 		
 		// Make the action click
