@@ -58,7 +58,8 @@ div#map div.infowindow a.close:hover {background-position:0 -28px;}
 
 
 /* COMMON */
-div.pop_up {position:absolute; z-index:1000000; top:55px; right:21px; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
+
+div.pop_up {position:absolute; z-index:1000000; top:0px; right:0px; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
 div.pop_up p {position:relative; float:left; height:59px; width:auto; margin:0; padding:0 0 0 10px; background:url(../images/common/pop_up_left.png) no-repeat 0 0;}
 div.pop_up p span {float:left; width:auto; font:bold 18px Helvetica; color:white; letter-spacing:-1px; padding:19px 40px 19px 10px; height:21px; background:url(../images/common/pop_up_right.png) no-repeat right 0;}
 div.pop_up p span a {padding:0 0 0 4px; font:bold 12px Helvetica; color:#999999; text-decoration:underline;}
@@ -375,6 +376,7 @@ div.taxonomic_browser div.taxon_content {float:left; width:886px; height:328px; 
 
 
 div.taxonomic_browser div.taxon_content div.in {float:left; width:886px; max-height:328px; position:relative;}
+div.taxonomic_browser div.taxon_content div.in div.loading {position:absolute; z-index:100000; width:886px; height:328px; }
 
 div.taxonomic_browser div.taxon_content ul {float:left; width:302px; height:304px; margin:0; padding:0; overflow-x:hidden; overflow-y:auto; position:relative;}
 

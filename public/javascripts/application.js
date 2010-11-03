@@ -205,7 +205,7 @@ function changeList() {
 
 //Pop up close action
 function closePopUp() {
-	$('#pop_up').fadeOut();
+	$.growlUI().remove();
 }
 
 //Modal publish window
@@ -448,6 +448,6 @@ function goTo(place) {
 	$.scrollTo("#"+place, 500);
 }
 
-function showPopUpAdded(){
-$.growlUI({ message: $('div.pop_up') });
+function showPopUpAdded(text){
+	$.growlUI(text); 
 }
