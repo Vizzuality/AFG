@@ -88,8 +88,8 @@ class MapsController < ApplicationController
         :name => l.name,
         :description => truncate(l.description, :length=> 170),
         :guides_count => l.guides_count,
-        :picture => l.picture? ? l.picture.image.url(:small) : nil,
-        :picture_large => l.picture? ? l.picture.image.url(:large) : nil,
+        :picture => l.picture? ? l.picture.image.url(:small) : '/images/defaults/medium_landscape.jpg',
+        :picture_large => l.picture? ? l.picture.image.url(:large) : '/images/defaults/large_landscape.jpg',
         :lat => l.lat,
         :lon => l.lon
       }
