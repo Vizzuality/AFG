@@ -16,6 +16,7 @@ javascripts:
   - jquery.columnview
   - taxonomicbrowser
   - rails
+  - jquery.blockUI 
   - application
 - landscapes_maps:
   - OpenLayers
@@ -34,8 +35,7 @@ javascripts:
   - LandscapeMarker
   - guide_map
   - Icon
-  - Marker  
-  
+  - Marker    
 stylesheets: 
 - base: 
   - jquery.jscrollpane

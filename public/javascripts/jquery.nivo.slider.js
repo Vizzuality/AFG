@@ -86,6 +86,7 @@
 
 			var array_params = new Array();				
 			var string_params = vars.currentImage.attr('class');
+
 			array_params = string_params.split(' ');
 			
 			var href = vars.currentImage.attr('class');

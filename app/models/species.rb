@@ -271,7 +271,7 @@ class Species < ActiveRecord::Base
     end
 
     def set_complete
-      self.complete = (!self.kingdom.blank? && !self.t_order.blank? && !self.t_class.blank? && !self.genus.blank? && !self.phylum.blank? && !self.family.blank? && !self.species.blank?)
+      self.complete = (self.kingdom.present? && self.t_order.present? && self.t_class.present? && self.genus.present? && self.phylum.present? && self.family.present? && self.species.present?)
       return true
     end
 

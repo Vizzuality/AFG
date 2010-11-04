@@ -205,7 +205,7 @@ function changeList() {
 
 //Pop up close action
 function closePopUp() {
-	$('#pop_up').fadeOut();
+	$.growlUI().remove();
 }
 
 //Modal publish window
@@ -258,9 +258,9 @@ function firstStep(type,argumentImageGuide) {
 		var first_step = '<form id="publish_current_guide" action="/guides/update/current"><div class="dont_want_publish"><label for="no_publish"><input id="no_publish" type="radio" name="publish" value="no" />I don’t want to publish my Field Guide</label></div>'+
 		'<div class="want_publish active"><label for="publish"><input id="publish" type="radio" name="publish" value="yes" checked="checked"/>I want to publish my Antarctic Field Guide</label>'+
 		'<div class="fill"><p class="subtitle">The AFG will have a dedicated page like that, and it will be downloable by other users</p>' +
-		'<span><label>YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
-		'<label>GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
-		'<label>DESCRIPTION</label>'+
+		'<span><label for="author">YOUR NAME</label></span><input type="text" id="author" name="author"/><span>'+
+		'<label for="name">GUIDE TITLE</label></span><input type="text" id="name" name="name"/><span>'+
+		'<label for="description">DESCRIPTION</label>'+
 		'<p class="counter"><span>'+ DESCRIPTION_MAX_LENGTH +'</span> characters left</p>'+
 		'<textarea name="description" id="description"></textarea></div></div>'+
 		'<div class="errors"><span id="alert_name" class="alert"></span><div id="error_invalid_name"><p>The name of the guide can\'t be blank</p></div></div>' +
@@ -444,7 +444,10 @@ function getUrlVars() {
 	return vars;
 }
 
-
 function goTo(place) {
 	$.scrollTo("#"+place, 500);
+}
+
+function showPopUpAdded(text){
+	$.growlUI(text); 
 }

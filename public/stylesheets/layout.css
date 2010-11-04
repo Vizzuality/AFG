@@ -58,12 +58,15 @@ div#map div.infowindow a.close:hover {background-position:0 -28px;}
 
 
 /* COMMON */
-div.pop_up {position:absolute; z-index:1000000; top:55px; right:21px; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
+
+div.pop_up {position:absolute; z-index:1000000; top:0px; right:0px; margin:0 0 0 -191px; width:auto; height:59px; padding:0;}
 div.pop_up p {position:relative; float:left; height:59px; width:auto; margin:0; padding:0 0 0 10px; background:url(../images/common/pop_up_left.png) no-repeat 0 0;}
 div.pop_up p span {float:left; width:auto; font:bold 18px Helvetica; color:white; letter-spacing:-1px; padding:19px 40px 19px 10px; height:21px; background:url(../images/common/pop_up_right.png) no-repeat right 0;}
 div.pop_up p span a {padding:0 0 0 4px; font:bold 12px Helvetica; color:#999999; text-decoration:underline;}
 div.pop_up p span a:hover {color:white;}
 div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10px; background:url(../images/common/close_pop_up.png) no-repeat 0 0; margin:7px 0 0 0;}
+
+/*TESTING GROWL*/
 
 
 /*modal window*/
@@ -356,7 +359,7 @@ div.species_explore p.subtitle a {color:white; text-decoration:none; border-bott
 div.species_explore p.subtitle a:hover {border-bottom:1px dotted white;}
 
 /************** BEGIN -  TAXON_BROWSER *****************/
-div.taxonomic_browser {float:left; overflow:hidden; background:url(../images/species/taxonomy_browser/bkg_taxon_browser.png) no-repeat 0 0; width:886px; height:371px; margin:15px 0 10px 8px;}
+div.taxonomic_browser {float:left; overflow:hidden; background:url(../images/species/taxonomy_browser/bkg_taxon_browser.png) no-repeat 0 0; width:886px; height:371px; margin:15px 0 10px 8px; position:relative;}
 div.taxonomic_browser div.breadcrumbs {float:left; margin:6px 0 0 6px; width:886px; height:30px;}
 div.taxonomic_browser div.breadcrumbs ul {float:left; width:100%; height:30px; position:relative;}
 div.taxonomic_browser div.breadcrumbs ul li {font:normal 13px "Lucida Grande"; color:#FFFFFF; width:auto; position:absolute; top:0; left:0;}
@@ -373,7 +376,9 @@ div.taxonomic_browser div.taxon_content {float:left; width:886px; height:328px; 
 
 
 div.taxonomic_browser div.taxon_content div.in {float:left; width:886px; max-height:328px; position:relative;}
-
+div.taxonomic_browser div.loading_taxon {position:absolute; z-index:100000; width:886px; height:328px; background:url('../images/species/taxonomy_browser/loading_bkg.png') no-repeat 0 0; left:1px; top:41px; display:inline; }
+div.taxonomic_browser div.loading_taxon p {text-align:center; font:normal 13px "Lucida Grande"; color:#666666; margin:100px 0 0 0;}
+div.taxonomic_browser div.loading_taxon img {width:32px; height:32px; float:left; margin:12px 0 0 422px;}
 div.taxonomic_browser div.taxon_content ul {float:left; width:302px; height:304px; margin:0; padding:0; overflow-x:hidden; overflow-y:auto; position:relative;}
 
 

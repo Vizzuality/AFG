@@ -63,32 +63,11 @@ class EntriesController < ApplicationController
           
           page << "$('#your_guide').html('#{escape_javascript(render(:partial => 'guides/your_guide'))}');"
           page << "$('#add_to_guide_#{@entry.element.class.name.downcase}').html('#{escape_javascript(render(:partial => partial))}');"
-          page << "$('#pop_up').html('#{render :inline => '<%= pop_up_flash %>'}')";
+
           if !@entry.is_a?(Array) && @entry.element.respond_to?(:guides_count)
             page << "$('#times_added_#{@entry.element.class.name.downcase}').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
           end
-          page << <<-JS
-
-       		var xScroll, yScroll;
-       		if (self.pageYOffset) {
-       			yScroll = self.pageYOffset;
-       			xScroll = self.pageXOffset;
-       		} else if (document.documentElement && document.documentElement.scrollTop) {	 // Explorer 6 Strict
-       			yScroll = document.documentElement.scrollTop;
-       			xScroll = document.documentElement.scrollLeft;
-       		} else if (document.body) {// all other Explorers
-       			yScroll = document.body.scrollTop;
-       			xScroll = document.body.scrollLeft;	
-       		}
-        	
-          // Calculate top and left offset for the jquery-lightbox div object and show it
-     			$('.pop_up').css('top',yScroll);
-     			$('.pop_up').css('right','21px');
-          
-          $('#pop_up').show();
-          $('#pop_up').delay(3000).fadeOut();
-          
-JS
+          page << "$.growlUI('#{render :inline => '<%= pop_up_flash %>'}')"
           if @taxonomy
             page << <<-JS
             if(document.getElementById("taxonomy_#{@taxonomy.id}")) {
@@ -155,29 +134,9 @@ JS
           if !@entry.is_a?(Array) && @entry.element.respond_to?(:guides_count)
             page << "$('#times_added_#{@entry.element.class.name.downcase}').html('#{render :inline => '<%= pluralize(@entry.element.guides_count, \'time\', \'times\') %> added'}');"
           end
-          page << <<-JS
-          
-          var xScroll, yScroll;
-       		if (self.pageYOffset) {
-       			yScroll = self.pageYOffset;
-       			xScroll = self.pageXOffset;
-       		} else if (document.documentElement && document.documentElement.scrollTop) {	 // Explorer 6 Strict
-       			yScroll = document.documentElement.scrollTop;
-       			xScroll = document.documentElement.scrollLeft;
-       		} else if (document.body) {// all other Explorers
-       			yScroll = document.body.scrollTop;
-       			xScroll = document.body.scrollLeft;	
-       		}
-               	
-          // Calculate top and left offset for the jquery-lightbox div object and show it          
-     			$('.pop_up').css('top',yScroll);
-     			$('.pop_up').css('right','21px');
 
-          $('#pop_up').show();
-          $('#pop_up').delay(3000).fadeOut();
-          
-JS
-
+          page << "$.growlUI('#{render :inline => '<%= pop_up_flash %>'}')"
+  
           if @taxonomy
             page << <<-JS
             if(document.getElementById("taxonomy_#{@taxonomy.id}")) {
