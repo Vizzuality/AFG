@@ -68,13 +68,14 @@ var map, popup;
     var size       = new OpenLayers.Size(5,5);
     var offset     = new OpenLayers.Pixel(-(size.w/2), -(size.h/2));
     var occurrence = new OpenLayers.Icon('../images/map/occurrence.png',size,offset);
-    var data_occurrence, openlayers_marker = OpenLayers.Marker, openlayers_lonlat = OpenLayers.LonLat;
+    var data_occurrence, cloned_occurrence, openlayers_marker = OpenLayers.Marker, openlayers_lonlat = OpenLayers.LonLat;
 
     asyncLoop(data.occurrences, function(data_occurrence){
+      cloned_occurrence = occurrence.clone();
+      $(cloned_occurrence.imageDiv).css('zIndex', -1);
       markers.addMarker(
         new openlayers_marker(
-          new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat),
-          occurrence.clone())
+          new openlayers_lonlat( data_occurrence.lon, data_occurrence.lat), cloned_occurrence)
       );
     }, function(){
       $('div.map img.loading').fadeOut('fast');
