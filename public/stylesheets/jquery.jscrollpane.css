@@ -23,6 +23,7 @@
 	right: 17px;
 	width: 16px;
 	height: 98%;
+	z-index:1000;
 }
 
 .jspVerticalBar .jspDrag {

@@ -109,6 +109,7 @@
 			slider.append(
 				$('<div class="nivo-caption"><a class="specie"></a><p class="common_name"></p><p class="downloads"><span></span></p></div>').css({ display:'none', opacity:settings.captionOpacity })
 			);			
+			
 			//Process initial  caption
 			if(vars.currentImage.attr('title') != ''){
 				$('.nivo-caption a.specie', slider).html(vars.currentImage.attr('title'));
@@ -118,7 +119,18 @@
 				$('.nivo-caption p.downloads span', slider).html(array_params[0] + ' DOWNLOADS'); // array_params[0] is count
 				$('.nivo-caption a.specie', slider).attr('href',array_params[1]);
 				$('.nivo-caption', slider).fadeIn(settings.animSpeed);
+				
+				if (vars.currentImage.attr('title').length <= 17){
+					$('.nivo-caption').addClass('single');
+				}else if ($('div.nivo-caption').hasClass('single')) {
+					$('.nivo-caption').removeClass('single');
+				}
+				
+				if (vars.currentImage.attr('alt') == ''){
+					$('.nivo-caption').addClass('no_common_name');
+				}
 			}
+			
 			
 			//In the words of Super Mario "let's a go!"
 			var timer = 0;
@@ -301,15 +313,19 @@
 							$('.nivo-caption a.specie').attr('href',array_params[1]);
 							$('.nivo-caption a.specie').fadeIn(settings.animSpeed);
 							
+							if (vars.currentImage.attr('title').length <= 17){
+								$('.nivo-caption').addClass('single');
+							}else if ($('div.nivo-caption').hasClass('single')) {
+								$('.nivo-caption').removeClass('single');
+							}
+							
+							if (vars.currentImage.attr('alt') == ''){
+								$('.nivo-caption').addClass('no_common_name');
+							} else if ($('.nivo-caption').hasClass('no_common_name')){
+								$('.nivo-caption').removeClass('no_common_name');
+							}
+							
 					});
-					// $('.nivo-caption p', slider).fadeOut(settings.animSpeed, function(){
-					// 	$(this).html(vars.currentImage.attr('title'));
-					// 	$(this).fadeIn(settings.animSpeed);
-					// });
-					// $('.nivo-caption h2', slider).fadeOut(settings.animSpeed, function(){
-					// 	$(this).html(vars.currentImage.attr('alt'));
-					// 	$(this).fadeIn(settings.animSpeed);
-					// });
 				} else {
 					$('.nivo-caption p', slider).html(vars.currentImage.attr('title'));
 					$('.nivo-caption h2', slider).html(vars.currentImage.attr('alt'));

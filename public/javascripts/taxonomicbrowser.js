@@ -198,7 +198,7 @@ var timer_is_on=0;
 		// Make the action click
 		function clickColumnFunction(event,element) {
 	
-			if ((!element.hasClass('specie'))&&(clickOnHref != 1)){
+			if ((!element.hasClass('specie'))&&(clickOnHref != 1)&&(clickOnHref != 2)){
 				
 				var selectedColumn = getColumnID(element.parent().parent().parent().attr('id'));
 					

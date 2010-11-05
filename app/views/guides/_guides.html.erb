@@ -5,7 +5,6 @@
     <span class="vertical_line"></span>
     <%= link_to('Most recent', params.merge(:page => 1, :sort_by => 'date'), :class => 'ajax ' + (params[:sort_by] == 'date' ? '' : 'activated')) %>
   </p> 
-          
   <%= render 'guides/filter_by_date' %>
 </div> <!-- Sorted_box -->
 
