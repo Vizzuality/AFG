@@ -16,4 +16,9 @@ module GuidesHelper
   def already_used_as_template?(guide, current_guide)
     guide && current_guide && guide.id == current_guide.parent_guide_id
   end
+
+  def guides_count
+    selected_date_filter = date_filters[@current_date_filter] ? date_filters[@current_date_filter].downcase : ''
+    "#{pluralize(@total_guides, 'AFG', 'AFGs')} published #{selected_date_filter}"
+  end
 end

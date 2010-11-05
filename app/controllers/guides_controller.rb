@@ -25,8 +25,8 @@ class GuidesController < ApplicationController
       when 'year'
         guides.where(["created_at > ?", 1.year.ago])
     end
-
-    @guides = guides.paginate(:per_page => 9, :page => params[:page])
+    @total_guides = guides.count
+    @guides       = guides.paginate(:per_page => 9, :page => params[:page])
 
     respond_to do |format|
       format.html

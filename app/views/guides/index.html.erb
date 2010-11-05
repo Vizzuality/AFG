@@ -1,26 +1,26 @@
-<div class="outer_layout"> 
-  <div class="guides_header"> 
+<div class="outer_layout">
+  <div class="guides_header">
     <%= image_tag('common/arrow_menu.png', :class=> 'arrow') %>
-    <p class="title">Featured Antarctic Field Guides</p> 
-    <p class="by">we have prepared a few representative field guides for you to download or use as a template</p> 
+    <p class="title">Featured Antarctic Field Guides</p>
+    <p class="by">we have prepared a few representative field guides for you to download or use as a template</p>
     <ul>
       <% Guide.highlighted.limit(4).each_with_index do |guide,index| %>
         <li class="<%= index==3 ? 'last' : ''  %> highlighted"><%= render guide %></li>
       <% end %>
-    </ul> 
+    </ul>
   </div>
 </div>
 
 <div class="main guides">
-  <div class="left"> 
-    <div id="guides_left" class="create"> 
-      <h3>Published Antarctic Field Guides</h3> 
-      <p class="subtitle"><%= pluralize(Guide.published.not_highlighted.count, 'AFG', 'AFGs') %> published</p> 
+  <div class="left">
+    <div id="guides_left" class="create">
+      <h3>Published Antarctic Field Guides</h3>
+      <p class="subtitle"><%= guides_count %></p>
       <div id="guides">
         <%= render 'guides' %>
       </div>
-    </div>    
-  </div> 
+    </div>
+  </div>
 
   <div class="right"> 
     <div class="about_afg"> 
@@ -40,10 +40,10 @@
     
       <p class="now">And now...</p>
       <a href="<%= species_index_path %>" class="start" title="Start exploring species!"></a>
-    </div> 
+    </div>
   </div>
 </div>
 
-<div id="your_guide">  
+<div id="your_guide">
 <%= render 'guides/your_guide' %>
 </div>
