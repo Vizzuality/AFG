@@ -5,7 +5,7 @@ namespace :afg do
     task :reprocess => :environment do
       # rake paperclip:refresh doens't work with Rails 3.
       # There's a pendent pull request that will solve this issue http://github.com/thoughtbot/paperclip/pull/306
-      # Until then, instead of forking the original paperclip repository, 
+      # Until then, instead of forking the original paperclip repository,
       # this rake task will help us to reprocess the pictures' attachments.
       errors = []
 
@@ -15,7 +15,6 @@ namespace :afg do
       nothing_to_do = true
 
       Picture.find_each do |picture|
-        break if picture.species.nil? || picture.image.all_image_urls_exists?
         nothing_to_do = false
         begin
           species_name = picture.species.common_name.present? ? picture.species.common_name : picture.species.name
@@ -66,6 +65,6 @@ namespace :afg do
     end
 
   end
-  
+
 
 end
