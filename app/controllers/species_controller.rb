@@ -81,30 +81,27 @@ class SpeciesController < ApplicationController
   def get_taxon
     callback = params.delete('callback') # jsonp
 
+    ids = []
     response = open("http://data.scarmarbin.be/taxon/#{params[:query]}?format=xml").read
     doc = Nokogiri::XML(response)
+    doc.xpath("//parents/taxon").each do |t|
+      ids << t['aphiaId']
+    end
+
     data = {}
-    if doc.xpath("//taxon").size > 0 && doc.xpath("response")[0].attr('status') == 'ok'
-      if doc.xpath("//parents").size > 0
-        doc.xpath("//parents/taxon").each_with_index do |taxon, i|
-          if i == 0
-            data['kingdom'] = taxon.xpath("name").text
-          elsif i == 1
-            data['phylum'] = taxon.xpath("name").text
-          elsif i == 2
-            data['class'] = taxon.xpath("name").text
-          elsif i == 3
-            data['order'] = taxon.xpath("name").text
-          elsif i == 4
-            data['family'] = taxon.xpath("name").text
-          elsif i == 5
-            data['genus'] = taxon.xpath("name").text
-          elsif i == 6
-            data['species'] = taxon.xpath("name").text
-          end
-        end
+    data['species'] = doc.xpath("//name").first.text
+    ids.each do |taxon_id|
+      begin
+        response = open("http://data.scarmarbin.be/taxon/#{taxon_id}?format=xml").read
+        doc = Nokogiri::XML(response)
+        node = doc.xpath("//taxon[@aphiaId=#{taxon_id}]").first
+        type = node.xpath("rank").text.downcase.to_sym
+        data[type] = node.xpath("name").text
+      rescue
+        puts $!
       end
     end
+
     json = data.to_json
 
     puts json
