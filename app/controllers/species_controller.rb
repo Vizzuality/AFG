@@ -91,6 +91,11 @@ class SpeciesController < ApplicationController
     data = {}
     data['species'] = doc.xpath("//name").first.text
     ids.each do |taxon_id|
+      # Animalia is not served by the taxon service
+      if taxon_id.to_i == 2
+        data[:kingdom] = 'Animalia'
+        next
+      end
       begin
         response = open("http://data.scarmarbin.be/taxon/#{taxon_id}?format=xml").read
         doc = Nokogiri::XML(response)
