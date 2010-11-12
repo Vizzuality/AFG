@@ -352,12 +352,12 @@ div.long div.bottom div.left_side a.left {float:left; background:url(../images/c
 div.long div.bottom div.left_side a.right {float:left; background:url(../images/common/right_content_dashboard_enabled.png) no-repeat 0 0; width:30px; height:30px;}
 div.long div.bottom div.left_side a:hover {background-position:0 -30px;}
 
-div.long div.bottom div.right_side {float:right;}
+div.long div.bottom div.right_side {float:right; width:600px;}
 div.long div.bottom div.right_side p {float:right; width:auto; font:normal 14px Arial; color:#999999; margin:23px 0 0 0; line-height:20px;}
 div.long div.bottom div.right_side p a.preview {float:left; width:auto; margin:0 15px 0 0; padding:0 0 2px 0; font:normal 15px "Lucida Grande"; color:white; text-decoration:none; border-bottom:1px dotted #FFFFFF; display:inline-block; vertical-align:top; background:none;}
 div.long div.bottom div.right_side p a.preview:hover {border-bottom:1px solid #FFFFFF;}
 div.long div.bottom div.right_side p a.preview.disabled {color:#666666; border-bottom:none;}
-div.long div.bottom div.right_side p a.preview.disabled:hover {border-bottom:1px dotted #FFFFFF;}
+div.long div.bottom div.right_side p a.preview.disabled:hover {border-bottom:1px dotted #FFFFFF; cursor:pointer;}
 
 div.long div.bottom div.right_side a.publish {float:right; background:url(../images/common/bttn_publish_download.png) no-repeat 0 0; width:182px; height:33px; margin:18px 19px 16px 15px;}
 div.long div.bottom div.right_side a.publish:hover {background-position:0 -33px;}
