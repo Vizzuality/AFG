@@ -1115,17 +1115,21 @@ div.main.noie div.content a:hover {background-position:0 -37px; }
 /*FOOTER*/
 
 div.footer {margin:0 auto; width:936px;}
-div.footer div.in {float:left; width:896px; padding:24px 20px 20px 20px; background:white;}
+div.footer div.in {float:left; width:896px; padding:40px 20px 40px 20px; background:white;}
+div.footer div.in div.left {float:left; width:300px; margin:0 0 0 6px;}
+div.footer div.in div.right {float:right; width:500px; margin:4px 0 0 0;}
 div.footer div.in div.logo {float:left; width:894px;}
 div.footer div.in div.logo a.logo {float:left; width:123px; height:26px; background:url(../images/common/logo_footer.png) no-repeat 0 0;}
-div.footer div.in div.logo span.menu {float:right; width:auto;}
-div.footer div.in div.logo span.menu ul {float:right; margin:0; padding:0;}
-div.footer div.in div.logo span.menu ul li {float:left; width:auto; padding:0 10px;}
-div.footer div.in div.logo span.menu ul li.last {padding:0 0 0 10px;}
-div.footer div.in div.logo span.menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999; text-align:right;}
-div.footer div.in div.logo span.menu ul li a.current {color:#0099CC;}
-div.footer div.in div.logo span.menu ul li a:hover {color:#0099CC;}
-div.footer div.in p {float:left; padding:40px 0 0 0; font:normal 12px Arial; color:#999999;}
+div.footer div.in a.scarmarbin {float:left; width:36px; height:48px; background:url(../images/common/scarmarbin_logo.png) no-repeat 0 0; margin:0 13px 0 0;}
+div.footer div.in a.biodiversity {float:left; width:65px; height:48px; background:url(../images/common/biodiversitiy_logo.png) no-repeat 0 0;}
+div.footer div.in span.menu {float:right; width:auto;}
+div.footer div.in span.menu ul {float:right; margin:0; padding:0;}
+div.footer div.in span.menu ul li {float:left; width:auto; padding:0 10px;}
+div.footer div.in span.menu ul li.last {padding:0 0 0 10px;}
+div.footer div.in span.menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999; text-align:right;}
+div.footer div.in span.menu ul li a.current {color:#0099CC;}
+div.footer div.in span.menu ul li a:hover {color:#0099CC;}
+div.footer div.in p {float:right; padding:7px 0 0; font:normal 12px Arial; color:#999999;}
 div.footer div.in p a {font-weight:bold; text-decoration:none; color:#999999;}
 div.footer div.in p a:hover {color:#666666;}
 div.footer div.in p.source_image {float:right; font:bold 12px Arial; color:#999999;}
