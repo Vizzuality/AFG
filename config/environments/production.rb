@@ -45,4 +45,4 @@ AFG::Application.configure do
   config.i18n.fallbacks = true
 end
 
-DOMAIN = 'http://afg.vizzuality.com'
+DOMAIN = 'http://afg.biodiversity.aq'
