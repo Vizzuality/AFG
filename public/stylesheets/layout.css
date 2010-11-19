@@ -867,8 +867,9 @@ div.left div.initiative p.partners {color:white;}
 div.left div.initiative ul.partners_list {float:left; width:100%; margin:0px 0 0 0; padding:0 0 15px 0;}
 div.left div.initiative ul.partners_list li {float:left; width:auto; height:43px; margin:0 3px 0 0;}
 div.left div.initiative ul.partners_list li a.bas {float:left; background:url('../images/about/bas_logo.jpg') no-repeat 0 0; width:108px; height:61px; margin:3px 0 0 0;}
+div.left div.initiative ul.partners_list li a.mna {float:left; background:url('../images/about/mna_logo.png') no-repeat 0 0; width:63px; height:52px; margin:10px 8px 0 10px;}
 div.left div.initiative ul.partners_list li a.caml {float:left; background:url('../images/about/caml_logo.jpg') no-repeat 0 0; width:105px; height:64px; margin:0}
-div.left div.initiative ul.partners_list li a.total {float:left; background:url('../images/about/total_logo.jpg') no-repeat 0 0; width:94px; height:41px; margin:15px 0 0 0;}
+div.left div.initiative ul.partners_list li a.total {float:left; background:url('../images/about/total_logo.jpg') no-repeat 0 0; width:94px; height:41px; margin:13px 0 0 0;}
 
 
 div.right div.contact {float:right; padding:21px; width:269px; height:auto; position:relative;}
