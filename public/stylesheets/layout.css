@@ -578,6 +578,7 @@ div.main.family ul li:hover div.info a.add {display:inline;}
 div.main.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
 div.main.family ul li div.info h4 {float:left; width:200px;}
 div.main.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.main.family ul li:hover div.info h4 a{border-bottom:1px solid #F4F4F4;}
 div.main.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
 div.main.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
 
