@@ -52,7 +52,7 @@ class Guide < ActiveRecord::Base
   end
 
   def size_in_bytes
-    pages_count.to_f * 10000.to_f
+    pages_count.to_f * 10000.to_f * 5.0
   end
 
   def self.per_page; 9 end
