@@ -174,8 +174,10 @@ class Guide < ActiveRecord::Base
     else
       "#{self.id}-guide.pdf"
     end
-    if checklist
-      checklist = "?checklist=true"
+    checklist = if checklist
+      "?checklist=true"
+    else
+      nil
     end
     if !File.file?("#{dir}/#{filename}") || !self.published?
       url = URI.parse(request_fullpath)
