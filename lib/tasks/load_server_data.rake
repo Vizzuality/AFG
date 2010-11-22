@@ -1,10 +1,10 @@
 namespace :afg do
-  
+
   desc 'Load data from staging server'
   task :load_staging_data => :environment do
     current_database = ActiveRecord::Base.connection.current_database
     staging_server   = 'afg.vizzuality.com'
-    
+
     system "rm #{RAILS_ROOT}/tmp/afg_staging.sql"
     system "rm #{RAILS_ROOT}/tmp/afg_images_staging.tar.gz"
     system "curl -0 http://#{staging_server}/afg_production.sql.gz > #{RAILS_ROOT}/tmp/afg_staging.sql.gz"
@@ -17,7 +17,7 @@ namespace :afg do
     system "tar xvzf #{RAILS_ROOT}/tmp/afg_images_staging.tar.gz -C #{RAILS_ROOT}/public/system/images/"
     system "rm #{RAILS_ROOT}/tmp/afg_images_staging.tar.gz"
   end
-  
+
   desc 'Load data from production server'
   task :load_production_data => :environment do
     current_database  = ActiveRecord::Base.connection.current_database

@@ -1,5 +1,5 @@
 namespace :afg do
-  
+
   desc 'Add authority names to taxon without it'
   task :add_authority => :environment do
     Species.complete.each do |species|
@@ -16,5 +16,5 @@ namespace :afg do
       end
     end
   end
-  
+
 end

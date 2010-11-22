@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.0.0'
 # PostgreSQL
 gem "pg", "0.9.0"
 gem 'nofxx-georuby', :require => 'geo_ruby'
