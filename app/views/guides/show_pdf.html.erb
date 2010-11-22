@@ -65,7 +65,7 @@
           <li>Species <strong>/ 4</strong>
             <ul>
               <% @guide.species.each do |species| %>
-              <li><%= species.full_name %> <%= @species.name_author %> - <%= species_page %></li>
+              <li><%= species.full_name %> <%= species.name_author %> - <%= species_page %></li>
               <% species_page += 1 %>
               <% end %>
             </ul>
