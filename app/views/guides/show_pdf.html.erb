@@ -118,7 +118,7 @@
           <% next if species.nil? %>
           <div class="check_specie">
             <p class="common_name"><%= species.common_name %></p>
-            <h3><%= species.full_name %> <%= @species.name_author %></h3>
+            <h3><%= species.full_name %> <%= species.name_author %></h3>
           </div>
         <% end %>
         <%= render :partial => 'footer' %>
