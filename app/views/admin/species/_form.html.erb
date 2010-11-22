@@ -99,36 +99,36 @@
     <% end -%>
     <div id="taxonomy" <%= raw 'style="display:none"' if @species.new_record? %>>
       <div class="field">
-        <%= f.label :kingdom %><br />
-        <%= f.text_field :kingdom, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :kingdom %><br /> -->
+        <%= f.hidden_field :kingdom, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :phylum %><br />
-        <%= f.text_field :phylum, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :phylum %><br /> -->
+        <%= f.hidden_field :phylum, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :t_class, 'Class' %><br />
-        <%= f.text_field :t_class, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :t_class, 'Class' %><br /> -->
+        <%= f.hidden_field :t_class, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :t_order, 'Order' %><br />
-        <%= f.text_field :t_order, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :t_order, 'Order' %><br /> -->
+        <%= f.hidden_field :t_order, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :family %><br />
-        <%= f.text_field :family, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :family %><br /> -->
+        <%= f.hidden_field :family, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :genus %><br />
-        <%= f.text_field :genus, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :genus %><br /> -->
+        <%= f.hidden_field :genus, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :species %><br />
-        <%= f.text_field :species, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :species %><br /> -->
+        <%= f.hidden_field :species, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :name_author %><br />
-        <%= f.text_field :name_author, :size => 50, :disabled=>true %>
+        <!-- <%= f.label :name_author %><br /> -->
+        <%= f.hidden_field :name_author, :size => 50 %>
       </div>      
     </div>
 
