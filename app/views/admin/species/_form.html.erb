@@ -100,32 +100,36 @@
     <div id="taxonomy" <%= raw 'style="display:none"' if @species.new_record? %>>
       <div class="field">
         <%= f.label :kingdom %><br />
-        <%= f.text_field :kingdom, :size => 50 %>
+        <%= f.text_field :kingdom, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :phylum %><br />
-        <%= f.text_field :phylum, :size => 50 %>
+        <%= f.text_field :phylum, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :t_class, 'Class' %><br />
-        <%= f.text_field :t_class, :size => 50 %>
+        <%= f.text_field :t_class, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :t_order, 'Order' %><br />
-        <%= f.text_field :t_order, :size => 50 %>
+        <%= f.text_field :t_order, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :family %><br />
-        <%= f.text_field :family, :size => 50 %>
+        <%= f.text_field :family, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :genus %><br />
-        <%= f.text_field :genus, :size => 50 %>
+        <%= f.text_field :genus, :size => 50, :disabled=>true %>
       </div>
       <div class="field">
         <%= f.label :species %><br />
-        <%= f.text_field :species, :size => 50 %>
+        <%= f.text_field :species, :size => 50, :disabled=>true %>
       </div>
+      <div class="field">
+        <%= f.label :name_author %><br />
+        <%= f.text_field :name_author, :size => 50, :disabled=>true %>
+      </div>      
     </div>
 
     <div class="actions">
@@ -180,6 +184,7 @@ $(document).ready(function() {
             $('#species_family').val(data['family']);
             $('#species_genus').val(data['genus']);
             $('#species_species').val(data['species']);
+            $('#species_name_author').val(data['name_author']);
             $('#loading-taxonomy').hide();
             $('#taxonomy').show();
           }

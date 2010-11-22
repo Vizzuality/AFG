@@ -90,6 +90,7 @@ class SpeciesController < ApplicationController
 
     data = {}
     data['species'] = doc.xpath("//name").first.text
+    data['name_author'] = doc.xpath("//authority").first.text
     ids.each do |taxon_id|
       # Animalia is not served by the taxon service
       if taxon_id.to_i == 2

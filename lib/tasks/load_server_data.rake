@@ -30,7 +30,7 @@ namespace :afg do
     system "gunzip #{RAILS_ROOT}/tmp/afg_production.sql.gz"
     system "/usr/local/pgsql/bin/dropdb -hlocalhost -Upostgres #{current_database}"
     system "/usr/local/pgsql/bin/createdb -hlocalhost -Upostgres #{current_database}"
-    system "/usr/local/pgsql/bin/psql -hlocalhost -Upostgres -dafg_development -f #{RAILS_ROOT}/tmp/afg_production.sql"
+    system "/usr/local/pgsql/bin/psql -hlocalhost -Upostgres -d#{current_database} -f #{RAILS_ROOT}/tmp/afg_production.sql"
     system "rm #{RAILS_ROOT}/tmp/afg_production.sql"
     system "tar xvzf #{RAILS_ROOT}/tmp/afg_images_production.tar.gz -C #{RAILS_ROOT}/public/system/images/"
     system "rm #{RAILS_ROOT}/tmp/afg_images_production.tar.gz"

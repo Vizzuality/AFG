@@ -17,7 +17,7 @@
       <li class="last"><%= link_to(@species.genus, species_taxonomy_path(:kingdom => @species.kingdom, :phylum => @species.phylum, :t_class => @species.t_class, :t_order => @species.t_order, :family => @species.family, :genus => @species.genus)) %></li>
     </ul>
     <div class="left">
-      <h1><%= @species.full_name %></h1>
+      <h1><%= @species.full_name %> <%= @species.name_author %></h1>
 
     <% if !@species.source_name.blank? || !@species.source_link.blank? %>
         <p class="subtitle">
