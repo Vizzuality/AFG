@@ -52,7 +52,7 @@ class Guide < ActiveRecord::Base
   end
 
   def size_in_bytes
-    pages_count.to_f * 10000.to_f
+    pages_count.to_f * 10000.to_f * 5.0
   end
 
   def self.per_page; 9 end
@@ -174,8 +174,10 @@ class Guide < ActiveRecord::Base
     else
       "#{self.id}-guide.pdf"
     end
-    if checklist
-      checklist = "?checklist=true"
+    checklist = if checklist
+      "?checklist=true"
+    else
+      nil
     end
     if !File.file?("#{dir}/#{filename}") || !self.published?
       url = URI.parse(request_fullpath)

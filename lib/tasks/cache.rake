@@ -19,5 +19,12 @@ namespace :afg do
     desc 'Create all maps cache'
     task :all_maps => [:environment, :landscapes_maps, :species_maps]
 
+    desc 'Download PDF files and store them in disk'
+    task :pdfs => :environment do
+      Guide.published.each do |guide|
+        next if guide.pdf_file?
+        guide.generate_pdf!("#{DOMAIN}/", false)
+      end
+    end
   end
 end
