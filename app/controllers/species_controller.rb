@@ -2,7 +2,7 @@ class SpeciesController < ApplicationController
 
   before_filter :validate_id_param, :only => [:show]
 
-  DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page']
+  DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page', 'amp']
   AVAILABLE_PARAMS = ['kingdom', 'phylum', 't_class', 't_order', 'family', 'genus']
 
   def index
@@ -16,7 +16,7 @@ class SpeciesController < ApplicationController
       render :action => 'index'
     else
       species = if (params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).size > 0
-        raise "Invalid parameter(s): #{(params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).join(',')}"
+        render_404 and return
       elsif (params.keys & AVAILABLE_PARAMS).size == 0
         render_404 and return
       elsif (params.keys & AVAILABLE_PARAMS).size == 1 && params[:kingdom]
