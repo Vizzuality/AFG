@@ -18,7 +18,7 @@ class SpeciesController < ApplicationController
       species = if (params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).size > 0
         raise "Invalid parameter(s): #{(params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).join(',')}"
       elsif (params.keys & AVAILABLE_PARAMS).size == 0
-        raise "Empty parameters"
+        render_404 and return
       elsif (params.keys & AVAILABLE_PARAMS).size == 1 && params[:kingdom]
         @breadcrumb = [:kingdom]
         @taxonomy = Taxonomy.find_by_hierarchy_and_name('kingdom', params[:kingdom])
