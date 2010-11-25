@@ -22,10 +22,13 @@ class Picture < ActiveRecord::Base
 
   belongs_to :species
 
+  validates_presence_of :image_file_name
+
   has_attached_file :image, :styles => { :small => "48x48#", :sidebar => "76x76#", :medium => "168x110#", :large => "247x158#", :huge => "896x381#", :gallery => "896x896>"},
                     :url => "/system/:attachment/:id/:style/:image_file_name"
 
   def before_save
+    return if image_file_name.blank?
     extension = File.extname(image_file_name)
     self.image_file_name = "#{image_file_name.sanitize}#{extension}"
   end
