@@ -51,24 +51,32 @@
 
   <div class="outer_layout">
     <div class="header">
-    <div id="pop_up"><%= pop_up_flash %></div>
-      <div class="logo">
-        <a href="/"></a>
+      <div id="pop_up"><%= pop_up_flash %></div>
+      <div class="left_header">
+        <div class="logo">
+          <a href="/"></a>
+        </div>
+        <div class="header_menu">
+          <ul>
+            <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
+            <li><%= link_to('SPECIES', species_index_path, :class => (controller_name == 'species' ? 'current' : nil)) %></li>
+            <li><%= link_to('PLACES', landscapes_path, :class => (controller_name == 'landscapes' ? 'current' : nil)) %></li>
+            <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
+            <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="right_header">
         <span class="search">
+          <span class="logos">
+            <a href="http://www.biodiversity.aq" target="_blank" class="biodiversity"></a>
+            <a href="http://www.scarmarbin.be/" target="_blank" class="scarmarbin"></a>
+          </span>
           <form method="get" action="<%= search_path %>">
             <input id="search_term" type="text" name="q" />
             <input type="submit" value="" />
           </form>
         </span>
-      </div>
-      <div class="header_menu">
-        <ul>
-          <li class="first"><%= link_to('HOME', '/', :class => (current_page?('/') ? 'current' : nil)) %></li>
-          <li><%= link_to('SPECIES', species_index_path, :class => (controller_name == 'species' ? 'current' : nil)) %></li>
-          <li><%= link_to('PLACES', landscapes_path, :class => (controller_name == 'landscapes' ? 'current' : nil)) %></li>
-          <li><%= link_to('GUIDES', guides_path, :class => (controller_name == 'guides' ? 'current' : nil)) %></li>
-          <li><%= link_to('ABOUT', about_path, :class => (current_page?(about_path) ? 'current' : nil)) %></li>
-        </ul>
       </div>
     </div>
   </div>
@@ -81,8 +89,10 @@
 
       <div class="in">
 		<div class="left">
-	          <a href="http://www.scarmarbin.be/" target="_blank" class="scarmarbin"></a>
-	          <a href="http://www.biodiversity.aq" target="_blank" class="biodiversity"></a>
+		  <div class="logo">
+	          <a class="logo" href="/"></a>
+	        </div>
+	                <p>Project implemented by <a href="http://www.biodiversity.be/" target="_blank">Belgian Biodiversity platform</a> - <a href="http://www.biodiversity.aq/BIODIVERSITY.AQ/contact.html" target="_blank">Contact</a></p>	
 		</div>
 		<div class="right">
           <span class="menu">
@@ -94,8 +104,6 @@
               <li class="last"><%= link_to('About', about_path) %></li>
       		</ul>
           </span>	
-        
-        <p>Project implemented by <a href="http://www.biodiversity.be/" target="_blank">Belgian Biodiversity platform</a> - <a href="http://www.biodiversity.aq/BIODIVERSITY.AQ/contact.html" target="_blank">Contact</a></p>	
 		</div>
       </div>
     </div>
