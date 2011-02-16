@@ -9,11 +9,11 @@
     </div>
     <% end -%>
     <span class="main_bkg"></span>
-    <h2>Build and share your custom <a href="<%= guides_path %>">Antarctic Field Guide</a>,<br>by assembling resources for <%= link_to('species', species_index_path) %> and <%= link_to('places', landscapes_path) %></h2>
+    <h2>Identify Antarctic <%= link_to('biodiversity', species_index_path) %> using the interactive <br><%= link_to('Antartic', landscapes_path) %> Field Guide <a href="<%= guides_path %>">Guide</a></h2>
   </div><!-- .images_gallery -->
   <div class="left">
     <div class="information">
-      <h3>Species found in the Antarctic</h3>
+      <h3>Diversity of Antarctic Species</h3>
       <p class="subtitle">you can find <%= link_to("#{Species.complete.count} species", species_index_path) %></p>
       <div class="species_list">
         <ul class="published_afg">
@@ -65,8 +65,8 @@
     </div>
     <div class="blue">
       <%= image_tag('home/white_arrow.png', :class=> 'arrow') %>
-      <h4>Create your guide</h4>
-      <p class="subtitle">create your AFG when you want, it's free!</p>
+      <h4>How to use AFG</h4>
+      <p class="subtitle">Learn more <a href="/about">about</a> the project</p>
       <ul>
         <li>
           <div class="image">
@@ -82,7 +82,7 @@
             <img src="images/home/add.png" alt="Add" />
           </div>
           <div class="data">
-            <h5>Add to your guide</h5>
+            <h5>Create your guide</h5>
             <p>You can add anything dragging or clicking the add button</p>
           </div>
         </li>

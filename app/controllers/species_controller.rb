@@ -2,7 +2,7 @@ class SpeciesController < ApplicationController
 
   before_filter :validate_id_param, :only => [:show]
 
-  DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page']
+  DEFAULT_PARAMS = ['action', 'controller', 'taxonomy', 'page', 'amp']
   AVAILABLE_PARAMS = ['kingdom', 'phylum', 't_class', 't_order', 'family', 'genus']
 
   def index
@@ -16,9 +16,9 @@ class SpeciesController < ApplicationController
       render :action => 'index'
     else
       species = if (params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).size > 0
-        raise "Invalid parameter(s): #{(params.keys - DEFAULT_PARAMS - AVAILABLE_PARAMS).join(',')}"
+        render_404 and return
       elsif (params.keys & AVAILABLE_PARAMS).size == 0
-        raise "Empty parameters"
+        render_404 and return
       elsif (params.keys & AVAILABLE_PARAMS).size == 1 && params[:kingdom]
         @breadcrumb = [:kingdom]
         @taxonomy = Taxonomy.find_by_hierarchy_and_name('kingdom', params[:kingdom])
@@ -44,8 +44,9 @@ class SpeciesController < ApplicationController
         @taxonomy = Taxonomy.find_by_hierarchy_and_name('genus', params[:genus])
         Species.complete.where(:kingdom => params[:kingdom], :phylum => params[:phylum], :t_class => params[:t_class], :t_order => params[:t_order], :family => params[:family], :genus => params[:genus])
       end
+      raise ActiveRecord::RecordNotFound if species.nil?
       @speciesInTaxonomy = species.order("species DESC").paginate :page => params[:page], :per_page => 12
-      raise "Invalid values" if @speciesInTaxonomy.total_entries == 0
+      raise ActiveRecord::RecordNotFound if @speciesInTaxonomy.total_entries == 0
       render :action => 'taxonomy'
     end
   end
@@ -90,6 +91,7 @@ class SpeciesController < ApplicationController
 
     data = {}
     data['species'] = doc.xpath("//name").first.text
+    data['name_author'] = doc.xpath("//authority").first.text
     ids.each do |taxon_id|
       # Animalia is not served by the taxon service
       if taxon_id.to_i == 2

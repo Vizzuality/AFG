@@ -65,7 +65,7 @@
           <li>Species <strong>/ 4</strong>
             <ul>
               <% @guide.species.each do |species| %>
-              <li><%= species.full_name %> - <%= species_page %></li>
+              <li><%= species.full_name %> <%= species.name_author %> - <%= species_page %></li>
               <% species_page += 1 %>
               <% end %>
             </ul>
@@ -118,7 +118,7 @@
           <% next if species.nil? %>
           <div class="check_specie">
             <p class="common_name"><%= species.common_name %></p>
-            <h3><%= species.full_name %></h3>
+            <h3><%= species.full_name %> <%= species.name_author %></h3>
           </div>
         <% end %>
         <%= render :partial => 'footer' %>
@@ -154,7 +154,7 @@
           <div class="left">
             <div class="header">
               <p class="common_name">Scientific name</p>
-              <h1><%= species.full_name %></h1>
+              <h1><%= species.full_name %> <%= species.name_author %></h1>
               <ul class="breadcrumb">
                 <li class="first"><%= species.kingdom %></li>
                 <li><%= species.phylum %></li>

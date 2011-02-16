@@ -92,39 +92,41 @@
       <%= f.text_area :reproductive, :rows => 8, :cols => 50 %>
     </div>
 
-    <h2>Taxonomy</h2>
-
     <% if @species.new_record? %>
-      <div id="loading-taxonomy">loading....</div>
+      <div id="loading-taxonomy">loading taxonomy....</div>
     <% end -%>
     <div id="taxonomy" <%= raw 'style="display:none"' if @species.new_record? %>>
       <div class="field">
-        <%= f.label :kingdom %><br />
-        <%= f.text_field :kingdom, :size => 50 %>
+        <!-- <%= f.label :kingdom %><br /> -->
+        <%= f.hidden_field :kingdom, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :phylum %><br />
-        <%= f.text_field :phylum, :size => 50 %>
+        <!-- <%= f.label :phylum %><br /> -->
+        <%= f.hidden_field :phylum, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :t_class, 'Class' %><br />
-        <%= f.text_field :t_class, :size => 50 %>
+        <!-- <%= f.label :t_class, 'Class' %><br /> -->
+        <%= f.hidden_field :t_class, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :t_order, 'Order' %><br />
-        <%= f.text_field :t_order, :size => 50 %>
+        <!-- <%= f.label :t_order, 'Order' %><br /> -->
+        <%= f.hidden_field :t_order, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :family %><br />
-        <%= f.text_field :family, :size => 50 %>
+        <!-- <%= f.label :family %><br /> -->
+        <%= f.hidden_field :family, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :genus %><br />
-        <%= f.text_field :genus, :size => 50 %>
+        <!-- <%= f.label :genus %><br /> -->
+        <%= f.hidden_field :genus, :size => 50 %>
       </div>
       <div class="field">
-        <%= f.label :species %><br />
-        <%= f.text_field :species, :size => 50 %>
+        <!-- <%= f.label :species %><br /> -->
+        <%= f.hidden_field :species, :size => 50 %>
+      </div>
+      <div class="field">
+        <!-- <%= f.label :name_author %><br /> -->
+        <%= f.hidden_field :name_author, :size => 50 %>
       </div>
     </div>
 
@@ -180,6 +182,7 @@ $(document).ready(function() {
             $('#species_family').val(data['family']);
             $('#species_genus').val(data['genus']);
             $('#species_species').val(data['species']);
+            $('#species_name_author').val(data['name_author']);
             $('#loading-taxonomy').hide();
             $('#taxonomy').show();
           }

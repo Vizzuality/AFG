@@ -156,19 +156,23 @@ div.pop_up p span a.close {position:absolute; right:10px; width:10px; height:10p
 div.header {float:left; width:896px; margin:23px 0 0 0; padding:23px 20px 0 20px; background:white; position:relative;}
 div.header div.logo {float:left; width:894px; }
 div.header div.logo a {float:left; width:191px; height:38px; background:url(../images/common/logo.png) no-repeat 0 0;}
-div.header div.logo span.search {float:right; width:auto;}
-div.header div.logo span.search form {float:left; margin:0; padding:0; border:none;}
-div.header div.logo span.search form input[type="text"] {float:left; border:1px solid #cccccc; background:white; margin:0; font:normal 13px Arial; color:#cccccc; height:15px; padding:4px; width:181px;}
-div.header div.logo span.search form input[type="submit"] {float:left; border:1px solid #cccccc; border-left:none; background:url(../images/common/len.png) no-repeat 0 0 #EDEDED; height:25px; width:24px; margin:0; padding:0; cursor:pointer;}
-div.header div.logo span.search form input[type="submit"]:hover {background-position:0 -23px;}
-div.header div.header_menu {float:left; width:auto; padding:27px 0 17px 0;}
-div.header div.header_menu ul {float:left; width:894px; margin:0;}
+div.header div.right_header span.search {float:right; width:auto;}
+div.header div.right_header span.search form {float:right; margin:10px 0 0 0; padding:0; border:none;}
+div.header div.right_header span.search form input[type="text"] {float:left; border:1px solid #cccccc; background:white; margin:0; font:normal 13px Arial; color:#cccccc; height:15px; padding:4px; width:181px;}
+div.header div.right_header span.search form input[type="submit"] {float:left; border:1px solid #cccccc; border-left:none; background:url(../images/common/len.png) no-repeat 0 0 #EDEDED; height:25px; width:24px; margin:0; padding:0; cursor:pointer;}
+div.header div.right_header span.search form input[type="submit"]:hover {background-position:0 -23px;}
+div.header div.header_menu {float:left; width:400px; padding:27px 0 17px 0;}
+div.header div.header_menu ul {float:left; width:400px; margin:0;}
 div.header div.header_menu ul li {float:left; width:auto; padding:0 15px;}
 div.header div.header_menu ul li.first {padding:0 15px 0 0;}
 div.header div.header_menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999;}
 div.header div.header_menu ul li a.current {color:#0099CC;}
 div.header div.header_menu ul li a:hover {color:#0099CC;}
-
+div.left_header {float:left; width:400px;}
+div.right_header {float:right; width:250px;}
+div.right_header span.logos {float:right; width:250px; height:50px;}
+div.right_header span.logos a.scarmarbin {float:right; width:36px; height:48px; background:url(../images/common/scarmarbin_logo.png) no-repeat 0 0; margin:0 12px 0 0;}
+div.right_header span.logos a.biodiversity {float:right; width:65px; height:48px; background:url(../images/common/biodiversitiy_logo.png) no-repeat 0 0;}
 
 
 /*HOME*/
@@ -287,7 +291,8 @@ div.left div.create ul.published_afg li div.information_title p.star span img {p
 div.right div.blue {position:relative; float:left; padding:21px 24px 27px; width:264px; background:url(../images/home/blue_bkg.png) repeat-x 0 0 #0099C9; margin:0;}
 div.right div.blue img.arrow {position:absolute; top:23px; left:0;}
 div.right div.blue h4 {float:left; font:bold 25px Helvetica; color:white; line-height:25px;}
-div.right div.blue p.subtitle {float:left; width:264px; font:normal 13px "Lucida Grande"; color:white; line-height:13px;}
+div.right div.blue p.subtitle {float:left; width:264px; font:normal 13px "Lucida Grande"; color:white!important; line-height:13px;}
+div.right div.blue p.subtitle a {color:white;}
 div.right div.blue ul {float:left; width:264px; margin:10px 0 0 0; padding:0 0 13px;}
 div.right div.blue ul li {float:left; width:264px; padding:10px 0; height:50px;}
 div.right div.blue ul li div.image {float:left; width:56px; padding:0;}
@@ -578,6 +583,7 @@ div.main.family ul li:hover div.info a.add {display:inline;}
 div.main.family ul li:hover div.info a.add:hover {background-position:0 -16px;}
 div.main.family ul li div.info h4 {float:left; width:200px;}
 div.main.family ul li div.info h4 a {font:normal 17px "Lucida Grande"; color:#0099CC; text-decoration:none; vertical-align:top; padding:0; border-bottom:1px solid white;}
+div.main.family ul li:hover div.info h4 a{border-bottom:1px solid #F4F4F4;}
 div.main.family ul li div.info h4 a:hover {border-bottom:1px solid #0099CC;}
 div.main.family ul li div.info p.common_name {float:left; width:215px; font:normal 13px "Lucida Grande"; color:#999999; font-style:italic; padding:0;}
 
@@ -867,8 +873,9 @@ div.left div.initiative p.partners {color:white;}
 div.left div.initiative ul.partners_list {float:left; width:100%; margin:0px 0 0 0; padding:0 0 15px 0;}
 div.left div.initiative ul.partners_list li {float:left; width:auto; height:43px; margin:0 3px 0 0;}
 div.left div.initiative ul.partners_list li a.bas {float:left; background:url('../images/about/bas_logo.jpg') no-repeat 0 0; width:108px; height:61px; margin:3px 0 0 0;}
+div.left div.initiative ul.partners_list li a.mna {float:left; background:url('../images/about/mna_logo.png') no-repeat 0 0; width:63px; height:52px; margin:10px 8px 0 10px;}
 div.left div.initiative ul.partners_list li a.caml {float:left; background:url('../images/about/caml_logo.jpg') no-repeat 0 0; width:105px; height:64px; margin:0}
-div.left div.initiative ul.partners_list li a.total {float:left; background:url('../images/about/total_logo.jpg') no-repeat 0 0; width:94px; height:41px; margin:15px 0 0 0;}
+div.left div.initiative ul.partners_list li a.total {float:left; background:url('../images/about/total_logo.jpg') no-repeat 0 0; width:94px; height:41px; margin:13px 0 0 0;}
 
 
 div.right div.contact {float:right; padding:21px; width:269px; height:auto; position:relative;}
@@ -1115,9 +1122,9 @@ div.main.noie div.content a:hover {background-position:0 -37px; }
 /*FOOTER*/
 
 div.footer {margin:0 auto; width:936px;}
-div.footer div.in {float:left; width:896px; padding:40px 20px 40px 20px; background:white;}
-div.footer div.in div.left {float:left; width:300px; margin:0 0 0 6px;}
-div.footer div.in div.right {float:right; width:500px; margin:4px 0 0 0;}
+div.footer div.in {float:left; width:896px; height:75px; padding:25px 20px 20px 20px; background:white;}
+div.footer div.in div.left {float:left; width:400px; margin:0 0 0 6px;}
+div.footer div.in div.right {float:right; width:400px; margin:4px 0 0 0;}
 div.footer div.in div.logo {float:left; width:894px;}
 div.footer div.in div.logo a.logo {float:left; width:123px; height:26px; background:url(../images/common/logo_footer.png) no-repeat 0 0;}
 div.footer div.in a.scarmarbin {float:left; width:36px; height:48px; background:url(../images/common/scarmarbin_logo.png) no-repeat 0 0; margin:0 13px 0 0;}
@@ -1129,7 +1136,7 @@ div.footer div.in span.menu ul li.last {padding:0 0 0 10px;}
 div.footer div.in span.menu ul li a {text-decoration:none; font:bold 13px Arial; color:#999999; text-align:right;}
 div.footer div.in span.menu ul li a.current {color:#0099CC;}
 div.footer div.in span.menu ul li a:hover {color:#0099CC;}
-div.footer div.in p {float:right; padding:7px 0 0; font:normal 12px Arial; color:#999999;}
+div.footer div.in p {float:left; padding:27px 0 0; font:normal 12px Arial; color:#999999;}
 div.footer div.in p a {font-weight:bold; text-decoration:none; color:#999999;}
 div.footer div.in p a:hover {color:#666666;}
 div.footer div.in p.source_image {float:right; font:bold 12px Arial; color:#999999;}

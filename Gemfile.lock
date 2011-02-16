@@ -1,13 +1,13 @@
 GIT
   remote: git://github.com/cavalle/steak.git
-  revision: 894084d
+  revision: 6140580c5da9cf945777db025942a09e97b52b5c
   specs:
-    steak (0.4.0.beta.1)
-      rspec-core (>= 2.0.0.beta.19)
+    steak (1.0.0.rc.4)
+      rspec
 
 GIT
   remote: git://github.com/ferblape/postgis_adapter.git
-  revision: d2240d7
+  revision: e85ca1be881e2df4396da5c4482337ab05f6a85d
   specs:
     ppe-postgis-adapter (0.7.8)
 
@@ -61,13 +61,13 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
-    celerity (0.8.2)
-    childprocess (0.1.3)
+    celerity (0.8.4)
+    childprocess (0.1.4)
       ffi (~> 0.6.3)
-    columnize (0.3.1)
-    configuration (1.1.0)
+    columnize (0.3.2)
+    configuration (1.2.0)
     culerity (0.2.12)
-    database_cleaner (0.5.2)
+    database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -75,39 +75,41 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     highline (1.6.1)
-    hoptoad_notifier (2.3.8)
+    hoptoad_notifier (2.3.12)
       activesupport
-    i18n (0.4.1)
+      builder
+    i18n (0.4.2)
     json_pure (1.4.6)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
     linecache (0.43)
-    mail (2.2.5)
+    mail (2.2.10)
       activesupport (>= 2.3.6)
-      mime-types
-      treetop (>= 1.4.5)
+      i18n (~> 0.4.1)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
     mime-types (1.16)
-    net-scp (1.0.3)
+    net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    nofxx-georuby (1.7.1)
-    nokogiri (1.4.3.1)
-    paperclip (2.3.3)
+    nofxx-georuby (1.7.3)
+    nokogiri (1.4.4)
+    paperclip (2.3.5)
       activerecord
       activesupport
-    pdfkit (0.4.5)
+    pdfkit (0.4.6)
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-noie (1.0)
-    rack-test (0.5.4)
+    rack-test (0.5.6)
       rack (>= 1.0)
     rails (3.0.0)
       actionmailer (= 3.0.0)
@@ -124,32 +126,32 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     rmagick (2.13.1)
-    rspec (2.0.0.beta.20)
-      rspec-core (= 2.0.0.beta.20)
-      rspec-expectations (= 2.0.0.beta.20)
-      rspec-mocks (= 2.0.0.beta.20)
-    rspec-core (2.0.0.beta.20)
-    rspec-expectations (2.0.0.beta.20)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.20)
-    rspec-rails (2.0.0.beta.20)
-      rspec (= 2.0.0.beta.20)
-    ruby-debug (0.10.3)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
+    rspec-rails (2.1.0)
+      rspec (~> 2.1.0)
+    ruby-debug (0.10.4)
       columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.3.0)
-    ruby-debug-base (0.10.3)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.29)
-      childprocess (>= 0.0.7)
+    selenium-webdriver (0.1.0)
+      childprocess (= 0.1.4)
       ffi (~> 0.6.3)
       json_pure
       rubyzip
-    thor (0.14.0)
-    treetop (1.4.8)
+    thor (0.14.6)
+    treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    webrat (0.7.1)
+    webrat (0.7.2)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
@@ -175,7 +177,7 @@ DEPENDENCIES
   pg (= 0.9.0)
   ppe-postgis-adapter!
   rack-noie
-  rails
+  rails (= 3.0.0)
   rmagick
   rspec (>= 2.0.0.beta.13)
   rspec-rails (>= 2.0.0.beta.8)
@@ -183,3 +185,6 @@ DEPENDENCIES
   steak!
   webrat
   will_paginate (~> 3.0.pre2)
+
+METADATA
+  version: 1.0.6
