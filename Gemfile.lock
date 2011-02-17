@@ -103,7 +103,7 @@ GEM
     paperclip (2.3.8)
       activerecord
       activesupport
-    pdfkit (0.5.0)
+    pdfkit (0.4.6)
     pg (0.9.0)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -177,7 +177,7 @@ DEPENDENCIES
   nofxx-georuby
   nokogiri
   paperclip
-  pdfkit
+  pdfkit (= 0.4.6)
   pg (= 0.9.0)
   ppe-postgis-adapter!
   rack-noie

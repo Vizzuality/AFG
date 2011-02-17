@@ -9,7 +9,7 @@ gem 'hoptoad_notifier'
 gem 'ruby-debug'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'fastercsv'
-gem 'pdfkit'
+gem 'pdfkit', '0.4.6'
 gem 'nokogiri'
 gem 'paperclip', :tag => 'v2.3.3'
 gem 'rmagick', :require => 'RMagick'
