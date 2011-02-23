@@ -67,7 +67,7 @@ class Species < ActiveRecord::Base
   scope :pending,       where(:complete => false)
 
   before_create :set_complete
-  # after_create :get_occurrences
+  after_create :get_occurrences
   after_destroy :remove_entries
 
   before_save :set_complete, :propagate_taxon
